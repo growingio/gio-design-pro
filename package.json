@@ -1,0 +1,59 @@
+{
+  "name": "gio-core",
+  "version": "1.0.0",
+  "description": "GrowingIO business components and utils",
+  "main": "index.js",
+  "repository": "git@github.com:growingio/gio-core.git",
+  "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@gio-design/components": "20.9.6",
+    "@gio-design/icons": "20.9.3",
+    "@gio-design/tokens": "20.9.3",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@types/classnames": "^2.2.8",
+    "@types/enzyme": "^3.10.5",
+    "@types/jest": "^26.0.0",
+    "@types/lodash": "^4.14.139",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/warning": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "husky": "^4.3.0",
+    "jest": "^26.0.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "2.1.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "stylelint": "^13.7.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "typescript": "~4.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
