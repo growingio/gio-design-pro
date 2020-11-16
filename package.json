@@ -18,7 +18,7 @@
   "dependencies": {
     "@gio-design/components": "20.9.6",
     "@gio-design/icons": "20.9.3",
-    "@gio-design/tokens": "20.9.3",
+    "@gio-design/tokens": "20.9.4",
     "classnames": "^2.2.6",
     "lodash": "^4.17.20"
   },
