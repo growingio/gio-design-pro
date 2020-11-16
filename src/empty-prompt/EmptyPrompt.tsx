@@ -6,7 +6,7 @@ import { EmptyPromptProps } from './interfaces';
 const classPrefix = 'gio-empty-prompt';
 
 function EmptyPrompt(props: EmptyPromptProps) {
-  const { className, description, children } = props;
+  const { className, description = 'No data', children } = props;
   return (
     <div className={classnames(classPrefix, className)}>
       <EmptySVG />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import EmptyPrompt, { EmptyPromptProps } from './index';
+import './style';
 
 export default {
   title: 'Business Components/EmptyPrompt',
