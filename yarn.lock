@@ -1431,12 +1431,7 @@
   dependencies:
     classnames "^2.2.6"
 
-"@gio-design/tokens@20.9.3":
-  version "20.9.3"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-20.9.3.tgz#5c38195c4861d3738cbac5a78384cb4eb1407536"
-  integrity sha512-aMhZJc1PF/xOXS+GAKcRCLH39YjeB3aT9TVEUQDKalX6cY2MuNK3PBgFlW2HOmBKQ47bQj84Q53uinubZE31ew==
-
-"@gio-design/tokens@^20.9.3":
+"@gio-design/tokens@20.9.4", "@gio-design/tokens@^20.9.3":
   version "20.9.4"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-20.9.4.tgz#2d74d4510e298878be553b3c8ec12610d43adf99"
   integrity sha512-9j/3PwuTczV4GOHdWIYKQcpyn5XlowIWJjOCCotO/qeEtq94WJHp07sqKAGWXkkAt4QrEAgQ9sVEoCHNuUtutw==
