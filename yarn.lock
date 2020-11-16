@@ -1384,14 +1384,7 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/icons@20.9.3":
-  version "20.9.3"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-20.9.3.tgz#0640321d99d0e6a2cb190738319ec3c26723ec6e"
-  integrity sha512-7GL1IiPyC6djEEZRj3V5yVhoMtJcKFsamS4vxbJ+fmmvBNG5acDmoJ4DIpAZb4fghCe3cRMrhJCJkLfMJkEDzw==
-  dependencies:
-    classnames "^2.2.6"
-
-"@gio-design/icons@^20.9.3":
+"@gio-design/icons@20.10.5", "@gio-design/icons@^20.9.3":
   version "20.10.5"
   resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-20.10.5.tgz#58acf25c05fa58e8b13afd0b4e535433340c77b4"
   integrity sha512-zcLWawDb4AbfJzTieY0lxHDjQpXQp2IAlhDC7u3XUWnze5PLeX/e/RKIy02k0KMTPKCyM5BHmIC/feyIFKxi+w==
