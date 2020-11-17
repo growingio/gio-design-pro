@@ -1,10 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from 'enzyme';
 import EmptySVG from '../EmptySVG';
 
 describe('EmptySVG', () => {
   it('render with default props', () => {
-    const wrapper = mount(<EmptySVG />);
+    const wrapper = render(<EmptySVG />);
     expect(wrapper).toMatchSnapshot();
   });
 });
