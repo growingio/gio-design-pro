@@ -5,6 +5,7 @@ on:
 jobs:
   install:
     name: Install dependencies
+    if: ${{ !startsWith(github.event.pull_request.title, 'chore') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -16,16 +17,18 @@ jobs:
         with:
           node-version: 12.x
       - name: Cache Node.js modules
+        id: cache-node-modules
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run: yarn install
   lint:
     name: Lint Checks
     needs: install
+    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -40,7 +43,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Lint pull request title
         run: echo "${{ github.event.pull_request.title }}" | npx commitlint
       - name: Lint commits count
@@ -52,8 +55,8 @@ jobs:
         run: yarn eslint
   review:
     name: UI Review
-    if: ${{ !startsWith(github.event.pull_request.title, 'chore') }}
     needs: install
+    if: ${{ startsWith(github.event.pull_request.title, 'feat') || startsWith(github.event.pull_request.title, 'fix') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -68,7 +71,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Build Storybook
         run: yarn build-storybook
       - name: Upload to Chromatic
@@ -80,8 +83,8 @@ jobs:
           exitZeroOnChanges: true
   test:
     name: Test Coverage
-    if: ${{ !(startsWith(github.event.pull_request.title, 'chore') || startsWith(github.event.pull_request.title, 'docs')) }}
     needs: install
+    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -96,7 +99,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
