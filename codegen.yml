@@ -1,0 +1,16 @@
+overwrite: true
+schema:
+  - ${SCHEMA_PATH}:
+      headers:
+        Cookie: gdp_user_session=${SESSION}
+generates:
+  src/types.ts:
+    hooks:
+      afterOneFileWrite:
+        - prettier --write
+    plugins:
+      - 'typescript'
+    config:
+      enumsAsTypes: true
+      maybeValue: T | undefined
+      commentDescriptions: true
