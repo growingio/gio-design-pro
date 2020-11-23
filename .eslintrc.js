@@ -31,5 +31,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-unused-expressions': ['error', { allowShortCircuit: true }],
     'react/static-property-placement': ['error', 'static public field'],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
 };
