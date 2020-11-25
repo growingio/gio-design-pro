@@ -1,4 +1,4 @@
-# GrowingIO Core
+# GrowingIO Design Pro
 
 GrowingIO business components and utils.
 
