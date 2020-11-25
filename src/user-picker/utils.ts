@@ -1,22 +1,24 @@
-import { Option } from '@gio-design/components/es/components/list/interface';
+import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
 import { Segment } from '../types';
-import { OptionGroup, PreparedSegment } from './interfaces';
+import { PreparedSegment, NodeGroup } from './interfaces';
 
-export function segmentToOption(seg: PreparedSegment | Segment, group?: OptionGroup): Option {
+export function segmentToNode(seg: PreparedSegment | Segment, group?: NodeGroup): NodeData {
   if (!group) {
     return {
+      id: seg.id,
       value: seg.id,
       label: seg.name,
     };
   }
   return {
-    value: seg.id,
+    id: seg.id,
+    value: `${group.id}-${seg.id}`,
     label: seg.name,
-    groupLabel: group.label,
-    groupValue: group.key,
+    groupId: group.id,
+    groupName: group.name,
   };
 }
 
 export default {
-  segmentToOption,
+  segmentToNode,
 };

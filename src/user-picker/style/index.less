@@ -1,77 +1,39 @@
-@import '~@gio-design/components/es/components/alert/style/index.less';
-@import '~@gio-design/components/es/components/checkbox/style/index.less';
-@import '~@gio-design/components/es/components/button/style/index.less';
-@import '~@gio-design/components/es/components/input/style/index.less';
-@import '~@gio-design/components/es/components/search-bar/style/index.less';
-@import '~@gio-design/components/es/components/loading/style/index.less';
-@import '~@gio-design/components/es/components/tabs/style/index.less';
-@import '~@gio-design/components/es/components/popover/style/index.less';
-@import '~@gio-design/components/es/components/list/style/option.less';
-@import '~@gio-design/components/es/components/list/style/sort.less';
-@import '../../empty-prompt/style/index.less';
+@import '../../picker/style/index.less';
+@import '~@gio-design/components/es/components/tag/style/index.less';
 
-.gio-user-picker {
-  width: 392px;
-  height: 500px;
-  margin: 0;
-  padding: 20px 0 0;
-  border: 1px solid #e7eaf9;
-  border-radius: 4px;
-  background-color: #fff;
-  box-shadow: inset 0 -1px 0 0 #ebedf5;
+@user-picker-prefix-cls: ~'@{component-prefix}-user-picker';
 
-  &__header {
-    height: 36px;
-    margin: 0 20px;
-
-    .gio-searchbar {
-      display: inline-block;
-      vertical-align: top;
-      width: 300px;
-
-      .gio-input {
-        width: 100%;
-      }
-
-      input {
-        box-sizing: border-box;
-      }
-    }
-
-    .gio-btn {
-      margin-left: 16px;
-      width: 36px;
-      height: 36px;
-      padding: 9px !important;
-    }
-
-    .gio-alert {
-      position: absolute;
-      width: 320px;
-      z-index: 9999;
-      top: 72px;
-    }
+.@{user-picker-prefix-cls}-segment {
+  &__name {
+    margin: 0 0 24px;
+    color: #1248e9;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 22px;
   }
 
-  .gio-tabnav {
-    margin: 8px 20px 2px;
+  &__label {
+    margin: 0 0 8px;
+    color: #242e59;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 22px;
   }
 
-  .gio-list-wrapper {
-    padding: 0 20px;
+  &__value {
+    margin: 0 0 16px;
+    color: #7b819c;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 22px;
+  }
 
-    .gio-select-option {
-      box-sizing: border-box;
+  &__tags {
+    margin: 0 0 16px;
+    .gio-tag:not(:first-child) {
+      margin-left: 8px;
     }
-  }
-
-  .gio-empty {
-    margin-top: 100px;
-  }
-
-  .gio-loading-wrapper {
-    height: 406px;
-    padding-top: 170px;
-    text-align: center;
   }
 }
