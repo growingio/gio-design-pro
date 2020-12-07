@@ -1534,10 +1534,10 @@
   dependencies:
     classnames "^2.2.6"
 
-"@gio-design/tokens@20.9.4", "@gio-design/tokens@^20.9.4":
-  version "20.9.4"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-20.9.4.tgz#2d74d4510e298878be553b3c8ec12610d43adf99"
-  integrity sha512-9j/3PwuTczV4GOHdWIYKQcpyn5XlowIWJjOCCotO/qeEtq94WJHp07sqKAGWXkkAt4QrEAgQ9sVEoCHNuUtutw==
+"@gio-design/tokens@20.12.0", "@gio-design/tokens@^20.9.4":
+  version "20.12.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-20.12.0.tgz#f358e933863a6993356211c4b70fcd510cb5b9c1"
+  integrity sha512-KRYP17XV4r01ZlHqEstlnYN2vQ/vRRr1Ir6sYJE9n4EIkXvXVE+BrKxkWLMqsSd7t9BpYp6c2SPGUu/FPyYgJw==
 
 "@graphql-codegen/cli@1.19.1":
   version "1.19.1"
