@@ -12,30 +12,29 @@ export default {
 
 const Template: Story<OperationMenuProps> = (args) => <OperationMenu {...args} />;
 
-const options: OperationMenuListOption[] = 
-    [
-      {
-        disabled: false,
-        tooltip: '',
-        value: 'update-space-role',
-        label: '修改站点角色',
-      },
-      {
-        disabled: false,
-        tooltip: '',
-        value: 'update-space',
-        label: '删除用户',
-      },
-      {
-        disabled: true,
-        tooltip: '行行行',
-        value: 'update-spxxxace',
-        label: '删除用户2',
-      },
-    ]
+const options: OperationMenuListOption[] = [
+  {
+    disabled: false,
+    tooltip: '',
+    value: 'update-space-role',
+    label: '修改站点角色',
+  },
+  {
+    disabled: false,
+    tooltip: '',
+    value: 'update-space',
+    label: '删除用户',
+  },
+  {
+    disabled: true,
+    tooltip: '行行行',
+    value: 'update-spxxxace',
+    label: '删除用户2',
+  },
+];
 
 export const Default = Template.bind({});
 Default.args = {
   options,
-  onClick: (a: any) => console.log(a)
+  onClick: (a: any) => console.log(a),
 };

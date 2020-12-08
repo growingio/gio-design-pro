@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface OperationMenuListOption {
   label: string;
   value: string;
@@ -18,7 +20,7 @@ export interface OperationMenuListProps {
 }
 
 export interface OperationMenuProps {
-  iconClassName?: string,
+  iconClassName?: string;
   trigger?: string | string[];
   size?: 'large' | 'middle' | 'small';
   mini?: boolean;
