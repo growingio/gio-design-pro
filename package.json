@@ -1,5 +1,5 @@
 {
-  "name": "gio-design-pro",
+  "name": "@gio-design/pro",
   "version": "20.12.0",
   "description": "GrowingIO business components and utils",
   "main": "index.js",

@@ -25,6 +25,6 @@ jobs:
             es
           key: packages-${{ github.sha }}
       - name: Publish from package
-        run: yarn publish --non-interactive
+        run: yarn publish --non-interactive --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
