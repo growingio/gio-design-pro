@@ -37,7 +37,7 @@ function Picker({
   }
 
   function onMenuHover(current: NodeData) {
-    return <div className={`${prefixCls}-hover-panel`}>{onHoverPanelShow(current)}</div>;
+    return !onHoverPanelShow ? null : <div className={`${prefixCls}-hover-panel`}>{onHoverPanelShow(current)}</div>;
   }
 
   function renderList() {
@@ -55,7 +55,7 @@ function Picker({
 
     return (
       <Menu
-        groupName={groupVisible ? (node: NodeData) => node.groupName : false}
+        groupName={groupVisible}
         className={`${prefixCls}__list`}
         dataSource={dataSource}
         onSelect={onSelect}

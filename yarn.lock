@@ -1364,10 +1364,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/components@20.12.0":
-  version "20.12.0"
-  resolved "https://registry.npmjs.org/@gio-design/components/-/components-20.12.0.tgz#f16ed1cfb1c61e67ce513b333856d81a5d532f64"
-  integrity sha512-lcOC8Dd6BYT8HbP+nFXAuuiuYKN2nUjjW5Tlb/J67+Bsad6pg1/PrvhhDRznNS9HUByWFr2Na69I/wj4pq4oZQ==
+"@gio-design/components@20.12.1":
+  version "20.12.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-20.12.1.tgz#8f5791eee0527e860114f8cfeab9be1d58a193c6"
+  integrity sha512-w+No8stIDA1w4IF9+Ps3igbfiqbW8poJPnShkDgiTJX3VgR6zChFbyuVFRR0YWZESCBcxcK81SdBmr5Lz1meKA==
   dependencies:
     "@gio-design/icons" "20.11.0"
     "@gio-design/tokens" "20.12.0"
@@ -1392,7 +1392,7 @@
     rc-menu "^8.5.1"
     rc-notification "^4.5.4"
     rc-table "^7.9.1"
-    rc-tooltip "^4.2.1"
+    rc-tooltip "^5.0.1"
     rc-tree "3.9.5"
     rc-tree-select "4.1.2"
     rc-trigger "^4.3.0"
@@ -14088,13 +14088,13 @@ rc-table@^7.9.1:
     rc-util "^5.4.0"
     shallowequal "^1.1.0"
 
-rc-tooltip@^4.2.1:
-  version "4.2.3"
-  resolved "https://registry.npmjs.org/rc-tooltip/-/rc-tooltip-4.2.3.tgz#f6fb2a6d9e76ef64295a1d9b5a1618f8634c0645"
-  integrity sha512-7ySkaPGeqLLM4a/QYrKQ280aDthPxyvjJqQMstWX/AWX7/b1p23HIdHXdjBkziuvcnvXkW4lgZdFTVsylDiX1w==
+rc-tooltip@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/rc-tooltip/-/rc-tooltip-5.0.1.tgz#b82c4259604d2cb62ca610ed7932dd37fc6ef61d"
+  integrity sha512-3AnxhUS0j74xAV3khrKw8o6rg+Ima3nw09DJBezMPnX3ImQUAnayWsPSlN1mEnihjA43rcFkGM1emiKE+CXyMQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
-    rc-trigger "^4.2.1"
+    rc-trigger "^5.0.0"
 
 rc-tree-select@4.1.2:
   version "4.1.2"
@@ -14142,7 +14142,7 @@ rc-trigger@^2.2.0:
     rc-util "^4.4.0"
     react-lifecycles-compat "^3.0.4"
 
-rc-trigger@^4.2.1, rc-trigger@^4.3.0:
+rc-trigger@^4.3.0:
   version "4.4.3"
   resolved "https://registry.npmjs.org/rc-trigger/-/rc-trigger-4.4.3.tgz#ed449cd6cce446555bc57f4394229c5c7154f4b0"
   integrity sha512-yq/WyuiPwxd2q6jy+VPyy0GUCRFJ2eFqAaCwPE27AOftXeIupOcJ/2t1wakSq63cfk7qtzev5DKHUAjb8LOJCw==
@@ -14154,7 +14154,7 @@ rc-trigger@^4.2.1, rc-trigger@^4.3.0:
     rc-motion "^1.0.0"
     rc-util "^5.0.1"
 
-rc-trigger@^5.0.4, rc-trigger@^5.1.2:
+rc-trigger@^5.0.0, rc-trigger@^5.0.4, rc-trigger@^5.1.2:
   version "5.2.0"
   resolved "https://registry.npmjs.org/rc-trigger/-/rc-trigger-5.2.0.tgz#a17f1a5cba6b8faff62e658a5c9a21f97af2ef06"
   integrity sha512-fpC1ZkM/IgIIDfF6XHx3Hb2zXy9wvdI5eMh+6DdLygk6Z3HGmkri6ZCXg9a0wfF9AFuzlYTeBLS1uRASZRsnMQ==

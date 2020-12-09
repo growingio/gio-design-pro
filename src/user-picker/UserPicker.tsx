@@ -31,17 +31,17 @@ function UserPicker({
   const [scope, setScope] = React.useState<string>('my');
   const [showValue, setShowValue] = React.useState<string>('');
   const [values, setValues] = React.useState<(PreparedSegment | Segment)[]>([]);
-  const [pickerVisible, setPickerVisible] = React.useState<boolean>(visible);
+  const [pickerVisible, setPickerVisible] = React.useState<boolean>(!!visible);
 
   function filterSegment(s: Segment) {
     if (query.length > 0) {
-      return includes(s.name.toLocaleLowerCase(), query) || includes(s.creator.toLocaleLowerCase(), query);
+      return includes(s.name.toLocaleLowerCase(), query) || includes(s.creator?.toLocaleLowerCase(), query);
     }
     return true;
   }
 
   function onMenuSelect(nodeData: NodeData) {
-    setShowValue(nodeData.label);
+    setShowValue(!nodeData.label ? '' : nodeData.label);
     setPickerVisible(false);
     onVisibleChange?.(false);
     const id = nodeData.id as string;
@@ -67,8 +67,8 @@ function UserPicker({
         <>
           <div className={`${segPrefixCls}__label`}>分群人数和占比：</div>
           <div className={`${segPrefixCls}__tags`}>
-            <Tag>{segment.detector.totalUsers}</Tag>
-            <Tag>{`${(segment.detector.usersRatio * 100).toFixed(2)}%`}</Tag>
+            <Tag>{segment.detector?.totalUsers}</Tag>
+            <Tag>{`${((segment.detector?.usersRatio ? segment.detector.usersRatio : 0) * 100)?.toFixed(2)}%`}</Tag>
           </div>
           <div className={`${segPrefixCls}__label`}>创建人 & 更新时间：</div>
           <div className={`${segPrefixCls}__value`}>
@@ -90,15 +90,13 @@ function UserPicker({
     onVisibleChange?.(current);
   }
 
-  const dataSource: NodeData[] = React.useMemo(() => {
+  const dataSource = React.useMemo(() => {
     if (scope === 'my') {
-      const recentNodes = recentSegments.map((id) => {
-        const seg = mappedSegements[id];
-        if (seg) {
-          return segmentToNode(seg, { id: 'recent', name: '最近使用' });
-        }
-        return null;
-      });
+      const recentNodes = recentSegments
+        .filter((id) => !!mappedSegements[id])
+        .map((id) => {
+          return segmentToNode(mappedSegements[id], { id: 'recent', name: '最近使用' });
+        });
       const preparedNodes = preparedSegments.map((seg) => {
         return segmentToNode(seg, { id: 'prepared', name: '预定义' });
       });
