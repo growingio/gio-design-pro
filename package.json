@@ -18,10 +18,9 @@
   "scripts": {
     "build": "npx gio-rewire lib compile",
     "build-sotrybook": "build-storybook -s public",
-    "preversion": "git fetch --tags",
     "postversion": "yarn gen-version && yarn gen-changelog",
-    "gen-version": "conventional-changelog -p angular -i CHANGELOG.md > VERSION.md",
-    "gen-changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "gen-version": "conventional-changelog -p angular > VERSION.md",
+    "gen-changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "codegen": "graphql-codegen -r dotenv/config --config codegen.yml",
     "eslint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "storybook": "start-storybook -p 6006 -s public",
