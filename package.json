@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "20.12.0",
+  "version": "20.12.1",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -18,6 +18,7 @@
   "scripts": {
     "build": "npx gio-rewire lib compile",
     "build-sotrybook": "build-storybook -s public",
+    "preversion": "git fetch --tags",
     "postversion": "yarn gen-version && yarn gen-changelog",
     "gen-version": "conventional-changelog -p angular > VERSION.md",
     "gen-changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
