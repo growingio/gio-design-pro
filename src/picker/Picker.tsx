@@ -21,7 +21,7 @@ function Picker({
   onSearch,
   tabNav,
   loading = false,
-  onGroupShow = (node: NodeData) => node.groupName,
+  groupVisible = true,
   dataSource,
   actionButton,
   onHoverPanelShow,
@@ -55,7 +55,7 @@ function Picker({
 
     return (
       <Menu
-        groupName={onGroupShow}
+        groupName={groupVisible ? (node: NodeData) => node.groupName : false}
         className={`${prefixCls}__list`}
         dataSource={dataSource}
         onSelect={onSelect}

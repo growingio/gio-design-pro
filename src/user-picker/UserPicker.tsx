@@ -132,7 +132,7 @@ function UserPicker({
       dataSource={dataSource}
       onHoverPanelShow={onMenuHover}
       onSelect={onMenuSelect}
-      onGroupShow={scope === 'all' ? false : undefined}
+      groupVisible={scope !== 'all'}
     />
   );
 }

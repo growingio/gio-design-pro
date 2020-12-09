@@ -73,9 +73,9 @@ export interface PickerProps {
     children?: React.ReactNode;
   };
   /**
-   * Callback when show group name
+   * Wether the group name is visible or not
    */
-  onGroupShow?: false | ((node: NodeData) => React.ReactNode);
+  groupVisible?: boolean;
   /**
    * Data record array to be displayed
    */
