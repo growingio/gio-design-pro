@@ -138,7 +138,7 @@ module.exports = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>/setup-tests.js'],
+  setupFilesAfterEnv: ['jest-enzyme'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -148,10 +148,12 @@ module.exports = {
 
   // The test environment that will be used for testing
   // testEnvironment: "jest-environment-jsdom",
-  // testEnvironment: 'node',
+  testEnvironment: 'enzyme',
 
   // Options that will be passed to the testEnvironment
-  // testEnvironmentOptions: {},
+  testEnvironmentOptions: {
+    enzymeAdapter: 'react16',
+  },
 
   // Adds a location field to test results
   // testLocationInResults: false,

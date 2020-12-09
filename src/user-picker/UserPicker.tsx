@@ -1,100 +1,139 @@
 import * as React from 'react';
-import _ from 'lodash';
+import { filter, keyBy, includes, uniq } from 'lodash';
 import { PlusOutlined } from '@gio-design/icons';
-import Alert from '@gio-design/components/es/components/alert';
-import SearchBar from '@gio-design/components/es/components/search-bar';
-import List from '@gio-design/components/es/components/list';
-import Loading from '@gio-design/components/es/components/loading';
-import TabNav from '@gio-design/components/es/components/tab-nav';
-import Button from '@gio-design/components/es/components/button';
-import { Option } from '@gio-design/components/es/components/list/interface';
-import EmptyPrompt from '../empty-prompt';
+import { format } from 'date-fns/fp';
+import Tag from '@gio-design/components/es/components/tag';
+import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
+import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
+import BasePicker from '../picker';
 import { UserPickerProps, PreparedSegment } from './interfaces';
-import { segmentToOption } from './utils';
+import { segmentToNode } from './utils';
 import { Segment } from '../types';
+import { useLocalStorage } from '../hooks';
 
 function UserPicker({
+  visible,
+  onVisibleChange,
   preparedSegments,
   segments,
   userId,
-  loading,
-  mode = 'single',
   onSelect,
   onCreateSegment,
+  ...restProps
 }: UserPickerProps) {
+  const prefixCls = usePrefixCls('user-picker');
   const mappedSegements = React.useMemo<{ [key: string]: PreparedSegment | Segment }>(
-    () => _.keyBy([...preparedSegments, ...segments], 'id'),
+    () => keyBy([...preparedSegments, ...segments], 'id'),
     [preparedSegments, segments]
   );
+  const [recentSegments, setRecentSegments] = useLocalStorage<string[]>(`${userId}-segments`, []);
   const [query, setQuery] = React.useState<string>('');
   const [scope, setScope] = React.useState<string>('my');
+  const [showValue, setShowValue] = React.useState<string>('');
   const [values, setValues] = React.useState<(PreparedSegment | Segment)[]>([]);
+  const [pickerVisible, setPickerVisible] = React.useState<boolean>(visible);
 
-  let dataSource: Option[];
-  if (scope === 'my') {
-    const preparedOptions = preparedSegments.map((seg) => {
-      return segmentToOption(seg, { key: 'prepared', label: '预定义' });
-    });
-    const myOptions = _.filter(segments, (d) => d.creatorId === userId).map((seg) => {
-      return segmentToOption(seg, { key: 'other', label: '其他' });
-    });
-    dataSource = [...preparedOptions, ...myOptions];
-  } else {
-    dataSource = [...preparedSegments, ...segments].map((seg) => segmentToOption(seg));
+  function filterSegment(s: Segment) {
+    if (query.length > 0) {
+      return includes(s.name.toLocaleLowerCase(), query) || includes(s.creator.toLocaleLowerCase(), query);
+    }
+    return true;
   }
 
-  function onListSelect(selectedValue: string) {
-    const current = mappedSegements[selectedValue];
+  function onMenuSelect(nodeData: NodeData) {
+    setShowValue(nodeData.label);
+    setPickerVisible(false);
+    onVisibleChange?.(false);
+    const id = nodeData.id as string;
+    const current = mappedSegements[id];
     const currentValues = [...values, current];
     setValues(currentValues);
+    const segIds = uniq([id, ...recentSegments]);
+    if (segIds.length > 5) {
+      setRecentSegments(segIds.slice(0, 5));
+    } else {
+      setRecentSegments(segIds);
+    }
     onSelect?.(current, currentValues);
   }
 
-  function renderSegs() {
-    if (loading) {
-      return (
-        <div className="gio-loading-wrapper">
-          <Loading />
-        </div>
-      );
-    }
-    const filterData = _.filter(dataSource, (option) =>
-      option.label.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-    );
-    if (query && filterData.length === 0) {
-      return (
-        <EmptyPrompt description="无搜索结果">
-          <Button type="secondary" onClick={onCreateSegment}>
-            创建分群
-          </Button>
-        </EmptyPrompt>
+  function onMenuHover(nodeData: NodeData) {
+    const segPrefixCls = `${prefixCls}-segment`;
+    const seg = mappedSegements[nodeData.id as string];
+    let content = null;
+    if ('creator' in seg) {
+      const segment = seg as Segment;
+      content = (
+        <>
+          <div className={`${segPrefixCls}__label`}>分群人数和占比：</div>
+          <div className={`${segPrefixCls}__tags`}>
+            <Tag>{segment.detector.totalUsers}</Tag>
+            <Tag>{`${(segment.detector.usersRatio * 100).toFixed(2)}%`}</Tag>
+          </div>
+          <div className={`${segPrefixCls}__label`}>创建人 & 更新时间：</div>
+          <div className={`${segPrefixCls}__value`}>
+            {segment.creator} | {format('yyyy/MM/dd', new Date(segment.updatedAt))}
+          </div>
+        </>
       );
     }
     return (
-      <List isMultiple={mode === 'multiple'} onSelect={onListSelect} dataSource={filterData} width={352} height={406} />
+      <div className={segPrefixCls}>
+        <h4 className={`${segPrefixCls}__name`}>{seg.name}</h4>
+        {content}
+      </div>
     );
   }
+
+  function onPickerVisibleChange(current: boolean) {
+    setPickerVisible(current);
+    onVisibleChange?.(current);
+  }
+
+  const dataSource: NodeData[] = React.useMemo(() => {
+    if (scope === 'my') {
+      const recentNodes = recentSegments.map((id) => {
+        const seg = mappedSegements[id];
+        if (seg) {
+          return segmentToNode(seg, { id: 'recent', name: '最近使用' });
+        }
+        return null;
+      });
+      const preparedNodes = preparedSegments.map((seg) => {
+        return segmentToNode(seg, { id: 'prepared', name: '预定义' });
+      });
+      const myNodes = filter(segments, (s) => s.creatorId === userId && filterSegment(s)).map((seg) => {
+        return segmentToNode(seg, { id: 'other', name: '其他' });
+      });
+
+      return [...recentNodes, ...preparedNodes, ...myNodes];
+    }
+    return [...preparedSegments, ...filter(segments, filterSegment)].map((seg) => segmentToNode(seg));
+  }, [preparedSegments, segments, recentSegments, scope, query]);
+
+  const items = React.useRef([
+    { key: 'my', children: '我的' },
+    { key: 'all', children: '全部' },
+  ]);
+
   return (
-    <div className="gio-user-picker">
-      <div className="gio-user-picker__header">
-        <SearchBar id="user-picker-search-bar" size="middle" value={query} onChange={setQuery} />
-        <Button type="secondary" icon={<PlusOutlined />} onClick={onCreateSegment} />
-        {query.length > 200 && (
-          <Alert type="warning" message="搜索字符长度已超过 200，只取前 200 字符搜索" size="small" showIcon closeable />
-        )}
-      </div>
-      <TabNav
-        type="line"
-        size="small"
-        onChange={(key: string | number) => {
-          setScope(key as string);
-        }}
-      >
-        <TabNav.Item key="my">我的</TabNav.Item>
-        <TabNav.Item key="all">全部</TabNav.Item>
-      </TabNav>
-      {renderSegs()}
-    </div>
+    <BasePicker
+      {...restProps}
+      visible={pickerVisible}
+      onVisibleChange={onPickerVisibleChange}
+      inputValue={showValue}
+      searchPlaceholder="搜索分群名或创建人"
+      onSearch={setQuery}
+      tabNav={{
+        items: items.current,
+        onChange: setScope,
+      }}
+      actionButton={{ icon: <PlusOutlined />, onClick: onCreateSegment }}
+      dataSource={dataSource}
+      onHoverPanelShow={onMenuHover}
+      onSelect={onMenuSelect}
+      onGroupShow={scope === 'all' ? false : undefined}
+    />
   );
 }
 

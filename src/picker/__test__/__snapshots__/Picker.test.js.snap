@@ -1,0 +1,675 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Picker snapshots will only show input 1`] = `
+<div
+  class="gio-picker-trigger"
+  style="cursor:pointer"
+>
+  <div
+    class="gio-input gio-input-container gio-input-container-middle"
+  >
+    <input
+      aria-label="picker-value"
+      class="gio-input-content gio-input-content-suffix"
+      placeholder=""
+      type="text"
+      value=""
+    />
+    <div
+      class="gio-input-container-suffix"
+    >
+      <span
+        class="gio-icon"
+      >
+        <svg
+          class="gio-icon-svg"
+          fill="currentColor"
+          height="1rem"
+          viewBox="0 0 14 14"
+          width="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs />
+          <g
+            data-name="\\\\u56FE\\\\u5C42 2"
+            id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+          >
+            <g
+              data-name="\\\\u56FE\\\\u5C42 1"
+              id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+            >
+              <path
+                d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                id="down-filled_svg__down-2"
+              />
+            </g>
+          </g>
+        </svg>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Picker snapshots will show input with dropdown 1`] = `
+Array [
+  <div
+    class="gio-picker-trigger"
+    style="cursor:pointer"
+  >
+    <div
+      class="gio-input gio-input-container gio-input-container-middle"
+    >
+      <input
+        aria-label="picker-value"
+        class="gio-input-content gio-input-content-suffix"
+        placeholder=""
+        type="text"
+        value=""
+      />
+      <div
+        class="gio-input-container-suffix"
+      >
+        <span
+          class="gio-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="1rem"
+            viewBox="0 0 14 14"
+            width="1rem"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g
+              data-name="\\\\u56FE\\\\u5C42 2"
+              id="up-filled_svg__\\\\u56FE\\\\u5C42_2"
+            >
+              <g
+                data-name="\\\\u56FE\\\\u5C42 1"
+                id="up-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+              >
+                <path
+                  d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="up-filled_svg__up-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      class="gio-dropdown gio-picker-dropdown"
+      style="opacity:0;pointer-events:none"
+    >
+      <div
+        class="gio-dropdown-content"
+      >
+        <div
+          class="gio-dropdown-arrow"
+        >
+          <span
+            class="gio-dropdown-arrow-content"
+          />
+        </div>
+        <div
+          class="gio-dropdown-inner"
+          role="tooltip"
+        >
+          <div
+            class="gio-picker"
+          >
+            <div
+              class="gio-picker__header"
+            >
+              <div
+                class="gio-searchbar"
+              >
+                <div
+                  class="gio-input gio-input-container gio-input-container-middle"
+                >
+                  <input
+                    class="gio-input-content gio-input-content-suffix"
+                    placeholder="Search label"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="gio-input-container-suffix"
+                  >
+                    <span
+                      class="gio-icon gio-searchbar-suffix-search"
+                    >
+                      <svg
+                        class="gio-icon-svg"
+                        fill="currentColor"
+                        height="1rem"
+                        viewBox="0 0 14.01 14"
+                        width="1rem"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <defs />
+                        <g
+                          data-name="\\\\u56FE\\\\u5C42 2"
+                          id="search-outlined_svg__\\\\u56FE\\\\u5C42_2"
+                        >
+                          <g
+                            data-name="\\\\u56FE\\\\u5C42 1"
+                            id="search-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
+                          >
+                            <path
+                              d="M6 1a5 5 0 11-5 5 5 5 0 015-5zm4.48 10.19a1 1 0 00-1.28-.13A5.83 5.83 0 016 12a6 6 0 115.07-2.79 1 1 0 00.13 1.26c.93 1 2.65 2.68 2.65 2.68a.49.49 0 01-.7.7z"
+                              fill="currentColor"
+                              fill-rule="evenodd"
+                              id="search-outlined_svg__search"
+                            />
+                          </g>
+                        </g>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="gio-btn gio-btn-secondary gio-btn-icon-only"
+                type="button"
+              >
+                <span
+                  class="gio-icon"
+                >
+                  <svg
+                    class="gio-icon-svg"
+                    fill="currentColor"
+                    height="1rem"
+                    viewBox="0 0 14 14"
+                    width="1rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs />
+                    <g
+                      data-name="\\\\u56FE\\\\u5C42 2"
+                      id="plus-outlined_svg__\\\\u56FE\\\\u5C42_2"
+                    >
+                      <g
+                        data-name="\\\\u56FE\\\\u5C42 1"
+                        id="plus-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
+                      >
+                        <path
+                          d="M6 6.51A.54.54 0 006.51 6V.49a.49.49 0 011 0V6a.54.54 0 00.49.51h5.48a.49.49 0 010 1H8a.54.54 0 00-.51.49v5.48a.49.49 0 01-1 0V8A.54.54 0 006 7.49H.49a.49.49 0 010-1z"
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                          id="plus-outlined_svg__plus"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <div
+              class="gio-tabnav gio-tabnav-line gio-tabnav-sm"
+            >
+              <div
+                class="gio-tabnav-item gio-tabnav-item-active"
+                label="All"
+              >
+                <div
+                  class="gio-tabnav-item-btn"
+                />
+              </div>
+              <div
+                class="gio-tabnav-ink-bar"
+              />
+            </div>
+            <div
+              class="cascader-menu-outer gio-picker__list"
+            >
+              <div
+                class="cascader-menu cascader-menu"
+                data-deepsearch="false"
+                data-depth="0"
+                role="menu"
+                style="visibility:"
+              >
+                <div
+                  class="cascader-menu-body"
+                >
+                  <div
+                    class="cascader-menu-group"
+                  >
+                    <div
+                      class="cascader-menu-group-name"
+                    />
+                    <div
+                      aria-expanded="false"
+                      class="cascader-menu-item"
+                      role="menuitem"
+                    >
+                      <div
+                        aria-haspopup="false"
+                        class="cascader-menu-item-inner"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="cascader-menu-item-content"
+                        >
+                          <div>
+                            Data 1
+                          </div>
+                          <div />
+                        </div>
+                      </div>
+                      <div
+                        class="gio-picker-hover-panel"
+                      />
+                    </div>
+                    <div
+                      aria-expanded="false"
+                      class="cascader-menu-item"
+                      role="menuitem"
+                    >
+                      <div
+                        aria-haspopup="false"
+                        class="cascader-menu-item-inner"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="cascader-menu-item-content"
+                        >
+                          <div>
+                            Data 2
+                          </div>
+                          <div />
+                        </div>
+                      </div>
+                      <div
+                        class="gio-picker-hover-panel"
+                      />
+                    </div>
+                    <div
+                      aria-expanded="false"
+                      class="cascader-menu-item"
+                      role="menuitem"
+                    >
+                      <div
+                        aria-haspopup="false"
+                        class="cascader-menu-item-inner"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="cascader-menu-item-content"
+                        >
+                          <div>
+                            Data 3
+                          </div>
+                          <div />
+                        </div>
+                      </div>
+                      <div
+                        class="gio-picker-hover-panel"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Picker snapshots will show input with empty dropdown 1`] = `
+Array [
+  <div
+    class="gio-picker-trigger"
+    style="cursor:pointer"
+  >
+    <div
+      class="gio-input gio-input-container gio-input-container-middle"
+    >
+      <input
+        aria-label="picker-value"
+        class="gio-input-content gio-input-content-suffix"
+        placeholder=""
+        type="text"
+        value=""
+      />
+      <div
+        class="gio-input-container-suffix"
+      >
+        <span
+          class="gio-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="1rem"
+            viewBox="0 0 14 14"
+            width="1rem"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g
+              data-name="\\\\u56FE\\\\u5C42 2"
+              id="up-filled_svg__\\\\u56FE\\\\u5C42_2"
+            >
+              <g
+                data-name="\\\\u56FE\\\\u5C42 1"
+                id="up-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+              >
+                <path
+                  d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="up-filled_svg__up-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      class="gio-dropdown gio-picker-dropdown"
+      style="opacity:0;pointer-events:none"
+    >
+      <div
+        class="gio-dropdown-content"
+      >
+        <div
+          class="gio-dropdown-arrow"
+        >
+          <span
+            class="gio-dropdown-arrow-content"
+          />
+        </div>
+        <div
+          class="gio-dropdown-inner"
+          role="tooltip"
+        >
+          <div
+            class="gio-picker"
+          >
+            <div
+              class="gio-picker__header"
+            >
+              <div
+                class="gio-searchbar"
+              >
+                <div
+                  class="gio-input gio-input-container gio-input-container-middle"
+                >
+                  <input
+                    class="gio-input-content gio-input-content-suffix"
+                    placeholder="Search label"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="gio-input-container-suffix"
+                  >
+                    <span
+                      class="gio-icon gio-searchbar-suffix-search"
+                    >
+                      <svg
+                        class="gio-icon-svg"
+                        fill="currentColor"
+                        height="1rem"
+                        viewBox="0 0 14.01 14"
+                        width="1rem"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <defs />
+                        <g
+                          data-name="\\\\u56FE\\\\u5C42 2"
+                          id="search-outlined_svg__\\\\u56FE\\\\u5C42_2"
+                        >
+                          <g
+                            data-name="\\\\u56FE\\\\u5C42 1"
+                            id="search-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
+                          >
+                            <path
+                              d="M6 1a5 5 0 11-5 5 5 5 0 015-5zm4.48 10.19a1 1 0 00-1.28-.13A5.83 5.83 0 016 12a6 6 0 115.07-2.79 1 1 0 00.13 1.26c.93 1 2.65 2.68 2.65 2.68a.49.49 0 01-.7.7z"
+                              fill="currentColor"
+                              fill-rule="evenodd"
+                              id="search-outlined_svg__search"
+                            />
+                          </g>
+                        </g>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="gio-empty-prompt"
+            >
+              <svg
+                height="61"
+                viewBox="0 0 60 61"
+                width="60"
+              >
+                <g
+                  fill="none"
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M.588 36.882l10-21.764h38.824l10 21.764h-23.53a5.882 5.882 0 11-11.764 0H.588z"
+                    fill="#F7F8FC"
+                  />
+                  <path
+                    d="M.588 36.882h23.53a5.882 5.882 0 1011.764 0h23.53v20.53a3 3 0 01-3 3H3.588a3 3 0 01-3-3v-20.53z"
+                    fill="#FFF"
+                  />
+                  <path
+                    d="M47.436 15.618a3.497 3.497 0 013.18 2.038h0l8.564 18.64c.211.458.32.957.32 1.461h0V57c0 .966-.392 1.841-1.025 2.475A3.489 3.489 0 0156 60.5h0H4a3.489 3.489 0 01-2.475-1.025A3.489 3.489 0 01.5 57h0V37.757a3.5 3.5 0 01.32-1.46h0l8.564-18.64a3.497 3.497 0 013.18-2.04h0z"
+                    stroke="#DCDFED"
+                  />
+                  <path
+                    d="M.588 36.882h23.53a5.882 5.882 0 1011.764 0h23.53"
+                    stroke="#DCDFED"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M30 1v9.412M40.588 2.261l-4.706 8.151M19.412 2.261l4.706 8.151"
+                    stroke="#DCDFED"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                  />
+                </g>
+              </svg>
+              <p
+                class="gio-empty-prompt__description"
+              >
+                No Data
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Picker snapshots will show input with loading dropdown 1`] = `
+Array [
+  <div
+    class="gio-picker-trigger"
+    style="cursor:pointer"
+  >
+    <div
+      class="gio-input gio-input-container gio-input-container-middle"
+    >
+      <input
+        aria-label="picker-value"
+        class="gio-input-content gio-input-content-suffix"
+        placeholder=""
+        type="text"
+        value=""
+      />
+      <div
+        class="gio-input-container-suffix"
+      >
+        <span
+          class="gio-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="1rem"
+            viewBox="0 0 14 14"
+            width="1rem"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g
+              data-name="\\\\u56FE\\\\u5C42 2"
+              id="up-filled_svg__\\\\u56FE\\\\u5C42_2"
+            >
+              <g
+                data-name="\\\\u56FE\\\\u5C42 1"
+                id="up-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+              >
+                <path
+                  d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="up-filled_svg__up-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      class="gio-dropdown gio-picker-dropdown"
+      style="opacity:0;pointer-events:none"
+    >
+      <div
+        class="gio-dropdown-content"
+      >
+        <div
+          class="gio-dropdown-arrow"
+        >
+          <span
+            class="gio-dropdown-arrow-content"
+          />
+        </div>
+        <div
+          class="gio-dropdown-inner"
+          role="tooltip"
+        >
+          <div
+            class="gio-picker"
+          >
+            <div
+              class="gio-picker__header"
+            >
+              <div
+                class="gio-searchbar"
+              >
+                <div
+                  class="gio-input gio-input-container gio-input-container-middle"
+                >
+                  <input
+                    class="gio-input-content gio-input-content-suffix"
+                    placeholder="Search label"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="gio-input-container-suffix"
+                  >
+                    <span
+                      class="gio-icon gio-searchbar-suffix-search"
+                    >
+                      <svg
+                        class="gio-icon-svg"
+                        fill="currentColor"
+                        height="1rem"
+                        viewBox="0 0 14.01 14"
+                        width="1rem"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <defs />
+                        <g
+                          data-name="\\\\u56FE\\\\u5C42 2"
+                          id="search-outlined_svg__\\\\u56FE\\\\u5C42_2"
+                        >
+                          <g
+                            data-name="\\\\u56FE\\\\u5C42 1"
+                            id="search-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
+                          >
+                            <path
+                              d="M6 1a5 5 0 11-5 5 5 5 0 015-5zm4.48 10.19a1 1 0 00-1.28-.13A5.83 5.83 0 016 12a6 6 0 115.07-2.79 1 1 0 00.13 1.26c.93 1 2.65 2.68 2.65 2.68a.49.49 0 01-.7.7z"
+                              fill="currentColor"
+                              fill-rule="evenodd"
+                              id="search-outlined_svg__search"
+                            />
+                          </g>
+                        </g>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="gio-loading-wrapper"
+            >
+              <div
+                class="gio-loading gio-loading-large"
+              >
+                <span
+                  class="gio-loading-strip"
+                >
+                  <span
+                    class="gio-loading-strip-item"
+                  />
+                  <span
+                    class="gio-loading-strip-item"
+                  />
+                  <span
+                    class="gio-loading-strip-item"
+                  />
+                  <span
+                    class="gio-loading-strip-item"
+                  />
+                </span>
+                <span
+                  class="gio-loading-title gio-loading-title-bottom"
+                >
+                  加载中...
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
