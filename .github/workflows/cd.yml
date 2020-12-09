@@ -22,7 +22,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
@@ -42,10 +42,8 @@ jobs:
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache packages
         uses: actions/cache@v2
         with:
@@ -100,7 +98,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
