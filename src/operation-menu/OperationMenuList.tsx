@@ -8,7 +8,7 @@ const OperationMenuList = (props: OperationMenuListProps) => {
 
   return (
     <div className="operation-menu" style={{ width }}>
-      <Menu mode="vertical" onClick={(e: any) => props.onClick?.(e.key)}>
+      <Menu mode="vertical" onClick={(e: any) => props.onClick?.(e)}>
         {options
           .filter((option: OperationMenuListOption) => !option.hidden)
           .map((option: OperationMenuListOption) => {
