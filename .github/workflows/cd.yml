@@ -65,6 +65,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache package
+        id: cache-package
         uses: actions/cache@v2
         with:
           path: |
@@ -72,11 +73,12 @@ jobs:
             es
           key: package-${{ github.sha }}
       - name: Build package
+        if: steps.cache-package.outputs.cache-hit != 'true'
         run: yarn build
   publish:
     name: Publishing package
     if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
-    needs: build
+    needs: [build, test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
