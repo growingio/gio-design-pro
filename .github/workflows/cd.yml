@@ -1,4 +1,4 @@
-name: Continuous Deployment
+name: Continuous Delivery
 on:
   push:
     branches:
@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
@@ -26,60 +24,6 @@ jobs:
       - name: Install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
-  build:
-    name: Build Package
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: 12.x
-      - name: Restore Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache packages
-        uses: actions/cache@v2
-        with:
-          path: |
-            dist
-            es
-          key: packages-${{ github.sha }}
-      - name: Build packages
-        run: yarn build
-  release:
-    name: Create release
-    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: 12.x
-      - name: Get package version
-        id: get-package-version
-        run: echo "::set-output name=version::$(node script/version.js)"
-      - name: Create release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ steps.get-package-version.outputs.version }}
-          release_name: v${{ steps.get-package-version.outputs.version }}
-          body_path: VERSION.md
-          draft: true
-          prerelease: false
   test:
     name: Test Coverage
     needs: install
@@ -88,8 +32,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
@@ -106,3 +48,65 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: coverage/
+  build:
+    name: Build Package
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 12.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Cache package
+        uses: actions/cache@v2
+        with:
+          path: |
+            dist
+            es
+          key: package-${{ github.sha }}
+      - name: Build package
+        run: yarn build
+  publish:
+    name: Publishing package
+    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 12.x
+          registry-url: 'https://registry.npmjs.org'
+      - name: Restore package from cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            dist
+            es
+          key: package-${{ github.sha }}
+      - name: Publish package
+        run: yarn publish --non-interactive --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Get package version
+        id: get-package-version
+        run: echo "::set-output name=version::$(node script/version.js)"
+      - name: Publish GitHub release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.get-package-version.outputs.version }}
+          release_name: v${{ steps.get-package-version.outputs.version }}
+          body_path: VERSION.md
+          draft: false
+          prerelease: false

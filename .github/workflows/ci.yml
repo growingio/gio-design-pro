@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
@@ -33,8 +31,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
@@ -53,34 +49,6 @@ jobs:
         run: yarn stylelint
       - name: ESLint
         run: yarn eslint
-  review:
-    name: UI Review
-    needs: install
-    if: ${{ startsWith(github.event.pull_request.title, 'feat') || startsWith(github.event.pull_request.title, 'fix') }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: 12.x
-      - name: Restore Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Build Storybook
-        run: yarn build-storybook
-      - name: Upload to Chromatic
-        uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: 6xnv98x4qzx
-          storybookBuildDir: storybook-static/
-          exitZeroOnChanges: true
   test:
     name: Test Coverage
     needs: install
@@ -89,8 +57,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
@@ -109,13 +75,12 @@ jobs:
           directory: coverage/
   build:
     name: Build Package
-    needs: [lint, review, test]
+    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
@@ -125,5 +90,31 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Build packages
+      - name: Build package
         run: yarn build
+  review:
+    name: UI Review
+    needs: install
+    if: ${{ startsWith(github.event.pull_request.title, 'feat') || startsWith(github.event.pull_request.title, 'fix') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 12.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build Storybook
+        run: yarn build-storybook
+      - name: Upload to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
+          storybookBuildDir: storybook-static/
+          exitZeroOnChanges: true
