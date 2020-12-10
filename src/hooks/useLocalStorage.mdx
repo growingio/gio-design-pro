@@ -1,0 +1,37 @@
+import { Subtitle } from '@storybook/addon-docs/blocks';
+import { ArgsTable } from '@storybook/components';
+
+# useLocalStorage
+
+<Subtitle>Examples for useLocalStorage hook.</Subtitle>
+
+Sync state to local storage so that it persists through a page refresh. Usage
+is similar to useState except we pass in a local storage key so that we can
+default to that value on page load instead of the specified initial value.
+
+## Parameters
+
+export const argTypes = {
+  key: {
+    name: 'key',
+    type: { name: 'string', required: true },
+    description: 'The key in local storage',
+    table: {
+      type: { summary: 'string' },
+    },
+  },
+  initialValue: {
+    name: 'initialValue',
+    type: { name: 'string', required: true },
+    description: 'The initial value for key',
+    table: {
+      type: { summary: 'string' },
+    },
+  },
+};
+
+<ArgsTable rows={argTypes} />
+
+## Usage
+
+[Default Example](/?path=/story/docs-hooks-uselocalstorage--default)
