@@ -75,8 +75,8 @@ jobs:
           directory: coverage/
   build:
     name: Build Package
-    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     needs: install
+    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

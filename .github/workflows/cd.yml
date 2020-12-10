@@ -6,7 +6,7 @@ on:
 jobs:
   install:
     name: Install dependencies
-    if: ${{ !startsWith(github.event.head_commit.message, 'chore') }}
+    if: ${{ !startsWith(github.event.pull_request.title, 'chore') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -20,14 +20,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run: yarn install
-  test:
-    name: Test Coverage
+  lint:
+    name: Lint Checks
     needs: install
-    if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
+    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -40,7 +40,33 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Lint pull request title
+        run: echo "${{ github.event.pull_request.title }}" | npx commitlint
+      - name: Lint commits count
+        if: ${{ github.event.pull_request.commits > 3 }}
+        run: echo "::error::The commits of pull request should not be more than 3 && exit 1"
+      - name: StyleLint
+        run: yarn stylelint
+      - name: ESLint
+        run: yarn eslint
+  test:
+    name: Test Coverage
+    needs: install
+    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 12.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
@@ -76,9 +102,9 @@ jobs:
         if: steps.cache-package.outputs.cache-hit != 'true'
         run: yarn build
   publish:
-    name: Publishing package
+    name: Publish package
+    needs: build
     if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
-    needs: [build, test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
