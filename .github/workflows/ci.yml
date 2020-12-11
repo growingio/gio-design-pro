@@ -5,7 +5,7 @@ on:
 jobs:
   install:
     name: Install dependencies
-    if: ${{ !startsWith(github.event.pull_request.title, 'chore') }}
+    if: ${{ !(startsWith(github.event.pull_request.title, 'chore') || startsWith(github.event.pull_request.title, 'ci')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -65,7 +65,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
@@ -75,7 +75,7 @@ jobs:
           directory: coverage/
   build:
     name: Build Package
-    needs: install
+    needs: [lint, test]
     if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:

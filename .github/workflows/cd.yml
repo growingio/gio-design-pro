@@ -6,7 +6,7 @@ on:
 jobs:
   install:
     name: Install dependencies
-    if: ${{ !startsWith(github.event.pull_request.title, 'chore') }}
+    if: ${{ !(startsWith(github.event.head_commit.message, 'chore') || startsWith(github.event.head_commit.message, 'ci')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -20,14 +20,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Install
         if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run: yarn install
   lint:
     name: Lint Checks
     needs: install
-    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
+    if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -40,12 +40,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Lint pull request title
-        run: echo "${{ github.event.pull_request.title }}" | npx commitlint
-      - name: Lint commits count
-        if: ${{ github.event.pull_request.commits > 3 }}
-        run: echo "::error::The commits of pull request should not be more than 3 && exit 1"
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: StyleLint
         run: yarn stylelint
       - name: ESLint
@@ -53,7 +48,7 @@ jobs:
   test:
     name: Test Coverage
     needs: install
-    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
+    if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -66,7 +61,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
@@ -76,7 +71,7 @@ jobs:
           directory: coverage/
   build:
     name: Build Package
-    needs: install
+    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
