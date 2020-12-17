@@ -14,6 +14,7 @@ function FilterFooter(props: FilterFooterProps) {
       <Button type="secondary" onClick={cancel} size="small">
         取消
       </Button>
+      <div style={{ width: '12px' }} />
       <Button type="primary" onClick={submit} size="small">
         确认
       </Button>
