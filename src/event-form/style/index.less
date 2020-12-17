@@ -1,0 +1,107 @@
+@import '../../stylesheets/index.less';
+@import '~@gio-design/components/es/components/alert/style/index.less';
+@import '~@gio-design/components/es/components/button/style/index.less';
+@import '~@gio-design/components/es/components/input/style/index.less';
+@import '~@gio-design/components/es/components/form/style/index.css';
+
+@event-form-prefix-cls: ~'@{component-prefix}-event-form';
+
+.@{event-form-prefix-cls} {
+  &-item-group {
+    &__header {
+      display: flex;
+      flex: 0 1 auto;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .title {
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        flex: 1 1 0%;
+        line-height: 22px;
+        font-size: 14px;
+        color: #242e59;
+        font-weight: 500;
+        letter-spacing: 0;
+
+        .badge {
+          height: 20px;
+          width: 20px;
+          background-color: #3867f4;
+          border-radius: 50%;
+          color: #fff;
+          letter-spacing: 0;
+          text-align: center;
+          display: inline-block;
+          margin-right: 8px;
+        }
+      }
+
+      .extra {
+        float: right;
+        margin-left: auto;
+        font-size: 12px;
+        color: #3867f4;
+        text-align: right;
+      }
+    }
+
+    &__body {
+      .gio-alert {
+        box-sizing: border-box;
+      }
+
+      .feedback:not(:empty) {
+        margin-bottom: 16px;
+      }
+
+      .path-input {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        & > div {
+          flex: auto;
+        }
+
+        .right-toggle {
+          margin-left: 8px;
+        }
+      }
+
+      .query-input {
+        .gio-field {
+          &.query_filed {
+            margin-bottom: 0;
+
+            .gio-field-label {
+              padding-right: 0;
+            }
+          }
+        }
+      }
+
+      .data-chart-wrap {
+        box-sizing: border-box;
+        height: 160px;
+        width: 100%;
+        border: 1px solid #dfe4ee;
+        border-radius: 4px;
+        background-color: #fff;
+      }
+
+      .footer-submitter {
+        display: inline-flex;
+
+        & > * {
+          margin-right: 8px;
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
