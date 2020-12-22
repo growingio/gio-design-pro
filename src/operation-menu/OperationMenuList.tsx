@@ -15,7 +15,7 @@ const OperationMenuList = (props: OperationMenuListProps) => {
             return (
               <MenuItem icon={option.icon} key={option.value} disabled={option.disabled}>
                 <Tooltip title={option.disabled ? option.tooltip : ''} placement="leftTop">
-                  <span>{option.label}</span>
+                  <>{option.label}</>
                 </Tooltip>
               </MenuItem>
             );
