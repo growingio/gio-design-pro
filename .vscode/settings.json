@@ -44,7 +44,10 @@
     "styled-css",
     "sugarss",
     "svelte"
-  ]
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
 
   //stylelint   -----settings end-----
 }
