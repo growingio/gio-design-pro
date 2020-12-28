@@ -1411,6 +1411,13 @@
   dependencies:
     classnames "^2.2.6"
 
+"@gio-design/icons@20.12.1":
+  version "20.12.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-20.12.1.tgz#9007f85a94caf83f13a89d44857f618aaa3e37be"
+  integrity sha512-ikWDrE8KRq0Nh44la7ewNgF2ipdTWOgSX9V9bkUmE7hiqMJI91ewr0ArYCxDzsmtXU9j4OljtkrML8LaB97AwA==
+  dependencies:
+    classnames "^2.2.6"
+
 "@gio-design/tokens@20.12.0":
   version "20.12.0"
   resolved "https://registry.npmjs.org/@gio-design/tokens/-/tokens-20.12.0.tgz#f358e933863a6993356211c4b70fcd510cb5b9c1"
