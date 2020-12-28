@@ -1,5 +1,5 @@
 import React from 'react';
-import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
 
 interface ActionButton {
   /**
@@ -88,4 +88,8 @@ export interface PickerProps {
    * Callback when select some data
    */
   onSelect?: (node: NodeData) => void;
+  /**
+   * custom menu-item render function
+   */
+  onRender?: (nodeData: NodeData) => React.ReactElement;
 }

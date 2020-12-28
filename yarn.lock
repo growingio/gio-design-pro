@@ -1409,8 +1409,8 @@
   resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-20.12.1.tgz#8f5791eee0527e860114f8cfeab9be1d58a193c6"
   integrity sha512-w+No8stIDA1w4IF9+Ps3igbfiqbW8poJPnShkDgiTJX3VgR6zChFbyuVFRR0YWZESCBcxcK81SdBmr5Lz1meKA==
   dependencies:
-    "@gio-design/icons" "20.11.0"
-    "@gio-design/tokens" "20.12.0"
+    "@gio-design/icons" "20.12.0"
+    "@gio-design/tokens" "20.12.1"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -13680,10 +13680,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-2.1.1.tgz#d9485dd5e499daa6cb547023b87a6cf51bee37d6"
-  integrity sha512-9bY+5ZWCfqj3ghYBLxApy2zf6m+NJo5GzmLTpr9FsApsfjriNnS2dahWReHMi7qNPhhHl9SYHJs2cHZLgexNIw==
+prettier@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
+  integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
 
 prettier@~2.0.5:
   version "2.0.5"

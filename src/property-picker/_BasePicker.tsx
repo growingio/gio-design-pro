@@ -11,7 +11,7 @@ import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-c
 import { UpFilled, DownFilled } from '@gio-design/icons';
 import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
 import EmptyPrompt from '../empty-prompt';
-import { PickerProps } from './interfaces';
+import { PickerProps } from '../picker/interfaces';
 
 function Picker({
   visible = false,
@@ -27,6 +27,7 @@ function Picker({
   onHoverPanelShow,
   onSelect,
   emptyPrompt = { description: 'No Data' },
+  onRender,
 }: PickerProps) {
   const prefixCls = usePrefixCls('picker');
   const [query, setQuery] = React.useState<string>('');
@@ -59,6 +60,7 @@ function Picker({
         className={`${prefixCls}__list`}
         dataSource={dataSource}
         onSelect={onSelect}
+        onRender={onRender}
         afterInner={onMenuHover}
       />
     );

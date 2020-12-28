@@ -1,9 +1,9 @@
 @import '../../picker/style/index.less';
 @import '~@gio-design-new/components/es/components/tag/style/index.less';
 
-@user-picker-prefix-cls: ~'@{component-prefix}-user-picker';
+@property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
 
-.@{user-picker-prefix-cls}-segment {
+.@{property-picker-prefix-cls}-detail {
   &__name {
     margin: 0 0 24px;
     color: #1248e9;
@@ -32,6 +32,7 @@
 
   &__tags {
     margin: 0 0 16px;
+
     .gio-tag:not(:first-child) {
       margin-left: 8px;
     }
