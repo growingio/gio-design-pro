@@ -1,36 +1,58 @@
 import React, { useState } from 'react';
-import { Dropdown } from '@gio-design-new/components';
+import { Dropdown, Button } from '@gio-design-new/components';
 import { FilterOutlined } from '@gio-design/icons';
-import FilterCondition from './components/FilterCondition/index';
+import FilterOverlay from './components/FilterOverlay/index';
 import './style/index.less';
 
-import { FilterPickerProps } from './interfaces';
+import { FilterPickerProps, FilterValueType } from './interfaces';
 
 const FilterPicker = (props: FilterPickerProps) => {
-  const { children, getTooltipContainer } = props;
+  const {
+    children,
+    getTooltipContainer,
+    filter,
+    propertyOptions,
+    onConfirm,
+    dimensionValueRequest,
+    measurements,
+    timeRange,
+  } = props;
   const [visible, setVisible] = useState(false);
+
   const visibleChange = (v: boolean) => {
     setVisible(v);
   };
   const cancel = () => {
     setVisible(false);
   };
-  const submit = () => {
+  const submit = (v: FilterValueType[]) => {
     setVisible(false);
+    onConfirm({ ...filter, exprs: v });
   };
   return (
     <Dropdown
       visible={visible}
       trigger={['click']}
       onVisibleChange={visibleChange}
-      overlay={<FilterCondition onCancel={cancel} onSubmit={submit} />}
+      overlay={
+        <FilterOverlay
+          onCancel={cancel}
+          onSubmit={submit}
+          filterList={filter.exprs}
+          propertyOptions={propertyOptions}
+          dimensionValueRequest={dimensionValueRequest}
+          measurements={measurements}
+          timeRange={timeRange}
+        />
+      }
       placement="bottomRight"
       getTooltipContainer={getTooltipContainer}
+      destroyTooltipOnHide
     >
       {children || (
-        <span className="filter-picker_icon">
-          <FilterOutlined size="14px" /> 过滤条件
-        </span>
+        <Button icon={<FilterOutlined />} size="small" type="assist">
+          过滤条件
+        </Button>
       )}
     </Dropdown>
   );

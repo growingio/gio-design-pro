@@ -1,16 +1,49 @@
-import React from 'react';
-
 export interface FilterPickerProps {
-  /**
-           自定义 `CSS` 类名
-           */
-  className?: string;
-  /**
-           自定义描述内容
-           */
-  description?: React.ReactNode;
+  children?: any;
+  getTooltipContainer: (node: HTMLElement) => HTMLElement;
+  filter: FilterValue;
+  propertyOptions: any[];
+  measurements: any[];
+  timeRange: string;
+  onConfirm: (v: FilterValue) => void;
+  dimensionValueRequest?: (data: any) => Promise<any>;
+}
+export type attributeValue = 'string' | 'int' | 'date';
 
-  children?: React.ReactNode;
+export type FilterValueType = {
+  op: StringValue | NumberValue | DateValue;
+  values: string[] | number[];
+  key?: string;
+  name?: string;
+  valueType?: attributeValue;
+};
 
-  getTooltipContainer: () => React.ReactNode;
+export type FilterValue = {
+  op: string;
+  exprs: FilterValueType[];
+};
+
+export type StringValue = '=' | '!=' | '<' | '>';
+export type NumberValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'hasValue';
+export type DateValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'relativeTime';
+
+export interface titleGroup {
+  string: string;
+  int: string;
+  date: string;
+}
+
+export interface selectOption {
+  string: {
+    value: string;
+    label: string;
+  }[];
+  int: {
+    value: string;
+    label: string;
+  }[];
+  date: {
+    value: string;
+    label: string;
+  }[];
 }
