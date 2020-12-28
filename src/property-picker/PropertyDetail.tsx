@@ -1,7 +1,7 @@
-import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
 // import { TagOutlined, UserOutlined, MapChartOutlined, LocationRecoveryOutlined } from '@gio-design/icons';
-import { Loading, Tag } from '@gio-design/components';
-import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
+import { Loading, Tag } from '@gio-design-new/components';
+import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
 import React, { useEffect, useState } from 'react';
 import { PropertyInfo } from './interfaces';
 

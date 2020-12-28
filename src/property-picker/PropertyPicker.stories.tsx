@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import PropertyPicker from './PropertyPicker';
 import { PropertyPickerProps } from './interfaces';
 import { insightDimensions, allVariables } from './__test__/data';
-import '@gio-design/components/es/components/button/style/css';
+import '@gio-design-new/components/es/components/button/style/css';
 import './style/index.less';
 import { dimensionToPropertyItem } from './util';
 

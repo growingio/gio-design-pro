@@ -1364,13 +1364,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/components@20.12.1":
-  version "20.12.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-20.12.1.tgz#8f5791eee0527e860114f8cfeab9be1d58a193c6"
-  integrity sha512-w+No8stIDA1w4IF9+Ps3igbfiqbW8poJPnShkDgiTJX3VgR6zChFbyuVFRR0YWZESCBcxcK81SdBmr5Lz1meKA==
+"@gio-design-new/components@^20.12.1":
+  version "20.12.2"
+  resolved "https://nexus.growingio.com/repository/npm-group/@gio-design-new/components/-/components-20.12.2.tgz#04fcf79b153061cd137f6463bd0d76c45bbd0d49"
+  integrity sha512-ZzL1yevGElFWkpYfu7USUHMgWC3wd2PuhsWq90X3GsTRqN3hNikiFnUidH6rF7F+gvdiU80py/GBRYmR+ApBmA==
   dependencies:
-    "@gio-design/icons" "20.11.0"
-    "@gio-design/tokens" "20.12.0"
+    "@gio-design/icons" "20.12.0"
+    "@gio-design/tokens" "20.12.1"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -1411,10 +1411,22 @@
   dependencies:
     classnames "^2.2.6"
 
+"@gio-design/icons@20.12.0":
+  version "20.12.0"
+  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/icons/-/icons-20.12.0.tgz#8545d9fd2816a10a9def6e6906f829ef12c392e4"
+  integrity sha512-BI3A2FcBKjpRrJWj79uH4uxXBdYYnaXMSXtlzOw/YKmFYcQa5ivGS2WiUyJ+h+3mcedGvGdB2fPHx9HadVHSog==
+  dependencies:
+    classnames "^2.2.6"
+
 "@gio-design/tokens@20.12.0":
   version "20.12.0"
   resolved "https://registry.npmjs.org/@gio-design/tokens/-/tokens-20.12.0.tgz#f358e933863a6993356211c4b70fcd510cb5b9c1"
   integrity sha512-KRYP17XV4r01ZlHqEstlnYN2vQ/vRRr1Ir6sYJE9n4EIkXvXVE+BrKxkWLMqsSd7t9BpYp6c2SPGUu/FPyYgJw==
+
+"@gio-design/tokens@20.12.1":
+  version "20.12.1"
+  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/tokens/-/tokens-20.12.1.tgz#dfd76bd80f9c56ea7b3c35cde74f72c772e5adfe"
+  integrity sha512-mCeh46G8erRp/tk5l83a3Hb2U3FmH6h/P+xARHz8r4AyYoa3ob0LqHhilBs0BoAvkQ/z/vdrhPDyPslvV+zutg==
 
 "@graphql-codegen/cli@1.19.1":
   version "1.19.1"
