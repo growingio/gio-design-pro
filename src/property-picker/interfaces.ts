@@ -19,7 +19,7 @@ type PropertyValue = {
 
 // type fetchResult = extends PropertyInfo
 export interface PropertyPickerProps
-  extends Omit<PickerProps, 'dataSource' | 'visible' | 'onVisibleChange' | 'groupVisible' | 'actionButton'> {
+  extends Omit<PickerProps, 'dataSource' | 'inputValue' | 'groupVisible' | 'actionButton'> {
   /**
    * 初始值
    */
@@ -31,7 +31,7 @@ export interface PropertyPickerProps
   /**
    * 获取属性详情的方法
    */
-  fetchData?: FetchData<PropertyInfo>;
+  fetchDetailData?: FetchData<PropertyInfo>;
   /**
    * 已选值改变时的回调
    */
