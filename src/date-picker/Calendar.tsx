@@ -10,7 +10,6 @@ import Button from '@gio-design/components/es/components/button';
 import { Tabs, TabPane } from '@gio-design/components';
 import Input from '@gio-design/components/es/components/input';
 import { CalendarOutlined, PlusCircleFilled } from '@gio-design/icons';
-// import RcRangeCalendar from './RangeCalendar';
 import { DateRangePickerProps } from './interface';
 import './style';
 
@@ -244,7 +243,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
               <>
                 <Input
                   className={`${prefixCls}-input-first`}
-                  placeholder="please select"
                   onChange={handleLeftInputChange}
                   value={leftInputTimeRange || `${formatDate(_value[0])}`}
                   onClick={() => setOpen(true)}
@@ -252,7 +250,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
                 <span className={`${prefixCls}-split`}>—</span>
                 <Input
                   className={`${prefixCls}-input-second`}
-                  placeholder="please select"
                   onChange={handleRightInputChange}
                   value={rightInputTimeRange || `${formatDate(_value[1])}`}
                   onClick={() => setOpen(true)}
@@ -265,7 +262,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
                 从
                 <Input
                   className={`${prefixCls}-input-second`}
-                  placeholder="please select"
                   onChange={handleLeftInputChange}
                   value={leftInputTimeRange || `${formatDate(_value[0])}`}
                   onClick={() => setOpen(true)}
@@ -282,7 +278,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
                 过去
                 <Input.InputNumber
                   className={`${prefixCls}-input-second`}
-                  placeholder="please select"
                   value={rightDynamicInput}
                   onChange={handleRightDynamicInput as any}
                   min={0}
@@ -299,16 +294,13 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
                 过去
                 <Input.InputNumber
                   className={`${prefixCls}-input-second`}
-                  placeholder="please select"
                   value={leftDynamicInput}
                   onChange={handleLeftDynamicInput as any}
                   min={0}
-                  max={rightDynamicInput}
                 />
                 至
                 <Input.InputNumber
                   className={`${prefixCls}-input-second`}
-                  placeholder="please select"
                   value={rightDynamicInput}
                   onChange={handleRightDynamicInput as any}
                   min={0}
