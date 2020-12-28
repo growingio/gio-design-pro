@@ -118,6 +118,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     }
     setCurrentValue(node);
     rest.onSelect?.(node);
+    setPickerVisible(false);
+    onVisibleChange?.(false);
   }
   const handleSearch = (query: string) => {
     setKeyword(query);
