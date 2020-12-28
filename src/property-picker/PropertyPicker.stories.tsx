@@ -10,7 +10,7 @@ import '@gio-design-new/components/es/components/button/style/css';
 import './style/index.less';
 import { dimensionToPropertyItem } from './util';
 
-const dataSource = insightDimensions.map((v) => dimensionToPropertyItem(v));
+const dataSource = []; // = insightDimensions.map((v) => dimensionToPropertyItem(v));
 export default {
   title: 'Business Components/PropertyPicker',
   component: PropertyPicker,
