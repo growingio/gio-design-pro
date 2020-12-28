@@ -25,6 +25,7 @@ const Template: Story<PropertyPickerProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   dataSource,
+  initialValue: { ...{ label: 'App 版本', value: 'cv', valueType: null } },
   onChange: (v) => {
     console.log('onchange', v);
   },
