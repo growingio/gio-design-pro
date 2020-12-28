@@ -1,0 +1,40 @@
+@import '../../picker/style/index.less';
+@import '~@gio-design/components/es/components/tag/style/index.less';
+
+@property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
+
+.@{property-picker-prefix-cls}-detail {
+  &__name {
+    margin: 0 0 24px;
+    color: #1248e9;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 22px;
+  }
+
+  &__label {
+    margin: 0 0 8px;
+    color: #242e59;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 22px;
+  }
+
+  &__value {
+    margin: 0 0 16px;
+    color: #7b819c;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 22px;
+  }
+
+  &__tags {
+    margin: 0 0 16px;
+
+    .gio-tag:not(:first-child) {
+      margin-left: 8px;
+    }
+  }
+}

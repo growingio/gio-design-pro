@@ -88,4 +88,8 @@ export interface PickerProps {
    * Callback when select some data
    */
   onSelect?: (node: NodeData) => void;
+  /**
+   * custom menu-item render function
+   */
+  onRender?: (nodeData: NodeData) => React.ReactElement;
 }

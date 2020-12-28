@@ -13,6 +13,7 @@
 
 .@{picker-prefix-cls}-trigger {
   width: 200px;
+
   input {
     box-sizing: border-box;
     cursor: pointer;
@@ -91,17 +92,24 @@
       height: 406px;
       box-shadow: none;
       margin-right: 0;
+      padding: 0;
+      .cascader-menu-body {
+        height: 100%;
+        overflow: auto;
+        padding: 8px;
+      }
     }
-
     .cascader-menu-group:not(:last-child)::after {
       display: block;
       margin: 0 12px;
       content: ' ';
       border-bottom: 1px solid #ebedf5;
     }
+
     .cascader-menu-group:not(:last-child) .cascader-menu-item:last-child .cascader-menu-item-content {
       border-bottom: none;
     }
+
     .cascader-menu-group-name {
       padding: 8px 12px 4px;
       color: #1248e9;
@@ -110,6 +118,7 @@
       letter-spacing: 0;
       line-height: 20px;
     }
+
     .cascader-menu-item {
       margin-bottom: 4px;
 
@@ -122,6 +131,7 @@
         line-height: 22px;
       }
     }
+
     .@{picker-prefix-cls}-hover-panel {
       display: none;
     }
