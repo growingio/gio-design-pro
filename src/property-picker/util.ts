@@ -32,7 +32,7 @@ type Mapper = {
 //   usr: ['user', 'tag'],
 //   visitor: ['geo', 'device', 'origin'],
 // };
-const DimensionGroupTypeMapper: Mapper = {
+export const DimensionGroupTypeMapper: Mapper = {
   cs: 'event',
   ads: 'event',
   page: 'event',

@@ -3,7 +3,7 @@ import { NodeData } from '@gio-design-new/components/es/components/cascader/menu
 import { Loading, Tag } from '@gio-design-new/components';
 import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
 import React, { useEffect, useState } from 'react';
-import { PropertyInfo } from './interfaces';
+import { PropertyInfo, PropertyTypes } from './interfaces';
 
 function isPromise(obj: any) {
   return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
@@ -25,6 +25,7 @@ function PropertyDetailPanel(props: PropertyDetailProps) {
       func
         .then((d: PropertyInfo) => {
           setValue(d);
+          console.log('detail', d);
         })
         .finally(() => setLoading(false));
     } else {
@@ -41,13 +42,21 @@ function PropertyDetailPanel(props: PropertyDetailProps) {
     <Loading title={false} loading={loading} delay={1000}>
       <div className={propDetailPrefixCls}>
         <div className={`${propDetailPrefixCls}__header`}>
-          <b className={`${propDetailPrefixCls}__name`}>{value?.name}</b>
-          <Tag className={`${propDetailPrefixCls}__tag`}>{value?.type}</Tag>
+          <b className={`${propDetailPrefixCls}__name`}>{`${value?.name}`}</b>
+          {value?.type && (
+            <Tag className={`${propDetailPrefixCls}__tag`} size="small">
+              {PropertyTypes[value?.type ?? ''] || ''}
+            </Tag>
+          )}
         </div>
-        <div className={`${propDetailPrefixCls}__key`}>{value?.key}</div>
-        <div className={`${propDetailPrefixCls}__description`}>{value?.key}</div>
+        <div className={`${propDetailPrefixCls}__main`}>
+          <div className={`${propDetailPrefixCls}__key`}>{value?.key}</div>
+          <div className={`${propDetailPrefixCls}__description`}>{value?.description}</div>
+        </div>
         <div className={`${propDetailPrefixCls}__divide`} />
-        <div className={`${propDetailPrefixCls}__valuetype`}>{value?.valueType}</div>
+        <div className={`${propDetailPrefixCls}__bottom`}>
+          <div className={`${propDetailPrefixCls}__value`}>{value?.valueType}</div>
+        </div>
       </div>
     </Loading>
   );

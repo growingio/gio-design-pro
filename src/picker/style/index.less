@@ -42,7 +42,7 @@
     margin: 0 16px;
     display: flex;
     align-items: center;
-    .gio-searchbar {
+    .@{searchbar-prefix-cls} {
       display: inline-block;
       vertical-align: top;
       // width: 300px;
@@ -52,11 +52,11 @@
       }
     }
 
-    .gio-btn {
+    .@{btn-prefix-cls} {
       margin-left: 16px;
     }
 
-    .gio-alert {
+    .@{alert-prefix-cls} {
       position: absolute;
       width: 100%;
       z-index: 9999;
@@ -64,28 +64,28 @@
     }
   }
 
-  .gio-tabnav {
+  .@{tabnav-prefix-cls} {
     margin: 8px 8px 2px;
-    &.gio-tabnav-sm {
-      .gio-tabnav-item-btn {
+    &.@{tabnav-prefix-cls}-sm {
+      .@{tabnav-prefix-cls}-item-btn {
         padding: 0 12px;
       }
     }
   }
 
-  .gio-list-wrapper {
+  .@{component-prefix}-list-wrapper {
     padding: 0 20px;
 
-    .gio-select-option {
+    .@{component-prefix}-select-option {
       box-sizing: border-box;
     }
   }
 
-  .gio-empty {
+  .@{component-prefix}-empty {
     margin-top: 100px;
   }
 
-  .gio-loading-wrapper {
+  .@{component-prefix}-loading-wrapper {
     height: 406px;
     padding-top: 170px;
     text-align: center;
@@ -147,15 +147,16 @@
       .@{picker-prefix-cls}-hover-panel {
         display: block;
         height: fit-content;
-        max-height: 500px;
-        width: 392px;
-        padding: 24px;
+        max-height: 520px;
+        width: 280px;
+        padding: 16px;
         border-radius: 4px;
         position: absolute;
-        right: -442px;
+        right: -100%;
+        transform: translateX(-16px);
         background-color: #fff;
-        top: -98px;
-        box-shadow: 0 -1px 4px 0 #ebedf5, 0 6px 14px 0 #ebedf5;
+        top: -90px;
+        box-shadow: 0 2px 6px 0 rgba(163, 173, 200, 0.5);
       }
     }
   }

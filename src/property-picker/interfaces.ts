@@ -3,8 +3,8 @@ import { PickerProps } from '../picker/interfaces';
 import { Dimension } from '../types';
 
 export interface PropertyInfo {
-  id: string;
-  name: string;
+  id?: string;
+  name?: string;
   key?: string;
   type?: string;
   description?: string;
