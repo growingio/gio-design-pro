@@ -42,7 +42,6 @@ function Expression(props: ExpressionProps) {
       valueType,
       ...v,
     };
-    console.log(expr, 'expr');
     onChange(expr, index);
   };
 
@@ -51,7 +50,6 @@ function Expression(props: ExpressionProps) {
   // };
 
   const changePropertyPicker = (v: any) => {
-    console.log(v, 'v=======');
     v && setValueType(v.valueType || 'string');
     v && setExprName(v.label);
     v && setExprKey(v.value);

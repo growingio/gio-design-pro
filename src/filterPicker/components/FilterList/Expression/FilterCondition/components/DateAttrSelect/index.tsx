@@ -39,7 +39,6 @@ function DateAttrSelect(props: DateAttrSelectProps) {
   }, [attrSelect]);
 
   const changeDate = (value: Moment | null) => {
-    console.log(value, 'value---');
     value && setTime(value);
     attrChange([moment(value, 'YYYY-MM-DD').startOf('day').valueOf()]);
   };

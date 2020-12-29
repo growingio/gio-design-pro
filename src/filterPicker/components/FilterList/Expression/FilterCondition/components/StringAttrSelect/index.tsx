@@ -18,7 +18,6 @@ type listOptionsItem = {
 
 function StringAttrSelect(props: StringAttrSelectProps) {
   const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
-  console.log(values, 'values');
   const [inputValue, setInputValue] = useState<string>(values.join(','));
   const [checkValue, setCheckValue] = useState<string[] | []>(values);
   const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
@@ -31,7 +30,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   }, [values]);
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(v.target.value, 'inputValue');
     setInputValue(v.target.value);
     curryDimensionValueRequest('d', v.target.value).then((res: string[]) => {
       setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
@@ -40,7 +38,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   };
 
   const changeListValue = (option: listOptionsItem) => {
-    console.log(option, 'option');
     if (inputValue === option.label) {
       setInputValue('');
       setListValue('');

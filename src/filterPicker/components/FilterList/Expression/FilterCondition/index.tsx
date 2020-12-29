@@ -55,10 +55,8 @@ const operationMap = {
 
 function FilterCondition(props: FilterConditionProps) {
   const { valueType = 'string', onSubmit, op, dimensionValueRequest, timeRange, measurements, values, exprKey } = props;
-  console.log(valueType, 'valueTYpe');
   const [visible, setVisible] = useState(false);
   const parseValuesToText = (type: string, operation: string, value: string[]): string => {
-    console.log('string');
     const opMap = operationMap[type];
     if (value.length) {
       if (type === 'string') {
@@ -119,8 +117,6 @@ function FilterCondition(props: FilterConditionProps) {
           case 'between': {
             const textList = opMap[operation].split(',');
             const abs = value[0].split(':')[1].split(',');
-            console.log(abs, 'abs');
-            console.log(moment(parseInt(abs[0], 10)).valueOf(), new Date(abs[0]), 'formatTime');
             return (
               textList[0] +
               moment(parseInt(abs[0], 10)).format('YYYY-MM-DD') +

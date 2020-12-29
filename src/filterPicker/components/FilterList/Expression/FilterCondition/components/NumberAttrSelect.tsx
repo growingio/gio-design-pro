@@ -8,7 +8,6 @@ interface NumberAttrSelectProps {
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
   const { attrSelect, attrChange, values } = props;
-  console.log(values, 'values');
   const [value, setValue] = useState<string>(values[0] ? values[0] : '0');
   const [value1, setValue1] = useState<string>(values[0] ? values[0] : '0');
   const [value2, setValue2] = useState<string>(values[1] ? values[1] : '0');

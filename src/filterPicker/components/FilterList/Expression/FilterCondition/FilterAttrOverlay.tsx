@@ -53,7 +53,6 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   };
 
   const selectChange = (v: StringValue | NumberValue | null) => {
-    console.log(v, 'v=================');
     v && setValue(v);
     v && setAttrValue([]);
     v && setChecked(false);
@@ -83,12 +82,10 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   };
 
   const submit = () => {
-    console.log(operationValue, 'operationValue');
     const filterValue: FilterValueType = {
       op: parseValue(operationValue, checked),
       values: operationValue !== 'hasValue' && operationValue !== 'noValue' ? attrValue : [' '],
     };
-    console.log(filterValue, 'filterValue');
     onSubmit(filterValue);
   };
 
