@@ -28,7 +28,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     searchPlaceholder = '搜索属性名称',
     visible,
     onVisibleChange,
-    fetchDetailData = (node) => Promise.resolve({ id: node.value, name: node.label, ...node } as PropertyInfo),
+    fetchDetailData = (node) => Promise.resolve({ ...node, id: node.value, name: node.label } as PropertyInfo),
     loading = false,
     dataSource: originDataSource,
     recentlyStorePrefix,

@@ -59,7 +59,7 @@ function Picker({
         className={`${prefixCls}__list`}
         dataSource={dataSource}
         onSelect={onSelect}
-        afterInner={onMenuHover}
+        afterInner={(node) => onMenuHover(node)}
       />
     );
   }

@@ -52,11 +52,7 @@ export const PropertyTypes: { [key: string]: string } = {
   usr: '用户属性',
 };
 
-/// declare type ItemValueType = _ValueType | { type: PrimitiveType };
-/**
- * @name 属性分类 - 事件属性｜用户属性｜物品属性
- */
-export declare type PropertyCategory = 'EventVariable' | 'UserVariable' | 'ItemVariable';
+export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boolean';
 
 export interface PropertyItem extends NodeData {
   type?: string;
@@ -64,4 +60,5 @@ export interface PropertyItem extends NodeData {
   // hasChildren?: boolean,
   // itemIcon?: React.ReactElement | string,
   valueType?: string;
+  key?: string;
 }
