@@ -28,14 +28,29 @@
 
   .filter-condition_select {
     border-radius: 4px;
-    background-color: #f1f2f8;
+    position: relative;
+    // background-color: #f1f2f8;
     width: 122px;
-    height: 30px;
+    height: 36px;
     display: inline-block;
-    line-height: 30px;
+    padding: 5px;
+    line-height: 26px;
     text-align: center;
     vertical-align: middle;
     font-size: 14px;
     color: #313e75;
+    margin-left: 8px;
+
+    &:hover {
+      background-color: #f1f2f8;
+    }
+    .filter-condition_select-text {
+      width: 100%;
+      display: inline-block;
+      padding-right: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }

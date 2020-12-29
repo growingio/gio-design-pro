@@ -12,9 +12,10 @@ interface FilterListProps {
   timeRange: string;
   measurements: any[];
   changeFilterListCb: (v: FilterValueType[]) => void;
+  propertyOptions: any[];
 }
 function FilterList(props: FilterListProps) {
-  const { list = [], dimensionValueRequest, timeRange, measurements, changeFilterListCb } = props;
+  const { list = [], dimensionValueRequest, timeRange, measurements, changeFilterListCb, propertyOptions } = props;
   const [filterList, setFilterList] = useState<FilterValueType[]>(list);
   useEffect(() => {
     if (!list.length) {
@@ -35,30 +36,34 @@ function FilterList(props: FilterListProps) {
     setFilterList([...filterList, defaultFilterItem]);
   };
   const deleteFilterItem = (index: number) => {
-    const subFilter = filterList;
-    subFilter.splice(index, 1);
-    setFilterList([...subFilter]);
+    filterList.splice(index, 1);
+    setFilterList([...filterList]);
+    changeFilterListCb([...filterList]);
   };
 
   return (
-    <div className="filter-list-box">
-      {filterList.length &&
-        filterList.map((ele: FilterValueType, index: number) => (
+    <>
+      <div className="filter-list-box">
+        {filterList.map((ele: FilterValueType, index: number) => (
           <Expression
+            key={ele.key}
             index={index}
             filterLength={filterList.length}
+            exprs={filterList}
             filterItem={ele}
             deleteFilterItem={deleteFilterItem}
             dimensionValueRequest={dimensionValueRequest}
             timeRange={timeRange}
             measurements={measurements}
             onChange={expressChange}
+            propertyOptions={propertyOptions}
           />
         ))}
+      </div>
       <Button icon={<PlusCircleFilled />} type="text" disabled={filterList.length >= 5} onClick={addFilter}>
         添加过滤条件
       </Button>
-    </div>
+    </>
   );
 }
 export default FilterList;

@@ -8,15 +8,20 @@ interface NumberAttrSelectProps {
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
   const { attrSelect, attrChange, values } = props;
+  console.log(values, 'values');
   const [value, setValue] = useState<string>(values[0] ? values[0] : '0');
   const [value1, setValue1] = useState<string>(values[0] ? values[0] : '0');
   const [value2, setValue2] = useState<string>(values[1] ? values[1] : '0');
   // 初始化attrValue值
   useEffect(() => {
+    const num = values[0] ? values[0] : '0';
+    setValue(num);
+    setValue1(num);
+    setValue2(num);
     if (attrSelect === 'between') {
-      attrChange([value1, value2]);
+      attrChange([num, num]);
     } else {
-      attrChange([value]);
+      attrChange([num]);
     }
   }, [attrSelect]);
 

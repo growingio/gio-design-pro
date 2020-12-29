@@ -11,7 +11,7 @@ function IncludeToday(props: IncludeTodayProps) {
   const { time, onChange } = props;
 
   const changeDate = (value: Moment | null) => {
-    onChange(value.valueOf());
+    onChange(value);
   };
   return (
     <>

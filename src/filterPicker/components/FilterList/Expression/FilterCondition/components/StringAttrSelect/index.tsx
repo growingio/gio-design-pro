@@ -8,6 +8,7 @@ interface StringAttrSelectProps {
   attrChange: (v: any) => void;
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any>;
   values: string[];
+  exprKey: string;
 }
 
 type listOptionsItem = {
@@ -16,15 +17,21 @@ type listOptionsItem = {
 };
 
 function StringAttrSelect(props: StringAttrSelectProps) {
-  const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [] } = props;
-  const [inputValue, setInputValue] = useState<string>(
-    attrSelect === 'like' || attrSelect === 'not like' ? values[0] : ''
-  );
+  const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
+  console.log(values, 'values');
+  const [inputValue, setInputValue] = useState<string>(values.join(','));
   const [checkValue, setCheckValue] = useState<string[] | []>(values);
   const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
   const [listValue, setListValue] = useState<string>(values.length ? values[0] : '');
 
+  useEffect(() => {
+    setCheckValue(values);
+    setInputValue(values.join(','));
+    setListValue(values?.[0]);
+  }, [values]);
+
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(v.target.value, 'inputValue');
     setInputValue(v.target.value);
     curryDimensionValueRequest('d', v.target.value).then((res: string[]) => {
       setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
@@ -33,6 +40,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   };
 
   const changeListValue = (option: listOptionsItem) => {
+    console.log(option, 'option');
     if (inputValue === option.label) {
       setInputValue('');
       setListValue('');
@@ -51,15 +59,10 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   };
 
   useEffect(() => {
-    curryDimensionValueRequest('d', inputValue).then((res: string[]) => {
+    curryDimensionValueRequest(exprKey, '').then((res: string[]) => {
       setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
     });
-    setInputValue('');
-  }, [valueType]);
-
-  useEffect(() => {
-    attrChange([inputValue]);
-  }, [inputValue]);
+  }, [valueType, exprKey]);
 
   switch (attrSelect) {
     case 'in':

@@ -16,12 +16,14 @@ interface FilterAttrOverlayProps {
   op: StringValue | NumberValue | DateValue;
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any>;
   values: string[];
+  exprKey: string;
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
-  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values } = props;
+  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey } = props;
   const [operationValue, setValue] = useState<StringValue | NumberValue | DateValue>(op);
-  const [attrValue, setAttrValue] = useState<string[] | number[]>(['']);
+  const [attrValue, setAttrValue] = useState<string[]>(values);
+
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
 
   useEffect(() => {
@@ -51,7 +53,10 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   };
 
   const selectChange = (v: StringValue | NumberValue | null) => {
+    console.log(v, 'v=================');
     v && setValue(v);
+    v && setAttrValue([]);
+    v && setChecked(false);
   };
 
   const parseValue = (
@@ -78,19 +83,21 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   };
 
   const submit = () => {
+    console.log(operationValue, 'operationValue');
     const filterValue: FilterValueType = {
       op: parseValue(operationValue, checked),
       values: operationValue !== 'hasValue' && operationValue !== 'noValue' ? attrValue : [' '],
     };
+    console.log(filterValue, 'filterValue');
     onSubmit(filterValue);
   };
 
   const getAttrSelect = (attr: attributeValue, selectValue: string) => {
     switch (attr) {
       case AttributeMap.int:
-        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={values} />;
+        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
       case AttributeMap.date:
-        return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={values} />;
+        return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
       case AttributeMap.string:
         return (
           <StringAttrSelect
@@ -98,7 +105,8 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             attrSelect={selectValue}
             attrChange={setAttrValue}
             curryDimensionValueRequest={curryDimensionValueRequest}
-            values={values}
+            values={attrValue}
+            exprKey={exprKey}
           />
         );
       default:

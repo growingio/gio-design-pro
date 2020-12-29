@@ -9,9 +9,9 @@ export const titleMap: titleGroup = {
 export const defaultFilterItem: FilterValueType = {
   op: '=',
   values: [],
-  valueType: 'date',
-  name: 'whatEver',
-  key: 'hisdhfio',
+  valueType: '',
+  name: '',
+  key: '',
 };
 
 export const selectOptionMap: selectOption = {

@@ -16,7 +16,7 @@ interface FilterOverflyProps {
   measurements: any[];
 }
 function FilterOverlay(props: FilterOverflyProps) {
-  const { onCancel, onSubmit, filterList, dimensionValueRequest, timeRange, measurements } = props;
+  const { onCancel, onSubmit, filterList, dimensionValueRequest, timeRange, measurements, propertyOptions } = props;
   const [list, setList] = useState<FilterValueType[]>(filterList);
   const changeFilterListCb = (v: FilterValueType[]) => {
     setList(v);
@@ -34,6 +34,7 @@ function FilterOverlay(props: FilterOverflyProps) {
         timeRange={timeRange}
         measurements={measurements}
         changeFilterListCb={changeFilterListCb}
+        propertyOptions={propertyOptions}
       />
       <Footer onCancel={onCancel} onSubmit={submit} />
     </div>

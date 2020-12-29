@@ -12,9 +12,16 @@ interface DateAttrSelectProps {
 }
 function DateAttrSelect(props: DateAttrSelectProps) {
   const { attrSelect, attrChange, values } = props;
-  const [time, setTime] = useState<Moment>(values[0] ? moment(values[0]) : moment(new Date()));
+  const [time, setTime] = useState<Moment>(
+    values[0] && parseFloat(values[0]).toString() !== 'NaN' ? moment(values[0]) : moment(new Date())
+  );
   const [timeRange, setTimeRange] = useState<Moment[]>(
-    values.length === 2 ? [moment(values[0]), moment(values[1])] : [moment(new Date()), moment(new Date())]
+    values.length && values[0]?.includes?.('abs')
+      ? [
+          moment(parseInt(values[0].split(':')[1].split(',')[0], 10)),
+          moment(parseInt(values[0].split(':')[1].split(',')[1], 10)),
+        ]
+      : [moment(new Date()), moment(new Date())]
   );
 
   useEffect(() => {
@@ -32,15 +39,20 @@ function DateAttrSelect(props: DateAttrSelectProps) {
   }, [attrSelect]);
 
   const changeDate = (value: Moment | null) => {
+    console.log(value, 'value---');
     value && setTime(value);
-    attrChange([value.valueOf()]);
+    attrChange([moment(value, 'YYYY-MM-DD').startOf('day').valueOf()]);
   };
   const relativeDateChange = (v: string) => {
     attrChange([v]);
   };
   const dateRangeChange = (value: Array<Moment> | null) => {
     value && setTimeRange(value);
-    attrChange([value[0].valueOf(), value[1].valueOf()]);
+    attrChange([
+      `abs:${moment(value[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(value[1], 'YYYY-MM-DD')
+        .endOf('day')
+        .valueOf()}`,
+    ]);
   };
 
   switch (attrSelect) {

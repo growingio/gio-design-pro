@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { DownFilled } from '@gio-design/icons';
-import { Dropdown } from '@gio-design-new/components';
+import { Dropdown, Tooltip } from '@gio-design-new/components';
 import moment from 'moment';
 
 import FilterAttrOverlay from './FilterAttrOverlay';
@@ -15,6 +15,7 @@ interface FilterConditionProps {
   timeRange: string;
   measurements: any[];
   values: string[];
+  exprKey: string;
 }
 
 const operationMap = {
@@ -53,9 +54,11 @@ const operationMap = {
 };
 
 function FilterCondition(props: FilterConditionProps) {
-  const { valueType = 'string', onSubmit, op, dimensionValueRequest, timeRange, measurements, values } = props;
+  const { valueType = 'string', onSubmit, op, dimensionValueRequest, timeRange, measurements, values, exprKey } = props;
+  console.log(valueType, 'valueTYpe');
   const [visible, setVisible] = useState(false);
   const parseValuesToText = (type: string, operation: string, value: string[]): string => {
+    console.log('string');
     const opMap = operationMap[type];
     if (value.length) {
       if (type === 'string') {
@@ -115,11 +118,14 @@ function FilterCondition(props: FilterConditionProps) {
           }
           case 'between': {
             const textList = opMap[operation].split(',');
+            const abs = value[0].split(':')[1].split(',');
+            console.log(abs, 'abs');
+            console.log(moment(parseInt(abs[0], 10)).valueOf(), new Date(abs[0]), 'formatTime');
             return (
               textList[0] +
-              moment(value[0]).format('YYYY-MM-DD') +
+              moment(parseInt(abs[0], 10)).format('YYYY-MM-DD') +
               textList[1] +
-              moment(value[1]).format('YYYY-MM-DD') +
+              moment(parseInt(abs[1], 10)).format('YYYY-MM-DD') +
               textList[2]
             );
           }
@@ -159,7 +165,7 @@ function FilterCondition(props: FilterConditionProps) {
     }
     return '选择过滤条件';
   };
-  const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, ...values]);
+  const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
   const visibleChange = (v: boolean) => {
     setVisible(v);
   };
@@ -194,6 +200,7 @@ function FilterCondition(props: FilterConditionProps) {
             op={op}
             curryDimensionValueRequest={curryDimensionValueRequest}
             values={values}
+            exprKey={exprKey}
           />
         }
         placement="bottomRight"
@@ -201,8 +208,18 @@ function FilterCondition(props: FilterConditionProps) {
         destroyTooltipOnHide
       >
         <span className="filter-condition_select">
-          {conditionText}
-          <DownFilled size="14px" style={{ transform: visible && 'rotate(0.5turn)' }} />
+          <Tooltip title={conditionText} disabled={conditionText === '选择过滤条件'} placement="topLeft">
+            <span className="filter-condition_select-text">{conditionText}</span>
+          </Tooltip>
+          <DownFilled
+            size="14px"
+            style={{
+              transform: visible && 'rotate(0.5turn)',
+              position: 'absolute',
+              right: '4px',
+              top: '10px',
+            }}
+          />
         </span>
       </Dropdown>
     )

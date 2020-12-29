@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design-new/components';
+import PropertyPicker from '../../../../property-picker';
+import '../../../../property-picker/style/index';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType } from '../../../interfaces';
@@ -14,6 +16,8 @@ interface ExpressionProps {
   timeRange: string;
   measurements: any[];
   onChange: (expression: FilterValueType, index: number) => void;
+  propertyOptions: any[];
+  exprs: any[];
 }
 function Expression(props: ExpressionProps) {
   const {
@@ -25,16 +29,20 @@ function Expression(props: ExpressionProps) {
     timeRange,
     measurements,
     onChange,
+    propertyOptions,
+    exprs,
   } = props;
-  const [valueType] = useState<attributeValue>(filterItem.valueType);
-
+  const [valueType, setValueType] = useState<attributeValue>(filterItem.valueType);
+  const [exprKey, setExprKey] = useState<string>(filterItem?.key);
+  const [exprName, setExprName] = useState<string>(filterItem?.name);
   const submit = (v: FilterValueType) => {
     const expr: FilterValueType = {
-      key: 'd',
-      name: '域名',
+      key: exprKey,
+      name: exprName,
       valueType,
       ...v,
     };
+    console.log(expr, 'expr');
     onChange(expr, index);
   };
 
@@ -42,11 +50,33 @@ function Expression(props: ExpressionProps) {
   //   setValueType('string');
   // };
 
+  const changePropertyPicker = (v: any) => {
+    console.log(v, 'v=======');
+    v && setValueType(v.valueType || 'string');
+    v && setExprName(v.label);
+    v && setExprKey(v.value);
+    const expr: FilterValueType = {
+      key: v.value,
+      name: v.label,
+      valueType: v.valueType || 'string',
+      op: '=',
+      values: [],
+    };
+    onChange(expr, index);
+  };
+
   return (
     <div className="expression-box" id="expression-box">
       <div className="express-regular_select">
         <div className="expression-icon">{index + 1}</div>
-        {/* <div className="mock-attribute-select" onClick={mockAttrChange} /> */}
+        <PropertyPicker
+          initialValue={{ value: exprKey, label: exprName }}
+          dataSource={propertyOptions.filter((option: any) => {
+            const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];
+            return option.id === exprKey || inavailableOptions.indexOf(option.id) === -1; // && !(/like/.test(operator) && option.id === 'cs1'）saas老逻辑，暂时不需要
+          })}
+          onChange={changePropertyPicker}
+        />
         <FilterCondition
           valueType={valueType}
           onSubmit={submit}
@@ -55,13 +85,14 @@ function Expression(props: ExpressionProps) {
           timeRange={timeRange}
           measurements={measurements}
           values={filterItem.values}
+          exprKey={exprKey}
         />
       </div>
       <Button
         type="assist"
         icon={<DeleteOutlined />}
         disabled={!filterLength || filterLength === 1}
-        size="small"
+        size="middle"
         onClick={() => deleteFilterItem(index)}
       />
     </div>
