@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import FilterList from '../FilterList';
-import Footer from '../Footer';
+
 import { FilterValueType } from '../../interfaces';
 
 import './index.less';
@@ -17,14 +17,6 @@ interface FilterOverflyProps {
 }
 function FilterOverlay(props: FilterOverflyProps) {
   const { onCancel, onSubmit, filterList, dimensionValueRequest, timeRange, measurements, propertyOptions } = props;
-  const [list, setList] = useState<FilterValueType[]>(filterList);
-  const changeFilterListCb = (v: FilterValueType[]) => {
-    setList(v);
-  };
-
-  const submit = () => {
-    onSubmit(list);
-  };
   return (
     <div className="filter-condition_box">
       <div className="filter-condition_title">选择过滤条件</div>
@@ -33,10 +25,10 @@ function FilterOverlay(props: FilterOverflyProps) {
         dimensionValueRequest={dimensionValueRequest}
         timeRange={timeRange}
         measurements={measurements}
-        changeFilterListCb={changeFilterListCb}
         propertyOptions={propertyOptions}
+        onCancel={onCancel}
+        onSubmit={onSubmit}
       />
-      <Footer onCancel={onCancel} onSubmit={submit} />
     </div>
   );
 }

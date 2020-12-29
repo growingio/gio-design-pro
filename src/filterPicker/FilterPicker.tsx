@@ -51,7 +51,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     >
       {children || (
         <Button icon={<FilterOutlined />} size="small" type="assist">
-          过滤条件11111111
+          过滤条件
         </Button>
       )}
     </Dropdown>

@@ -14,9 +14,9 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   // 初始化attrValue值
   useEffect(() => {
     const num = values[0] ? values[0] : '0';
-    setValue(num);
-    setValue1(num);
-    setValue2(num);
+    setValue(values[0] || '0');
+    setValue1(values[0] || '0');
+    setValue2(values[1] || '0');
     if (attrSelect === 'between') {
       attrChange([num, num]);
     } else {

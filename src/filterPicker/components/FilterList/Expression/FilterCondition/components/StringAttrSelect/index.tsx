@@ -6,7 +6,7 @@ interface StringAttrSelectProps {
   valueType: attributeValue;
   attrSelect: string;
   attrChange: (v: any) => void;
-  curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any>;
+  curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
 }
@@ -31,7 +31,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(v.target.value);
-    curryDimensionValueRequest('d', v.target.value).then((res: string[]) => {
+    curryDimensionValueRequest?.('d', v.target.value)?.then((res: string[]) => {
       setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
     });
     attrChange([v.target.value]);
@@ -56,7 +56,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   };
 
   useEffect(() => {
-    curryDimensionValueRequest(exprKey, '').then((res: string[]) => {
+    curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
     });
   }, [valueType, exprKey]);

@@ -8,7 +8,7 @@ export interface FilterPickerProps {
   onConfirm: (v: FilterValue) => void;
   dimensionValueRequest?: (data: any) => Promise<any>;
 }
-export type attributeValue = 'string' | 'int' | 'date' | '';
+export type attributeValue = 'string' | 'int' | 'date';
 
 export type FilterValueType = {
   op: StringValue | NumberValue | DateValue;

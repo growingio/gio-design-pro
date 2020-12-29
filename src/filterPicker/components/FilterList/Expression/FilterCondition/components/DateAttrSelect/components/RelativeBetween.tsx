@@ -24,6 +24,17 @@ function RelativeBetween(props: RelativeBetweenProps) {
       setValue2(`${Math.abs(parseInt(relativeTime[1], 10))}`);
     }
   }, [values]);
+
+  const setInputValue1 = (v: string) => {
+    if (v && !v.toString().includes('NaN')) {
+      setValue1(v);
+    }
+  };
+  const setInputValue2 = (v: string) => {
+    if (v && !v.toString().includes('NaN')) {
+      setValue2(v);
+    }
+  };
   const selectOptions = [
     {
       value: '-1',
@@ -53,9 +64,9 @@ function RelativeBetween(props: RelativeBetweenProps) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
       <Select value={nowOrFuturevalue} options={selectOptions} onChange={selectChange} style={{ marginRight: '4px' }} />
-      <Input.InputNumber value={value1} onChange={setValue1} style={{ width: '70px', margin: '0 4px' }} min={1} />
+      <Input.InputNumber value={value1} onChange={setInputValue1} style={{ width: '70px', margin: '0 4px' }} min={1} />
       <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天至</div>
-      <Input.InputNumber value={value2} onChange={setValue2} style={{ width: '70px', margin: '0 4px' }} min={1} />
+      <Input.InputNumber value={value2} onChange={setInputValue2} style={{ width: '70px', margin: '0 4px' }} min={1} />
       <div style={{ whiteSpace: 'nowrap', margin: '16px 4px' }}>天之内</div>
     </div>
   );

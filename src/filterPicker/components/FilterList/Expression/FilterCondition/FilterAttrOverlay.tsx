@@ -14,7 +14,7 @@ interface FilterAttrOverlayProps {
   onSubmit: (v: FilterValueType) => void;
   onCancel: () => void;
   op: StringValue | NumberValue | DateValue;
-  curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any>;
+  curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
 }
@@ -52,7 +52,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     setChecked(e.target.checked);
   };
 
-  const selectChange = (v: StringValue | NumberValue | null) => {
+  const selectChange = (v: StringValue | NumberValue) => {
     v && setValue(v);
     v && setAttrValue([]);
     v && setChecked(false);
@@ -114,7 +114,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   return (
     <div className="filter-attr_select-box">
       <div>
-        <div className="filter-attr_select-title">{titleMap[valueType]}</div>
+        <div className="filter-attr_select-title">{titleMap[valueType] || '字符串类型'}</div>
         <Select
           options={selectOptionMap[valueType]}
           value={operationValue}

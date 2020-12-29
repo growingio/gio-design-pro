@@ -5,18 +5,21 @@ import Expression from './Expression';
 import './index.less';
 import { FilterValueType } from '../../interfaces';
 import { defaultFilterItem } from '../../filterMap';
+import Footer from '../Footer';
 
 interface FilterListProps {
   list: FilterValueType[];
   dimensionValueRequest?: (data: any) => Promise<any>;
   timeRange: string;
   measurements: any[];
-  changeFilterListCb: (v: FilterValueType[]) => void;
   propertyOptions: any[];
+  onCancel: () => void;
+  onSubmit: (v: FilterValueType[]) => void;
 }
 function FilterList(props: FilterListProps) {
-  const { list = [], dimensionValueRequest, timeRange, measurements, changeFilterListCb, propertyOptions } = props;
-  const [filterList, setFilterList] = useState<FilterValueType[]>(list);
+  const { list = [], dimensionValueRequest, timeRange, measurements, propertyOptions, onCancel, onSubmit } = props;
+  const [filterList, setFilterList] = useState<FilterValueType[]>([...list]);
+  // const [subFilterList] = useState<FilterValueType[]>(list);
   useEffect(() => {
     if (!list.length) {
       setFilterList([defaultFilterItem]);
@@ -26,10 +29,9 @@ function FilterList(props: FilterListProps) {
   }, [list]);
 
   const expressChange = (v: FilterValueType, index: number) => {
-    const subFilter = filterList;
+    const subFilter = [...filterList];
     subFilter.splice(index, 1, v);
     setFilterList([...subFilter]);
-    changeFilterListCb([...subFilter]);
   };
 
   const addFilter = () => {
@@ -38,7 +40,14 @@ function FilterList(props: FilterListProps) {
   const deleteFilterItem = (index: number) => {
     filterList.splice(index, 1);
     setFilterList([...filterList]);
-    changeFilterListCb([...filterList]);
+  };
+
+  const submit = () => {
+    onSubmit([...filterList]);
+  };
+
+  const cancel = () => {
+    onCancel();
   };
 
   return (
@@ -63,6 +72,7 @@ function FilterList(props: FilterListProps) {
       <Button icon={<PlusCircleFilled />} type="text" disabled={filterList.length >= 5} onClick={addFilter}>
         添加过滤条件
       </Button>
+      <Footer onCancel={cancel} onSubmit={submit} />
     </>
   );
 }

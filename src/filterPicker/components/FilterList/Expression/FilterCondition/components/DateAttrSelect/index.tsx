@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import moment, { Moment } from 'moment';
 import { DatePicker, DateRangePicker } from '@gio-design-new/components';
@@ -32,7 +33,11 @@ function DateAttrSelect(props: DateAttrSelectProps) {
         attrChange(['relateTime: -1, -1']);
       }
     } else if (attrSelect === 'between') {
-      attrChange([timeRange[0].valueOf(), timeRange[1].valueOf()]);
+      attrChange([
+        `abs:${moment(timeRange?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(timeRange?.[1], 'YYYY-MM-DD')
+          .endOf('day')
+          .valueOf()}`,
+      ]);
     } else {
       attrChange([time.valueOf()]);
     }
@@ -47,11 +52,12 @@ function DateAttrSelect(props: DateAttrSelectProps) {
   };
   const dateRangeChange = (value: Array<Moment> | null) => {
     value && setTimeRange(value);
-    attrChange([
-      `abs:${moment(value[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(value[1], 'YYYY-MM-DD')
-        .endOf('day')
-        .valueOf()}`,
-    ]);
+    value &&
+      attrChange([
+        `abs:${moment(value?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(value?.[1], 'YYYY-MM-DD')
+          .endOf('day')
+          .valueOf()}`,
+      ]);
   };
 
   switch (attrSelect) {

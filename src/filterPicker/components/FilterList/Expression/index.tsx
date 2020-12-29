@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design-new/components';
 import PropertyPicker from '../../../../property-picker';
 import '../../../../property-picker/style/index';
 import FilterCondition from './FilterCondition';
 import './index.less';
-import { attributeValue, FilterValueType } from '../../../interfaces';
+import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
 
 interface ExpressionProps {
   index?: number;
@@ -32,9 +32,13 @@ function Expression(props: ExpressionProps) {
     propertyOptions,
     exprs,
   } = props;
-  const [valueType, setValueType] = useState<attributeValue>(filterItem.valueType);
-  const [exprKey, setExprKey] = useState<string>(filterItem?.key);
-  const [exprName, setExprName] = useState<string>(filterItem?.name);
+  const [valueType, setValueType] = useState<attributeValue>(filterItem?.valueType || 'string');
+  const [values, setValues] = useState<string[]>(filterItem?.values);
+  const [exprKey, setExprKey] = useState<string>(filterItem?.key || '');
+  const [exprName, setExprName] = useState<string>(filterItem?.name || '');
+  const [op, setOp] = useState<StringValue | NumberValue | DateValue>(filterItem?.op);
+  const [subFilterItem, setSubFilterItem] = useState<FilterValueType>(filterItem);
+
   const submit = (v: FilterValueType) => {
     const expr: FilterValueType = {
       key: exprKey,
@@ -42,25 +46,26 @@ function Expression(props: ExpressionProps) {
       valueType,
       ...v,
     };
+    v && setValues(v.values);
+    v && setOp(v.op);
+    setSubFilterItem(expr);
     onChange(expr, index);
   };
 
-  // const mockAttrChange = () => {
-  //   setValueType('string');
-  // };
+  useEffect(() => {
+    setSubFilterItem(filterItem);
+  }, [filterItem]);
+
+  const cancel = () => {
+    onChange(subFilterItem, index);
+  };
 
   const changePropertyPicker = (v: any) => {
-    v && setValueType(v.valueType || 'string');
+    v && setValueType(v.valueType.toLowerCase() || 'string');
     v && setExprName(v.label);
     v && setExprKey(v.value);
-    const expr: FilterValueType = {
-      key: v.value,
-      name: v.label,
-      valueType: v.valueType || 'string',
-      op: '=',
-      values: [],
-    };
-    onChange(expr, index);
+    v && setValues([]);
+    v && setOp('=');
   };
 
   return (
@@ -78,12 +83,13 @@ function Expression(props: ExpressionProps) {
         <FilterCondition
           valueType={valueType}
           onSubmit={submit}
-          op={filterItem.op}
+          op={op}
           dimensionValueRequest={dimensionValueRequest}
           timeRange={timeRange}
           measurements={measurements}
-          values={filterItem.values}
+          values={values}
           exprKey={exprKey}
+          onCancel={cancel}
         />
       </div>
       <Button

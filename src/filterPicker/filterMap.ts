@@ -9,7 +9,7 @@ export const titleMap: titleGroup = {
 export const defaultFilterItem: FilterValueType = {
   op: '=',
   values: [],
-  valueType: '',
+  valueType: 'string',
   name: '',
   key: '',
 };

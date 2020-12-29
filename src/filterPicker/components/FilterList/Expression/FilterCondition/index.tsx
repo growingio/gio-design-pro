@@ -10,6 +10,7 @@ import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } 
 interface FilterConditionProps {
   valueType: attributeValue;
   onSubmit: (v: FilterValueType) => void;
+  onCancel: () => void;
   op: StringValue | NumberValue | DateValue;
   dimensionValueRequest?: (data: any) => Promise<any>;
   timeRange: string;
@@ -18,7 +19,13 @@ interface FilterConditionProps {
   exprKey: string;
 }
 
-const operationMap = {
+interface operationMapType {
+  string: { [key: string]: string };
+  int: { [key: string]: string };
+  date: { [key: string]: string };
+}
+
+const operationMap: operationMapType = {
   string: {
     '=': '等于',
     '!=': '不等于',
@@ -54,9 +61,19 @@ const operationMap = {
 };
 
 function FilterCondition(props: FilterConditionProps) {
-  const { valueType = 'string', onSubmit, op, dimensionValueRequest, timeRange, measurements, values, exprKey } = props;
+  const {
+    valueType = 'string',
+    onSubmit,
+    onCancel,
+    op,
+    dimensionValueRequest,
+    timeRange,
+    measurements,
+    values,
+    exprKey,
+  } = props;
   const [visible, setVisible] = useState(false);
-  const parseValuesToText = (type: string, operation: string, value: string[]): string => {
+  const parseValuesToText = (type: attributeValue, operation: string, value: string[]): string => {
     const opMap = operationMap[type];
     if (value.length) {
       if (type === 'string') {
@@ -116,7 +133,7 @@ function FilterCondition(props: FilterConditionProps) {
           }
           case 'between': {
             const textList = opMap[operation].split(',');
-            const abs = value[0].split(':')[1].split(',');
+            const abs = value?.[0].split(':')[1].split(',');
             return (
               textList[0] +
               moment(parseInt(abs[0], 10)).format('YYYY-MM-DD') +
@@ -167,7 +184,7 @@ function FilterCondition(props: FilterConditionProps) {
   };
   const curryDimensionValueRequest = ((timeRangeValue: string, measurementsValue: any[]) => {
     return (dimension: string, keyword: string) => {
-      return dimensionValueRequest({ dimension, timeRange: timeRangeValue, metrics: measurementsValue, keyword });
+      return dimensionValueRequest?.({ dimension, timeRange: timeRangeValue, metrics: measurementsValue, keyword });
     };
   })(timeRange, measurements);
 
@@ -181,44 +198,43 @@ function FilterCondition(props: FilterConditionProps) {
   };
   const cancel = () => {
     setVisible(false);
+    onCancel();
   };
-  return (
-    valueType && (
-      <Dropdown
-        visible={visible}
-        trigger={['click']}
-        onVisibleChange={visibleChange}
-        overlay={
-          <FilterAttrOverlay
-            valueType={valueType}
-            onSubmit={submit}
-            onCancel={cancel}
-            op={op}
-            curryDimensionValueRequest={curryDimensionValueRequest}
-            values={values}
-            exprKey={exprKey}
-          />
-        }
-        placement="bottomRight"
-        getTooltipContainer={() => document.getElementById('expression-box')}
-        destroyTooltipOnHide
-      >
-        <span className="filter-condition_select">
-          <Tooltip title={conditionText} disabled={conditionText === '选择过滤条件'} placement="topLeft">
-            <span className="filter-condition_select-text">{conditionText}</span>
-          </Tooltip>
-          <DownFilled
-            size="14px"
-            style={{
-              transform: visible && 'rotate(0.5turn)',
-              position: 'absolute',
-              right: '4px',
-              top: '10px',
-            }}
-          />
-        </span>
-      </Dropdown>
-    )
-  );
+  return exprKey ? (
+    <Dropdown
+      visible={visible}
+      trigger={['click']}
+      onVisibleChange={visibleChange}
+      overlay={
+        <FilterAttrOverlay
+          valueType={valueType}
+          onSubmit={submit}
+          onCancel={cancel}
+          op={op}
+          curryDimensionValueRequest={curryDimensionValueRequest}
+          values={values}
+          exprKey={exprKey}
+        />
+      }
+      placement="bottomRight"
+      getTooltipContainer={() => document.getElementById('expression-box') || document.body}
+      destroyTooltipOnHide
+    >
+      <span className="filter-condition_select">
+        <Tooltip title={conditionText} disabled={conditionText === '选择过滤条件'} placement="topLeft">
+          <span className="filter-condition_select-text">{conditionText}</span>
+        </Tooltip>
+        <DownFilled
+          size="14px"
+          style={{
+            transform: visible ? 'rotate(0.5turn)' : '',
+            position: 'absolute',
+            right: '4px',
+            top: '10px',
+          }}
+        />
+      </span>
+    </Dropdown>
+  ) : null;
 }
 export default FilterCondition;
