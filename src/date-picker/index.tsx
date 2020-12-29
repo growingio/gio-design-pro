@@ -1,3 +1,3 @@
-import RangePicker from './RangePicker';
+import DateRangePicker from './DateRangePicker';
 
-export default RangePicker;
+export default DateRangePicker;

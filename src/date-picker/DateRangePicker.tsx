@@ -16,7 +16,7 @@ enum Mode {
   absolute = 'absolute',
 }
 
-const RangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) => {
+const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) => {
   const { prefixCls: customizePrefixCls } = props;
   const [v, setV] = useState(false);
   const [mode, setMode] = useState<Mode>(Mode.shortcut);
@@ -194,4 +194,4 @@ const RangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) => {
   );
 };
 
-export default RangePicker;
+export default DateRangePicker;

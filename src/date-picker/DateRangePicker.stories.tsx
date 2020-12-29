@@ -1,14 +1,14 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import RangePicker from './RangePicker';
+import DateRangePicker from './DateRangePicker';
 import { RangePickerProps } from './interface';
 
 export default {
-  title: 'Business Components/RangePicker',
-  component: RangePicker,
+  title: 'Business Components/DateRangePicker',
+  component: DateRangePicker,
 } as Meta;
 
-const Template: Story<RangePickerProps> = (args) => <RangePicker {...args} />;
+const Template: Story<RangePickerProps> = (args) => <DateRangePicker {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
