@@ -69,16 +69,12 @@ function Picker({
         <div className={`${prefixCls}__header`}>
           <SearchBar placeholder={searchPlaceholder} size="middle" value={query} onChange={onQueryChange} />
           {actionButton && <Button type="secondary" {...actionButton} />}
-          {query.length > 200 && (
-            <Alert
-              type="warning"
-              message="搜索字符长度已超过 200，只取前 200 字符搜索"
-              size="small"
-              showIcon
-              closeable
-            />
-          )}
         </div>
+        <>
+          {query.length > 200 && (
+            <Alert type="warning" message="搜索字符长度已超过200，只取前200字符搜索" size="small" showIcon closeable />
+          )}
+        </>
         {tabNav && (
           <TabNav type="line" size="small" onChange={tabNav.onChange}>
             {React.useMemo(() => tabNav.items.map((i) => <TabNav.Item {...i} />), [tabNav.items])}

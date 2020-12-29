@@ -2,9 +2,10 @@ import React, { useRef, useState, useMemo, useEffect } from 'react';
 // import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
 // import { TabNavItemProps } from '@gio-design-new/components/es/components/tab-nav/interface';
 import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
-import { toPairs, isEqual } from 'lodash';
+import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
 import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
 import { dimensionToPropertyItem } from './util';
+import { useDebounce, useLocalStorage } from '../hooks';
 // import {
 //   TagOutlined,
 //   UserOutlined,
@@ -15,9 +16,8 @@ import { dimensionToPropertyItem } from './util';
 // } from '@gio-design/icons';
 // import { Loading, Grid, Tag } from '@gio-design-new/components';
 import BasePicker from '../picker';
-import { PropertyPickerProps, PropertyTypes, PropertyInfo, PropertyItem } from './interfaces';
+import { PropertyPickerProps, PropertyTypes, PropertyInfo, PropertyItem, PropertyValue } from './interfaces';
 import PropertyDetailPanel from './PropertyDetail';
-import { useLocalStorage } from '../hooks';
 
 const Tabs = toPairs(PropertyTypes).map((v) => {
   return { key: v[0], children: v[1] };
@@ -28,25 +28,28 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     searchPlaceholder = '搜索属性名称',
     visible,
     onVisibleChange,
-    // onSearch,
     fetchDetailData = (node) => Promise.resolve({ id: node.value, name: node.label, ...node } as PropertyInfo),
     loading = false,
     dataSource: originDataSource,
-    userId,
+    recentlyStorePrefix,
     onChange,
     ...rest
   } = props;
-  // const prefixCls = usePrefixCls('property-picker');
   const [scope, setScope] = useState('all');
   const [pickerVisible, setPickerVisible] = useState(visible);
-  const [keyword, setKeyword] = useState<string>('');
+  const [keyword, setKeyword] = useState<string | undefined>('');
   const [displayValue, setDisplayValue] = useState<string>('');
-  const [recentlyUsed] = useLocalStorage<Map<string, any[]>>(`${userId}_propertyPicker`, new Map());
-  const [currentValue, setCurrentValue] = useState(null);
-
+  const [recentlyUsed, setRecentlyUsed] = useLocalStorage<{ [key: string]: any[] }>(
+    `${recentlyStorePrefix}_propertyPicker`,
+    {
+      all: [],
+    }
+  );
+  const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>();
+  const [debouncedKeyword, setDebouncedKeyword] = useDebounce(keyword, 300);
   useEffect(() => {
     if (initialValue) {
-      setDisplayValue(initialValue.label);
+      setDisplayValue(initialValue.label ?? '');
       setCurrentValue(initialValue);
     }
   }, []);
@@ -72,17 +75,17 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       dataList = originDataSource;
     }
     const filterdData = _filterFunc(dataList);
-    // const r = recentlyUsed?.get(scope) as Array<PropertyItem>;
-    // const recent: PropertyItem[] = [...r].map((v) => {
-    //   return {
-    //     groupId: 'recently',
-    //     groupName: '最近使用',
-    //     ...v,
-    //   };
-    // });
-    const recent: PropertyItem[] = [];
+    const rids = recentlyUsed ? recentlyUsed[scope] : [];
+    const r = dataList.filter((v) => rids?.includes(v.value));
+    const recent: PropertyItem[] = [...r].map((v) => {
+      return {
+        ...v,
+        groupId: 'recently',
+        groupName: '最近使用',
+      };
+    });
     return [...recent, ...filterdData];
-  }, [scope, keyword, originDataSource, recentlyUsed]);
+  }, [scope, debouncedKeyword, originDataSource, recentlyUsed]);
 
   const tabNavItems = useRef([{ key: 'all', children: '全部' }].concat(Tabs));
   function onTabNavChange(key: string) {
@@ -95,34 +98,35 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   function onMunuItemHover(data: NodeData) {
     return <PropertyDetailPanel nodeData={data} fetchData={fetchDetailData} />;
   }
-  // function _saveRecentlyByScope(v: string | number, tab: string) {
-  //   const recent = cloneDeep(recentlyUsed) as Map<string, any[]>;
-  //   let scopedRecent = recent.get(tab);
-  //   if (!scopedRecent) {
-  //     scopedRecent = [];
-  //   }
-  //   let newScopedRecent = uniq([v, ...scopedRecent]);
-  //   if (newScopedRecent.length > 5) {
-  //     newScopedRecent = newScopedRecent.slice(0, 5);
-  //   }
-  //   const newRecent = recent.set(scope, newScopedRecent);
-  //   setRecentlyUsed(newRecent);
-  // }
+  function _saveRecentlyByScope(v: string | number | undefined, tab: string) {
+    const recent = cloneDeep(recentlyUsed);
+    let scopedRecent = recent[tab];
+    if (!scopedRecent) {
+      scopedRecent = [];
+    }
+    let newScopedRecent = uniq([v, ...scopedRecent]);
+    if (newScopedRecent.length > 5) {
+      newScopedRecent = newScopedRecent.slice(0, 5);
+    }
+    recent[scope] = newScopedRecent;
+    setRecentlyUsed(recent);
+  }
   function handleSelect(node: NodeData) {
     const { label, value, valueType } = node as PropertyItem;
 
-    setDisplayValue(label);
-    // _saveRecentlyByScope(value, scope);
+    setDisplayValue(label ?? '');
+    _saveRecentlyByScope(value, scope);
     if (!isEqual(currentValue, node)) {
       onChange?.({ label, value: typeof value === 'number' ? value.toString() : value, valueType });
     }
-    setCurrentValue(node);
+    setCurrentValue(node as PropertyValue);
     rest.onSelect?.(node);
     setPickerVisible(false);
     onVisibleChange?.(false);
   }
   const handleSearch = (query: string) => {
     setKeyword(query);
+    setDebouncedKeyword(query);
   };
   return (
     <>

@@ -4,38 +4,43 @@
 @property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
 
 .@{property-picker-prefix-cls}-detail {
+  color: #7b819c;
   min-height: 20px;
+
   &__name {
-    margin: 0 0 24px;
-    color: #1248e9;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 22px;
-  }
-
-  &__label {
-    margin: 0 0 8px;
-    color: #242e59;
+    color: #313e75;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0;
     line-height: 22px;
   }
-
-  &__value {
-    margin: 0 0 16px;
-    color: #7b819c;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 22px;
+  &__tag {
+    margin-left: 16px;
   }
-
-  &__tags {
-    margin: 0 0 16px;
-
-    .gio-tag:not(:first-child) {
-      margin-left: 8px;
+  &__main {
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 20px;
+    margin-top: 4px;
+    & > div:not(:first-child) {
+      margin-top: 16px;
     }
+  }
+  &__divide {
+    display: block;
+    margin: 16px 0;
+    border-bottom: 1px solid #dce0f2;
+  }
+  &__bottom {
+    margin-bottom: 4px;
+    & > div:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
+  &__value {
+    color: #313e75;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 22px;
   }
 }

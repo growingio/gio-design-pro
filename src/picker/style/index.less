@@ -27,58 +27,65 @@
 }
 
 .@{picker-prefix-cls} {
-  width: 392px;
+  width: 332px;
   height: 500px;
   margin: 0;
-  padding: 20px 0 0;
+  padding: 12px 0 0;
   border: 1px solid #e7eaf9;
   border-radius: 4px;
   background-color: #fff;
-  box-shadow: inset 0 -1px 0 0 #ebedf5;
+  // box-shadow: inset 0 -1px 0 0 #ebedf5;
+  box-shadow: 0 2px 6px 0 #ebedf5;
 
   &__header {
     height: 36px;
-    margin: 0 20px;
-
-    .gio-searchbar {
+    margin: 0 16px;
+    display: flex;
+    align-items: center;
+    .@{searchbar-prefix-cls} {
       display: inline-block;
       vertical-align: top;
-      width: 300px;
+      // width: 300px;
 
       input {
         box-sizing: border-box;
       }
     }
 
-    .gio-btn {
+    .@{btn-prefix-cls} {
       margin-left: 16px;
     }
 
-    .gio-alert {
+    .@{alert-prefix-cls} {
       position: absolute;
-      width: 320px;
+      width: 100%;
       z-index: 9999;
       top: 72px;
     }
   }
 
-  .gio-tabnav {
-    margin: 8px 20px 2px;
+  .@{tabnav-prefix-cls} {
+    margin: 8px 8px 2px;
+    &.@{tabnav-prefix-cls}-sm {
+      .@{tabnav-prefix-cls}-item-btn {
+        padding: 0 12px;
+      }
+    }
   }
 
-  .gio-list-wrapper {
+  .@{component-prefix}-list-wrapper {
     padding: 0 20px;
 
-    .gio-select-option {
+    .@{component-prefix}-select-option {
       box-sizing: border-box;
     }
   }
 
-  .gio-empty {
+  .@{component-prefix}-empty {
     margin-top: 100px;
   }
 
-  .gio-loading-wrapper {
+  .@{component-prefix}-loading-wrapper {
     height: 406px;
     padding-top: 170px;
     text-align: center;
@@ -88,7 +95,7 @@
     position: relative;
 
     .cascader-menu {
-      width: 392px;
+      width: 100%;
       height: 406px;
       box-shadow: none;
       margin-right: 0;
@@ -140,15 +147,16 @@
       .@{picker-prefix-cls}-hover-panel {
         display: block;
         height: fit-content;
-        max-height: 500px;
-        width: 392px;
-        padding: 24px;
+        max-height: 520px;
+        width: 280px;
+        padding: 16px;
         border-radius: 4px;
         position: absolute;
-        right: -442px;
+        right: -100%;
+        transform: translateX(-16px);
         background-color: #fff;
-        top: -98px;
-        box-shadow: 0 -1px 4px 0 #ebedf5, 0 6px 14px 0 #ebedf5;
+        top: -90px;
+        box-shadow: 0 2px 6px 0 rgba(163, 173, 200, 0.5);
       }
     }
   }

@@ -4131,7 +4131,7 @@ arrify@^2.0.1:
 
 asap@~2.0.3:
   version "2.0.6"
-  resolved "https://registry.npmjs.org/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
+  resolved "https://repo.growingio.com/repository/npm-group/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
 asn1.js@^5.2.0:
@@ -14123,7 +14123,7 @@ rc-motion@^2.0.0, rc-motion@^2.0.1, rc-motion@^2.2.0, rc-motion@^2.3.0:
 
 rc-notification@^4.5.4:
   version "4.5.4"
-  resolved "https://registry.npmjs.org/rc-notification/-/rc-notification-4.5.4.tgz#1292e163003db4b9162c856a4630e5d0f1359356"
+  resolved "https://repo.growingio.com/repository/npm-group/rc-notification/-/rc-notification-4.5.4.tgz#1292e163003db4b9162c856a4630e5d0f1359356"
   integrity sha512-VsN0ouF4uglE5g3C9oDsXLNYX0Sz++ZNUFYCswkxhpImYJ9u6nJOpyA71uOYDVCu6bAF54Y5Hi/b+EcnMzkepg==
   dependencies:
     "@babel/runtime" "^7.10.1"
@@ -14167,7 +14167,7 @@ rc-table@^7.9.1:
 
 rc-tooltip@^5.0.1:
   version "5.0.1"
-  resolved "https://registry.yarnpkg.com/rc-tooltip/-/rc-tooltip-5.0.1.tgz#b82c4259604d2cb62ca610ed7932dd37fc6ef61d"
+  resolved "https://repo.growingio.com/repository/npm-group/rc-tooltip/-/rc-tooltip-5.0.1.tgz#b82c4259604d2cb62ca610ed7932dd37fc6ef61d"
   integrity sha512-3AnxhUS0j74xAV3khrKw8o6rg+Ima3nw09DJBezMPnX3ImQUAnayWsPSlN1mEnihjA43rcFkGM1emiKE+CXyMQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
@@ -14221,7 +14221,7 @@ rc-trigger@^2.2.0:
 
 rc-trigger@^4.3.0:
   version "4.4.3"
-  resolved "https://registry.npmjs.org/rc-trigger/-/rc-trigger-4.4.3.tgz#ed449cd6cce446555bc57f4394229c5c7154f4b0"
+  resolved "https://repo.growingio.com/repository/npm-group/rc-trigger/-/rc-trigger-4.4.3.tgz#ed449cd6cce446555bc57f4394229c5c7154f4b0"
   integrity sha512-yq/WyuiPwxd2q6jy+VPyy0GUCRFJ2eFqAaCwPE27AOftXeIupOcJ/2t1wakSq63cfk7qtzev5DKHUAjb8LOJCw==
   dependencies:
     "@babel/runtime" "^7.11.2"
@@ -14334,7 +14334,7 @@ react-dev-utils@^10.0.0:
 
 react-dnd-html5-backend@^11.1.3:
   version "11.1.3"
-  resolved "https://registry.npmjs.org/react-dnd-html5-backend/-/react-dnd-html5-backend-11.1.3.tgz#2749f04f416ec230ea193f5c1fbea2de7dffb8f7"
+  resolved "https://repo.growingio.com/repository/npm-group/react-dnd-html5-backend/-/react-dnd-html5-backend-11.1.3.tgz#2749f04f416ec230ea193f5c1fbea2de7dffb8f7"
   integrity sha512-/1FjNlJbW/ivkUxlxQd7o3trA5DE33QiRZgxent3zKme8DwF4Nbw3OFVhTRFGaYhHFNL1rZt6Rdj1D78BjnNLw==
   dependencies:
     dnd-core "^11.1.3"

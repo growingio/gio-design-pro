@@ -3,17 +3,17 @@ import { PickerProps } from '../picker/interfaces';
 import { Dimension } from '../types';
 
 export interface PropertyInfo {
-  id: string;
-  name: string;
+  id?: string;
+  name?: string;
   key?: string;
   type?: string;
   description?: string;
   valueType?: string;
 }
 type FetchData<T extends {}> = (node: NodeData) => T | Promise<T>;
-type PropertyValue = {
+export type PropertyValue = {
   label?: string;
-  value: string;
+  value?: string;
   valueType?: string;
 };
 
@@ -24,6 +24,7 @@ export interface PropertyPickerProps
    * 初始值
    */
   initialValue?: PropertyValue;
+  multiple?: boolean;
   /**
    * 属性选择器的选项列表
    */
@@ -37,9 +38,13 @@ export interface PropertyPickerProps
    */
   onChange?: (value: PropertyValue) => void;
   /**
-   * 当前登录用户的标识,用于区分不同用户的最近使用
+   * 本地存储最近使用的属性 key值，用于区分不同用户的最近使用
    */
-  userId?: string;
+  recentlyStorePrefix?: string;
+  /**
+   * 禁用的选项
+   */
+  disabledValues?: PropertyValue[] | string[];
 }
 export const PropertyTypes: { [key: string]: string } = {
   event: '事件属性',
