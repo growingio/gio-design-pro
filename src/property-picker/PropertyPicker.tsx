@@ -1,9 +1,9 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
-// import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
-// import { TabNavItemProps } from '@gio-design/components/es/components/tab-nav/interface';
-import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
+// import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
+// import { TabNavItemProps } from '@gio-design-new/components/es/components/tab-nav/interface';
+import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
 import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
-import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
+import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
 import { dimensionToPropertyItem } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
 // import {
@@ -14,7 +14,7 @@ import { useDebounce, useLocalStorage } from '../hooks';
 //   DownFilled,
 //   CheckOutlined,
 // } from '@gio-design/icons';
-// import { Loading, Grid, Tag } from '@gio-design/components';
+// import { Loading, Grid, Tag } from '@gio-design-new/components';
 import BasePicker from '../picker';
 import { PropertyPickerProps, PropertyTypes, PropertyInfo, PropertyItem, PropertyValue } from './interfaces';
 import PropertyDetailPanel from './PropertyDetail';

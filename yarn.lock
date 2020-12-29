@@ -1364,13 +1364,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/components@^20.12.0":
-  version "20.12.4"
-  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/components/-/components-20.12.4.tgz#70d80fed9518387cedcb0fea707cf59f9f3d9357"
-  integrity sha512-jLjsVTF+IEuYf+f9abBZZeObrBxTwEM8zTCLda0BpQ60y2wK+TLliRqrsv/oD4iGQSWbR7XcfxKxuhZ7ySLWgw==
+"@gio-design-new/components@20.12.2":
+  version "20.12.2"
+  resolved "https://repo.growingio.com/repository/npm-group/@gio-design-new/components/-/components-20.12.2.tgz#04fcf79b153061cd137f6463bd0d76c45bbd0d49"
+  integrity sha512-ZzL1yevGElFWkpYfu7USUHMgWC3wd2PuhsWq90X3GsTRqN3hNikiFnUidH6rF7F+gvdiU80py/GBRYmR+ApBmA==
   dependencies:
-    "@gio-design/icons" "^20.12.0"
-    "@gio-design/tokens" "20.12.3"
+    "@gio-design/icons" "20.12.0"
+    "@gio-design/tokens" "20.12.1"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -1411,7 +1411,7 @@
   dependencies:
     classnames "^2.2.6"
 
-"@gio-design/icons@^20.12.0":
+"@gio-design/icons@20.12.0":
   version "20.12.0"
   resolved "https://repo.growingio.com/repository/npm-group/@gio-design/icons/-/icons-20.12.0.tgz#8545d9fd2816a10a9def6e6906f829ef12c392e4"
   integrity sha512-BI3A2FcBKjpRrJWj79uH4uxXBdYYnaXMSXtlzOw/YKmFYcQa5ivGS2WiUyJ+h+3mcedGvGdB2fPHx9HadVHSog==
@@ -1423,10 +1423,10 @@
   resolved "https://registry.npmjs.org/@gio-design/tokens/-/tokens-20.12.0.tgz#f358e933863a6993356211c4b70fcd510cb5b9c1"
   integrity sha512-KRYP17XV4r01ZlHqEstlnYN2vQ/vRRr1Ir6sYJE9n4EIkXvXVE+BrKxkWLMqsSd7t9BpYp6c2SPGUu/FPyYgJw==
 
-"@gio-design/tokens@20.12.3":
-  version "20.12.3"
-  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/tokens/-/tokens-20.12.3.tgz#bfa3a3c6330d86acaf9f54329922977350447a3f"
-  integrity sha512-IE2/DultN+XI8pe1T9RTqUfe82zGmJKbD7a6L0/3i95AF0Fk9FbbN7Y5N2p2I+eDK2pFHOVVto3IswThH6TIFA==
+"@gio-design/tokens@20.12.1":
+  version "20.12.1"
+  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/tokens/-/tokens-20.12.1.tgz#dfd76bd80f9c56ea7b3c35cde74f72c772e5adfe"
+  integrity sha512-mCeh46G8erRp/tk5l83a3Hb2U3FmH6h/P+xARHz8r4AyYoa3ob0LqHhilBs0BoAvkQ/z/vdrhPDyPslvV+zutg==
 
 "@graphql-codegen/cli@1.19.1":
   version "1.19.1"
@@ -4091,7 +4091,7 @@ arrify@^2.0.1:
 
 asap@~2.0.3:
   version "2.0.6"
-  resolved "https://registry.npmjs.org/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
+  resolved "https://repo.growingio.com/repository/npm-group/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
 asn1.js@^5.2.0:
@@ -14078,7 +14078,7 @@ rc-motion@^2.0.0, rc-motion@^2.0.1, rc-motion@^2.2.0, rc-motion@^2.3.0:
 
 rc-notification@^4.5.4:
   version "4.5.4"
-  resolved "https://registry.npmjs.org/rc-notification/-/rc-notification-4.5.4.tgz#1292e163003db4b9162c856a4630e5d0f1359356"
+  resolved "https://repo.growingio.com/repository/npm-group/rc-notification/-/rc-notification-4.5.4.tgz#1292e163003db4b9162c856a4630e5d0f1359356"
   integrity sha512-VsN0ouF4uglE5g3C9oDsXLNYX0Sz++ZNUFYCswkxhpImYJ9u6nJOpyA71uOYDVCu6bAF54Y5Hi/b+EcnMzkepg==
   dependencies:
     "@babel/runtime" "^7.10.1"
@@ -14122,7 +14122,7 @@ rc-table@^7.9.1:
 
 rc-tooltip@^5.0.1:
   version "5.0.1"
-  resolved "https://registry.yarnpkg.com/rc-tooltip/-/rc-tooltip-5.0.1.tgz#b82c4259604d2cb62ca610ed7932dd37fc6ef61d"
+  resolved "https://repo.growingio.com/repository/npm-group/rc-tooltip/-/rc-tooltip-5.0.1.tgz#b82c4259604d2cb62ca610ed7932dd37fc6ef61d"
   integrity sha512-3AnxhUS0j74xAV3khrKw8o6rg+Ima3nw09DJBezMPnX3ImQUAnayWsPSlN1mEnihjA43rcFkGM1emiKE+CXyMQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
@@ -14176,7 +14176,7 @@ rc-trigger@^2.2.0:
 
 rc-trigger@^4.3.0:
   version "4.4.3"
-  resolved "https://registry.npmjs.org/rc-trigger/-/rc-trigger-4.4.3.tgz#ed449cd6cce446555bc57f4394229c5c7154f4b0"
+  resolved "https://repo.growingio.com/repository/npm-group/rc-trigger/-/rc-trigger-4.4.3.tgz#ed449cd6cce446555bc57f4394229c5c7154f4b0"
   integrity sha512-yq/WyuiPwxd2q6jy+VPyy0GUCRFJ2eFqAaCwPE27AOftXeIupOcJ/2t1wakSq63cfk7qtzev5DKHUAjb8LOJCw==
   dependencies:
     "@babel/runtime" "^7.11.2"
@@ -14289,7 +14289,7 @@ react-dev-utils@^10.0.0:
 
 react-dnd-html5-backend@^11.1.3:
   version "11.1.3"
-  resolved "https://registry.npmjs.org/react-dnd-html5-backend/-/react-dnd-html5-backend-11.1.3.tgz#2749f04f416ec230ea193f5c1fbea2de7dffb8f7"
+  resolved "https://repo.growingio.com/repository/npm-group/react-dnd-html5-backend/-/react-dnd-html5-backend-11.1.3.tgz#2749f04f416ec230ea193f5c1fbea2de7dffb8f7"
   integrity sha512-/1FjNlJbW/ivkUxlxQd7o3trA5DE33QiRZgxent3zKme8DwF4Nbw3OFVhTRFGaYhHFNL1rZt6Rdj1D78BjnNLw==
   dependencies:
     dnd-core "^11.1.3"

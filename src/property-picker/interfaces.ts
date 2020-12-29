@@ -1,4 +1,4 @@
-import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
 import { PickerProps } from '../picker/interfaces';
 import { Dimension } from '../types';
 

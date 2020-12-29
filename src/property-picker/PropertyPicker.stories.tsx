@@ -5,7 +5,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import PropertyPicker from './PropertyPicker';
 import { PropertyPickerProps } from './interfaces';
 import { insightDimensions } from './__test__/data';
-import '@gio-design/components/es/components/button/style/css';
+import '@gio-design-new/components/es/components/button/style/css';
 import './style/index.less';
 import { dimensionToPropertyItem } from './util';
 import { Dimension } from '../types';
