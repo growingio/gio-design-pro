@@ -1,4 +1,4 @@
-import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
 import { PickerProps } from '../picker/interfaces';
 import { Dimension } from '../types';
 
@@ -11,9 +11,9 @@ export interface PropertyInfo {
   valueType?: string;
 }
 type FetchData<T extends {}> = (node: NodeData) => T | Promise<T>;
-type PropertyValue = {
+export type PropertyValue = {
   label?: string;
-  value: string;
+  value?: string;
   valueType?: string;
 };
 
@@ -23,7 +23,7 @@ export interface PropertyPickerProps
   /**
    * 初始值
    */
-  initialValue?: PropertyValue | PropertyValue[];
+  initialValue?: PropertyValue;
   multiple?: boolean;
   /**
    * 属性选择器的选项列表

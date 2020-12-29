@@ -1,15 +1,15 @@
 import * as React from 'react';
-import Alert from '@gio-design-new/components/es/components/alert';
-import SearchBar from '@gio-design-new/components/es/components/search-bar';
-import Loading from '@gio-design-new/components/es/components/loading';
-import TabNav from '@gio-design-new/components/es/components/tab-nav';
-import Button from '@gio-design-new/components/es/components/button';
-import Menu from '@gio-design-new/components/es/components/cascader/menu';
-import Input from '@gio-design-new/components/es/components/input';
-import Dropdown from '@gio-design-new/components/es/components/dropdown';
-import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
+import Alert from '@gio-design/components/es/components/alert';
+import SearchBar from '@gio-design/components/es/components/search-bar';
+import Loading from '@gio-design/components/es/components/loading';
+import TabNav from '@gio-design/components/es/components/tab-nav';
+import Button from '@gio-design/components/es/components/button';
+import Menu from '@gio-design/components/es/components/cascader/menu';
+import Input from '@gio-design/components/es/components/input';
+import Dropdown from '@gio-design/components/es/components/dropdown';
+import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { UpFilled, DownFilled } from '@gio-design/icons';
-import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
 import EmptyPrompt from '../empty-prompt';
 import { PickerProps } from './interfaces';
 
@@ -69,16 +69,12 @@ function Picker({
         <div className={`${prefixCls}__header`}>
           <SearchBar placeholder={searchPlaceholder} size="middle" value={query} onChange={onQueryChange} />
           {actionButton && <Button type="secondary" {...actionButton} />}
-          {query.length > 200 && (
-            <Alert
-              type="warning"
-              message="搜索字符长度已超过 200，只取前 200 字符搜索"
-              size="small"
-              showIcon
-              closeable
-            />
-          )}
         </div>
+        <>
+          {query.length > 200 && (
+            <Alert type="warning" message="搜索字符长度已超过200，只取前200字符搜索" size="small" showIcon closeable />
+          )}
+        </>
         {tabNav && (
           <TabNav type="line" size="small" onChange={tabNav.onChange}>
             {React.useMemo(() => tabNav.items.map((i) => <TabNav.Item {...i} />), [tabNav.items])}

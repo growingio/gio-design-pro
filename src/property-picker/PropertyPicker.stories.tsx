@@ -1,16 +1,16 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { action } from '@storybook/addon-actions';
 import PropertyPicker from './PropertyPicker';
 import { PropertyPickerProps } from './interfaces';
-import { insightDimensions, allVariables } from './__test__/data';
-import '@gio-design-new/components/es/components/button/style/css';
+import { insightDimensions } from './__test__/data';
+import '@gio-design/components/es/components/button/style/css';
 import './style/index.less';
 import { dimensionToPropertyItem } from './util';
+import { Dimension } from '../types';
 
-const dataSource = insightDimensions.map((v) => dimensionToPropertyItem(v));
+const dataSource = insightDimensions.map((v: any) => dimensionToPropertyItem(v as Dimension));
 export default {
   title: 'Business Components/PropertyPicker',
   component: PropertyPicker,
@@ -26,10 +26,10 @@ export const Default = Template.bind({});
 Default.args = {
   dataSource,
   initialValue: { ...{ label: 'App 版本', value: 'cv', valueType: null } },
-  onChange: (v) => {
+  onChange: (v: any) => {
     console.log('onchange', v);
   },
-  fetchData: (p) => {
+  fetchData: (p: any) => {
     return { ...p };
   },
 };

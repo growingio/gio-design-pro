@@ -1,10 +1,11 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
-// import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
-// import { TabNavItemProps } from '@gio-design-new/components/es/components/tab-nav/interface';
-import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
+// import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
+// import { TabNavItemProps } from '@gio-design/components/es/components/tab-nav/interface';
+import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
 import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
-import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
+import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
 import { dimensionToPropertyItem } from './util';
+import { useDebounce, useLocalStorage } from '../hooks';
 // import {
 //   TagOutlined,
 //   UserOutlined,
@@ -13,11 +14,10 @@ import { dimensionToPropertyItem } from './util';
 //   DownFilled,
 //   CheckOutlined,
 // } from '@gio-design/icons';
-// import { Loading, Grid, Tag } from '@gio-design-new/components';
+// import { Loading, Grid, Tag } from '@gio-design/components';
 import BasePicker from '../picker';
-import { PropertyPickerProps, PropertyTypes, PropertyInfo, PropertyItem } from './interfaces';
+import { PropertyPickerProps, PropertyTypes, PropertyInfo, PropertyItem, PropertyValue } from './interfaces';
 import PropertyDetailPanel from './PropertyDetail';
-import { useLocalStorage } from '../hooks';
 
 const Tabs = toPairs(PropertyTypes).map((v) => {
   return { key: v[0], children: v[1] };
@@ -37,7 +37,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   } = props;
   const [scope, setScope] = useState('all');
   const [pickerVisible, setPickerVisible] = useState(visible);
-  const [keyword, setKeyword] = useState<string>('');
+  const [keyword, setKeyword] = useState<string | undefined>('');
   const [displayValue, setDisplayValue] = useState<string>('');
   const [recentlyUsed, setRecentlyUsed] = useLocalStorage<{ [key: string]: any[] }>(
     `${recentlyStorePrefix}_propertyPicker`,
@@ -45,11 +45,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       all: [],
     }
   );
-  const [currentValue, setCurrentValue] = useState(null);
-
+  const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>();
+  const [debouncedKeyword, setDebouncedKeyword] = useDebounce(keyword, 300);
   useEffect(() => {
     if (initialValue) {
-      setDisplayValue(initialValue.label);
+      setDisplayValue(initialValue.label ?? '');
       setCurrentValue(initialValue);
     }
   }, []);
@@ -85,7 +85,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       };
     });
     return [...recent, ...filterdData];
-  }, [scope, keyword, originDataSource, recentlyUsed]);
+  }, [scope, debouncedKeyword, originDataSource, recentlyUsed]);
 
   const tabNavItems = useRef([{ key: 'all', children: '全部' }].concat(Tabs));
   function onTabNavChange(key: string) {
@@ -98,7 +98,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   function onMunuItemHover(data: NodeData) {
     return <PropertyDetailPanel nodeData={data} fetchData={fetchDetailData} />;
   }
-  function _saveRecentlyByScope(v: string | number, tab: string) {
+  function _saveRecentlyByScope(v: string | number | undefined, tab: string) {
     const recent = cloneDeep(recentlyUsed);
     let scopedRecent = recent[tab];
     if (!scopedRecent) {
@@ -114,18 +114,19 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   function handleSelect(node: NodeData) {
     const { label, value, valueType } = node as PropertyItem;
 
-    setDisplayValue(label);
+    setDisplayValue(label ?? '');
     _saveRecentlyByScope(value, scope);
     if (!isEqual(currentValue, node)) {
       onChange?.({ label, value: typeof value === 'number' ? value.toString() : value, valueType });
     }
-    setCurrentValue(node);
+    setCurrentValue(node as PropertyValue);
     rest.onSelect?.(node);
     setPickerVisible(false);
     onVisibleChange?.(false);
   }
   const handleSearch = (query: string) => {
     setKeyword(query);
+    setDebouncedKeyword(query);
   };
   return (
     <>

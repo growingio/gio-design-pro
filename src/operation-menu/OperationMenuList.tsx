@@ -1,6 +1,6 @@
 import React from 'react';
-import Menu, { MenuItem } from '@gio-design-new/components/es/components/menu';
-import { Tooltip } from '@gio-design-new/components';
+import Menu, { MenuItem } from '@gio-design/components/es/components/menu';
+import { Tooltip } from '@gio-design/components';
 import { OperationMenuListOption, OperationMenuListProps } from './interfaces';
 
 const OperationMenuList = (props: OperationMenuListProps) => {

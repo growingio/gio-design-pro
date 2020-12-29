@@ -1,15 +1,15 @@
 import * as React from 'react';
-import Alert from '@gio-design-new/components/es/components/alert';
-import SearchBar from '@gio-design-new/components/es/components/search-bar';
-import Loading from '@gio-design-new/components/es/components/loading';
-import TabNav from '@gio-design-new/components/es/components/tab-nav';
-import Button from '@gio-design-new/components/es/components/button';
-import Menu from '@gio-design-new/components/es/components/cascader/menu';
-import Input from '@gio-design-new/components/es/components/input';
-import Dropdown from '@gio-design-new/components/es/components/dropdown';
-import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
+import Alert from '@gio-design/components/es/components/alert';
+import SearchBar from '@gio-design/components/es/components/search-bar';
+import Loading from '@gio-design/components/es/components/loading';
+import TabNav from '@gio-design/components/es/components/tab-nav';
+import Button from '@gio-design/components/es/components/button';
+import Menu from '@gio-design/components/es/components/cascader/menu';
+import Input from '@gio-design/components/es/components/input';
+import Dropdown from '@gio-design/components/es/components/dropdown';
+import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { UpFilled, DownFilled } from '@gio-design/icons';
-import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
 import EmptyPrompt from '../empty-prompt';
 import { PickerProps } from '../picker/interfaces';
 

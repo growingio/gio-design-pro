@@ -29,7 +29,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@gio-design-new/components": "^20.12.1",
+    "@gio-design/components": "^20.12.0",
     "@gio-design/icons": "20.11.0",
     "@gio-design/tokens": "20.12.0",
     "classnames": "^2.2.6",

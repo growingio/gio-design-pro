@@ -66,7 +66,7 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
     result.groupId = newGoupId;
     result.groupName = newGroupName;
   }
-  result.type = DimensionGroupTypeMapper[result.groupId];
+  result.type = DimensionGroupTypeMapper[result.groupId || 'unkown'];
   result.typeName = PropertyTypes[result.type];
   return result;
 };
