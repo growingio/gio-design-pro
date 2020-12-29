@@ -60,6 +60,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
       setTimeRange([value[0], moment()]);
       setFixedMode(true);
     } else if (mode === 'dynamic') {
+      handleRightDynamicInput(7);
       setFixedMode(true);
       setLeftDynamicInputVisible(false);
       setTimeRange([moment().subtract('days', 7), moment()]);
@@ -240,7 +241,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
         {({ value: _value }: { value: Array<Moment> }) => (
           <div className={classNames(`${prefixCls}-range-input-${renderMode}`)}>
             {renderMode === 'absolute' && (
-              <>
+              <div className={classNames(`${prefixCls}-range-input`)}>
                 <Input
                   className={`${prefixCls}-input-first`}
                   onChange={handleLeftInputChange}
@@ -255,7 +256,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
                   onClick={() => setOpen(true)}
                   suffix={<CalendarOutlined />}
                 />
-              </>
+              </div>
             )}
             {renderMode === 'since' && (
               <>
@@ -268,8 +269,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
                   suffix={<CalendarOutlined />}
                 />
                 <Tabs activeKey={endDay} className={`${prefixCls}-tab`} size="middle" onChange={handleEndDayChange}>
-                  <TabPane tab="至今日" key="today" />
-                  <TabPane tab="至昨日" key="yesterday" />
+                  <TabPane tab="至今日" key="today" style={{ height: '36px' }} />
+                  <TabPane tab="至昨日" key="yesterday" style={{ height: '36px' }} />
                 </Tabs>
               </>
             )}
@@ -281,7 +282,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
                   value={rightDynamicInput}
                   onChange={handleRightDynamicInput as any}
                   min={0}
-                  suffix={<CalendarOutlined />}
                 />
                 天
                 <Button type="secondary" icon={<PlusCircleFilled />} onClick={handleEndDay}>

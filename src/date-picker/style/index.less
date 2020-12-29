@@ -17,6 +17,9 @@
     width: 253px;
     height: 40px;
   }
+  .gio-tabnav-md {
+    height: 36px;
+  }
 }
 
 .@{date-picker-prefix-cls}-range-input-absolute {
@@ -24,23 +27,41 @@
   flex-direction: row;
   align-items: center;
   width: 298px;
-  border: 1px solid @color-border-input-normal;
-  border-radius: 4px;
+
   // transition: all 0.3s ease-in-out;
+
+  .@{date-picker-prefix-cls}-range-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 298px;
+    border: 1px solid @color-border-input-normal;
+    border-radius: 4px;
+  }
 
   .gio-date-picker-input-first {
     width: 122px;
-    height: 38px;
-    .gio-input-content {
-      text-align: center;
+    height: 36px;
+    border: none;
+    .gio-input__content {
+      text-align: left;
+      font-style: normal;
+      font-weight: normal;
+      font-family: 'PingFang SC', sans-serif;
+      color: #313e75;
     }
   }
 
   .gio-date-picker-input-second {
     width: 160px;
-    height: 38px;
-    .gio-input-content {
-      text-align: center;
+    height: 36px;
+    border: none;
+    .gio-input__content {
+      text-align: left;
+      font-style: normal;
+      font-weight: normal;
+      font-family: 'PingFang SC', sans-serif;
+      color: #313e75;
     }
   }
 
@@ -59,27 +80,34 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'PingFang SC', sans-serif;
+  color: #313e75;
   // border: 1px solid @color-border-input-normal;
   // border-radius: 4px;
   transition: all 0.3s ease-in-out;
 
   .gio-date-picker-input-second {
     width: 160px;
-    height: 38px;
+    height: 36px;
     font-size: 14px;
     line-height: 22px;
-    .gio-input-content {
-      margin-left: 8px;
-      border: 1px solid #e7eaf9;
-      text-align: center;
+    margin: 0 8px;
+    .gio-input__content {
+      // border: 1px solid #e7eaf9;
+      text-align: left;
+      font-style: normal;
+      font-weight: normal;
+      font-family: 'PingFang SC', sans-serif;
+      color: #313e75;
     }
-
-    margin-right: 18px;
   }
 
   .gio-date-picker-tab {
     width: 180px;
-    height: 38px;
+    height: 36px;
     font-size: 14px;
     line-height: 22px;
   }
@@ -95,21 +123,29 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 14px;
+  font-style: normal;
+  font-family: 'PingFang SC', sans-serif;
+  color: #313e75;
+  font-weight: normal;
+
   // border: 1px solid @color-border-input-normal;
   // border-radius: 4px;
 
   .gio-date-picker-input-second {
-    width: 100px;
+    width: 80px;
     height: 36px;
     font-size: 14px;
     line-height: 22px;
-    .gio-input-content {
-      margin-left: 8px;
-      border: 1px solid #e7eaf9;
-      text-align: center;
+    margin: 0 8px;
+    .gio-input__content {
+      // border: 1px solid #e7eaf9;
+      text-align: left;
+      font-style: normal;
+      font-family: 'PingFang SC', sans-serif;
+      color: #313e75;
+      font-weight: normal;
     }
-
-    margin-right: 18px;
   }
 
   .@{input-prefix-cls}-content {

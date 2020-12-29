@@ -174,12 +174,14 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
             backgroundColor: '#FFFFFF',
             display: 'inline-flex',
             justifyContent: 'center',
+            borderRadius: '4px',
           }}
         >
           <List
             wrapStyle={{ borderRight: '1px solid #E7EAF9' }}
             dataSource={modeOptions}
             width={144}
+            value={Mode.shortcut}
             onClick={handleModeChange}
           />
           <div>{mode === Mode.shortcut ? renderShortcuts() : renderCalendar()}</div>
