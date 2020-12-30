@@ -45,6 +45,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
         </div>
       );
     case 'hasValue':
+    case 'noValue':
       return null;
     default:
       return <Input.InputNumber value={value} onChange={setNumberValue} />;

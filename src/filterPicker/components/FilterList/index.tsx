@@ -38,8 +38,12 @@ function FilterList(props: FilterListProps) {
     setFilterList([...filterList, defaultFilterItem]);
   };
   const deleteFilterItem = (index: number) => {
-    filterList.splice(index, 1);
-    setFilterList([...filterList]);
+    if (filterList.length > 1) {
+      filterList.splice(index, 1);
+      setFilterList([...filterList]);
+    } else {
+      setFilterList([defaultFilterItem]);
+    }
   };
 
   const submit = () => {
@@ -57,7 +61,6 @@ function FilterList(props: FilterListProps) {
           <Expression
             key={ele.key}
             index={index}
-            filterLength={filterList.length}
             exprs={filterList}
             filterItem={ele}
             deleteFilterItem={deleteFilterItem}
@@ -69,10 +72,19 @@ function FilterList(props: FilterListProps) {
           />
         ))}
       </div>
-      <Button icon={<PlusCircleFilled />} type="text" disabled={filterList.length >= 5} onClick={addFilter}>
+      <Button
+        icon={<PlusCircleFilled />}
+        type="text"
+        disabled={filterList.some((ele: FilterValueType) => !ele.values.length)}
+        onClick={addFilter}
+      >
         添加过滤条件
       </Button>
-      <Footer onCancel={cancel} onSubmit={submit} />
+      <Footer
+        onCancel={cancel}
+        onSubmit={submit}
+        comfirmStatus={filterList.some((ele: FilterValueType) => !ele.values.length)}
+      />
     </>
   );
 }

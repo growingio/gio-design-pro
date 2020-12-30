@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import moment, { Moment } from 'moment';
 import { DatePicker, DateRangePicker } from '@gio-design-new/components';
-import RelativeCurrent from './components/relativeCurrent';
-import RelativeBetween from './components/relativeBetween';
+import RelativeCurrent from './components/RelativeCurrent';
+import RelativeBetween from './components/RelativeBetween';
 import IncludeToday from './components/IncludeToday';
 
 interface DateAttrSelectProps {

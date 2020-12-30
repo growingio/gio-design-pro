@@ -82,6 +82,10 @@ export const selectOptionMap: selectOption = {
       value: 'hasValue',
       label: '有值',
     },
+    {
+      value: 'noValue',
+      label: '无值',
+    },
   ],
   date: [
     {

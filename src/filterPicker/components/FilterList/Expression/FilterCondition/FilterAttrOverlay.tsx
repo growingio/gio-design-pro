@@ -131,7 +131,11 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
           </Checkbox>
         )}
       </div>
-      <Footer onSubmit={submit} onCancel={onCancel} />
+      <Footer
+        onSubmit={submit}
+        onCancel={onCancel}
+        comfirmStatus={operationValue !== 'hasValue' && operationValue !== 'noValue' && !attrValue.length}
+      />
     </div>
   );
 }

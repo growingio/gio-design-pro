@@ -9,7 +9,6 @@ import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } 
 
 interface ExpressionProps {
   index?: number;
-  filterLength?: number;
   filterItem: FilterValueType;
   deleteFilterItem: (index: number) => void;
   dimensionValueRequest?: (data: any) => Promise<any>;
@@ -22,7 +21,6 @@ interface ExpressionProps {
 function Expression(props: ExpressionProps) {
   const {
     index = 0,
-    filterLength,
     filterItem,
     deleteFilterItem,
     dimensionValueRequest,
@@ -61,11 +59,19 @@ function Expression(props: ExpressionProps) {
   };
 
   const changePropertyPicker = (v: any) => {
-    v && setValueType(v.valueType.toLowerCase() || 'string');
+    v && setValueType(v?.valueType?.toLowerCase() || 'string');
     v && setExprName(v.label);
     v && setExprKey(v.value);
     v && setValues([]);
     v && setOp('=');
+    const expr: FilterValueType = {
+      key: v.value,
+      name: v.label,
+      valueType: v?.valueType?.toLowerCase() || 'string',
+      op: '=',
+      values: [],
+    };
+    onChange(expr, index);
   };
 
   return (
@@ -92,13 +98,7 @@ function Expression(props: ExpressionProps) {
           onCancel={cancel}
         />
       </div>
-      <Button
-        type="assist"
-        icon={<DeleteOutlined />}
-        disabled={!filterLength || filterLength === 1}
-        size="middle"
-        onClick={() => deleteFilterItem(index)}
-      />
+      <Button type="assist" icon={<DeleteOutlined />} size="middle" onClick={() => deleteFilterItem(index)} />
     </div>
   );
 }

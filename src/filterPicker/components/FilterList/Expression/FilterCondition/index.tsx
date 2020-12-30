@@ -44,6 +44,7 @@ const operationMap: operationMapType = {
     '<': '小于',
     '<=': '小于等于',
     between: '在,与,之间',
+    noValue: '无值',
     hasValue: '有值',
   },
   date: {
@@ -105,6 +106,12 @@ function FilterCondition(props: FilterConditionProps) {
           case '!=': {
             if (value[0] === ' ') {
               return '有值';
+            }
+            return opMap[operation] + value[0];
+          }
+          case '=': {
+            if (value[0] === ' ') {
+              return '无值';
             }
             return opMap[operation] + value[0];
           }
