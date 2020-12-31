@@ -136,7 +136,6 @@ jobs:
   publish-storybook:
     name: Publish storybook
     needs: [lint, test]
-    if: ${{ startsWith(github.event.head_commit.message, 'feat') || startsWith(github.event.head_commit.message, 'fix') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
