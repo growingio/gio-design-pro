@@ -21,7 +21,7 @@ describe('Picker', () => {
     const wrapper = mount(
       <Picker {...defaultProps} visible dataSource={nodes} onHoverPanelShow={jest.fn()} onSearch={onSearch} />
     );
-    const search = wrapper.find('.gio-picker-dropdown .gio-input-content');
+    const search = wrapper.find('.gio-picker-dropdown .gio-input__content');
     search.simulate('change', { target: { value: 'x' } });
 
     search.simulate('change', { target: { value: 'x'.repeat(201) } });

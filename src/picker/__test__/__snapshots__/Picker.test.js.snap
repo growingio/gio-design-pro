@@ -6,17 +6,17 @@ exports[`Picker snapshots will only show input 1`] = `
   style="cursor:pointer"
 >
   <div
-    class="gio-input gio-input-container gio-input-container-middle"
+    class="gio-input gio-input--middle gio-input__container"
   >
     <input
       aria-label="picker-value"
-      class="gio-input-content gio-input-content-suffix"
+      class="gio-input__content gio-input__content-suffix"
       placeholder=""
       type="text"
       value=""
     />
     <div
-      class="gio-input-container-suffix"
+      class="gio-input__suffix"
     >
       <span
         class="gio-icon"
@@ -24,9 +24,9 @@ exports[`Picker snapshots will only show input 1`] = `
         <svg
           class="gio-icon-svg"
           fill="currentColor"
-          height="1rem"
+          height="16px"
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs />
