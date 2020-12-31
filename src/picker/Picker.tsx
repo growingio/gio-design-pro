@@ -9,7 +9,7 @@ import Input from '@gio-design/components/es/components/input';
 import Dropdown from '@gio-design/components/es/components/dropdown';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { UpFilled, DownFilled } from '@gio-design/icons';
-import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design/components/es/components/cascader/interface';
 import EmptyPrompt from '../empty-prompt';
 import { PickerProps } from './interfaces';
 

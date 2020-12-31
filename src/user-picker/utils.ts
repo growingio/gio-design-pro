@@ -1,4 +1,4 @@
-import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design/components/es/components/cascader/interface';
 import { Segment } from '../types';
 import { PreparedSegment, NodeGroup } from './interfaces';
 
