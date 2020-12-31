@@ -71,7 +71,7 @@ jobs:
           directory: coverage/
   build:
     name: Build Package
-    needs: [lint, test]
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -79,7 +79,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
@@ -135,7 +135,7 @@ jobs:
           prerelease: false
   publish-storybook:
     name: Publish storybook
-    needs: [lint, test]
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
