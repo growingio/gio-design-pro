@@ -5,7 +5,6 @@ import moment from 'moment';
 
 import FilterAttrOverlay from './FilterAttrOverlay';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from './interfaces';
-// import { selectValueMap } from '../../../../filterMap';
 
 interface FilterConditionProps {
   valueType: attributeValue;
@@ -74,17 +73,21 @@ function FilterCondition(props: FilterConditionProps) {
     exprKey,
   } = props;
   const [visible, setVisible] = useState(false);
+  // 对NumberAttrSelect，StringAttrSelect，DateAttrSelect返回的values值进行转换,生成属性选择框的属性规则展示文本
   const parseValuesToText = (type: attributeValue, operation: string, value: string[]): string => {
     const opMap = operationMap[type];
     if (value.length) {
       if (type === 'string') {
+        // 字符串类型
         switch (operation) {
+          // 判断当op ： ”=“ 时，是否为无值状态，如果无值，返回’有值’
           case '=': {
             if (value[0] === ' ') {
               return '无值';
             }
             return opMap[operation] + value[0];
           }
+          // 判断当op ： ”！=“ 时，是否为有值状态，如果有值，返回’无值‘
           case '!=': {
             if (value[0] === ' ') {
               return '有值';
@@ -103,12 +106,14 @@ function FilterCondition(props: FilterConditionProps) {
       }
       if (type === 'int') {
         switch (operation) {
+          // 判断当op ： ”！=“ 时，是否为有值状态，如果有值，返回’有值‘
           case '!=': {
             if (value[0] === ' ') {
               return '有值';
             }
             return opMap[operation] + value[0];
           }
+          // 判断当op ： ”=“ 时，是否为无值状态，如果无值，返回’无值‘
           case '=': {
             if (value[0] === ' ') {
               return '无值';
@@ -117,6 +122,7 @@ function FilterCondition(props: FilterConditionProps) {
           }
           case 'between': {
             const textList = opMap[operation].split(',');
+            // 返回 ------'在(value1)与(value2)之间'
             return textList[0] + value[0] + textList[1] + value[1] + textList[2];
           }
           default:
@@ -131,6 +137,12 @@ function FilterCondition(props: FilterConditionProps) {
             }
             return opMap[operation] + moment(value[0]).format('YYYY-MM-DD');
           }
+          case '=': {
+            if (value[0] === ' ') {
+              return '无值';
+            }
+            return opMap[operation] + moment(value[0]).format('YYYY-MM-DD');
+          }
           case '>':
           case '>=':
           case '<':
@@ -138,6 +150,8 @@ function FilterCondition(props: FilterConditionProps) {
             const textList = opMap[operation].split(',');
             return textList[0] + moment(value[0]).format('YYYY-MM-DD') + textList[1];
           }
+          // 判断，在。。。与。。。之间
+          // 返回字符串 ---- ‘在（date1）与（data2）之间’
           case 'between': {
             const textList = opMap[operation].split(',');
             const abs = value?.[0].split(':')[1].split(',');
@@ -195,12 +209,8 @@ function FilterCondition(props: FilterConditionProps) {
     };
   })(timeRange, measurements);
 
-  // const parseFilterValueToConditionText = (v: filterValueType): string => {
-  //   return `${selectValueMap[attribute][v.op]} ${v.values[0]}`;
-  // };
   const submit = (v: FilterValueType) => {
     setVisible(false);
-    // setConditionText(parseFilterValueToConditionText(v));
     onSubmit(v);
   };
   const cancel = () => {

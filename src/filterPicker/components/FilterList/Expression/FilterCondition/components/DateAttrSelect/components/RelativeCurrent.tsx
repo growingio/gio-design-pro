@@ -54,6 +54,8 @@ function RelativeCurrent(props: RelativeCurrentProps) {
       }
       if (relativeTime.includes('0')) {
         setAfterValue('-1');
+      } else {
+        setAfterValue('1');
       }
       if (parseInt(relativeTime[0], 10)) {
         setDays(`${Math.abs(parseInt(relativeTime[0], 10))}`);
@@ -76,7 +78,10 @@ function RelativeCurrent(props: RelativeCurrentProps) {
   };
 
   useEffect(() => {
-    createAttrValue(days, nowOrFuturevalue, inOrOutValue);
+    // values值的初始设置
+    if (!values.length) {
+      createAttrValue(days, nowOrFuturevalue, inOrOutValue);
+    }
   }, [attrSelect]);
   const selectChange = (v: string) => {
     v && setValue(v);

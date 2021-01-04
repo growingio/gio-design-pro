@@ -26,20 +26,26 @@ function DateAttrSelect(props: DateAttrSelectProps) {
   );
 
   useEffect(() => {
-    if (attrSelect.includes('relative')) {
-      if (attrSelect.includes('Current')) {
-        attrChange(['relateTime: -1, 0']);
+    // values值的初始化
+    if (!values.length) {
+      if (attrSelect.includes('relative')) {
+        if (attrSelect.includes('Current')) {
+          // 相对现在，values值的初始化
+          attrChange(['relateTime:-1,0']);
+        } else {
+          // 相对区间，值的初始化
+          attrChange(['relateTime:-1,-1']);
+        }
+      } else if (attrSelect === 'between') {
+        // 在。。。与。。。之间，值的初始化
+        attrChange([
+          `abs:${moment(timeRange?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(timeRange?.[1], 'YYYY-MM-DD')
+            .endOf('day')
+            .valueOf()}`,
+        ]);
       } else {
-        attrChange(['relateTime: -1, -1']);
+        attrChange([time.valueOf()]);
       }
-    } else if (attrSelect === 'between') {
-      attrChange([
-        `abs:${moment(timeRange?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(timeRange?.[1], 'YYYY-MM-DD')
-          .endOf('day')
-          .valueOf()}`,
-      ]);
-    } else {
-      attrChange([time.valueOf()]);
     }
   }, [attrSelect]);
 
