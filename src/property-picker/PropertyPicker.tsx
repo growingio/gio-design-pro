@@ -1,19 +1,12 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
-// import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
+import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
 // import { TabNavItemProps } from '@gio-design-new/components/es/components/tab-nav/interface';
 import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
 import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
 import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
+import { DownFilled, UpFilled } from '@gio-design/icons';
 import { dimensionToPropertyItem } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
-// import {
-//   TagOutlined,
-//   UserOutlined,
-//   MapChartOutlined,
-//   LocationRecoveryOutlined,
-//   DownFilled,
-//   CheckOutlined,
-// } from '@gio-design/icons';
 // import { Loading, Grid, Tag } from '@gio-design-new/components';
 import BasePicker from '../picker';
 import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue } from './interfaces';
@@ -24,6 +17,8 @@ const Tabs = toPairs(PropertyTypes).map((v) => {
 const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProps) => {
   const {
     initialValue,
+    input: triggerElement,
+    placeholder = '请选择属性',
     searchPlaceholder = '搜索属性名称',
     visible,
     onVisibleChange,
@@ -169,10 +164,27 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     setKeyword(query);
     setDebouncedKeyword(query);
   };
+  const prefixCls = usePrefixCls('property-picker');
+  const defaultInput = () => {
+    const valueElem = <span className={`${prefixCls}-trigger__value`}>{currentValue?.label}</span>;
+
+    return (
+      <>
+        <span className={`${prefixCls}-trigger`}>
+          <span className="prefix" />
+          <span className={`${prefixCls}-trigger-input`}>
+            {!currentValue ? <span className={`${prefixCls}-trigger__placeholder`}>{placeholder}</span> : valueElem}
+          </span>
+          <span className="suffix">{pickerVisible ? <UpFilled /> : <DownFilled />}</span>
+        </span>
+      </>
+    );
+  };
   return (
     <>
       <BasePicker
         {...rest}
+        input={triggerElement || defaultInput()}
         inputValue={displayValue}
         value={currentValue?.value}
         loading={loading}
