@@ -17,6 +17,7 @@ function Picker({
   visible = false,
   onVisibleChange,
   inputValue,
+  input,
   searchPlaceholder = 'Search label',
   onSearch,
   tabNav,
@@ -26,6 +27,8 @@ function Picker({
   actionButton,
   onHoverPanelShow,
   onSelect,
+  placeholder = '请选择',
+  value,
   emptyPrompt = { description: 'No Data' },
 }: PickerProps) {
   const prefixCls = usePrefixCls('picker');
@@ -59,7 +62,8 @@ function Picker({
         className={`${prefixCls}__list`}
         dataSource={dataSource}
         onSelect={onSelect}
-        afterInner={(node) => onMenuHover(node)}
+        afterInner={onMenuHover}
+        value={value}
       />
     );
   }
@@ -84,7 +88,9 @@ function Picker({
       </div>
     );
   }
-
+  const defaultTrigger = (
+    <Input readOnly placeholder={placeholder} value={inputValue} suffix={visible ? <UpFilled /> : <DownFilled />} />
+  );
   return (
     <Dropdown
       visible={visible}
@@ -94,7 +100,13 @@ function Picker({
       overlay={renderOverlay}
     >
       <div className={`${prefixCls}-trigger`}>
-        <Input aria-label="picker-value" suffix={visible ? <UpFilled /> : <DownFilled />} value={inputValue} />
+        {/* <Input
+          placeholder={placeholder}
+          aria-label="picker-value"
+          suffix={visible ? <UpFilled /> : <DownFilled />}
+          value={inputValue}
+        /> */}
+        {React.isValidElement(input) ? input : defaultTrigger}
       </div>
     </Dropdown>
   );

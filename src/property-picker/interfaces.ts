@@ -57,6 +57,8 @@ export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boo
 export interface PropertyItem extends NodeData {
   type?: string;
   typeName?: string;
+  typeOrder?: number;
+  groupOrder?: number;
   // hasChildren?: boolean,
   // itemIcon?: React.ReactElement | string,
   valueType?: string;
