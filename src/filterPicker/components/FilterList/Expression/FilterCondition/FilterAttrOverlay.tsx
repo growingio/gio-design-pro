@@ -23,7 +23,6 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey } = props;
   const [operationValue, setValue] = useState<StringValue | NumberValue | DateValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
-
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
 
   useEffect(() => {
@@ -58,6 +57,15 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     v && setChecked(false);
   };
 
+  // 解析操作字段
+  // 有值(hasValue) => (!=)
+  // 无值(noValue) => (=)
+
+  // 在日期类型下，在某天之前，在某天之后，需要判断是否包含当日
+  // 若包含当日在某天之前(<)=> (<=)
+  // 若包含当日，在某天之后(>) => (>=)
+  // 相对现在(relativeCurrent) => (relativeTime)
+  // 相对区间(relativeBetween) => (relativeTime)
   const parseValue = (
     v: StringValue | NumberValue | DateValue,
     check: boolean
@@ -92,11 +100,14 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   const getAttrSelect = (attr: attributeValue, selectValue: string) => {
     switch (attr) {
       case AttributeMap.int:
+        // 数值类型
         return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
       case AttributeMap.date:
+        // 日期类型
         return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
       case AttributeMap.string:
         return (
+          // 字符串类型
           <StringAttrSelect
             valueType={attr}
             attrSelect={selectValue}
@@ -134,6 +145,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       <Footer
         onSubmit={submit}
         onCancel={onCancel}
+        // 当values为空，同时不时无值，有值状态下，确认按钮disable
         comfirmStatus={operationValue !== 'hasValue' && operationValue !== 'noValue' && !attrValue.length}
       />
     </div>

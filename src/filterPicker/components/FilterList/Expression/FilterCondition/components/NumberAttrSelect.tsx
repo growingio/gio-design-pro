@@ -26,13 +26,17 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
 
   // 设置数值
   const setNumberValue = (v: string) => {
-    setValue(v);
-    attrChange([v]);
+    if (v && /^\d+$/.test(v)) {
+      setValue(v);
+      attrChange([v]);
+    }
   };
   // 设置区间方法
   const setBetweenNumberValue = (v: string) => {
-    setValue2(v);
-    attrChange([value1, v]);
+    if (v && /^\d+$/.test(v)) {
+      setValue2(v);
+      attrChange([value1, v]);
+    }
   };
 
   switch (attrSelect) {

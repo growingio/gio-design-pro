@@ -53,4 +53,37 @@
       text-overflow: ellipsis;
     }
   }
+  // 旧版属性选择器样式
+  .dimension-select-dropdown {
+    // display: flex;
+    // align-items: center;
+    .ant-select-dropdown-menu {
+      .ant-select-dropdown-menu-item {
+        padding: 9px 8px 10px 35px;
+      }
+
+      .ant-select-dropdown-menu-item-group {
+        .ant-select-dropdown-menu-item-group-title {
+          color: #222f73;
+          font-weight: normal;
+          margin-left: 10px;
+          line-height: inherit;
+
+          .group-icon {
+            display: inline-block;
+            vertical-align: bottom;
+            width: 20px;
+            height: 20px;
+            background-color: #e3e7fc;
+            border-radius: 50%;
+            text-align: center;
+
+            svg {
+              margin-right: 0 !important;
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -15,9 +15,19 @@ interface FilterListProps {
   propertyOptions: any[];
   onCancel: () => void;
   onSubmit: (v: FilterValueType[]) => void;
+  recentlyStorePrefix: string;
 }
 function FilterList(props: FilterListProps) {
-  const { list = [], dimensionValueRequest, timeRange, measurements, propertyOptions, onCancel, onSubmit } = props;
+  const {
+    list = [],
+    dimensionValueRequest,
+    timeRange,
+    measurements,
+    propertyOptions,
+    onCancel,
+    onSubmit,
+    recentlyStorePrefix,
+  } = props;
   const [filterList, setFilterList] = useState<FilterValueType[]>([...list]);
   // const [subFilterList] = useState<FilterValueType[]>(list);
   useEffect(() => {
@@ -69,6 +79,7 @@ function FilterList(props: FilterListProps) {
             measurements={measurements}
             onChange={expressChange}
             propertyOptions={propertyOptions}
+            recentlyStorePrefix={recentlyStorePrefix}
           />
         ))}
       </div>

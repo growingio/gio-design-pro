@@ -16,9 +16,9 @@ const FilterPicker = (props: FilterPickerProps) => {
     dimensionValueRequest,
     measurements,
     timeRange,
+    recentlyStorePrefix,
   } = props;
   const [visible, setVisible] = useState(false);
-
   const visibleChange = (v: boolean) => {
     setVisible(v);
   };
@@ -43,6 +43,7 @@ const FilterPicker = (props: FilterPickerProps) => {
           dimensionValueRequest={dimensionValueRequest}
           measurements={measurements}
           timeRange={timeRange}
+          recentlyStorePrefix={recentlyStorePrefix}
         />
       }
       placement="bottomRight"

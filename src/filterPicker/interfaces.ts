@@ -7,6 +7,7 @@ export interface FilterPickerProps {
   timeRange: string;
   onConfirm: (v: FilterValue) => void;
   dimensionValueRequest?: (data: any) => Promise<any>;
+  recentlyStorePrefix: string;
 }
 export type attributeValue = 'string' | 'int' | 'date';
 

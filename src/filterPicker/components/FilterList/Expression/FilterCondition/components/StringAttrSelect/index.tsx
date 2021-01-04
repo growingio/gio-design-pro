@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List, Checkbox, CheckboxGroup } from '@gio-design-new/components';
+import { Input, List } from '@gio-design-new/components';
 import { attributeValue } from '../../interfaces';
+import InOrNotIn from './InOrNotIn';
 
 interface StringAttrSelectProps {
+  // 维度类型
   valueType: attributeValue;
   attrSelect: string;
+  // 当属性值变化时回调函数
   attrChange: (v: any) => void;
+  // 根据属性值获取对应维度，第一个参数是属性值，第二个参数是搜索关键字
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
@@ -18,53 +22,20 @@ type listOptionsItem = {
 
 function StringAttrSelect(props: StringAttrSelectProps) {
   const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
-  const [inputValue, setInputValue] = useState<string>(
-    attrSelect !== 'in' && attrSelect !== 'not in' ? values.join(',') : ''
-  );
-  const [checkValue, setCheckValue] = useState<string[] | []>(values);
+  const [inputValue, setInputValue] = useState<string>(values.join(','));
   const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
-  const [listValue, setListValue] = useState<string>(values.length ? values[0] : '');
-  const [inputCheckList, setInputCheckList] = useState<string[]>([]);
+  const [listValue, setListValue] = useState<string>(values.join(','));
 
   useEffect(() => {
-    setCheckValue(values);
-    setInputValue(attrSelect !== 'in' && attrSelect !== 'not in' ? values.join(',') : '');
+    setInputValue(inputValue || '');
     setListValue(values?.[0]);
   }, [values]);
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
-    const valueList = v.target.value.split(',');
-    const filterValueList = valueList.filter((ele: string) => !!ele);
-    if (attrSelect === 'in' || attrSelect === 'not in') {
-      console.log('in');
-      // 当字符串类型为在范围内（in),不在范围内（not in)时，搜索逻辑和其他条件不同
-
-      if (valueList.length > 1 && valueList[valueList.length - 1] === '') {
-        // 当input输入字符串，存在英文逗号时，将字符串以英文逗号为分割点，
-        const checkList = Array.from(new Set([...filterValueList, ...inputCheckList]));
-        setInputCheckList(checkList);
-        setListOptions(checkList.map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })));
-        setCheckValue(checkList);
-      } else {
-        curryDimensionValueRequest?.(exprKey, valueList[valueList.length - 1] || '')?.then((res: string[]) => {
-          setListOptions([
-            ...inputCheckList.map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
-            ...res.map((ele: string) => ({ label: ele, value: ele })),
-          ]);
-        });
-      }
-      // if (attrSelect === 'in' || attrSelect === 'not in') {
-      //   setCheckValue([...inputCheckList, ...checkValue]);
-      //   attrChange([...checkValue, ...inputCheckList]);
-      // } else {
-      //   attrChange([v.target.value]);
-      // }
-    } else {
-      curryDimensionValueRequest?.(exprKey, v.target.value)?.then((res: string[]) => {
-        setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
-      });
-    }
-
+    curryDimensionValueRequest?.(exprKey, v.target.value)?.then((res: string[]) => {
+      res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+    });
+    attrChange([v.target.value]);
     setInputValue(v.target.value);
   };
 
@@ -80,14 +51,9 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     }
   };
 
-  const changeCheckValue = (checkedValue: any[]) => {
-    setCheckValue(checkedValue);
-    attrChange(checkedValue);
-  };
-
   useEffect(() => {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
-      setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+      res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
     });
   }, [valueType, exprKey]);
 
@@ -95,44 +61,20 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     case 'in':
     case 'not in':
       return (
-        <div style={{ height: '330px' }}>
-          <Input
-            placeholder="请输入…"
-            size="small"
-            value={inputValue}
-            onChange={changInputValue}
-            style={{ display: 'block', marginBottom: '20px' }}
-          />
-          <div style={{ overflowY: 'auto', height: '280px' }}>
-            <CheckboxGroup defaultValue={[]} value={checkValue} direction="vertical" onChange={changeCheckValue}>
-              {listOptions.map((ele: listOptionsItem) => (
-                <Checkbox key={ele.value} value={ele.value}>
-                  {ele.label}
-                </Checkbox>
-              ))}
-            </CheckboxGroup>
-          </div>
-        </div>
+        <InOrNotIn
+          attrChange={attrChange}
+          valueType={valueType}
+          curryDimensionValueRequest={curryDimensionValueRequest}
+          values={values}
+          exprKey={exprKey}
+        />
       );
     case 'hasValue':
     case 'noValue':
       return null;
-    case 'like':
-    case 'not like':
-      return (
-        <div>
-          <Input
-            placeholder="请输入…"
-            size="small"
-            value={inputValue}
-            onChange={changInputValue}
-            style={{ display: 'block', marginBottom: '20px' }}
-          />
-        </div>
-      );
     default:
       return (
-        <div>
+        <div style={{ width: '100%' }}>
           <Input
             placeholder="请输入…"
             size="small"

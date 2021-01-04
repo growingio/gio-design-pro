@@ -24,15 +24,25 @@ function RelativeBetween(props: RelativeBetweenProps) {
       setValue2(`${Math.abs(parseInt(relativeTime[1], 10))}`);
     }
   }, [values]);
-
+  const createAttrValue = (v1: string, v2: string, nowOrFuture: string) => {
+    let t: string = '';
+    if (nowOrFuture === '-1') {
+      t = `relativeTime:-${v1},-${v2}`;
+    } else {
+      t = `relativeTime:${v1}, ${v2}`;
+    }
+    onChange(t);
+  };
   const setInputValue1 = (v: string) => {
-    if (v && !v.toString().includes('NaN')) {
+    if (v && /^\d+$/.test(v)) {
       setValue1(v);
+      createAttrValue(v, value2, nowOrFuturevalue);
     }
   };
   const setInputValue2 = (v: string) => {
-    if (v && !v.toString().includes('NaN')) {
+    if (v && /^\d+$/.test(v)) {
       setValue2(v);
+      createAttrValue(value1, v, nowOrFuturevalue);
     }
   };
   const selectOptions = [
@@ -48,27 +58,42 @@ function RelativeBetween(props: RelativeBetweenProps) {
 
   const selectChange = (v: string) => {
     setValue(v);
+    createAttrValue(value1, value2, v);
   };
-  const createAttrValue = () => {
-    let t: string = '';
-    if (nowOrFuturevalue === '-1') {
-      t = `relativeTime:-${value1},-${value2}`;
-    } else {
-      t = `relativeTime:${value1}, ${value2}`;
-    }
-    onChange(t);
-  };
+
   useEffect(() => {
-    createAttrValue();
+    // values值的初始化设置
+    if (!values.length) {
+      createAttrValue(value1, value2, nowOrFuturevalue);
+    }
   }, [attrSelect, nowOrFuturevalue, value1, value2]);
   return (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Select value={nowOrFuturevalue} options={selectOptions} onChange={selectChange} style={{ marginRight: '4px' }} />
-      <Input.InputNumber value={value1} onChange={setInputValue1} style={{ width: '70px', margin: '0 4px' }} min={1} />
-      <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天至</div>
-      <Input.InputNumber value={value2} onChange={setInputValue2} style={{ width: '70px', margin: '0 4px' }} min={1} />
-      <div style={{ whiteSpace: 'nowrap', margin: '16px 4px' }}>天之内</div>
-    </div>
+    <>
+      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+        <Select
+          value={nowOrFuturevalue}
+          options={selectOptions}
+          onChange={selectChange}
+          style={{ marginRight: '4px' }}
+        />
+        <Input.InputNumber
+          value={value1}
+          onChange={setInputValue1}
+          style={{ width: '150px', margin: '0 4px' }}
+          min={1}
+        />
+        <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天至</div>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+        <Input.InputNumber
+          value={value2}
+          onChange={setInputValue2}
+          style={{ width: '150px', margin: '0 4px 0 0' }}
+          min={1}
+        />
+        <div style={{ whiteSpace: 'nowrap', margin: '16px 4px' }}>天之内</div>
+      </div>
+    </>
   );
 }
 
