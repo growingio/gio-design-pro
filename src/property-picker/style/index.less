@@ -44,3 +44,31 @@
     line-height: 22px;
   }
 }
+.@{property-picker-prefix-cls}-trigger {
+  height: 30px;
+  padding: 4px 8px;
+  line-height: 22px;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #5c4e61;
+  .suffix {
+    color: #dbdee8;
+  }
+
+  cursor: pointer;
+  &:hover {
+    background-color: #ebedf5;
+  }
+  &-input {
+    margin-right: 16px;
+  }
+  &__placeholder {
+    color: #dbdee8;
+  }
+  &__value {
+    color: #313e75;
+    &:hover {
+      color: #1248e9;
+    }
+  }
+}
