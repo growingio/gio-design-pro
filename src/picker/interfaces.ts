@@ -89,7 +89,19 @@ export interface PickerProps {
    */
   onSelect?: (node: NodeData) => void;
   /**
-   * custom menu-item render function
+   * Custom menu-item render function
    */
   onRender?: (nodeData: NodeData) => React.ReactElement;
+  /**
+   * Placeholder of the picker
+   */
+  placeholder?: string;
+  /**
+   * Custom element that triggered the dropdown menu
+   */
+  input?: React.ReactElement;
+  /**
+   * Set the selected value
+   */
+  value?: string | number;
 }

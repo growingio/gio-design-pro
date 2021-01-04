@@ -38,21 +38,42 @@ export const DimensionGroupTypeMapper: Mapper = {
   page: 'event',
   app: 'event',
   event: 'event',
+  item: 'event',
   people: 'event',
   visitor: 'event',
+  element: 'event', // element 为前端自定义的分类
+  conversion: 'event',
   user: 'usr',
   tag: 'usr',
   geo: 'avar',
   device: 'avar',
   origin: 'avar',
 };
-
+export const PropertyGroupOrder = [
+  'event',
+  'item',
+  'page',
+  'element',
+  'app',
+  'cs',
+  'ads',
+  'conversion',
+  'people',
+  'visitor',
+  'geo',
+  'device',
+  'origin',
+  'user',
+  'tag',
+];
 const PreparedNormalDimensionIdMap = (id: string) => {
   const groupMap = {
-    page: ['p', 'd', 'rp', 'v', 'idx'], // 域名,页面,页面来源，元素内容，元素位置
+    page: ['p', 'd', 'rp'], // 域名,页面,页面来源
+    element: ['v', 'idx'], // ，元素内容，元素位置
     device: ['b', 'cv'], // 应用平台和app版本归属到-设备分类
   };
   if (groupMap.page.includes(id)) return ['page', '页面'];
+  if (groupMap.element.includes(id)) return ['element', '无埋点事件'];
   return ['device', '设备'];
 };
 
@@ -66,7 +87,12 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
     result.groupId = newGoupId;
     result.groupName = newGroupName;
   }
+  const gOrder = PropertyGroupOrder.indexOf(result.groupId as string);
+  result.groupOrder = gOrder > -1 ? gOrder : 9999;
+
   result.type = DimensionGroupTypeMapper[result.groupId || 'unkown'];
   result.typeName = PropertyTypes[result.type];
+  const tOrder = ['event', 'avar', 'usr'].indexOf(result.type);
+  result.typeOrder = tOrder > -1 ? tOrder : 9999;
   return result;
 };

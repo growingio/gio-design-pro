@@ -33,7 +33,6 @@ function PropertyDetailPanel(props: PropertyDetailProps) {
       func
         .then((d: PropertyInfo) => {
           setValue(d);
-          console.log('detail', d);
         })
         .finally(() => setLoading(false));
     } else {
