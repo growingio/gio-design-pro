@@ -3,12 +3,11 @@ import { DeleteOutlined, TagOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design-new/components';
 // import PropertyPicker from '../../../../property-picker';
 import '../../../../property-picker/style/index';
+// 暂时使用gio-core里面的属性选择器
 import PropertySelect from '@gio-core/components/property-select';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
-
-// 暂时使用gio-core里面的属性选择器
 
 interface ExpressionProps {
   index?: number;
