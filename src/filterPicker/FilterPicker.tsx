@@ -50,11 +50,7 @@ const FilterPicker = (props: FilterPickerProps) => {
       getTooltipContainer={getTooltipContainer}
       destroyTooltipOnHide
     >
-      {children || (
-        <Button icon={<FilterOutlined />} size="small" type="assist">
-          过滤条件
-        </Button>
-      )}
+      {children || <Button icon={<FilterOutlined />} size="small" type="assist" />}
     </Dropdown>
   );
 };

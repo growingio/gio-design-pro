@@ -5,7 +5,7 @@ import { NodeData } from '@gio-design-new/components/es/components/cascader/inte
 import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
 import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
 import { DownFilled } from '@gio-design/icons';
-import pinyinMatch from 'pinyin-match';
+import * as pinyinMatch from 'pinyin-match';
 import { dimensionToPropertyItem } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
 // import { Loading, Grid, Tag } from '@gio-design-new/components';
@@ -75,11 +75,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
    * @param input 带匹配的项
    * @param key 匹配的关键字
    */
-  const keywordFilter = (input?: string, key?: string) => {
+  const keywordFilter = (input: string = '', key: string = '') => {
     if (!input) return false;
     const parttern: RegExp = makeSearchParttern(key, true);
     if (!parttern) return true;
-    return !!input.match(parttern) || !!pinyinMatch.match(input, keyword);
+    return !!input.match(parttern) || !!pinyinMatch.match(input, key);
   };
   const _filterFunc = (data = [] as PropertyItem[]) => {
     const labelKey = 'label';

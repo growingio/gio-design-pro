@@ -9,8 +9,8 @@ interface RelativeBetweenProps {
 function RelativeBetween(props: RelativeBetweenProps) {
   const { onChange, attrSelect, values } = props;
   const [nowOrFuturevalue, setValue] = useState('-1');
-  const [value1, setValue1] = useState('1');
-  const [value2, setValue2] = useState('1');
+  const [value1, setValue1] = useState<number>(1);
+  const [value2, setValue2] = useState<number>(1);
   // 解析初始values值
   useEffect(() => {
     if (values.length) {
@@ -20,11 +20,11 @@ function RelativeBetween(props: RelativeBetweenProps) {
       } else {
         setValue('1');
       }
-      setValue1(`${Math.abs(parseInt(relativeTime[0], 10))}`);
-      setValue2(`${Math.abs(parseInt(relativeTime[1], 10))}`);
+      setValue1(Math.abs(parseInt(relativeTime[0], 10)));
+      setValue2(Math.abs(parseInt(relativeTime[1], 10)));
     }
   }, [values]);
-  const createAttrValue = (v1: string, v2: string, nowOrFuture: string) => {
+  const createAttrValue = (v1: number, v2: number, nowOrFuture: string) => {
     let t: string = '';
     if (nowOrFuture === '-1') {
       t = `relativeTime:-${v1},-${v2}`;
@@ -33,14 +33,14 @@ function RelativeBetween(props: RelativeBetweenProps) {
     }
     onChange(t);
   };
-  const setInputValue1 = (v: string) => {
-    if (v && /^\d+$/.test(v)) {
+  const setInputValue1 = (v: number) => {
+    if (v && /^\d+$/.test(`${v}`)) {
       setValue1(v);
       createAttrValue(v, value2, nowOrFuturevalue);
     }
   };
-  const setInputValue2 = (v: string) => {
-    if (v && /^\d+$/.test(v)) {
+  const setInputValue2 = (v: number) => {
+    if (v && /^\d+$/.test(`${v}`)) {
       setValue2(v);
       createAttrValue(value1, v, nowOrFuturevalue);
     }

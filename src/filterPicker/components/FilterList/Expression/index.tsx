@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design-new/components';
 import PropertyPicker from '../../../../property-picker';
-import '../../../../property-picker/style/index';
+// import '../../../../property-picker/style/index';
 // import PropertySelect from '@gio-core/components/property-select';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
-
-// 暂时使用gio-core里面的属性选择器
 
 interface ExpressionProps {
   index?: number;

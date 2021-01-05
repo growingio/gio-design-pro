@@ -77,7 +77,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
         <div style={{ width: '100%' }}>
           <Input
             placeholder="请输入…"
-            size="small"
+            size="middle"
             value={inputValue}
             onChange={changInputValue}
             style={{ display: 'block', marginBottom: '20px' }}
