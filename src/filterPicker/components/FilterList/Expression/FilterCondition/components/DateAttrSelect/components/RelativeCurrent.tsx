@@ -99,7 +99,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
       <Select value={nowOrFuturevalue} options={SelectOptions} onChange={selectChange} style={{ marginRight: '4px' }} />
-      <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '70px', margin: '0 4px' }} min={0} />
+      <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '100px', margin: '0 4px' }} min={0} />
       <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天</div>
       {nowOrFuturevalue === '-1' ? (
         <Select

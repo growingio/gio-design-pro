@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Checkbox, CheckboxGroup } from '@gio-design-new/components';
+import { Input, List } from '@gio-design-new/components';
 import { attributeValue } from '../../interfaces';
 
 interface StringAttrSelectProps {
@@ -68,9 +68,9 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     setInputValue(v.target.value);
   };
 
-  const changeCheckValue = (checkedValue: any[]) => {
-    setCheckValue(checkedValue);
-    attrChange(checkedValue);
+  const changeCheckValue = (checkedValue: checkOptionsItem) => {
+    setCheckValue([...checkValue, checkedValue.value]);
+    attrChange([...checkValue, checkedValue.value]);
   };
   // 初始化check-options
   useEffect(() => {
@@ -89,17 +89,18 @@ function StringAttrSelect(props: StringAttrSelectProps) {
         size="small"
         value={inputValue}
         onChange={changInputValue}
-        style={{ display: 'block', marginBottom: '20px' }}
+        style={{ display: 'block' }}
       />
-      <div style={{ overflowY: 'auto', height: '280px' }}>
-        <CheckboxGroup defaultValue={[]} value={checkValue} direction="vertical" onChange={changeCheckValue}>
-          {checkOptions.map((ele: checkOptionsItem) => (
-            <Checkbox key={ele.value} value={ele.value}>
-              {ele.label}
-            </Checkbox>
-          ))}
-        </CheckboxGroup>
-      </div>
+
+      <List
+        isMultiple
+        stateless
+        value={checkValue}
+        dataSource={checkOptions}
+        width={300}
+        height={250}
+        onClick={changeCheckValue}
+      />
     </div>
   );
 }

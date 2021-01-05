@@ -37,12 +37,16 @@ function RelativeBetween(props: RelativeBetweenProps) {
     if (v && /^\d+$/.test(`${v}`)) {
       setValue1(v);
       createAttrValue(v, value2, nowOrFuturevalue);
+    } else if (!v) {
+      setValue1(0);
     }
   };
   const setInputValue2 = (v: number) => {
     if (v && /^\d+$/.test(`${v}`)) {
       setValue2(v);
       createAttrValue(value1, v, nowOrFuturevalue);
+    } else if (!v) {
+      setValue2(0);
     }
   };
   const selectOptions = [

@@ -80,7 +80,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
             size="middle"
             value={inputValue}
             onChange={changInputValue}
-            style={{ display: 'block', marginBottom: '20px' }}
+            style={{ display: 'block' }}
           />
           <List
             stateless
