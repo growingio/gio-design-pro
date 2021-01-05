@@ -1,7 +1,10 @@
-import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design-new/components/es/components/cascader/interface';
 import { PickerProps } from '../picker/interfaces';
 import { Dimension } from '../types';
 
+/**
+ * 属性详情组件的参数
+ */
 export interface PropertyInfo {
   id?: string;
   name?: string;
@@ -10,21 +13,29 @@ export interface PropertyInfo {
   description?: string;
   valueType?: string;
 }
+/**
+ * 获取属性详情的回调
+ */
 type FetchData<T extends {}> = (node: NodeData) => T | Promise<T>;
+/**
+ * picker选中后回调值类型
+ */
 export type PropertyValue = {
   label?: string;
   value?: string;
   valueType?: string;
 };
 
-// type fetchResult = extends PropertyInfo
+/**
+ *属性选择器参数
+ */
 export interface PropertyPickerProps
   extends Omit<PickerProps, 'dataSource' | 'inputValue' | 'groupVisible' | 'actionButton'> {
   /**
    * 初始值
    */
   initialValue?: PropertyValue;
-  multiple?: boolean;
+  // multiple?: boolean;
   /**
    * 属性选择器的选项列表
    */
@@ -46,6 +57,9 @@ export interface PropertyPickerProps
    */
   disabledValues?: PropertyValue[] | string[];
 }
+/**
+ * 属性的类型 event|avar|usr
+ */
 export const PropertyTypes: { [key: string]: string } = {
   event: '事件属性',
   avar: '访问属性',
@@ -53,7 +67,9 @@ export const PropertyTypes: { [key: string]: string } = {
 };
 
 export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boolean';
-
+/**
+ * 属性选择器选项列表item 类型
+ */
 export interface PropertyItem extends NodeData {
   type?: string;
   typeName?: string;

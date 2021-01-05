@@ -1,4 +1,4 @@
-import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design-new/components/es/components/cascader/interface';
 // import { TagOutlined, UserOutlined, MapChartOutlined, LocationRecoveryOutlined } from '@gio-design/icons';
 import { Loading, Tag } from '@gio-design-new/components';
 import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';

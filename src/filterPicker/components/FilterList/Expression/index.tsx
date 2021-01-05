@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { DeleteOutlined, TagOutlined } from '@gio-design/icons';
+import { DeleteOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design-new/components';
-// import PropertyPicker from '../../../../property-picker';
+import PropertyPicker from '../../../../property-picker';
 import '../../../../property-picker/style/index';
-import PropertySelect from '@gio-core/components/property-select';
+// import PropertySelect from '@gio-core/components/property-select';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
@@ -33,7 +33,7 @@ function Expression(props: ExpressionProps) {
     onChange,
     propertyOptions,
     exprs,
-    // recentlyStorePrefix,
+    recentlyStorePrefix,
   } = props;
   const [valueType, setValueType] = useState<attributeValue>(filterItem?.valueType || 'string');
   const [values, setValues] = useState<string[]>(filterItem?.values);
@@ -64,55 +64,55 @@ function Expression(props: ExpressionProps) {
   };
 
   const changePropertyPicker = (v: any) => {
-    // v && setValueType(v?.valueType?.toLowerCase() || 'string');
-    // v && setExprName(v.label);
-    // v && setExprKey(v.value);
-    // v && setValues([]);
-    // v && setOp('=');
-    // const expr: FilterValueType = {
-    //   key: v.value,
-    //   name: v.label,
-    //   valueType: v?.valueType?.toLowerCase() || 'string',
-    //   op: '=',
-    //   values: [],
-    // };
-    // onChange(expr, index);
-
-    // 兼容旧版方法
     v && setValueType(v?.valueType?.toLowerCase() || 'string');
     v && setExprName(v.label);
-    v && setExprKey(v.key);
+    v && setExprKey(v.value);
     v && setValues([]);
     v && setOp('=');
     const expr: FilterValueType = {
-      key: v.key,
+      key: v.value,
       name: v.label,
       valueType: v?.valueType?.toLowerCase() || 'string',
       op: '=',
       values: [],
     };
     onChange(expr, index);
+
+    // 兼容旧版方法
+    // v && setValueType(v?.valueType?.toLowerCase() || 'string');
+    // v && setExprName(v.label);
+    // v && setExprKey(v.key);
+    // v && setValues([]);
+    // v && setOp('=');
+    // const expr: FilterValueType = {
+    //   key: v.key,
+    //   name: v.label,
+    //   valueType: v?.valueType?.toLowerCase() || 'string',
+    //   op: '=',
+    //   values: [],
+    // };
+    // onChange(expr, index);
   };
   // 兼容旧版属性选择器方法
-  const getGroupIcon = () => (
-    <span className="group-icon">
-      {/* <Icon name={`gicon-${group}`} /> */}
-      <TagOutlined />
-    </span>
-  );
-  // 兼容旧版属性选择器;
-  const defaultStyle = {
-    width: '180px',
-    height: '40px',
-    placeholder: '选择维度',
-    disabled: false,
-  };
+  // const getGroupIcon = () => (
+  //   <span className="group-icon">
+  //     {/* <Icon name={`gicon-${group}`} /> */}
+  //     <TagOutlined />
+  //   </span>
+  // );
+  // // 兼容旧版属性选择器;
+  // const defaultStyle = {
+  //   width: '180px',
+  //   height: '40px',
+  //   placeholder: '选择维度',
+  //   disabled: false,
+  // };
 
   return (
     <div className="expression-box" id="expression-box">
       <div className="express-regular_select">
         <div className="expression-icon">{index + 1}</div>
-        {/* <PropertyPicker
+        <PropertyPicker
           initialValue={{ value: exprKey, label: exprName }}
           dataSource={propertyOptions.filter((option: any) => {
             const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];
@@ -120,8 +120,8 @@ function Expression(props: ExpressionProps) {
           })}
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}
-        /> */}
-        <PropertySelect
+        />
+        {/* <PropertySelect
           key="dimension-select"
           value={!exprKey || propertyOptions.some((d: any) => d.id === exprKey) ? exprKey : '无效维度'}
           options={propertyOptions.filter((option: any) => {
@@ -138,7 +138,7 @@ function Expression(props: ExpressionProps) {
           getGroupIcon={getGroupIcon}
           notFoundContent="没有可用维度"
           className="dimension-select dimension-select-dropdown"
-        />
+        /> */}
         <FilterCondition
           valueType={valueType}
           onSubmit={submit}

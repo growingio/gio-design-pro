@@ -1,10 +1,11 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
 // import { TabNavItemProps } from '@gio-design-new/components/es/components/tab-nav/interface';
-import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design-new/components/es/components/cascader/interface';
 import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
 import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
-import { DownFilled, UpFilled } from '@gio-design/icons';
+import { DownFilled } from '@gio-design/icons';
+import pinyinMatch from 'pinyin-match';
 import { dimensionToPropertyItem } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
 // import { Loading, Grid, Tag } from '@gio-design-new/components';
@@ -14,11 +15,12 @@ import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue } from 
 const Tabs = toPairs(PropertyTypes).map((v) => {
   return { key: v[0], children: v[1] };
 });
+
 const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProps) => {
   const {
     initialValue,
     input: triggerElement,
-    placeholder = '请选择属性',
+    placeholder = '选择属性',
     searchPlaceholder = '搜索属性名称',
     visible,
     onVisibleChange,
@@ -50,6 +52,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     }
   }, []);
   useEffect(() => {
+    // 如果是Dimension类型 需要做一个数据转换
     let propertiItemList: PropertyItem[] = [];
     if (originDataSource && originDataSource.length) {
       if (originDataSource && originDataSource.length && !('value' in originDataSource[0])) {
@@ -59,26 +62,37 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       }
     }
     setDataList(propertiItemList);
+    /**
+     * 设置属性类型tab，如果传入的列表没有对应的类型 不显示该tab
+     */
     const types = uniq(propertiItemList.map((p) => p.type));
     const tabs = Tabs.filter((t) => types.indexOf(t.key) > -1);
     // setTabNavItems(tabs);
     navRef.current = [{ key: 'all', children: '全部' }].concat(tabs);
   }, [originDataSource]);
+  /**
+   * 搜索关键字的方法，支持拼音匹配
+   * @param input 带匹配的项
+   * @param key 匹配的关键字
+   */
+  const keywordFilter = (input?: string, key?: string) => {
+    if (!input) return false;
+    const parttern: RegExp = makeSearchParttern(key, true);
+    if (!parttern) return true;
+    return !!input.match(parttern) || !!pinyinMatch.match(input, keyword);
+  };
   const _filterFunc = (data = [] as PropertyItem[]) => {
     const labelKey = 'label';
-    const parttern: RegExp = makeSearchParttern(keyword, true);
 
     if (scope === 'all') {
-      if (!parttern) {
-        return data;
-      }
-      return data.filter((d) => (d[labelKey] as string).match(parttern));
+      return data.filter((d) => keywordFilter(d[labelKey] as string, keyword));
     }
-    if (!parttern) {
-      return data;
-    }
-    return data.filter((d) => d.type === scope && (d[labelKey] as string).match(parttern));
+
+    return data.filter((d) => d.type === scope && keywordFilter(d[labelKey] as string, keyword));
   };
+  /**
+   * 属性列表数据源
+   */
   const dataSource = useMemo(() => {
     const filterdData = _filterFunc(dataList);
 
@@ -92,7 +106,15 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         if (regEnOrNum.test(a.label ?? '') || regEnOrNum.test(b.label ?? '')) {
           return (a.label?.charCodeAt(0) as number) - (b.label?.charCodeAt(0) as number);
         }
-        return a.label?.localeCompare(b.label ?? '', 'zh') || 0;
+        return (
+          a.label?.localeCompare(b.label ?? '', 'zh-Hans-CN', {
+            sensitivity: 'accent',
+            ignorePunctuation: true,
+            numeric: true,
+            // localeMatcher: 'best fit',
+            // collation: 'big5han',
+          }) || 0
+        );
       }
       return aOrder - bOrder;
     });
@@ -122,6 +144,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   // function onMunuItemHover(data: NodeData) {
   //   return <PropertyDetailPanel nodeData={data} fetchData={fetchDetailData} />;
   // }
+
+  /**
+   * 点选时 设置最近使用
+   * @param item
+   */
   function _saveRecentlyByScope(item: PropertyItem) {
     const { value: v, type } = item;
     const recent = cloneDeep(recentlyUsed);
@@ -170,12 +197,14 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
 
     return (
       <>
-        <span className={`${prefixCls}-trigger`}>
+        <span className={`${prefixCls}-trigger ${pickerVisible ? 'open' : ''}`}>
           <span className="prefix" />
           <span className={`${prefixCls}-trigger-input`}>
             {!currentValue ? <span className={`${prefixCls}-trigger__placeholder`}>{placeholder}</span> : valueElem}
           </span>
-          <span className="suffix">{pickerVisible ? <UpFilled /> : <DownFilled />}</span>
+          <span className="suffix">
+            <DownFilled className="caret" size="14px" />
+          </span>
         </span>
       </>
     );
