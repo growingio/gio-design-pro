@@ -12,7 +12,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
   const { onChange, attrSelect, values } = props;
   const [nowOrFuturevalue, setValue] = useState('-1');
   const [inOrOutValue, setAfterValue] = useState('-1');
-  const [days, setDays] = useState('0');
+  const [days, setDays] = useState<number>(0);
   const SelectOptions = [
     {
       value: '-1',
@@ -58,13 +58,13 @@ function RelativeCurrent(props: RelativeCurrentProps) {
         setAfterValue('1');
       }
       if (parseInt(relativeTime[0], 10)) {
-        setDays(`${Math.abs(parseInt(relativeTime[0], 10))}`);
+        setDays(Math.abs(parseInt(relativeTime[0], 10)));
       } else {
-        setDays(`${Math.abs(parseInt(relativeTime[1], 10))}`);
+        setDays(Math.abs(parseInt(relativeTime[1], 10)));
       }
     }
   }, [values]);
-  const createAttrValue = (dayValue: string, value: string, afterValue: string) => {
+  const createAttrValue = (dayValue: number, value: string, afterValue: string) => {
     // 在此处，返回的数据有两种格式
     // 当选择过去| 未来 + 之内，则返回relativeTime：（number):（number）
     // 当选择过去| 未来 + 之前| 之后，则返回relativeTime: (number)
@@ -92,7 +92,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
     v && createAttrValue(days, nowOrFuturevalue, v);
   };
 
-  const setDaysChange = (v: string) => {
+  const setDaysChange = (v: number) => {
     v && setDays(v);
     v && createAttrValue(v, nowOrFuturevalue, inOrOutValue);
   };

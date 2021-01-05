@@ -8,15 +8,15 @@ interface NumberAttrSelectProps {
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
   const { attrSelect, attrChange, values } = props;
-  const [value, setValue] = useState<string>(values[0] ? values[0] : '0');
-  const [value1, setValue1] = useState<string>(values[0] ? values[0] : '0');
-  const [value2, setValue2] = useState<string>(values[1] ? values[1] : '0');
+  const [value, setValue] = useState<number>(values[0] ? parseInt(values[0], 10) : 0);
+  const [value1, setValue1] = useState<number>(values[0] ? parseInt(values[0], 10) : 0);
+  const [value2, setValue2] = useState<number>(values[1] ? parseInt(values[1], 10) : 0);
   // 初始化attrValue值
   useEffect(() => {
     const num = values[0] ? values[0] : '0';
-    setValue(values[0] || '0');
-    setValue1(values[0] || '0');
-    setValue2(values[1] || '0');
+    setValue(parseInt(values[0], 10) || 0);
+    setValue1(parseInt(values[0], 10) || 0);
+    setValue2(parseInt(values[1], 10) || 0);
     if (attrSelect === 'between') {
       attrChange([num, num]);
     } else {
@@ -24,25 +24,27 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     }
   }, [attrSelect]);
 
+  const setValue1Number = (v: number) => {
+    setValue1(v);
+  };
+
   // 设置数值
-  const setNumberValue = (v: string) => {
-    console.log(v, 'v');
-    if (v && /^-?[1-9]\d*$/.test(v)) {
+  const setNumberValue = (v: number) => {
+    if (v && /^-?[1-9]\d*$/.test(`${v}`)) {
       setValue(v);
       attrChange([v]);
     } else if (!v) {
-      setValue('0');
+      setValue(0);
       attrChange(['0']);
     }
   };
   // 设置区间方法
-  const setBetweenNumberValue = (v: string) => {
-    console.log(v, 'v');
-    if (v && /^-?[1-9]\d*$/.test(v)) {
+  const setBetweenNumberValue = (v: number) => {
+    if (v && /^-?[1-9]\d*$/.test(`${v}`)) {
       setValue2(v);
       attrChange([value1, v]);
     } else if (!v) {
-      setValue2('0');
+      setValue2(0);
       attrChange([value1, '0']);
     }
   };
@@ -51,7 +53,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     case 'between':
       return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Input.InputNumber value={value1} onChange={setValue1} />
+          <Input.InputNumber value={value1} onChange={setValue1Number} />
           <div style={{ margin: '0 16px' }}>与</div>
           <Input.InputNumber value={value2} onChange={setBetweenNumberValue} />
         </div>
