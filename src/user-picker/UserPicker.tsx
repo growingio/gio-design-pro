@@ -3,7 +3,7 @@ import { filter, keyBy, includes, uniq } from 'lodash';
 import { PlusOutlined } from '@gio-design/icons';
 import { format } from 'date-fns/fp';
 import Tag from '@gio-design-new/components/es/components/tag';
-import { NodeData } from '@gio-design-new/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design-new/components/es/components/cascader/interface';
 import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
 import BasePicker from '../picker';
 import { UserPickerProps, PreparedSegment } from './interfaces';

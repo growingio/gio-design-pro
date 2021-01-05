@@ -51,7 +51,16 @@
   border-radius: 4px;
   background-color: #fff;
   color: #5c4e61;
-  .suffix {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  &.open {
+    .caret {
+      transform: rotate(180deg);
+    }
+  }
+  .caret {
+    transition: all 0.3s;
     color: #5c4e61;
   }
 
@@ -59,16 +68,23 @@
   &:hover {
     background-color: #ebedf5;
   }
+  &:hover &__value {
+    color: #1248e9;
+  }
   &-input {
     margin-right: 16px;
+    margin-left: 16px;
+    word-break: keep-all;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    font-size: 14px;
   }
   &__placeholder {
     color: #dbdee8;
   }
   &__value {
     color: #313e75;
-    &:hover {
-      color: #1248e9;
-    }
   }
 }

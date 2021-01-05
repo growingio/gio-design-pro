@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "21.1.0-alpha2",
+  "version": "21.1.0-alpha4",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -39,7 +39,8 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "lodash": "^4.17.20",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "pinyin-match": "^1.1.8"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
