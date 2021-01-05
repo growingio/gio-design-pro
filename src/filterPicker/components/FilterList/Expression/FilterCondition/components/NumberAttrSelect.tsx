@@ -26,16 +26,24 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
 
   // 设置数值
   const setNumberValue = (v: string) => {
-    if (v && /^\d+$/.test(v)) {
+    console.log(v, 'v');
+    if (v && /^-?[1-9]\d*$/.test(v)) {
       setValue(v);
       attrChange([v]);
+    } else if (!v) {
+      setValue('0');
+      attrChange(['0']);
     }
   };
   // 设置区间方法
   const setBetweenNumberValue = (v: string) => {
-    if (v && /^\d+$/.test(v)) {
+    console.log(v, 'v');
+    if (v && /^-?[1-9]\d*$/.test(v)) {
       setValue2(v);
       attrChange([value1, v]);
+    } else if (!v) {
+      setValue2('0');
+      attrChange([value1, '0']);
     }
   };
 
