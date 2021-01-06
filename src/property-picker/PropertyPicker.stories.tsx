@@ -27,6 +27,7 @@ const Template: Story<PropertyPickerProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   dataSource,
+  initialValue: {},
   // placeholder: '请选择...',
   onChange: (v: any) => {
     console.log('onchange', v);
