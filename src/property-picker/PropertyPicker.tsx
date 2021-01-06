@@ -5,7 +5,7 @@ import { NodeData } from '@gio-design-new/components/es/components/cascader/inte
 import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
 import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
 import { DownFilled } from '@gio-design/icons';
-import pinyinMatch from 'pinyin-match';
+import * as pinyin from 'pinyin-match';
 import { Tooltip } from '@gio-design-new/components';
 import { dimensionToPropertyItem } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
@@ -13,6 +13,7 @@ import { useDebounce, useLocalStorage } from '../hooks';
 import BasePicker from '../picker';
 import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue } from './interfaces';
 
+const pinyinMatch = pinyin.default;
 const Tabs = toPairs(PropertyTypes).map((v) => {
   return { key: v[0], children: v[1] };
 });
@@ -80,7 +81,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     if (!input) return false;
     const parttern: RegExp = makeSearchParttern(key, true);
     if (!parttern) return true;
-    return !!input.match(parttern) || !!pinyinMatch.match(input, key);
+    console.log(pinyinMatch);
+    return !!input.match(parttern) || !!pinyinMatch?.match(input, key);
   };
   const _filterFunc = (data = [] as PropertyItem[]) => {
     const labelKey = 'label';
