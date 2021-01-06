@@ -69,8 +69,14 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   };
 
   const changeCheckValue = (checkedValue: checkOptionsItem) => {
-    setCheckValue([...checkValue, checkedValue.value]);
-    attrChange([...checkValue, checkedValue.value]);
+    if (!checkValue.includes(checkedValue.value)) {
+      setCheckValue([...checkValue, checkedValue.value]);
+      attrChange([...checkValue, checkedValue.value]);
+    } else {
+      const filter = checkValue.filter((ele: string) => ele !== checkedValue.value);
+      setCheckValue(filter);
+      attrChange(filter);
+    }
   };
   // 初始化check-options
   useEffect(() => {
