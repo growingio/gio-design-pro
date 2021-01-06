@@ -1,5 +1,6 @@
 import PropertyPicker from './PropertyPicker';
 import PropertyDetail from './PropertyDetail';
+import './style/index';
 
 export { PropertyPickerProps, PropertyTypes } from './interfaces';
 export { dimensionToPropertyItem } from './util';

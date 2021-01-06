@@ -64,6 +64,7 @@ function Picker({
         onSelect={onSelect}
         afterInner={onMenuHover}
         value={value}
+        autoFocus={false}
       />
     );
   }

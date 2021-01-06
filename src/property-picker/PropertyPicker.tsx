@@ -6,6 +6,7 @@ import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
 import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
 import { DownFilled } from '@gio-design/icons';
 import pinyinMatch from 'pinyin-match';
+import { Tooltip } from '@gio-design-new/components';
 import { dimensionToPropertyItem } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
 // import { Loading, Grid, Tag } from '@gio-design-new/components';
@@ -75,11 +76,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
    * @param input 带匹配的项
    * @param key 匹配的关键字
    */
-  const keywordFilter = (input?: string, key?: string) => {
+  const keywordFilter = (input: string = '', key: string = '') => {
     if (!input) return false;
     const parttern: RegExp = makeSearchParttern(key, true);
     if (!parttern) return true;
-    return !!input.match(parttern) || !!pinyinMatch.match(input, keyword);
+    return !!input.match(parttern) || !!pinyinMatch.match(input, key);
   };
   const _filterFunc = (data = [] as PropertyItem[]) => {
     const labelKey = 'label';
@@ -191,21 +192,42 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     setKeyword(query);
     setDebouncedKeyword(query);
   };
-  const prefixCls = usePrefixCls('property-picker');
+  /**
+   * trigger element of the dropdown
+   */
   const defaultInput = () => {
-    const valueElem = <span className={`${prefixCls}-trigger__value`}>{currentValue?.label}</span>;
+    const _placeholder = placeholder ?? '选择属性';
+    const inputValueRef = useRef<HTMLSpanElement | null>(null);
+    const [textOverflow, setTextOverflow] = useState(false);
+    const prefixCls = usePrefixCls('property-picker');
+
+    useEffect(() => {
+      if (!inputValueRef?.current || !currentValue?.label) return;
+      const valueSpanWidth = inputValueRef?.current.offsetWidth || 0;
+      const parentWidth = inputValueRef?.current.parentElement?.clientWidth || 0;
+      // console.log('valueinput[parentWidth,valueSpanWidth]', [parentWidth, valueSpanWidth]);
+      setTextOverflow(parentWidth < valueSpanWidth);
+    }, [inputValueRef, currentValue]);
+    const valueElem = (
+      <span ref={inputValueRef} className={`${prefixCls}-trigger__value`}>
+        {currentValue?.label}
+      </span>
+    );
 
     return (
       <>
-        <span className={`${prefixCls}-trigger ${pickerVisible ? 'open' : ''}`}>
+        <div className={`${prefixCls}-trigger ${pickerVisible ? 'open' : ''}`}>
           <span className="prefix" />
-          <span className={`${prefixCls}-trigger-input`}>
-            {!currentValue ? <span className={`${prefixCls}-trigger__placeholder`}>{placeholder}</span> : valueElem}
-          </span>
+          <Tooltip title={currentValue?.label} disabled={!textOverflow} placement="top" arrowPointAtCenter>
+            <span className={`${prefixCls}-trigger-input`}>
+              {!currentValue ? <span className={`${prefixCls}-trigger__placeholder`}>{_placeholder}</span> : valueElem}
+            </span>
+          </Tooltip>
+
           <span className="suffix">
             <DownFilled className="caret" size="14px" />
           </span>
-        </span>
+        </div>
       </>
     );
   };
@@ -232,4 +254,5 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     </>
   );
 };
+
 export default PropertyPicker;
