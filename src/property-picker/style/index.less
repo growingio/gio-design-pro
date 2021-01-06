@@ -1,6 +1,6 @@
 @import '../../picker/style/index.less';
 @import '~@gio-design-new/components/es/components/tag/style/index.less';
-
+// @import '@gio-design-new/components/es/components/tooltip/style/index.css';
 @property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
 
 .@{property-picker-prefix-cls}-detail {
@@ -73,12 +73,11 @@
   }
   &-input {
     margin-right: 16px;
-    margin-left: 16px;
     word-break: keep-all;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 200px;
+    max-width: 160px;
     font-size: 14px;
   }
   &__placeholder {
