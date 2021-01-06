@@ -197,14 +197,14 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
    */
   const defaultInput = () => {
     const _placeholder = placeholder ?? '选择属性';
-    const inputValueRef = useRef<HTMLSpanElement>();
+    const inputValueRef = useRef<HTMLSpanElement | null>(null);
     const [textOverflow, setTextOverflow] = useState(false);
     const prefixCls = usePrefixCls('property-picker');
 
     useEffect(() => {
-      if (!inputValueRef?.current || !currentValue.label) return;
-      const valueSpanWidth = inputValueRef?.current.offsetWidth;
-      const parentWidth = inputValueRef?.current.parentElement.clientWidth;
+      if (!inputValueRef?.current || !currentValue?.label) return;
+      const valueSpanWidth = inputValueRef?.current.offsetWidth || 0;
+      const parentWidth = inputValueRef?.current.parentElement?.clientWidth || 0;
       // console.log('valueinput[parentWidth,valueSpanWidth]', [parentWidth, valueSpanWidth]);
       setTextOverflow(parentWidth < valueSpanWidth);
     }, [inputValueRef, currentValue]);
