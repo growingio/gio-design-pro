@@ -81,7 +81,6 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     if (!input) return false;
     const parttern: RegExp = makeSearchParttern(key, true);
     if (!parttern) return true;
-    console.log(pinyinMatch);
     return !!input.match(parttern) || !!pinyinMatch?.match(input, key);
   };
   const _filterFunc = (data = [] as PropertyItem[]) => {
@@ -215,15 +214,13 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         {currentValue?.label}
       </span>
     );
-
+    const placeholderElem = <span className={`${prefixCls}-trigger__placeholder`}>{_placeholder}</span>;
     return (
       <>
         <div className={`${prefixCls}-trigger ${pickerVisible ? 'open' : ''}`}>
           <span className="prefix" />
           <Tooltip title={currentValue?.label} disabled={!textOverflow} placement="top" arrowPointAtCenter>
-            <span className={`${prefixCls}-trigger-input`}>
-              {!currentValue ? <span className={`${prefixCls}-trigger__placeholder`}>{_placeholder}</span> : valueElem}
-            </span>
+            <span className={`${prefixCls}-trigger-input`}>{!currentValue?.value ? placeholderElem : valueElem}</span>
           </Tooltip>
 
           <span className="suffix">
