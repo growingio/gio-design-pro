@@ -111,6 +111,7 @@ function Expression(props: ExpressionProps) {
       <div className="express-regular_select">
         <div className="expression-icon">{index + 1}</div>
         <PropertyPicker
+          placeholder="选择属性"
           initialValue={{ value: exprKey, label: exprName }}
           dataSource={propertyOptions.filter((option: any) => {
             const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];

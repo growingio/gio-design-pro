@@ -1,5 +1,5 @@
-import EmptyPrompt from './empty-prompt';
+// import EmptyPrompt from './empty-prompt';
 import FilterPicker from './filterPicker';
 import PropertyPicker from './property-picker';
 
-export default { EmptyPrompt, PropertyPicker, FilterPicker };
+export default { PropertyPicker, FilterPicker };
