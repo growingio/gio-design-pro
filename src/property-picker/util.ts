@@ -73,7 +73,7 @@ const PreparedNormalDimensionIdMap = (id: string) => {
     device: ['b', 'cv'], // 应用平台和app版本归属到-设备分类
   };
   if (groupMap.page.includes(id)) return ['page', '页面'];
-  if (groupMap.element.includes(id)) return ['element', '无埋点事件'];
+  if (groupMap.element.includes(id)) return ['element', '无埋点事件属性'];
   return ['device', '设备'];
 };
 

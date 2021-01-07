@@ -13689,7 +13689,7 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
-pinyin-match@^1.0.8, pinyin-match@^1.1.7:
+pinyin-match@^1.0.8, pinyin-match@^1.1.7, pinyin-match@^1.1.8:
   version "1.1.8"
   resolved "https://repo.growingio.com/repository/npm-group/pinyin-match/-/pinyin-match-1.1.8.tgz#a172f26a13f9eb65b4e8a687fae3c2d243f8d87d"
   integrity sha512-n9vXGOICdX9bjFPW2hbOaIU3ZJxcYuyLGHYSY9gdPZxjzx5gIk5w3efDHr5U8slI4ANhQqRPxaaravy20YitCw==
