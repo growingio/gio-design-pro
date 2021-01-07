@@ -256,7 +256,7 @@ function FilterCondition(props: FilterConditionProps) {
             transform: visible ? 'rotate(0.5turn)' : '',
             position: 'absolute',
             right: '4px',
-            top: '10px',
+            top: '7px',
           }}
         />
       </span>
