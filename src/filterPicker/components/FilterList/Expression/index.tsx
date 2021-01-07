@@ -91,7 +91,7 @@ function Expression(props: ExpressionProps) {
     // };
     // onChange(expr, index);
   };
-  // 兼容旧版属性选择器方法
+  // // 兼容旧版属性选择器方法
   // const getGroupIcon = () => (
   //   <span className="group-icon">
   //     {/* <Icon name={`gicon-${group}`} /> */}
