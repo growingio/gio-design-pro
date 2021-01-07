@@ -79,4 +79,5 @@ export interface PropertyItem extends NodeData {
   // itemIcon?: React.ReactElement | string,
   valueType?: string;
   key?: string;
+  pinyinName?: string;
 }

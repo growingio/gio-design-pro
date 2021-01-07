@@ -3,11 +3,11 @@ import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-c
 // import { TabNavItemProps } from '@gio-design-new/components/es/components/tab-nav/interface';
 import { NodeData } from '@gio-design-new/components/es/components/cascader/interface';
 import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
-import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
+// import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
 import { DownFilled } from '@gio-design/icons';
 import * as pinyin from 'pinyin-match';
 import { Tooltip } from '@gio-design-new/components';
-import { dimensionToPropertyItem } from './util';
+import { dimensionToPropertyItem, getShortPinyin } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
 // import { Loading, Grid, Tag } from '@gio-design-new/components';
 import BasePicker from '../picker';
@@ -63,7 +63,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         propertiItemList = originDataSource;
       }
     }
-    setDataList(propertiItemList);
+    const list = propertiItemList.map((v) => {
+      return { ...v, pinyinName: getShortPinyin(v.label ?? '') };
+    });
+
+    setDataList(list);
     /**
      * 设置属性类型tab，如果传入的列表没有对应的类型 不显示该tab
      */
@@ -78,10 +82,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
    * @param key 匹配的关键字
    */
   const keywordFilter = (input: string = '', key: string = '') => {
-    if (!input) return false;
-    const parttern: RegExp = makeSearchParttern(key, true);
-    if (!parttern) return true;
-    return !!input.match(parttern) || !!pinyinMatch?.match(input, key);
+    if (!input || !key) return true;
+    return !!pinyinMatch?.match(input, key);
+    // const parttern: RegExp = makeSearchParttern(key, true);
+    // if (!parttern) return true;
+    // return !!input.match(parttern) || !!pinyinMatch?.match(input, key);
   };
   const _filterFunc = (data = [] as PropertyItem[]) => {
     const labelKey = 'label';
@@ -101,22 +106,13 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     // 按照分组排序
     const sortedData = filterdData; // sortBy(filterdData, ['groupOrder', 'name']);
     sortedData.sort((a, b) => {
-      const regEnOrNum = /^[a-zA-Z0-9]/;
+      // const regEnOrNum = /^[a-zA-Z0-9]/;
       const aOrder = a.groupOrder ?? 0;
       const bOrder = b.groupOrder ?? 0;
       if (aOrder - bOrder === 0) {
-        if (regEnOrNum.test(a.label ?? '') || regEnOrNum.test(b.label ?? '')) {
-          return (a.label?.charCodeAt(0) as number) - (b.label?.charCodeAt(0) as number);
-        }
-        return (
-          a.label?.localeCompare(b.label ?? '', 'zh-Hans-CN', {
-            sensitivity: 'accent',
-            ignorePunctuation: true,
-            numeric: true,
-            // localeMatcher: 'best fit',
-            // collation: 'big5han',
-          }) || 0
-        );
+        const aPinyin = a.pinyinName; // getShortPinyin(a.label ?? '');
+        const bPinyin = b.pinyinName; // getShortPinyin(b.label ?? '');
+        return aPinyin?.localeCompare(bPinyin ?? '') || 0;
       }
       return aOrder - bOrder;
     });

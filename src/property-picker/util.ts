@@ -96,3 +96,30 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
   result.typeOrder = tOrder > -1 ? tOrder : 9999;
   return result;
 };
+
+export function getShortPinyin(word: string) {
+  let idx = -1;
+  const MAP = 'ABCDEFGHJKLMNOPQRSTWXYZ';
+  const boundaryChar = '驁簿錯鵽樲鰒餜靃攟鬠纙鞪黁漚曝裠鶸蜶籜鶩鑂韻糳';
+
+  if (!String.prototype.localeCompare) {
+    // throw Error('String.prototype.localeCompare not supported.');
+    return word[0];
+  }
+
+  return word
+    .split('')
+    .map((c) => {
+      if (/[^\u4e00-\u9fa5]/.test(c)) {
+        return c;
+      }
+      for (let i = 0; i < boundaryChar.length; i += 1) {
+        if (boundaryChar[i].localeCompare(c, 'zh-CN-u-co-pinyin') >= 0) {
+          idx = i;
+          break;
+        }
+      }
+      return MAP[idx];
+    })
+    .join('');
+}
