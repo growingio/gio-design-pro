@@ -245,6 +245,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         onSearch={handleSearch}
         dataSource={dataSource}
         groupVisible
+        emptyPrompt={{ description: '无数据' }}
       />
     </>
   );
