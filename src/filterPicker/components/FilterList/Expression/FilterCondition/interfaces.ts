@@ -12,7 +12,7 @@ export type DateValue =
   | 'relativeCurrent'
   | 'relativeBetween';
 
-export type attributeValue = 'string' | 'int' | 'date';
+export type attributeValue = 'string' | 'int' | 'date' | 'STRING';
 
 export type FilterValueType = {
   op: StringValue | NumberValue | DateValue;

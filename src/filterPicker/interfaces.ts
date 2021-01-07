@@ -32,10 +32,15 @@ export interface titleGroup {
   string: string;
   int: string;
   date: string;
+  STRING: string;
 }
 
 export interface selectOption {
   string: {
+    value: string;
+    label: string;
+  }[];
+  STRING: {
     value: string;
     label: string;
   }[];

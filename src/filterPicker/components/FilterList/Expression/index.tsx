@@ -62,7 +62,7 @@ function Expression(props: ExpressionProps) {
   };
 
   const changePropertyPicker = (v: any) => {
-    v && setValueType(v?.valueType?.toLowerCase() || 'string');
+    v && setValueType(v?.valueType || 'string');
     v && setExprName(v.label);
     v && setExprKey(v.value);
     v && setValues([]);

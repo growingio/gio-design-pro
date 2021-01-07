@@ -22,6 +22,7 @@ interface operationMapType {
   string: { [key: string]: string };
   int: { [key: string]: string };
   date: { [key: string]: string };
+  STRING: { [key: string]: string };
 }
 
 const operationMap: operationMapType = {
@@ -34,6 +35,14 @@ const operationMap: operationMapType = {
     'not like': '不包含',
     hasValue: '有值',
     noValue: '无值',
+  },
+  STRING: {
+    '=': '等于',
+    '!=': '不等于',
+    in: '在,范围内',
+    'not in': '不在,范围内',
+    like: '包含',
+    'not like': '不包含',
   },
   int: {
     '=': '等于',
@@ -77,7 +86,7 @@ function FilterCondition(props: FilterConditionProps) {
   const parseValuesToText = (type: attributeValue, operation: string, value: string[]): string => {
     const opMap = operationMap[type];
     if (value.length) {
-      if (type === 'string') {
+      if (type === 'string' || type === 'STRING') {
         // 字符串类型
         switch (operation) {
           // 判断当op ： ”=“ 时，是否为无值状态，如果无值，返回’有值’
