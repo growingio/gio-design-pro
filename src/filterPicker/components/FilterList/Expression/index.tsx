@@ -39,7 +39,6 @@ function Expression(props: ExpressionProps) {
   const [exprName, setExprName] = useState<string>(filterItem?.name || '');
   const [op, setOp] = useState<StringValue | NumberValue | DateValue>(filterItem?.op);
   const [subFilterItem, setSubFilterItem] = useState<FilterValueType>(filterItem);
-
   const submit = (v: FilterValueType) => {
     const expr: FilterValueType = {
       key: exprKey,
@@ -70,7 +69,7 @@ function Expression(props: ExpressionProps) {
     const expr: FilterValueType = {
       key: v.value,
       name: v.label,
-      valueType: v?.valueType?.toLowerCase() || 'string',
+      valueType: v?.valueType || 'string',
       op: '=',
       values: [],
     };

@@ -106,6 +106,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
         // 日期类型
         return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
       case AttributeMap.string:
+      case AttributeMap.STRING:
         return (
           // 字符串类型
           <StringAttrSelect

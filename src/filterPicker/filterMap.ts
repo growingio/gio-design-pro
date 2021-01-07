@@ -186,7 +186,7 @@ export const AttributeMap = {
   string: 'string',
   int: 'int',
   date: 'date',
-  STRING: 'string',
+  STRING: 'STRING',
 };
 
 export default { titleMap, selectOptionMap, selectValueMap, defaultFilterItem };
