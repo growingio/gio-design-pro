@@ -90,14 +90,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
 
   return (
     <div style={{ height: '330px' }}>
-      <Input
-        placeholder="请输入…"
-        size="small"
-        value={inputValue}
-        onChange={changInputValue}
-        style={{ display: 'block' }}
-      />
-
+      <Input placeholder="请输入…" size="middle" value={inputValue} onChange={changInputValue} />
       <List
         isMultiple
         stateless

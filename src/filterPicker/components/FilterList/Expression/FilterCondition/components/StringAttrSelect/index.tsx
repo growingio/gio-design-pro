@@ -75,13 +75,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     default:
       return (
         <div style={{ width: '100%' }}>
-          <Input
-            placeholder="请输入…"
-            size="middle"
-            value={inputValue}
-            onChange={changInputValue}
-            style={{ display: 'block' }}
-          />
+          <Input placeholder="请输入…" size="middle" value={inputValue} onChange={changInputValue} />
           <List
             stateless
             value={listValue}
