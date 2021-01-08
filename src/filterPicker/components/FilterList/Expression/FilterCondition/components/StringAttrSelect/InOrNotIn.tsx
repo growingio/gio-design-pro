@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Checkbox, CheckboxGroup } from '@gio-design-new/components';
+import { Input, Checkbox, CheckboxGroup } from '@gio-design/components';
 import { attributeValue } from '../../interfaces';
 
 interface StringAttrSelectProps {

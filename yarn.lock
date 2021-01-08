@@ -1412,10 +1412,10 @@
     pinyin-match "^1.1.7"
     url "^0.11.0"
 
-"@gio-design-new/components@^20.12.5":
-  version "20.12.5"
-  resolved "https://repo.growingio.com/repository/npm-group/@gio-design-new/components/-/components-20.12.5.tgz#784948ce41373a190462b77bbd889c433cc3e33b"
-  integrity sha512-cRnoiGxbbI41Lvf+swOMJcilJi01DzPknZlcExpSFvaZJhM6SJ1k3GIZ8IR0iUQwEgiVQVhr5uzR6g/iqOqKuQ==
+"@gio-design/components@^21.1.2":
+  version "21.1.0"
+  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/components/-/components-21.1.0.tgz#5789adab103ff910cbe9b6c01c21e0e678e978b9"
+  integrity sha512-s6WxaOOokZU9QskIZqq4aK8z7oYUGa2GaveP34C+A3GkMHT6BgnlTeiYPuiQ12P409LObqO9gY0gLdbcwUKUOQ==
   dependencies:
     "@gio-design/icons" "20.12.1"
     "@gio-design/tokens" "20.12.3"
@@ -1452,26 +1452,6 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/components@^0.4.37":
-  version "0.4.40"
-  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/components/-/components-0.4.40.tgz#9b8b575856576eded435ad63a18c4aab9512c017"
-  integrity sha512-cKKKINFTRUEJozMfdUQ3edvkdAXtBbCaKGCfKoAWsPFuXbxZmadihV3NSEp8JSV0KN5gKJ3Ors9OikbdI5gZig==
-  dependencies:
-    "@gio-design/tokens" "^0.2.21"
-    "@types/classnames" "^2.2.9"
-    "@types/lodash" "^4.14.136"
-    "@types/react" "^16.8.23"
-    "@types/react-dom" "^16.8.2"
-    antd "^3.20.5"
-    classnames "^2.2.6"
-    lodash "^4.17.14"
-    moment "^2.24.0"
-    pinyin-match "^1.0.8"
-    rc-calendar "^9.15.4"
-    rc-notification "^3.3.1"
-    react "^16.8.6"
-    react-dom "^16.8.6"
-
 "@gio-design/icons@20.11.0":
   version "20.11.0"
   resolved "https://registry.npmjs.org/@gio-design/icons/-/icons-20.11.0.tgz#328f1819cc1aba8d43b52476a88ea64d116a651b"
@@ -1495,11 +1475,6 @@
   version "20.12.3"
   resolved "https://repo.growingio.com/repository/npm-group/@gio-design/tokens/-/tokens-20.12.3.tgz#bfa3a3c6330d86acaf9f54329922977350447a3f"
   integrity sha512-IE2/DultN+XI8pe1T9RTqUfe82zGmJKbD7a6L0/3i95AF0Fk9FbbN7Y5N2p2I+eDK2pFHOVVto3IswThH6TIFA==
-
-"@gio-design/tokens@^0.2.21":
-  version "0.2.21"
-  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/tokens/-/tokens-0.2.21.tgz#3c4889ee28fce7164ecbbff7b9e0d3b5c241442c"
-  integrity sha512-fvapyhQkVGXc2uuC9aeNYWCX4d5b4WHhO07hwbnLnor7LKckBZNrmJmUCTIp3KU3Stnj+kluEv0JDtJIbhPR6w==
 
 "@graphql-codegen/cli@1.19.1":
   version "1.19.1"
@@ -13689,7 +13664,7 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
-pinyin-match@^1.0.8, pinyin-match@^1.1.7, pinyin-match@^1.1.8:
+pinyin-match@^1.1.7, pinyin-match@^1.1.8:
   version "1.1.8"
   resolved "https://repo.growingio.com/repository/npm-group/pinyin-match/-/pinyin-match-1.1.8.tgz#a172f26a13f9eb65b4e8a687fae3c2d243f8d87d"
   integrity sha512-n9vXGOICdX9bjFPW2hbOaIU3ZJxcYuyLGHYSY9gdPZxjzx5gIk5w3efDHr5U8slI4ANhQqRPxaaravy20YitCw==
@@ -14312,7 +14287,7 @@ rc-calendar@9.1.2:
     rc-trigger "1.x"
     rc-util "^4.0.4"
 
-rc-calendar@9.15.11, rc-calendar@^9.15.4, rc-calendar@~9.15.7:
+rc-calendar@9.15.11, rc-calendar@~9.15.7:
   version "9.15.11"
   resolved "https://registry.npmjs.org/rc-calendar/-/rc-calendar-9.15.11.tgz#ce1e5ea8e4d77435be66a8c77db12f1f0f9a345f"
   integrity sha512-qv0VXfAAnysMWJigxaP6se4bJHvr17D9qsLbi8BOpdgEocsS0RkgY1IUiFaOVYKJDy/EyLC447O02sV/y5YYBg==
@@ -14548,17 +14523,6 @@ rc-motion@^2.0.0, rc-motion@^2.0.1, rc-motion@^2.2.0, rc-motion@^2.3.0:
     classnames "^2.2.1"
     rc-util "^5.2.1"
 
-rc-notification@^3.3.1, rc-notification@~3.3.1:
-  version "3.3.1"
-  resolved "https://repo.growingio.com/repository/npm-group/rc-notification/-/rc-notification-3.3.1.tgz#0baa3e70f8d40ab015ce8fa78c260c490fc7beb4"
-  integrity sha512-U5+f4BmBVfMSf3OHSLyRagsJ74yKwlrQAtbbL5ijoA0F2C60BufwnOcHG18tVprd7iaIjzZt1TKMmQSYSvgrig==
-  dependencies:
-    babel-runtime "6.x"
-    classnames "2.x"
-    prop-types "^15.5.8"
-    rc-animate "2.x"
-    rc-util "^4.0.4"
-
 rc-notification@^4.5.4:
   version "4.5.4"
   resolved "https://repo.growingio.com/repository/npm-group/rc-notification/-/rc-notification-4.5.4.tgz#1292e163003db4b9162c856a4630e5d0f1359356"
@@ -14568,6 +14532,17 @@ rc-notification@^4.5.4:
     classnames "2.x"
     rc-motion "^2.2.0"
     rc-util "^5.0.1"
+
+rc-notification@~3.3.1:
+  version "3.3.1"
+  resolved "https://repo.growingio.com/repository/npm-group/rc-notification/-/rc-notification-3.3.1.tgz#0baa3e70f8d40ab015ce8fa78c260c490fc7beb4"
+  integrity sha512-U5+f4BmBVfMSf3OHSLyRagsJ74yKwlrQAtbbL5ijoA0F2C60BufwnOcHG18tVprd7iaIjzZt1TKMmQSYSvgrig==
+  dependencies:
+    babel-runtime "6.x"
+    classnames "2.x"
+    prop-types "^15.5.8"
+    rc-animate "2.x"
+    rc-util "^4.0.4"
 
 rc-pagination@~1.20.11:
   version "1.20.15"
@@ -15022,7 +14997,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@^16.14.0, react-dom@^16.8.6:
+react-dom@^16.14.0:
   version "16.14.0"
   resolved "https://repo.growingio.com/repository/npm-group/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
   integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
@@ -15238,7 +15213,7 @@ react-virtualized@^9.22.2:
     prop-types "^15.7.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.14.0, react@^16.8.6:
+react@^16.14.0:
   version "16.14.0"
   resolved "https://repo.growingio.com/repository/npm-group/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==

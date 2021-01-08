@@ -1,12 +1,12 @@
 @import '../../stylesheets/index.less';
-@import '~@gio-design-new/components/es/components/alert/style/index.less';
-@import '~@gio-design-new/components/es/components/button/style/index.less';
-@import '~@gio-design-new/components/es/components/input/style/index.less';
-@import '~@gio-design-new/components/es/components/search-bar/style/index.less';
-@import '~@gio-design-new/components/es/components/loading/style/index.less';
-@import '~@gio-design-new/components/es/components/tabs/style/index.less';
-@import '~@gio-design-new/components/es/components/cascader/style/index.less';
-@import '~@gio-design-new/components/es/components/dropdown/style/index.less';
+@import '~@gio-design/components/es/components/alert/style/index.less';
+@import '~@gio-design/components/es/components/button/style/index.less';
+@import '~@gio-design/components/es/components/input/style/index.less';
+@import '~@gio-design/components/es/components/search-bar/style/index.less';
+@import '~@gio-design/components/es/components/loading/style/index.less';
+@import '~@gio-design/components/es/components/tabs/style/index.less';
+@import '~@gio-design/components/es/components/cascader/style/index.less';
+@import '~@gio-design/components/es/components/dropdown/style/index.less';
 @import '../../empty-prompt/style/index.less';
 
 @picker-prefix-cls: ~'@{component-prefix}-picker';
@@ -109,11 +109,13 @@
         padding: 8px;
       }
     }
-    .cascader-menu-group:not(:last-child)::after {
+    .cascader-menu-group:not(:first-child)::before {
       display: block;
       margin: 8px 12px;
       content: ' ';
-      border-bottom: 1px solid #ebedf5;
+      border-top: 1px solid #ebedf5;
+      position: static;
+      width: inherit;
     }
 
     .cascader-menu-group:not(:last-child) .cascader-menu-item:last-child .cascader-menu-item-content {
@@ -124,19 +126,8 @@
         &::after {
           content: none;
         }
-        // &::before {
-        //   display: block;
-        //   margin: 8px 0px;
-        //   content: ' ';
-        //   border-bottom: 1px solid #ebedf5;
-        // }
       }
     }
-    // .cascader-menu-group:not(:first-child) {
-    //   .cascader-menu-group-name {
-    //     padding-top: 16px;
-    //   }
-    // }
     .cascader-menu-group-name {
       clear: both;
       margin: 0 12px;
@@ -146,6 +137,7 @@
       font-weight: 500;
       letter-spacing: 0;
       line-height: 20px;
+      position: static;
     }
 
     .cascader-menu-item {
@@ -153,11 +145,11 @@
 
       .cascader-menu-item-content {
         margin: 0;
-        padding: 9px 12px;
+        padding: 8px 12px;
         color: #313e75;
         font-size: 14px;
         letter-spacing: 0;
-        line-height: 22px;
+        line-height: 20px;
         & > div:first-child {
           overflow: hidden;
           white-space: nowrap;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Input } from '@gio-design-new/components';
+import { Input } from '@gio-design/components';
 import Docs from './useLocalStorage.mdx';
 import useLocalStorage from './useLocalStorage';
 

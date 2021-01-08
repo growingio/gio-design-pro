@@ -7,7 +7,7 @@ import { UpFilled, DownFilled } from '@gio-design/icons';
 import PropertyPicker from './PropertyPicker';
 import { PropertyPickerProps } from './interfaces';
 import { insightDimensions } from './__test__/data';
-import '@gio-design-new/components/es/components/button/style/css';
+import '@gio-design/components/es/components/button/style/css';
 import './style/index.less';
 import { dimensionToPropertyItem } from './util';
 import { Dimension } from '../types';

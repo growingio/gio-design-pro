@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
-import { Input, Select } from '@gio-design-new/components';
+import { Input, Select } from '@gio-design/components';
 
 interface RelativeCurrentProps {
   onChange: (v: string) => void;

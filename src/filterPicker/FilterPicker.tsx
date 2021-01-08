@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown, Button } from '@gio-design-new/components';
+import { Dropdown, Button } from '@gio-design/components';
 import { FilterOutlined } from '@gio-design/icons';
 import FilterOverlay from './components/FilterOverlay/index';
 import './style/index.less';

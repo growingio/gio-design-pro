@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@gio-design-new/components';
+import { Button } from '@gio-design/components';
 import './index.less';
 
 interface FilterFooterProps {

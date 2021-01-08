@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import moment, { Moment } from 'moment';
-import { DatePicker, DateRangePicker } from '@gio-design-new/components';
+import { DatePicker, DateRangePicker } from '@gio-design/components';
 import RelativeCurrent from './components/RelativeCurrent';
 import RelativeBetween from './components/RelativeBetween';
 import IncludeToday from './components/IncludeToday';

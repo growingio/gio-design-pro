@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Select, Checkbox } from '@gio-design-new/components';
+import { Select, Checkbox } from '@gio-design/components';
 import { titleMap, selectOptionMap, AttributeMap } from '../../../../filterMap';
 import NumberAttrSelect from './components/NumberAttrSelect';
 import DateAttrSelect from './components/DateAttrSelect';
