@@ -1412,7 +1412,7 @@
     pinyin-match "^1.1.7"
     url "^0.11.0"
 
-"@gio-design/components@^21.1.2":
+"@gio-design/components@^21.1.0":
   version "21.1.0"
   resolved "https://repo.growingio.com/repository/npm-group/@gio-design/components/-/components-21.1.0.tgz#5789adab103ff910cbe9b6c01c21e0e678e978b9"
   integrity sha512-s6WxaOOokZU9QskIZqq4aK8z7oYUGa2GaveP34C+A3GkMHT6BgnlTeiYPuiQ12P409LObqO9gY0gLdbcwUKUOQ==
