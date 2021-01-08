@@ -53,9 +53,9 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     case 'between':
       return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Input.InputNumber value={value1} onChange={setValue1Number} />
+          <Input.InputNumber value={value1} onChange={setValue1Number} style={{ width: '120px' }} />
           <div style={{ margin: '0 16px' }}>与</div>
-          <Input.InputNumber value={value2} onChange={setBetweenNumberValue} />
+          <Input.InputNumber value={value2} onChange={setBetweenNumberValue} style={{ width: '120px' }} />
         </div>
       );
     case 'hasValue':

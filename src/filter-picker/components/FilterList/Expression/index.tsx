@@ -3,7 +3,6 @@ import { DeleteOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design/components';
 import PropertyPicker from '../../../../property-picker';
 import '../../../../property-picker/style/index';
-// import PropertySelect from '@gio-core/components/property-select';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
