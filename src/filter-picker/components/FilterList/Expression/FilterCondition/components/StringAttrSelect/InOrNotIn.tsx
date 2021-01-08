@@ -18,7 +18,7 @@ type checkOptionsItem = {
 function StringAttrSelect(props: StringAttrSelectProps) {
   const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
   const [inputValue, setInputValue] = useState<string>('');
-  const [checkValue, setCheckValue] = useState<string[] | []>(values);
+  const [checkValue, setCheckValue] = useState<string[]>(values);
   // check-options
   const [checkOptions, setCheckOptions] = useState<checkOptionsItem[]>([]);
   // 存放本次自由输入的值

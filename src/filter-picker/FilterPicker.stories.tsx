@@ -5,11 +5,11 @@ import FilterPicker from '.';
 import { FilterPickerProps } from './interfaces';
 // import { currentUserId, preparedSegments, segments } from './__test__/data';
 
-import '@gio-design-new/components/es/components/button/style/css';
-import '@gio-design-new/components/es/components/select/style/css';
-import '@gio-design-new/components/es/components/date-picker/style/css';
-import '@gio-design-new/components/es/components/checkbox/style/css';
-import '@gio-design-new/components/es/components/list/style/css';
+import '@gio-design/components/es/components/button/style/css';
+import '@gio-design/components/es/components/select/style/css';
+import '@gio-design/components/es/components/date-picker/style/css';
+import '@gio-design/components/es/components/checkbox/style/css';
+import '@gio-design/components/es/components/list/style/css';
 import './style/index.less';
 
 export default {

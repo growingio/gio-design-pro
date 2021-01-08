@@ -30,8 +30,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@gio-core/components": "^0.7.1",
-    "@gio-core/utils": "0.1.0",
     "@gio-design/components": "^21.1.0",
     "@gio-design/icons": "20.11.0",
     "@gio-design/tokens": "20.12.0",

@@ -4,10 +4,10 @@ export interface FilterPickerProps {
   filter: FilterValue;
   propertyOptions: any[];
   measurements: any[];
-  timeRange?: string;
-  onConfirm?: (v: FilterValue) => void;
+  timeRange: string;
+  onConfirm: (v: FilterValue) => void;
   dimensionValueRequest?: (data: any) => Promise<any>;
-  recentlyStorePrefix?: string;
+  recentlyStorePrefix: string;
 }
 export type attributeValue = 'string' | 'int' | 'date';
 

@@ -53,7 +53,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
 
   useEffect(() => {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
-      console.log(JSON.stringify(res), 'res');
       res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
     });
   }, [valueType, exprKey]);
