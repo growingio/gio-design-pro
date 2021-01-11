@@ -13,8 +13,7 @@
     "build",
     "lib",
     "es",
-    "package.json",
-    "src"
+    "package.json"
   ],
   "scripts": {
     "build": "npx gio-rewire lib compile",
