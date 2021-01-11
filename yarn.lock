@@ -1356,10 +1356,10 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/icons@20.11.0":
-  version "20.11.0"
-  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/icons/-/icons-20.11.0.tgz#328f1819cc1aba8d43b52476a88ea64d116a651b"
-  integrity sha512-XEboZUxYW0VwuIqTD0ZYT5wj7K9DpwfXqjnuuhYNPqHiDVM24947zZ8c+PJ+n3jss/E2rNJ7429UIMeHpOvYFg==
+"@gio-design/icons@20.12.0":
+  version "20.12.0"
+  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/icons/-/icons-20.12.0.tgz#8545d9fd2816a10a9def6e6906f829ef12c392e4"
+  integrity sha512-BI3A2FcBKjpRrJWj79uH4uxXBdYYnaXMSXtlzOw/YKmFYcQa5ivGS2WiUyJ+h+3mcedGvGdB2fPHx9HadVHSog==
   dependencies:
     classnames "^2.2.6"
 
