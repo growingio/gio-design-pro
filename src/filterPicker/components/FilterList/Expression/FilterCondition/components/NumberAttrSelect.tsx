@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input } from '@gio-design-new/components';
+import { Input } from '@gio-design/components';
 
 interface NumberAttrSelectProps {
   attrSelect: string;

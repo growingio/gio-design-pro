@@ -32,8 +32,7 @@
   "dependencies": {
     "@gio-core/components": "^0.7.1",
     "@gio-core/utils": "0.1.0",
-    "@gio-design-new/components": "^20.12.5",
-    "@gio-design/components": "^0.4.37",
+    "@gio-design/components": "^21.1.0",
     "@gio-design/icons": "20.11.0",
     "@gio-design/tokens": "20.12.0",
     "classnames": "^2.2.6",

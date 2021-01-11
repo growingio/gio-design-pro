@@ -1,15 +1,15 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
-import usePrefixCls from '@gio-design-new/components/es/utils/hooks/use-prefix-cls';
-// import { TabNavItemProps } from '@gio-design-new/components/es/components/tab-nav/interface';
-import { NodeData } from '@gio-design-new/components/es/components/cascader/interface';
+import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
+// import { TabNavItemProps } from '@gio-design/components/es/components/tab-nav/interface';
+import { NodeData } from '@gio-design/components/es/components/cascader/interface';
 import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
-// import { makeSearchParttern } from '@gio-design-new/components/es/components/cascader/helper';
+// import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
 import { DownFilled } from '@gio-design/icons';
 import * as pinyin from 'pinyin-match';
-import { Tooltip } from '@gio-design-new/components';
+import { Tooltip } from '@gio-design/components';
 import { dimensionToPropertyItem, getShortPinyin } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
-// import { Loading, Grid, Tag } from '@gio-design-new/components';
+// import { Loading, Grid, Tag } from '@gio-design/components';
 import BasePicker from '../picker';
 import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue } from './interfaces';
 

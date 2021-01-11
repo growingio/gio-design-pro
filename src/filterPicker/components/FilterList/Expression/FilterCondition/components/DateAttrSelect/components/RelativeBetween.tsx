@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Select } from '@gio-design-new/components';
+import { Input, Select } from '@gio-design/components';
 
 interface RelativeBetweenProps {
   onChange: (v: string) => void;

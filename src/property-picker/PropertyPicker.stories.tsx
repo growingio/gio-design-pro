@@ -7,7 +7,7 @@ import { UpFilled, DownFilled } from '@gio-design/icons';
 import PropertyPicker from './PropertyPicker';
 import { PropertyPickerProps } from './interfaces';
 import { insightDimensions } from './__test__/data';
-import '@gio-design-new/components/es/components/button/style/css';
+import '@gio-design/components/es/components/button/style/css';
 import './style/index.less';
 import { dimensionToPropertyItem } from './util';
 import { Dimension } from '../types';
@@ -20,7 +20,7 @@ export default {
 
 const Template: Story<PropertyPickerProps> = (args) => (
   <div style={{ width: '600px', padding: '16px', boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)' }}>
-    <PropertyPicker {...args} />
+    <PropertyPicker {...args} onHoverPanelShow={undefined} />
   </div>
 );
 
