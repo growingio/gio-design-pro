@@ -11,6 +11,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   const [value, setValue] = useState<number>(values[0] ? parseInt(values[0], 10) : 0);
   const [value1, setValue1] = useState<number>(values[0] ? parseInt(values[0], 10) : 0);
   const [value2, setValue2] = useState<number>(values[1] ? parseInt(values[1], 10) : 0);
+
   // 初始化attrValue值
   useEffect(() => {
     const num = values[0] ? values[0] : '0';
