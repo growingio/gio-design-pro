@@ -94,17 +94,17 @@ function RelativeCurrent(props: RelativeCurrentProps) {
 
   const setDaysChange = (v: number) => {
     if (v && /^[1-9]\d*$/.test(`${v}`)) {
-      v && setDays(v);
-      v && createAttrValue(v, nowOrFuturevalue, inOrOutValue);
+      setDays(v);
+      createAttrValue(v, nowOrFuturevalue, inOrOutValue);
     } else if (!v) {
-      v && setDays(0);
-      v && createAttrValue(0, nowOrFuturevalue, inOrOutValue);
+      setDays(1);
+      createAttrValue(1, nowOrFuturevalue, inOrOutValue);
     }
   };
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
       <Select value={nowOrFuturevalue} options={SelectOptions} onChange={selectChange} style={{ marginRight: '4px' }} />
-      <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '90px', margin: '0 4px' }} min={0} />
+      <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '90px', margin: '0 4px' }} min={1} />
       <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天</div>
       {nowOrFuturevalue === '-1' ? (
         <Select

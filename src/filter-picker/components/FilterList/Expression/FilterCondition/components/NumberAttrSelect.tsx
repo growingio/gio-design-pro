@@ -40,7 +40,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   };
   // 设置区间方法
   const setBetweenNumberValue = (v: number) => {
-    if (v && /^-?[1-9]\d*$/.test(`${v}`)) {
+    if (v && /^-?[0-9]\d*$/.test(`${v}`)) {
       setValue2(v);
       attrChange([value1, v]);
     } else if (!v) {

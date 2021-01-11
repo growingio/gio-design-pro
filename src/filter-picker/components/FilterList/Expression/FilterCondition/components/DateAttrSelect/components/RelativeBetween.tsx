@@ -38,7 +38,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
       setValue1(v);
       createAttrValue(v, value2, nowOrFuturevalue);
     } else if (!v) {
-      setValue1(0);
+      setValue1(1);
     }
   };
   const setInputValue2 = (v: number) => {
@@ -46,7 +46,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
       setValue2(v);
       createAttrValue(value1, v, nowOrFuturevalue);
     } else if (!v) {
-      setValue2(0);
+      setValue2(1);
     }
   };
   const selectOptions = [
