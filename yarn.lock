@@ -1316,7 +1316,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/components@^20.12.6":
+"@gio-design/components@20.12.6":
   version "20.12.6"
   resolved "https://repo.growingio.com/repository/npm-group/@gio-design/components/-/components-20.12.6.tgz#15546b48fce4f47186f7778dd09029b4f770d6c4"
   integrity sha512-BLgHub49tDPtnf9oXHu8IDa+3eVjoOM/SGM8qjuFhWKrXu/l3Z31fYah2c8Wh5GLKS7daE0+O22l5TwdrfmGMA==
