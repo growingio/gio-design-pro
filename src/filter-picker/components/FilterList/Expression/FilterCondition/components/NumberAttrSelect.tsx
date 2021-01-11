@@ -26,7 +26,13 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   }, [attrSelect]);
 
   const setValue1Number = (v: number) => {
-    setValue1(v);
+    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
+      setValue1(v);
+      attrChange([v, value2]);
+    } else if (!v) {
+      setValue1(v);
+      attrChange(['0', value2]);
+    }
   };
 
   // 设置数值

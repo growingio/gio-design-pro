@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List } from '@gio-design/components';
+import { Input, List, Loading } from '@gio-design-new/components';
 import { attributeValue } from '../../interfaces';
 import InOrNotIn from './InOrNotIn';
 
@@ -25,15 +25,17 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   const [inputValue, setInputValue] = useState<string>(values.join(','));
   const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
   const [listValue, setListValue] = useState<string>(values.join(','));
-
+  const [loadingStatue, setLoadingStatue] = useState<boolean>(true);
   useEffect(() => {
     setInputValue(inputValue || '');
     setListValue(values?.[0]);
   }, [values]);
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
+    setLoadingStatue(false);
     curryDimensionValueRequest?.(exprKey, v.target.value)?.then((res: string[]) => {
       res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+      setLoadingStatue(true);
     });
     attrChange([v.target.value]);
     setInputValue(v.target.value);
@@ -54,6 +56,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   useEffect(() => {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+      setLoadingStatue(false);
     });
   }, [valueType, exprKey]);
 
@@ -74,16 +77,24 @@ function StringAttrSelect(props: StringAttrSelectProps) {
       return null;
     default:
       return (
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%', height: '100%' }}>
           <Input placeholder="请输入…" size="middle" value={inputValue} onChange={changInputValue} />
-          <List
-            stateless
-            value={listValue}
-            dataSource={listOptions}
-            width={300}
-            height={250}
-            onClick={changeListValue}
-          />
+          {loadingStatue ? (
+            <div
+              style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            >
+              <Loading />
+            </div>
+          ) : (
+            <List
+              stateless
+              value={listValue}
+              dataSource={listOptions}
+              width={300}
+              height={250}
+              onClick={changeListValue}
+            />
+          )}
         </div>
       );
   }

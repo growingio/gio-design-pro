@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List } from '@gio-design/components';
+import { Input, List, Loading } from '@gio-design-new/components';
 import { attributeValue } from '../../interfaces';
 
 interface StringAttrSelectProps {
@@ -26,6 +26,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   // 副本，用来保存values的值，因为values里面包含一部分上次自由输入的值
   // 暂存values的值，用来区分本次自有输入和上次自由输入的值
   const [defaultList, setDefaultList] = useState<string[]>(values);
+  const [loadingStatue, setLoadingStatue] = useState<boolean>(true);
 
   useEffect(() => {
     setCheckValue(values);
@@ -52,6 +53,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
       setCheckValue(res);
       attrChange(res);
     } else {
+      setLoadingStatue(true);
       const filterCheckedList: string[] = checkValue.filter((ele: string) => !checkList.includes(ele));
       curryDimensionValueRequest?.(exprKey, valueList[valueList.length - 1] || '')?.then((res: string[]) => {
         setCheckOptions([
@@ -62,6 +64,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
           // 已选中的，过滤掉自由输入的选项
           ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({ label: ele, value: ele })),
         ]);
+        setLoadingStatue(false);
       });
     }
 
@@ -85,21 +88,28 @@ function StringAttrSelect(props: StringAttrSelectProps) {
         setCheckOptions(
           Array.from(new Set([...defaultList, ...res])).map((ele: string) => ({ label: ele, value: ele }))
         );
+      setLoadingStatue(false);
     });
   }, [valueType, exprKey]);
 
   return (
     <div style={{ height: '330px' }}>
       <Input placeholder="请输入…" size="middle" value={inputValue} onChange={changInputValue} />
-      <List
-        isMultiple
-        stateless
-        value={checkValue}
-        dataSource={checkOptions}
-        width={300}
-        height={250}
-        onClick={changeCheckValue}
-      />
+      {loadingStatue ? (
+        <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Loading />
+        </div>
+      ) : (
+        <List
+          isMultiple
+          stateless
+          value={checkValue}
+          dataSource={checkOptions}
+          width={300}
+          height={250}
+          onClick={changeCheckValue}
+        />
+      )}
     </div>
   );
 }
