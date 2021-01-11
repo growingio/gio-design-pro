@@ -29,22 +29,22 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   };
 
   // 设置数值
-  const setNumberValue = (v: number) => {
-    if (v && /^-?[1-9]\d*$/.test(`${v}`)) {
+  const setNumberValue = (v: number | string) => {
+    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
       setValue(v);
       attrChange([v]);
     } else if (!v) {
-      setValue(0);
+      setValue(v);
       attrChange(['0']);
     }
   };
   // 设置区间方法
-  const setBetweenNumberValue = (v: number) => {
-    if (v && /^-?[0-9]\d*$/.test(`${v}`)) {
+  const setBetweenNumberValue = (v: number | string) => {
+    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
       setValue2(v);
       attrChange([value1, v]);
     } else if (!v) {
-      setValue2(0);
+      setValue2(v);
       attrChange([value1, '0']);
     }
   };

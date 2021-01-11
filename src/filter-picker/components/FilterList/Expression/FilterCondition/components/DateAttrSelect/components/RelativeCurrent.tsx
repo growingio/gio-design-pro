@@ -97,7 +97,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
       setDays(v);
       createAttrValue(v, nowOrFuturevalue, inOrOutValue);
     } else if (!v) {
-      setDays(1);
+      setDays(v);
       createAttrValue(1, nowOrFuturevalue, inOrOutValue);
     }
   };

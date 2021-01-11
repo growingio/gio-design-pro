@@ -101,10 +101,10 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     switch (attr) {
       case AttributeMap.int:
         // 数值类型
-        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
+        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={values} />;
       case AttributeMap.date:
         // 日期类型
-        return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
+        return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={values} />;
       case AttributeMap.string:
       case AttributeMap.STRING:
         return (
@@ -114,7 +114,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             attrSelect={selectValue}
             attrChange={setAttrValue}
             curryDimensionValueRequest={curryDimensionValueRequest}
-            values={attrValue}
+            values={values}
             exprKey={exprKey}
           />
         );
