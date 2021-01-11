@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@gio-design/components": "^20.12.6",
-    "@gio-design/icons": "20.12.0",
-    "@gio-design/tokens": "20.12.0",
+    "@gio-design/icons": "21.1.0",
+    "@gio-design/tokens": "21.1.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "lodash": "^4.17.20",
