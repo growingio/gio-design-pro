@@ -2,8 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import OperationMenu from '.';
 import { OperationMenuProps, OperationMenuListOption } from './interfaces';
-import '@gio-design/components/es/components/button/style/css';
-import './style/index.less';
+import './style';
 
 export default {
   title: 'Business Components/OperationMenu',

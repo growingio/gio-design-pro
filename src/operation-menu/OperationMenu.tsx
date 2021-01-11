@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { Dropdown, Button } from '@gio-design/components';
-import { More } from '@gio-design/icons';
+import { MoreOutlined } from '@gio-design/icons';
 import { OperationMenuProps } from './interfaces';
 import OperationMenuList from './OperationMenuList';
 
@@ -13,7 +13,7 @@ const OperateMenu = (props: OperationMenuProps) => {
     trigger = ['click'],
     mini = true,
     size,
-    icon = <More />,
+    icon = <MoreOutlined />,
     placement = 'bottomLeft',
     buttonType = 'assist',
     iconClassName,

@@ -4,8 +4,7 @@ import { action } from '@storybook/addon-actions';
 import UserPicker from '.';
 import { UserPickerProps } from './interfaces';
 import { currentUserId, preparedSegments, segments } from './__test__/data';
-import '@gio-design/components/es/components/button/style/css';
-import './style/index.less';
+import './style';
 
 export default {
   title: 'Business Components/UserPicker',
