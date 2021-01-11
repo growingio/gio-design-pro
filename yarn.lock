@@ -1416,6 +1416,11 @@
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-20.12.3.tgz#bfa3a3c6330d86acaf9f54329922977350447a3f"
   integrity sha512-IE2/DultN+XI8pe1T9RTqUfe82zGmJKbD7a6L0/3i95AF0Fk9FbbN7Y5N2p2I+eDK2pFHOVVto3IswThH6TIFA==
 
+"@gio-design/tokens@21.1.0":
+  version "21.1.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.1.0.tgz#f8e3519b58776f6864357f1362c145bb0928d739"
+  integrity sha512-udZQWINzs6ZX2Lxtu5IWI9OqaUfqnBbcCD4zD5Vam50m0hdh/e9eKSNUcalluCtF1vm9/sFKwOERkdbwk2hnZw==
+
 "@graphql-codegen/cli@1.19.1":
   version "1.19.1"
   resolved "https://registry.npmjs.org/@graphql-codegen/cli/-/cli-1.19.1.tgz#2f4ad535f3106af1f3b2422878d78405c556c1c1"
