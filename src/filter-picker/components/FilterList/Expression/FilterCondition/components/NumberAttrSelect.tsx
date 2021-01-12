@@ -25,33 +25,33 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     }
   }, [attrSelect]);
 
-  const setValue1Number = (v: number) => {
+  const setValue1Number = (v: string) => {
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue1(v);
+      setValue1(parseInt(v, 10));
       attrChange([v, value2]);
     } else if (!v) {
-      setValue1(v);
+      setValue1(parseInt(v, 10));
       attrChange(['0', value2]);
     }
   };
 
   // 设置数值
-  const setNumberValue = (v: number | string) => {
+  const setNumberValue = (v: string) => {
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue(v);
+      setValue(parseInt(v, 10));
       attrChange([v]);
     } else if (!v) {
-      setValue(v);
+      setValue(parseInt(v, 10));
       attrChange(['0']);
     }
   };
   // 设置区间方法
-  const setBetweenNumberValue = (v: number | string) => {
+  const setBetweenNumberValue = (v: string) => {
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue2(v);
+      setValue2(parseInt(v, 10));
       attrChange([value1, v]);
     } else if (!v) {
-      setValue2(v);
+      setValue2(parseInt(v, 10));
       attrChange([value1, '0']);
     }
   };
