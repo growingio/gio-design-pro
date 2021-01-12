@@ -32,10 +32,10 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   }, [values]);
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
-    setLoadingStatue(false);
+    setLoadingStatue(true);
     curryDimensionValueRequest?.(exprKey, v.target.value)?.then((res: string[]) => {
       res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
-      setLoadingStatue(true);
+      setLoadingStatue(false);
     });
     attrChange([v.target.value]);
     setInputValue(v.target.value);
