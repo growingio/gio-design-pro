@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List, Loading } from '@gio-design-new/components';
+import { Input, List, Loading } from '@gio-design/components';
 import { attributeValue } from '../../interfaces';
 
 interface StringAttrSelectProps {
