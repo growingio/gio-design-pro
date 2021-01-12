@@ -29,16 +29,16 @@ exports[`UserPicker render all segments 1`] = `
             class="gio-searchbar"
           >
             <div
-              class="gio-input gio-input-container gio-input-container-middle"
+              class="gio-input gio-input--middle gio-input__container"
             >
               <input
-                class="gio-input-content gio-input-content-suffix"
+                class="gio-input__content gio-input__content-suffix"
                 placeholder="搜索分群名或创建人"
                 type="text"
                 value=""
               />
               <div
-                class="gio-input-container-suffix"
+                class="gio-input__suffix"
               >
                 <span
                   class="gio-icon gio-searchbar-suffix-search"
@@ -46,9 +46,9 @@ exports[`UserPicker render all segments 1`] = `
                   <svg
                     class="gio-icon-svg"
                     fill="currentColor"
-                    height="1rem"
+                    height="16px"
                     viewBox="0 0 14.01 14"
-                    width="1rem"
+                    width="16px"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <defs>
@@ -85,9 +85,9 @@ exports[`UserPicker render all segments 1`] = `
               <svg
                 class="gio-icon-svg"
                 fill="currentColor"
-                height="1rem"
+                height="16px"
                 viewBox="0 0 14 14"
-                width="1rem"
+                width="16px"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
@@ -157,10 +157,12 @@ exports[`UserPicker render all segments 1`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -191,10 +193,12 @@ exports[`UserPicker render all segments 1`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -225,10 +229,12 @@ exports[`UserPicker render all segments 1`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -300,10 +306,12 @@ exports[`UserPicker render all segments 1`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -375,10 +383,12 @@ exports[`UserPicker render all segments 1`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -450,10 +460,12 @@ exports[`UserPicker render all segments 1`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -525,10 +537,12 @@ exports[`UserPicker render all segments 1`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -613,17 +627,17 @@ exports[`UserPicker render my segements 1`] = `
   style="cursor:pointer"
 >
   <div
-    class="gio-input gio-input-container gio-input-container-middle"
+    class="gio-input gio-input--middle gio-input__container"
   >
     <input
       aria-label="picker-value"
-      class="gio-input-content gio-input-content-suffix"
+      class="gio-input__content gio-input__content-suffix"
       placeholder=""
       type="text"
       value=""
     />
     <div
-      class="gio-input-container-suffix"
+      class="gio-input__suffix"
     >
       <span
         class="gio-icon"
@@ -631,9 +645,9 @@ exports[`UserPicker render my segements 1`] = `
         <svg
           class="gio-icon-svg"
           fill="currentColor"
-          height="1rem"
+          height="16px"
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs />
@@ -689,16 +703,16 @@ exports[`UserPicker render my segements 2`] = `
             class="gio-searchbar"
           >
             <div
-              class="gio-input gio-input-container gio-input-container-middle"
+              class="gio-input gio-input--middle gio-input__container"
             >
               <input
-                class="gio-input-content gio-input-content-suffix"
+                class="gio-input__content gio-input__content-suffix"
                 placeholder="搜索分群名或创建人"
                 type="text"
                 value=""
               />
               <div
-                class="gio-input-container-suffix"
+                class="gio-input__suffix"
               >
                 <span
                   class="gio-icon gio-searchbar-suffix-search"
@@ -706,9 +720,9 @@ exports[`UserPicker render my segements 2`] = `
                   <svg
                     class="gio-icon-svg"
                     fill="currentColor"
-                    height="1rem"
+                    height="16px"
                     viewBox="0 0 14.01 14"
-                    width="1rem"
+                    width="16px"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <defs>
@@ -745,9 +759,9 @@ exports[`UserPicker render my segements 2`] = `
               <svg
                 class="gio-icon-svg"
                 fill="currentColor"
-                height="1rem"
+                height="16px"
                 viewBox="0 0 14 14"
-                width="1rem"
+                width="16px"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
@@ -822,10 +836,12 @@ exports[`UserPicker render my segements 2`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -856,10 +872,12 @@ exports[`UserPicker render my segements 2`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -899,10 +917,12 @@ exports[`UserPicker render my segements 2`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"
@@ -974,10 +994,12 @@ exports[`UserPicker render my segements 2`] = `
                 <div
                   aria-expanded="false"
                   class="cascader-menu-item"
+                  data-checked="false"
                   role="menuitem"
                 >
                   <div
                     aria-haspopup="false"
+                    aria-pressed="false"
                     class="cascader-menu-item-inner"
                     role="button"
                     tabindex="0"

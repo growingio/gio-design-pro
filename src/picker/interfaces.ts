@@ -1,5 +1,5 @@
 import React from 'react';
-import { NodeData } from '@gio-design/components/es/components/cascader/menu-item';
+import { NodeData } from '@gio-design/components/es/components/cascader/interface';
 
 interface ActionButton {
   /**
