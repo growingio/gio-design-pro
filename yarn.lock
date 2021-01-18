@@ -1364,13 +1364,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/components@20.12.6":
-  version "20.12.6"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-20.12.6.tgz#15546b48fce4f47186f7778dd09029b4f770d6c4"
-  integrity sha512-BLgHub49tDPtnf9oXHu8IDa+3eVjoOM/SGM8qjuFhWKrXu/l3Z31fYah2c8Wh5GLKS7daE0+O22l5TwdrfmGMA==
+"@gio-design/components@21.1.2":
+  version "21.1.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.1.2.tgz#092e2b879cdc4ed51f534a16141cef49bd532564"
+  integrity sha512-Kd52lvGbagQSgZ3+sQefe41fTnVtUuQkAQJav1u4qqHoXZbFN4C/IwqUt3HjKKOtQHAtw7tPLKBdS6nLCvel4w==
   dependencies:
-    "@gio-design/icons" "20.12.1"
-    "@gio-design/tokens" "20.12.3"
+    "@gio-design/icons" "21.1.0"
+    "@gio-design/tokens" "21.1.0"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -1411,10 +1411,23 @@
   dependencies:
     classnames "^2.2.6"
 
+"@gio-design/icons@21.1.0":
+  version "21.1.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.1.0.tgz#9c16832a1b685110be810bb0cc59208c9ba8ed43"
+  integrity sha512-T4II9qzn8O4hF9IIPLDOFdCxm8LIQJ1/muCWk8zlv8ST3VK5hFVpOy7MfZQmbj/Prg7eQw81H9hxO1aH/A3GjA==
+  dependencies:
+    "@types/classnames" "^2.2.11"
+    classnames "^2.2.6"
+
 "@gio-design/tokens@20.12.3":
   version "20.12.3"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-20.12.3.tgz#bfa3a3c6330d86acaf9f54329922977350447a3f"
   integrity sha512-IE2/DultN+XI8pe1T9RTqUfe82zGmJKbD7a6L0/3i95AF0Fk9FbbN7Y5N2p2I+eDK2pFHOVVto3IswThH6TIFA==
+
+"@gio-design/tokens@21.1.0":
+  version "21.1.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.1.0.tgz#f8e3519b58776f6864357f1362c145bb0928d739"
+  integrity sha512-udZQWINzs6ZX2Lxtu5IWI9OqaUfqnBbcCD4zD5Vam50m0hdh/e9eKSNUcalluCtF1vm9/sFKwOERkdbwk2hnZw==
 
 "@graphql-codegen/cli@1.19.1":
   version "1.19.1"
@@ -2906,7 +2919,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/classnames@^2.2.8", "@types/classnames@^2.2.9":
+"@types/classnames@^2.2.11", "@types/classnames@^2.2.8", "@types/classnames@^2.2.9":
   version "2.2.11"
   resolved "https://registry.npmjs.org/@types/classnames/-/classnames-2.2.11.tgz#2521cc86f69d15c5b90664e4829d84566052c1cf"
   integrity sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==
@@ -3048,15 +3061,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/lodash@^4.14.136":
+"@types/lodash@^4.14.136", "@types/lodash@^4.14.139":
   version "4.14.166"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.166.tgz#07e7f2699a149219dbc3c35574f126ec8737688f"
   integrity sha512-A3YT/c1oTlyvvW/GQqG86EyqWNrT/tisOIh2mW3YCgcx71TNjiTZA3zYZWA5BCmtsOTXjhliy4c4yEkErw6njA==
-
-"@types/lodash@^4.14.139":
-  version "4.14.165"
-  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.165.tgz#74d55d947452e2de0742bad65270433b63a8c30f"
-  integrity sha512-tjSSOTHhI5mCHTy/OOXYIhi2Wt1qcbHmuXD1Ha7q70CgI/I71afO4XtLb/cVexki1oVYchpul/TOuu3Arcdxrg==
 
 "@types/markdown-to-jsx@^6.11.0":
   version "6.11.3"
