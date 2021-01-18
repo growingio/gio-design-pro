@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { DownFilled } from '@gio-design/icons';
-import { Dropdown, Tooltip } from '@gio-design/components';
+import { Dropdown, Tooltip } from '@gio-design/components/es';
 import moment from 'moment';
 
 import FilterAttrOverlay from './FilterAttrOverlay';

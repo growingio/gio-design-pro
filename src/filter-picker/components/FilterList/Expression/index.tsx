@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
-import { Button } from '@gio-design/components';
+import { Button } from '@gio-design/components/es';
 import PropertyPicker from '../../../../property-picker';
 import '../../../../property-picker/style/index';
 import FilterCondition from './FilterCondition';

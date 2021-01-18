@@ -6,7 +6,7 @@ import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
 // import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
 import { DownFilled } from '@gio-design/icons';
 import * as pinyin from 'pinyin-match';
-import { Tooltip } from '@gio-design/components';
+import { Tooltip } from '@gio-design/components/es';
 import { dimensionToPropertyItem, getShortPinyin } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
 // import { Loading, Grid, Tag } from '@gio-design/components';

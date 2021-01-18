@@ -1,6 +1,6 @@
 import { NodeData } from '@gio-design/components/es/components/cascader/interface';
 // import { TagOutlined, UserOutlined, MapChartOutlined, LocationRecoveryOutlined } from '@gio-design/icons';
-import { Loading, Tag } from '@gio-design/components';
+import { Loading, Tag } from '@gio-design/components/es';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import React, { useEffect, useState } from 'react';
 import { PropertyInfo, PropertyTypes } from './interfaces';

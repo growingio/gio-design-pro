@@ -1,6 +1,6 @@
 import React from 'react';
 import { Moment } from 'moment';
-import { DatePicker } from '@gio-design/components';
+import { DatePicker } from '@gio-design/components/es';
 
 interface IncludeTodayProps {
   time: Moment;
