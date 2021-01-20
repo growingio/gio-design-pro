@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { options } from '../OperationMenu.stories';
+import { options } from './data';
 import OperationMenu from '../OperationMenu';
 
 describe('OperationMenu', () => {
