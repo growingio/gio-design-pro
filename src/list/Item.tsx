@@ -3,7 +3,16 @@ import classnames from 'classnames';
 import { ListItemProps } from './interfaces';
 import { rootPrefixCls } from './utils';
 
-function Item({ className, style, disabled = false, children, onClick, onMouseEnter, onMouseLeave }: ListItemProps) {
+function Item({
+  className,
+  style,
+  disabled = false,
+  ellipsis = true,
+  children,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+}: ListItemProps) {
   function handleClick(e: React.MouseEvent<HTMLElement>) {
     if (!disabled && onClick) {
       onClick(e);
@@ -14,6 +23,7 @@ function Item({ className, style, disabled = false, children, onClick, onMouseEn
     prefixCls,
     {
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--ellipsis`]: ellipsis,
     },
     className
   );
