@@ -11,7 +11,7 @@ export default {
 
 const Template: Story<OperationMenuProps> = (args) => <OperationMenu {...args} />;
 
-const options: OperationMenuListOption[] = [
+export const options: OperationMenuListOption[] = [
   {
     disabled: false,
     tooltip: '',

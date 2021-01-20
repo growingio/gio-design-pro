@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OperationMenuList test operation-menu list 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="operation-menu"
+        style="width: 100px;"
+      >
+        <ul
+          class="gio-menu  gio-menu-root gio-menu-inline"
+          role="menu"
+          tabindex="0"
+        >
+          <li
+            aria-disabled="false"
+            class="gio-menu-item"
+            role="menuitem"
+            style="padding-left: 16px;"
+          >
+            修改站点角色
+          </li>
+          <li
+            aria-disabled="false"
+            class="gio-menu-item"
+            role="menuitem"
+            style="padding-left: 16px;"
+          >
+            删除用户
+          </li>
+          <li
+            aria-disabled="true"
+            class="gio-menu-item gio-menu-item-disabled"
+            role="menuitem"
+            style="padding-left: 16px;"
+          >
+            删除用户2
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="operation-menu"
+      style="width: 100px;"
+    >
+      <ul
+        class="gio-menu  gio-menu-root gio-menu-inline"
+        role="menu"
+        tabindex="0"
+      >
+        <li
+          aria-disabled="false"
+          class="gio-menu-item"
+          role="menuitem"
+          style="padding-left: 16px;"
+        >
+          修改站点角色
+        </li>
+        <li
+          aria-disabled="false"
+          class="gio-menu-item"
+          role="menuitem"
+          style="padding-left: 16px;"
+        >
+          删除用户
+        </li>
+        <li
+          aria-disabled="true"
+          class="gio-menu-item gio-menu-item-disabled"
+          role="menuitem"
+          style="padding-left: 16px;"
+        >
+          删除用户2
+        </li>
+      </ul>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`OperationMenuList test operation-menu list without width 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="operation-menu"
+        style="width: 160px;"
+      >
+        <ul
+          class="gio-menu  gio-menu-root gio-menu-inline"
+          role="menu"
+          tabindex="0"
+        >
+          <li
+            aria-disabled="false"
+            class="gio-menu-item"
+            role="menuitem"
+            style="padding-left: 16px;"
+          >
+            修改站点角色
+          </li>
+          <li
+            aria-disabled="false"
+            class="gio-menu-item"
+            role="menuitem"
+            style="padding-left: 16px;"
+          >
+            删除用户
+          </li>
+          <li
+            aria-disabled="true"
+            class="gio-menu-item gio-menu-item-disabled"
+            role="menuitem"
+            style="padding-left: 16px;"
+          >
+            删除用户2
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="operation-menu"
+      style="width: 160px;"
+    >
+      <ul
+        class="gio-menu  gio-menu-root gio-menu-inline"
+        role="menu"
+        tabindex="0"
+      >
+        <li
+          aria-disabled="false"
+          class="gio-menu-item"
+          role="menuitem"
+          style="padding-left: 16px;"
+        >
+          修改站点角色
+        </li>
+        <li
+          aria-disabled="false"
+          class="gio-menu-item"
+          role="menuitem"
+          style="padding-left: 16px;"
+        >
+          删除用户
+        </li>
+        <li
+          aria-disabled="true"
+          class="gio-menu-item gio-menu-item-disabled"
+          role="menuitem"
+          style="padding-left: 16px;"
+        >
+          删除用户2
+        </li>
+      </ul>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

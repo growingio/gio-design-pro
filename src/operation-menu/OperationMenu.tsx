@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
-import { Dropdown, Button } from '@gio-design/components';
+import Dropdown from '@gio-design/components/es/components/dropdown';
+import Button from '@gio-design/components/es/components/button';
 import { MoreOutlined } from '@gio-design/icons';
 import { OperationMenuProps } from './interfaces';
 import OperationMenuList from './OperationMenuList';
