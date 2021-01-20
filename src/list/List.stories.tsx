@@ -22,7 +22,14 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ListProps> = (args) => <List {...args} />;
+const Wrapper = ({ children }: { children?: React.ReactNode }) => (
+  <div style={{ width: 220, border: '0.5px dashed #DCDFED', padding: 8, borderRadius: 4 }}>{children}</div>
+);
+const Template: Story<ListProps> = (args) => (
+  <Wrapper>
+    <List {...args} />
+  </Wrapper>
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -43,3 +50,15 @@ Items.args = {
 
 export const Empty = Template.bind({});
 Empty.args = {};
+
+export const Ellipsis = () => (
+  <Wrapper>
+    <List>
+      <List.Item>文本</List.Item>
+      <List.Item>文本</List.Item>
+      <List.Item>超长文本超长文本超长文本超长文本超长文本超长文本</List.Item>
+      <List.Item>文本</List.Item>
+      <List.Item>文本</List.Item>
+    </List>
+  </Wrapper>
+);

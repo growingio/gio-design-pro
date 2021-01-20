@@ -30,6 +30,10 @@ export interface ListItemProps extends BaseProps {
    */
   disabled?: boolean;
   /**
+   * 文本溢出自动省略
+   */
+  ellipsis?: boolean;
+  /**
    * 列表项的唯一 key
    */
   key?: string;
