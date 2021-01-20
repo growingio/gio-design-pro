@@ -73,42 +73,14 @@ function Expression(props: ExpressionProps) {
       values: [],
     };
     onChange(expr, index);
-
-    // 兼容旧版方法
-    // v && setValueType(v?.valueType?.toLowerCase() || 'string');
-    // v && setExprName(v.label);
-    // v && setExprKey(v.key);
-    // v && setValues([]);
-    // v && setOp('=');
-    // const expr: FilterValueType = {
-    //   key: v.key,
-    //   name: v.label,
-    //   valueType: v?.valueType?.toLowerCase() || 'string',
-    //   op: '=',
-    //   values: [],
-    // };
-    // onChange(expr, index);
   };
-  // // 兼容旧版属性选择器方法
-  // const getGroupIcon = () => (
-  //   <span className="group-icon">
-  //     {/* <Icon name={`gicon-${group}`} /> */}
-  //     <TagOutlined />
-  //   </span>
-  // );
-  // // 兼容旧版属性选择器;
-  // const defaultStyle = {
-  //   width: '180px',
-  //   height: '40px',
-  //   placeholder: '选择维度',
-  //   disabled: false,
-  // };
 
   return (
     <div className="expression-box" id="expression-box">
       <div className="express-regular_select">
         <div className="expression-icon">{index + 1}</div>
         <PropertyPicker
+          data-testid="propertySelect"
           placeholder="选择属性"
           initialValue={{ value: exprKey, label: exprName }}
           dataSource={propertyOptions.filter((option: any) => {
@@ -118,24 +90,7 @@ function Expression(props: ExpressionProps) {
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}
         />
-        {/* <PropertySelect
-          key="dimension-select"
-          value={!exprKey || propertyOptions.some((d: any) => d.id === exprKey) ? exprKey : '无效维度'}
-          options={propertyOptions.filter((option: any) => {
-            const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];
-            return option.id === exprKey || inavailableOptions.indexOf(option.id) === -1; // && !(/like/.test(operator) && option.id === 'cs1'）saas老逻辑，暂时不需要
-          })}
-          grouped
-          showSearch
-          dropdownMatchSelectWidth={false}
-          style={defaultStyle}
-          dropdownStyle={{ width: '360px' }}
-          placeholder="选择维度"
-          onChange={changePropertyPicker}
-          getGroupIcon={getGroupIcon}
-          notFoundContent="没有可用维度"
-          className="dimension-select dimension-select-dropdown"
-        /> */}
+
         <FilterCondition
           valueType={valueType}
           onSubmit={submit}
