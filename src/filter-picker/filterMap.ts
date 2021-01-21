@@ -50,6 +50,7 @@ export const selectOptionMap: selectOption = {
       label: '无值',
     },
   ],
+  // Tag类型
   STRING: [
     {
       value: '=',
@@ -106,6 +107,10 @@ export const selectOptionMap: selectOption = {
       label: '在...与...之间',
     },
     {
+      value: 'not between',
+      label: '不在...与...之间',
+    },
+    {
       value: 'hasValue',
       label: '有值',
     },
@@ -134,6 +139,10 @@ export const selectOptionMap: selectOption = {
     {
       value: 'between',
       label: '在...与...之间',
+    },
+    {
+      value: 'not between',
+      label: '不在...与...之间',
     },
     // {
     //   value: 'e',

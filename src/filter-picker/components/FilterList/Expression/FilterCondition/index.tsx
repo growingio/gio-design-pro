@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { DownFilled } from '@gio-design/icons';
-import { Dropdown, Tooltip } from '@gio-design/components/es';
+import { Dropdown, Tooltip } from '@gio-design/components';
 import moment from 'moment';
 
 import FilterAttrOverlay from './FilterAttrOverlay';
@@ -52,6 +52,7 @@ const operationMap: operationMapType = {
     '<': '小于',
     '<=': '小于等于',
     between: '在,与,之间',
+    'not between': '不在,与,之间',
     noValue: '无值',
     hasValue: '有值',
   },
@@ -63,6 +64,7 @@ const operationMap: operationMapType = {
     '<': '在,天之前',
     '<=': '在,天之前包括当天',
     between: '在,与,之间',
+    'not between': '不在,与,之间',
     relativeCurrent: '相对现在',
     relativeBetween: '相对区间',
     hasValue: '有值',
@@ -129,7 +131,8 @@ function FilterCondition(props: FilterConditionProps) {
             }
             return opMap[operation] + value[0];
           }
-          case 'between': {
+          case 'between':
+          case 'not between': {
             const textList = opMap[operation].split(',');
             // 返回 ------'在(value1)与(value2)之间'
             return textList[0] + value[0] + textList[1] + value[1] + textList[2];
@@ -161,7 +164,8 @@ function FilterCondition(props: FilterConditionProps) {
           }
           // 判断，在。。。与。。。之间
           // 返回字符串 ---- ‘在（date1）与（data2）之间’
-          case 'between': {
+          case 'between':
+          case 'not between': {
             const textList = opMap[operation].split(',');
             const abs = value?.[0].split(':')[1].split(',');
             return (

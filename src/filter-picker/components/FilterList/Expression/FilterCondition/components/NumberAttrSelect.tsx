@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input } from '@gio-design/components/es';
+import { Input } from '@gio-design/components';
 
 interface NumberAttrSelectProps {
   attrSelect: string;
@@ -18,7 +18,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     setValue(parseInt(values[0], 10) || 0);
     setValue1(parseInt(values[0], 10) || 0);
     setValue2(parseInt(values[1], 10) || 0);
-    if (attrSelect === 'between') {
+    if (attrSelect === 'between' || attrSelect === 'not between') {
       attrChange([num, num]);
     } else {
       attrChange([num]);
@@ -58,6 +58,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
 
   switch (attrSelect) {
     case 'between':
+    case 'not between':
       return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Input.InputNumber value={value1} onChange={setValue1Number} style={{ width: '120px' }} />

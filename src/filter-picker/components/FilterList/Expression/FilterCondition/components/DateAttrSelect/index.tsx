@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import moment, { Moment } from 'moment';
-import { DatePicker, DateRangePicker } from '@gio-design/components/es';
+import { DatePicker, DateRangePicker } from '@gio-design/components';
 import RelativeCurrent from './components/RelativeCurrent';
 import RelativeBetween from './components/RelativeBetween';
 import IncludeToday from './components/IncludeToday';
@@ -36,7 +36,7 @@ function DateAttrSelect(props: DateAttrSelectProps) {
           // 相对区间，值的初始化
           attrChange(['relateTime:-1,-1']);
         }
-      } else if (attrSelect === 'between') {
+      } else if (attrSelect === 'between' || attrSelect === 'not between') {
         // 在。。。与。。。之间，值的初始化
         attrChange([
           `abs:${moment(timeRange?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(timeRange?.[1], 'YYYY-MM-DD')
@@ -80,6 +80,7 @@ function DateAttrSelect(props: DateAttrSelectProps) {
     case 'relativeBetween':
       return <RelativeBetween onChange={relativeDateChange} attrSelect={attrSelect} values={values} />;
     case 'between':
+    case 'not between':
       return <DateRangePicker value={timeRange} onChange={dateRangeChange} showFooter format="YYYY/MM/DD" />;
     default:
       return null;

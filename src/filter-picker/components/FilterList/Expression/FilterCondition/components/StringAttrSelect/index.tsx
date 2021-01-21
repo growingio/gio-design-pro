@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List, Loading } from '@gio-design/components/es';
+import { Input, List, Loading } from '@gio-design/components';
 import { attributeValue } from '../../interfaces';
 import InOrNotIn from './InOrNotIn';
 

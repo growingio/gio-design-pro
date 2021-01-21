@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from '@gio-design/components/es';
+import { Button } from '@gio-design/components';
 import { PlusCircleFilled } from '@gio-design/icons';
 import Expression from './Expression';
 import './index.less';
