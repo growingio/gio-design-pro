@@ -45,8 +45,8 @@ jobs:
         run: yarn stylelint
       - name: ESLint
         run: yarn eslint
-  test:
-    name: Test Coverage
+  unit_test:
+    name: Unit Test
     needs: install
     if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
     runs-on: ubuntu-latest
@@ -160,3 +160,5 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_TOKEN }}
           storybookBuildDir: storybook-static/
           exitZeroOnChanges: true
+          exitOnceUploaded: true
+          allowConsoleErrors: true
