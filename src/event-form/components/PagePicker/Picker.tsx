@@ -9,7 +9,7 @@ import useUpdate from '../../../hooks/useUpdate';
 import { isChildOfElement } from '../../utils';
 import PageList from './PageList';
 // import PlusCircleFilled from '@gio-design/icons/es/PlusCircleFilled';
-import { Element as TagElement } from '../../../types';
+import { TagElement } from '../../TagElement';
 
 interface Prop {
   // 去定义定的页面
@@ -51,6 +51,7 @@ const PagePicker: React.FC<Prop> = (props) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       error = true;
     }
+    console.log(error);
     // 不提示页面选择的error
     // updateError(error);
   }, [expand, value]);

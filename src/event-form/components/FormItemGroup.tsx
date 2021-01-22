@@ -21,7 +21,7 @@ function FormItemGroup({
   groupNumber: number;
   title: string;
   children?: React.ReactNode;
-  extra?: React.ReactElement;
+  extra?: React.ReactElement | boolean;
   style?: React.CSSProperties;
 }) {
   const prefixCls = usePrefixCls('event-form');
@@ -33,7 +33,7 @@ function FormItemGroup({
           <div className="badge">{groupNumber}</div>
           <span>{title}</span>
         </div>
-        <div className="extra">{extra}</div>
+        {extra && <div className="extra">{extra}</div>}
       </div>
       <div className={`${itemGroupPrefix}__body`}>{children}</div>
     </div>

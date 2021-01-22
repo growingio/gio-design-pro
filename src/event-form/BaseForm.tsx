@@ -56,7 +56,7 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
           return;
         }
         setLoading(true);
-        await rest.onFinish(values);
+        await rest.onFinish(values as Record<string, any>);
         setLoading(false);
       }}
     >

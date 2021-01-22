@@ -1,5 +1,5 @@
-import PageViewEventForm from './PageViewEventForm';
+export { default as PageViewEventForm } from './PageViewEventForm';
 
 export type { EventFormProps } from './interfaces';
-
-export default { PageViewEventForm };
+// export PageViewEventForm = PageViewEventForm;
+// export default { PageViewEventForm };

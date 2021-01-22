@@ -9,7 +9,7 @@ import './style';
 import '@gio-design/components/es/components/link/style/css.js';
 import BaseForm from './BaseForm';
 import PagePicker from './components/PagePicker';
-import { Element as TagElement } from '../types';
+import { TagElement } from './TagElement';
 
 const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps> = (
   props: EventFormProps,

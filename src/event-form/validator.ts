@@ -8,7 +8,7 @@ class ValidatorHelper {
 
   constructor(projectTdefinedTags: TagElement[]) {
     this.definedTags = projectTdefinedTags;
-    this.tagNames = projectTdefinedTags?.map((v) => v.name);
+    this.tagNames = this.definedTags?.map((v) => v.name);
   }
 
   public checkName(value: string): Promise<any> {

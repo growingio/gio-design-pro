@@ -80,7 +80,7 @@ export const objToQuery = (obj: any) => {
 };
 
 // 查询参数转化到kv结构数组，过滤掉key不存在的
-export const queryToKvs = (query: string): Kv[] => {
+export const queryToKvs = (query?: string): Kv[] => {
   if (!query) return [];
   // eslint-disable-next-line no-param-reassign
   if (query.startsWith('?')) query = query.slice(1);

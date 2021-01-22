@@ -122,7 +122,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
   const isNative = appType === AppType.NATIVE;
   const showBelongApp = appType !== AppType.WEB;
   const [formValues, setFormValues] = useState<any>(() => {
-    return transformFormValues(initialValues);
+    return transformFormValues(initialValues as PageViewFormValues);
   });
 
   function handleValuesChange(changedValues: any, allValues: any) {
@@ -251,7 +251,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           initialValues={{
             ...initialValues,
             path: { path: initialValues?.path },
-            query: queryToKvs(initialValues?.query),
+            query: queryToKvs(initialValues?.query || ''),
           }}
           onFinish={async (values) => {
             if (!restProps.onFinish) return;

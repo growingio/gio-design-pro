@@ -11,7 +11,7 @@ interface Props {
 
 const QSInput = (props: Props) => {
   const { value } = props;
-  const [querySet, setQuerySet] = useState<Kv[]>(value);
+  const [querySet, setQuerySet] = useState<Kv[] | undefined>(value);
   useEffect(() => {
     setQuerySet(value);
   }, [value]);

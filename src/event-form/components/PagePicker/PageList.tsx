@@ -2,7 +2,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import { Element as TagElement } from '../../../types';
+import { TagElement } from '../../TagElement';
 import OverFlowText from './TextEllipsis';
 
 interface Prop {
@@ -15,7 +15,7 @@ interface Prop {
 }
 
 const PageList: React.FC<Prop> = (props) => {
-  const { tags, value, inSearch, onSelect, labelRenderer } = props;
+  const { tags, value, onSelect, labelRenderer } = props;
 
   const [select, updateSelect] = useState(value);
 

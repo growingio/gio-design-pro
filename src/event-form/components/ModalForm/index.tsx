@@ -1,4 +1,4 @@
-import React, { useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Modal } from '@gio-design/components';
 import { FormInstance, FormProps } from '@gio-design/components/es/components/form';
 import type { ModalProps } from '@gio-design/components/es/components/modal';
@@ -72,14 +72,14 @@ const ModalForm: React.FC<ModalFormProps> = ({ children, trigger, modalProps, on
     }
   }, [modalProps?.destroyOnClose, visible]);
 
-  useImperativeHandle(rest.formRef, () => formRef.current, [formRef.current]);
+  // useImperativeHandle(rest.formRef, () => formRef.current, [formRef.current]);
 
   return (
     <>
       {createPortal(
         <div>
           <BaseForm
-            formRef={formRef}
+            // formRef={formRef.current}
             onFinish={async (values) => {
               if (!onFinish) {
                 return;
