@@ -7,6 +7,27 @@
 @event-form-prefix-cls: ~'@{component-prefix}-event-form';
 
 .@{event-form-prefix-cls} {
+  * {
+    box-sizing: border-box;
+  }
+  &-wrap {
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+    overflow: auto;
+    padding: 24px 16px;
+    padding-bottom: 62px;
+    flex-direction: column;
+    .footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  &-body {
+    flex: 1;
+  }
   &-item-group {
     &__header {
       display: flex;
@@ -48,9 +69,9 @@
     }
 
     &__body {
-      .gio-alert {
-        box-sizing: border-box;
-      }
+      // .@{alert-prefix-cls} {
+      //   box-sizing: border-box;
+      // }
 
       .feedback:not(:empty) {
         margin-bottom: 16px;
@@ -71,12 +92,21 @@
       }
 
       .query-input {
-        .gio-field {
-          &.query_filed {
+        flex: 1;
+        &-add-filed {
+          .gio-field-label {
+            padding-right: 0;
+          }
+        }
+        .query-filed-wrap {
+          .query__filed {
             margin-bottom: 0;
-
+            flex: 1 1 0;
             .gio-field-label {
               padding-right: 0;
+            }
+            input {
+              width: 100%;
             }
           }
         }
@@ -90,18 +120,17 @@
         border-radius: 4px;
         background-color: #fff;
       }
-
-      .footer-submitter {
-        display: inline-flex;
-
-        & > * {
-          margin-right: 8px;
-
-          &:last-child {
-            margin: 0;
-          }
-        }
-      }
     }
   }
+  // .footer-submitter {
+  //   display: inline-flex;
+  //   margin-top: 20px;
+  //   & > * {
+  //     margin-right: 8px;
+
+  //     &:last-child {
+  //       margin: 0;
+  //     }
+  //   }
+  // }
 }

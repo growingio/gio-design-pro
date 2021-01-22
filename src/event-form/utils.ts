@@ -1,4 +1,5 @@
 /* eslint-disable consistent-return */
+
 /**
  * 表单数据最大长度
  */
@@ -93,4 +94,20 @@ export const queryToKvs = (query: string): Kv[] => {
       };
     })
     .filter((v) => !!v.key);
+};
+
+/**
+ * 判断某个元素是不是一个元素的子元素
+ * @param elem 目标元素
+ * @param parentElem 父元素
+ */
+export const isChildOfElement = (elem: Element, parentElem: Element) => {
+  let p = elem.parentElement;
+  while (p && p !== document.body) {
+    if (p === parentElem) {
+      return true;
+    }
+    p = p.parentElement;
+  }
+  return false;
 };

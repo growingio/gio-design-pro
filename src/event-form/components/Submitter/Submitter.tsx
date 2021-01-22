@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormInstance } from '@gio-design/components/es/components/form';
 import Button, { ButtonProps } from '@gio-design/components/es/components/button';
-import '../style';
+// import '../style';
 
 export type SubmitterProps<T = {}> = {
   /**
@@ -62,6 +62,7 @@ const Submitter: React.FC<SubmitterProps & { form: FormInstance }> = (props) => 
     <Button
       {...resetButtonProps}
       key="rest"
+      type="secondary"
       onClick={(e) => {
         form.resetFields();
         onReset?.();

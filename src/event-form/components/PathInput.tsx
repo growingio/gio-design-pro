@@ -1,63 +1,67 @@
 import React, { useState } from 'react';
 import { Input, Toggles, Tooltip } from '@gio-design/components';
-import { MAX_VALUE_LENGTH } from '../utils';
 import '@gio-design/components/es/components/toggles/style/index.less';
+import { isEmpty } from 'lodash';
+import { MAX_VALUE_LENGTH } from '../utils';
 
+interface PathValue {
+  path?: string;
+  checked?: boolean;
+}
 interface PathProp {
   placeholder?: string;
   maxLength?: number;
-  initValue?: string;
-  onChange?: (value?: string) => void;
+  value?: PathValue;
+  onChange?: (value: PathValue) => void;
 }
-
 const PathInput: React.FC<PathProp> = (props) => {
-  const { initValue, onChange, placeholder } = props;
-  const [state, update] = useState(() => {
-    let value = initValue;
-    let hasPath = true;
-    if (value == null) {
-      hasPath = false;
-    } else if (!value.startsWith('/')) {
-      value = `/${value}`;
+  const { value = {}, onChange, placeholder, maxLength = MAX_VALUE_LENGTH } = props;
+  const [path, setPath] = useState(() => {
+    let _path = '';
+    if (!value || !value.path) {
+      return _path;
     }
-    return { hasPath, value };
+    _path = !value.path.startsWith('/') ? value.path : `/${value.path}`;
+    return _path;
+  });
+  const [checked, setChecked] = useState(() => {
+    let _checked = false;
+    if (!value || !value.path) {
+      return _checked;
+    }
+    _checked = !isEmpty(value.path);
+    return _checked;
   });
 
+  const triggerChange = (changedValue: PathValue) => {
+    onChange?.({ path, checked, ...changedValue });
+  };
+  const onPathValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = e.target.value;
+    if (val && !val.startsWith('/')) {
+      val = `/${val}`;
+    }
+    setPath(val);
+    triggerChange({ path: val });
+  };
   const onToggle = (v: boolean) => {
-    if (v) {
-      onChange?.(state.value);
-    } else {
-      onChange?.(undefined);
-    }
-    update((prev) => {
-      return { ...prev, hasPath: v };
-    });
+    setChecked(!!v);
+    triggerChange({ checked: !!v });
   };
-
-  const onIptChange = (v: any) => {
-    let { value } = v.target;
-
-    if (!value.startsWith('/')) {
-      value = `/${value}`;
-    }
-    onChange?.(value);
-    update((prev) => {
-      return { ...prev, value };
-    });
-  };
-
   return (
     <div className="path-input">
       <Input
         className="left-input"
-        value={state.value}
+        value={path}
         placeholder={placeholder || '请输入路径'}
-        maxLength={MAX_VALUE_LENGTH}
-        disabled={!state.hasPath}
-        onChange={onIptChange}
+        maxLength={maxLength}
+        disabled={!checked}
+        onChange={onPathValueChange}
       />
-      <Tooltip title="路径关闭后，将统计该域名下的所有页面" placement="topRight" trigger="hover">
-        <Toggles className="right-toggle" onChange={onToggle} defaultChecked={state.hasPath} />
+      <Tooltip title="路径关闭后，将统计该域名下的所有页面" placement="topRight" disabled={checked}>
+        <div className="right-toggle">
+          <Toggles onChange={onToggle} checked={checked} />
+        </div>
       </Tooltip>
     </div>
   );

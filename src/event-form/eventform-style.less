@@ -1,0 +1,27 @@
+.demo {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 1px;
+  height: 600px;
+  position: relative;
+  * {
+    box-sizing: border-box;
+  }
+  .wrapper {
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+    overflow: auto;
+    padding: 24px 16px;
+    padding-bottom: 62px;
+    flex-direction: column;
+    .content {
+      flex: 1;
+    }
+    .footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: orange;
+    }
+  }
+}

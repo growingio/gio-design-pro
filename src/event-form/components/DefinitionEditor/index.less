@@ -1,0 +1,23 @@
+@import '../../style/variables.less';
+
+.checkbox-group {
+  [class*='gio-checkbox-wrapper']:last-child {
+    margin-bottom: 0;
+  }
+
+  .checkbox-editor {
+    [class*='gio-checkbox-wrapper'] {
+      display: flex;
+      align-items: center;
+      width: 110px;
+    }
+
+    .editor {
+      margin-left: 8px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: @middle-space;
+    }
+  }
+}
