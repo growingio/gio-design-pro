@@ -13,10 +13,9 @@ export default {
   title: 'Business Components/EventForm/PageViewEventForm',
   component: PageViewEventForm,
 } as Meta;
-
-function getFormValues() {
+function getInitialTagElement() {
   const currentPageInfo = currentPageMinp;
-  console.log('currentPageInfo', currentPageInfo);
+  // console.log('currentPageInfo', currentPageInfo);
   const deviceInfo: DeviceInfo = deviceInfoMinp as DeviceInfo;
   const platform = deviceInfo ? deviceInfo.os : 'web';
   const urlScheme = deviceInfo?.urlScheme;
@@ -39,6 +38,12 @@ function getFormValues() {
     },
     platforms: [platform],
   };
+  return element;
+}
+function getFormValues() {
+  //
+  const deviceInfo: DeviceInfo = deviceInfoMinp as DeviceInfo;
+  const element = getInitialTagElement();
   const { attrs } = element;
   // const isNative = currentPageInfo.appType === AppType.NATIVE;
   return {
@@ -60,7 +65,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
   }
 
   const formValue: PageViewFormValues = getFormValues();
-
+  // const element = getInitialTagElement();
   async function handleFinish(val: any) {
     console.log('handleFinish', val);
     return true;
@@ -77,6 +82,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         ref={formRef}
         definedTags={(spaceTags as unknown) as TagElement[]}
         onValuesChange={handleValuesChange}
+        // initialTagElement={element}
         initialValues={formValue}
         onFinish={handleFinish}
         onPre={() => {

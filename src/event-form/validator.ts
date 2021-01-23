@@ -1,5 +1,7 @@
 import { isEmpty } from 'lodash';
+import { DocProps } from '../types';
 import { TagElement } from './TagElement';
+import { matchString, matchQuery } from './utils';
 
 class ValidatorHelper {
   private definedTags: TagElement[];
@@ -30,6 +32,28 @@ class ValidatorHelper {
       return Promise.reject(new Error('路径在开启状态下为必填项'));
     }
     return Promise.resolve(true);
+  }
+
+  public findExistElementTag(definition: DocProps) {
+    const accurate = true;
+    // const { definition } = currentTag;
+    const equalString = (s1: any, s2: any): boolean => {
+      return (!s1 && !s2) || matchString(s1, s2, accurate);
+    };
+    const equalQuery = (patten?: string, query?: string): boolean => {
+      if (!patten && !query) return true;
+      return matchQuery(patten || '', query || '', accurate);
+    };
+
+    return this.definedTags.find((tag: TagElement) => {
+      const tagDefinition = tag.definition;
+      return (
+        tag.docType === 'page' &&
+        matchString(tagDefinition.domain, definition.domain, accurate) &&
+        equalString(tagDefinition.path, definition.path) &&
+        equalQuery(tagDefinition.query, definition.query)
+      );
+    });
   }
 }
 export default ValidatorHelper;

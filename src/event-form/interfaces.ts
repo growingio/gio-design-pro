@@ -1,7 +1,7 @@
 import { FormInstance, FormProps } from '@gio-design/components/es/components/form';
 import { ReactElement } from 'react';
 import { SubmitterProps } from './components/Submitter';
-import { AppType } from './types';
+import { AppType, DeviceInfo } from './types';
 import { TagElement } from './TagElement';
 
 type FormSubmitter = SubmitterProps<{
@@ -28,6 +28,8 @@ export interface EventFormProps extends FormProps, CommonFormProps {
    */
   onFinish?: (formData: Record<string, any>) => Promise<boolean | void>;
   definedTags: TagElement[];
+  // initialTagElement: TagElement;
+  deviceInfo?: DeviceInfo;
 }
 type StepSubmitterProps = SubmitterProps<{
   showPreButton: boolean;

@@ -16,6 +16,7 @@ import BaseForm from './BaseForm';
 import { AppType } from './types';
 import ValidatorHelper from './validator';
 import FooterToolbar from './components/FooterToolbar';
+import { DocProps, TagElement } from './TagElement';
 
 function definePageTip() {
   return (
@@ -32,6 +33,11 @@ function definePageTip() {
     </span>
   );
 }
+// interface DefinitionRuleProps {
+//   definition: DocProps;
+//   appType: AppType;
+// }
+
 /**
  * 转化path:string ==> {path:string,checked?:boolean},query:string==>[{key,value}] collection
  * @param pvFormValues
@@ -151,6 +157,53 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     setSubmitDisabeld(disabled);
   }, [formValues]);
 
+  const renderDefinitionRuleText = (definition: DocProps, repeatTag?: TagElement) => {
+    let text = '现在定义的是';
+    if (repeatTag) {
+      text = `该规则已被 <b>${repeatTag.creator}</b> 定义为【${repeatTag.name}】。${text}`;
+    }
+
+    if (appType === AppType.NATIVE) {
+      text += `页面 <span class="link">${definition.path}</span> 。`;
+    } else if (appType === AppType.WEB) {
+      if (definition.path) {
+        text += `页面 <span class="link">${definition.domain + definition.path}</span> `;
+      } else {
+        text += ` <span class="link">${definition.domain}</span> `;
+      }
+      if (definition.query) {
+        if (definition.path) text += '，';
+        text += `查询条件为 <span class="link">${definition.query}</span>`;
+      }
+      if (definition.path) {
+        text += ' 。';
+      } else {
+        text += ' 下的所有页面。';
+      }
+    } else if (appType === AppType.MINP) {
+      if (definition.path === undefined) {
+        text += ` <span class="link">小程序所有页面</span> `;
+      } else {
+        text += `页面 <span class="link">${definition.path}</span> `;
+      }
+      if (definition.query) {
+        text += `，查询条件为 <span class="link">${definition.query}</span>`;
+      }
+      text += '。';
+    }
+    // eslint-disable-next-line react/no-danger
+    return <span dangerouslySetInnerHTML={{ __html: text }} />;
+  };
+  const renderDefinitionRule = () => {
+    const definition = conversionSubmitValue(formValues);
+    const repeatRuleTag = validatorRef.current.findExistElementTag(definition);
+    const renderMessage = renderDefinitionRuleText(definition, repeatRuleTag);
+    return (
+      <>
+        <Alert size="small" type={repeatRuleTag ? 'error' : 'info'} showIcon message={renderMessage} />
+      </>
+    );
+  };
   const pre = submitter !== false && (
     <Button
       key="pre"
@@ -203,6 +256,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           key="submitter"
           {...submitterProps}
           form={formRef.current}
+          resetText="取消"
           submitButtonProps={{
             loading,
             ...submitterProps.submitButtonProps,
@@ -291,7 +345,8 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
             }
           >
             <div className="feedback">
-              <Alert size="small" showIcon type="error" message="xxxxx" />
+              {/* <Alert size="small" showIcon type="error" message="xxxxx" /> */}
+              {renderDefinitionRule()}
             </div>
             {showBelongApp && (
               <Form.Item name="belongApp" label="所属应用">
