@@ -1412,6 +1412,14 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
+"@gio-design/icons@21.1.1":
+  version "21.1.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.1.1.tgz#6fbb4b2e45df8fd2aa2987a27ea701d11ad5a9c5"
+  integrity sha512-13/lV7pe7/Sev8GZ7R1ppbHU3IhrPiGVOBhR/VS2J92Jg56rgBFfI17Auc/FrHbcgVc3z9V55gI64vWg0in6Ew==
+  dependencies:
+    "@types/classnames" "^2.2.11"
+    classnames "^2.2.6"
+
 "@gio-design/tokens@21.1.0":
   version "21.1.0"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.1.0.tgz#f8e3519b58776f6864357f1362c145bb0928d739"
