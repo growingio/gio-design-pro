@@ -3,7 +3,7 @@ import { act } from 'react-dom/test-utils';
 
 const globalTimeout = global.setTimeout;
 
-export const sleep = async (timeout = 0) => {
+export const sleep = async (timeout: number) => {
   await act(async () => {
     await new Promise((resolve) => globalTimeout(resolve, timeout));
   });

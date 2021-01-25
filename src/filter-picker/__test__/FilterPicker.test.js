@@ -1,99 +1,198 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import FilterPicker from '..';
 import { sleep } from './utils.ts';
 
-const defaultProps = {
-  propertyOptions: new Array(10).fill(0).map((value, index) => {
-    return {
-      id: `usr_test_${index}_int`,
-      name: `test_${index}_int`,
-      groupId: 'user',
-      groupName: '用户属性',
-      type: 'usr',
-      valueType: 'int',
-      __typename: 'Dimension',
-    };
-  }),
-  filter: { op: 'and', exprs: [], __typename: 'directivesFilter' },
-};
+const originalOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
+beforeEach(() => {
+  // For <List /> use <AutoSizer />.
+  // <AutoSizer /> uses offsetWidth and offsetHeight.
+  // Jest runs in JSDom which doesn't support measurements APIs.
+  // @see https://github.com/testing-library/react-testing-library/issues/353#issuecomment-510046921
+  Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 320 });
+  Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 160 });
+
+  jest.useFakeTimers();
+});
+
+afterEach(() => {
+  Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight);
+  Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
+
+  jest.useRealTimers();
+});
 
 describe('FilterPicker', () => {
-  const getFilterPicker = (props) => (
-    <FilterPicker propertyOptions={defaultProps.propertyOptions} filter={defaultProps.filter} {...props} />
-  );
-
-  beforeAll(() => {
-    jest.useFakeTimers();
-  });
-
-  afterAll(() => {
-    jest.useRealTimers();
-  });
-
   // 基础渲染
-  it('should match FilterPicker base snapshot.', () => {
-    const wrapper = render(getFilterPicker());
-    expect(wrapper).toMatchSnapshot();
-  });
+  describe('snapshot', () => {
+    const getFilterPicker = (props) => (
+      <FilterPicker
+        propertyOptions={[
+          {
+            id: 'test_int_id',
+            name: 'test_int_name',
+            groupId: 'user',
+            groupName: '用户属性',
+            type: 'usr',
+            valueType: 'int',
+            __typename: 'Dimension',
+          },
+        ]}
+        filter={{ op: 'and', exprs: [], __typename: 'directivesFilter' }}
+        {...props}
+      />
+    );
 
-  // 使用 children 时，应该正确显示
-  it('when use children, should render it correctly', () => {
-    const children = <div>过滤选择器</div>;
-    const wrapper = render(getFilterPicker({ children }));
-    expect(wrapper.text()).toEqual('过滤选择器');
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should match FilterPicker base snapshot.', () => {
+      const wrapper = render(getFilterPicker());
+      expect(wrapper).toMatchSnapshot();
+    });
 
-  it('should render correctly', () => {
-    const wrapper = mount(getFilterPicker());
-    // 点击过滤器按钮触发过滤弹窗
-    wrapper.find('button').at(0).simulate('click');
+    // 使用 children 时，应该正确显示
+    it('when use children, should render it correctly', () => {
+      const children = <div>过滤选择器</div>;
+      const wrapper = render(getFilterPicker({ children }));
+      expect(wrapper.text()).toEqual('过滤选择器');
+      expect(wrapper).toMatchSnapshot();
+    });
 
-    // 此时这两个按钮应该为 disabled 状态
-    const buttons = wrapper.find('button[disabled]');
-    expect(buttons.at(0).text()).toBe('添加过滤条件');
-    expect(buttons.at(1).text()).toBe('确 认');
+    it('should render correctly', () => {
+      const wrapper = mount(getFilterPicker());
+      // 点击过滤器按钮触发过滤弹窗
+      wrapper.find('button').at(0).simulate('click');
 
-    wrapper.find('.gio-picker-trigger').simulate('click');
-    // 正确渲染 10 个属性
-    const items = wrapper.find('.cascader-menu-item-inner');
-    expect(items.length).toBe(10);
-    items.forEach((node, index) => {
-      expect(node.text()).toBe(defaultProps.propertyOptions[index].name);
+      // 此时这两个按钮应该为 disabled 状态
+      const buttons = wrapper.find('button[disabled]');
+      expect(buttons.at(0).text()).toBe('添加过滤条件');
+      expect(buttons.at(1).text()).toBe('确 认');
+
+      wrapper.find('.gio-picker-trigger').simulate('click');
+      // 正确渲染 1 个属性
+      expect(wrapper.find('.cascader-menu-item-inner')).toHaveLength(1);
+    });
+
+    it('cancel', () => {
+      const wrapper = mount(getFilterPicker());
+      wrapper.find('button').simulate('click');
+      wrapper.find('.gio-dropdown').find('.filter-contidion-footer button').at(0).simulate('click');
+      expect(wrapper.find('.gio-dropdown')).toHaveLength(0);
     });
   });
 
-  it('can be selected', async () => {
-    const onConfirm = jest.fn();
-    const wrapper = mount(getFilterPicker({ onConfirm }));
+  describe('can be selected number type', () => {
+    const getFilterPicker = (props) => (
+      <FilterPicker
+        propertyOptions={[
+          {
+            id: 'test_int_id',
+            name: 'test_int_name',
+            groupId: 'user',
+            groupName: '用户属性',
+            type: 'usr',
+            valueType: 'int',
+            __typename: 'Dimension',
+          },
+          {
+            id: 'test_int_id1',
+            name: 'test_int_name1',
+            groupId: 'user',
+            groupName: '用户属性',
+            type: 'usr',
+            valueType: 'int',
+            __typename: 'Dimension',
+          },
+          {
+            id: 'test_int_id2',
+            name: 'test_int_name2',
+            groupId: 'user',
+            groupName: '用户属性',
+            type: 'usr',
+            valueType: 'int',
+            __typename: 'Dimension',
+          },
+        ]}
+        filter={{ op: 'and', exprs: [], __typename: 'directivesFilter' }}
+        {...props}
+      />
+    );
 
-    // 点击”过滤器“按钮，触发”过滤弹窗“
-    wrapper.find('button').at(0).simulate('click');
-    // 点击”选择属性“触发”属性选择器“
-    wrapper.find('.gio-picker-trigger').simulate('click');
+    const handle = async (op, values, index) => {
+      const onConfirm = jest.fn();
+      let wrapper = null;
+      wrapper = mount(getFilterPicker({ onConfirm }));
+      act(() => {
+        wrapper.find('button').at(0).simulate('click');
+      });
+      await sleep(300);
+      act(() => {
+        wrapper.find('.gio-picker-trigger').simulate('click');
+      });
 
-    expect(wrapper.find('.gio-property-picker-trigger').hasClass('open')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
-    // 在”属性选择器”中选择数字类型，会触发“选择过滤条件”
-    wrapper.find('Dropdown').at(1).find('.cascader-menu-item-inner').at(0).simulate('click');
-    await sleep(100);
-    // Syncs the enzyme component tree snapshot with the react component tree. Useful to run before checking the render output if something external may be updating the state of the component somewhere.
-    wrapper.update();
-    expect(wrapper.find('.gio-picker-trigger').text()).toBe('test_0_int');
+      expect(wrapper.find('.gio-property-picker-trigger').hasClass('open')).toBe(true);
+      expect(wrapper).toMatchSnapshot();
+      act(() => {
+        wrapper.find('Dropdown').at(1).find('.cascader-menu-item-inner').at(0).simulate('click');
+      });
+      wrapper.update();
+      expect(wrapper.find('.gio-picker-trigger').text()).toBe('test_int_name');
+      expect(wrapper.find('.filter-condition_select').exists()).toBe(true);
 
-    expect(wrapper.find('.filter-condition_select').exists()).toBe(true);
-    // 点击“选择过滤条件”，会触发“过滤条件弹窗”
-    wrapper.find('.filter-condition_select').simulate('click');
-    // 点击确认按钮
-    wrapper.find('Dropdown').at(2).find('.filter-contidion-footer').find('button').at(1).simulate('click');
-    expect(wrapper.find('Dropdown').at(2).find('.filter-condition_select').text()).toBe('等于0');
-    // 点击确认按钮
-    wrapper.find('Dropdown').at(0).find('.filter-contidion-footer').find('button').at(1).simulate('click');
-    expect(onConfirm).toBeCalledWith({
-      __typename: 'directivesFilter',
-      exprs: [{ key: 'usr_test_0_int', name: 'test_0_int', op: '=', valueType: 'int', values: ['0'] }],
-      op: 'and',
+      act(() => {
+        wrapper.find('.filter-condition_select').simulate('click');
+      });
+      act(() => {
+        wrapper.find('.gio-select').simulate('click');
+      });
+
+      act(() => {
+        wrapper.find('.gio-select-dropdown .gio-select-option').at(index).simulate('click');
+      });
+      act(() => {
+        wrapper.find('Dropdown').at(2).find('.filter-contidion-footer').find('button').at(1).simulate('click');
+      });
+      act(() => {
+        wrapper.find('Dropdown').at(0).find('.filter-contidion-footer').find('button').at(1).simulate('click');
+      });
+      expect(onConfirm).toBeCalledWith({
+        __typename: 'directivesFilter',
+        exprs: [{ key: 'test_int_id', name: 'test_int_name', op, valueType: 'int', values }],
+        op: 'and',
+      });
+      act(() => {
+        wrapper.unmount();
+      });
+    };
+
+    it('=', () => {
+      handle('=', ['0'], 0);
+    });
+
+    it('!=', () => {
+      handle('!=', ['0'], 1);
+    });
+
+    it('>', () => {
+      handle('>', ['0'], 2);
+    });
+    it('>=', () => {
+      handle('>=', ['0'], 3);
+    });
+    it('<', () => {
+      handle('<', ['0'], 4);
+    });
+    it('<=', () => {
+      handle('<=', ['0'], 5);
+    });
+    it('between', () => {
+      handle('between', ['0'], 6);
+    });
+    it('exist value', () => {
+      handle('hasValue', [' '], 7);
+    });
+    it('not value', () => {
+      handle('noValue', [' '], 8);
     });
   });
 });

@@ -27,10 +27,10 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
 
   const setValue1Number = (v: string) => {
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue1(parseInt(v, 10));
+      setValue1(v);
       attrChange([v, value2]);
     } else if (!v) {
-      setValue1(parseInt(v, 10));
+      setValue1(v);
       attrChange(['0', value2]);
     }
   };
@@ -38,20 +38,20 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   // 设置数值
   const setNumberValue = (v: string) => {
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue(parseInt(v, 10));
+      setValue(v);
       attrChange([v]);
     } else if (!v) {
-      setValue(parseInt(v, 10));
+      setValue(v);
       attrChange(['0']);
     }
   };
   // 设置区间方法
   const setBetweenNumberValue = (v: string) => {
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue2(parseInt(v, 10));
+      setValue2(v);
       attrChange([value1, v]);
     } else if (!v) {
-      setValue2(parseInt(v, 10));
+      setValue2(v);
       attrChange([value1, '0']);
     }
   };
