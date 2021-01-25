@@ -1,88 +1,341 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Input, Form, Alert } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { FormInstance } from '@gio-design/components/es/components/form';
+import Button, { ButtonProps } from '@gio-design/components/es/components/button';
+import { cloneDeep, isEmpty } from 'lodash';
 import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH } from './utils';
 import FormItemGroup from './components/FormItemGroup';
-import { EventFormProps, ElementEventFormProps } from './interfaces';
+import Submitter, { SubmitterProps } from './components/Submitter';
+import { EventFormProps, ElementEventFormProps, Rule, ElementFormValues } from './interfaces';
 import './style';
 import '@gio-design/components/es/components/link/style/css.js';
 import BaseForm from './BaseForm';
-import PagePicker from './components/PagePicker';
-import { TagElement } from './TagElement';
-
-const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps> = (
+import { AppType } from './types';
+import ValidatorHelper from './validator';
+import FooterToolbar from './components/FooterToolbar';
+import { DocProps, TagElement } from './TagElement';
+import PagePicker from './components/page-picker';
+import DefinitionCondition from './components/definition-condition';
+// interface DefinitionRuleProps {
+//   definition: DocProps;
+//   appType: AppType;
+// }
+function transformFormValues(initialValues?: ElementFormValues) {
+  const tempValue = cloneDeep(initialValues || {}) as ElementFormValues;
+  return {
+    ...tempValue,
+    limitCondition: {
+      content: tempValue?.content,
+      href: tempValue.href,
+      index: tempValue?.index,
+      contentType: tempValue.contentType,
+    },
+    // page: null,
+  };
+}
+/**
+ *
+ * @param values 转化数据类型，主要转化 path/query==>string
+ */
+function conversionSubmitValue(values: any) {
+  const tempValue = cloneDeep(values);
+  // const path = get(tempValue, 'path', {});
+  // if (path && path.path) {
+  //   tempValue.path = path.path;
+  // }
+  // const query = get(tempValue, 'query');
+  // if (query) {
+  //   tempValue.query = kvsToQuery(query);
+  // }
+  return Object.assign(tempValue, { ...tempValue.limitCondition });
+  // return tempValue;
+}
+const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps> = (
   props: EventFormProps,
   ref
 ) => {
-  const { labelAlign = 'left', labelWidth = 68, initialValues = {}, ...restProps } = props;
+  const {
+    labelAlign = 'left',
+    labelWidth = 68,
+    appType = AppType.WEB,
+    initialValues,
+    definedTags,
+    form: userForm,
+    onValuesChange,
+    submitter,
+    pagePicker = {
+      onActionButtonClick: () => undefined,
+      currentPageTags: [],
+      dataSource: [],
+    },
+    dataChart,
+    // showPreButton = true,
+    ...restProps
+  } = props as ElementEventFormProps;
   const [wrapForm] = Form.useForm<FormInstance>();
-  const formRef = useRef<FormInstance>(wrapForm);
+  const formRef = useRef<FormInstance>(wrapForm || userForm);
   React.useImperativeHandle(ref, () => formRef?.current);
 
   const prefixCls = usePrefixCls('event-form');
-  const deviceInfo = {};
 
+  // const formInitialValue = useMemo(() => {
+  //   return { ...initialValues, path: { path: initialValues?.path }, query: queryToKvs(initialValues?.query) };
+  // }, [initialValues]);
+
+  /**
+   * 提交按钮的disabled状态，
+   */
+  const [submitDisabled, setSubmitDisabeld] = useState(true);
+  const validatorRef = useRef(new ValidatorHelper(definedTags));
+
+  const whitespaceRule = {
+    pattern: /^\S.*\S$|(^\S{0,1}\S$)/,
+    message: '首、末位不支持输入空格',
+    validateTrigger: 'onBlur',
+  };
+
+  const validateRules: { [key: string]: Rule[] } = {
+    name: [
+      { required: true, message: '名称不能为空', validateTrigger: 'onChange' },
+      whitespaceRule,
+      {
+        validator: async (_, value) => validatorRef.current?.checkName(value),
+        validateTrigger: 'onSubmit',
+      },
+    ],
+    description: [],
+    belongApp: [],
+    limitCondition: [
+      {
+        message: whitespaceRule.message,
+        validator: async () => true,
+        validateTrigger: 'onChange',
+      },
+    ],
+    page: [],
+  };
+
+  const showBelongApp = appType !== AppType.WEB;
+  const [formValues, setFormValues] = useState<any>(() => {
+    return transformFormValues(initialValues);
+  });
+
+  function handleValuesChange(changedValues: any, allValues: any) {
+    setFormValues(allValues);
+    onValuesChange?.(changedValues, allValues);
+  }
+  useEffect(() => {
+    const { name } = formValues;
+    let disabled = false;
+    const isNameEmpty = isEmpty(name);
+
+    disabled = isNameEmpty;
+    setSubmitDisabeld(disabled);
+  }, [formValues]);
+
+  const renderDefinitionRuleText = (definition: DocProps, repeatTag?: TagElement) => {
+    let text = '现在定义的是';
+    if (repeatTag) {
+      text = `该规则已被 <b>${repeatTag.creator}</b> 定义为【${repeatTag.name}】。${text}`;
+    }
+
+    if (appType === AppType.NATIVE) {
+      text += `页面 <span class="link">${definition.path}</span> 。`;
+    } else if (appType === AppType.WEB) {
+      if (definition.path) {
+        text += `页面 <span class="link">${definition.domain + definition.path}</span> `;
+      } else {
+        text += ` <span class="link">${definition.domain}</span> `;
+      }
+      if (definition.query) {
+        if (definition.path) text += '，';
+        text += `查询条件为 <span class="link">${definition.query}</span>`;
+      }
+      if (definition.path) {
+        text += ' 。';
+      } else {
+        text += ' 下的所有页面。';
+      }
+    } else if (appType === AppType.MINP) {
+      if (definition.path === undefined) {
+        text += ` <span class="link">小程序所有页面</span> `;
+      } else {
+        text += `页面 <span class="link">${definition.path}</span> `;
+      }
+      if (definition.query) {
+        text += `，查询条件为 <span class="link">${definition.query}</span>`;
+      }
+      text += '。';
+    }
+    // eslint-disable-next-line react/no-danger
+    return <span dangerouslySetInnerHTML={{ __html: text }} />;
+  };
+  const renderDefinitionRule = () => {
+    const definition = conversionSubmitValue(formValues);
+    const repeatRuleTag = validatorRef.current.findExistElementTag(definition);
+    const renderMessage = renderDefinitionRuleText(definition, repeatRuleTag);
+    return (
+      <>
+        <Alert size="small" type={repeatRuleTag ? 'error' : 'info'} showIcon message={renderMessage} />
+      </>
+    );
+  };
+  const pre = submitter !== false && (
+    <Button
+      key="pre"
+      type="secondary"
+      {...submitter?.resetButtonProps}
+      onClick={() => {
+        // restProps.onPre?.();
+      }}
+    >
+      上一步
+    </Button>
+  );
+  const onSubmit = () => {
+    formRef.current?.submit();
+  };
+  const submit = submitter !== false && (
+    <Button
+      key="submit"
+      type="primary"
+      {...submitter?.submitButtonProps}
+      disabled={submitDisabled}
+      onClick={() => {
+        submitter?.onSubmit?.();
+        onSubmit();
+      }}
+    >
+      {submitter?.submitText ?? '保存'}
+    </Button>
+  );
+  const reset = submitter !== false && (
+    <Button
+      key="rest"
+      type="secondary"
+      {...submitter?.resetButtonProps}
+      onClick={(e) => {
+        formRef.current?.resetFields();
+        submitter?.onReset?.();
+        submitter?.resetButtonProps?.onClick?.(e);
+      }}
+    >
+      {submitter?.resetText ?? '取消'}
+    </Button>
+  );
+  const [loading, setLoading] = useState<ButtonProps['loading']>(false);
+  const defaultSubmitRender = () => {
+    const submitterProps: SubmitterProps = typeof submitter === 'boolean' || !submitter ? {} : submitter;
+    const submitterNode =
+      submitter === false ? undefined : (
+        <Submitter
+          key="submitter"
+          {...submitterProps}
+          form={formRef.current}
+          resetText="取消"
+          submitButtonProps={{
+            loading,
+            ...submitterProps.submitButtonProps,
+            disabled: submitDisabled,
+          }}
+        />
+      );
+    return (
+      <div className="footer">
+        <FooterToolbar style={{ position: 'static' }} extra={pre}>
+          {submitterNode}
+        </FooterToolbar>
+      </div>
+    );
+  };
+
+  const renderSubmitter = () => {
+    const submitterDom = [pre, reset, submit] as JSX.Element[];
+    if (submitter && submitter.render) {
+      const submitterProps: any = {
+        form: formRef?.current,
+        onSubmit,
+        // showPreButton,
+        onPre: () => {
+          // restProps.onPre?.();
+        },
+      };
+      return submitter.render(submitterProps, submitterDom) as React.ReactNode;
+    }
+    if (submitter && submitter?.render === false) {
+      return null;
+    }
+    return defaultSubmitRender() as React.ReactNode;
+  };
+  function hasLimit() {
+    return !!initialValues?.href || initialValues?.index != null || !!initialValues?.content;
+  }
+  const pagePickerDataSource = pagePicker.dataSource || definedTags.filter((v) => v.docType === 'page');
   return (
     <div className={`${prefixCls}-wrap`}>
       <div className={`${prefixCls}-body`}>
         <BaseForm
+          {...restProps}
           labelAlign={labelAlign}
           labelWidth={labelWidth}
-          form={wrapForm}
-          initialValues={{ ...initialValues }}
-          contentRender={(items, submitter) => {
+          form={userForm || wrapForm}
+          submitter={submitter}
+          onValuesChange={handleValuesChange}
+          initialValues={formValues}
+          onFinish={async (values) => {
+            if (!restProps.onFinish) return;
+            setLoading(true);
+            await restProps.onFinish(conversionSubmitValue(values));
+            setLoading(false);
+          }}
+          contentRender={(items) => {
             return (
               <>
                 {items}
-                <div className="footer-submitter">{submitter}</div>
+                {renderSubmitter()}
               </>
             );
           }}
-          {...restProps}
         >
           <FormItemGroup groupNumber={1} title="基本信息">
-            <Form.Item name="name" label="页面名称" rules={[{ required: true, message: '名称不能为空' }]}>
+            <Form.Item validateTrigger={['onBlur', 'onChange']} name="name" label="页面名称" rules={validateRules.name}>
               <Input placeholder="请输入页面名称" maxLength={MAX_VALUE_LENGTH} />
             </Form.Item>
-            <Form.Item name="description" label="描述">
+            <Form.Item name="description" label="描述" rules={validateRules.description}>
               <Input.TextArea maxLength={MAX_DESC_LENGTH} rows={3} placeholder="请输入描述" />
             </Form.Item>
           </FormItemGroup>
           <FormItemGroup style={{ marginTop: '24px' }} groupNumber={2} title="定义规则">
             <div className="feedback">
-              <Alert size="small" showIcon type="error" message="xxxxx" />
+              {/* <Alert size="small" showIcon type="error" message="xxxxx" /> */}
+              {renderDefinitionRule()}
             </div>
-            {deviceInfo && (
+            {showBelongApp && (
               <Form.Item name="belongApp" label="所属应用">
                 <Input placeholder="所属应用包名" disabled />
               </Form.Item>
             )}
-            <Form.Item name="belongPage" label="所属页面">
+            <Form.Item name="page" label="所属页面" rules={validateRules.page}>
               <PagePicker
-                onDefineNewPage={() => {
-                  console.log('onDefineNewPage');
-                }}
-                currentPageTags={[] as TagElement[]}
-                relatedPageTags={[] as TagElement[]}
+                dataSource={pagePickerDataSource}
+                actionButton={{ onClick: pagePicker?.onActionButtonClick }}
+                currentPageTags={pagePicker?.currentPageTags ?? []}
               />
             </Form.Item>
-            <Form.Item name="definitions" label="限定条件">
-              {/* <Input disabled maxLength={MAX_VALUE_LENGTH} /> */}
-              {/* <DefinitionEditor /> */}
-            </Form.Item>
-
+            {hasLimit && (
+              <Form.Item name="limitCondition" label="限定条件" rules={validateRules.limitCondition}>
+                <DefinitionCondition isNative={appType === AppType.NATIVE} />
+              </Form.Item>
+            )}
             <Form.Item name="data" label="数据">
-              <div className="data-chart-wrap" />
+              <div className="data-chart-wrap">{dataChart}</div>
             </Form.Item>
           </FormItemGroup>
-          {/* <Form.Item>
-            <div className="footer-submitter"> {Submitter}</div>
-          </Form.Item> */}
         </BaseForm>
       </div>
     </div>
   );
 };
 
-export default React.forwardRef(PageViewEventForm);
+export default React.forwardRef(ElementEventForm);

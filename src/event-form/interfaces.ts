@@ -27,9 +27,17 @@ export interface EventFormProps extends FormProps, CommonFormProps {
    * @description  支持异步操作
    */
   onFinish?: (formData: Record<string, any>) => Promise<boolean | void>;
-  definedTags: TagElement[];
-  // initialTagElement: TagElement;
+  /**
+   *  存在则是app定义
+   * */
   deviceInfo?: DeviceInfo;
+  appType?: AppType;
+
+  /**
+   * 所有已定义的标签
+   */
+  definedTags: TagElement[];
+  dataChart?: JSX.Element;
 }
 type StepSubmitterProps = SubmitterProps<{
   showPreButton: boolean;
@@ -39,7 +47,6 @@ type StepSubmitterProps = SubmitterProps<{
 
 export interface PageViewEventFormProps extends Omit<EventFormProps, 'initialValues'> {
   initialValues?: PageViewFormValues;
-  appType?: AppType;
   /**
    * 底部toolbar 配置 ；
    */
@@ -55,6 +62,16 @@ export interface PageViewEventFormProps extends Omit<EventFormProps, 'initialVal
 }
 export interface ElementEventFormProps extends Omit<EventFormProps, 'initialValues'> {
   initialValues?: ElementFormValues;
+  pagePicker?: {
+    /** 页面选择的定义新页面按钮 */
+    onActionButtonClick?: () => void;
+    currentPageTags: TagElement[];
+    dataSource?: TagElement[];
+  };
+  /**
+   * 页面选择器定义新页面按钮的click事件回调
+   */
+  // onDefinePageClick？: () => void;
 }
 
 export interface EventFormValues {
@@ -74,6 +91,15 @@ export interface PageViewFormValues extends EventFormValues {
 }
 export interface ElementFormValues extends EventFormValues {
   belongPage?: string;
+  domain: string;
+  path?: string;
+  query?: string;
+  xpath?: string;
+  index?: string;
+  href?: string;
+  content?: string;
+  pg?: string;
+  contentType?: 'match_phrase' | '=';
 }
 
 /**

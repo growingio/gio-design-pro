@@ -124,7 +124,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
     </div>
   );
 };
-export const CustomSubmitter = TemplateCustomSubmitter.bind({});
+export const Default = TemplateCustomSubmitter.bind({});
 TemplateCustomSubmitter.args = {
   // definedTags: spaceTags,
   onFinish: async (values) => console.log(values),

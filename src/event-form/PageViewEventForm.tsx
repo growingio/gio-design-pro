@@ -76,6 +76,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     onValuesChange,
     submitter,
     showPreButton = true,
+    dataChart,
     ...restProps
   } = props as PageViewEventFormProps;
   const [wrapForm] = Form.useForm<FormInstance>();
@@ -380,7 +381,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
               </>
             )}
             <Form.Item name="data" label="数据">
-              <div className="data-chart-wrap" />
+              <div className="data-chart-wrap">{dataChart}</div>
             </Form.Item>
           </FormItemGroup>
           {/* <Form.Item>
