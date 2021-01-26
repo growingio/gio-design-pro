@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "20.12.3-alpha.6",
+  "version": "21.1.1-alpha.1",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -76,7 +76,7 @@
     "enzyme-adapter-react-16": "^1.15.5",
     "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",

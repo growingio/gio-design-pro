@@ -1,10 +1,10 @@
-## [20.12.2](https://github.com/growingio/gio-design-pro/compare/v20.12.1...v20.12.2) (2020-12-31)
+# [21.1.0](https://github.com/growingio/gio-design-pro/compare/v20.12.2...v21.1.0) (2021-01-25)
 
 
-### Bug Fixes
+### Features
 
-* **operation-menu:** update icons name with components' new version ([4b61cce](https://github.com/growingio/gio-design-pro/commit/4b61ccea78a0b96e43adacb06b6ef2145d298fda))
-* import components less files in ts files ([312d961](https://github.com/growingio/gio-design-pro/commit/312d961655fc96e00bae467366f47a4f3fe94ff4))
+* **list:** complete list component with new style ([bc290a2](https://github.com/growingio/gio-design-pro/commit/bc290a2bbcb121cbaa09169e3f05c322415835cf))
+* **list:** set text-overflow for list item ([a93dfba](https://github.com/growingio/gio-design-pro/commit/a93dfba313de1af54a73017f98374751b8b9395d))
 
 
 
