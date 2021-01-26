@@ -30,7 +30,7 @@ exports[`<FilterAttrOverlay /> date type when op is "!=" 1`] = `
             <span
               class="gio-select-item-text"
             >
-              不等于
+              有值
             </span>
           </div>
         </div>
@@ -73,23 +73,6 @@ exports[`<FilterAttrOverlay /> date type when op is "!=" 1`] = `
     <div
       class="filter-attr_dividingLine"
     />
-    <div
-      class="gio-date-picker-wrap"
-    >
-      <div
-        class="gio-input gio-input--middle"
-      >
-        <input
-          class="gio-input__content"
-          placeholder="请输入…"
-          type="text"
-          value="2021/01/25"
-        />
-      </div>
-      <div
-        class="gio-date-picker-wrapper"
-      />
-    </div>
   </div>
   <div
     class="filter-contidion-footer"
@@ -200,7 +183,7 @@ exports[`<FilterAttrOverlay /> date type when op is "<" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/25"
+          value="2021/01/26"
         />
       </div>
       <div
@@ -367,7 +350,7 @@ exports[`<FilterAttrOverlay /> date type when op is "<=" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/25"
+          value="2021/01/26"
         />
       </div>
       <div
@@ -535,7 +518,7 @@ exports[`<FilterAttrOverlay /> date type when op is "=" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/25"
+          value="2021/01/26"
         />
       </div>
       <div
@@ -652,7 +635,7 @@ exports[`<FilterAttrOverlay /> date type when op is ">" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/25"
+          value="2021/01/26"
         />
       </div>
       <div
@@ -819,7 +802,7 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/25"
+          value="2021/01/26"
         />
       </div>
       <div
@@ -877,6 +860,206 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
         包含当日
       </span>
     </label>
+  </div>
+  <div
+    class="filter-contidion-footer"
+  >
+    <button
+      class="gio-btn gio-btn-secondary gio-btn-small"
+      type="button"
+    >
+      <span>
+        取 消
+      </span>
+    </button>
+    <div
+      style="width: 12px;"
+    />
+    <button
+      class="gio-btn gio-btn-primary gio-btn-small"
+      type="button"
+    >
+      <span>
+        确 认
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<FilterAttrOverlay /> date type when op is "hasValue" 1`] = `
+<div
+  class="filter-attr_select-box"
+>
+  <div>
+    <div
+      class="filter-attr_select-title"
+    >
+      日期类型
+    </div>
+    <div
+      aria-controls="expandable"
+      aria-disabled="false"
+      aria-expanded="false"
+      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+      role="combobox"
+      style="width: 100%; margin-top: 16px; cursor: pointer;"
+    >
+      <div
+        class="gio-select-selector"
+      >
+        <div
+          class="gio-select-values-wrapper"
+        >
+          <div
+            class="gio-select-item"
+          >
+            <span
+              class="gio-select-item-text"
+            >
+              有值
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="gio-select-arrow"
+      >
+        <span
+          class="gio-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g
+              data-name="\\\\u56FE\\\\u5C42 2"
+              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            >
+              <g
+                data-name="\\\\u56FE\\\\u5C42 1"
+                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+              >
+                <path
+                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="down-filled_svg__down-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div
+      class="filter-attr_dividingLine"
+    />
+  </div>
+  <div
+    class="filter-contidion-footer"
+  >
+    <button
+      class="gio-btn gio-btn-secondary gio-btn-small"
+      type="button"
+    >
+      <span>
+        取 消
+      </span>
+    </button>
+    <div
+      style="width: 12px;"
+    />
+    <button
+      class="gio-btn gio-btn-primary gio-btn-small"
+      type="button"
+    >
+      <span>
+        确 认
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<FilterAttrOverlay /> date type when op is "noValue" 1`] = `
+<div
+  class="filter-attr_select-box"
+>
+  <div>
+    <div
+      class="filter-attr_select-title"
+    >
+      日期类型
+    </div>
+    <div
+      aria-controls="expandable"
+      aria-disabled="false"
+      aria-expanded="false"
+      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+      role="combobox"
+      style="width: 100%; margin-top: 16px; cursor: pointer;"
+    >
+      <div
+        class="gio-select-selector"
+      >
+        <div
+          class="gio-select-values-wrapper"
+        >
+          <div
+            class="gio-select-item"
+          >
+            <span
+              class="gio-select-item-text"
+            >
+              无值
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="gio-select-arrow"
+      >
+        <span
+          class="gio-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g
+              data-name="\\\\u56FE\\\\u5C42 2"
+              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            >
+              <g
+                data-name="\\\\u56FE\\\\u5C42 1"
+                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+              >
+                <path
+                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="down-filled_svg__down-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div
+      class="filter-attr_dividingLine"
+    />
   </div>
   <div
     class="filter-contidion-footer"
@@ -1212,6 +1395,443 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
 </div>
 `;
 
+exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
+<div
+  class="filter-attr_select-box"
+>
+  <div>
+    <div
+      class="filter-attr_select-title"
+    >
+      日期类型
+    </div>
+    <div
+      aria-controls="expandable"
+      aria-disabled="false"
+      aria-expanded="false"
+      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+      role="combobox"
+      style="width: 100%; margin-top: 16px; cursor: pointer;"
+    >
+      <div
+        class="gio-select-selector"
+      >
+        <div
+          class="gio-select-values-wrapper"
+        >
+          <div
+            class="gio-select-item"
+          >
+            <span
+              class="gio-select-item-text"
+            >
+              相对区间
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="gio-select-arrow"
+      >
+        <span
+          class="gio-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g
+              data-name="\\\\u56FE\\\\u5C42 2"
+              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            >
+              <g
+                data-name="\\\\u56FE\\\\u5C42 1"
+                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+              >
+                <path
+                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="down-filled_svg__down-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div
+      class="filter-attr_dividingLine"
+    />
+    <div
+      style="display: flex; align-items: center; flex-wrap: wrap;"
+    >
+      <div
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="margin-right: 4px; cursor: pointer;"
+      >
+        <div
+          class="gio-select-selector"
+        >
+          <div
+            class="gio-select-values-wrapper"
+          >
+            <div
+              class="gio-select-item"
+            >
+              <span
+                class="gio-select-item-text"
+              >
+                未来
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="gio-select-arrow"
+        >
+          <span
+            class="gio-icon"
+          >
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs />
+              <g
+                data-name="\\\\u56FE\\\\u5C42 2"
+                id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+              >
+                <g
+                  data-name="\\\\u56FE\\\\u5C42 1"
+                  id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+                >
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
+              </g>
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div
+        class="gio-input gio-input--middle gio-input__container"
+        style="width: 150px; margin: 0px 4px;"
+      >
+        <input
+          class="gio-input__content gio-input__content-suffix"
+          placeholder=""
+          type="text"
+          value="5"
+        />
+        <div
+          class="gio-input__suffix"
+        >
+          <div
+            class="gio-input__suffix-iconGroup"
+          >
+            <span
+              class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon"
+            >
+              <svg
+                class="gio-icon-svg"
+                fill="currentColor"
+                height="16px"
+                viewBox="0 0 14 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs />
+                <g
+                  data-name="\\\\u56FE\\\\u5C42 2"
+                  id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+                >
+                  <g
+                    data-name="\\\\u56FE\\\\u5C42 1"
+                    id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+                  >
+                    <path
+                      d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      id="down-filled_svg__down-2"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </span>
+            <span
+              class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            >
+              <svg
+                class="gio-icon-svg"
+                fill="currentColor"
+                height="16px"
+                viewBox="0 0 14 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs />
+                <g
+                  data-name="\\\\u56FE\\\\u5C42 2"
+                  id="up-filled_svg__\\\\u56FE\\\\u5C42_2"
+                >
+                  <g
+                    data-name="\\\\u56FE\\\\u5C42 1"
+                    id="up-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+                  >
+                    <path
+                      d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      id="up-filled_svg__up-2"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        style="white-space: nowrap; margin: 0px 4px;"
+      >
+        天至
+      </div>
+    </div>
+    <div
+      style="display: flex; align-items: center; flex-wrap: wrap;"
+    >
+      <div
+        class="gio-input gio-input--middle gio-input__container"
+        style="width: 150px; margin: 0px 4px 0px 0px;"
+      >
+        <input
+          class="gio-input__content gio-input__content-suffix"
+          placeholder=""
+          type="text"
+          value="1"
+        />
+        <div
+          class="gio-input__suffix"
+        >
+          <div
+            class="gio-input__suffix-iconGroup"
+          >
+            <span
+              class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            >
+              <svg
+                class="gio-icon-svg"
+                fill="currentColor"
+                height="16px"
+                viewBox="0 0 14 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs />
+                <g
+                  data-name="\\\\u56FE\\\\u5C42 2"
+                  id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+                >
+                  <g
+                    data-name="\\\\u56FE\\\\u5C42 1"
+                    id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+                  >
+                    <path
+                      d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      id="down-filled_svg__down-2"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </span>
+            <span
+              class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            >
+              <svg
+                class="gio-icon-svg"
+                fill="currentColor"
+                height="16px"
+                viewBox="0 0 14 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs />
+                <g
+                  data-name="\\\\u56FE\\\\u5C42 2"
+                  id="up-filled_svg__\\\\u56FE\\\\u5C42_2"
+                >
+                  <g
+                    data-name="\\\\u56FE\\\\u5C42 1"
+                    id="up-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+                  >
+                    <path
+                      d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      id="up-filled_svg__up-2"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        style="white-space: nowrap; margin: 16px 4px;"
+      >
+        天之内
+      </div>
+    </div>
+  </div>
+  <div
+    class="filter-contidion-footer"
+  >
+    <button
+      class="gio-btn gio-btn-secondary gio-btn-small"
+      type="button"
+    >
+      <span>
+        取 消
+      </span>
+    </button>
+    <div
+      style="width: 12px;"
+    />
+    <button
+      class="gio-btn gio-btn-primary gio-btn-small"
+      type="button"
+    >
+      <span>
+        确 认
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<FilterAttrOverlay /> not defined type 1`] = `
+<div
+  class="filter-attr_select-box"
+>
+  <div>
+    <div
+      class="filter-attr_select-title"
+    >
+      字符串类型
+    </div>
+    <div
+      aria-controls="expandable"
+      aria-disabled="false"
+      aria-expanded="false"
+      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+      role="combobox"
+      style="width: 100%; margin-top: 16px; cursor: pointer;"
+    >
+      <div
+        class="gio-select-selector"
+      >
+        <div
+          class="gio-select-values-wrapper"
+        >
+          <div
+            class="gio-select-item"
+          >
+            <span
+              class="gio-select-item-text"
+            >
+              not
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="gio-select-arrow"
+      >
+        <span
+          class="gio-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g
+              data-name="\\\\u56FE\\\\u5C42 2"
+              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            >
+              <g
+                data-name="\\\\u56FE\\\\u5C42 1"
+                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+              >
+                <path
+                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="down-filled_svg__down-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div
+      class="filter-attr_dividingLine"
+    />
+  </div>
+  <div
+    class="filter-contidion-footer"
+  >
+    <button
+      class="gio-btn gio-btn-secondary gio-btn-small"
+      type="button"
+    >
+      <span>
+        取 消
+      </span>
+    </button>
+    <div
+      style="width: 12px;"
+    />
+    <button
+      class="gio-btn gio-btn-primary gio-btn-small"
+      disabled=""
+      type="button"
+    >
+      <span>
+        确 认
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
 exports[`<FilterAttrOverlay /> number type render 1`] = `
 <div
   class="filter-attr_select-box"
@@ -1302,6 +1922,150 @@ exports[`<FilterAttrOverlay /> number type render 1`] = `
     />
     <button
       class="gio-btn gio-btn-primary gio-btn-small"
+      type="button"
+    >
+      <span>
+        确 认
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<FilterAttrOverlay /> string type render 1`] = `
+<div
+  class="filter-attr_select-box"
+>
+  <div>
+    <div
+      class="filter-attr_select-title"
+    >
+      字符串类型
+    </div>
+    <div
+      aria-controls="expandable"
+      aria-disabled="false"
+      aria-expanded="false"
+      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+      role="combobox"
+      style="width: 100%; margin-top: 16px; cursor: pointer;"
+    >
+      <div
+        class="gio-select-selector"
+      >
+        <div
+          class="gio-select-values-wrapper"
+        >
+          <div
+            class="gio-select-item"
+          >
+            <span
+              class="gio-select-item-text"
+            >
+              等于
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="gio-select-arrow"
+      >
+        <span
+          class="gio-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g
+              data-name="\\\\u56FE\\\\u5C42 2"
+              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            >
+              <g
+                data-name="\\\\u56FE\\\\u5C42 1"
+                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
+              >
+                <path
+                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="down-filled_svg__down-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div
+      class="filter-attr_dividingLine"
+    />
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="gio-input gio-input--middle"
+      >
+        <input
+          class="gio-input__content"
+          placeholder="请输入…"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"
+      >
+        <div
+          class="gio-loading gio-loading-large"
+        >
+          <span
+            class="gio-loading-strip"
+          >
+            <span
+              class="gio-loading-strip-item"
+            />
+            <span
+              class="gio-loading-strip-item"
+            />
+            <span
+              class="gio-loading-strip-item"
+            />
+            <span
+              class="gio-loading-strip-item"
+            />
+          </span>
+          <span
+            class="gio-loading-title gio-loading-title-bottom"
+          >
+            加载中...
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="filter-contidion-footer"
+  >
+    <button
+      class="gio-btn gio-btn-secondary gio-btn-small"
+      type="button"
+    >
+      <span>
+        取 消
+      </span>
+    </button>
+    <div
+      style="width: 12px;"
+    />
+    <button
+      class="gio-btn gio-btn-primary gio-btn-small"
+      disabled=""
       type="button"
     >
       <span>
