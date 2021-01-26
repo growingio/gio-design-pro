@@ -90,6 +90,10 @@ const Picker = (props: PagePickerProps) => {
   function handleChange(v: any) {
     onChange?.(v as TagElement);
   }
+  function handleActionButtonClick() {
+    actionButton?.onClick?.();
+    setVisible(false);
+  }
   return (
     <Dropdown
       visible={visible}
@@ -113,7 +117,7 @@ const Picker = (props: PagePickerProps) => {
               type="text"
               icon={<PlusCircleFilled />}
               style={{ margin: '8px 16px' }}
-              onClick={actionButton?.onClick}
+              onClick={handleActionButtonClick}
             >
               定义新页面
             </Button>
