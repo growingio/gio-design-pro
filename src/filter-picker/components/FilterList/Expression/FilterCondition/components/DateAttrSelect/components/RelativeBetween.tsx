@@ -13,7 +13,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
   const [value2, setValue2] = useState<number>(1);
   // 解析初始values值
   useEffect(() => {
-    if (values.length) {
+    if (values.length && typeof values[0] === 'string') {
       const relativeTime = values[0].split(':')[1].split(',');
       if (parseInt(relativeTime[0], 10) < 0) {
         setValue('-1');
@@ -21,7 +21,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
         setValue('1');
       }
       setValue1(Math.abs(parseInt(relativeTime[0], 10)));
-      setValue2(Math.abs(parseInt(relativeTime[1], 10)));
+      setValue2(Math.abs(parseInt(relativeTime[1], 10)) || 1);
     }
   }, [values]);
   const createAttrValue = (v1: number, v2: number, nowOrFuture: string) => {
@@ -39,7 +39,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
       createAttrValue(v, value2, nowOrFuturevalue);
     } else if (!v) {
       setValue1(v);
-      createAttrValue(1, value2, nowOrFuturevalue);
+      createAttrValue(0, value2, nowOrFuturevalue);
     }
   };
   const setInputValue2 = (v: number) => {
@@ -48,7 +48,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
       createAttrValue(value1, v, nowOrFuturevalue);
     } else if (!v) {
       setValue2(v);
-      createAttrValue(value1, 1, nowOrFuturevalue);
+      createAttrValue(value1, 0, nowOrFuturevalue);
     }
   };
   const selectOptions = [
@@ -72,7 +72,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
     if (!values.length) {
       createAttrValue(value1, value2, nowOrFuturevalue);
     }
-  }, [attrSelect, nowOrFuturevalue, value1, value2]);
+  }, [attrSelect]);
   return (
     <>
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>

@@ -12,7 +12,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
   const { onChange, attrSelect, values } = props;
   const [nowOrFuturevalue, setValue] = useState('-1');
   const [inOrOutValue, setAfterValue] = useState('-1');
-  const [days, setDays] = useState<number>(0);
+  const [days, setDays] = useState<number>(1);
   const SelectOptions = [
     {
       value: '-1',
@@ -45,7 +45,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
   ];
   // 解析初始值
   useEffect(() => {
-    if (values.length) {
+    if (values.length && typeof values[0] === 'string') {
       const relativeTime = values[0].split(':')[1].split(',');
       if (parseInt(relativeTime[0], 10) < 0) {
         setValue('-1');
@@ -98,7 +98,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
       createAttrValue(v, nowOrFuturevalue, inOrOutValue);
     } else if (!v) {
       setDays(v);
-      createAttrValue(1, nowOrFuturevalue, inOrOutValue);
+      createAttrValue(0, nowOrFuturevalue, inOrOutValue);
     }
   };
   return (

@@ -8,50 +8,59 @@ interface NumberAttrSelectProps {
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
   const { attrSelect, attrChange, values } = props;
-  const [value, setValue] = useState<number>(values[0] ? parseInt(values[0], 10) : 0);
-  const [value1, setValue1] = useState<number>(values[0] ? parseInt(values[0], 10) : 0);
-  const [value2, setValue2] = useState<number>(values[1] ? parseInt(values[1], 10) : 0);
+  const [value, setValue] = useState<number | string>(values[0] ? parseInt(values[0], 10) : 0);
+  const [value1, setValue1] = useState<number | string>(values[0] ? parseInt(values[0], 10) : 0);
+  const [value2, setValue2] = useState<number | string>(values[1] ? parseInt(values[1], 10) : 0);
 
   // 初始化attrValue值
   useEffect(() => {
-    const num = values[0] ? values[0] : '0';
+    const num = values[0] && values[0] !== ' ' ? values[0] : '0';
     setValue(parseInt(values[0], 10) || 0);
     setValue1(parseInt(values[0], 10) || 0);
-    setValue2(parseInt(values[1], 10) || 0);
+    setValue2(Number.isNaN(parseInt(values[1], 10)) ? num : parseInt(values[1], 10));
     if (attrSelect === 'between' || attrSelect === 'not between') {
-      attrChange([num, num]);
+      attrChange([num, values[1] || num]);
     } else {
       attrChange([num]);
     }
   }, [attrSelect]);
 
-  const setValue1Number = (v: string) => {
+  const setValue1Number = (val: React.ChangeEvent<HTMLInputElement>) => {
+    const v = val.target.value;
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue1(parseInt(v, 10));
-      attrChange([v, value2]);
+      setValue1(v);
+      if (v !== '-') {
+        attrChange([v, value2]);
+      }
     } else if (!v) {
-      setValue1(parseInt(v, 10));
+      setValue1(v);
       attrChange(['0', value2]);
     }
   };
 
   // 设置数值
-  const setNumberValue = (v: string) => {
+  const setNumberValue = (val: React.ChangeEvent<HTMLInputElement>) => {
+    const v = val.target.value;
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue(parseInt(v, 10));
-      attrChange([v]);
+      setValue(v);
+      if (v !== '-') {
+        attrChange([v]);
+      }
     } else if (!v) {
-      setValue(parseInt(v, 10));
+      setValue(v);
       attrChange(['0']);
     }
   };
   // 设置区间方法
-  const setBetweenNumberValue = (v: string) => {
+  const setBetweenNumberValue = (val: React.ChangeEvent<HTMLInputElement>) => {
+    const v = val.target.value;
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
-      setValue2(parseInt(v, 10));
-      attrChange([value1, v]);
+      setValue2(v);
+      if (v !== '-') {
+        attrChange([value1, v]);
+      }
     } else if (!v) {
-      setValue2(parseInt(v, 10));
+      setValue2(v);
       attrChange([value1, '0']);
     }
   };
@@ -61,16 +70,16 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     case 'not between':
       return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Input.InputNumber value={value1} onChange={setValue1Number} style={{ width: '120px' }} />
+          <Input value={value1} onChange={setValue1Number} style={{ width: '120px' }} />
           <div style={{ margin: '0 16px' }}>与</div>
-          <Input.InputNumber value={value2} onChange={setBetweenNumberValue} style={{ width: '120px' }} />
+          <Input value={value2} onChange={setBetweenNumberValue} style={{ width: '120px' }} />
         </div>
       );
     case 'hasValue':
     case 'noValue':
       return null;
     default:
-      return <Input.InputNumber value={value} onChange={setNumberValue} />;
+      return <Input value={value} onChange={setNumberValue} />;
   }
 }
 

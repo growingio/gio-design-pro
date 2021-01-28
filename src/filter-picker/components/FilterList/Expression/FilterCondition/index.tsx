@@ -167,14 +167,17 @@ function FilterCondition(props: FilterConditionProps) {
           case 'between':
           case 'not between': {
             const textList = opMap[operation].split(',');
-            const abs = value?.[0].split(':')[1].split(',');
-            return (
-              textList[0] +
-              moment(parseInt(abs[0], 10)).format('YYYY-MM-DD') +
-              textList[1] +
-              moment(parseInt(abs[1], 10)).format('YYYY-MM-DD') +
-              textList[2]
-            );
+            if (value[0].includes('abs')) {
+              const abs = value?.[0].split(':')[1].split(',');
+              return (
+                textList[0] +
+                moment(parseInt(abs[0], 10)).format('YYYY-MM-DD') +
+                textList[1] +
+                moment(parseInt(abs[1], 10)).format('YYYY-MM-DD') +
+                textList[2]
+              );
+            }
+            break;
           }
           case 'relativeTime': {
             const relativeTime = value[0]

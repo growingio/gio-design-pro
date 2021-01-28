@@ -31,10 +31,10 @@ function DateAttrSelect(props: DateAttrSelectProps) {
       if (attrSelect.includes('relative')) {
         if (attrSelect.includes('Current')) {
           // 相对现在，values值的初始化
-          attrChange(['relateTime:-1,0']);
+          attrChange(['relativeTime:-1,0']);
         } else {
           // 相对区间，值的初始化
-          attrChange(['relateTime:-1,-1']);
+          attrChange(['relativeTime:-1,-1']);
         }
       } else if (attrSelect === 'between' || attrSelect === 'not between') {
         // 在。。。与。。。之间，值的初始化
