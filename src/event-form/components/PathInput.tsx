@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React, { useEffect, useState } from 'react';
 import { Input, Toggles, Tooltip } from '@gio-design/components';
 import '@gio-design/components/es/components/toggles/style/index.less';
 import { isEmpty } from 'lodash';
@@ -16,12 +17,19 @@ interface PathProp {
 }
 const PathInput: React.FC<PathProp> = (props) => {
   const { value = {}, onChange, placeholder, maxLength = MAX_VALUE_LENGTH } = props;
+
   const [path, setPath] = useState(() => {
     let _path = '';
     if (!value || !value.path) {
       return _path;
     }
-    _path = !value.path.startsWith('/') ? value.path : `/${value.path}`;
+    // if (!value.path?.startsWith('/')) {
+    //   _path = `/${value.path}`;
+    //   triggerChange({ path: _path });
+    // } else {
+    //   _path = value.path;
+    // }
+    _path = value.path.startsWith('/') ? value.path : `/${value.path}`;
     return _path;
   });
   const [checked, setChecked] = useState(() => {
@@ -32,7 +40,9 @@ const PathInput: React.FC<PathProp> = (props) => {
     _checked = !isEmpty(value.path);
     return _checked;
   });
-
+  useEffect(() => {
+    triggerChange({ path, checked });
+  }, [path, checked]);
   const triggerChange = (changedValue: PathValue) => {
     onChange?.({ path, checked, ...changedValue });
   };
@@ -42,11 +52,11 @@ const PathInput: React.FC<PathProp> = (props) => {
       val = `/${val}`;
     }
     setPath(val);
-    triggerChange({ path: val });
+    // triggerChange({ path: val });
   };
   const onToggle = (v: boolean) => {
     setChecked(!!v);
-    triggerChange({ checked: !!v });
+    // triggerChange({ checked: !!v });
   };
   return (
     <div className="path-input">

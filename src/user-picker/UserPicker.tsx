@@ -94,15 +94,11 @@ function UserPicker({
     if (scope === 'my') {
       const recentNodes = recentSegments
         .filter((id) => !!mappedSegements[id])
-        .map((id) => {
-          return segmentToNode(mappedSegements[id], { id: 'recent', name: '最近使用' });
-        });
-      const preparedNodes = preparedSegments.map((seg) => {
-        return segmentToNode(seg, { id: 'prepared', name: '预定义' });
-      });
-      const myNodes = filter(segments, (s) => s.creatorId === userId && filterSegment(s)).map((seg) => {
-        return segmentToNode(seg, { id: 'other', name: '其他' });
-      });
+        .map((id) => segmentToNode(mappedSegements[id], { id: 'recent', name: '最近使用' }));
+      const preparedNodes = preparedSegments.map((seg) => segmentToNode(seg, { id: 'prepared', name: '预定义' }));
+      const myNodes = filter(segments, (s) => s.creatorId === userId && filterSegment(s)).map((seg) =>
+        segmentToNode(seg, { id: 'other', name: '其他' })
+      );
 
       return [...recentNodes, ...preparedNodes, ...myNodes];
     }

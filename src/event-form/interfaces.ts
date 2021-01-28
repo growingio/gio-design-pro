@@ -1,8 +1,8 @@
 import { FormInstance, FormProps } from '@gio-design/components/es/components/form';
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { SubmitterProps } from './components/Submitter';
 import { AppType, DeviceInfo } from './types';
-import { TagElement } from './TagElement';
+import { TagElement, DocProps } from './TagElement';
 
 type FormSubmitter = SubmitterProps<{
   form?: FormInstance<any>;
@@ -38,6 +38,8 @@ export interface EventFormProps extends FormProps, CommonFormProps {
    */
   definedTags: TagElement[];
   dataChart?: JSX.Element;
+  repeatRuleTag?: TagElement;
+  ruleText?: ReactNode;
 }
 type StepSubmitterProps = SubmitterProps<{
   showPreButton: boolean;
@@ -68,6 +70,8 @@ export interface ElementEventFormProps extends Omit<EventFormProps, 'initialValu
     currentPageTags: TagElement[];
     dataSource?: TagElement[];
   };
+
+  extraNode?: ReactElement;
   /**
    * 页面选择器定义新页面按钮的click事件回调
    */
@@ -85,21 +89,23 @@ export interface EventFormValues {
  * 定义页面的表单数据结构
  */
 export interface PageViewFormValues extends EventFormValues {
-  domain?: string;
-  path?: string;
-  query?: string;
+  definition: { domain?: string; path?: string; query?: string };
 }
 export interface ElementFormValues extends EventFormValues {
   belongPage?: string;
-  domain: string;
-  path?: string;
-  query?: string;
-  xpath?: string;
-  index?: string;
-  href?: string;
-  content?: string;
-  pg?: string;
-  contentType?: 'match_phrase' | '=';
+  attrs: DocProps;
+  definition: DocProps;
+  // definition: {
+  //   domain: string;
+  //   path?: string;
+  //   query?: string;
+  //   xpath?: string;
+  //   index?: string;
+  //   href?: string;
+  //   content?: string;
+  //   pg?: string;
+  //   contentType?: 'match_phrase' | '=';
+  // };
 }
 
 /**

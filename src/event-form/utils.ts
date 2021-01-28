@@ -29,9 +29,7 @@ export function trim(val: any): any {
   }
 
   if (Array.isArray(val)) {
-    return val.map((v) => {
-      return trim(v);
-    });
+    return val.map((v) => trim(v));
   }
 
   if (typeof val === 'object') {
@@ -52,13 +50,9 @@ export const isEmptyStr = (val: string) => {
   return val?.trim().length === 0;
 };
 
-export const isObject = (o: any) => {
-  return Object.prototype.toString.call(o) === '[object Object]';
-};
+export const isObject = (o: any) => Object.prototype.toString.call(o) === '[object Object]';
 
-export const isEmptyValue = (val: any) => {
-  return val === null || val === undefined || val === '';
-};
+export const isEmptyValue = (val: any) => val === null || val === undefined || val === '';
 
 export const kvsToQuery = (kvs: Kv[]): any => {
   if (!kvs || kvs.length === 0) return;
@@ -73,12 +67,11 @@ export const kvsToQuery = (kvs: Kv[]): any => {
     .join('&');
 };
 
-export const objToQuery = (obj: any) => {
-  return Object.keys(obj || {})
+export const objToQuery = (obj: any) =>
+  Object.keys(obj || {})
     .map((key) => `${key}=${obj[key]}`)
     .filter((v) => v)
     .join('&');
-};
 
 // 查询参数转化到kv结构数组，过滤掉key不存在的
 export const queryToKvs = (query?: string): Kv[] => {

@@ -1,13 +1,51 @@
 @import '../../../../stylesheets/index.less';
-@event-picker-prefix-cls: ~'@{component-prefix}-event-page-picker';
+@import '../../../../list/style/index.less';
+@import '~@gio-design/components/es/components/form/style/index.less';
 
-.@{event-picker-prefix-cls} {
+@page-picker-prefix-cls: ~'@{component-prefix}-event-page-picker';
+
+.@{page-picker-prefix-cls}-trigger {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+
+  input {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.@{page-picker-prefix-cls} {
   * {
     box-sizing: border-box;
   }
 
   position: relative;
-  &-trigger {
-    width: 100%;
+  padding-top: 16px;
+  .search-header {
+    padding: 0 8px 2px 8px;
+  }
+  .body {
+    padding: 8px;
+    .@{list-prefix-cls}__item {
+      padding: 9px 12px;
+      &.selected {
+        color: @palette-blue-5;
+        background-color: @palette-gray-3;
+      }
+    }
+    .list__item-inner {
+      font-size: @size-font-14;
+      line-height: 22px;
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  .footer {
+    border-top: 1px solid #dcdfed;
+    padding: 8px;
   }
 }

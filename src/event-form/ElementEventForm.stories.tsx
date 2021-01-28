@@ -2,7 +2,6 @@
 import React, { useRef, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Form } from '@gio-design/components';
-import { omit } from 'lodash';
 import ElementEventForm from './ElementEventForm';
 import { ElementEventFormProps, ElementFormValues } from './interfaces';
 import { spaceTags, deviceInfoMinp } from './__test__/data';
@@ -87,11 +86,13 @@ function getFormValues() {
   return {
     name: element.name,
     description: element.description,
-    domain: attrs.domain,
-    path: attrs.path,
-    query: attrs.query,
-    ...omit(definition, ['domain', 'path', 'query']),
+    // domain: attrs.domain,
+    // path: attrs.path,
+    // query: attrs.query,
+    // ...omit(definition, ['domain', 'path', 'query']),
     belongApp: deviceInfo && `${deviceInfo.name} | ${deviceInfo.domain}`,
+    attrs,
+    definition,
   };
 }
 const searchPageRule1 = (pageInfo: PageInfo, tag: TagElement): boolean => {
@@ -115,7 +116,10 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
   }
 
   const formValue: ElementFormValues = getFormValues();
-  const currentPageTags = allDefinedTags.filter((v) => searchPageRule1({ ...formValue } as PageInfo, v));
+  const { domain, path, query } = formValue.definition;
+  const currentPageTags = allDefinedTags.filter((v) =>
+    searchPageRule1({ ...formValue, domain, path, query } as PageInfo, v)
+  );
 
   // const element = getInitialTagElement();
   async function handleFinish(val: any) {

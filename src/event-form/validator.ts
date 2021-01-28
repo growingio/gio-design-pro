@@ -34,12 +34,46 @@ class ValidatorHelper {
     return Promise.resolve(true);
   }
 
-  public findExistElementTag(definition: DocProps) {
+  public async checkDefinition(definition: DocProps) {
+    const repeat = await this.findRepeatPageTag(definition);
+    if (repeat) {
+      return Promise.reject(new Error('已定义'));
+    }
+    return Promise.resolve(true);
+  }
+
+  public findRepeatElementTag(definition: DocProps) {
+    const accurate = true;
+    // let { definition } = this.getInput();
+
+    const equalString = (s1: any, s2: any): boolean => (!s1 && !s2) || matchString(s1, s2, accurate);
+
+    const equalQuery = (patten?: string, query?: string): boolean => {
+      if (!patten && !query) return true;
+      return matchQuery(patten || '', query || '', accurate);
+    };
+
+    return this.definedTags.find((tag) => {
+      const tagDefinition = tag.definition;
+      return (
+        tag.docType === 'elem' &&
+        matchString(tagDefinition.domain, definition.domain, accurate) &&
+        equalString(tagDefinition.path, definition.path) &&
+        equalQuery(tagDefinition.query, definition.query) &&
+        equalString(tagDefinition.content, definition.content) &&
+        equalString(tagDefinition.index, definition.index) &&
+        equalString(tagDefinition.href, definition.href) &&
+        equalString(tagDefinition.contentType, definition.contentType) &&
+        equalString(tagDefinition.xpath, definition.xpath)
+      );
+    });
+  }
+
+  public findRepeatPageTag(definition: DocProps) {
+    // 精准匹配
     const accurate = true;
     // const { definition } = currentTag;
-    const equalString = (s1: any, s2: any): boolean => {
-      return (!s1 && !s2) || matchString(s1, s2, accurate);
-    };
+    const equalString = (s1: any, s2: any): boolean => (!s1 && !s2) || matchString(s1, s2, accurate);
     const equalQuery = (patten?: string, query?: string): boolean => {
       if (!patten && !query) return true;
       return matchQuery(patten || '', query || '', accurate);

@@ -1364,10 +1364,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/components@21.1.1":
-  version "21.1.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.1.1.tgz#8a759f55b945f59fab7aa5efdd95e2bfb9c20704"
-  integrity sha512-1fRc7c+k8VfktfAWihKRKdzcoD0kan0Xxk9/wiIc+UJ2Xwi4oaPMxrgVAM+bNmMwrOP+Xc8k0kK7PSBxD3YfkQ==
+"@gio-design/components@21.1.2":
+  version "21.1.2"
+  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/components/-/components-21.1.2.tgz#092e2b879cdc4ed51f534a16141cef49bd532564"
+  integrity sha512-Kd52lvGbagQSgZ3+sQefe41fTnVtUuQkAQJav1u4qqHoXZbFN4C/IwqUt3HjKKOtQHAtw7tPLKBdS6nLCvel4w==
   dependencies:
     "@gio-design/icons" "21.1.0"
     "@gio-design/tokens" "21.1.0"

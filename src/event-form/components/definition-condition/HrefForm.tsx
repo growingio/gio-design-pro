@@ -41,8 +41,12 @@ const CopntentForm: React.FC<CopntentFormProps> = ({ visible, onCreate, onCancel
       }}
     >
       <Form form={form} layout="vertical" name="form_in_modal" initialValues={ininitialValues}>
-        <Form.Item name="href" label="跳转链接为" rules={[{ required: true, message: '跳转链接不能为空' }]}>
-          <Input.TextArea placeholder="请填写跳转链接" rows={3} wrapStyle={{ width: '100%', height: 'unset' }} />
+        <Form.Item
+          name="href"
+          label="跳转链接为"
+          rules={[{ required: true, message: '跳转链接不能为空', whitespace: true }]}
+        >
+          <Input.TextArea placeholder="请填写跳转链接" rows={3} />
         </Form.Item>
       </Form>
     </Modal>

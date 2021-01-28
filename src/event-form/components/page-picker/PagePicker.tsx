@@ -1,17 +1,15 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useEffect, useState, useMemo } from 'react';
-import { Button, SearchBar, Dropdown, List, Input } from '@gio-design/components';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
+import { Button, SearchBar, Dropdown, Input } from '@gio-design/components';
 import { PlusCircleFilled, UpFilled, DownFilled } from '@gio-design/icons';
-import { Option } from '@gio-design/components/es/components/list/interface';
+// import { Option } from '@gio-design/components/es/components/list/interface';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { PagePickerProps } from './interface';
 import { TagElement } from '../../TagElement';
+// import List from '../../../list';
+// import { ListProps, ListItemProps } from '../../../list/interfaces';
+import PageList, { ListOption } from './PageList';
 
-interface ListOption extends Option {
-  isCurrent?: boolean;
-  name?: string;
-  tagElement: TagElement;
-}
 const Picker = (props: PagePickerProps) => {
   const { onSearch, onSelect, onChange, actionButton, currentPageTags = [], dataSource = [], value } = props;
   const prefixCls = usePrefixCls('event-page-picker');
@@ -19,11 +17,13 @@ const Picker = (props: PagePickerProps) => {
   const [searchvalue, setSearchValue] = useState<string>('');
   const [currentValue, setCurrentValue] = useState(value);
   const [visible, setVisible] = useState(false);
+  const triggerRef = useRef<HTMLDivElement | null>(null);
   // const [inputValue, setInputValue] = useState('');
   useEffect(() => {
     const page = currentPageTags?.[0];
     if (page) {
       onSelect?.(page);
+      onChange?.(page);
     }
     setCurrentValue(page);
   }, [currentPageTags]);
@@ -39,7 +39,7 @@ const Picker = (props: PagePickerProps) => {
   function convertToListOption(tag?: TagElement): ListOption {
     // console.log('convertToListOption', tag);
     if (!tag || !tag.definition) {
-      return { isCurrent: false, label: '', value: '', tagElement: tag || ({} as TagElement) };
+      return { isCurrent: false, label: '' };
     }
     const isCurrent = currentPageTags?.findIndex((v) => v.id === tag.id) > -1;
     const {
@@ -55,68 +55,71 @@ const Picker = (props: PagePickerProps) => {
     }
     const option: ListOption = {
       label: text,
-      value: tag.id,
+      value: tag,
+      key: tag?.id,
       isCurrent,
-      name: tag.name,
-      tagElement: tag,
     };
     return option;
   }
-  const labelRenderer = (option: ListOption) => {
-    return `${option.isCurrent ? '[当前页]' : ''} ${option.label}`;
-  };
-  const WrapperStyle = {
-    display: 'inline-block',
-    borderRadius: 6,
-    backgroundColor: '#FFFFFF',
-    boxShadow: '0 2px 14px 1px rgba(223,226,237,0.8)',
-  };
+
   const listDataSource: ListOption[] = useMemo(() => {
     const datas = dataSource.filter((v) => !searchvalue || v.name.includes(searchvalue));
     const options = datas.map((v: TagElement) => {
-      // console.warn('pagepicker option', v);
-      return convertToListOption(v);
+      const option = convertToListOption(v);
+      return option;
     });
-    // console.log(options);
 
     return options;
   }, [dataSource, searchvalue]);
-  function handleSelect(_: string, __: string | string[], option: ListOption) {
-    // console.log('handle Pagepicker selelct', selectedValue, val, option);
-    onSelect?.({ ...option.tagElement } as TagElement);
-    setCurrentValue({ ...option.tagElement });
+
+  function handleSelect(val: ListOption) {
+    onSelect?.(val?.value as TagElement);
+    setCurrentValue(val?.value);
     setVisible(false);
   }
   function handleChange(v: any) {
-    onChange?.(v as TagElement);
+    onChange?.(v?.value as TagElement);
   }
   function handleActionButtonClick() {
     actionButton?.onClick?.();
     setVisible(false);
   }
+  const [overlayWidth, setOverlayWidth] = useState(200);
+  useEffect(() => {
+    const root = triggerRef?.current as HTMLElement;
+    const clientWidth = root?.clientWidth || 200;
+    setOverlayWidth(clientWidth);
+  });
+
   return (
     <Dropdown
+      placement="bottomLeft"
       visible={visible}
       onVisibleChange={setVisible}
       overlay={
-        <div className={prefixCls}>
-          <SearchBar id="demo" value={searchvalue} onChange={onQueryChange} />
-          <List
-            wrapStyle={WrapperStyle}
-            dataSource={listDataSource}
-            width={320}
-            height={200}
-            value={currentValue}
-            labelRenderer={labelRenderer}
-            onSelect={handleSelect}
-            onChange={handleChange}
+        <div className={prefixCls} style={{ width: `${overlayWidth || 200}px` }}>
+          <SearchBar
+            className="search-header"
+            placeholder="搜索页面名称"
+            value={searchvalue}
+            onChange={onQueryChange}
+            showClear
           />
-          <div style={{ borderTop: '1px solid #DCDFED' }}>
+          <div className="body" style={{ overflow: 'auto', maxHeight: '200px' }}>
+            <PageList
+              dataSource={listDataSource}
+              value={inputValue}
+              // labelRenderer={labelRenderer}
+              onSelect={handleSelect}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="footer">
             <Button
               size="small"
               type="text"
               icon={<PlusCircleFilled />}
-              style={{ margin: '8px 16px' }}
+              // style={{ margin: '8px 16px' }}
               onClick={handleActionButtonClick}
             >
               定义新页面
@@ -125,7 +128,8 @@ const Picker = (props: PagePickerProps) => {
         </div>
       }
     >
-      <div className={`${prefixCls}-trigger`}>
+      <div className={`${prefixCls}-trigger`} ref={triggerRef}>
+        {/* {defaultInput()} */}
         <Input
           width="100%"
           aria-label="picker-value"

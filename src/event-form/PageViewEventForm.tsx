@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect, useRef, useState } from 'react';
 import { Tooltip, Input, Form, Alert, Link } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
@@ -16,7 +17,8 @@ import BaseForm from './BaseForm';
 import { AppType } from './types';
 import ValidatorHelper from './validator';
 import FooterToolbar from './components/FooterToolbar';
-import { DocProps, TagElement } from './TagElement';
+// import { DocProps, TagElement } from './TagElement';
+import PageViewDefinitionRule from './PageViewDefinitionRuleRender';
 
 function definePageTip() {
   return (
@@ -44,7 +46,14 @@ function definePageTip() {
  */
 function transformFormValues(pvFormValues: PageViewFormValues) {
   const tempValue = cloneDeep(pvFormValues);
-  return { ...tempValue, path: { path: tempValue?.path }, query: queryToKvs(tempValue?.query) };
+  const definition = get(tempValue, 'definition');
+  const path = { path: definition?.path };
+  const query = queryToKvs(definition?.query);
+  const { domain } = definition;
+  return {
+    ...tempValue,
+    definition: { domain, path, query },
+  };
 }
 /**
  *
@@ -52,14 +61,17 @@ function transformFormValues(pvFormValues: PageViewFormValues) {
  */
 function conversionSubmitValue(values: any) {
   const tempValue = cloneDeep(values);
-  const path = get(tempValue, 'path', {});
-  if (path && path.path) {
-    tempValue.path = path.path;
+  const defined = get(tempValue, 'definition', {});
+
+  const path = get(defined, 'path', {});
+  if (path && path.checked) {
+    defined.path = path.path;
   }
-  const query = get(tempValue, 'query');
+  const query = get(tempValue, 'definition.query');
   if (query) {
-    tempValue.query = kvsToQuery(query);
+    defined.query = kvsToQuery(query);
   }
+  tempValue.definition = defined;
   return tempValue;
 }
 const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEventFormProps> = (
@@ -84,10 +96,6 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
   React.useImperativeHandle(ref, () => formRef?.current);
 
   const prefixCls = usePrefixCls('event-form');
-
-  // const formInitialValue = useMemo(() => {
-  //   return { ...initialValues, path: { path: initialValues?.path }, query: queryToKvs(initialValues?.query) };
-  // }, [initialValues]);
 
   /**
    * 提交按钮的disabled状态，
@@ -128,27 +136,25 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
 
   const isNative = appType === AppType.NATIVE;
   const showBelongApp = appType !== AppType.WEB;
-  const [formValues, setFormValues] = useState<any>(() => {
-    return transformFormValues(initialValues as PageViewFormValues);
-  });
+  const [formValues, setFormValues] = useState<any>(() => transformFormValues(initialValues as PageViewFormValues));
 
-  function handleValuesChange(changedValues: any, allValues: any) {
+  function handleFormValuesChange(changedValues: any, allValues: any) {
     setFormValues(allValues);
     onValuesChange?.(changedValues, allValues);
   }
   useEffect(() => {
-    const { path, query, name, domain } = formValues;
+    const {
+      name,
+      definition: { path, query, domain },
+    } = formValues;
     let disabled = false;
     const isNameEmpty = isEmpty(name);
     const isPathEmpty = path.checked === true && isEmpty(trim(path.path));
     const isDomainEmpty = isEmpty(trim(domain));
-    const isQueryEmpty = () => {
-      return (
-        isArray(query) &&
-        query.length > 0 &&
-        query.findIndex((v) => isEmpty(v) || isEmpty(v.key) || isEmpty(v.value)) > -1
-      );
-    };
+    const isQueryEmpty = () =>
+      isArray(query) &&
+      query.length > 0 &&
+      query.findIndex((v) => isEmpty(v) || isEmpty(v.key) || isEmpty(v.value)) > -1;
     if (!isNative && (isNameEmpty || isPathEmpty || isDomainEmpty || isQueryEmpty())) {
       disabled = true;
       // setSubmitDisabeld(disabled);
@@ -158,47 +164,14 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     setSubmitDisabeld(disabled);
   }, [formValues]);
 
-  const renderDefinitionRuleText = (definition: DocProps, repeatTag?: TagElement) => {
-    let text = '现在定义的是';
-    if (repeatTag) {
-      text = `该规则已被 <b>${repeatTag.creator}</b> 定义为【${repeatTag.name}】。${text}`;
-    }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-    if (appType === AppType.NATIVE) {
-      text += `页面 <span class="link">${definition.path}</span> 。`;
-    } else if (appType === AppType.WEB) {
-      if (definition.path) {
-        text += `页面 <span class="link">${definition.domain + definition.path}</span> `;
-      } else {
-        text += ` <span class="link">${definition.domain}</span> `;
-      }
-      if (definition.query) {
-        if (definition.path) text += '，';
-        text += `查询条件为 <span class="link">${definition.query}</span>`;
-      }
-      if (definition.path) {
-        text += ' 。';
-      } else {
-        text += ' 下的所有页面。';
-      }
-    } else if (appType === AppType.MINP) {
-      if (definition.path === undefined) {
-        text += ` <span class="link">小程序所有页面</span> `;
-      } else {
-        text += `页面 <span class="link">${definition.path}</span> `;
-      }
-      if (definition.query) {
-        text += `，查询条件为 <span class="link">${definition.query}</span>`;
-      }
-      text += '。';
-    }
-    // eslint-disable-next-line react/no-danger
-    return <span dangerouslySetInnerHTML={{ __html: text }} />;
-  };
   const renderDefinitionRule = () => {
-    const definition = conversionSubmitValue(formValues);
-    const repeatRuleTag = validatorRef.current.findExistElementTag(definition);
-    const renderMessage = renderDefinitionRuleText(definition, repeatRuleTag);
+    const { definition } = conversionSubmitValue(formValues);
+    const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition);
+    const renderMessage = (
+      <PageViewDefinitionRule repeatTag={repeatRuleTag} definition={definition} appType={appType} />
+    ); // renderDefinitionRuleText(definition, repeatRuleTag);
     return (
       <>
         <Alert size="small" type={repeatRuleTag ? 'error' : 'info'} showIcon message={renderMessage} />
@@ -284,6 +257,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
         onPre: () => {
           restProps.onPre?.();
         },
+        // render: defaultSubmitRender,
       };
       return submitter.render(submitterProps, submitterDom) as React.ReactNode;
     }
@@ -302,26 +276,28 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           labelWidth={labelWidth}
           form={userForm || wrapForm}
           submitter={submitter}
-          onValuesChange={handleValuesChange}
+          onValuesChange={handleFormValuesChange}
           initialValues={{
-            ...initialValues,
-            path: { path: initialValues?.path },
-            query: queryToKvs(initialValues?.query || ''),
+            ...formValues,
           }}
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
             setLoading(true);
-            await restProps.onFinish(conversionSubmitValue(values));
+            // validatorRef.current?.
+            const { definition } = conversionSubmitValue(values);
+            const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition);
+            if (repeatRuleTag) {
+              return;
+            }
+            await restProps.onFinish(definition);
             setLoading(false);
           }}
-          contentRender={(items) => {
-            return (
-              <>
-                {items}
-                {renderSubmitter()}
-              </>
-            );
-          }}
+          contentRender={(items) => (
+            <>
+              {items}
+              {renderSubmitter()}
+            </>
+          )}
         >
           <FormItemGroup groupNumber={1} title="基本信息">
             <Form.Item validateTrigger={['onBlur', 'onChange']} name="name" label="页面名称" rules={validateRules.name}>
@@ -338,7 +314,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
             extra={
               appType !== AppType.NATIVE && (
                 <Tooltip title={definePageTip()} placement="topRight" arrowPointAtCenter trigger="hover">
-                  <Link style={{ fontSize: '12px' }} component="span" to="https://www.growingio.com">
+                  <Link style={{ fontSize: '12px' }} component="span" to="#;" onClick={(e) => e.preventDefault()}>
                     如何定义一组页面？
                   </Link>
                 </Tooltip>
@@ -347,7 +323,11 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           >
             <div className="feedback">
               {/* <Alert size="small" showIcon type="error" message="xxxxx" /> */}
-              {renderDefinitionRule()}
+
+              <Form.Item name="definition" labelWidth={0} labelAlign="right" style={{ color: 'burlywood' }}>
+                {renderDefinitionRule()}
+                {/* <Input placeholder="所属应用包名" disabled /> */}
+              </Form.Item>
             </div>
             {showBelongApp && (
               <Form.Item name="belongApp" label="所属应用">
@@ -355,7 +335,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
               </Form.Item>
             )}
             {isNative && (
-              <Form.Item name="path" label="路径">
+              <Form.Item name={['definition', 'path']} label="路径">
                 <Input disabled maxLength={MAX_VALUE_LENGTH} />
               </Form.Item>
             )}
@@ -363,24 +343,29 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
               <>
                 <Form.Item
                   validateTrigger={['onBlur', 'onChange']}
-                  name="domain"
+                  name={['definition', 'domain']}
                   label="域名"
                   rules={validateRules.domain}
                 >
                   <Input placeholder="请输入域名" maxLength={MAX_VALUE_LENGTH} />
                 </Form.Item>
 
-                <Form.Item name="path" label="路径" validateTrigger={['onBlur', 'onChange']} rules={validateRules.path}>
+                <Form.Item
+                  name={['definition', 'path']}
+                  label="路径"
+                  validateTrigger={['onBlur', 'onChange']}
+                  rules={validateRules.path}
+                >
                   <PathInput placeholder="请输入路径" maxLength={MAX_VALUE_LENGTH} />
                 </Form.Item>
                 <Form.Item label="查询条件">
                   <div className="query-input">
-                    <QueryInput value={formValues.query} />
+                    <QueryInput value={formValues.definition.query} />
                   </div>
                 </Form.Item>
               </>
             )}
-            <Form.Item name="data" label="数据">
+            <Form.Item label="数据">
               <div className="data-chart-wrap">{dataChart}</div>
             </Form.Item>
           </FormItemGroup>

@@ -37,10 +37,8 @@ const _Checkbox: React.FC<Prop> = (props) => {
   const onMouseLeave = () => {
     updateShow(false);
   };
-  const showActionButton = () => {
-    return show && actionButton !== false;
-    // return true;
-  };
+  const showActionButton = () => show && actionButton !== false;
+  // return true;
   const editbuttonProps = actionButton === false ? ({} as ActionButtonProps) : actionButton;
   return (
     <div
@@ -52,7 +50,15 @@ const _Checkbox: React.FC<Prop> = (props) => {
       <Checkbox {...omit(props, ['onClick'])}>{children}</Checkbox>
       <span>
         {showActionButton() && (
-          <a href="javascript:void(0)" onClick={editbuttonProps.onClick} className="action-btn">
+          <a
+            href="#!;"
+            tabIndex={0}
+            onClick={(e) => {
+              e.preventDefault();
+              editbuttonProps.onClick?.(e);
+            }}
+            className="action-btn"
+          >
             <EditOutlined size="14px" color="#ADB2C2" />
           </a>
         )}

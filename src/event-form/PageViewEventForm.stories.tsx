@@ -49,10 +49,13 @@ function getFormValues() {
   return {
     name: element.name,
     description: element.description,
-    domain: attrs.domain,
-    path: attrs.path,
-    query: attrs.query,
+
     belongApp: deviceInfo && `${deviceInfo.name} | ${deviceInfo.domain}`,
+    definition: {
+      domain: attrs.domain,
+      path: attrs.path,
+      query: attrs.query,
+    },
   };
 }
 const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
@@ -67,7 +70,13 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
   const formValue: PageViewFormValues = getFormValues();
   // const element = getInitialTagElement();
   async function handleFinish(val: any) {
-    console.log('handleFinish', val);
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('handleFinish', val);
+        return resolve('success');
+      }, 2000);
+    });
+    //
     return true;
   }
   return (
@@ -85,9 +94,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         // initialTagElement={element}
         initialValues={formValue}
         onFinish={handleFinish}
-        onPre={() => {
-          console.log('pre');
-        }}
+        dataChart={<span>这里是图表</span>}
         onFinishFailed={({ values }) => console.log(values)}
       />
       {/* <div className="footer">

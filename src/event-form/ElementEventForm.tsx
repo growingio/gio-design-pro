@@ -3,7 +3,7 @@ import { Input, Form, Alert } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { FormInstance } from '@gio-design/components/es/components/form';
 import Button, { ButtonProps } from '@gio-design/components/es/components/button';
-import { cloneDeep, isEmpty } from 'lodash';
+import { cloneDeep, get, isEmpty, omit } from 'lodash';
 import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH } from './utils';
 import FormItemGroup from './components/FormItemGroup';
 import Submitter, { SubmitterProps } from './components/Submitter';
@@ -11,45 +11,53 @@ import { EventFormProps, ElementEventFormProps, Rule, ElementFormValues } from '
 import './style';
 import '@gio-design/components/es/components/link/style/css.js';
 import BaseForm from './BaseForm';
-import { AppType } from './types';
+import { AppType, LimitCondition } from './types';
 import ValidatorHelper from './validator';
 import FooterToolbar from './components/FooterToolbar';
-import { DocProps, TagElement } from './TagElement';
+// import { DocProps, TagElement } from './TagElement';
 import PagePicker from './components/page-picker';
 import DefinitionCondition from './components/definition-condition';
+import ElementDefinitionRule from './ElementDefinitionRuleRender';
+// import { DocProps } from './TagElement';
 // interface DefinitionRuleProps {
 //   definition: DocProps;
 //   appType: AppType;
 // }
+
 function transformFormValues(initialValues?: ElementFormValues) {
   const tempValue = cloneDeep(initialValues || {}) as ElementFormValues;
-  return {
+  const { definition } = tempValue;
+  const res = {
+    // ...omit(tempValue, ['definition', 'attrs']),
     ...tempValue,
     limitCondition: {
-      content: tempValue?.content,
-      href: tempValue.href,
-      index: tempValue?.index,
-      contentType: tempValue.contentType,
+      content: definition?.content,
+      href: definition.href,
+      index: definition?.index,
+      contentType: definition.contentType,
     },
-    // page: null,
   };
+  // console.warn('res====>', res);
+  return res;
 }
 /**
  *
- * @param values 转化数据类型，主要转化 path/query==>string
+ * @param values 转化数据类型，主要转化
  */
 function conversionSubmitValue(values: any) {
   const tempValue = cloneDeep(values);
-  // const path = get(tempValue, 'path', {});
-  // if (path && path.path) {
-  //   tempValue.path = path.path;
-  // }
-  // const query = get(tempValue, 'query');
-  // if (query) {
-  //   tempValue.query = kvsToQuery(query);
-  // }
-  return Object.assign(tempValue, { ...tempValue.limitCondition });
-  // return tempValue;
+  const { limitCondition, definition } = tempValue;
+  const { content, index, href, contentType } = limitCondition;
+  const { contentChecked, indexChecked, hrefChecked } = limitCondition;
+  const limit: LimitCondition = {
+    content: contentChecked ? content : undefined,
+    index: indexChecked ? index : undefined,
+    href: hrefChecked ? href : undefined,
+    contentType: contentChecked ? contentType : definition?.contentType,
+  };
+  const newDefinition = { ...get(tempValue, 'definition'), ...limit };
+  tempValue.definition = newDefinition;
+  return { ...omit(tempValue, 'limitCondition') } as ElementFormValues;
 }
 const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps> = (
   props: EventFormProps,
@@ -64,6 +72,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     form: userForm,
     onValuesChange,
     submitter,
+    extraNode,
     pagePicker = {
       onActionButtonClick: () => undefined,
       currentPageTags: [],
@@ -78,10 +87,6 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
   React.useImperativeHandle(ref, () => formRef?.current);
 
   const prefixCls = usePrefixCls('event-form');
-
-  // const formInitialValue = useMemo(() => {
-  //   return { ...initialValues, path: { path: initialValues?.path }, query: queryToKvs(initialValues?.query) };
-  // }, [initialValues]);
 
   /**
    * 提交按钮的disabled状态，
@@ -117,12 +122,11 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
   };
 
   const showBelongApp = appType !== AppType.WEB;
-  const [formValues, setFormValues] = useState<any>(() => {
-    return transformFormValues(initialValues);
-  });
+  const [formValues, setFormValues] = useState<any>(() => transformFormValues(initialValues));
 
   function handleValuesChange(changedValues: any, allValues: any) {
-    setFormValues(allValues);
+    const newValue = { ...initialValues, ...allValues };
+    setFormValues(newValue);
     onValuesChange?.(changedValues, allValues);
   }
   useEffect(() => {
@@ -132,67 +136,21 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
 
     disabled = isNameEmpty;
     setSubmitDisabeld(disabled);
+    // console.log('ElementFormValues', formValues);
   }, [formValues]);
 
-  const renderDefinitionRuleText = (definition: DocProps, repeatTag?: TagElement) => {
-    let text = '现在定义的是';
-    if (repeatTag) {
-      text = `该规则已被 <b>${repeatTag.creator}</b> 定义为【${repeatTag.name}】。${text}`;
-    }
-
-    if (appType === AppType.NATIVE) {
-      text += `页面 <span class="link">${definition.path}</span> 。`;
-    } else if (appType === AppType.WEB) {
-      if (definition.path) {
-        text += `页面 <span class="link">${definition.domain + definition.path}</span> `;
-      } else {
-        text += ` <span class="link">${definition.domain}</span> `;
-      }
-      if (definition.query) {
-        if (definition.path) text += '，';
-        text += `查询条件为 <span class="link">${definition.query}</span>`;
-      }
-      if (definition.path) {
-        text += ' 。';
-      } else {
-        text += ' 下的所有页面。';
-      }
-    } else if (appType === AppType.MINP) {
-      if (definition.path === undefined) {
-        text += ` <span class="link">小程序所有页面</span> `;
-      } else {
-        text += `页面 <span class="link">${definition.path}</span> `;
-      }
-      if (definition.query) {
-        text += `，查询条件为 <span class="link">${definition.query}</span>`;
-      }
-      text += '。';
-    }
-    // eslint-disable-next-line react/no-danger
-    return <span dangerouslySetInnerHTML={{ __html: text }} />;
-  };
   const renderDefinitionRule = () => {
-    const definition = conversionSubmitValue(formValues);
-    const repeatRuleTag = validatorRef.current.findExistElementTag(definition);
-    const renderMessage = renderDefinitionRuleText(definition, repeatRuleTag);
+    const { definition, attrs } = conversionSubmitValue(formValues) as ElementFormValues;
+    // const { attrs } = initialValues;
+    const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
+    const renderMessage = <ElementDefinitionRule attrs={attrs} limitCondition={definition} repeatTag={repeatRuleTag} />; // ruleText; // renderDefinitionRuleText(definition, repeatRuleTag);
     return (
       <>
         <Alert size="small" type={repeatRuleTag ? 'error' : 'info'} showIcon message={renderMessage} />
       </>
     );
   };
-  const pre = submitter !== false && (
-    <Button
-      key="pre"
-      type="secondary"
-      {...submitter?.resetButtonProps}
-      onClick={() => {
-        // restProps.onPre?.();
-      }}
-    >
-      上一步
-    </Button>
-  );
+
   const onSubmit = () => {
     formRef.current?.submit();
   };
@@ -243,7 +201,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
       );
     return (
       <div className="footer">
-        <FooterToolbar style={{ position: 'static' }} extra={pre}>
+        <FooterToolbar style={{ position: 'static' }} extra={extraNode}>
           {submitterNode}
         </FooterToolbar>
       </div>
@@ -251,7 +209,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
   };
 
   const renderSubmitter = () => {
-    const submitterDom = [pre, reset, submit] as JSX.Element[];
+    const submitterDom = [reset, submit] as JSX.Element[];
     if (submitter && submitter.render) {
       const submitterProps: any = {
         form: formRef?.current,
@@ -269,7 +227,8 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     return defaultSubmitRender() as React.ReactNode;
   };
   function hasLimit() {
-    return !!initialValues?.href || initialValues?.index != null || !!initialValues?.content;
+    const { attrs } = (initialValues || {}) as ElementFormValues;
+    return !!attrs?.href || attrs?.index != null || !!attrs?.content;
   }
   const pagePickerDataSource = pagePicker.dataSource || definedTags.filter((v) => v.docType === 'page');
   return (
@@ -286,17 +245,20 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
             setLoading(true);
+            const { definition } = conversionSubmitValue(values);
+            const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
+            if (repeatRuleTag) {
+              return;
+            }
             await restProps.onFinish(conversionSubmitValue(values));
             setLoading(false);
           }}
-          contentRender={(items) => {
-            return (
-              <>
-                {items}
-                {renderSubmitter()}
-              </>
-            );
-          }}
+          contentRender={(items) => (
+            <>
+              {items}
+              {renderSubmitter()}
+            </>
+          )}
         >
           <FormItemGroup groupNumber={1} title="基本信息">
             <Form.Item validateTrigger={['onBlur', 'onChange']} name="name" label="页面名称" rules={validateRules.name}>
@@ -328,7 +290,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
                 <DefinitionCondition isNative={appType === AppType.NATIVE} />
               </Form.Item>
             )}
-            <Form.Item name="data" label="数据">
+            <Form.Item label="数据">
               <div className="data-chart-wrap">{dataChart}</div>
             </Form.Item>
           </FormItemGroup>

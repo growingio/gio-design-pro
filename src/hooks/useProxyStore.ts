@@ -25,17 +25,19 @@ function useProxyStore<T extends Object>(
     };
   }
 
-  const proxyStore = useMemo(() => {
-    return new Proxy<T>(
-      { ...store },
-      {
-        set(target: T, p: PropertyKey, value: any, receiver: any): boolean {
-          dispatch({ [p]: value } as any);
-          return Reflect.set(target, p, value, receiver);
-        },
-      }
-    );
-  }, [store]);
+  const proxyStore = useMemo(
+    () =>
+      new Proxy<T>(
+        { ...store },
+        {
+          set(target: T, p: PropertyKey, value: any, receiver: any): boolean {
+            dispatch({ [p]: value } as any);
+            return Reflect.set(target, p, value, receiver);
+          },
+        }
+      ),
+    [store]
+  );
 
   return [proxyStore, dispatch, reset(cloneDeep(store))];
 }

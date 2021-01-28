@@ -11,15 +11,13 @@ const OperationMenuList = (props: OperationMenuListProps) => {
       <Menu mode="vertical" onClick={(e: any) => props.onClick?.(e)}>
         {options
           .filter((option: OperationMenuListOption) => !option.hidden)
-          .map((option: OperationMenuListOption) => {
-            return (
-              <MenuItem icon={option.icon} key={option.value} disabled={option.disabled}>
-                <Tooltip title={option.disabled ? option.tooltip : ''} placement="leftTop">
-                  <>{option.label}</>
-                </Tooltip>
-              </MenuItem>
-            );
-          })}
+          .map((option: OperationMenuListOption) => (
+            <MenuItem icon={option.icon} key={option.value} disabled={option.disabled}>
+              <Tooltip title={option.disabled ? option.tooltip : ''} placement="leftTop">
+                <>{option.label}</>
+              </Tooltip>
+            </MenuItem>
+          ))}
       </Menu>
     </div>
   );

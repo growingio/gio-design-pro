@@ -37,7 +37,7 @@ const QSInput = (props: Props) => {
   };
 
   return (
-    <Form.List name="query">
+    <Form.List name={['definition', 'query']}>
       {(fields, { add, remove }) => (
         <>
           {fields.map((field) => (

@@ -42,21 +42,15 @@ const ConditionEditor: React.FC<Props> = (props) => {
 
   function handelContentChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { checked } = e.target;
-    setCurrentValue((preValue) => {
-      return { ...preValue, contentChecked: checked };
-    });
+    setCurrentValue((preValue) => ({ ...preValue, contentChecked: checked }));
   }
   function handelIndexChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { checked } = e.target;
-    setCurrentValue((preValue) => {
-      return { ...preValue, indexChecked: checked };
-    });
+    setCurrentValue((preValue) => ({ ...preValue, indexChecked: checked }));
   }
   function handelHrefChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { checked } = e.target;
-    setCurrentValue((preValue) => {
-      return { ...preValue, hrefChecked: checked };
-    });
+    setCurrentValue((preValue) => ({ ...preValue, hrefChecked: checked }));
   }
   function onContentEditClick() {
     setContentModalVisible(true);
@@ -66,15 +60,11 @@ const ConditionEditor: React.FC<Props> = (props) => {
   }
   function handleContentSave(values: { [key: string]: any }) {
     // console.log('handleContentSave', values);
-    setCurrentValue((preValue) => {
-      return { ...preValue, content: values.content, contentType: values.contentType };
-    });
+    setCurrentValue((preValue) => ({ ...preValue, content: values.content, contentType: values.contentType }));
     setContentModalVisible(false);
   }
   function handleHrefSave(values: { [key: string]: any }) {
-    setCurrentValue((preValue) => {
-      return { ...preValue, href: values.href };
-    });
+    setCurrentValue((preValue) => ({ ...preValue, href: values.href }));
     setHrefModalVisible(false);
   }
   return (
