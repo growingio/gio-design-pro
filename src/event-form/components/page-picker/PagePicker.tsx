@@ -105,14 +105,8 @@ const Picker = (props: PagePickerProps) => {
             onChange={onQueryChange}
             showClear
           />
-          <div className="body" style={{ overflow: 'auto', maxHeight: '200px' }}>
-            <PageList
-              dataSource={listDataSource}
-              value={inputValue}
-              // labelRenderer={labelRenderer}
-              onSelect={handleSelect}
-              onChange={handleChange}
-            />
+          <div className="body" style={{ overflow: 'auto', maxHeight: '150px' }}>
+            <PageList dataSource={listDataSource} value={inputValue} onSelect={handleSelect} onChange={handleChange} />
           </div>
           <div className="footer">
             <Button

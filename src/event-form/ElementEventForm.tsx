@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import React, { useEffect, useRef, useState } from 'react';
 import { Input, Form, Alert } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
@@ -18,6 +19,7 @@ import FooterToolbar from './components/FooterToolbar';
 import PagePicker from './components/page-picker';
 import DefinitionCondition from './components/definition-condition';
 import ElementDefinitionRule from './ElementDefinitionRuleRender';
+import { TagElement } from './TagElement';
 // import { DocProps } from './TagElement';
 // interface DefinitionRuleProps {
 //   definition: DocProps;
@@ -37,7 +39,6 @@ function transformFormValues(initialValues?: ElementFormValues) {
       contentType: definition.contentType,
     },
   };
-  // console.warn('res====>', res);
   return res;
 }
 /**
@@ -46,16 +47,21 @@ function transformFormValues(initialValues?: ElementFormValues) {
  */
 function conversionSubmitValue(values: any) {
   const tempValue = cloneDeep(values);
-  const { limitCondition, definition } = tempValue;
+  const { limitCondition, definition, belongPage } = tempValue;
   const { content, index, href, contentType } = limitCondition;
   const { contentChecked, indexChecked, hrefChecked } = limitCondition;
+  // const {
+  //   definition: { path, domain, query },
+  // } = (belongPage || {}) as TagElement;
+  const pageDefine = (belongPage as TagElement)?.definition;
+  const { path, domain, query } = pageDefine || {};
   const limit: LimitCondition = {
     content: contentChecked ? content : undefined,
     index: indexChecked ? index : undefined,
     href: hrefChecked ? href : undefined,
     contentType: contentChecked ? contentType : definition?.contentType,
   };
-  const newDefinition = { ...get(tempValue, 'definition'), ...limit };
+  const newDefinition = { ...get(tempValue, 'definition'), ...{ path, domain, query }, ...limit };
   tempValue.definition = newDefinition;
   return { ...omit(tempValue, 'limitCondition') } as ElementFormValues;
 }
@@ -112,13 +118,39 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     description: [],
     belongApp: [],
     limitCondition: [
+      // {
+      //   message: whitespaceRule.message,
+      //   validator: async () => true,
+      //   validateTrigger: 'onChange',
+      // },
+    ],
+    definition: [
+      () => ({
+        validateTrigger: ['onChange', 'onSubmit'],
+        validator: async () => {
+          // console.warn('definition validator');
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          const { definition } = conversionSubmitValue(formValues) as ElementFormValues;
+
+          const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
+          if (repeatRuleTag != null) {
+            throw new Error('规则已定义');
+          }
+        },
+      }),
+    ],
+    belongPage: [
       {
-        message: whitespaceRule.message,
-        validator: async () => true,
+        required: true,
+        message: '所属页面不能为空',
         validateTrigger: 'onChange',
+        validator: async (rule, value) => {
+          if (!value || !value.id) {
+            throw new Error(rule.message as string);
+          }
+        },
       },
     ],
-    page: [],
   };
 
   const showBelongApp = appType !== AppType.WEB;
@@ -141,7 +173,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
 
   const renderDefinitionRule = () => {
     const { definition, attrs } = conversionSubmitValue(formValues) as ElementFormValues;
-    // const { attrs } = initialValues;
+
     const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
     const renderMessage = <ElementDefinitionRule attrs={attrs} limitCondition={definition} repeatTag={repeatRuleTag} />; // ruleText; // renderDefinitionRuleText(definition, repeatRuleTag);
     return (
@@ -245,11 +277,11 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
             setLoading(true);
-            const { definition } = conversionSubmitValue(values);
-            const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
-            if (repeatRuleTag) {
-              return;
-            }
+            // const { definition } = conversionSubmitValue(values);
+            // const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
+            // if (repeatRuleTag) {
+            //   return;
+            // }
             await restProps.onFinish(conversionSubmitValue(values));
             setLoading(false);
           }}
@@ -270,15 +302,21 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           </FormItemGroup>
           <FormItemGroup style={{ marginTop: '24px' }} groupNumber={2} title="定义规则">
             <div className="feedback">
-              {/* <Alert size="small" showIcon type="error" message="xxxxx" /> */}
-              {renderDefinitionRule()}
+              <Form.Item
+                name="definition"
+                labelWidth={0}
+                rules={validateRules.definition}
+                dependencies={['belongPage', 'limitCondition']}
+              >
+                {renderDefinitionRule()}
+              </Form.Item>
             </div>
             {showBelongApp && (
               <Form.Item name="belongApp" label="所属应用">
                 <Input placeholder="所属应用包名" disabled />
               </Form.Item>
             )}
-            <Form.Item name="page" label="所属页面" rules={validateRules.page}>
+            <Form.Item name="belongPage" label="所属页面" rules={validateRules.belongPage}>
               <PagePicker
                 dataSource={pagePickerDataSource}
                 actionButton={{ onClick: pagePicker?.onActionButtonClick }}

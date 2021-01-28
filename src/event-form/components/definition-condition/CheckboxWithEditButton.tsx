@@ -52,7 +52,7 @@ const _Checkbox: React.FC<Prop> = (props) => {
         {showActionButton() && (
           <a
             href="#!;"
-            tabIndex={0}
+            // tabIndex={0}
             onClick={(e) => {
               e.preventDefault();
               editbuttonProps.onClick?.(e);

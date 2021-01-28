@@ -92,7 +92,7 @@ export interface PageViewFormValues extends EventFormValues {
   definition: { domain?: string; path?: string; query?: string };
 }
 export interface ElementFormValues extends EventFormValues {
-  belongPage?: string;
+  belongPage?: TagElement;
   attrs: DocProps;
   definition: DocProps;
   // definition: {

@@ -71,33 +71,27 @@ const ConditionEditor: React.FC<Props> = (props) => {
     <>
       <div className={prefixCls}>
         {currentValue?.content && (
-          <div className="checkoption">
-            <Checkbox
-              actionButton={{ onClick: onContentEditClick }}
-              checked={currentValue.contentChecked}
-              onChange={handelContentChange}
-            >
-              元素内容
-            </Checkbox>
-          </div>
+          <Checkbox
+            actionButton={{ onClick: onContentEditClick }}
+            checked={currentValue.contentChecked}
+            onChange={handelContentChange}
+          >
+            元素内容
+          </Checkbox>
         )}
         {currentValue?.content && (
-          <div className="checkoption">
-            <Checkbox actionButton={false} checked={currentValue?.indexChecked} onChange={handelIndexChange}>
-              元素位置第{+(currentValue?.index || 0) + +(isNative || 0)}位
-            </Checkbox>
-          </div>
+          <Checkbox actionButton={false} checked={currentValue?.indexChecked} onChange={handelIndexChange}>
+            元素位置第{+(currentValue?.index || 0) + +(isNative || 0)}位
+          </Checkbox>
         )}
         {currentValue?.content && (
-          <div className="checkoption">
-            <Checkbox
-              actionButton={{ onClick: onHrefEditClick }}
-              checked={currentValue?.hrefChecked}
-              onChange={handelHrefChange}
-            >
-              跳转链接
-            </Checkbox>
-          </div>
+          <Checkbox
+            actionButton={{ onClick: onHrefEditClick }}
+            checked={currentValue?.hrefChecked}
+            onChange={handelHrefChange}
+          >
+            跳转链接
+          </Checkbox>
         )}
       </div>
       <ContentForm

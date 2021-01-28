@@ -132,6 +132,13 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
       },
     ],
     domain: [{ required: true, message: '域名不能为空' }, whitespaceRule],
+    definition: [
+      // {
+      //   validator: async (_, value) => {
+      //     validatorRef.current?.checkPageViewDefinition(value);
+      //   },
+      // },
+    ],
   };
 
   const isNative = appType === AppType.NATIVE;
@@ -322,11 +329,8 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
             }
           >
             <div className="feedback">
-              {/* <Alert size="small" showIcon type="error" message="xxxxx" /> */}
-
-              <Form.Item name="definition" labelWidth={0} labelAlign="right" style={{ color: 'burlywood' }}>
+              <Form.Item name="definition" labelWidth={0} rules={validateRules.definition}>
                 {renderDefinitionRule()}
-                {/* <Input placeholder="所属应用包名" disabled /> */}
               </Form.Item>
             </div>
             {showBelongApp && (

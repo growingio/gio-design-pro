@@ -34,8 +34,16 @@ class ValidatorHelper {
     return Promise.resolve(true);
   }
 
-  public async checkDefinition(definition: DocProps) {
+  public async checkPageViewDefinition(definition: DocProps) {
     const repeat = await this.findRepeatPageTag(definition);
+    if (repeat) {
+      return Promise.reject(new Error('已定义'));
+    }
+    return Promise.resolve(true);
+  }
+
+  public async checkElementDefinition(definition: DocProps) {
+    const repeat = await this.findRepeatElementTag(definition);
     if (repeat) {
       return Promise.reject(new Error('已定义'));
     }
