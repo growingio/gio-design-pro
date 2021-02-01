@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useRef, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Form } from '@gio-design/components';
+import { Button, Form } from '@gio-design/components';
 import ElementEventForm from './ElementEventForm';
 import { ElementEventFormProps, ElementFormValues } from './interfaces';
 import { spaceTags, deviceInfoMinp } from './__test__/data';
@@ -126,7 +126,20 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
     console.log('handleFinish', val);
     return true;
   }
-  // const definedTags
+  const dataChart = () => (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        height: '144px',
+        justifyContent: 'center',
+        border: '1px solid #dfe4ee',
+        borderRadius: '4px',
+      }}
+    >
+      <Button type="secondary">查看数据</Button>
+    </div>
+  );
   return (
     <div
       style={{
@@ -147,6 +160,7 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
           currentPageTags: currentPageTags || [],
         }}
         onFinishFailed={({ values }) => console.log('onFinishFailed', values)}
+        dataChart={dataChart()}
       />
     </div>
   );

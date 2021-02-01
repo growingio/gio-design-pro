@@ -1,24 +1,20 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { Button, SearchBar, Dropdown, Input } from '@gio-design/components';
-import { PlusCircleFilled, UpFilled, DownFilled } from '@gio-design/icons';
-// import { Option } from '@gio-design/components/es/components/list/interface';
+import { PlusCircleFilled, DownFilled } from '@gio-design/icons';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
+import classnames from 'classnames';
 import { PagePickerProps } from './interface';
 import { TagElement } from '../../TagElement';
-// import List from '../../../list';
-// import { ListProps, ListItemProps } from '../../../list/interfaces';
 import PageList, { ListOption } from './PageList';
 
 const Picker = (props: PagePickerProps) => {
   const { onSearch, onSelect, onChange, actionButton, currentPageTags = [], dataSource = [], value } = props;
   const prefixCls = usePrefixCls('event-page-picker');
-  // const [query, setQuery] = React.useState<string>('');
   const [searchvalue, setSearchValue] = useState<string>('');
   const [currentValue, setCurrentValue] = useState(value);
   const [visible, setVisible] = useState(false);
   const triggerRef = useRef<HTMLDivElement | null>(null);
-  // const [inputValue, setInputValue] = useState('');
   useEffect(() => {
     const page = currentPageTags?.[0];
     if (page) {
@@ -29,13 +25,9 @@ const Picker = (props: PagePickerProps) => {
   }, [currentPageTags]);
   const inputValue = useMemo(() => {
     const temp = convertToListOption(currentValue);
-    // return `${temp.isCurrent ? '[当前页]' : ''} ${temp.label}`;
     return temp;
   }, [currentValue]);
-  function onQueryChange(val: string) {
-    setSearchValue(val);
-    onSearch?.(val);
-  }
+
   function convertToListOption(tag?: TagElement): ListOption {
     // console.log('convertToListOption', tag);
     if (!tag || !tag.definition) {
@@ -71,7 +63,14 @@ const Picker = (props: PagePickerProps) => {
 
     return options;
   }, [dataSource, searchvalue]);
-
+  /**
+   * @name 列表查询回调
+   * @param val
+   */
+  function onQueryChange(val: string) {
+    setSearchValue(val);
+    onSearch?.(val);
+  }
   function handleSelect(val: ListOption) {
     onSelect?.(val?.value as TagElement);
     setCurrentValue(val?.value);
@@ -80,17 +79,38 @@ const Picker = (props: PagePickerProps) => {
   function handleChange(v: any) {
     onChange?.(v?.value as TagElement);
   }
+  /**
+   * 点击添加新页面的回调
+   */
   function handleActionButtonClick() {
     actionButton?.onClick?.();
     setVisible(false);
   }
+  /**
+   * 设置dropdown的弹出层宽度 与输入框同宽
+   */
   const [overlayWidth, setOverlayWidth] = useState(200);
   useEffect(() => {
     const root = triggerRef?.current as HTMLElement;
     const clientWidth = root?.clientWidth || 200;
     setOverlayWidth(clientWidth);
-  });
+  }, []);
 
+  const cls = classnames({
+    [`${prefixCls}-trigger`]: true,
+    [`${prefixCls}-trigger--open`]: visible,
+  });
+  const [triggerActive, setTriggerActive] = useState(false);
+  function handleTriggerMouseOver() {
+    setTriggerActive(true);
+  }
+  function handleTriggerMouseOut() {
+    setTriggerActive(false);
+  }
+  const inputPrefixCls = usePrefixCls('input');
+  const inputCls = classnames({
+    [`${inputPrefixCls}--focus`]: triggerActive,
+  });
   return (
     <Dropdown
       placement="bottomLeft"
@@ -109,27 +129,29 @@ const Picker = (props: PagePickerProps) => {
             <PageList dataSource={listDataSource} value={inputValue} onSelect={handleSelect} onChange={handleChange} />
           </div>
           <div className="footer">
-            <Button
-              size="small"
-              type="text"
-              icon={<PlusCircleFilled />}
-              // style={{ margin: '8px 16px' }}
-              onClick={handleActionButtonClick}
-            >
+            <Button size="small" type="text" icon={<PlusCircleFilled />} onClick={handleActionButtonClick}>
               定义新页面
             </Button>
           </div>
         </div>
       }
     >
-      <div className={`${prefixCls}-trigger`} ref={triggerRef}>
+      <div
+        className={cls}
+        ref={triggerRef}
+        onFocus={() => setTriggerActive(true)}
+        onBlur={() => setTriggerActive(false)}
+        onMouseOver={handleTriggerMouseOver}
+        onMouseOut={handleTriggerMouseOut}
+      >
         {/* {defaultInput()} */}
         <Input
           width="100%"
           aria-label="picker-value"
+          className={inputCls}
           readOnly
-          prefix={inputValue.isCurrent && <span style={{ color: '#1248e9' }}>[当前页]</span>}
-          suffix={visible ? <UpFilled /> : <DownFilled />}
+          prefix={inputValue?.isCurrent && <span style={{ color: '#1248e9' }}>[当前页]</span>}
+          suffix={<DownFilled className="caret" />}
           value={inputValue.label}
         />
       </div>

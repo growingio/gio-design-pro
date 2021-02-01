@@ -15,22 +15,19 @@ import BaseForm from './BaseForm';
 import { AppType, LimitCondition } from './types';
 import ValidatorHelper from './validator';
 import FooterToolbar from './components/FooterToolbar';
-// import { DocProps, TagElement } from './TagElement';
 import PagePicker from './components/page-picker';
 import DefinitionCondition from './components/definition-condition';
 import ElementDefinitionRule from './ElementDefinitionRuleRender';
 import { TagElement } from './TagElement';
-// import { DocProps } from './TagElement';
-// interface DefinitionRuleProps {
-//   definition: DocProps;
-//   appType: AppType;
-// }
 
+/**
+ * @name 将初始值转换成form 表单需要的数据 ，（添加 limitCondition prop）
+ * @param initialValues
+ */
 function transformFormValues(initialValues?: ElementFormValues) {
   const tempValue = cloneDeep(initialValues || {}) as ElementFormValues;
   const { definition } = tempValue;
   const res = {
-    // ...omit(tempValue, ['definition', 'attrs']),
     ...tempValue,
     limitCondition: {
       content: definition?.content,
@@ -42,8 +39,8 @@ function transformFormValues(initialValues?: ElementFormValues) {
   return res;
 }
 /**
- *
- * @param values 转化数据类型，主要转化
+ * @name 转化数据类型，主要转化
+ * @param values
  */
 function conversionSubmitValue(values: any) {
   const tempValue = cloneDeep(values);

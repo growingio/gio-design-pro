@@ -8,11 +8,19 @@
   display: block;
   width: 100%;
   cursor: pointer;
-
+  transition: all 0.3s ease;
   input {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  .caret {
+    transition: all 0.3s ease;
+  }
+  &--open {
+    .caret {
+      transform: rotate(180deg);
+    }
   }
 }
 

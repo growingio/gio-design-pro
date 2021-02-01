@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useRef, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Form } from '@gio-design/components';
+import { Button, Form } from '@gio-design/components';
 import PageViewEventForm from './PageViewEventForm';
 import { PageViewEventFormProps, PageViewFormValues } from './interfaces';
 import { spaceTags, deviceInfoMinp, currentPageMinp } from './__test__/data';
@@ -79,6 +79,20 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
     //
     return true;
   }
+  const dataChart = () => (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        height: '144px',
+        justifyContent: 'center',
+        border: '1px solid #dfe4ee',
+        borderRadius: '4px',
+      }}
+    >
+      <Button type="secondary">查看数据</Button>
+    </div>
+  );
   return (
     <div
       style={{
@@ -95,40 +109,9 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         appType={AppType.NATIVE}
         initialValues={formValue}
         onFinish={handleFinish}
-        dataChart={<span>这里是图表</span>}
+        dataChart={dataChart()}
         onFinishFailed={({ values }) => console.log(values)}
       />
-      {/* <div className="footer">
-          <FooterToolbar
-            style={{ position: 'static' }}
-            extra={
-              <Button type="secondary" onClick={() => console.log('pre clicked')}>
-                上一步
-              </Button>
-            }
-          >
-            <Button
-              key="rest"
-              type="secondary"
-              onClick={(e) => {
-                console.log('reset form');
-                formRef.current?.resetFields();
-              }}
-            >
-              取消
-            </Button>
-            <Button
-              key="submit"
-              type="primary"
-              disabled={submitDisabled}
-              onClick={(e) => {
-                handleSubmit(e);
-              }}
-            >
-              保存
-            </Button>
-          </FooterToolbar>
-        </div> */}
     </div>
   );
 };
