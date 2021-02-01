@@ -15,5 +15,6 @@ const Template: Story<OperationMenuProps> = (args) => <OperationMenu {...args} /
 export const Default = Template.bind({});
 Default.args = {
   options,
+  // eslint-disable-next-line no-console
   onClick: (a: any) => console.log(a),
 };
