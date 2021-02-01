@@ -47,7 +47,7 @@ function definePageTip() {
 function transformFormValues(pvFormValues: PageViewFormValues) {
   const tempValue = cloneDeep(pvFormValues);
   const definition = get(tempValue, 'definition');
-  const path = { path: definition?.path };
+  const path = { path: definition?.path, checked: !isEmpty(definition?.path) };
   const query = queryToKvs(definition?.query);
   const { domain } = definition;
   return {
@@ -176,13 +176,14 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
   const renderDefinitionRule = () => {
     const { definition } = conversionSubmitValue(formValues);
     const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition);
+    // console.warn(definition);
     const renderMessage = (
       <PageViewDefinitionRule repeatTag={repeatRuleTag} definition={definition} appType={appType} />
     ); // renderDefinitionRuleText(definition, repeatRuleTag);
     return (
-      <>
+      <div style={{ flex: 1 }}>
         <Alert size="small" type={repeatRuleTag ? 'error' : 'info'} showIcon message={renderMessage} />
-      </>
+      </div>
     );
   };
   const pre = submitter !== false && (
@@ -339,7 +340,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
               </Form.Item>
             )}
             {isNative && (
-              <Form.Item name={['definition', 'path']} label="路径">
+              <Form.Item name={['definition', 'path', 'path']} label="路径">
                 <Input disabled maxLength={MAX_VALUE_LENGTH} />
               </Form.Item>
             )}

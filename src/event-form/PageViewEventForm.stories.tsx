@@ -6,7 +6,7 @@ import PageViewEventForm from './PageViewEventForm';
 import { PageViewEventFormProps, PageViewFormValues } from './interfaces';
 import { spaceTags, deviceInfoMinp, currentPageMinp } from './__test__/data';
 import './eventform-style.less';
-import { DeviceInfo } from './types';
+import { AppType, DeviceInfo } from './types';
 import { TagElement } from './TagElement';
 
 export default {
@@ -92,6 +92,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         definedTags={(spaceTags as unknown) as TagElement[]}
         onValuesChange={handleValuesChange}
         // initialTagElement={element}
+        appType={AppType.NATIVE}
         initialValues={formValue}
         onFinish={handleFinish}
         dataChart={<span>这里是图表</span>}
