@@ -31,9 +31,7 @@ describe('Picker', () => {
 
 describe('Picker snapshots', () => {
   beforeEach(() => {
-    ReactDOM.createPortal = jest.fn((element) => {
-      return element;
-    });
+    ReactDOM.createPortal = jest.fn((element) => element);
   });
 
   afterEach(() => {
