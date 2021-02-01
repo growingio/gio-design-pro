@@ -111,7 +111,7 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
   const formRef = useRef(formR);
   const [, setSubmitDisabled] = useState(true);
   function handleValuesChange(val: any, allVal: any) {
-    console.log(val, allVal);
+    console.log('handleValuesChange', val, allVal);
     setSubmitDisabled(false);
   }
 

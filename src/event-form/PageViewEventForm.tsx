@@ -4,7 +4,7 @@ import { Tooltip, Input, Form, Alert, Link } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { FormInstance } from '@gio-design/components/es/components/form';
 import Button, { ButtonProps } from '@gio-design/components/es/components/button';
-import { cloneDeep, get, isArray, isEmpty, trim } from 'lodash';
+import { cloneDeep, get, isArray, isEmpty, omit, trim } from 'lodash';
 import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH, queryToKvs, kvsToQuery } from './utils';
 import FormItemGroup from './components/FormItemGroup';
 import PathInput from './components/PathInput';
@@ -19,6 +19,7 @@ import ValidatorHelper from './validator';
 import FooterToolbar from './components/FooterToolbar';
 // import { DocProps, TagElement } from './TagElement';
 import PageViewDefinitionRule from './PageViewDefinitionRuleRender';
+import { DocProps } from './TagElement';
 
 function definePageTip() {
   return (
@@ -72,7 +73,8 @@ function conversionSubmitValue(values: any) {
     defined.query = kvsToQuery(query);
   }
   tempValue.definition = defined;
-  return tempValue;
+  return { ...omit(tempValue, 'belongApp') } as PageViewFormValues;
+  // return tempValue;
 }
 const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEventFormProps> = (
   props: EventFormProps,
@@ -147,7 +149,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
 
   function handleFormValuesChange(changedValues: any, allValues: any) {
     setFormValues(allValues);
-    onValuesChange?.(changedValues, allValues);
+    onValuesChange?.(changedValues, conversionSubmitValue(allValues));
   }
   useEffect(() => {
     const {
@@ -292,12 +294,13 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
             if (!restProps.onFinish) return;
             setLoading(true);
             // validatorRef.current?.
-            const { definition } = conversionSubmitValue(values);
-            const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition);
+            const submitValues = conversionSubmitValue(values);
+            const { definition } = submitValues;
+            const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition as DocProps);
             if (repeatRuleTag) {
               return;
             }
-            await restProps.onFinish(definition);
+            await restProps.onFinish(submitValues);
             setLoading(false);
           }}
           contentRender={(items) => (

@@ -26,7 +26,7 @@ export interface TagElement {
 
 export interface DocProps {
   urlScheme?: string;
-  domain: string;
+  domain?: string;
   path?: string;
   query?: string;
   xpath?: string;

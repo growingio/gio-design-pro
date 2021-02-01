@@ -60,7 +60,7 @@ function conversionSubmitValue(values: any) {
   };
   const newDefinition = { ...get(tempValue, 'definition'), ...{ path, domain, query }, ...limit };
   tempValue.definition = newDefinition;
-  return { ...omit(tempValue, 'limitCondition') } as ElementFormValues;
+  return { ...omit(tempValue, 'limitCondition', 'belongPage', 'belongApp') } as ElementFormValues;
 }
 const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps> = (
   props: EventFormProps,
@@ -156,7 +156,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
   function handleValuesChange(changedValues: any, allValues: any) {
     const newValue = { ...initialValues, ...allValues };
     setFormValues(newValue);
-    onValuesChange?.(changedValues, allValues);
+    onValuesChange?.(changedValues, conversionSubmitValue(allValues));
   }
   useEffect(() => {
     const { name } = formValues;

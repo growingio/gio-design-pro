@@ -125,12 +125,12 @@ export const isChildOfElement = (elem: Element, parentElem: Element) => {
   }
   return false;
 };
-export const matchString = (likePattern: string, value: string, accurate = false): boolean => {
+export const matchString = (likePattern?: string, value?: string, accurate = false): boolean => {
   if (!accurate && (!likePattern || value == null)) {
     return false;
   }
-  return !accurate && likePattern.indexOf('*') !== -1
-    ? new RegExp(`^${likePattern.replace(/\*+/g, '(.*)')}$`).test(value)
+  return !accurate && likePattern?.indexOf('*') !== -1
+    ? new RegExp(`^${likePattern?.replace(/\*+/g, '(.*)')}$`).test(value || '')
     : likePattern === value;
 };
 /**

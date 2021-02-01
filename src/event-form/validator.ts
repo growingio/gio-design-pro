@@ -1,8 +1,14 @@
 import { isEmpty } from 'lodash';
 import { DocProps } from '../types';
+import { Rule } from './interfaces';
 import { TagElement } from './TagElement';
 import { matchString, matchQuery } from './utils';
 
+const whitespaceRule = {
+  pattern: /^\S.*\S$|(^\S{0,1}\S$)/,
+  message: '首、末位不支持输入空格',
+  validateTrigger: 'onBlur',
+};
 class ValidatorHelper {
   private definedTags: TagElement[];
 
@@ -97,5 +103,52 @@ class ValidatorHelper {
       );
     });
   }
+
+  public validateRules: { [key: string]: Rule[] } = {
+    name: [
+      { required: true, message: '名称不能为空', validateTrigger: 'onChange' },
+      whitespaceRule,
+      {
+        validator: async (_, value) => this.checkName(value),
+        validateTrigger: 'onSubmit',
+      },
+    ],
+    description: [],
+    belongApp: [],
+    limitCondition: [
+      // {
+      //   message: whitespaceRule.message,
+      //   validator: async () => true,
+      //   validateTrigger: 'onChange',
+      // },
+    ],
+    // definition: [
+    //   () => ({
+    //     validateTrigger: ['onChange', 'onSubmit'],
+    //     validator: async () => {
+    //       // console.warn('definition validator');
+    //       // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    //       const { definition } = conversionSubmitValue(formValues) as ElementFormValues;
+
+    //       const repeatRuleTag = this.findRepeatElementTag(definition);
+    //       if (repeatRuleTag != null) {
+    //         throw new Error('规则已定义');
+    //       }
+    //     },
+    //   }),
+    // ],
+    belongPage: [
+      {
+        required: true,
+        message: '所属页面不能为空',
+        validateTrigger: 'onChange',
+        validator: async (rule, value) => {
+          if (!value || !value.id) {
+            throw new Error(rule.message as string);
+          }
+        },
+      },
+    ],
+  };
 }
 export default ValidatorHelper;
