@@ -52,8 +52,8 @@ function getInitialTagElement() {
     path: currentElem.path,
     query: currentElem.query,
     xpath: currentElem.xpath,
-    index: currentElem.index,
-    href: currentElem.href,
+    index: '', // currentElem.index,
+    href: '', // currentElem.href,
     content: currentElem.content,
     urlScheme,
   };
@@ -123,7 +123,13 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
 
   // const element = getInitialTagElement();
   async function handleFinish(val: any) {
-    console.log('handleFinish', val);
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('handleFinish', val);
+        return resolve('success');
+      }, 2000);
+    });
+    //
     return true;
   }
   const dataChart = () => (
@@ -159,6 +165,12 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
           onActionButtonClick: () => console.log('go to define page'),
           currentPageTags: currentPageTags || [],
         }}
+        requiredMark
+        submitterExtra={
+          <Button type="text" onClick={() => console.log('extra link click')}>
+            手动模式
+          </Button>
+        }
         onFinishFailed={({ values }) => console.log('onFinishFailed', values)}
         dataChart={dataChart()}
       />

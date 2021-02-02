@@ -9,7 +9,7 @@ import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH, queryToKvs, kvsToQuery } from './uti
 import FormItemGroup from './components/FormItemGroup';
 import PathInput from './components/PathInput';
 import QueryInput from './components/QSInput';
-import Submitter, { SubmitterProps } from './components/Submitter';
+import { SubmitterProps } from './components/Submitter';
 import { EventFormProps, PageViewEventFormProps, PageViewFormValues, Rule } from './interfaces';
 import './style';
 import '@gio-design/components/es/components/link/style/css.js';
@@ -67,10 +67,14 @@ function conversionSubmitValue(values: any) {
   const path = get(defined, 'path', {});
   if (path && path.checked) {
     defined.path = path.path;
+  } else {
+    defined.path = undefined;
   }
   const query = get(tempValue, 'definition.query');
   if (query) {
     defined.query = kvsToQuery(query);
+  } else {
+    defined.query = undefined;
   }
   tempValue.definition = defined;
   return { ...omit(tempValue, 'belongApp') } as PageViewFormValues;
@@ -188,93 +192,83 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
       </div>
     );
   };
-  const pre = submitter !== false && (
-    <Button
-      key="pre"
-      type="secondary"
-      {...submitter?.resetButtonProps}
-      onClick={() => {
-        restProps.onPre?.();
-      }}
-    >
-      上一步
-    </Button>
-  );
-  const onSubmit = () => {
-    formRef.current?.submit();
-  };
-  const submit = submitter !== false && (
-    <Button
-      key="submit"
-      type="primary"
-      {...submitter?.submitButtonProps}
-      disabled={submitDisabled}
-      onClick={() => {
-        submitter?.onSubmit?.();
-        onSubmit();
-      }}
-    >
-      {submitter?.submitText ?? '保存'}
-    </Button>
-  );
-  const reset = submitter !== false && (
-    <Button
-      key="rest"
-      type="secondary"
-      {...submitter?.resetButtonProps}
-      onClick={(e) => {
-        formRef.current?.resetFields();
-        submitter?.onReset?.();
-        submitter?.resetButtonProps?.onClick?.(e);
-      }}
-    >
-      {submitter?.resetText ?? '取消'}
-    </Button>
-  );
+
   const [loading, setLoading] = useState<ButtonProps['loading']>(false);
-  const defaultSubmitRender = () => {
-    const submitterProps: SubmitterProps = typeof submitter === 'boolean' || !submitter ? {} : submitter;
-    const submitterNode =
-      submitter === false ? undefined : (
-        <Submitter
-          key="submitter"
-          {...submitterProps}
-          form={formRef.current}
-          resetText="取消"
-          submitButtonProps={{
-            loading,
-            ...submitterProps.submitButtonProps,
-            disabled: submitDisabled,
-          }}
-        />
-      );
+  const defaultSubmitRender = (_: SubmitterProps, submitterDom: JSX.Element[]) => {
+    const [preBtn, resetBtn, submitBtn] = submitterDom;
     return (
       <div className="footer">
-        <FooterToolbar style={{ position: 'static' }} extra={pre}>
-          {submitterNode}
+        <FooterToolbar style={{ position: 'static' }} extra={showPreButton && preBtn}>
+          {[resetBtn, submitBtn] as JSX.Element[]}
         </FooterToolbar>
       </div>
     );
   };
 
   const renderSubmitter = () => {
-    const submitterDom = [pre, reset, submit] as JSX.Element[];
-    if (submitter && submitter.render) {
-      const submitterProps: any = {
-        form: formRef?.current,
-        onSubmit,
-        showPreButton,
-        onPre: () => {
-          restProps.onPre?.();
-        },
-        // render: defaultSubmitRender,
-      };
-      return submitter.render(submitterProps, submitterDom) as React.ReactNode;
-    }
-    if (submitter && submitter?.render === false) {
+    if (submitter === false || submitter?.render === false) {
       return null;
     }
-    return defaultSubmitRender() as React.ReactNode;
+    const pre = (
+      <Button
+        key="pre"
+        type="secondary"
+        onClick={() => {
+          restProps.onPre?.();
+        }}
+      >
+        上一步
+      </Button>
+    );
+
+    const submit = (
+      <Button
+        key="submit"
+        type="primary"
+        {...submitter?.submitButtonProps}
+        disabled={submitDisabled}
+        loading={loading}
+        onClick={() => {
+          formRef.current?.submit();
+          submitter?.onSubmit?.();
+        }}
+      >
+        {submitter?.submitText ?? '保存'}
+      </Button>
+    );
+
+    const reset = (
+      <Button
+        key="rest"
+        type="secondary"
+        {...submitter?.resetButtonProps}
+        onClick={(e) => {
+          formRef.current?.resetFields();
+          submitter?.onReset?.();
+          submitter?.resetButtonProps?.onClick?.(e);
+          // handleReset(e);
+        }}
+      >
+        {submitter?.resetText ?? '取消'}
+      </Button>
+    );
+    const submitterDom = [pre, reset, submit] as JSX.Element[];
+    const _render = submitter?.render || defaultSubmitRender;
+    const submitterProps: any = {
+      form: formRef?.current,
+      // onSubmit: () => {
+
+      // },
+      showPreButton,
+      onPre: () => {
+        restProps.onPre?.();
+      },
+      submitButtonProps: {
+        loading,
+        ...submitter?.submitButtonProps,
+      },
+    };
+    return _render(submitterProps, submitterDom) as React.ReactNode;
   };
 
   return (
@@ -288,7 +282,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           submitter={submitter}
           onValuesChange={handleFormValuesChange}
           initialValues={{
-            ...formValues,
+            ...transformFormValues(initialValues as PageViewFormValues),
           }}
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
@@ -336,6 +330,12 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
               <Form.Item name="definition" labelWidth={0} rules={validateRules.definition}>
                 {renderDefinitionRule()}
               </Form.Item>
+              <Form.Item
+                style={{ display: 'none' }}
+                name="definition"
+                label="限定条件"
+                rules={validateRules.definition}
+              />
             </div>
             {showBelongApp && (
               <Form.Item name="belongApp" label="所属应用">

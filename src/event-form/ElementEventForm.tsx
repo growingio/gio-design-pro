@@ -7,7 +7,7 @@ import Button, { ButtonProps } from '@gio-design/components/es/components/button
 import { cloneDeep, get, isEmpty, omit } from 'lodash';
 import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH } from './utils';
 import FormItemGroup from './components/FormItemGroup';
-import Submitter, { SubmitterProps } from './components/Submitter';
+import { SubmitterProps } from './components/Submitter';
 import { EventFormProps, ElementEventFormProps, Rule, ElementFormValues } from './interfaces';
 import './style';
 import '@gio-design/components/es/components/link/style/css.js';
@@ -31,7 +31,7 @@ function transformFormValues(initialValues?: ElementFormValues) {
     ...tempValue,
     limitCondition: {
       content: definition?.content,
-      href: definition.href,
+      href: definition?.href,
       index: definition?.index,
       contentType: definition.contentType,
     },
@@ -44,7 +44,7 @@ function transformFormValues(initialValues?: ElementFormValues) {
  */
 function conversionSubmitValue(values: any) {
   const tempValue = cloneDeep(values);
-  const { limitCondition, definition, belongPage } = tempValue;
+  const { limitCondition = {}, definition, belongPage } = tempValue;
   const { content, index, href, contentType } = limitCondition;
   const { contentChecked, indexChecked, hrefChecked } = limitCondition;
   // const {
@@ -75,7 +75,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     form: userForm,
     onValuesChange,
     submitter,
-    extraNode,
+    submitterExtra,
     pagePicker = {
       onActionButtonClick: () => undefined,
       currentPageTags: [],
@@ -131,7 +131,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
 
           const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
           if (repeatRuleTag != null) {
-            throw new Error('规则已定义');
+            throw new Error('规则重复');
           }
         },
       }),
@@ -174,87 +174,72 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
     const renderMessage = <ElementDefinitionRule attrs={attrs} limitCondition={definition} repeatTag={repeatRuleTag} />; // ruleText; // renderDefinitionRuleText(definition, repeatRuleTag);
     return (
-      <>
+      <div style={{ flex: 1 }}>
         <Alert size="small" type={repeatRuleTag ? 'error' : 'info'} showIcon message={renderMessage} />
-      </>
+      </div>
     );
   };
 
-  const onSubmit = () => {
-    formRef.current?.submit();
-  };
-  const submit = submitter !== false && (
-    <Button
-      key="submit"
-      type="primary"
-      {...submitter?.submitButtonProps}
-      disabled={submitDisabled}
-      onClick={() => {
-        submitter?.onSubmit?.();
-        onSubmit();
-      }}
-    >
-      {submitter?.submitText ?? '保存'}
-    </Button>
-  );
-  const reset = submitter !== false && (
-    <Button
-      key="rest"
-      type="secondary"
-      {...submitter?.resetButtonProps}
-      onClick={(e) => {
-        formRef.current?.resetFields();
-        submitter?.onReset?.();
-        submitter?.resetButtonProps?.onClick?.(e);
-      }}
-    >
-      {submitter?.resetText ?? '取消'}
-    </Button>
-  );
   const [loading, setLoading] = useState<ButtonProps['loading']>(false);
-  const defaultSubmitRender = () => {
-    const submitterProps: SubmitterProps = typeof submitter === 'boolean' || !submitter ? {} : submitter;
-    const submitterNode =
-      submitter === false ? undefined : (
-        <Submitter
-          key="submitter"
-          {...submitterProps}
-          form={formRef.current}
-          resetText="取消"
-          submitButtonProps={{
-            loading,
-            ...submitterProps.submitButtonProps,
-            disabled: submitDisabled,
-          }}
-        />
-      );
+  const defaultSubmitRender = (_: SubmitterProps, submitterDom: JSX.Element[]) => {
+    const [resetBtn, submitBtn] = submitterDom;
     return (
       <div className="footer">
-        <FooterToolbar style={{ position: 'static' }} extra={extraNode}>
-          {submitterNode}
+        <FooterToolbar style={{ position: 'static' }} extra={submitterExtra}>
+          {[resetBtn, submitBtn] as JSX.Element[]}
         </FooterToolbar>
       </div>
     );
   };
 
   const renderSubmitter = () => {
-    const submitterDom = [reset, submit] as JSX.Element[];
-    if (submitter && submitter.render) {
-      const submitterProps: any = {
-        form: formRef?.current,
-        onSubmit,
-        // showPreButton,
-        onPre: () => {
-          // restProps.onPre?.();
-        },
-      };
-      return submitter.render(submitterProps, submitterDom) as React.ReactNode;
-    }
-    if (submitter && submitter?.render === false) {
+    if (submitter === false || submitter?.render === false) {
       return null;
     }
-    return defaultSubmitRender() as React.ReactNode;
+
+    const submit = (
+      <Button
+        key="submit"
+        type="primary"
+        {...submitter?.submitButtonProps}
+        disabled={submitDisabled}
+        loading={loading}
+        onClick={() => {
+          formRef.current?.submit();
+          submitter?.onSubmit?.();
+        }}
+      >
+        {submitter?.submitText ?? '保存'}
+      </Button>
+    );
+
+    const reset = (
+      <Button
+        key="rest"
+        type="secondary"
+        {...submitter?.resetButtonProps}
+        onClick={(e) => {
+          formRef.current?.resetFields();
+          submitter?.onReset?.();
+          submitter?.resetButtonProps?.onClick?.(e);
+          // handleReset(e);
+        }}
+      >
+        {submitter?.resetText ?? '取消'}
+      </Button>
+    );
+    const submitterDom = [reset, submit] as JSX.Element[];
+    const _render = submitter?.render || defaultSubmitRender;
+    const submitterProps: any = {
+      form: formRef?.current,
+      submitButtonProps: {
+        loading,
+        ...submitter?.submitButtonProps,
+      },
+    };
+    return _render(submitterProps, submitterDom) as React.ReactNode;
   };
+
   function hasLimit() {
     const { attrs } = (initialValues || {}) as ElementFormValues;
     return !!attrs?.href || attrs?.index != null || !!attrs?.content;
@@ -270,7 +255,9 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           form={userForm || wrapForm}
           submitter={submitter}
           onValuesChange={handleValuesChange}
-          initialValues={formValues}
+          initialValues={{
+            ...transformFormValues(initialValues as ElementFormValues),
+          }}
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
             setLoading(true);
@@ -299,14 +286,16 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           </FormItemGroup>
           <FormItemGroup style={{ marginTop: '24px' }} groupNumber={2} title="定义规则">
             <div className="feedback">
-              <Form.Item
-                name="definition"
-                labelWidth={0}
-                rules={validateRules.definition}
-                dependencies={['belongPage', 'limitCondition']}
-              >
+              <Form.Item labelWidth={0} rules={validateRules.definition}>
                 {renderDefinitionRule()}
               </Form.Item>
+              <Form.Item
+                style={{ display: 'none' }}
+                name="definition"
+                dependencies={['belongPage', 'limitCondition']}
+                label="限定条件"
+                rules={validateRules.definition}
+              />
             </div>
             {showBelongApp && (
               <Form.Item name="belongApp" label="所属应用">
@@ -320,11 +309,14 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
                 currentPageTags={pagePicker?.currentPageTags ?? []}
               />
             </Form.Item>
-            {hasLimit && (
-              <Form.Item name="limitCondition" label="限定条件" rules={validateRules.limitCondition}>
-                <DefinitionCondition isNative={appType === AppType.NATIVE} />
-              </Form.Item>
+            {hasLimit() && (
+              <>
+                <Form.Item name="limitCondition" label="限定条件" rules={validateRules.limitCondition}>
+                  <DefinitionCondition isNative={appType === AppType.NATIVE} />
+                </Form.Item>
+              </>
             )}
+
             <Form.Item label="数据">
               <div className="data-chart-wrap">{dataChart}</div>
             </Form.Item>

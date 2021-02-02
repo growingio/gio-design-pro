@@ -1,5 +1,6 @@
 import { FormInstance, FormProps } from '@gio-design/components/es/components/form';
 import { ReactElement, ReactNode } from 'react';
+import { ButtonProps } from '@gio-design/components';
 import { SubmitterProps } from './components/Submitter';
 import { AppType, DeviceInfo } from './types';
 import { TagElement, DocProps } from './TagElement';
@@ -41,9 +42,10 @@ export interface EventFormProps extends FormProps, CommonFormProps {
   repeatRuleTag?: TagElement;
   ruleText?: ReactNode;
 }
-type StepSubmitterProps = SubmitterProps<{
+export type StepSubmitterProps = SubmitterProps<{
   showPreButton: boolean;
   onPre: () => void;
+  preButtonProps: ButtonProps;
   form?: FormInstance<any>;
 }>;
 
@@ -71,7 +73,7 @@ export interface ElementEventFormProps extends Omit<EventFormProps, 'initialValu
     dataSource?: TagElement[];
   };
 
-  extraNode?: ReactElement;
+  submitterExtra?: (() => ReactElement) | ReactElement;
   /**
    * 页面选择器定义新页面按钮的click事件回调
    */

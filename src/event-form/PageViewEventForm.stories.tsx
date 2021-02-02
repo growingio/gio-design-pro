@@ -26,7 +26,7 @@ function getInitialTagElement() {
     actions: ['page'],
     attrs: {
       domain: currentPageInfo.domain,
-      path: currentPageInfo.path,
+      path: '', // currentPageInfo.path,
       query: currentPageInfo.query,
       urlScheme,
     },
@@ -106,11 +106,14 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         definedTags={(spaceTags as unknown) as TagElement[]}
         onValuesChange={handleValuesChange}
         // initialTagElement={element}
-        appType={AppType.NATIVE}
+        onPre={() => console.warn('pre')}
+        showPreButton={false}
+        submitter={{ resetText: 'cancle' }}
+        appType={AppType.MINP}
         initialValues={formValue}
         onFinish={handleFinish}
         dataChart={dataChart()}
-        onFinishFailed={({ values }) => console.log(values)}
+        onFinishFailed={(values) => console.log(values)}
       />
     </div>
   );
