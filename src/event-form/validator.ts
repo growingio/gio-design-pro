@@ -1,8 +1,9 @@
-import { isEmpty } from 'lodash';
+import { cloneDeep, get, isEmpty, omit } from 'lodash';
 import { DocProps } from '../types';
-import { Rule } from './interfaces';
+import { ElementFormValues, PageViewFormValues, Rule } from './interfaces';
 import { TagElement } from './TagElement';
-import { matchString, matchQuery } from './utils';
+import { LimitCondition } from './types';
+import { matchString, matchQuery, kvsToQuery } from './utils';
 
 const whitespaceRule = {
   pattern: /^\S.*\S$|(^\S{0,1}\S$)/,
@@ -48,13 +49,13 @@ class ValidatorHelper {
     return Promise.resolve(true);
   }
 
-  public async checkElementDefinition(definition: DocProps) {
-    const repeat = await this.findRepeatElementTag(definition);
-    if (repeat) {
-      return Promise.reject(new Error('已定义'));
-    }
-    return Promise.resolve(true);
-  }
+  // public async checkElementDefinition(definition: DocProps) {
+  //   const repeat = await this.findRepeatElementTag(definition);
+  //   if (repeat) {
+  //     return Promise.reject(new Error('已定义'));
+  //   }
+  //   return Promise.resolve(true);
+  // }
 
   public findRepeatElementTag(definition: DocProps) {
     const accurate = true;
@@ -104,6 +105,47 @@ class ValidatorHelper {
     });
   }
 
+  static conversionPageViewSubmitValue = (formValues: any): PageViewFormValues => {
+    const tempValue = cloneDeep(formValues);
+    const defined = get(tempValue, 'definition', {});
+
+    const path = get(defined, 'path', {});
+    if (path && path.checked) {
+      defined.path = path.path;
+    } else {
+      defined.path = undefined;
+    }
+    const query = get(tempValue, 'definition.query');
+    if (query) {
+      defined.query = kvsToQuery(query);
+    } else {
+      defined.query = undefined;
+    }
+    tempValue.definition = defined;
+    return { ...omit(tempValue, 'belongApp') } as PageViewFormValues;
+  };
+
+  static conversionElementSubmitValue = (formValues: any): ElementFormValues => {
+    const tempValue = cloneDeep(formValues);
+    const { limitCondition = {}, definition, belongPage } = tempValue;
+    const { content, index, href, contentType } = limitCondition;
+    const { contentChecked, indexChecked, hrefChecked } = limitCondition;
+    // const {
+    //   definition: { path, domain, query },
+    // } = (belongPage || {}) as TagElement;
+    const pageDefine = (belongPage as TagElement)?.definition;
+    const { path, domain, query } = pageDefine || {};
+    const limit: LimitCondition = {
+      content: contentChecked ? content : undefined,
+      index: indexChecked ? index : undefined,
+      href: hrefChecked ? href : undefined,
+      contentType: contentChecked ? contentType : definition?.contentType,
+    };
+    const newDefinition = { ...get(tempValue, 'definition'), ...{ path, domain, query }, ...limit };
+    tempValue.definition = newDefinition;
+    return { ...omit(tempValue, 'limitCondition', 'belongPage', 'belongApp') } as ElementFormValues;
+  };
+
   public validateRules: { [key: string]: Rule[] } = {
     name: [
       { required: true, message: '名称不能为空', validateTrigger: 'onChange' },
@@ -122,21 +164,22 @@ class ValidatorHelper {
       //   validateTrigger: 'onChange',
       // },
     ],
-    // definition: [
-    //   () => ({
-    //     validateTrigger: ['onChange', 'onSubmit'],
-    //     validator: async () => {
-    //       // console.warn('definition validator');
-    //       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    //       const { definition } = conversionSubmitValue(formValues) as ElementFormValues;
+    definition: [
+      ({ getFieldsValue }) => ({
+        validateTrigger: ['onChange', 'onSubmit'],
+        validator: async () => {
+          // console.warn('definition validator');
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          const formValues = getFieldsValue(true);
+          const { definition } = ValidatorHelper.conversionElementSubmitValue(formValues) as ElementFormValues;
 
-    //       const repeatRuleTag = this.findRepeatElementTag(definition);
-    //       if (repeatRuleTag != null) {
-    //         throw new Error('规则已定义');
-    //       }
-    //     },
-    //   }),
-    // ],
+          const repeatRuleTag = this.findRepeatElementTag(definition);
+          if (repeatRuleTag != null) {
+            throw new Error('规则已定义');
+          }
+        },
+      }),
+    ],
     belongPage: [
       {
         required: true,

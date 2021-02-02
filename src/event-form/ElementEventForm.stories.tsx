@@ -83,7 +83,12 @@ function getFormValues() {
   const element = getInitialTagElement();
   const { attrs, definition } = element;
   // const isNative = currentPageInfo.appType === AppType.NATIVE;
-  return {
+  // const res = {
+  //   belongApp: '小程序无埋点测试 | wx123456',
+  //   attrs: { domain: 'wx123456', path: 'pages/index/index', xpath: '#getUserInfo', index: '0' },
+  //   definition: { domain: 'wx123456', path: 'pages/index/index', xpath: '#getUserInfo', index: '0' },
+  // };
+  const res = {
     name: element.name,
     description: element.description,
     // domain: attrs.domain,
@@ -94,6 +99,7 @@ function getFormValues() {
     attrs,
     definition,
   };
+  return res;
 }
 const searchPageRule1 = (pageInfo: PageInfo, tag: TagElement): boolean => {
   const tagDef = tag.definition as any;

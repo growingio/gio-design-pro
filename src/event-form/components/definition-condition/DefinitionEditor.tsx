@@ -79,12 +79,12 @@ const ConditionEditor: React.FC<Props> = (props) => {
             元素内容
           </Checkbox>
         )}
-        {currentValue?.content && (
+        {currentValue?.index && (
           <Checkbox actionButton={false} checked={currentValue?.indexChecked} onChange={handelIndexChange}>
             元素位置第{+(currentValue?.index || 0) + +(isNative || 0)}位
           </Checkbox>
         )}
-        {currentValue?.content && (
+        {currentValue?.href && (
           <Checkbox
             actionButton={{ onClick: onHrefEditClick }}
             checked={currentValue?.hrefChecked}

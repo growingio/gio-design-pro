@@ -19,7 +19,6 @@ import ValidatorHelper from './validator';
 import FooterToolbar from './components/FooterToolbar';
 // import { DocProps, TagElement } from './TagElement';
 import PageViewDefinitionRule from './PageViewDefinitionRuleRender';
-import { DocProps } from './TagElement';
 
 function definePageTip() {
   return (
@@ -139,9 +138,25 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     ],
     domain: [{ required: true, message: '域名不能为空' }, whitespaceRule],
     definition: [
+      ({ getFieldsValue }) => ({
+        validateTrigger: ['onChange', 'onSubmit'],
+        validator: async () => {
+          // console.warn('definition validator');
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          const formData = getFieldsValue(true);
+          const { definition } = conversionSubmitValue(formData) as PageViewFormValues;
+
+          const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition);
+          if (repeatRuleTag != null) {
+            throw new Error('规则重复');
+          }
+        },
+      }),
       // {
       //   validator: async (_, value) => {
-      //     validatorRef.current?.checkPageViewDefinition(value);
+      //     console.warn('validate definition', value);
+      //     throw new Error('规则重复');
+      //     // validatorRef.current?.checkPageViewDefinition(value);
       //   },
       // },
     ],
@@ -289,11 +304,11 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
             setLoading(true);
             // validatorRef.current?.
             const submitValues = conversionSubmitValue(values);
-            const { definition } = submitValues;
-            const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition as DocProps);
-            if (repeatRuleTag) {
-              return;
-            }
+            // const { definition } = submitValues;
+            // const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition as DocProps);
+            // if (repeatRuleTag) {
+            //   return;
+            // }
             await restProps.onFinish(submitValues);
             setLoading(false);
           }}
@@ -327,13 +342,18 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
             }
           >
             <div className="feedback">
-              <Form.Item name="definition" labelWidth={0} rules={validateRules.definition}>
+              <Form.Item name="definition" labelWidth={0}>
                 {renderDefinitionRule()}
               </Form.Item>
               <Form.Item
                 style={{ display: 'none' }}
                 name="definition"
                 label="限定条件"
+                dependencies={[
+                  ['definition', 'domain'],
+                  ['definition', 'path'],
+                  ['definition', 'query'],
+                ]}
                 rules={validateRules.definition}
               />
             </div>

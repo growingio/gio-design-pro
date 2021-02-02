@@ -8,7 +8,9 @@
   .condition-checkbox-option {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
     .action-btn {
       padding: 0 8px;
       color: '#ADB2C2';
