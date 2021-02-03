@@ -34,7 +34,7 @@ export interface DocProps {
   href?: string;
   content?: string;
   pg?: string;
-  contentType?: 'match_phrase' | '=';
+  contentType?: string; // 'match_phrase' | '=';
 }
 export interface Screenshot {
   target?: string;

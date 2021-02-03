@@ -2136,13 +2136,13 @@ export const spaceTags = [
   },
 ];
 
-export const deviceInfoMinp = { name: '小程序无埋点', domain: 'wx265d0fa6fa70fae9', os: 'minp' };
+export const deviceInfoMinp = { name: '小程序无埋点', domain: 'wx123456', os: 'minp' };
 export const currentPageMinp = {
   id: 'f339fcb2bdd07fd7b55020c2835d8bede823e4af',
   eventType: 'PAGE',
   timestamp: 1610954652616,
   ip: '111.198.136.131',
-  domain: 'wx265d0fa6fa70fae9',
+  domain: 'wx123456',
   query: 'name=hello&a=3',
   platform: 'MinP',
   path: 'pages/index/index',

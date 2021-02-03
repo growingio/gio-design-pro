@@ -164,7 +164,9 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     const isNameEmpty = isEmpty(name);
 
     disabled = isNameEmpty;
-    setSubmitDisabeld(disabled);
+    const validInfo = formRef.current?.getFieldsError();
+    const hasError = validInfo && validInfo.some((v) => v.errors.length > 0);
+    setSubmitDisabeld(disabled || hasError);
     // console.log('ElementFormValues', formValues);
   }, [formValues]);
 

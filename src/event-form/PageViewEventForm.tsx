@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 import React, { useEffect, useRef, useState } from 'react';
-import { Tooltip, Input, Form, Alert, Link } from '@gio-design/components';
+import { Tooltip, Input, Form, Alert, Link, Popconfirm } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { FormInstance } from '@gio-design/components/es/components/form';
 import Button, { ButtonProps } from '@gio-design/components/es/components/button';
@@ -189,7 +189,10 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     } else {
       disabled = isNameEmpty || isPathEmpty;
     }
-    setSubmitDisabeld(disabled);
+    // const err = formRef.current?.getFieldsError([['name'], ['definition'], ['definition', 'path']]);
+    const validInfo = formRef.current?.getFieldsError();
+    const hasError = validInfo && validInfo.some((v) => v.errors.length > 0);
+    setSubmitDisabeld(disabled || hasError);
   }, [formValues]);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -221,6 +224,8 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
   };
 
   const renderSubmitter = () => {
+    const [popVisible, setPopVisible] = useState(false);
+    const [popoverDisabled, setPopoverDisabled] = useState(false);
     if (submitter === false || submitter?.render === false) {
       return null;
     }
@@ -237,19 +242,48 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     );
 
     const submit = (
-      <Button
-        key="submit"
-        type="primary"
-        {...submitter?.submitButtonProps}
-        disabled={submitDisabled}
-        loading={loading}
-        onClick={() => {
+      <Popconfirm
+        placement="topRight"
+        title="保存后不支持修改页面定义规则，仅可修改基本信息。确定要保存当前定义吗？"
+        onConfirm={() => {
           formRef.current?.submit();
           submitter?.onSubmit?.();
+          // setSave(true);
+          // setPopVisible(false);
         }}
+        onCancel={() => {
+          // setPopVisible(false);
+          // setSave(false);
+        }}
+        onVisibleChange={(show) => {
+          console.warn('onVisibleChange', show);
+          setPopVisible(show);
+        }}
+        overlayInnerStyle={{ width: 400 }}
+        arrowPointAtCenter
+        visible={!popoverDisabled && popVisible}
       >
-        {submitter?.submitText ?? '保存'}
-      </Button>
+        <Button
+          key="submit"
+          type="primary"
+          {...submitter?.submitButtonProps}
+          disabled={submitDisabled}
+          loading={loading}
+          onClick={async () => {
+            try {
+              await formRef.current?.validateFields();
+              setPopoverDisabled(false);
+              // e.stopPropagation();
+              // setPopVisible(true);
+            } catch {
+              // setPopVisible(false);
+              setPopoverDisabled(true);
+            }
+          }}
+        >
+          {submitter?.submitText ?? '保存'}
+        </Button>
+      </Popconfirm>
     );
 
     const reset = (
