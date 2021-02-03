@@ -190,9 +190,8 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
       disabled = isNameEmpty || isPathEmpty;
     }
     // const err = formRef.current?.getFieldsError([['name'], ['definition'], ['definition', 'path']]);
-    const validInfo = formRef.current?.getFieldsError();
-    const hasError = validInfo && validInfo.some((v) => v.errors.length > 0);
-    setSubmitDisabeld(disabled || hasError);
+
+    setSubmitDisabeld(disabled);
   }, [formValues]);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -225,7 +224,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
 
   const renderSubmitter = () => {
     const [popVisible, setPopVisible] = useState(false);
-    const [popoverDisabled, setPopoverDisabled] = useState(false);
+    const [popoverDisabled, setPopoverDisabled] = useState(true);
     if (submitter === false || submitter?.render === false) {
       return null;
     }
@@ -256,7 +255,6 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           // setSave(false);
         }}
         onVisibleChange={(show) => {
-          console.warn('onVisibleChange', show);
           setPopVisible(show);
         }}
         overlayInnerStyle={{ width: 400 }}
@@ -267,16 +265,16 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           key="submit"
           type="primary"
           {...submitter?.submitButtonProps}
-          disabled={submitDisabled}
+          disabled={submitDisabled || popVisible}
           loading={loading}
           onClick={async () => {
+            // setPopVisible(false);
             try {
               await formRef.current?.validateFields();
               setPopoverDisabled(false);
-              // e.stopPropagation();
               // setPopVisible(true);
             } catch {
-              // setPopVisible(false);
+              setPopVisible(false);
               setPopoverDisabled(true);
             }
           }}
@@ -319,7 +317,12 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     };
     return _render(submitterProps, submitterDom) as React.ReactNode;
   };
-
+  function handleFiledsChange(changeFields: any, allFields: any) {
+    const validInfo = formRef.current?.getFieldsError();
+    const hasError = validInfo && validInfo.some((v) => v.errors.length > 0);
+    setSubmitDisabeld(hasError);
+    restProps.onFieldsChange?.(changeFields, allFields);
+  }
   return (
     <div className={`${prefixCls}-wrap`}>
       <div className={`${prefixCls}-body`}>
@@ -346,6 +349,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
             await restProps.onFinish(submitValues);
             setLoading(false);
           }}
+          onFieldsChange={handleFiledsChange}
           contentRender={(items) => (
             <>
               {items}
