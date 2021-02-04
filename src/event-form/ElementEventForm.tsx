@@ -71,7 +71,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     labelWidth = 68,
     appType = AppType.WEB,
     initialValues,
-    definedTags,
+    definedTags = [],
     form: userForm,
     onValuesChange,
     submitter,
@@ -96,6 +96,9 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
    */
   const [submitDisabled, setSubmitDisabeld] = useState(true);
   const validatorRef = useRef(new ValidatorHelper(definedTags));
+  useEffect(() => {
+    validatorRef.current = new ValidatorHelper(definedTags);
+  }, [definedTags?.length]);
 
   const whitespaceRule = {
     pattern: /^\S.*\S$|(^\S{0,1}\S$)/,

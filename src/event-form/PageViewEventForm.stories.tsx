@@ -108,7 +108,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         // initialTagElement={element}
         onPre={() => console.warn('pre')}
         showPreButton={false}
-        submitter={{ resetText: 'cancle' }}
+        submitter={{ resetText: '取消' }}
         appType={AppType.MINP}
         initialValues={formValue}
         onFinish={handleFinish}

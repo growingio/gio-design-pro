@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, Form } from '@gio-design/components';
+import { merge } from 'lodash';
 import ElementEventForm from './ElementEventForm';
 import { ElementEventFormProps, ElementFormValues } from './interfaces';
 import { spaceTags, deviceInfoMinp } from './__test__/data';
@@ -131,7 +132,10 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
   async function handleFinish(val: any) {
     await new Promise((resolve) => {
       setTimeout(() => {
-        console.log('handleFinish', val);
+        const submitVal = merge(formValue, val);
+        allDefinedTags.push(submitVal);
+        console.log('handleFinish', submitVal, allDefinedTags.length);
+
         return resolve('success');
       }, 2000);
     });
@@ -162,7 +166,7 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
     >
       <ElementEventForm
         ref={formRef}
-        definedTags={(spaceTags as unknown) as TagElement[]}
+        definedTags={allDefinedTags}
         onValuesChange={handleValuesChange}
         // initialTagElement={element}
         initialValues={formValue}
