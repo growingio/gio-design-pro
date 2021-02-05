@@ -1,0 +1,68 @@
+@import '../../stylesheets/index.less';
+
+@selector-prefix-cls: ~'@{component-prefix}-selector';
+
+.@{selector-prefix-cls} {
+  position: relative;
+  min-width: 160px;
+  width: fit-content;
+  max-width: 360px;
+  height: 36px;
+  background: @palette-white;
+  box-sizing: border-box;
+  border: 1px solid @color-border-input-normal;
+  border-radius: 4px;
+  padding: 0 34px 0 16px;
+
+  &:hover {
+    border: 1px solid @color-border-input-hover;
+  }
+
+  &--borderless {
+    border: none;
+  }
+
+  &--borderless:hover {
+    border: none;
+    background: @palette-gray-3;
+  }
+
+  &:active,
+  &--actived {
+    border: 1px solid @color-border-input-active;
+  }
+
+  &__item {
+    display: inline-block;
+    max-width: 310px;
+    height: 34px;
+    font-family: @font-family-primary;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 34px;
+    color: @palette-black-6;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    margin-top: -7px;
+    color: @palette-black-3;
+  }
+}
+
+.@{selector-prefix-cls}-dropdown {
+  min-height: 200px;
+  height: fit-content;
+  max-height: 520px;
+  background: @palette-white;
+  box-shadow: 0 6px 14px rgba(223, 226, 237, 0.8);
+  border-radius: 4px;
+}
