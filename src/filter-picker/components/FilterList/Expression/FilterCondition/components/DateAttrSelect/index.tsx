@@ -25,14 +25,34 @@ function DateAttrSelect(props: DateAttrSelectProps) {
       : [moment(new Date()), moment(new Date())]
   );
 
+  const checkInitValue = (attr: string, vals: string[]) => {
+    if (!values.length) {
+      return true;
+    }
+    const val = vals[0];
+    // console.log(val, 'val')
+    // console.log(val.split(":"), val.split(":")[1].split(','), '=================')
+    if (attr.includes('relative') && attr !== 'relativeTime') {
+      if (attr.includes('Current')) {
+        return !(val.includes('0') || val.split(':')[1].split(',').length === 1);
+      }
+      return val.includes('0');
+    }
+    return !val.includes('abs');
+  };
+
   useEffect(() => {
     // values值的初始化
-    if (!values.length) {
+    if (attrSelect !== 'relativeTime' && (!values.length || checkInitValue(attrSelect, values))) {
+      // console.log(checkInitValue(attrSelect, values), 'checkInitValue(attrSelect, values)')
       if (attrSelect.includes('relative')) {
+        // console.log(attrSelect, values, 'attrSelect')
         if (attrSelect.includes('Current')) {
+          // console.log('current')
           // 相对现在，values值的初始化
           attrChange(['relativeTime:-1,0']);
         } else {
+          // console.log('between')
           // 相对区间，值的初始化
           attrChange(['relativeTime:-1,-1']);
         }
@@ -54,6 +74,7 @@ function DateAttrSelect(props: DateAttrSelectProps) {
     attrChange([moment(value, 'YYYY-MM-DD').startOf('day').valueOf()]);
   };
   const relativeDateChange = (v: string) => {
+    console.log(v, 'vvvvv');
     attrChange([v]);
   };
   const dateRangeChange = (value: Array<Moment> | null) => {
