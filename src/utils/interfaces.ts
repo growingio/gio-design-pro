@@ -10,3 +10,11 @@ export interface BaseProps {
    */
   style?: React.CSSProperties;
 }
+
+export interface Resource {
+  id: string;
+  name: string;
+  creatorId?: string;
+  creator?: string;
+  createdAt?: string;
+}
