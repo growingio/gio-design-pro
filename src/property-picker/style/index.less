@@ -1,0 +1,60 @@
+@import '../../stylesheets/index.less';
+@import '../../list/style/index.less';
+// @import '~@gio-design/components/es/components/tag/style/index.less';
+// @import '@gio-design/components/es/components/tooltip/style/index.css';
+@property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
+.@{property-picker-prefix-cls} {
+  width: auto;
+  .gio-tabnav {
+    margin: 8px 8px 2px;
+  }
+  .@{list-prefix-cls}__item {
+    transition: all 0.3s ease;
+    &.selected,
+    &.active {
+      color: @palette-blue-5;
+      background-color: @palette-gray-1;
+    }
+  }
+}
+.@{property-picker-prefix-cls}-detail {
+  color: #7b819c;
+  min-height: 20px;
+
+  &__name {
+    color: #313e75;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 22px;
+  }
+  &__tag {
+    margin-left: 16px;
+  }
+  &__main {
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 20px;
+    margin-top: 4px;
+    & > div:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
+  &__divide {
+    display: block;
+    margin: 16px 0;
+    border-bottom: 1px solid #dce0f2;
+  }
+  &__bottom {
+    margin-bottom: 4px;
+    & > div:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
+  &__value {
+    color: #313e75;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 22px;
+  }
+}
