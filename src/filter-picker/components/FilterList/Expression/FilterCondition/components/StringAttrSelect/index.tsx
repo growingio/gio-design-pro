@@ -90,7 +90,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
               stateless
               value={listValue}
               dataSource={listOptions}
-              width={300}
+              width={293}
               height={250}
               onClick={changeListValue}
             />
