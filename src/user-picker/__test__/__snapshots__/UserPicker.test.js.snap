@@ -630,9 +630,9 @@ exports[`UserPicker render my segements 1`] = `
     class="gio-input gio-input--middle gio-input__container"
   >
     <input
-      aria-label="picker-value"
       class="gio-input__content gio-input__content-suffix"
-      placeholder=""
+      placeholder="请选择"
+      readonly=""
       type="text"
       value=""
     />
