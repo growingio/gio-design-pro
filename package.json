@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "21.1.0-alpha50",
+  "version": "21.1.0-alpha52",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",

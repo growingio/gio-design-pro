@@ -176,7 +176,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   function handleSelect(node: NodeData) {
     // const { label, value, valueType } = node as PropertyItem;
     const nodeCloned = cloneDeep(node);
-    const { value: nodeValue } = node as PropertyItem;
+    const { value: nodeValue = '' } = node as PropertyItem;
     nodeCloned.value = replace(typeof nodeValue === 'number' ? nodeValue.toString() : nodeValue, /^recently¥/, '');
     // console.warn('nodeCloned', nodeCloned);
     const { label, value, valueType } = nodeCloned as PropertyItem;
