@@ -33,16 +33,13 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     ...rest
   } = props;
   const [scope, setScope] = useState('all');
-  // const [pickerVisible, setPickerVisible] = useState(!!visible);
   const [keyword, setKeyword] = useState<string | undefined>('');
-  // const [displayValue, setDisplayValue] = useState<string>('');
   const [recentlyUsed, setRecentlyUsed] = useLocalStorage<{ [key: string]: any[] }>(
     `${recentlyStorePrefix}_propertyPicker`,
     {
       all: [],
     }
   );
-  // const searchBarProp = merge({ onSearch, placeholder: '搜索属性' }, searchBar)
   const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(initialValue);
   const [debouncedKeyword, setDebouncedKeyword] = useDebounce(keyword, 300);
   const [dataList, setDataList] = useState<PropertyItem[]>([]);
@@ -165,7 +162,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     setCurrentValue(node as PropertyValue);
 
     _saveRecentlyByScope(node);
-    if (!isEqualWith(currentValue, node, (a, b) => a.value === b.value)) {
+    if (isEmpty(currentValue) || !isEqualWith(currentValue, node, (a, b) => a.value === b.value)) {
       onChange?.(node);
     }
     onSelect?.(node);
@@ -180,10 +177,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   };
   const [recentlyPropertyItems, propertyItems] = dataSource;
   const groupDatasource = useMemo(() => groupBy(propertyItems, (o) => o.type), [propertyItems]);
-  // console.log(dataSource);
-  // console.log(groupDatasource);
   const renderItems = () => {
-    if (dataSource?.length === 0) {
+    if (propertyItems?.length === 0) {
       return <EmptyPrompt {...rest.emptyPrompt} />;
     }
     function labelRender(item: PropertyItem) {
@@ -193,7 +188,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const listItems = items.map((data: PropertyItem) => {
         const select =
           !isEmpty(currentValue) &&
-          isEqualWith(currentValue, data, (a, b) => a.value === b.value) &&
+          isEqualWith(currentValue, data, (a, b) => a?.value === b?.value) &&
           data.groupId !== 'recently';
         const itemProp: ListItemProps = {
           disabled: data.disabled,
@@ -203,7 +198,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
           children: labelRender(data),
           onClick: (e) => handleItemClick(e, data),
         };
-        return itemProp;
+        return <List.Item {...itemProp} />;
+        // return itemProp;
       });
       return listItems;
     }
@@ -215,9 +211,9 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
           key: [type, gkey].join('￥'),
           title: groupName || gkey,
           expandable: true,
-          items: listItems,
+          // items: listItems,
         };
-        return <List.ItemSubgroup {...subgroupProps} />;
+        return <List.ItemSubgroup {...subgroupProps}>{listItems}</List.ItemSubgroup>;
       });
       return dom as React.ReactNode;
     }
@@ -225,15 +221,25 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     const childrens = keys(groupDatasource).map((key) => {
       const groupData = groupDatasource[key];
       const subGroupDic = groupBy(groupData, (o) => o.groupId);
+      const { typeName } = groupData[0];
       if (keys(subGroupDic).length === 1) {
-        const { typeName } = groupData[0];
         const items = getListItems(subGroupDic[keys(subGroupDic)[0]]);
-        return <List.ItemGroup key={key} title={typeName} items={items} expandable />;
+        return (
+          <>
+            <List.Divider />
+            <List.ItemGroup key={key} title={typeName} expandable>
+              {items}
+            </List.ItemGroup>
+          </>
+        );
       }
       return (
-        <List.ItemGroup key={key} expandable={false}>
-          {subGroupRender(subGroupDic)}
-        </List.ItemGroup>
+        <>
+          <List.Divider />
+          <List.ItemGroup key={key} title={typeName} expandable={false}>
+            {subGroupRender(subGroupDic)}
+          </List.ItemGroup>
+        </>
       );
     });
     const renderRecentItems = () => {
@@ -241,7 +247,13 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         return <></>;
       }
       const { type, typeName } = recentlyPropertyItems[0];
-      return <List.ItemGroup key={type} title={typeName} items={getListItems(recentlyPropertyItems)} />;
+      return (
+        <>
+          <List.ItemGroup key={type} title={typeName}>
+            {getListItems(recentlyPropertyItems)}
+          </List.ItemGroup>
+        </>
+      );
     };
     return [renderRecentItems(), ...childrens] as React.ReactNode;
   };
