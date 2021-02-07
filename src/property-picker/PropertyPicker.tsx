@@ -2,7 +2,7 @@ import React, { useRef, useState, useMemo, useEffect } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 // import { TabNavItemProps } from '@gio-design/components/es/components/tab-nav/interface';
 import { NodeData } from '@gio-design/components/es/components/cascader/interface';
-import { toPairs, isEqual, uniq, cloneDeep } from 'lodash';
+import { toPairs, isEqual, uniq, cloneDeep, replace } from 'lodash';
 // import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
 import { DownFilled } from '@gio-design/icons';
 import * as pinyin from 'pinyin-match';
@@ -124,6 +124,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (r) {
         recent.push({
           ...r,
+          value: `recently¥${r.value}`,
           groupId: 'recently',
           groupName: '最近使用',
         });
@@ -173,15 +174,20 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     setRecentlyUsed(recent);
   }
   function handleSelect(node: NodeData) {
-    const { label, value, valueType } = node as PropertyItem;
-
+    // const { label, value, valueType } = node as PropertyItem;
+    const nodeCloned = cloneDeep(node);
+    const { value: nodeValue } = node as PropertyItem;
+    nodeCloned.value = replace(typeof nodeValue === 'number' ? nodeValue.toString() : nodeValue, /^recently¥/, '');
+    // console.warn('nodeCloned', nodeCloned);
+    const { label, value, valueType } = nodeCloned as PropertyItem;
     setDisplayValue(label ?? '');
-    _saveRecentlyByScope(node);
-    if (!isEqual(currentValue, node)) {
+    setCurrentValue(nodeCloned as PropertyValue);
+
+    _saveRecentlyByScope(nodeCloned);
+    if (!isEqual(currentValue, nodeCloned)) {
       onChange?.({ label, value: typeof value === 'number' ? value.toString() : value, valueType });
     }
-    setCurrentValue(node as PropertyValue);
-    rest.onSelect?.(node);
+    rest.onSelect?.(nodeCloned);
     setPickerVisible(false);
     onVisibleChange?.(false);
   }
