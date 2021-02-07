@@ -111,14 +111,14 @@ function RelativeCurrent(props: RelativeCurrentProps) {
           value={inOrOutValue}
           options={beforeSelectOptions}
           onChange={selectAfterChange}
-          style={{ margin: '4px' }}
+          style={{ marginLeft: '4px', width: '85px' }}
         />
       ) : (
         <Select
           value={inOrOutValue}
           options={afterSelectOptions}
           onChange={selectAfterChange}
-          style={{ margin: '4px' }}
+          style={{ marginLeft: '4px', width: '85px' }}
         />
       )}
     </div>
