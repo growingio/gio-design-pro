@@ -2,7 +2,7 @@ import { FormInstance, FormProps } from '@gio-design/components/es/components/fo
 import { ReactElement, ReactNode } from 'react';
 import { ButtonProps } from '@gio-design/components';
 import { SubmitterProps } from './components/Submitter';
-import { AppType, DeviceInfo } from './types';
+import { AppType } from './types';
 import { TagElement, DocProps } from './TagElement';
 
 type FormSubmitter = SubmitterProps<{
@@ -31,7 +31,7 @@ export interface EventFormProps extends FormProps, CommonFormProps {
   /**
    *  存在则是app定义
    * */
-  deviceInfo?: DeviceInfo;
+  platform: string;
   appType?: AppType;
 
   /**

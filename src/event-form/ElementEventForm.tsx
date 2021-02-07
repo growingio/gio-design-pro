@@ -70,6 +70,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     labelAlign = 'left',
     labelWidth = 68,
     appType = AppType.WEB,
+    platform,
     initialValues,
     definedTags = [],
     form: userForm,
@@ -153,7 +154,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     ],
   };
 
-  const showBelongApp = appType !== AppType.WEB;
+  const showBelongApp = platform?.toLowerCase() !== 'web';
   const [formValues, setFormValues] = useState<any>(() => transformFormValues(initialValues));
 
   function handleValuesChange(changedValues: any, allValues: any) {

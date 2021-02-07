@@ -169,6 +169,7 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
         definedTags={allDefinedTags}
         onValuesChange={handleValuesChange}
         // initialTagElement={element}
+        platform="android"
         initialValues={formValue}
         onFinish={handleFinish}
         pagePicker={{

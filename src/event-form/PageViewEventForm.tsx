@@ -87,6 +87,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     labelAlign = 'left',
     labelWidth = 68,
     appType = AppType.WEB,
+    platform,
     initialValues,
     definedTags = [],
     form: userForm,
@@ -166,7 +167,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
   };
 
   const isNative = appType === AppType.NATIVE;
-  const showBelongApp = appType !== AppType.WEB;
+  const showBelongApp = platform?.toLowerCase() !== 'web';
   const [formValues, setFormValues] = useState<any>(() => transformFormValues(initialValues as PageViewFormValues));
 
   function handleFormValuesChange(changedValues: any, allValues: any) {
@@ -410,14 +411,16 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
             )}
             {!isNative && (
               <>
-                <Form.Item
-                  validateTrigger={['onBlur', 'onChange']}
-                  name={['definition', 'domain']}
-                  label="域名"
-                  rules={validateRules.domain}
-                >
-                  <Input placeholder="请输入域名" maxLength={MAX_VALUE_LENGTH} />
-                </Form.Item>
+                {appType === AppType.WEB && (
+                  <Form.Item
+                    validateTrigger={['onBlur', 'onChange']}
+                    name={['definition', 'domain']}
+                    label="域名"
+                    rules={validateRules.domain}
+                  >
+                    <Input placeholder="请输入域名" maxLength={MAX_VALUE_LENGTH} />
+                  </Form.Item>
+                )}
 
                 <Form.Item
                   name={['definition', 'path']}

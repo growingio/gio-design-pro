@@ -106,6 +106,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         definedTags={(spaceTags as unknown) as TagElement[]}
         onValuesChange={handleValuesChange}
         // initialTagElement={element}
+        platform="minp"
         onPre={() => console.warn('pre')}
         showPreButton={false}
         submitter={{ resetText: '取消' }}
