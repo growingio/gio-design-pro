@@ -26,8 +26,11 @@ function DateAttrSelect(props: DateAttrSelectProps) {
   );
 
   const checkInitValue = (attr: string, vals: string[]) => {
-    if (!values.length) {
+    if (!vals.length) {
       return true;
+    }
+    if (vals[0] === ' ' || typeof vals[0] !== 'string') {
+      return false;
     }
     const val = vals[0];
     // console.log(val, 'val')
