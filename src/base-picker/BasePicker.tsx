@@ -10,6 +10,7 @@ function BasePicker({
   style,
   searchBar,
   tabNav,
+  items,
   renderItems,
   footer,
   detailVisible = false,
@@ -24,6 +25,12 @@ function BasePicker({
   }
 
   const cls = classnames(prefixCls, className);
+  let content = null;
+  if (items) {
+    content = <List items={items} />;
+  } else if (renderItems) {
+    content = <List>{renderItems()}</List>;
+  }
 
   return (
     <div className={cls} style={style}>
@@ -46,9 +53,7 @@ function BasePicker({
           {React.useMemo(() => tabNav.items.map((i) => <TabNav.Item {...i} />), [tabNav.items])}
         </TabNav>
       )}
-      <div className={`${prefixCls}__content`}>
-        <List>{renderItems()}</List>
-      </div>
+      <div className={`${prefixCls}__content`}>{content}</div>
       {footer && <div className={`${prefixCls}__footer`}>{footer}</div>}
       {detailVisible && <div className={`${prefixCls}__detail`}>{renderDetail?.()}</div>}
     </div>
