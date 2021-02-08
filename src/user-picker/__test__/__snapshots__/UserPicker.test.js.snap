@@ -54,14 +54,8 @@ exports[`UserPicker render all segments 1`] = `
                     <defs>
                       <style />
                     </defs>
-                    <g
-                      data-name="\\\\u56FE\\\\u5C42 2"
-                      id="search-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                    >
-                      <g
-                        data-name="\\\\u56FE\\\\u5C42 1"
-                        id="search-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                      >
+                    <g>
+                      <g>
                         <path
                           d="M6 1a5 5 0 11-5 5 5 5 0 015-5zm4.48 10.19a1 1 0 00-1.28-.13A5.83 5.83 0 016 12a6 6 0 115.07-2.79 1 1 0 00.13 1.26c.93 1 2.65 2.68 2.65 2.68a.49.49 0 01-.7.7z"
                           fill="currentColor"
@@ -93,14 +87,8 @@ exports[`UserPicker render all segments 1`] = `
                 <defs>
                   <style />
                 </defs>
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 2"
-                  id="plus-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                >
-                  <g
-                    data-name="\\\\u56FE\\\\u5C42 1"
-                    id="plus-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                  >
+                <g>
+                  <g>
                     <path
                       d="M6 6.51A.54.54 0 006.51 6V.49a.49.49 0 011 0V6a.54.54 0 00.49.51h5.48a.49.49 0 010 1H8a.54.54 0 00-.51.49v5.48a.49.49 0 01-1 0V8A.54.54 0 006 7.49H.49a.49.49 0 010-1z"
                       fill="currentColor"
@@ -158,6 +146,7 @@ exports[`UserPicker render all segments 1`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -194,6 +183,7 @@ exports[`UserPicker render all segments 1`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -230,6 +220,7 @@ exports[`UserPicker render all segments 1`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -307,6 +298,7 @@ exports[`UserPicker render all segments 1`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -384,6 +376,7 @@ exports[`UserPicker render all segments 1`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -461,6 +454,7 @@ exports[`UserPicker render all segments 1`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -538,6 +532,7 @@ exports[`UserPicker render all segments 1`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -651,14 +646,8 @@ exports[`UserPicker render my segements 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs />
-          <g
-            data-name="\\\\u56FE\\\\u5C42 2"
-            id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-          >
-            <g
-              data-name="\\\\u56FE\\\\u5C42 1"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-            >
+          <g>
+            <g>
               <path
                 d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                 fill="currentColor"
@@ -728,14 +717,8 @@ exports[`UserPicker render my segements 2`] = `
                     <defs>
                       <style />
                     </defs>
-                    <g
-                      data-name="\\\\u56FE\\\\u5C42 2"
-                      id="search-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                    >
-                      <g
-                        data-name="\\\\u56FE\\\\u5C42 1"
-                        id="search-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                      >
+                    <g>
+                      <g>
                         <path
                           d="M6 1a5 5 0 11-5 5 5 5 0 015-5zm4.48 10.19a1 1 0 00-1.28-.13A5.83 5.83 0 016 12a6 6 0 115.07-2.79 1 1 0 00.13 1.26c.93 1 2.65 2.68 2.65 2.68a.49.49 0 01-.7.7z"
                           fill="currentColor"
@@ -767,14 +750,8 @@ exports[`UserPicker render my segements 2`] = `
                 <defs>
                   <style />
                 </defs>
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 2"
-                  id="plus-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                >
-                  <g
-                    data-name="\\\\u56FE\\\\u5C42 1"
-                    id="plus-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                  >
+                <g>
+                  <g>
                     <path
                       d="M6 6.51A.54.54 0 006.51 6V.49a.49.49 0 011 0V6a.54.54 0 00.49.51h5.48a.49.49 0 010 1H8a.54.54 0 00-.51.49v5.48a.49.49 0 01-1 0V8A.54.54 0 006 7.49H.49a.49.49 0 010-1z"
                       fill="currentColor"
@@ -837,6 +814,7 @@ exports[`UserPicker render my segements 2`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -873,6 +851,7 @@ exports[`UserPicker render my segements 2`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -918,6 +897,7 @@ exports[`UserPicker render my segements 2`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div
@@ -995,6 +975,7 @@ exports[`UserPicker render my segements 2`] = `
                   aria-expanded="false"
                   class="cascader-menu-item"
                   data-checked="false"
+                  data-child-checked="false"
                   role="menuitem"
                 >
                   <div

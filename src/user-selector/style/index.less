@@ -1,0 +1,30 @@
+@import '../../stylesheets/index.less';
+
+@segment-card-prefix-cls: ~'@{component-prefix}-segment-card';
+
+.@{segment-card-prefix-cls} {
+  width: 320px;
+
+  &__chart {
+    width: 288px;
+    height: 140px;
+    background: @palette-white;
+    border: 1px solid @palette-gray-4;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  &__footer {
+    height: 20px;
+    font-family: @font-family-primary;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    color: @palette-black-6;
+
+    &__icon {
+      margin-right: 8px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import Menu, { MenuItem } from '@gio-design/components/es/components/menu';
-import { Tooltip } from '@gio-design/components';
+import Tooltip from '@gio-design/components/es/components/tooltip';
 import { OperationMenuListOption, OperationMenuListProps } from './interfaces';
 
 const OperationMenuList = (props: OperationMenuListProps) => {
@@ -11,15 +11,13 @@ const OperationMenuList = (props: OperationMenuListProps) => {
       <Menu mode="vertical" onClick={(e: any) => props.onClick?.(e)}>
         {options
           .filter((option: OperationMenuListOption) => !option.hidden)
-          .map((option: OperationMenuListOption) => {
-            return (
-              <MenuItem icon={option.icon} key={option.value} disabled={option.disabled}>
-                <Tooltip title={option.disabled ? option.tooltip : ''} placement="leftTop">
-                  <>{option.label}</>
-                </Tooltip>
-              </MenuItem>
-            );
-          })}
+          .map((option: OperationMenuListOption) => (
+            <MenuItem icon={option.icon} key={option.value} disabled={option.disabled}>
+              <Tooltip title={option.disabled ? option.tooltip : ''} placement="leftTop">
+                <>{option.label}</>
+              </Tooltip>
+            </MenuItem>
+          ))}
       </Menu>
     </div>
   );
