@@ -14,7 +14,36 @@ import BasePicker from '../base-picker';
 import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue } from './interfaces';
 import List from '../list';
 import EmptyPrompt from '../empty-prompt';
-import { ListItemProps, ListItemSubgroupProps } from '../list/interfaces';
+import { ListItemProps } from '../list/interfaces';
+import { renderExpandableItems } from '../list/utils';
+
+const ExpandableGroupOrSubGroup = (props: {
+  title?: string;
+  type: 'group' | 'subgroup';
+  items: ListItemProps[];
+  key?: string;
+}) => {
+  const { items = [], type = 'subgroup', title, key } = props;
+  const [expanded, setExpand] = useState(false);
+  const onExpand = () => {
+    setExpand(true);
+  };
+  const content = renderExpandableItems(expanded, items, onExpand);
+  return (
+    <>
+      {type === 'group' && (
+        <List.ItemGroup key={key} title={title}>
+          {content}
+        </List.ItemGroup>
+      )}
+      {type === 'subgroup' && (
+        <List.ItemSubgroup key={key} title={title}>
+          {content}
+        </List.ItemSubgroup>
+      )}
+    </>
+  );
+};
 
 const pinyinMatch = pinyin.default;
 const Tabs = toPairs(PropertyTypes).map((v) => ({ key: v[0], children: v[1] }));
@@ -176,49 +205,54 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     onClick?.(e);
   };
   const [recentlyPropertyItems, propertyItems] = dataSource;
-  const groupDatasource = useMemo(() => groupBy(propertyItems, (o) => o.type), [propertyItems]);
+  const groupDatasource = useMemo(() => groupBy([...recentlyPropertyItems, ...propertyItems], (o) => o.type), [
+    propertyItems,
+  ]);
+  function labelRender(item: PropertyItem) {
+    return item.label as React.ReactChild;
+  }
+  function getListItems(items: PropertyItem[]) {
+    const listItems = items.map((data: PropertyItem) => {
+      const select =
+        !isEmpty(currentValue) &&
+        isEqualWith(currentValue, data, (a, b) => a?.value === b?.value) &&
+        data.groupId !== 'recently';
+      const itemProp: ListItemProps = {
+        disabled: data.disabled,
+        ellipsis: true,
+        key: [data.type, data.groupId, data.value].join(''),
+        className: classNames({ selected: select }),
+        children: labelRender(data),
+        onClick: (e) => handleItemClick(e, data),
+      };
+      // return <List.Item {...itemProp} />;
+      return itemProp;
+    });
+    return listItems;
+  }
+  function subGroupRender(groupData: Dictionary<PropertyItem[]>) {
+    const dom = keys(groupData).map((gkey) => {
+      const { groupName, type } = groupData[gkey][0];
+      const listItems = getListItems(groupData[gkey]);
+      // const subgroupProps: ListItemSubgroupProps = {
+      //   key: [type, gkey].join('￥'),
+      //   title: groupName || gkey,
+      //   expandable: true,
+      //   // items: listItems,
+      // };
+      return (
+        <ExpandableGroupOrSubGroup key={[type, gkey].join('￥')} title={groupName} type="subgroup" items={listItems} />
+      );
+      // return <List.ItemSubgroup {...subgroupProps}>{listItems}</List.ItemSubgroup>;
+    });
+    return dom as React.ReactNode;
+  }
   const renderItems = () => {
     if (propertyItems?.length === 0) {
       return <EmptyPrompt {...rest.emptyPrompt} />;
     }
-    function labelRender(item: PropertyItem) {
-      return item.label as React.ReactChild;
-    }
-    function getListItems(items: PropertyItem[]) {
-      const listItems = items.map((data: PropertyItem) => {
-        const select =
-          !isEmpty(currentValue) &&
-          isEqualWith(currentValue, data, (a, b) => a?.value === b?.value) &&
-          data.groupId !== 'recently';
-        const itemProp: ListItemProps = {
-          disabled: data.disabled,
-          ellipsis: true,
-          key: [data.type, data.groupId, data.value].join(''),
-          className: classNames({ selected: select }),
-          children: labelRender(data),
-          onClick: (e) => handleItemClick(e, data),
-        };
-        return <List.Item {...itemProp} />;
-        // return itemProp;
-      });
-      return listItems;
-    }
-    function subGroupRender(groupData: Dictionary<PropertyItem[]>) {
-      const dom = keys(groupData).map((gkey) => {
-        const { groupName, type } = groupData[gkey][0];
-        const listItems = getListItems(groupData[gkey]);
-        const subgroupProps: ListItemSubgroupProps = {
-          key: [type, gkey].join('￥'),
-          title: groupName || gkey,
-          expandable: true,
-          // items: listItems,
-        };
-        return <List.ItemSubgroup {...subgroupProps}>{listItems}</List.ItemSubgroup>;
-      });
-      return dom as React.ReactNode;
-    }
 
-    const childrens = keys(groupDatasource).map((key) => {
+    const childrens = keys(groupDatasource).map((key, index) => {
       const groupData = groupDatasource[key];
       const subGroupDic = groupBy(groupData, (o) => o.groupId);
       const { typeName } = groupData[0];
@@ -226,36 +260,22 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         const items = getListItems(subGroupDic[keys(subGroupDic)[0]]);
         return (
           <>
-            <List.Divider />
-            <List.ItemGroup key={key} title={typeName} expandable>
-              {items}
-            </List.ItemGroup>
+            {index > 0 && <List.Divider />}
+            <ExpandableGroupOrSubGroup title={typeName} type="group" items={items} />
           </>
         );
       }
       return (
         <>
-          <List.Divider />
+          {index > 0 && <List.Divider />}
           <List.ItemGroup key={key} title={typeName} expandable={false}>
             {subGroupRender(subGroupDic)}
           </List.ItemGroup>
         </>
       );
     });
-    const renderRecentItems = () => {
-      if (!recentlyPropertyItems || recentlyPropertyItems.length === 0) {
-        return <></>;
-      }
-      const { type, typeName } = recentlyPropertyItems[0];
-      return (
-        <>
-          <List.ItemGroup key={type} title={typeName}>
-            {getListItems(recentlyPropertyItems)}
-          </List.ItemGroup>
-        </>
-      );
-    };
-    return [renderRecentItems(), ...childrens] as React.ReactNode;
+
+    return childrens as React.ReactNode;
   };
   const clsPrifx = usePrefixCls('property-picker');
   const cls = classNames(clsPrifx, rest?.className);
