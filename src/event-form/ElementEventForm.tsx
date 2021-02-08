@@ -266,14 +266,18 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           }}
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
-            setLoading(true);
-            // const { definition } = conversionSubmitValue(values);
-            // const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
-            // if (repeatRuleTag) {
-            //   return;
-            // }
-            await restProps.onFinish(conversionSubmitValue(values));
-            setLoading(false);
+            try {
+              setLoading(true);
+              // const { definition } = conversionSubmitValue(values);
+              // const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
+              // if (repeatRuleTag) {
+              //   return;
+              // }
+              const submitValues = conversionSubmitValue(values);
+              await restProps.onFinish(submitValues);
+            } finally {
+              setLoading(false);
+            }
           }}
           contentRender={(items) => (
             <>

@@ -93,7 +93,6 @@ class ValidatorHelper {
       if (!patten && !query) return true;
       return matchQuery(patten || '', query || '', accurate);
     };
-
     return this.definedTags.find((tag: TagElement) => {
       const tagDefinition = tag.definition;
       return (

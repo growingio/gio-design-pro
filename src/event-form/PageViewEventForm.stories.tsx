@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, Form } from '@gio-design/components';
 import PageViewEventForm from './PageViewEventForm';
 import { PageViewEventFormProps, PageViewFormValues } from './interfaces';
-import { spaceTags, deviceInfoMinp, currentPageMinp } from './__test__/data';
+import { spaceTags, deviceInfoMinp, currentPageMinp, deviceInfoApp } from './__test__/data.js';
 import './eventform-style.less';
 import { AppType, DeviceInfo } from './types';
 import { TagElement } from './TagElement';
@@ -26,7 +26,7 @@ function getInitialTagElement() {
     actions: ['page'],
     attrs: {
       domain: currentPageInfo.domain,
-      path: '', // currentPageInfo.path,
+      path: currentPageInfo.path,
       query: currentPageInfo.query,
       urlScheme,
     },
@@ -42,7 +42,7 @@ function getInitialTagElement() {
 }
 function getFormValues() {
   //
-  const deviceInfo: DeviceInfo = deviceInfoMinp as DeviceInfo;
+  const deviceInfo: DeviceInfo = deviceInfoApp as DeviceInfo;
   const element = getInitialTagElement();
   const { attrs } = element;
   // const isNative = currentPageInfo.appType === AppType.NATIVE;
@@ -106,11 +106,11 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         definedTags={(spaceTags as unknown) as TagElement[]}
         onValuesChange={handleValuesChange}
         // initialTagElement={element}
-        platform="minp"
+        platform="android"
         onPre={() => console.warn('pre')}
         showPreButton={false}
         submitter={{ resetText: '取消' }}
-        appType={AppType.MINP}
+        appType={AppType.NATIVE}
         initialValues={formValue}
         onFinish={handleFinish}
         dataChart={dataChart()}

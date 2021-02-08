@@ -342,16 +342,19 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           }}
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
-            setLoading(true);
-            // validatorRef.current?.
-            const submitValues = conversionSubmitValue(values);
+
             // const { definition } = submitValues;
             // const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition as DocProps);
             // if (repeatRuleTag) {
             //   return;
             // }
-            await restProps.onFinish(submitValues);
-            setLoading(false);
+            try {
+              setLoading(true);
+              const submitValues = conversionSubmitValue(values);
+              await restProps.onFinish(submitValues);
+            } finally {
+              setLoading(false);
+            }
           }}
           onFieldsChange={handleFiledsChange}
           contentRender={(items) => (
