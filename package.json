@@ -45,7 +45,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@graphql-codegen/cli": "1.20.1",
-    "@graphql-codegen/typescript": "1.20.0",
+    "@graphql-codegen/typescript": "1.20.2",
     "@storybook/addon-a11y": "^6.1.15",
     "@storybook/addon-actions": "^6.1.15",
     "@storybook/addon-essentials": "^6.1.15",
