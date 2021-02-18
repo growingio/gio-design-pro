@@ -13,7 +13,7 @@ import { Dimension } from '../types';
 // const AllVariablesTable = _.flatten(_.values(allVariables));
 const dataSource = insightDimensions.map((v: any) => dimensionToPropertyItem(v as Dimension));
 export default {
-  title: 'Business Components/PropertyPicker',
+  title: 'Business Components/PropertySelector/PropertyPicker',
   component: PropertyPicker,
 } as Meta;
 

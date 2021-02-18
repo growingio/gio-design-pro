@@ -1,8 +1,10 @@
 @import '../../stylesheets/index.less';
 @import '../../list/style/index.less';
+@import '../../selector/style/index.less';
 // @import '~@gio-design/components/es/components/tag/style/index.less';
 // @import '@gio-design/components/es/components/tooltip/style/index.css';
 @property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
+@property-selector-prefix-cls: ~'@{component-prefix}-property-selector';
 .@{property-picker-prefix-cls} {
   width: auto;
   .gio-tabnav {
@@ -15,6 +17,24 @@
       color: @palette-blue-5;
       background-color: @palette-gray-1;
     }
+  }
+}
+.@{property-selector-prefix-cls} {
+  &.@{selector-prefix-cls} {
+    max-width: 100%;
+    width: fit-content;
+  }
+
+  &-dropdown {
+    width: 366px;
+  }
+  .inner-input-wrap {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: inherit;
+    max-width: 100%;
   }
 }
 .@{property-picker-prefix-cls}-detail {
