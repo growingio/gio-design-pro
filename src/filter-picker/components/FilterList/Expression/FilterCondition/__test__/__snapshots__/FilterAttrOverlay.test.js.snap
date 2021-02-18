@@ -11,63 +11,63 @@ exports[`<FilterAttrOverlay /> date type when op is "!=" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              有值
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                有值
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -111,63 +111,63 @@ exports[`<FilterAttrOverlay /> date type when op is "<" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              在某天之前
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                在某天之前
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -183,7 +183,7 @@ exports[`<FilterAttrOverlay /> date type when op is "<" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/26"
+          value="2021/02/08"
         />
       </div>
       <div
@@ -206,14 +206,8 @@ exports[`<FilterAttrOverlay /> date type when op is "<" 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs />
-          <g
-            data-name="\\\\u56FE\\\\u5C42 2"
-            id="check-outlined_svg__\\\\u56FE\\\\u5C42_2"
-          >
-            <g
-              data-name="\\\\u56FE\\\\u5C42 1"
-              id="check-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-            >
+          <g>
+            <g>
               <path
                 d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
                 fill="currentColor"
@@ -278,63 +272,63 @@ exports[`<FilterAttrOverlay /> date type when op is "<=" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              在某天之前
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                在某天之前
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -350,7 +344,7 @@ exports[`<FilterAttrOverlay /> date type when op is "<=" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/26"
+          value="2021/02/08"
         />
       </div>
       <div
@@ -373,14 +367,8 @@ exports[`<FilterAttrOverlay /> date type when op is "<=" 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs />
-          <g
-            data-name="\\\\u56FE\\\\u5C42 2"
-            id="check-outlined_svg__\\\\u56FE\\\\u5C42_2"
-          >
-            <g
-              data-name="\\\\u56FE\\\\u5C42 1"
-              id="check-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-            >
+          <g>
+            <g>
               <path
                 d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
                 fill="currentColor"
@@ -446,63 +434,63 @@ exports[`<FilterAttrOverlay /> date type when op is "=" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              等于
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                等于
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -518,7 +506,7 @@ exports[`<FilterAttrOverlay /> date type when op is "=" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/26"
+          value="2021/02/08"
         />
       </div>
       <div
@@ -563,63 +551,63 @@ exports[`<FilterAttrOverlay /> date type when op is ">" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              在某天之后
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                在某天之后
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -635,7 +623,7 @@ exports[`<FilterAttrOverlay /> date type when op is ">" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/26"
+          value="2021/02/08"
         />
       </div>
       <div
@@ -658,14 +646,8 @@ exports[`<FilterAttrOverlay /> date type when op is ">" 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs />
-          <g
-            data-name="\\\\u56FE\\\\u5C42 2"
-            id="check-outlined_svg__\\\\u56FE\\\\u5C42_2"
-          >
-            <g
-              data-name="\\\\u56FE\\\\u5C42 1"
-              id="check-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-            >
+          <g>
+            <g>
               <path
                 d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
                 fill="currentColor"
@@ -730,63 +712,63 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              在某天之后
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                在某天之后
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -802,7 +784,7 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
           class="gio-input__content"
           placeholder="请输入…"
           type="text"
-          value="2021/01/26"
+          value="2021/02/08"
         />
       </div>
       <div
@@ -825,14 +807,8 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs />
-          <g
-            data-name="\\\\u56FE\\\\u5C42 2"
-            id="check-outlined_svg__\\\\u56FE\\\\u5C42_2"
-          >
-            <g
-              data-name="\\\\u56FE\\\\u5C42 1"
-              id="check-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-            >
+          <g>
+            <g>
               <path
                 d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
                 fill="currentColor"
@@ -898,63 +874,63 @@ exports[`<FilterAttrOverlay /> date type when op is "hasValue" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              有值
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                有值
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -998,63 +974,63 @@ exports[`<FilterAttrOverlay /> date type when op is "noValue" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              无值
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                无值
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -1098,70 +1074,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
-    >
-      <div
-        class="gio-select-selector"
-      >
-        <div
-          class="gio-select-values-wrapper"
-        >
-          <div
-            class="gio-select-item"
-          >
-            <span
-              class="gio-select-item-text"
-            >
-              相对现在
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
-        >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-            >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
-              </g>
-            </g>
-          </svg>
-        </span>
-      </div>
-    </div>
-    <div
-      class="filter-attr_dividingLine"
-    />
-    <div
-      style="display: flex; align-items: center; flex-wrap: wrap;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
         aria-controls="expandable"
@@ -1169,7 +1083,7 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
         aria-expanded="false"
         class="gio-select gio-select-middle gio-select-single gio-select-bordered"
         role="combobox"
-        style="margin-right: 4px; cursor: pointer;"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
           class="gio-select-selector"
@@ -1183,16 +1097,17 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                过去
+                相对现在
               </span>
             </div>
           </div>
         </div>
         <div
+          aria-hidden="true"
           class="gio-select-arrow"
         >
           <span
-            class="gio-icon"
+            class="gio-icon gio-select-icon-arrow"
           >
             <svg
               class="gio-icon-svg"
@@ -1203,14 +1118,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs />
-              <g
-                data-name="\\\\u56FE\\\\u5C42 2"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-              >
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 1"
-                  id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                >
+              <g>
+                <g>
                   <path
                     d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                     fill="currentColor"
@@ -1223,9 +1132,76 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
           </span>
         </div>
       </div>
+    </div>
+    <div
+      class="filter-attr_dividingLine"
+    />
+    <div
+      style="display: flex; align-items: center; flex-wrap: wrap;"
+    >
+      <div
+        class="gio-select-trigger"
+        style="cursor: pointer;"
+      >
+        <div
+          aria-controls="expandable"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+          role="combobox"
+          style="margin-right: 4px; width: 90px;"
+        >
+          <div
+            class="gio-select-selector"
+          >
+            <div
+              class="gio-select-values-wrapper"
+            >
+              <div
+                class="gio-select-item"
+              >
+                <span
+                  class="gio-select-item-text"
+                >
+                  过去
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            class="gio-select-arrow"
+          >
+            <span
+              class="gio-icon gio-select-icon-arrow"
+            >
+              <svg
+                class="gio-icon-svg"
+                fill="currentColor"
+                height="16px"
+                viewBox="0 0 14 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs />
+                <g>
+                  <g>
+                    <path
+                      d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      id="down-filled_svg__down-2"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
       <div
         class="gio-input gio-input--middle gio-input__container"
-        style="width: 90px; margin: 0px 4px;"
+        style="width: 80px; margin: 0px 4px;"
       >
         <input
           class="gio-input__content gio-input__content-suffix"
@@ -1251,14 +1227,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs />
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 2"
-                  id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-                >
-                  <g
-                    data-name="\\\\u56FE\\\\u5C42 1"
-                    id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                  >
+                <g>
+                  <g>
                     <path
                       d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                       fill="currentColor"
@@ -1281,14 +1251,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs />
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 2"
-                  id="up-filled_svg__\\\\u56FE\\\\u5C42_2"
-                >
-                  <g
-                    data-name="\\\\u56FE\\\\u5C42 1"
-                    id="up-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                  >
+                <g>
+                  <g>
                     <path
                       d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
                       fill="currentColor"
@@ -1308,63 +1272,63 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
         天
       </div>
       <div
-        aria-controls="expandable"
-        aria-disabled="false"
-        aria-expanded="false"
-        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-        role="combobox"
-        style="margin: 4px; cursor: pointer;"
+        class="gio-select-trigger"
+        style="cursor: pointer;"
       >
         <div
-          class="gio-select-selector"
+          aria-controls="expandable"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+          role="combobox"
+          style="margin-left: 4px; width: 85px;"
         >
           <div
-            class="gio-select-values-wrapper"
+            class="gio-select-selector"
           >
             <div
-              class="gio-select-item"
+              class="gio-select-values-wrapper"
             >
-              <span
-                class="gio-select-item-text"
+              <div
+                class="gio-select-item"
               >
-                之内
-              </span>
+                <span
+                  class="gio-select-item-text"
+                >
+                  之内
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          class="gio-select-arrow"
-        >
-          <span
-            class="gio-icon"
+          <div
+            aria-hidden="true"
+            class="gio-select-arrow"
           >
-            <svg
-              class="gio-icon-svg"
-              fill="currentColor"
-              height="16px"
-              viewBox="0 0 14 14"
-              width="16px"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              class="gio-icon gio-select-icon-arrow"
             >
-              <defs />
-              <g
-                data-name="\\\\u56FE\\\\u5C42 2"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+              <svg
+                class="gio-icon-svg"
+                fill="currentColor"
+                height="16px"
+                viewBox="0 0 14 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 1"
-                  id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                >
-                  <path
-                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                    id="down-filled_svg__down-2"
-                  />
+                <defs />
+                <g>
+                  <g>
+                    <path
+                      d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      id="down-filled_svg__down-2"
+                    />
+                  </g>
                 </g>
-              </g>
-            </svg>
-          </span>
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -1406,70 +1370,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
       日期类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
-    >
-      <div
-        class="gio-select-selector"
-      >
-        <div
-          class="gio-select-values-wrapper"
-        >
-          <div
-            class="gio-select-item"
-          >
-            <span
-              class="gio-select-item-text"
-            >
-              相对区间
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
-        >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-            >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
-              </g>
-            </g>
-          </svg>
-        </span>
-      </div>
-    </div>
-    <div
-      class="filter-attr_dividingLine"
-    />
-    <div
-      style="display: flex; align-items: center; flex-wrap: wrap;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
         aria-controls="expandable"
@@ -1477,7 +1379,7 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
         aria-expanded="false"
         class="gio-select gio-select-middle gio-select-single gio-select-bordered"
         role="combobox"
-        style="margin-right: 4px; cursor: pointer;"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
           class="gio-select-selector"
@@ -1491,16 +1393,17 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
               <span
                 class="gio-select-item-text"
               >
-                未来
+                相对区间
               </span>
             </div>
           </div>
         </div>
         <div
+          aria-hidden="true"
           class="gio-select-arrow"
         >
           <span
-            class="gio-icon"
+            class="gio-icon gio-select-icon-arrow"
           >
             <svg
               class="gio-icon-svg"
@@ -1511,14 +1414,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs />
-              <g
-                data-name="\\\\u56FE\\\\u5C42 2"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-              >
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 1"
-                  id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                >
+              <g>
+                <g>
                   <path
                     d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                     fill="currentColor"
@@ -1529,6 +1426,73 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
               </g>
             </svg>
           </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="filter-attr_dividingLine"
+    />
+    <div
+      style="display: flex; align-items: center; flex-wrap: wrap;"
+    >
+      <div
+        class="gio-select-trigger"
+        style="cursor: pointer;"
+      >
+        <div
+          aria-controls="expandable"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+          role="combobox"
+          style="margin-right: 4px; width: 90px;"
+        >
+          <div
+            class="gio-select-selector"
+          >
+            <div
+              class="gio-select-values-wrapper"
+            >
+              <div
+                class="gio-select-item"
+              >
+                <span
+                  class="gio-select-item-text"
+                >
+                  未来
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            class="gio-select-arrow"
+          >
+            <span
+              class="gio-icon gio-select-icon-arrow"
+            >
+              <svg
+                class="gio-icon-svg"
+                fill="currentColor"
+                height="16px"
+                viewBox="0 0 14 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs />
+                <g>
+                  <g>
+                    <path
+                      d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      id="down-filled_svg__down-2"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -1559,14 +1523,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs />
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 2"
-                  id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-                >
-                  <g
-                    data-name="\\\\u56FE\\\\u5C42 1"
-                    id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                  >
+                <g>
+                  <g>
                     <path
                       d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                       fill="currentColor"
@@ -1589,14 +1547,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs />
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 2"
-                  id="up-filled_svg__\\\\u56FE\\\\u5C42_2"
-                >
-                  <g
-                    data-name="\\\\u56FE\\\\u5C42 1"
-                    id="up-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                  >
+                <g>
+                  <g>
                     <path
                       d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
                       fill="currentColor"
@@ -1647,14 +1599,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs />
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 2"
-                  id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-                >
-                  <g
-                    data-name="\\\\u56FE\\\\u5C42 1"
-                    id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                  >
+                <g>
+                  <g>
                     <path
                       d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                       fill="currentColor"
@@ -1677,14 +1623,8 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs />
-                <g
-                  data-name="\\\\u56FE\\\\u5C42 2"
-                  id="up-filled_svg__\\\\u56FE\\\\u5C42_2"
-                >
-                  <g
-                    data-name="\\\\u56FE\\\\u5C42 1"
-                    id="up-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                  >
+                <g>
+                  <g>
                     <path
                       d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
                       fill="currentColor"
@@ -1742,63 +1682,63 @@ exports[`<FilterAttrOverlay /> not defined type 1`] = `
       字符串类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              not
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                not
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -1843,63 +1783,63 @@ exports[`<FilterAttrOverlay /> number type render 1`] = `
       数值类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              无值
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                无值
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -1943,63 +1883,63 @@ exports[`<FilterAttrOverlay /> string type render 1`] = `
       字符串类型
     </div>
     <div
-      aria-controls="expandable"
-      aria-disabled="false"
-      aria-expanded="false"
-      class="gio-select gio-select-middle gio-select-single gio-select-bordered"
-      role="combobox"
-      style="width: 100%; margin-top: 16px; cursor: pointer;"
+      class="gio-select-trigger"
+      style="cursor: pointer;"
     >
       <div
-        class="gio-select-selector"
+        aria-controls="expandable"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+        role="combobox"
+        style="width: 100%; margin-top: 16px;"
       >
         <div
-          class="gio-select-values-wrapper"
+          class="gio-select-selector"
         >
           <div
-            class="gio-select-item"
+            class="gio-select-values-wrapper"
           >
-            <span
-              class="gio-select-item-text"
+            <div
+              class="gio-select-item"
             >
-              等于
-            </span>
+              <span
+                class="gio-select-item-text"
+              >
+                等于
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="gio-select-arrow"
-      >
-        <span
-          class="gio-icon"
+        <div
+          aria-hidden="true"
+          class="gio-select-arrow"
         >
-          <svg
-            class="gio-icon-svg"
-            fill="currentColor"
-            height="16px"
-            viewBox="0 0 14 14"
-            width="16px"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="gio-icon gio-select-icon-arrow"
           >
-            <defs />
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
+            <svg
+              class="gio-icon-svg"
+              fill="currentColor"
+              height="16px"
+              viewBox="0 0 14 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
-                <path
-                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  id="down-filled_svg__down-2"
-                />
+              <defs />
+              <g>
+                <g>
+                  <path
+                    d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    id="down-filled_svg__down-2"
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </span>
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
     <div

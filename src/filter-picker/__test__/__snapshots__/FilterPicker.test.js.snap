@@ -648,6 +648,7 @@ exports[`FilterPicker onConfirm 1`] = `
         >
           <Button
             block={false}
+            className="dropdown-active"
             ghost={false}
             htmlType="button"
             icon={<SvgFilterOutlined />}
@@ -662,10 +663,10 @@ exports[`FilterPicker onConfirm 1`] = `
                 "cursor": "pointer",
               }
             }
-            type="assist"
+            type="secondary"
           >
             <button
-              className="gio-btn gio-btn-assist gio-btn-small gio-btn-icon-only"
+              className="gio-btn dropdown-active gio-btn-secondary gio-btn-small gio-btn-icon-only"
               onClick={[Function]}
               onMouseDown={[Function]}
               onTouchStart={[Function]}
@@ -695,14 +696,8 @@ exports[`FilterPicker onConfirm 1`] = `
                       <defs>
                         <style />
                       </defs>
-                      <g
-                        data-name="\\\\u56FE\\\\u5C42 2"
-                        id="filter-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                      >
-                        <g
-                          data-name="\\\\u56FE\\\\u5C42 1"
-                          id="filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                        >
+                      <g>
+                        <g>
                           <path
                             d="M6 6.46L5.56 6zM7.5 13a.51.51 0 00.5-.5V6.86a1 1 0 01.28-.69l4.16-4.32a.55.55 0 00.1-.55.51.51 0 00-.46-.3H1.92a.51.51 0 00-.46.3.53.53 0 00.1.55l4 4.15.16.17a1 1 0 01.28.69v5.64a.51.51 0 00.5.5zM9 13a1 1 0 01-1 1H6a1 1 0 01-1-1V7.28a1 1 0 00-.27-.69L.89 2.53A1.5 1.5 0 012 0h10a1.5 1.5 0 011.09 2.53L9.27 6.59a1 1 0 00-.27.69z"
                             fill="currentColor"
@@ -733,14 +728,8 @@ exports[`FilterPicker onConfirm 1`] = `
                       <defs>
                         <style />
                       </defs>
-                      <g
-                        data-name="\\\\u56FE\\\\u5C42 2"
-                        id="filter-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                      >
-                        <g
-                          data-name="\\\\u56FE\\\\u5C42 1"
-                          id="filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                        >
+                      <g>
+                        <g>
                           <path
                             d="M6 6.46L5.56 6zM7.5 13a.51.51 0 00.5-.5V6.86a1 1 0 01.28-.69l4.16-4.32a.55.55 0 00.1-.55.51.51 0 00-.46-.3H1.92a.51.51 0 00-.46.3.53.53 0 00.1.55l4 4.15.16.17a1 1 0 01.28.69v5.64a.51.51 0 00.5.5zM9 13a1 1 0 01-1 1H6a1 1 0 01-1-1V7.28a1 1 0 00-.27-.69L.89 2.53A1.5 1.5 0 012 0h10a1.5 1.5 0 011.09 2.53L9.27 6.59a1 1 0 00-.27.69z"
                             fill="currentColor"
@@ -808,7 +797,7 @@ exports[`FilterPicker onConfirm 1`] = `
                                     1
                                   </div>
                                   <div
-                                    class="gio-picker-trigger"
+                                    class="dropdown-active gio-picker-trigger"
                                     style="cursor: pointer;"
                                   >
                                     <div
@@ -843,14 +832,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                             <defs>
                                               <style />
                                             </defs>
-                                            <g
-                                              data-name="\\\\u56FE\\\\u5C42 2"
-                                              id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-                                            >
-                                              <g
-                                                data-name="\\\\u56FE\\\\u5C42 1"
-                                                id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                                              >
+                                            <g>
+                                              <g>
                                                 <path
                                                   d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                                                   fill="currentColor"
@@ -883,14 +866,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                       <defs>
                                         <style />
                                       </defs>
-                                      <g
-                                        data-name="\\\\u56FE\\\\u5C42 2"
-                                        id="delete-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                                      >
-                                        <g
-                                          data-name="\\\\u56FE\\\\u5C42 1"
-                                          id="delete-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                                        >
+                                      <g>
+                                        <g>
                                           <path
                                             d="M9 1.2a.2.2 0 00-.2-.2H5.2a.2.2 0 00-.2.2v.6a.2.2 0 00.2.2h3.6a.2.2 0 00.2-.2zm1 9.3a.5.5 0 01-1 0v-5a.5.5 0 011 0zm-5 0a.5.5 0 01-.85.35.47.47 0 01-.15-.35v-5a.5.5 0 01.85-.35.47.47 0 01.15.35zm2.5 0a.5.5 0 01-1 0v-5a.5.5 0 011 0zm4-7A.5.5 0 0011 3H3a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h8a.5.5 0 00.5-.5zm-1.5-2a.47.47 0 00.15.35.47.47 0 00.35.15H13a.5.5 0 010 1h-.34a.17.17 0 00-.16.16V13a1 1 0 01-1 1h-9a1 1 0 01-1-1V3.16A.17.17 0 001.34 3H1a.5.5 0 010-1h2.5a.47.47 0 00.35-.15A.47.47 0 004 1.5V1a1 1 0 01.29-.71A1 1 0 015 0h4a1 1 0 01.71.29A1 1 0 0110 1z"
                                             fill="currentColor"
@@ -923,14 +900,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                   <defs>
                                     <style />
                                   </defs>
-                                  <g
-                                    data-name="\\\\u56FE\\\\u5C42 2"
-                                    id="plus-circle-filled_svg__\\\\u56FE\\\\u5C42_2"
-                                  >
-                                    <g
-                                      data-name="\\\\u56FE\\\\u5C42 1"
-                                      id="plus-circle-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                                    >
+                                  <g>
+                                    <g>
                                       <path
                                         d="M7.7 6.5a.2.2 0 01-.2-.2V3.5A.51.51 0 007 3a.51.51 0 00-.5.5v2.8a.2.2 0 01-.2.2H3.5A.51.51 0 003 7a.51.51 0 00.5.5h2.8a.2.2 0 01.2.2v2.8a.51.51 0 00.5.5.51.51 0 00.5-.5V7.7a.2.2 0 01.2-.2h2.8A.51.51 0 0011 7a.51.51 0 00-.5-.5zM7 0a7 7 0 11-7 7 7 7 0 017-7z"
                                         fill="currentColor"
@@ -1273,6 +1244,7 @@ exports[`FilterPicker onConfirm 1`] = `
                                                   1
                                                 </div>
                                                 <PropertyPicker
+                                                  data-testid="propertySelect"
                                                   dataSource={
                                                     Array [
                                                       Object {
@@ -1296,6 +1268,7 @@ exports[`FilterPicker onConfirm 1`] = `
                                                   placeholder="选择属性"
                                                 >
                                                   <Picker
+                                                    data-testid="propertySelect"
                                                     dataSource={
                                                       Array [
                                                         Object {
@@ -2072,7 +2045,7 @@ exports[`FilterPicker onConfirm 1`] = `
                                                             visible={true}
                                                           >
                                                             <div
-                                                              className="gio-picker-trigger"
+                                                              className="dropdown-active gio-picker-trigger"
                                                               key="trigger"
                                                               onClick={[Function]}
                                                               onMouseDown={[Function]}
@@ -2649,14 +2622,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                           <defs>
                                                                             <style />
                                                                           </defs>
-                                                                          <g
-                                                                            data-name="\\\\u56FE\\\\u5C42 2"
-                                                                            id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-                                                                          >
-                                                                            <g
-                                                                              data-name="\\\\u56FE\\\\u5C42 1"
-                                                                              id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                                            >
+                                                                          <g>
+                                                                            <g>
                                                                               <path
                                                                                 d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                                                                                 fill="currentColor"
@@ -2687,14 +2654,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                           <defs>
                                                                             <style />
                                                                           </defs>
-                                                                          <g
-                                                                            data-name="\\\\u56FE\\\\u5C42 2"
-                                                                            id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-                                                                          >
-                                                                            <g
-                                                                              data-name="\\\\u56FE\\\\u5C42 1"
-                                                                              id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                                            >
+                                                                          <g>
+                                                                            <g>
                                                                               <path
                                                                                 d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
                                                                                 fill="currentColor"
@@ -2774,14 +2735,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                                           <defs>
                                                                                             <style />
                                                                                           </defs>
-                                                                                          <g
-                                                                                            data-name="\\\\u56FE\\\\u5C42 2"
-                                                                                            id="search-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                                                                                          >
-                                                                                            <g
-                                                                                              data-name="\\\\u56FE\\\\u5C42 1"
-                                                                                              id="search-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                                                            >
+                                                                                          <g>
+                                                                                            <g>
                                                                                               <path
                                                                                                 d="M6 1a5 5 0 11-5 5 5 5 0 015-5zm4.48 10.19a1 1 0 00-1.28-.13A5.83 5.83 0 016 12a6 6 0 115.07-2.79 1 1 0 00.13 1.26c.93 1 2.65 2.68 2.65 2.68a.49.49 0 01-.7.7z"
                                                                                                 fill="currentColor"
@@ -2846,6 +2801,7 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                                         aria-expanded="false"
                                                                                         class="cascader-menu-item"
                                                                                         data-checked="false"
+                                                                                        data-child-checked="false"
                                                                                         role="menuitem"
                                                                                       >
                                                                                         <div
@@ -3201,14 +3157,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                                                             <defs>
                                                                                                               <style />
                                                                                                             </defs>
-                                                                                                            <g
-                                                                                                              data-name="\\\\u56FE\\\\u5C42 2"
-                                                                                                              id="search-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                                                                                                            >
-                                                                                                              <g
-                                                                                                                data-name="\\\\u56FE\\\\u5C42 1"
-                                                                                                                id="search-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                                                                              >
+                                                                                                            <g>
+                                                                                                              <g>
                                                                                                                 <path
                                                                                                                   d="M6 1a5 5 0 11-5 5 5 5 0 015-5zm4.48 10.19a1 1 0 00-1.28-.13A5.83 5.83 0 016 12a6 6 0 115.07-2.79 1 1 0 00.13 1.26c.93 1 2.65 2.68 2.65 2.68a.49.49 0 01-.7.7z"
                                                                                                                   fill="currentColor"
@@ -3239,14 +3189,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                                                             <defs>
                                                                                                               <style />
                                                                                                             </defs>
-                                                                                                            <g
-                                                                                                              data-name="\\\\u56FE\\\\u5C42 2"
-                                                                                                              id="search-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                                                                                                            >
-                                                                                                              <g
-                                                                                                                data-name="\\\\u56FE\\\\u5C42 1"
-                                                                                                                id="search-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                                                                              >
+                                                                                                            <g>
+                                                                                                              <g>
                                                                                                                 <path
                                                                                                                   d="M6 1a5 5 0 11-5 5 5 5 0 015-5zm4.48 10.19a1 1 0 00-1.28-.13A5.83 5.83 0 016 12a6 6 0 115.07-2.79 1 1 0 00.13 1.26c.93 1 2.65 2.68 2.65 2.68a.49.49 0 01-.7.7z"
                                                                                                                   fill="currentColor"
@@ -3396,6 +3340,12 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                                               ]
                                                                                             }
                                                                                             groupName={true}
+                                                                                            keyMapping={
+                                                                                              Object {
+                                                                                                "label": "label",
+                                                                                                "value": "value",
+                                                                                              }
+                                                                                            }
                                                                                             onSelect={[Function]}
                                                                                             onTrigger={[Function]}
                                                                                             value=""
@@ -3423,6 +3373,12 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                                                 ]
                                                                                               }
                                                                                               groupName={true}
+                                                                                              keyMapping={
+                                                                                                Object {
+                                                                                                  "label": "label",
+                                                                                                  "value": "value",
+                                                                                                }
+                                                                                              }
                                                                                               onSelect={[Function]}
                                                                                               onTrigger={[Function]}
                                                                                               value=""
@@ -3488,6 +3444,7 @@ exports[`FilterPicker onConfirm 1`] = `
                                                                                                         aria-expanded={false}
                                                                                                         className="cascader-menu-item"
                                                                                                         data-checked={false}
+                                                                                                        data-child-checked={false}
                                                                                                         role="menuitem"
                                                                                                       >
                                                                                                         <div
@@ -3581,14 +3538,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                           <defs>
                                                             <style />
                                                           </defs>
-                                                          <g
-                                                            data-name="\\\\u56FE\\\\u5C42 2"
-                                                            id="delete-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                                                          >
-                                                            <g
-                                                              data-name="\\\\u56FE\\\\u5C42 1"
-                                                              id="delete-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                            >
+                                                          <g>
+                                                            <g>
                                                               <path
                                                                 d="M9 1.2a.2.2 0 00-.2-.2H5.2a.2.2 0 00-.2.2v.6a.2.2 0 00.2.2h3.6a.2.2 0 00.2-.2zm1 9.3a.5.5 0 01-1 0v-5a.5.5 0 011 0zm-5 0a.5.5 0 01-.85.35.47.47 0 01-.15-.35v-5a.5.5 0 01.85-.35.47.47 0 01.15.35zm2.5 0a.5.5 0 01-1 0v-5a.5.5 0 011 0zm4-7A.5.5 0 0011 3H3a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h8a.5.5 0 00.5-.5zm-1.5-2a.47.47 0 00.15.35.47.47 0 00.35.15H13a.5.5 0 010 1h-.34a.17.17 0 00-.16.16V13a1 1 0 01-1 1h-9a1 1 0 01-1-1V3.16A.17.17 0 001.34 3H1a.5.5 0 010-1h2.5a.47.47 0 00.35-.15A.47.47 0 004 1.5V1a1 1 0 01.29-.71A1 1 0 015 0h4a1 1 0 01.71.29A1 1 0 0110 1z"
                                                                 fill="currentColor"
@@ -3619,14 +3570,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                           <defs>
                                                             <style />
                                                           </defs>
-                                                          <g
-                                                            data-name="\\\\u56FE\\\\u5C42 2"
-                                                            id="delete-outlined_svg__\\\\u56FE\\\\u5C42_2"
-                                                          >
-                                                            <g
-                                                              data-name="\\\\u56FE\\\\u5C42 1"
-                                                              id="delete-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                            >
+                                                          <g>
+                                                            <g>
                                                               <path
                                                                 d="M9 1.2a.2.2 0 00-.2-.2H5.2a.2.2 0 00-.2.2v.6a.2.2 0 00.2.2h3.6a.2.2 0 00.2-.2zm1 9.3a.5.5 0 01-1 0v-5a.5.5 0 011 0zm-5 0a.5.5 0 01-.85.35.47.47 0 01-.15-.35v-5a.5.5 0 01.85-.35.47.47 0 01.15.35zm2.5 0a.5.5 0 01-1 0v-5a.5.5 0 011 0zm4-7A.5.5 0 0011 3H3a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h8a.5.5 0 00.5-.5zm-1.5-2a.47.47 0 00.15.35.47.47 0 00.35.15H13a.5.5 0 010 1h-.34a.17.17 0 00-.16.16V13a1 1 0 01-1 1h-9a1 1 0 01-1-1V3.16A.17.17 0 001.34 3H1a.5.5 0 010-1h2.5a.47.47 0 00.35-.15A.47.47 0 004 1.5V1a1 1 0 01.29-.71A1 1 0 015 0h4a1 1 0 01.71.29A1 1 0 0110 1z"
                                                                 fill="currentColor"
@@ -3679,14 +3624,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                     <defs>
                                                       <style />
                                                     </defs>
-                                                    <g
-                                                      data-name="\\\\u56FE\\\\u5C42 2"
-                                                      id="plus-circle-filled_svg__\\\\u56FE\\\\u5C42_2"
-                                                    >
-                                                      <g
-                                                        data-name="\\\\u56FE\\\\u5C42 1"
-                                                        id="plus-circle-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                      >
+                                                    <g>
+                                                      <g>
                                                         <path
                                                           d="M7.7 6.5a.2.2 0 01-.2-.2V3.5A.51.51 0 007 3a.51.51 0 00-.5.5v2.8a.2.2 0 01-.2.2H3.5A.51.51 0 003 7a.51.51 0 00.5.5h2.8a.2.2 0 01.2.2v2.8a.51.51 0 00.5.5.51.51 0 00.5-.5V7.7a.2.2 0 01.2-.2h2.8A.51.51 0 0011 7a.51.51 0 00-.5-.5zM7 0a7 7 0 11-7 7 7 7 0 017-7z"
                                                           fill="currentColor"
@@ -3717,14 +3656,8 @@ exports[`FilterPicker onConfirm 1`] = `
                                                     <defs>
                                                       <style />
                                                     </defs>
-                                                    <g
-                                                      data-name="\\\\u56FE\\\\u5C42 2"
-                                                      id="plus-circle-filled_svg__\\\\u56FE\\\\u5C42_2"
-                                                    >
-                                                      <g
-                                                        data-name="\\\\u56FE\\\\u5C42 1"
-                                                        id="plus-circle-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-                                                      >
+                                                    <g>
+                                                      <g>
                                                         <path
                                                           d="M7.7 6.5a.2.2 0 01-.2-.2V3.5A.51.51 0 007 3a.51.51 0 00-.5.5v2.8a.2.2 0 01-.2.2H3.5A.51.51 0 003 7a.51.51 0 00.5.5h2.8a.2.2 0 01.2.2v2.8a.51.51 0 00.5.5.51.51 0 00.5-.5V7.7a.2.2 0 01.2-.2h2.8A.51.51 0 0011 7a.51.51 0 00-.5-.5zM7 0a7 7 0 11-7 7 7 7 0 017-7z"
                                                           fill="currentColor"
@@ -3845,14 +3778,8 @@ exports[`FilterPicker should match FilterPicker base snapshot. 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs />
-      <g
-        data-name="\\\\u56FE\\\\u5C42 2"
-        id="filter-outlined_svg__\\\\u56FE\\\\u5C42_2"
-      >
-        <g
-          data-name="\\\\u56FE\\\\u5C42 1"
-          id="filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-        >
+      <g>
+        <g>
           <path
             d="M6 6.46L5.56 6zM7.5 13a.51.51 0 00.5-.5V6.86a1 1 0 01.28-.69l4.16-4.32a.55.55 0 00.1-.55.51.51 0 00-.46-.3H1.92a.51.51 0 00-.46.3.53.53 0 00.1.55l4 4.15.16.17a1 1 0 01.28.69v5.64a.51.51 0 00.5.5zM9 13a1 1 0 01-1 1H6a1 1 0 01-1-1V7.28a1 1 0 00-.27-.69L.89 2.53A1.5 1.5 0 012 0h10a1.5 1.5 0 011.09 2.53L9.27 6.59a1 1 0 00-.27.69z"
             fill="currentColor"
@@ -3868,6 +3795,7 @@ exports[`FilterPicker should match FilterPicker base snapshot. 1`] = `
 
 exports[`FilterPicker when use children, should render it correctly 1`] = `
 <div
+  class=""
   style="cursor:pointer"
 >
   过滤选择器
