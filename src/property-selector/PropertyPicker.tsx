@@ -225,7 +225,6 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         children: labelRender(data),
         onClick: (e) => handleItemClick(e, data),
       };
-      // return <List.Item {...itemProp} />;
       return itemProp;
     });
     return listItems;
@@ -234,16 +233,10 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     const dom = keys(groupData).map((gkey) => {
       const { groupName, type } = groupData[gkey][0];
       const listItems = getListItems(groupData[gkey]);
-      // const subgroupProps: ListItemSubgroupProps = {
-      //   key: [type, gkey].join('￥'),
-      //   title: groupName || gkey,
-      //   expandable: true,
-      //   // items: listItems,
-      // };
+
       return (
         <ExpandableGroupOrSubGroup key={[type, gkey].join('￥')} title={groupName} type="subgroup" items={listItems} />
       );
-      // return <List.ItemSubgroup {...subgroupProps}>{listItems}</List.ItemSubgroup>;
     });
     return dom as React.ReactNode;
   }
@@ -256,6 +249,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const groupData = groupDatasource[key];
       const subGroupDic = groupBy(groupData, (o) => o.groupId);
       const { typeName } = groupData[0];
+      // 此处的处理是 如果2级分组只有一组 提升为一级分组；如果没有这个需求 直接使用下方注释的代码 ；
       if (keys(subGroupDic).length === 1) {
         const items = getListItems(subGroupDic[keys(subGroupDic)[0]]);
         return (
@@ -265,6 +259,18 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
           </>
         );
       }
+      /**
+       * 最近使用 展示为一级分组
+       */
+      // if (key === 'recently') {
+      //   const items = getListItems(subGroupDic[keys(subGroupDic)[0]]);
+      //   return (
+      //     <>
+      //       {index > 0 && <List.Divider />}
+      //       <ExpandableGroupOrSubGroup title={typeName} type="group" items={items} />
+      //     </>
+      //   );
+      // }
       return (
         <>
           {index > 0 && <List.Divider />}

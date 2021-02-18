@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 // import { NodeData } from '@gio-design/components/es/components/cascader/interface';
 import React from 'react';
 import { BasePickerProps } from '../base-picker';
 import { Dimension } from '../types';
+import { SelectorProps } from '../selector/interfaces';
 /**
  * 属性详情组件的参数
  */
@@ -66,7 +68,7 @@ export interface PropertyPickerProps
   /**
    * 禁用的选项
    */
-  disabledValues?: PropertyValue[] | string[];
+  // disabledValues?: PropertyValue[] | string[];
 }
 /**
  * 属性的类型 event|avar|usr
@@ -77,19 +79,11 @@ export const PropertyTypes: { [key: string]: string } = {
   usr: '用户属性',
 };
 
-export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boolean';
+// export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boolean';
 /**
  * 属性选择器选项列表item 类型
  */
-export interface PropertyItem extends Iterable {
-  /**
-   * 列表项显示的内容
-   */
-  label?: string;
-  /**
-   * 对应的value （key｜id）
-   */
-  value?: string;
+export interface PropertyItem extends PropertyValue {
   /**
    * 是否禁用
    */
@@ -115,10 +109,10 @@ export interface PropertyItem extends Iterable {
    * 列表项的 icon
    */
   itemIcon?: React.ReactElement;
-  /**
-   * 属性值的 数据类型
-   */
-  valueType?: string;
   key?: string;
   pinyinName?: string;
 }
+
+export interface PropertySelectorProps
+  extends Omit<PropertyPickerProps, 'className' | 'style'>,
+    Omit<SelectorProps, 'dropdownRender' | 'valueRender'> {}
