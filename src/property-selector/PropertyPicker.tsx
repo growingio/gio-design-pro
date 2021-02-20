@@ -1,27 +1,46 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
-// import { TabNavItemProps } from '@gio-design/components/es/components/tab-nav/interface';
-import { toPairs, uniq, cloneDeep, groupBy, keys, orderBy, Dictionary, isEqualWith, isEmpty } from 'lodash';
-// import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
-// import { DownFilled } from '@gio-design/icons';
+import {
+  toPairs,
+  uniq,
+  cloneDeep,
+  groupBy,
+  keys,
+  orderBy,
+  Dictionary,
+  isEqualWith,
+  isEmpty,
+  debounce,
+  reject,
+} from 'lodash';
 import * as pinyin from 'pinyin-match';
-// import { Tooltip } from '@gio-design/components';
 import classNames from 'classnames';
-import { dimensionToPropertyItem, getShortPinyin } from './util';
+import { dimensionToPropertyItem, getShortPinyin, isPromise } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
-// import { Loading, Grid, Tag } from '@gio-design/components';
 import BasePicker from '../base-picker';
-import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue } from './interfaces';
+import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue, PropertyInfo } from './interfaces';
 import List from '../list';
 import EmptyPrompt from '../empty-prompt';
 import { ListItemProps } from '../list/interfaces';
 import { renderExpandableItems } from '../list/utils';
+import PropertyCard from './PropertyCard';
+import './style';
 
+function promisify(func: Function) {
+  return (...arg: any) =>
+    new Promise((resolve) => {
+      const res = func(...arg);
+      if (isPromise(res)) {
+        return res.then(resolve).catch(reject);
+      }
+      return resolve(res);
+    });
+}
 const ExpandableGroupOrSubGroup = (props: {
   title?: string;
   type: 'group' | 'subgroup';
   items: ListItemProps[];
-  key?: string;
+  key: string;
 }) => {
   const { items = [], type = 'subgroup', title, key } = props;
   const [expanded, setExpand] = useState(false);
@@ -59,6 +78,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     onChange,
     onSelect,
     onClick,
+    detailVisibleDelay = 600,
+    fetchDetailData = (data: PropertyItem): Promise<PropertyInfo> => Promise.resolve({ ...data }),
     ...rest
   } = props;
   const [scope, setScope] = useState('all');
@@ -71,6 +92,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   );
   const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(initialValue);
   const [debouncedKeyword, setDebouncedKeyword] = useDebounce(keyword, 300);
+
+  const [detailVisible, setDetailVisible] = useState(false);
+  const debounceSetDetailVisible = debounce((visible) => {
+    setDetailVisible(visible);
+  }, detailVisibleDelay);
   const [dataList, setDataList] = useState<PropertyItem[]>([]);
   const navRef = useRef([{ key: 'all', children: '全部' }]);
   useEffect(() => {
@@ -124,17 +150,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     // 按照分组排序
     // const sortedData = filterdData; // sortBy(filterdData, ['groupOrder', 'name']);
     const sortedData = orderBy(filterdData, ['typeOrder', 'groupOrder', 'pinyinName']);
-    // sortedData.sort((a, b) => {
-    //   // const regEnOrNum = /^[a-zA-Z0-9]/;
-    //   const aOrder = a.groupOrder ?? 0;
-    //   const bOrder = b.groupOrder ?? 0;
-    //   if (aOrder - bOrder === 0) {
-    //     const aPinyin = a.pinyinName; // getShortPinyin(a.label ?? '');
-    //     const bPinyin = b.pinyinName; // getShortPinyin(b.label ?? '');
-    //     return aPinyin?.localeCompare(bPinyin ?? '') || 0;
-    //   }
-    //   return aOrder - bOrder;
-    // });
+
     // mixin 最近使用
     const rids: string[] = recentlyUsed ? recentlyUsed[scope] : [];
     const recent: PropertyItem[] = [];
@@ -187,7 +203,6 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     setRecentlyUsed(recent);
   }
   function handleSelect(node: PropertyItem) {
-    // const { label, value, valueType } = node as PropertyItem;
     setCurrentValue(node as PropertyValue);
 
     _saveRecentlyByScope(node);
@@ -208,10 +223,22 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   const groupDatasource = useMemo(() => groupBy([...recentlyPropertyItems, ...propertyItems], (o) => o.type), [
     propertyItems,
   ]);
+
   function labelRender(item: PropertyItem) {
     return item.label as React.ReactChild;
   }
+  const [hoverdNodeValue, setHoveredNodeValue] = useState<PropertyItem | undefined>();
   function getListItems(items: PropertyItem[]) {
+    const handleItemMouseEnter = (data: PropertyItem) => {
+      setHoveredNodeValue(data);
+      debounceSetDetailVisible(true);
+    };
+    const handleItemMouseLeave = () => {
+      setHoveredNodeValue(undefined);
+      debounceSetDetailVisible.cancel();
+      // debounceSetDetailVisible(false);
+      setDetailVisible(false);
+    };
     const listItems = items.map((data: PropertyItem) => {
       const select =
         !isEmpty(currentValue) &&
@@ -224,6 +251,12 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         className: classNames({ selected: select }),
         children: labelRender(data),
         onClick: (e) => handleItemClick(e, data),
+        onMouseEnter: () => {
+          handleItemMouseEnter(data);
+        },
+        onMouseLeave: () => {
+          handleItemMouseLeave();
+        },
       };
       return itemProp;
     });
@@ -255,7 +288,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         return (
           <>
             {index > 0 && <List.Divider />}
-            <ExpandableGroupOrSubGroup title={typeName} type="group" items={items} />
+            <ExpandableGroupOrSubGroup key={`gk_${typeName}`} title={typeName} type="group" items={items} />
           </>
         );
       }
@@ -283,6 +316,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
 
     return childrens as React.ReactNode;
   };
+  const renderDetail = () => <PropertyCard nodeData={hoverdNodeValue} fetchData={promisify(fetchDetailData)} />;
   const clsPrifx = usePrefixCls('property-picker');
   const cls = classNames(clsPrifx, rest?.className);
   return (
@@ -291,6 +325,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         {...rest}
         className={cls}
         renderItems={renderItems}
+        detailVisible={detailVisible}
+        renderDetail={renderDetail}
         loading={loading}
         searchBar={{ placeholder: searchBar?.placeholder || '搜索属性名称', onSearch: handleSearch }}
         tabNav={{

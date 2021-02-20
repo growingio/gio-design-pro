@@ -1,13 +1,18 @@
-import PropertyPicker from './PropertyPicker';
-import PropertyDetail from './PropertyDetail';
-import './style/index';
+import _PropertyPicker from './PropertyPicker';
+import _PropertyCard from './PropertyCard';
+import PropertySelector from './PropertySelector';
+// import './style/index';
 
-export { PropertyPickerProps, PropertyTypes } from './interfaces';
+export type { PropertySelectorProps, PropertyPickerProps, PropertyTypes } from './interfaces';
+
 export { dimensionToPropertyItem } from './util';
-export { PropertyDetail };
-export type TPropertyPicker = typeof PropertyPicker & {
-  DetailPanel: typeof PropertyDetail;
+export const PropertyCard = _PropertyCard;
+export type TPropertyPicker = typeof _PropertyPicker & {
+  PropertyCard: typeof PropertyCard;
 };
-const Picker = PropertyPicker as TPropertyPicker;
-Picker.DetailPanel = PropertyDetail;
-export default Picker;
+const Picker = _PropertyPicker as TPropertyPicker;
+Picker.PropertyCard = _PropertyCard;
+
+export const PropertyPicker = Picker;
+
+export default PropertySelector;
