@@ -26,12 +26,10 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   const inputValueRef = useRef<HTMLSpanElement | null>(null);
   useEffect(() => {
     if (!inputValueRef?.current || !currentValue?.label) return;
-    // const valueSpanWidth = inputValueRef?.current.offsetWidth || 0;
-    // const parentWidth = inputValueRef?.current.parentElement?.clientWidth || 0;
     const scrollWidth = inputValueRef?.current?.scrollWidth || 0;
     const clientWidth = inputValueRef?.current?.clientWidth || 0;
     const isOverflow = scrollWidth > clientWidth;
-    console.log('valueinput[scrollWidth,clientWidth]', [scrollWidth, clientWidth]);
+    // console.log('valueinput[scrollWidth,clientWidth]', [scrollWidth, clientWidth]);
     setTextOverflow(isOverflow);
   }, [inputValueRef, currentValue]);
 

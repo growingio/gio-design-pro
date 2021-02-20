@@ -21,11 +21,12 @@ interface Iterable {
 /**
  * 获取属性详情的回调
  */
-type FetchData<T extends {}> = (node: PropertyItem) => T | Promise<T>;
+type FetchData<T extends {}> = (node: PropertyValue) => T | Promise<T>;
 /**
  * picker选中后回调值类型
  */
 export interface PropertyValue extends Iterable {
+  id: string;
   label?: string;
   value?: string;
   valueType?: string;
@@ -45,6 +46,10 @@ export interface PropertyPickerProps
    * 属性选择器的选项列表
    */
   dataSource: Array<PropertyItem | Dimension>;
+  /**
+   * 鼠标hover列表项详情面板延迟显示的毫秒数
+   */
+  detailVisibleDelay?: number;
   /**
    * 获取属性详情的方法
    */
@@ -116,3 +121,11 @@ export interface PropertyItem extends PropertyValue {
 export interface PropertySelectorProps
   extends Omit<PropertyPickerProps, 'className' | 'style'>,
     Omit<SelectorProps, 'dropdownRender' | 'valueRender'> {}
+export interface PropertyCardProps {
+  // nodeData: NodeData;
+  // fetchData?: (nodeData: NodeData) => Promise<PropertyInfo> | PropertyInfo;
+  // data?: PropertyItem;
+  // loading?: boolean;
+  nodeData: PropertyValue;
+  fetchData: (nodeData: PropertyValue) => Promise<PropertyInfo>;
+}

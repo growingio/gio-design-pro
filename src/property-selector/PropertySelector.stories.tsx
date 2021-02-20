@@ -26,6 +26,11 @@ const Template: Story<PropertySelectorProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   dataSource,
+  fetchDetailData: async (node: any) =>
+    // eslint-disable-next-line no-return-await
+    await new Promise((resolve) => {
+      setTimeout(() => resolve(node), 2000);
+    }),
   // placeholder: '请选择...',
   onChange: (v: any) => {
     console.log('onchange', v);

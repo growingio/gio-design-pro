@@ -41,7 +41,7 @@ export const DimensionGroupTypeMapper: Mapper = {
   item: 'event',
   people: 'event',
   visitor: 'event',
-  element: 'event', // element 为前端自定义的分类
+  element: 'event', // element 为前端自定义的分类 (无埋点事件属性)
   conversion: 'event',
   user: 'usr',
   tag: 'usr',
@@ -122,4 +122,7 @@ export function getShortPinyin(word: string) {
       return MAP[idx];
     })
     .join('');
+}
+export function isPromise(obj: any) {
+  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
 }
