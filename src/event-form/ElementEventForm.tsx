@@ -287,8 +287,8 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           )}
         >
           <FormItemGroup groupNumber={1} title="基本信息">
-            <Form.Item validateTrigger={['onBlur', 'onChange']} name="name" label="页面名称" rules={validateRules.name}>
-              <Input placeholder="请输入页面名称" maxLength={MAX_VALUE_LENGTH} />
+            <Form.Item validateTrigger={['onBlur', 'onChange']} name="name" label="元素名称" rules={validateRules.name}>
+              <Input placeholder="请输入元素名称" maxLength={MAX_VALUE_LENGTH} />
             </Form.Item>
             <Form.Item name="description" label="描述" rules={validateRules.description}>
               <Input.TextArea maxLength={MAX_DESC_LENGTH} rows={3} placeholder="请输入描述" />

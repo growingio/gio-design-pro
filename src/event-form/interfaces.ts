@@ -44,7 +44,7 @@ export interface EventFormProps extends FormProps, CommonFormProps {
 }
 export type StepSubmitterProps = SubmitterProps<{
   showPreButton: boolean;
-  onPre: () => void;
+  onPre: (newTag?: TagElement) => void;
   preButtonProps: ButtonProps;
   form?: FormInstance<any>;
 }>;
