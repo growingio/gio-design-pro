@@ -189,13 +189,16 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
   };
 
   const [loading, setLoading] = useState<ButtonProps['loading']>(false);
-  const defaultSubmitRender = (_: SubmitterProps, submitterDom: JSX.Element[]) => (
-    <div className="footer">
-      <FooterToolbar style={{ position: 'static' }} extra={submitterExtra}>
-        {submitterDom as JSX.Element[]}
-      </FooterToolbar>
-    </div>
-  );
+  const defaultSubmitRender = (_: SubmitterProps, submitterDom: JSX.Element[]) => {
+    const [manual, resetBtn, submitBtn] = submitterDom;
+    return (
+      <div className="footer">
+        <FooterToolbar style={{ position: 'static' }} extra={submitterExtra || (!showBelongApp && manual)}>
+          {[resetBtn, submitBtn] as JSX.Element[]}
+        </FooterToolbar>
+      </div>
+    );
+  };
 
   const renderSubmitter = () => {
     if (submitter === false || submitter?.render === false) {
@@ -245,8 +248,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
         {manualModeStatue ? '关闭手动模式' : '打开手动模式'}
       </Button>
     );
-    const submitterDom = [reset, submit] as JSX.Element[];
-    !showBelongApp && submitterDom.unshift(manual);
+    const submitterDom = [manual, reset, submit] as JSX.Element[];
     const _render = submitter?.render || defaultSubmitRender;
     const submitterProps: any = {
       form: formRef?.current,
