@@ -83,6 +83,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
       dataSource: [],
     },
     dataChart,
+    manualMode,
     // showPreButton = true,
     ...restProps
   } = props as ElementEventFormProps;
@@ -96,6 +97,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
    * 提交按钮的disabled状态，
    */
   const [submitDisabled, setSubmitDisabeld] = useState(true);
+  const [manualModeStatue, setManualMode] = useState(false);
   const validatorRef = useRef(new ValidatorHelper(definedTags));
   useEffect(() => {
     validatorRef.current = new ValidatorHelper(definedTags);
@@ -187,16 +189,13 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
   };
 
   const [loading, setLoading] = useState<ButtonProps['loading']>(false);
-  const defaultSubmitRender = (_: SubmitterProps, submitterDom: JSX.Element[]) => {
-    const [resetBtn, submitBtn] = submitterDom;
-    return (
-      <div className="footer">
-        <FooterToolbar style={{ position: 'static' }} extra={submitterExtra}>
-          {[resetBtn, submitBtn] as JSX.Element[]}
-        </FooterToolbar>
-      </div>
-    );
-  };
+  const defaultSubmitRender = (_: SubmitterProps, submitterDom: JSX.Element[]) => (
+    <div className="footer">
+      <FooterToolbar style={{ position: 'static' }} extra={submitterExtra}>
+        {submitterDom as JSX.Element[]}
+      </FooterToolbar>
+    </div>
+  );
 
   const renderSubmitter = () => {
     if (submitter === false || submitter?.render === false) {
@@ -234,7 +233,20 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
         {submitter?.resetText ?? '取消'}
       </Button>
     );
+
+    const manual = (
+      <Button
+        key="manualMode"
+        type="text"
+        onClick={() => {
+          setManualMode(!manualModeStatue);
+        }}
+      >
+        {manualModeStatue ? '关闭手动模式' : '打开手动模式'}
+      </Button>
+    );
     const submitterDom = [reset, submit] as JSX.Element[];
+    !showBelongApp && submitterDom.unshift(manual);
     const _render = submitter?.render || defaultSubmitRender;
     const submitterProps: any = {
       form: formRef?.current,
@@ -325,6 +337,12 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
                   <DefinitionCondition isNative={appType === AppType.NATIVE} />
                 </Form.Item>
               </>
+            )}
+
+            {!showBelongApp && manualModeStatue && (
+              <Form.Item name="manualMode" label="手动模式">
+                {manualMode}
+              </Form.Item>
             )}
 
             <Form.Item label="数据">

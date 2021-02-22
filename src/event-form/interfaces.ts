@@ -72,7 +72,7 @@ export interface ElementEventFormProps extends Omit<EventFormProps, 'initialValu
     currentPageTags: TagElement[];
     dataSource?: TagElement[];
   };
-
+  manualMode?: JSX.Element;
   submitterExtra?: (() => ReactElement) | ReactElement;
   /**
    * 页面选择器定义新页面按钮的click事件回调
