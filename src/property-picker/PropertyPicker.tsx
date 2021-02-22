@@ -6,7 +6,7 @@ import { toPairs, isEqual, uniq, cloneDeep, replace } from 'lodash';
 // import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
 import { DownFilled } from '@gio-design/icons';
 import * as pinyin from 'pinyin-match';
-import { Tooltip } from '@gio-design/components/es';
+import { Tooltip } from '@gio-design/components';
 import { dimensionToPropertyItem, getShortPinyin } from './util';
 import { useDebounce, useLocalStorage } from '../hooks';
 // import { Loading, Grid, Tag } from '@gio-design/components';
@@ -14,9 +14,7 @@ import BasePicker from '../picker';
 import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue } from './interfaces';
 
 const pinyinMatch = pinyin.default;
-const Tabs = toPairs(PropertyTypes).map((v) => {
-  return { key: v[0], children: v[1] };
-});
+const Tabs = toPairs(PropertyTypes).map((v) => ({ key: v[0], children: v[1] }));
 
 const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProps) => {
   const {
@@ -63,9 +61,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         propertiItemList = originDataSource;
       }
     }
-    const list = propertiItemList.map((v) => {
-      return { ...v, pinyinName: getShortPinyin(v.label ?? '') };
-    });
+    const list = propertiItemList.map((v) => ({ ...v, pinyinName: getShortPinyin(v.label ?? '') }));
 
     setDataList(list);
     /**
