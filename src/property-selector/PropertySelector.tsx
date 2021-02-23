@@ -1,11 +1,13 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Tooltip, usePrefixCls } from '@gio-design/components';
+import React, { useRef, useState } from 'react';
+import { Popover, usePrefixCls } from '@gio-design/components';
 import classNames from 'classnames';
 import PropertyPicker from './PropertyPicker';
 import { PropertyValue, PropertySelectorProps } from './interfaces';
 import Selector from '../selector';
 import './style';
+// import '@gio-design/components/es/components/popover/style/index.css';
 import IconRender from './PropertyValueIconRender';
+import PropertyCard from './PropertyCard';
 
 const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   const {
@@ -23,16 +25,16 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   } = props;
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
   const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(value);
-  const [textOverflow, setTextOverflow] = useState(false);
+
+  // const [textOverflow, setTextOverflow] = useState(false);
   const inputValueRef = useRef<HTMLSpanElement | null>(null);
-  useEffect(() => {
-    if (!inputValueRef?.current || !currentValue?.label) return;
-    const scrollWidth = inputValueRef?.current?.scrollWidth || 0;
-    const clientWidth = inputValueRef?.current?.clientWidth || 0;
-    const isOverflow = scrollWidth > clientWidth;
-    // console.log('valueinput[scrollWidth,clientWidth]', [scrollWidth, clientWidth]);
-    setTextOverflow(isOverflow);
-  }, [inputValueRef, currentValue]);
+  // useEffect(() => {
+  //   if (!inputValueRef?.current || !currentValue?.label) return;
+  //   const scrollWidth = inputValueRef?.current?.scrollWidth || 0;
+  //   const clientWidth = inputValueRef?.current?.clientWidth || 0;
+  //   const isOverflow = scrollWidth > clientWidth;
+  //   setTextOverflow(isOverflow);
+  // }, [inputValueRef, currentValue]);
 
   const clsPrifx = usePrefixCls('property-selector');
   const selectorCls = classNames(clsPrifx, className);
@@ -58,17 +60,24 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
       onSelect={handleSelect}
     />
   );
-  const inputRender = () =>
-    currentValue && (
-      <>
-        <Tooltip title={currentValue?.label} disabled={!textOverflow} placement="top" arrowPointAtCenter>
-          <span className="inner-input-wrap" ref={inputValueRef}>
-            <span className="icon">{IconRender(currentValue?.groupId)}</span>
-            <span>{currentValue?.label}</span>
-          </span>
-        </Tooltip>
-      </>
+  const inputRender = () => {
+    const content = () => {
+      if (!currentValue) return '';
+      return <PropertyCard nodeData={currentValue} fetchData={async (data) => data} />;
+    };
+    return (
+      currentValue && (
+        <>
+          <Popover placement="bottomLeft" contentArea={content()} arrowPointAtCenter={false}>
+            <span className="inner-input-wrap" ref={inputValueRef}>
+              <span className="icon">{IconRender(currentValue?.groupId)}</span>
+              <span>{currentValue?.label}</span>
+            </span>
+          </Popover>
+        </>
+      )
     );
+  };
   return (
     <>
       <Selector
