@@ -8,6 +8,7 @@ import './style';
 // import '@gio-design/components/es/components/popover/style/index.css';
 import IconRender from './PropertyValueIconRender';
 import PropertyCard from './PropertyCard';
+import { promisify } from './util';
 
 const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   const {
@@ -60,15 +61,16 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
       onSelect={handleSelect}
     />
   );
+  const fetchDetail = pickerRestProps.fetchDetailData ?? (async (data) => data);
   const inputRender = () => {
     const content = () => {
       if (!currentValue) return '';
-      return <PropertyCard nodeData={currentValue} fetchData={async (data) => data} />;
+      return <PropertyCard nodeData={currentValue} fetchData={promisify(fetchDetail)} />;
     };
     return (
       currentValue && (
         <>
-          <Popover placement="bottomLeft" contentArea={content()} arrowPointAtCenter={false}>
+          <Popover placement="bottomLeft" contentArea={content()} arrowPointAtCenter={false} destroyTooltipOnHide>
             <span className="inner-input-wrap" ref={inputValueRef}>
               <span className="icon">{IconRender(currentValue?.groupId)}</span>
               <span>{currentValue?.label}</span>

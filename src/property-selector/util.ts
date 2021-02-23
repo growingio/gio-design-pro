@@ -128,3 +128,13 @@ export function getShortPinyin(word: string) {
 export function isPromise(obj: any) {
   return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
 }
+export function promisify(func: Function) {
+  return (...arg: any) =>
+    new Promise((resolve, reject) => {
+      const res = func(...arg);
+      if (isPromise(res)) {
+        return res.then(resolve).catch(reject);
+      }
+      return resolve(res);
+    });
+}

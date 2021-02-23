@@ -4,7 +4,7 @@ import { toPairs, uniq, cloneDeep, groupBy, keys, orderBy, Dictionary, isEqualWi
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
 
-import { dimensionToPropertyItem, getShortPinyin, isPromise } from './util';
+import { dimensionToPropertyItem, getShortPinyin, promisify } from './util';
 import { useDebounce, useDebounceFn, useLocalStorage } from '../hooks';
 import BasePicker from '../base-picker';
 import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue, PropertyInfo } from './interfaces';
@@ -16,17 +16,6 @@ import PropertyCard from './PropertyCard';
 import './style';
 import { Dimension } from '../types';
 import IconRender from './PropertyValueIconRender';
-
-function promisify(func: Function) {
-  return (...arg: any) =>
-    new Promise((resolve, reject) => {
-      const res = func(...arg);
-      if (isPromise(res)) {
-        return res.then(resolve).catch(reject);
-      }
-      return resolve(res);
-    });
-}
 
 const ExpandableGroupOrSubGroup = (props: {
   title?: string;
