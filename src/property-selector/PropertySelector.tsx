@@ -70,7 +70,13 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
     return (
       currentValue && (
         <>
-          <Popover placement="bottomLeft" contentArea={content()} arrowPointAtCenter={false} destroyTooltipOnHide>
+          <Popover
+            overlayClassName="property-card-overlay"
+            placement="bottomLeft"
+            contentArea={content()}
+            arrowPointAtCenter={false}
+            destroyTooltipOnHide
+          >
             <span className="inner-input-wrap" ref={inputValueRef}>
               <span className="icon">{IconRender(currentValue?.groupId)}</span>
               <span>{currentValue?.label}</span>
