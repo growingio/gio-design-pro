@@ -1332,13 +1332,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/components@^21.1.3":
-  version "21.1.3"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.1.3.tgz#ebc190210c2b674fd115a2c1e55fad1ace7f16e0"
-  integrity sha512-tFdKZGFWLfxnWYob4U0jO+WzsOUS4dE9q2uBFsVXVms12upVz9or14E/Oy9OzCr1tT8caPcSVNHGzpEtkT84WQ==
+"@gio-design/components@^21.2.2":
+  version "21.2.2"
+  resolved "https://nexus.growingio.com/repository/npm-group/@gio-design/components/-/components-21.2.2.tgz#1e7485b49323ecc238d8b656197d1ffeb87a1c44"
+  integrity sha512-XHmJ+hw0yI5mSFL+25kcjc5VJHOPmGsOgYKovgUCChB8XhnpvIG/+gWXhHn7EQq1RYe8M8+sHwX9+2K5WyuBpA==
   dependencies:
     "@gio-design/icons" "21.1.0"
-    "@gio-design/tokens" "21.1.0"
+    "@gio-design/tokens" "^21.2.0"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -1385,6 +1385,11 @@
   version "21.1.0"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.1.0.tgz#f8e3519b58776f6864357f1362c145bb0928d739"
   integrity sha512-udZQWINzs6ZX2Lxtu5IWI9OqaUfqnBbcCD4zD5Vam50m0hdh/e9eKSNUcalluCtF1vm9/sFKwOERkdbwk2hnZw==
+
+"@gio-design/tokens@^21.2.0":
+  version "21.2.0"
+  resolved "https://nexus.growingio.com/repository/npm-group/@gio-design/tokens/-/tokens-21.2.0.tgz#7ff118e55688adf8766a362a51b8fea921a5e943"
+  integrity sha512-5iddXmRK33GTZUdziUNjZnCNeoLxNCG+hI0/k/CPph11iCppqw8XtZW/Yx2ls5B0g7VdUGvBkZ9as/Qs6uR0RA==
 
 "@graphql-codegen/cli@1.20.1":
   version "1.20.1"

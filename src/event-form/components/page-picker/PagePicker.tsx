@@ -153,6 +153,7 @@ const Picker = (props: PagePickerProps) => {
           prefix={inputValue?.isCurrent && <span style={{ color: '#1248e9' }}>[当前页]</span>}
           suffix={<DownFilled className="caret" />}
           value={inputValue.label}
+          placeholder="请选择所属页面"
         />
       </div>
     </Dropdown>
