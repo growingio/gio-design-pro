@@ -5,13 +5,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import _ from 'lodash';
 import PropertyCard from './PropertyCard';
 import { PropertyCardProps } from './interfaces';
-import { insightDimensions } from './__test__/data';
-import '@gio-design/components/es/components/button/style/css';
-import './style/index.less';
-import { dimensionToPropertyItem } from './util';
-import { Dimension } from '../types';
-// const AllVariablesTable = _.flatten(_.values(allVariables));
-const dataSource = insightDimensions.map((v: any) => dimensionToPropertyItem(v as Dimension));
+
 export default {
   title: 'Business Components/PropertySelector/PropertyCard',
   component: PropertyCard,

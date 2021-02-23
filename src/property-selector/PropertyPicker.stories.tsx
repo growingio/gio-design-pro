@@ -6,7 +6,6 @@ import _ from 'lodash';
 import PropertyPicker from './PropertyPicker';
 import { PropertyPickerProps } from './interfaces';
 import { insightDimensions } from './__test__/data';
-import '@gio-design/components/es/components/button/style/css';
 import './style/index.less';
 import { dimensionToPropertyItem } from './util';
 import { Dimension } from '../types';
@@ -26,6 +25,7 @@ const Template: Story<PropertyPickerProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   dataSource,
+  disabledValues: ['b'],
   // placeholder: '请选择...',
   onChange: (v: any) => {
     console.log('onchange', v);
