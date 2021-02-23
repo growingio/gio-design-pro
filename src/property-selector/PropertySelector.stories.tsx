@@ -28,7 +28,7 @@ Default.args = {
   fetchDetailData: async (node: any) =>
     // eslint-disable-next-line no-return-await
     await new Promise((resolve) => {
-      setTimeout(() => resolve(node), 1000);
+      setTimeout(() => resolve(node), 500);
     }),
   // placeholder: '请选择...',
   onChange: (v: any) => {
