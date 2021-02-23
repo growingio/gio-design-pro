@@ -1364,13 +1364,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/components@21.1.3":
-  version "21.1.3"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.1.3.tgz#ebc190210c2b674fd115a2c1e55fad1ace7f16e0"
-  integrity sha512-tFdKZGFWLfxnWYob4U0jO+WzsOUS4dE9q2uBFsVXVms12upVz9or14E/Oy9OzCr1tT8caPcSVNHGzpEtkT84WQ==
+"@gio-design/components@21.2.2":
+  version "21.2.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.2.2.tgz#1e7485b49323ecc238d8b656197d1ffeb87a1c44"
+  integrity sha512-XHmJ+hw0yI5mSFL+25kcjc5VJHOPmGsOgYKovgUCChB8XhnpvIG/+gWXhHn7EQq1RYe8M8+sHwX9+2K5WyuBpA==
   dependencies:
     "@gio-design/icons" "21.1.0"
-    "@gio-design/tokens" "21.1.0"
+    "@gio-design/tokens" "^21.2.0"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -1417,6 +1417,11 @@
   version "21.1.0"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.1.0.tgz#f8e3519b58776f6864357f1362c145bb0928d739"
   integrity sha512-udZQWINzs6ZX2Lxtu5IWI9OqaUfqnBbcCD4zD5Vam50m0hdh/e9eKSNUcalluCtF1vm9/sFKwOERkdbwk2hnZw==
+
+"@gio-design/tokens@^21.2.0":
+  version "21.2.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.2.0.tgz#7ff118e55688adf8766a362a51b8fea921a5e943"
+  integrity sha512-5iddXmRK33GTZUdziUNjZnCNeoLxNCG+hI0/k/CPph11iCppqw8XtZW/Yx2ls5B0g7VdUGvBkZ9as/Qs6uR0RA==
 
 "@graphql-codegen/cli@1.20.1":
   version "1.20.1"
@@ -3074,15 +3079,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/lodash@^4.14.136":
+"@types/lodash@^4.14.136", "@types/lodash@^4.14.139":
   version "4.14.166"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.166.tgz#07e7f2699a149219dbc3c35574f126ec8737688f"
   integrity sha512-A3YT/c1oTlyvvW/GQqG86EyqWNrT/tisOIh2mW3YCgcx71TNjiTZA3zYZWA5BCmtsOTXjhliy4c4yEkErw6njA==
-
-"@types/lodash@^4.14.139":
-  version "4.14.165"
-  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.165.tgz#74d55d947452e2de0742bad65270433b63a8c30f"
-  integrity sha512-tjSSOTHhI5mCHTy/OOXYIhi2Wt1qcbHmuXD1Ha7q70CgI/I71afO4XtLb/cVexki1oVYchpul/TOuu3Arcdxrg==
 
 "@types/markdown-to-jsx@^6.11.0":
   version "6.11.3"
@@ -14451,16 +14451,7 @@ rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, 
     react-is "^16.12.0"
     shallowequal "^1.1.0"
 
-rc-virtual-list@^3.0.1, rc-virtual-list@^3.2.0:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/rc-virtual-list/-/rc-virtual-list-3.2.4.tgz#53e918f89edda0db4d8fcc810757c0daac7928de"
-  integrity sha512-/rX09+crUu43tltO5YT++Ix5W2unBrkVrH1FHaUzpc7VepWuxc2cD4d9enWOElJsziB6MlopaAUvbRSU5FtPNw==
-  dependencies:
-    classnames "^2.2.6"
-    rc-resize-observer "^1.0.0"
-    rc-util "^5.0.7"
-
-rc-virtual-list@^3.2.6:
+rc-virtual-list@^3.0.1, rc-virtual-list@^3.2.0, rc-virtual-list@^3.2.6:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/rc-virtual-list/-/rc-virtual-list-3.2.6.tgz#2c92a40f4425e19881b38134d6bd286a11137d2d"
   integrity sha512-8FiQLDzm3c/tMX0d62SQtKDhLH7zFlSI6pWBAPt+TUntEqd3Lz9zFAmpvTu8gkvUom/HCsDSZs4wfV4wDPWC0Q==
