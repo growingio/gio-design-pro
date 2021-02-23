@@ -242,7 +242,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     );
   }
   const [hoverdNodeValue, setHoveredNodeValue] = useState<PropertyItem | undefined>();
-  function getListItems(items: PropertyItem[]) {
+  function getListItems(items: PropertyItem[], keyPrefix: string = '') {
     const handleItemMouseEnter = (data: PropertyItem) => {
       setHoveredNodeValue(data);
       debounceSetDetailVisible(true);
@@ -261,7 +261,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const itemProp: ListItemProps = {
         disabled: data.disabled,
         ellipsis: true,
-        key: [data.type, data.groupId, data.value].join(''),
+        key: [keyPrefix, data.type, data.groupId, data.value].join(''),
         className: classNames({ selected: select }),
         children: labelRender(data),
         onClick: (e) => handleItemClick(e, data),
@@ -297,7 +297,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
           key="gk_recently"
           title="最近使用"
           type="group"
-          items={getListItems(recentlyPropertyItems)}
+          items={getListItems(recentlyPropertyItems, 'recently')}
         />
         <List.Divider />
       </>

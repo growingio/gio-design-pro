@@ -17,7 +17,7 @@ export default {
 } as Meta;
 
 const Template: Story<PropertySelectorProps> = (args) => (
-  <div style={{ width: '410px', padding: '16px', boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)' }}>
+  <div style={{ width: '410px', height: '500px', padding: '16px', boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)' }}>
     <PropertySelector {...args} />
   </div>
 );
