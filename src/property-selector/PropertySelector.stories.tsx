@@ -6,7 +6,6 @@ import _ from 'lodash';
 import PropertySelector from './PropertySelector';
 import { PropertySelectorProps } from './interfaces';
 import { insightDimensions } from './__test__/data';
-import '@gio-design/components/es/components/button/style/css';
 // import './style/index.less';
 import { dimensionToPropertyItem } from './util';
 import { Dimension } from '../types';

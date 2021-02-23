@@ -71,6 +71,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     onClick,
     detailVisibleDelay = 600,
     fetchDetailData = (data: PropertyItem): Promise<PropertyInfo> => Promise.resolve({ ...data }),
+    disabledValues = [],
     ...rest
   } = props;
   const [scope, setScope] = useState('all');
@@ -108,7 +109,15 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         });
       }
     }
-    const list = propertiItemList.map((v) => ({ ...v, pinyinName: getShortPinyin(v.label ?? '') }));
+    const list = propertiItemList.map((v) => {
+      const disabled = !!disabledValues && disabledValues.includes(v.id);
+
+      return {
+        ...v,
+        disabled,
+        pinyinName: getShortPinyin(v.label ?? ''),
+      };
+    });
 
     setDataList(list);
     /**

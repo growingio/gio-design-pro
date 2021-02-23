@@ -72,9 +72,9 @@ export interface PropertyPickerProps
    */
   recentlyStorePrefix?: string;
   /**
-   * 禁用的选项
+   * 禁用的选项 id数组
    */
-  // disabledValues?: PropertyValue[] | string[];
+  disabledValues?: string[];
 }
 /**
  * 属性的类型 event|avar|usr
