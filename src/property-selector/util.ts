@@ -1,4 +1,5 @@
 // import { transform } from 'lodash';
+
 import { PropertyItem, PropertyTypes } from './interfaces';
 import { Dimension } from '../types';
 
@@ -49,6 +50,7 @@ export const DimensionGroupTypeMapper: Mapper = {
   device: 'avar',
   origin: 'avar',
 };
+
 export const PropertyGroupOrder = [
   'event',
   'item',

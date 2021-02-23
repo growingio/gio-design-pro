@@ -5,6 +5,7 @@ import PropertyPicker from './PropertyPicker';
 import { PropertyValue, PropertySelectorProps } from './interfaces';
 import Selector from '../selector';
 import './style';
+import IconRender from './PropertyValueIconRender';
 
 const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   const {
@@ -59,11 +60,14 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   );
   const inputRender = () =>
     currentValue && (
-      <Tooltip title={currentValue?.label} disabled={!textOverflow} placement="top" arrowPointAtCenter>
-        <span className="inner-input-wrap" ref={inputValueRef}>
-          {currentValue?.label}
-        </span>
-      </Tooltip>
+      <>
+        <Tooltip title={currentValue?.label} disabled={!textOverflow} placement="top" arrowPointAtCenter>
+          <span className="inner-input-wrap" ref={inputValueRef}>
+            <span className="icon">{IconRender(currentValue?.groupId)}</span>
+            <span>{currentValue?.label}</span>
+          </span>
+        </Tooltip>
+      </>
     );
   return (
     <>

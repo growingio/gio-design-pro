@@ -7,6 +7,7 @@
 @property-selector-prefix-cls: ~'@{component-prefix}-property-selector';
 .@{property-picker-prefix-cls} {
   width: auto;
+  min-width: 160px;
   .gio-tabnav {
     margin: 8px 8px 2px;
   }
@@ -16,6 +17,9 @@
     &.active {
       color: @palette-blue-5;
       background-color: @palette-gray-1;
+    }
+    .item-icon {
+      margin-right: 12px;
     }
   }
 }
@@ -35,6 +39,9 @@
     text-overflow: ellipsis;
     width: inherit;
     max-width: 100%;
+    .icon {
+      margin-right: 12px;
+    }
   }
 }
 .@{property-picker-prefix-cls}-card {
