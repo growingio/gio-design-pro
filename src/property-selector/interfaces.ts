@@ -30,6 +30,7 @@ export interface PropertyValue extends Iterable {
   label?: string;
   value?: string;
   valueType?: string;
+  groupId?: string;
 }
 
 /**
@@ -107,13 +108,13 @@ export interface PropertyItem extends PropertyValue {
    */
   typeOrder?: number;
   // children?: NodeData[];
-  groupId?: string;
+
   groupName?: string;
   groupOrder?: number;
   /**
    * 列表项的 icon
    */
-  itemIcon?: React.ReactElement;
+  itemIcon?: () => React.ReactNode; // (() => React.ReactElement);
   key?: string;
   pinyinName?: string;
 }

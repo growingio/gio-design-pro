@@ -578,4 +578,15 @@ export const insightDimensions = [
     type: 'global',
     valueType: null,
   },
+  {
+    id: 'AbQ3bDYe',
+    isPrimaryKey: false,
+    key: 'order_name',
+    type: 'itm',
+    groupId: 'item',
+    name: 'shangpin',
+    groupName: '物品属性',
+    valueType: 'string',
+    description: '',
+  },
 ];

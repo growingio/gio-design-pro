@@ -1,19 +1,19 @@
-import { useCallback, useState } from 'react';
-import { debounce } from 'lodash';
+import { useEffect, useState } from 'react';
+import useDebounceFn from './useDebounceFn';
 
 type Dispatch<A> = (value: A) => void;
 const useDebounce = <T = undefined>(value: T, wait: number = 500): [T, Dispatch<T | undefined>] => {
-  const [state, setState] = useState(value);
-  const debounceCallback = useCallback(
-    debounce((_prop: T) => {
-      setState(_prop);
-    }, wait),
-    []
-  );
-  const setDebouncedState = (_val: T) => {
-    debounceCallback(_val);
-  };
+  const [debounced, setDebounced] = useState(value);
 
-  return [state, setDebouncedState];
+  const debouncedCallback = useDebounceFn(() => {
+    setDebounced(value);
+  }, wait);
+
+  useEffect(() => {
+    debouncedCallback();
+  }, [value]);
+
+  return [debounced, setDebounced];
 };
+
 export default useDebounce;

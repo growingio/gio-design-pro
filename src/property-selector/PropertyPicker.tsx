@@ -1,22 +1,11 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
-import {
-  toPairs,
-  uniq,
-  cloneDeep,
-  groupBy,
-  keys,
-  orderBy,
-  Dictionary,
-  isEqualWith,
-  isEmpty,
-  debounce,
-  reject,
-} from 'lodash';
+import { toPairs, uniq, cloneDeep, groupBy, keys, orderBy, Dictionary, isEqualWith, isEmpty, replace } from 'lodash';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
+
 import { dimensionToPropertyItem, getShortPinyin, isPromise } from './util';
-import { useDebounce, useLocalStorage } from '../hooks';
+import { useDebounce, useDebounceFn, useLocalStorage } from '../hooks';
 import BasePicker from '../base-picker';
 import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue, PropertyInfo } from './interfaces';
 import List from '../list';
@@ -25,10 +14,12 @@ import { ListItemProps } from '../list/interfaces';
 import { renderExpandableItems } from '../list/utils';
 import PropertyCard from './PropertyCard';
 import './style';
+import { Dimension } from '../types';
+import IconRender from './PropertyValueIconRender';
 
 function promisify(func: Function) {
   return (...arg: any) =>
-    new Promise((resolve) => {
+    new Promise((resolve, reject) => {
       const res = func(...arg);
       if (isPromise(res)) {
         return res.then(resolve).catch(reject);
@@ -36,6 +27,7 @@ function promisify(func: Function) {
       return resolve(res);
     });
 }
+
 const ExpandableGroupOrSubGroup = (props: {
   title?: string;
   type: 'group' | 'subgroup';
@@ -71,7 +63,6 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   const {
     value: initialValue,
     searchBar,
-    // fetchDetailData = (node) => Promise.resolve({ ...node, id: node.value, name: node.label } as PropertyInfo),
     loading = false,
     dataSource: originDataSource,
     recentlyStorePrefix = '_gio',
@@ -94,7 +85,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   const [debouncedKeyword, setDebouncedKeyword] = useDebounce(keyword, 300);
 
   const [detailVisible, setDetailVisible] = useState(false);
-  const debounceSetDetailVisible = debounce((visible) => {
+  const debounceSetDetailVisible = useDebounceFn((visible) => {
     setDetailVisible(visible);
   }, detailVisibleDelay);
   const [dataList, setDataList] = useState<PropertyItem[]>([]);
@@ -104,9 +95,17 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     let propertiItemList: PropertyItem[] = [];
     if (originDataSource && originDataSource.length) {
       if (originDataSource && originDataSource.length && !('value' in originDataSource[0])) {
-        propertiItemList = originDataSource.map(dimensionToPropertyItem);
+        propertiItemList = originDataSource.map((v) => {
+          const item = dimensionToPropertyItem(v as Dimension);
+          item.itemIcon = () => IconRender(item.groupId);
+          return item;
+        });
       } else {
-        propertiItemList = originDataSource;
+        propertiItemList = originDataSource.map((v) => {
+          const item = v as PropertyItem;
+          item.itemIcon = () => IconRender(item.groupId);
+          return item;
+        });
       }
     }
     const list = propertiItemList.map((v) => ({ ...v, pinyinName: getShortPinyin(v.label ?? '') }));
@@ -159,10 +158,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (r) {
         recent.push({
           ...r,
-          type: 'recently',
-          typeName: '最近使用',
-          groupId: 'recently',
-          groupName: '最近使用',
+          _groupKey: 'recently',
+          // type: `recently¥${r.type}`,
+          // typeName: '最近使用',
+          // groupId: `recently¥${r.groupId}`,
+          // groupName: '最近使用',
         });
       }
     });
@@ -220,12 +220,17 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     onClick?.(e);
   };
   const [recentlyPropertyItems, propertyItems] = dataSource;
-  const groupDatasource = useMemo(() => groupBy([...recentlyPropertyItems, ...propertyItems], (o) => o.type), [
+  const groupDatasource = useMemo(() => groupBy([...propertyItems], (o) => replace(o.type, /^recently¥/, '')), [
     propertyItems,
   ]);
 
   function labelRender(item: PropertyItem) {
-    return item.label as React.ReactChild;
+    return (
+      <>
+        <span className="item-icon">{item.itemIcon?.()}</span>
+        <span>{item.label}</span>
+      </>
+    );
   }
   const [hoverdNodeValue, setHoveredNodeValue] = useState<PropertyItem | undefined>();
   function getListItems(items: PropertyItem[]) {
@@ -243,7 +248,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const select =
         !isEmpty(currentValue) &&
         isEqualWith(currentValue, data, (a, b) => a?.value === b?.value) &&
-        data.groupId !== 'recently';
+        data._groupKey !== 'recently';
       const itemProp: ListItemProps = {
         disabled: data.disabled,
         ellipsis: true,
@@ -277,12 +282,22 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     if (propertyItems?.length === 0) {
       return <EmptyPrompt {...rest.emptyPrompt} />;
     }
-
-    const childrens = keys(groupDatasource).map((key, index) => {
+    const recentlyNodes = recentlyPropertyItems?.length > 0 && (
+      <>
+        <ExpandableGroupOrSubGroup
+          key="gk_recently"
+          title="最近使用"
+          type="group"
+          items={getListItems(recentlyPropertyItems)}
+        />
+        <List.Divider />
+      </>
+    );
+    const groupDataNodes = keys(groupDatasource).map((key, index) => {
       const groupData = groupDatasource[key];
       const subGroupDic = groupBy(groupData, (o) => o.groupId);
       const { typeName } = groupData[0];
-      // 此处的处理是 如果2级分组只有一组 提升为一级分组；如果没有这个需求 直接使用下方注释的代码 ；
+      // 此处的处理是 如果2级分组只有一组 提升为一级分组；如果没有这个需求删除该if分支 ；
       if (keys(subGroupDic).length === 1) {
         const items = getListItems(subGroupDic[keys(subGroupDic)[0]]);
         return (
@@ -292,18 +307,6 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
           </>
         );
       }
-      /**
-       * 最近使用 展示为一级分组
-       */
-      // if (key === 'recently') {
-      //   const items = getListItems(subGroupDic[keys(subGroupDic)[0]]);
-      //   return (
-      //     <>
-      //       {index > 0 && <List.Divider />}
-      //       <ExpandableGroupOrSubGroup title={typeName} type="group" items={items} />
-      //     </>
-      //   );
-      // }
       return (
         <>
           {index > 0 && <List.Divider />}
@@ -313,10 +316,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         </>
       );
     });
-
+    const childrens = [recentlyNodes, groupDataNodes];
     return childrens as React.ReactNode;
   };
-  const renderDetail = () => <PropertyCard nodeData={hoverdNodeValue} fetchData={promisify(fetchDetailData)} />;
+  const renderDetail = () =>
+    hoverdNodeValue && <PropertyCard nodeData={hoverdNodeValue} fetchData={promisify(fetchDetailData)} />;
   const clsPrifx = usePrefixCls('property-picker');
   const cls = classNames(clsPrifx, rest?.className);
   return (
@@ -325,7 +329,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         {...rest}
         className={cls}
         renderItems={renderItems}
-        detailVisible={detailVisible}
+        detailVisible={detailVisible && !!hoverdNodeValue}
         renderDetail={renderDetail}
         loading={loading}
         searchBar={{ placeholder: searchBar?.placeholder || '搜索属性名称', onSearch: handleSearch }}
