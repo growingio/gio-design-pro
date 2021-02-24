@@ -182,6 +182,7 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
             手动模式
           </Button>
         }
+        submitter={{ resetText: '取消' }}
         onFinishFailed={({ values }) => console.log('onFinishFailed', values)}
         dataChart={dataChart()}
       />

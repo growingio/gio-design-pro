@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import './footer-toolbar.less';
 // import { RouteContext, RouteContextType } from '../index';
+import ReactDOM from 'react-dom';
 
 export interface FooterToolbarProps {
   extra?: React.ReactNode;
@@ -37,5 +38,12 @@ const FooterToolbar: React.FC<FooterToolbarProps> = (props) => {
     </div>
   );
 };
-
-export default FooterToolbar;
+type PortalFooterToolbarProps = FooterToolbarProps & { container?: Element };
+const PortalFooterToolbar: React.FC<PortalFooterToolbarProps> = (props) => {
+  const { container, ...rest } = props;
+  if (container) {
+    return ReactDOM.createPortal(<FooterToolbar {...rest} />, container);
+  }
+  return <FooterToolbar {...rest} />;
+};
+export default PortalFooterToolbar;

@@ -29,6 +29,10 @@ export type SubmitterProps<T = {}> = {
    */
   resetButtonProps?: ButtonProps;
   /**
+   * 默认的提交按钮FooterToolbar渲染的父元素；默认渲染到form底部的<div className="footer"></div>
+   */
+  defaultRenderContainer?: Element;
+  /**
    * @name 自定义操作的渲染
    */
   render?: ((props: SubmitterProps & T, dom: JSX.Element[]) => React.ReactNode[] | React.ReactNode | false) | false;

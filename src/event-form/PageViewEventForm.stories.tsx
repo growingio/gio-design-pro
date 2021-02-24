@@ -108,7 +108,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         // initialTagElement={element}
         platform="android"
         onPre={() => console.warn('pre')}
-        showPreButton={false}
+        showPreButton
         submitter={{ resetText: '取消' }}
         appType={AppType.NATIVE}
         initialValues={formValue}

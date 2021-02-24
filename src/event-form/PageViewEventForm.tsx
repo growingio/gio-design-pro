@@ -215,11 +215,19 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
   };
 
   const [loading, setLoading] = useState<ButtonProps['loading']>(false);
-  const defaultSubmitRender = (_: SubmitterProps, submitterDom: JSX.Element[]) => {
+  const defaultSubmitRender = (prop: SubmitterProps, submitterDom: JSX.Element[]) => {
     const [preBtn, resetBtn, submitBtn] = submitterDom;
+    const { defaultRenderContainer } = prop;
+    if (defaultRenderContainer) {
+      return (
+        <FooterToolbar container={prop.defaultRenderContainer} extra={showPreButton && preBtn}>
+          {[resetBtn, submitBtn] as JSX.Element[]}
+        </FooterToolbar>
+      );
+    }
     return (
       <div className="footer">
-        <FooterToolbar style={{ position: 'static' }} extra={showPreButton && preBtn}>
+        <FooterToolbar container={prop.defaultRenderContainer} extra={showPreButton && preBtn}>
           {[resetBtn, submitBtn] as JSX.Element[]}
         </FooterToolbar>
       </div>
@@ -318,6 +326,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
         loading,
         ...submitter?.submitButtonProps,
       },
+      defaultRenderContainer: submitter?.defaultRenderContainer,
     };
     return _render(submitterProps, submitterDom) as React.ReactNode;
   };
