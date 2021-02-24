@@ -165,9 +165,9 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     onValuesChange?.(changedValues, conversionSubmitValue(allValues));
   }
   useEffect(() => {
-    const { name } = formValues;
+    const { name, belongPage } = formValues;
     let disabled = false;
-    const isNameEmpty = isEmpty(name);
+    const isNameEmpty = isEmpty(name) || isEmpty(belongPage);
 
     disabled = isNameEmpty;
     const validInfo = formRef.current?.getFieldsError();
