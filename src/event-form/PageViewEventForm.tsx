@@ -169,7 +169,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
   const isNative = appType === AppType.NATIVE;
   const showBelongApp = platform?.toLowerCase() !== 'web';
   const [formValues, setFormValues] = useState<any>(() => transformFormValues(initialValues as PageViewFormValues));
-
+  // const [hasValidError, setHasValidError] = useState(false);
   function handleFormValuesChange(changedValues: any, allValues: any) {
     setFormValues(allValues);
     onValuesChange?.(changedValues, conversionSubmitValue(allValues));
@@ -194,7 +194,8 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
       disabled = isNameEmpty || isPathEmpty;
     }
     // const err = formRef.current?.getFieldsError([['name'], ['definition'], ['definition', 'path']]);
-
+    // const validInfo = formRef.current?.getFieldsError();
+    // const hasError = validInfo && validInfo.some((v) => v.errors.length > 0);
     setSubmitDisabeld(disabled);
   }, [formValues]);
 
@@ -331,9 +332,10 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     return _render(submitterProps, submitterDom) as React.ReactNode;
   };
   function handleFiledsChange(changeFields: any, allFields: any) {
-    const validInfo = formRef.current?.getFieldsError();
-    const hasError = validInfo && validInfo.some((v) => v.errors.length > 0);
-    setSubmitDisabeld(hasError);
+    // const validInfo = formRef.current?.getFieldsError();
+    // const hasError = validInfo && validInfo.some((v) => v.errors.length > 0);
+    // setHasValidError(hasError);
+
     restProps.onFieldsChange?.(changeFields, allFields);
   }
   return (
