@@ -25,7 +25,7 @@ jobs:
         if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run: yarn install
   lint:
-    name: Lint Checks
+    name: Lint codes
     needs: install
     if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
       - name: ESLint
         run: yarn eslint
   unit_test:
-    name: Unit Test
+    name: Unit test
     needs: install
     if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: coverage/
   build:
-    name: Build Package
+    name: Build package
     needs: install
     runs-on: ubuntu-latest
     steps:
@@ -122,7 +122,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Get package version
         id: get-package-version
-        run: echo "::set-output name=version::$(node script/version.js)"
+        run: echo "::set-output name=version::$(yarn -s get-version)"
       - name: Publish GitHub release
         uses: actions/create-release@v1
         env:

@@ -1,5 +1,5 @@
 import React from 'react';
-// import { ListItemProps, ListItemGroupProps } from '../list/interfaces';
+import { ListItemProps, ListItemGroupProps } from '../list/interfaces';
 import { BaseProps } from '../utils/interfaces';
 
 interface TabNavItem {
@@ -56,7 +56,8 @@ export interface BasePickerProps extends BaseProps {
    */
   // dataSource?: T[];
   // renderItem?: (item: T, index: number) => React.ReactNode;
-  renderItems: () => React.ReactNode;
+  renderItems?: () => React.ReactNode;
+  items?: (ListItemGroupProps | ListItemProps)[];
   /**
    * Callback when select some data
    */
