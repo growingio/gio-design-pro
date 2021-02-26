@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Tooltip, Input, Form, Alert, Link, Popconfirm } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { FormInstance } from '@gio-design/components/es/components/form';
@@ -168,7 +168,14 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
 
   const isNative = appType === AppType.NATIVE;
   const showBelongApp = platform?.toLowerCase() !== 'web';
+  const innerFormInitialValues = useMemo(() => transformFormValues(initialValues as PageViewFormValues), [
+    initialValues,
+  ]);
   const [formValues, setFormValues] = useState<any>(() => transformFormValues(initialValues as PageViewFormValues));
+  useEffect(() => {
+    setFormValues(() => transformFormValues(initialValues as PageViewFormValues));
+    formRef.current.resetFields();
+  }, [initialValues]);
   // const [hasValidError, setHasValidError] = useState(false);
   function handleFormValuesChange(changedValues: any, allValues: any) {
     setFormValues(allValues);
@@ -348,9 +355,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           form={userForm || wrapForm}
           submitter={submitter}
           onValuesChange={handleFormValuesChange}
-          initialValues={{
-            ...transformFormValues(initialValues as PageViewFormValues),
-          }}
+          initialValues={innerFormInitialValues}
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
 

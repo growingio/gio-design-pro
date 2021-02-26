@@ -1,7 +1,7 @@
 import { cloneDeep, get, isEmpty, omit } from 'lodash';
-import { DocProps } from '../types';
+// import { DocProps } from '../types';
 import { ElementFormValues, PageViewFormValues, Rule } from './interfaces';
-import { TagElement } from './TagElement';
+import { TagElement, DocProps } from './TagElement';
 import { LimitCondition } from './types';
 import { matchString, matchQuery, kvsToQuery } from './utils';
 

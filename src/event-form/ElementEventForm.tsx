@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-pattern */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Input, Form, Alert, Popconfirm } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { FormInstance } from '@gio-design/components/es/components/form';
@@ -157,8 +157,14 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
   };
 
   const showBelongApp = platform?.toLowerCase() !== 'web';
+  const innerFormInitialValues = useMemo(() => transformFormValues(initialValues as ElementFormValues), [
+    initialValues,
+  ]);
   const [formValues, setFormValues] = useState<any>(() => transformFormValues(initialValues));
-
+  useEffect(() => {
+    setFormValues(() => transformFormValues(initialValues));
+    formRef.current.resetFields();
+  }, [initialValues]);
   function handleValuesChange(changedValues: any, allValues: any) {
     const newValue = { ...initialValues, ...allValues };
     setFormValues(newValue);
@@ -322,9 +328,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           form={userForm || wrapForm}
           submitter={submitter}
           onValuesChange={handleValuesChange}
-          initialValues={{
-            ...transformFormValues(initialValues as ElementFormValues),
-          }}
+          initialValues={innerFormInitialValues}
           onFinish={async (values) => {
             if (!restProps.onFinish) return;
             try {
@@ -382,7 +386,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
             </Form.Item>
             {hasLimit() && (
               <>
-                <Form.Item name="limitCondition" label="限定条件" rules={validateRules.limitCondition}>
+                <Form.Item shouldUpdate name="limitCondition" label="限定条件" rules={validateRules.limitCondition}>
                   <DefinitionCondition isNative={appType === AppType.NATIVE} />
                 </Form.Item>
               </>

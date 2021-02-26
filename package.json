@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "21.1.1-alpha.46",
+  "version": "21.1.1-alpha.51",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -30,7 +30,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@gio-design/components": "^21.2.2",
+    "@gio-design/components": "^21.2.3",
     "@gio-design/icons": "21.1.0",
     "@gio-design/tokens": "21.1.0",
     "classnames": "^2.2.6",

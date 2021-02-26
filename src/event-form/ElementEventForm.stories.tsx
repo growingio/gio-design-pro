@@ -28,26 +28,41 @@ const getLimitConditionWithElemInfo = (info: ElementInfo): LimitCondition => {
   !!info.href && (limit.href = info.href);
   return limit;
 };
-function getInitialTagElement() {
-  const currentElem: any = {
-    content: '一共测试4种数据类型, change, click, submit, page,',
-    index: '1',
-    href: '/link',
-    path: '/push/cdp/testgio-cdpcircel.html',
-    pg: null,
-    query: null,
-    xpath: '/div.title/form.basic-grey/h1/span',
-    contentType: null,
-    domain: 'release-messages.growingio.cn',
-    urlScheme: 'growing.447120b8e608d6b9',
-    actions: ['clck'],
+function getInitialTagElement(elementname: string) {
+  const elements: any = {
+    element1: {
+      name: 'element1',
+      content: 'element1:一共测试4种数据类型, change, click, submit, page,',
+      index: '1',
+      href: '/link',
+      path: '/push/cdp/testgio-cdpcircel.html',
+      pg: null,
+      query: null,
+      xpath: '/div.title/form.basic-grey/h1/span',
+      contentType: null,
+      domain: 'release-messages.growingio.cn',
+      urlScheme: 'growing.447120b8e608d6b9',
+      actions: ['clck'],
+    },
+    element2: {
+      name: 'element2',
+      content: 'element2:这是2',
+      path: '/push/cdp/testgio-cdpcircel.html',
+      pg: null,
+      query: null,
+      xpath: '/div.title/form.basic-grey/h1/span',
+      contentType: null,
+      domain: 'release-messages.growingio.cn',
+      urlScheme: 'growing.447120b8e608d6b9',
+      actions: ['clck'],
+    },
   };
+  const currentElem = elements[elementname] || {};
   // console.log('currentPageInfo', currentPageInfo);
   const deviceInfo: DeviceInfo = deviceInfoMinp as DeviceInfo;
 
   const limitCondition = getLimitConditionWithElemInfo(currentElem);
   const urlScheme = deviceInfo?.urlScheme;
-
   const attrs = {
     domain: currentElem.domain,
     path: currentElem.path,
@@ -63,7 +78,7 @@ function getInitialTagElement() {
 
   const platform = deviceInfo ? deviceInfo.os : 'web';
   const elementInput = {
-    name: '',
+    name: currentElem?.name,
     description: '',
     docType: 'elem',
     actions,
@@ -78,10 +93,10 @@ function getInitialTagElement() {
   return elementInput;
 }
 
-function getFormValues() {
+function getFormValues(elem: string) {
   //
   const deviceInfo: DeviceInfo = deviceInfoMinp as DeviceInfo;
-  const element = getInitialTagElement();
+  const element = getInitialTagElement(elem);
   const { attrs, definition } = element;
   // const isNative = currentPageInfo.appType === AppType.NATIVE;
   // const res = {
@@ -121,8 +136,8 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
     console.log('handleValuesChange', val, allVal);
     setSubmitDisabled(false);
   }
-
-  const formValue: ElementFormValues = getFormValues();
+  const [formValue, setFormValue] = useState<ElementFormValues>(getFormValues('element1'));
+  // const formValue: ElementFormValues = getFormValues();
   const { domain, path, query } = formValue.definition;
   const currentPageTags = allDefinedTags.filter((v) =>
     searchPageRule1({ ...formValue, domain, path, query } as PageInfo, v)
@@ -156,36 +171,45 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
       <Button type="secondary">查看数据</Button>
     </div>
   );
+  function handleElementClick(ele: string) {
+    const vals = getFormValues(ele);
+    setFormValue(vals);
+  }
   return (
-    <div
-      style={{
-        width: '460px',
-        boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)',
-      }}
-      className="demo"
-    >
-      <ElementEventForm
-        ref={formRef}
-        definedTags={allDefinedTags}
-        onValuesChange={handleValuesChange}
-        // initialTagElement={element}
-        platform="android"
-        initialValues={formValue}
-        onFinish={handleFinish}
-        pagePicker={{
-          onActionButtonClick: () => console.log('go to define page'),
-          currentPageTags: currentPageTags || [],
+    <div>
+      <Button onClick={() => handleElementClick('element1')}>元素一</Button>{' '}
+      <Button onClick={() => handleElementClick('element2')}>元素二</Button>
+      <div style={{ margin: '8px 0px', height: '1px' }} />
+      <div
+        style={{
+          width: '460px',
+          boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)',
         }}
-        requiredMark
-        submitterExtra={
-          <Button type="text" onClick={() => console.log('extra link click')}>
-            手动模式
-          </Button>
-        }
-        submitter={{ resetText: '取消' }}
-        onFinishFailed={({ values }) => console.log('onFinishFailed', values)}
-        dataChart={dataChart()}
-      />
+        className="demo"
+      >
+        <ElementEventForm
+          ref={formRef}
+          definedTags={allDefinedTags}
+          onValuesChange={handleValuesChange}
+          // initialTagElement={element}
+          platform="android"
+          initialValues={formValue}
+          onFinish={handleFinish}
+          pagePicker={{
+            onActionButtonClick: () => console.log('go to define page'),
+            currentPageTags: currentPageTags || [],
+          }}
+          requiredMark
+          submitterExtra={
+            <Button type="text" onClick={() => console.log('extra link click')}>
+              手动模式
+            </Button>
+          }
+          submitter={{ resetText: '取消' }}
+          onFinishFailed={({ values }) => console.log('onFinishFailed', values)}
+          dataChart={dataChart()}
+        />
+      </div>
     </div>
   );
 };
