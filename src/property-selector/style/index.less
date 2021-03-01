@@ -1,6 +1,7 @@
 @import '../../stylesheets/index.less';
 @import '../../list/style/index.less';
 @import '../../selector/style/index.less';
+@import '../../base-picker/style/index.less';
 // @import '~@gio-design/components/es/components/tag/style/index.less';
 // @import '@gio-design/components/es/components/tooltip/style/index.css';
 @property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
@@ -8,8 +9,9 @@
 .@{property-picker-prefix-cls} {
   width: auto;
   min-width: 160px;
-  .gio-tabnav {
-    margin: 8px 8px 2px;
+
+  .@{picker-prefix-cls}__content {
+    max-height: 424px;
   }
   .@{list-prefix-cls}__item {
     transition: all 0.3s ease;
@@ -45,7 +47,7 @@
   }
 }
 .@{property-picker-prefix-cls}-card {
-  min-height: 40px;
+  // min-height: 80px;
   width: 320px;
   &-title {
     color: @palette-black-6;
@@ -72,6 +74,15 @@
     color: @palette-black-6;
     &__icon {
       margin-right: 8px;
+    }
+  }
+  .gio-loading-wrapper-loading {
+    & > .gio-loading {
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+      width: 100%;
+      transform: translateY(-50%);
     }
   }
 }

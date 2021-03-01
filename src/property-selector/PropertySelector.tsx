@@ -55,6 +55,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
     <PropertyPicker
       className={`${clsPrifx}-dropdown`}
       {...pickerRestProps}
+      reLoadRecentlyUsed={dropdownVisibleInner}
       value={currentValue}
       dataSource={dataSource}
       onChange={handleValueChange}

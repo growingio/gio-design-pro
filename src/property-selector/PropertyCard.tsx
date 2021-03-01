@@ -31,29 +31,31 @@ function PropertyCard(props: PropertyCardProps) {
   const prefixCls = usePrefixCls('property-picker');
   const propCardPrefixCls = `${prefixCls}-card`;
   return (
-    <Loading size="small" title={false} loading={loading}>
-      <Card className={propCardPrefixCls}>
-        <Card.Meta>
-          <span className={`${propCardPrefixCls}-title`}>{data?.name}</span>
-          {data?.type && (
-            <Tag size="small" status="draft">
-              {PropertyTypes[data?.type ?? ''] || ''}
-            </Tag>
-          )}
-          <div className={`${propCardPrefixCls}-key`}>{data?.key ?? data?.id}</div>
-        </Card.Meta>
-        {data?.description && <Card.Meta>{data?.description}</Card.Meta>}
-        {data?.valueType && (
+    <Card className={propCardPrefixCls}>
+      <Loading size="small" title={false} loading={loading}>
+        <Card.Meta style={{ minHeight: '40px' }}>
           <Card.Meta>
-            <div className={`${propCardPrefixCls}__divide`} />
-            <div className={`${propCardPrefixCls}__footer`}>
-              <span className={`${propCardPrefixCls}__footer__icon`}>{ValueTypeMap[data?.valueType ?? ''][1]}</span>
-              {ValueTypeMap[data?.valueType ?? ''][0]}
-            </div>
+            <span className={`${propCardPrefixCls}-title`}>{data?.name}</span>
+            {data?.type && (
+              <Tag size="small" status="draft">
+                {PropertyTypes[data?.type ?? ''] || ''}
+              </Tag>
+            )}
+            <div className={`${propCardPrefixCls}-key`}>{data?.key ?? data?.id}</div>
           </Card.Meta>
-        )}
-      </Card>
-    </Loading>
+          {data?.description && <Card.Meta>{data?.description}</Card.Meta>}
+          {data?.valueType && (
+            <Card.Meta>
+              <div className={`${propCardPrefixCls}__divide`} />
+              <div className={`${propCardPrefixCls}__footer`}>
+                <span className={`${propCardPrefixCls}__footer__icon`}>{ValueTypeMap[data?.valueType ?? ''][1]}</span>
+                {ValueTypeMap[data?.valueType ?? ''][0]}
+              </div>
+            </Card.Meta>
+          )}
+        </Card.Meta>
+      </Loading>
+    </Card>
   );
 }
 export default PropertyCard;

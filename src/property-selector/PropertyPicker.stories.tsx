@@ -17,7 +17,7 @@ export default {
 } as Meta;
 
 const Template: Story<PropertyPickerProps> = (args) => (
-  <div style={{ width: '410px', padding: '16px', boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)' }}>
+  <div style={{ width: '366px', padding: '16px', boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)' }}>
     <PropertyPicker {...args} />
   </div>
 );
