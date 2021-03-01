@@ -22,7 +22,8 @@ describe('PropertySelector', () => {
     });
 
     expect(handleSelect).toHaveBeenCalledTimes(1);
-    expect(handleSelect).toHaveBeenCalledWith(tobeClickedNode);
+    expect(screen.queryByText('选择属性')).toBeNull();
+    // expect(handleSelect).toHaveBeenCalledWith(tobeClickedNode);
   });
 
   it('can not be clicked in disabled state', () => {
