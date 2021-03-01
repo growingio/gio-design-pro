@@ -16,6 +16,7 @@ import PropertyCard from './PropertyCard';
 import './style';
 import { Dimension } from '../types';
 import IconRender from './PropertyValueIconRender';
+// import { useMountedState } from './useAsync';
 
 const ExpandableGroupOrSubGroup = (props: {
   title?: string;
@@ -61,21 +62,35 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     detailVisibleDelay = 600,
     fetchDetailData = (data: PropertyItem): Promise<PropertyInfo> => Promise.resolve({ ...data }),
     disabledValues = [],
+    shouldUpdateRecentlyUsed = true,
     ...rest
   } = props;
   const [scope, setScope] = useState('all');
   const [keyword, setKeyword] = useState<string | undefined>('');
+  const [recentlyUsedInMemo, setRecentlyUsedInMemo] = useState<{ [key: string]: any[] }>();
   const [recentlyUsed, setRecentlyUsed] = useLocalStorage<{ [key: string]: any[] }>(
     `${recentlyStorePrefix}_propertyPicker`,
     {
       all: [],
     }
   );
+  // const mounted = useMountedState();
+  // useEffect(() => {
+  //   console.log('setRecentlyUsedInMemo on mounted');
+  //   setRecentlyUsedInMemo(recentlyUsed);
+  // }, []);
+  useEffect(() => {
+    if (shouldUpdateRecentlyUsed) {
+      // console.log('setRecentlyUsedInMemo on recentlyUsed update');
+      setRecentlyUsedInMemo(recentlyUsed);
+    }
+  }, [shouldUpdateRecentlyUsed]);
+
   const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(initialValue);
   const [debouncedKeyword, setDebouncedKeyword] = useDebounce(keyword, 300);
 
   const [detailVisible, setDetailVisible] = useState(false);
-  const debounceSetDetailVisible = useDebounceFn((visible) => {
+  const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
     setDetailVisible(visible);
   }, detailVisibleDelay);
   const [dataList, setDataList] = useState<PropertyItem[]>([]);
@@ -149,7 +164,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     const sortedData = orderBy(filterdData, ['typeOrder', 'groupOrder', 'pinyinName']);
 
     // mixin 最近使用
-    const rids: string[] = recentlyUsed ? recentlyUsed[scope] : [];
+    const rids: string[] = recentlyUsedInMemo ? recentlyUsedInMemo[scope] : [];
     const recent: PropertyItem[] = [];
     rids?.forEach((v: string) => {
       const r = filterdData.find((d) => d.value === v);
@@ -165,7 +180,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       }
     });
     return [recent, sortedData];
-  }, [scope, debouncedKeyword, dataList, recentlyUsed]);
+  }, [scope, debouncedKeyword, dataList, recentlyUsedInMemo]);
 
   function onTabNavChange(key: string) {
     setScope(key);
@@ -250,7 +265,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const itemProp: ListItemProps = {
         disabled: data.disabled,
         ellipsis: true,
-        key: [keyPrefix, data.type, data.groupId, data.value].join(''),
+        key: [keyPrefix, data.type, data.groupId, data.value].join('-'),
         className: classNames({ selected: select }),
         children: labelRender(data),
         onClick: (e) => handleItemClick(e, data),
@@ -271,7 +286,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const listItems = getListItems(groupData[gkey]);
 
       return (
-        <ExpandableGroupOrSubGroup key={[type, gkey].join('￥')} title={groupName} type="subgroup" items={listItems} />
+        <ExpandableGroupOrSubGroup key={[type, gkey].join('-')} title={groupName} type="subgroup" items={listItems} />
       );
     });
     return dom as React.ReactNode;
@@ -283,7 +298,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     const recentlyNodes = recentlyPropertyItems?.length > 0 && (
       <>
         <ExpandableGroupOrSubGroup
-          key="gk_recently"
+          key="group-recently"
           title="最近使用"
           type="group"
           items={getListItems(recentlyPropertyItems, 'recently')}
@@ -301,7 +316,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         return (
           <>
             {index > 0 && <List.Divider />}
-            <ExpandableGroupOrSubGroup key={`gk_${typeName}`} title={typeName} type="group" items={items} />
+            <ExpandableGroupOrSubGroup key={`group-${typeName}`} title={typeName} type="group" items={items} />
           </>
         );
       }

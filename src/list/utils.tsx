@@ -10,7 +10,7 @@ const DEFAULT_SHOW_ITEMS_COUNT = 10;
 export const rootPrefixCls = () => usePrefixCls('list');
 
 export function renderItem(i: ListItemProps, idx: number) {
-  return <Item {...i} key={`item-${idx}`} />;
+  return <Item {...i} key={`item-${i.key}-${idx}`} />;
 }
 
 export function renderExpandableItems(expanded: boolean, currentItems: ListItemProps[], onExpand: () => void) {
