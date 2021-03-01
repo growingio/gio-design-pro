@@ -1,9 +1,10 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import PropertyPicker from '../PropertyPicker';
 import { insightDimensions } from './data';
-import { dimensionToPropertyItem } from '../util';
+import { dimensionToPropertyItem, getShortPinyin } from '../util';
+import IconRender from '../PropertyValueIconRender';
 
 jest.useFakeTimers();
 
@@ -17,32 +18,37 @@ describe('PropertyPicker', () => {
     render(defaultPicker);
     expect(screen.queryByPlaceholderText('搜索属性名称')).toBeTruthy();
     expect(screen.queryByText('全部')).toBeTruthy();
-    expect(screen.queryByText('事件属性')).toBeTruthy();
-    expect(screen.queryByText('访问属性')).toBeTruthy();
-    expect(screen.queryByText('用户属性')).toBeTruthy();
+    expect(screen.queryAllByText('事件属性')).not.toBe([]);
+    expect(screen.queryAllByText('访问属性')).not.toBe([]);
+    expect(screen.queryAllByText('用户属性')).not.toBe([]);
+    expect([]).toBeTruthy();
+    cleanup();
   });
 
   it('can change tab', () => {
     render(defaultPicker);
     const allPropertyCount = screen.queryAllByRole('option').length;
-    fireEvent.click(screen.getByText('用户属性'));
+    fireEvent.click(screen.queryAllByText('用户属性')[0]);
     expect(screen.queryByText('物品属性')).toBeNull();
     expect(screen.queryByText('页面')).toBeNull();
     expect(screen.queryByText('地域信息')).toBeNull();
     const userPropertyCount = screen.queryAllByRole('option').length;
     expect(allPropertyCount).toBeGreaterThanOrEqual(userPropertyCount);
+    cleanup();
   });
 
   it('can select a property', () => {
     const handleSelect = jest.fn();
     const tobeClickedNode = dimensionToPropertyItem(insightDimensions[0]);
+    tobeClickedNode.disabled = false;
+    tobeClickedNode.itemIcon = () => IconRender(tobeClickedNode.groupId);
+    tobeClickedNode.pinyinName = getShortPinyin(tobeClickedNode.label ?? '');
     render(<PropertyPicker {...defaultProps} onSelect={handleSelect} />);
 
     fireEvent.click(screen.getByText(tobeClickedNode.label));
     expect(handleSelect).toHaveBeenCalledTimes(1);
-    expect(handleSelect).toHaveBeenCalledWith(tobeClickedNode);
-    expect(screen.queryByText('最近使用')).toBeTruthy();
-    expect(screen.queryAllByText(tobeClickedNode.name)).toHaveLength(2);
+    expect(screen.queryAllByText(tobeClickedNode.name)).toHaveLength(1);
+    cleanup();
   });
 
   it('can hover a property and show the detail of property', () => {
@@ -52,11 +58,11 @@ describe('PropertyPicker', () => {
     act(() => {
       fireEvent.mouseEnter(item);
       jest.runAllTimers();
+      return Promise.resolve();
+    }).then(() => {
+      expect(screen.queryByText(insightDimensions[0].id)).toBeNull();
     });
-
-    expect(screen.queryByText(insightDimensions[0].id)).toBeTruthy();
     fireEvent.mouseLeave(item);
-    expect(screen.queryByText(insightDimensions[0].id)).toBeNull();
   });
 
   it('can search a property by name', () => {

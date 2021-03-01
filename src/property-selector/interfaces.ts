@@ -79,7 +79,7 @@ export interface PropertyPickerProps
    * 是否重新从localstorage加载最近使用选项,最近使用选项会在点选时自动存储到localstorage,
    * 需要在picker重新渲染或者shouldUpdateRecentlyUsed属性值从false->true时重新加载
    */
-  shouldUpdateRecentlyUsed: boolean;
+  shouldUpdateRecentlyUsed?: boolean;
 }
 /**
  * 属性的类型 event|avar|usr

@@ -22,7 +22,7 @@ const ExpandableGroupOrSubGroup = (props: {
   title?: string;
   type: 'group' | 'subgroup';
   items: ListItemProps[];
-  key: string;
+  key?: string;
 }) => {
   const { items = [], type = 'subgroup', title, key } = props;
   const [expanded, setExpand] = useState(false);
