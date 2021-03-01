@@ -17,7 +17,7 @@ jobs:
           node-version: 14
       - name: Cache Node.js modules
         id: cache-node-modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -58,7 +58,7 @@ jobs:
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -81,13 +81,13 @@ jobs:
         with:
           node-version: 14.x
       - name: Restore Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache package
         id: cache-package
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: |
             dist
@@ -110,7 +110,7 @@ jobs:
           node-version: 14
           registry-url: 'https://registry.npmjs.org'
       - name: Restore package from cache
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: |
             dist
@@ -147,7 +147,7 @@ jobs:
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
