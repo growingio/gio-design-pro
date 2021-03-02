@@ -6,7 +6,7 @@ import { SegmentCardProps } from './interfaces';
 import './style';
 
 export default {
-  title: 'Business Components/UserSelector/SegmentCard',
+  title: 'Business Components/UserPicker/SegmentCard',
   component: SegmentCard,
 } as Meta;
 
