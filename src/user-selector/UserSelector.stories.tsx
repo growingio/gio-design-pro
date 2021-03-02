@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import UserSelector from './UserSelector';
 import { UserSelectorProps } from './interfaces';
-import { currentUserId, segments } from '../user-picker/__test__/data';
+import { currentUserId, segments } from '../user-picker/__tests__/data';
 
 export default {
   title: 'Business Components/UserSelector',
