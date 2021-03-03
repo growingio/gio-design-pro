@@ -51,7 +51,7 @@ describe('ItemGroup', () => {
       items.push({ children: `Item ${i}` });
     }
     render(<ItemGroup title={defaultGroupTile} expandable items={items} />);
-    const expandItem = screen.getByText(expandItemText);
+    const expandItem = screen.queryByText(expandItemText, { exact: false });
     expect(expandItem).not.toBeNull();
     expect(screen.queryAllByRole('option')).toHaveLength(11);
     fireEvent.click(expandItem);

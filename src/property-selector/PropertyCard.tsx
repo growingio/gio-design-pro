@@ -11,7 +11,7 @@ import {
   BooleanTypeOutlined,
 } from '@gio-design/icons';
 import { PropertyTypes, PropertyCardProps } from './interfaces';
-import useAsync from './useAsync';
+import useAsync from '../hooks/useAsync';
 
 const ValueTypeMap: { [key: string]: [string, React.ReactElement] } = {
   string: ['字符串类型', <StringTypeOutlined size="14px" />],

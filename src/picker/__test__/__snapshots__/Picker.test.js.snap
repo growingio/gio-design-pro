@@ -19,10 +19,11 @@ exports[`Picker snapshots will only show input 1`] = `
       class="gio-input__suffix"
     >
       <span
+        aria-label="down-filled"
         class="gio-icon"
+        role="img"
       >
         <svg
-          class="gio-icon-svg"
           fill="currentColor"
           height="16px"
           viewBox="0 0 14 14"

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { toPairs, uniq, cloneDeep, groupBy, keys, orderBy, Dictionary, isEqualWith, isEmpty, replace } from 'lodash';
@@ -16,15 +17,15 @@ import PropertyCard from './PropertyCard';
 import './style';
 import { Dimension } from '../types';
 import IconRender from './PropertyValueIconRender';
-// import { useMountedState } from './useAsync';
 
 const ExpandableGroupOrSubGroup = (props: {
   title?: string;
   type: 'group' | 'subgroup';
   items: ListItemProps[];
-  key?: string;
+  groupKey?: string;
 }) => {
-  const { items = [], type = 'subgroup', title, key } = props;
+  // console.log('props,', props);
+  const { items = [], type = 'subgroup', title, groupKey: key } = props;
   const [expanded, setExpand] = useState(false);
   const onExpand = () => {
     setExpand(true);
@@ -33,12 +34,12 @@ const ExpandableGroupOrSubGroup = (props: {
   return (
     <>
       {type === 'group' && (
-        <List.ItemGroup key={key} title={title}>
+        <List.ItemGroup key={`group-${key}`} title={title}>
           {content}
         </List.ItemGroup>
       )}
       {type === 'subgroup' && (
-        <List.ItemSubgroup key={key} title={title}>
+        <List.ItemSubgroup key={`subgroup-${key}`} title={title}>
           {content}
         </List.ItemSubgroup>
       )}
@@ -265,7 +266,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const itemProp: ListItemProps = {
         disabled: data.disabled,
         ellipsis: true,
-        key: [keyPrefix, data.type, data.groupId, data.value].join('-'),
+        key: ['item', keyPrefix, data.type, data.groupId, data.id].join('-'),
         className: classNames({ selected: select }),
         children: labelRender(data),
         onClick: (e) => handleItemClick(e, data),
@@ -284,9 +285,22 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     const dom = keys(groupData).map((gkey) => {
       const { groupName, type } = groupData[gkey][0];
       const listItems = getListItems(groupData[gkey]);
-
+      // const elem = ExpandableGroupOrSubGroup({
+      //   // key: ['exp', type, gkey].join('-'),
+      //   groupKey: [type, gkey].join('-'),
+      //   title: groupName,
+      //   type: 'subgroup',
+      //   items: listItems,
+      // });
+      // return elem;
       return (
-        <ExpandableGroupOrSubGroup key={[type, gkey].join('-')} title={groupName} type="subgroup" items={listItems} />
+        <ExpandableGroupOrSubGroup
+          key={['exp', type, gkey].join('-')}
+          groupKey={[type, gkey].join('-')}
+          title={groupName}
+          type="subgroup"
+          items={listItems}
+        />
       );
     });
     return dom as React.ReactNode;
@@ -298,12 +312,13 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     const recentlyNodes = recentlyPropertyItems?.length > 0 && (
       <>
         <ExpandableGroupOrSubGroup
-          key="group-recently"
+          groupKey="recently"
+          key="exp-group-recently"
           title="最近使用"
           type="group"
           items={getListItems(recentlyPropertyItems, 'recently')}
         />
-        <List.Divider />
+        <List.Divider key="divider-group-recently" />
       </>
     );
     const groupDataNodes = keys(groupDatasource).map((key, index) => {
@@ -315,15 +330,21 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         const items = getListItems(subGroupDic[keys(subGroupDic)[0]]);
         return (
           <>
-            {index > 0 && <List.Divider />}
-            <ExpandableGroupOrSubGroup key={`group-${typeName}`} title={typeName} type="group" items={items} />
+            {index > 0 && <List.Divider key={`divider-group-${key}-${index}`} />}
+            <ExpandableGroupOrSubGroup
+              key={`exp-group-${key}`}
+              groupKey={`${key}`}
+              title={typeName}
+              type="group"
+              items={items}
+            />
           </>
         );
       }
       return (
         <>
-          {index > 0 && <List.Divider />}
-          <List.ItemGroup key={key} title={typeName} expandable={false}>
+          {index > 0 && <List.Divider key={`divider-group-${key}-${index}`} />}
+          <List.ItemGroup key={`group-${key}`} title={typeName} expandable={false}>
             {subGroupRender(subGroupDic)}
           </List.ItemGroup>
         </>

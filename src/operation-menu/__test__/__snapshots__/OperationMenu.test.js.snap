@@ -12,10 +12,11 @@ Object {
           type="button"
         >
           <span
+            aria-label="more-outlined"
             class="gio-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -41,10 +42,11 @@ Object {
         type="button"
       >
         <span
+          aria-label="more-outlined"
           class="gio-icon"
+          role="img"
         >
           <svg
-            class="gio-icon-svg"
             fill="currentColor"
             height="16px"
             viewBox="0 0 14 14"

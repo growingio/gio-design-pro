@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import PropertyPicker from '../PropertyPicker';
 import { insightDimensions } from './data';
 import { dimensionToPropertyItem, getShortPinyin } from '../util';
@@ -22,7 +22,6 @@ describe('PropertyPicker', () => {
     expect(screen.queryAllByText('访问属性')).not.toBe([]);
     expect(screen.queryAllByText('用户属性')).not.toBe([]);
     expect([]).toBeTruthy();
-    cleanup();
   });
 
   it('can change tab', () => {
@@ -34,7 +33,6 @@ describe('PropertyPicker', () => {
     expect(screen.queryByText('地域信息')).toBeNull();
     const userPropertyCount = screen.queryAllByRole('option').length;
     expect(allPropertyCount).toBeGreaterThanOrEqual(userPropertyCount);
-    cleanup();
   });
 
   it('can select a property', () => {
@@ -48,27 +46,25 @@ describe('PropertyPicker', () => {
     fireEvent.click(screen.getByText(tobeClickedNode.label));
     expect(handleSelect).toHaveBeenCalledTimes(1);
     expect(screen.queryAllByText(tobeClickedNode.name)).toHaveLength(1);
-    cleanup();
   });
-
-  it('can hover a property and show the detail of property', () => {
+  it('can hover a property and show the detail of property', async () => {
     render(<PropertyPicker {...defaultProps} detailVisibleDelay={0} />);
     fireEvent.click(screen.getByText('全部'));
-    const item = screen.getByText(insightDimensions[0].name);
-    act(() => {
+    const item = screen.queryAllByText(insightDimensions[0].name)[0];
+    await act(async () => {
       fireEvent.mouseEnter(item);
       jest.runAllTimers();
-      return Promise.resolve();
-    }).then(() => {
-      expect(screen.queryByText(insightDimensions[0].id)).toBeNull();
     });
+    // screen.debug(screen.queryByText(insightDimensions[0].id));
+    expect(screen.queryByText(insightDimensions[0].id)).toBeTruthy();
     fireEvent.mouseLeave(item);
   });
 
   it('can search a property by name', () => {
     const query = insightDimensions[0].name;
-    render(defaultPicker);
+    // render(defaultPicker);
+    render(<PropertyPicker {...defaultProps} shouldUpdateRecentlyUsed={false} />);
     fireEvent.change(screen.getByPlaceholderText('搜索属性名称'), { target: { value: query } });
-    expect(screen.queryAllByText(query)).toHaveLength(1);
+    expect(screen.queryAllByText(query).length).toBeGreaterThan(0);
   });
 });

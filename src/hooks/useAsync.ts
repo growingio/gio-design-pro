@@ -4,21 +4,8 @@
  * @see https://github.com/streamich/react-use/blob/master/src/useAsyncFn.ts
  */
 import { DependencyList, useCallback, useEffect, useRef, useState } from 'react';
+import useMountedState from './useMountedState';
 
-export function useMountedState(): () => boolean {
-  const mountedRef = useRef<boolean>(false);
-  const get = useCallback(() => mountedRef.current, []);
-
-  useEffect(() => {
-    mountedRef.current = true;
-
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-
-  return get;
-}
 export type FunctionReturningPromise = (...args: any[]) => Promise<any>;
 export type PromiseType<P extends Promise<any>> = P extends Promise<infer T> ? T : never;
 export type AsyncState<T> =
