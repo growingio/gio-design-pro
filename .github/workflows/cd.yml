@@ -12,12 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
       - name: Cache Node.js modules
         id: cache-node-modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -33,11 +33,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -54,11 +54,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -77,17 +77,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: 14.x
       - name: Restore Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache package
         id: cache-package
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: |
             dist
@@ -105,12 +105,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
           registry-url: 'https://registry.npmjs.org'
       - name: Restore package from cache
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: |
             dist
@@ -143,11 +143,11 @@ jobs:
         with:
           fetch-depth: '0'
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
