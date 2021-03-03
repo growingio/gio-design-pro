@@ -23,7 +23,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!src/**/index.{ts,tsx}',
-    '!src/**/interfaces.ts',
+    '!src/**/interfaces.ts?(x)',
     '!src/**/*.stories.{ts,tsx}',
     '!src/**/*.d.ts',
     '!src/**/types.ts',
