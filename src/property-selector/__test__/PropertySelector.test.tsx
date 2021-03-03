@@ -4,9 +4,10 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import PropertySelector from '../PropertySelector';
 import { insightDimensions } from './data';
 import { dimensionToPropertyItem } from '../util';
+import { Dimension } from '../../types';
 
 const defaultProps = {
-  dataSource: insightDimensions,
+  dataSource: insightDimensions as Dimension[],
   borderless: true,
   placeholder: '选择属性',
 };
@@ -14,7 +15,7 @@ const defaultProps = {
 describe('PropertySelector', () => {
   it('can be selected', () => {
     const handleSelect = jest.fn();
-    const tobeClickedNode = dimensionToPropertyItem(insightDimensions[0]);
+    const tobeClickedNode = dimensionToPropertyItem(insightDimensions[0] as Dimension);
     render(<PropertySelector {...defaultProps} onSelect={handleSelect} />);
     fireEvent.click(screen.getByText('选择属性'));
     act(() => {

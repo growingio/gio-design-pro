@@ -12,7 +12,7 @@ import {
   TagOutlined,
 } from '@gio-design/icons';
 
-const IconRender = (group: string) => {
+const IconRender = (group?: string) => {
   switch (group) {
     case 'cs':
       return <EventPropertyOutlined />;

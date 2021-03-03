@@ -1,38 +1,30 @@
 @import '../../stylesheets/index.less';
 
-@user-picker-prefix-cls: ~'@{component-prefix}-user-picker';
+@segment-card-prefix-cls: ~'@{component-prefix}-segment-card';
 
-.@{user-picker-prefix-cls}-segment {
-  &__name {
-    margin: 0 0 24px;
-    color: #1248e9;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 22px;
+.@{segment-card-prefix-cls} {
+  width: 320px;
+
+  &__chart {
+    width: 288px;
+    height: 140px;
+    background: @palette-white;
+    border: 1px solid @palette-gray-4;
+    box-sizing: border-box;
+    border-radius: 4px;
   }
 
-  &__label {
-    margin: 0 0 8px;
-    color: #242e59;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 22px;
-  }
+  &__footer {
+    height: 20px;
+    font-family: @font-family-primary;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    color: @palette-black-6;
 
-  &__value {
-    margin: 0 0 16px;
-    color: #7b819c;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 22px;
-  }
-
-  &__tags {
-    margin: 0 0 16px;
-    .gio-tag:not(:first-child) {
-      margin-left: 8px;
+    &__icon {
+      margin-right: 8px;
     }
   }
 }

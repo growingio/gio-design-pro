@@ -103,7 +103,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (originDataSource && originDataSource.length && !('value' in originDataSource[0])) {
         propertiItemList = originDataSource.map((v) => {
           const item = dimensionToPropertyItem(v as Dimension);
-          item.itemIcon = () => IconRender(item.groupId);
+          item.itemIcon = () => IconRender(item.groupId || '');
           return item;
         });
       } else {

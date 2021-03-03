@@ -5,12 +5,13 @@ import PropertyPicker from '../PropertyPicker';
 import { insightDimensions } from './data';
 import { dimensionToPropertyItem, getShortPinyin } from '../util';
 import IconRender from '../PropertyValueIconRender';
+import { Dimension } from '../../types';
 
 jest.useFakeTimers();
 
-const defaultPicker = <PropertyPicker dataSource={insightDimensions} />;
+const defaultPicker = <PropertyPicker dataSource={insightDimensions as Dimension[]} />;
 const defaultProps = {
-  dataSource: insightDimensions,
+  dataSource: insightDimensions as Dimension[],
 };
 
 describe('PropertyPicker', () => {
@@ -37,13 +38,13 @@ describe('PropertyPicker', () => {
 
   it('can select a property', () => {
     const handleSelect = jest.fn();
-    const tobeClickedNode = dimensionToPropertyItem(insightDimensions[0]);
+    const tobeClickedNode = dimensionToPropertyItem(insightDimensions[0] as Dimension);
     tobeClickedNode.disabled = false;
-    tobeClickedNode.itemIcon = () => IconRender(tobeClickedNode.groupId);
+    tobeClickedNode.itemIcon = () => IconRender(tobeClickedNode.groupId || '');
     tobeClickedNode.pinyinName = getShortPinyin(tobeClickedNode.label ?? '');
     render(<PropertyPicker {...defaultProps} onSelect={handleSelect} />);
 
-    fireEvent.click(screen.getByText(tobeClickedNode.label));
+    fireEvent.click(screen.getByText(tobeClickedNode.label || ''));
     expect(handleSelect).toHaveBeenCalledTimes(1);
     expect(screen.queryAllByText(tobeClickedNode.name)).toHaveLength(1);
   });
