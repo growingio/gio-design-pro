@@ -125,7 +125,7 @@ export interface PropertyItem extends PropertyValue {
 }
 
 export interface PropertySelectorProps
-  extends Omit<PropertyPickerProps, 'className' | 'style'>,
+  extends Omit<PropertyPickerProps, 'className' | 'style' | 'shouldUpdateRecentlyUsed'>,
     Omit<SelectorProps, 'dropdownRender' | 'valueRender'> {}
 export interface PropertyCardProps {
   // nodeData: NodeData;
