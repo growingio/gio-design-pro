@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, DependencyList } from 'react';
 
-function useUpdate(func: () => void, deps: any[]) {
+function useUpdate(func: () => void, deps: DependencyList) {
   const ref = useRef(true);
 
   useEffect(() => {

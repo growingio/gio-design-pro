@@ -58,7 +58,7 @@ function getFormValues() {
     },
   };
 }
-const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
+export const Default: Story<PageViewEventFormProps> = () => {
   const [formR] = Form.useForm();
   const formRef = useRef(formR);
   const [, setSubmitDisabled] = useState(true);
@@ -110,7 +110,7 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
         onPre={() => console.warn('pre')}
         showPreButton
         submitter={{ resetText: '取消' }}
-        appType={AppType.NATIVE}
+        appType={AppType.MINP}
         initialValues={formValue}
         onFinish={handleFinish}
         dataChart={dataChart()}
@@ -118,9 +118,4 @@ const TemplateCustomSubmitter: Story<PageViewEventFormProps> = () => {
       />
     </div>
   );
-};
-export const Default = TemplateCustomSubmitter.bind({});
-TemplateCustomSubmitter.args = {
-  // definedTags: spaceTags,
-  onFinish: async (values) => console.log(values),
 };

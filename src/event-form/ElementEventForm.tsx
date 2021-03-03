@@ -7,7 +7,7 @@ import Button, { ButtonProps } from '@gio-design/components/es/components/button
 import { cloneDeep, get, isEmpty, omit } from 'lodash';
 import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH } from './utils';
 import FormItemGroup from './components/FormItemGroup';
-import { SubmitterProps } from './components/Submitter';
+import { SubmitterProps } from './components/submitter';
 import { EventFormProps, ElementEventFormProps, Rule, ElementFormValues } from './interfaces';
 import './style';
 import '@gio-design/components/es/components/link/style/css.js';
@@ -19,6 +19,7 @@ import PagePicker from './components/page-picker';
 import DefinitionCondition from './components/definition-condition';
 import ElementDefinitionRule from './ElementDefinitionRuleRender';
 import { TagElement } from './TagElement';
+import { useMountedState } from '../hooks';
 
 /**
  * @name 将初始值转换成form 表单需要的数据 ，（添加 limitCondition prop）
@@ -155,7 +156,7 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
       },
     ],
   };
-
+  const mounted = useMountedState();
   const showBelongApp = platform?.toLowerCase() !== 'web';
   const innerFormInitialValues = useMemo(() => transformFormValues(initialValues as ElementFormValues), [
     initialValues,
@@ -330,14 +331,10 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
           onValuesChange={handleValuesChange}
           initialValues={innerFormInitialValues}
           onFinish={async (values) => {
-            if (!restProps.onFinish) return;
+            if (!mounted() || !restProps.onFinish) return;
             try {
               setLoading(true);
-              // const { definition } = conversionSubmitValue(values);
-              // const repeatRuleTag = validatorRef.current.findRepeatElementTag(definition);
-              // if (repeatRuleTag) {
-              //   return;
-              // }
+
               const submitValues = conversionSubmitValue(values);
               await restProps.onFinish(submitValues);
             } finally {

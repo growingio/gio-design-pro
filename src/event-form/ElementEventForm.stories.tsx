@@ -128,7 +128,7 @@ const searchPageRule1 = (pageInfo: PageInfo, tag: TagElement): boolean => {
 };
 const allDefinedTags = (spaceTags as unknown) as TagElement[];
 // const elementsInput = getInitialTagElement();
-const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
+export const Default: Story<ElementEventFormProps> = (args) => {
   const [formR] = Form.useForm();
   const formRef = useRef(formR);
   const [, setSubmitDisabled] = useState(true);
@@ -188,6 +188,7 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
         className="demo"
       >
         <ElementEventForm
+          {...args}
           ref={formRef}
           definedTags={allDefinedTags}
           onValuesChange={handleValuesChange}
@@ -212,9 +213,4 @@ const TemplateCustomSubmitter: Story<ElementEventFormProps> = () => {
       </div>
     </div>
   );
-};
-export const Default = TemplateCustomSubmitter.bind({});
-TemplateCustomSubmitter.args = {
-  // definedTags: spaceTags,
-  onFinish: async (values) => console.log(values),
 };

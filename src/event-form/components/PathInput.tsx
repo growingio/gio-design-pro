@@ -4,7 +4,18 @@ import { Input, Toggles, Tooltip } from '@gio-design/components';
 import '@gio-design/components/es/components/toggles/style/index.less';
 import { isEmpty } from 'lodash';
 import { MAX_VALUE_LENGTH } from '../utils';
+import { AppType } from '../types';
 
+function formatPath(path: string = '', isMinp: boolean): string {
+  let res = '';
+
+  if (isMinp) {
+    res = path.startsWith('/') ? path.substr(1) : path;
+  } else {
+    res = path.startsWith('/') ? path : `/${path}`;
+  }
+  return res;
+}
 interface PathValue {
   path?: string;
   checked?: boolean;
@@ -14,9 +25,11 @@ interface PathProp {
   maxLength?: number;
   value?: PathValue;
   onChange?: (value: PathValue) => void;
+  appType?: AppType;
 }
 const PathInput: React.FC<PathProp> = (props) => {
-  const { value = {}, onChange, placeholder, maxLength = MAX_VALUE_LENGTH } = props;
+  const { value = {}, onChange, placeholder, maxLength = MAX_VALUE_LENGTH, appType } = props;
+  const isMinp = appType === AppType.MINP;
 
   const [path, setPath] = useState(() => {
     let _path = '';
@@ -29,7 +42,7 @@ const PathInput: React.FC<PathProp> = (props) => {
     // } else {
     //   _path = value.path;
     // }
-    _path = value.path.startsWith('/') ? value.path : `/${value.path}`;
+    _path = formatPath(value.path, isMinp); // value.path.startsWith('/') ? value.path : `/${value.path}`;
     return _path;
   });
   const [checked, setChecked] = useState(() => {
@@ -47,11 +60,11 @@ const PathInput: React.FC<PathProp> = (props) => {
     onChange?.({ path, checked, ...changedValue });
   };
   const onPathValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let val = e.target.value;
-    if (val && !val.startsWith('/')) {
-      val = `/${val}`;
-    }
-    setPath(val);
+    const val = e.target.value;
+    // if (val && !val.startsWith('/')) {
+    //   val = `/${val}`;
+    // }
+    setPath(formatPath(val, isMinp));
     // triggerChange({ path: val });
   };
   const onToggle = (v: boolean) => {

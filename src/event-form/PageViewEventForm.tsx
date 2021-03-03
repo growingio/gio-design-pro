@@ -9,7 +9,7 @@ import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH, queryToKvs, kvsToQuery } from './uti
 import FormItemGroup from './components/FormItemGroup';
 import PathInput from './components/PathInput';
 import QueryInput from './components/QSInput';
-import { SubmitterProps } from './components/Submitter';
+import { SubmitterProps } from './components/submitter';
 import { EventFormProps, PageViewEventFormProps, PageViewFormValues, Rule } from './interfaces';
 import './style';
 import '@gio-design/components/es/components/link/style/css.js';
@@ -19,6 +19,7 @@ import ValidatorHelper from './validator';
 import FooterToolbar from './components/FooterToolbar';
 // import { DocProps, TagElement } from './TagElement';
 import PageViewDefinitionRule from './PageViewDefinitionRuleRender';
+import { useMountedState } from '../hooks';
 
 function definePageTip() {
   return (
@@ -100,7 +101,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
   const [wrapForm] = Form.useForm<FormInstance>();
   const formRef = useRef<FormInstance>(wrapForm || userForm);
   React.useImperativeHandle(ref, () => formRef?.current);
-
+  const mounted = useMountedState();
   const prefixCls = usePrefixCls('event-form');
 
   /**
@@ -357,7 +358,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
           onValuesChange={handleFormValuesChange}
           initialValues={innerFormInitialValues}
           onFinish={async (values) => {
-            if (!restProps.onFinish) return;
+            if (!mounted() || !restProps.onFinish) return;
 
             // const { definition } = submitValues;
             // const repeatRuleTag = validatorRef.current.findRepeatPageTag(definition as DocProps);
@@ -447,7 +448,7 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
                   validateTrigger={['onBlur', 'onChange']}
                   rules={validateRules.path}
                 >
-                  <PathInput placeholder="请输入路径" maxLength={MAX_VALUE_LENGTH} />
+                  <PathInput placeholder="请输入路径" appType={appType} maxLength={MAX_VALUE_LENGTH} />
                 </Form.Item>
                 <Form.Item label="查询条件">
                   <div className="query-input">
