@@ -12,18 +12,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12.x
+          node-version: 12
       - name: Cache Node.js modules
         id: cache-node-modules
         uses: actions/cache@v2.1.4
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Install
         if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run: yarn install
   lint:
-    name: Lint Checks
+    name: Lint codes
     needs: install
     if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
@@ -33,23 +33,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12.x
+          node-version: 12
       - name: Restore Node.js modules
         uses: actions/cache@v2.1.4
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Lint pull request title
         run: echo "${{ github.event.pull_request.title }}" | npx commitlint
-      - name: Lint head commit message
-        if: ${{ github.event.pull_request.commits > 3 }}
-        run: echo "${{ github.event.head_commit.message }}" | npx commitlint
       - name: StyleLint
         run: yarn stylelint
       - name: ESLint
         run: yarn eslint
   unit_test:
-    name: Unit Test
+    name: Unit test
     needs: install
     if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
@@ -59,7 +56,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12.x
+          node-version: 12
       - name: Restore Node.js modules
         uses: actions/cache@v2.1.4
         with:
@@ -73,7 +70,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: coverage/
   ui_test:
-    name: UI Test
+    name: UI test
     needs: install
     if: ${{ startsWith(github.event.pull_request.title, 'feat') || startsWith(github.event.pull_request.title, 'fix') }}
     runs-on: ubuntu-latest
@@ -85,7 +82,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12.x
+          node-version: 12
       - name: Restore Node.js modules
         uses: actions/cache@v2.1.4
         with:
@@ -103,9 +100,8 @@ jobs:
           exitOnceUploaded: true
           allowConsoleErrors: true
   build:
-    name: Build Package
+    name: Build package
     needs: [lint, unit_test, ui_test]
-    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     strategy:
       matrix:
         node_version: [10, 12, 14]
