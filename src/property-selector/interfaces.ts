@@ -109,7 +109,7 @@ export interface PropertyItem extends PropertyValue {
   type: string;
   typeName?: string;
   /**
-   * type 分组展示的排序值，值越大位置越靠后
+   * type 分组展示的排序值 ,值越大位置越靠后
    */
   typeOrder?: number;
   // children?: NodeData[];
