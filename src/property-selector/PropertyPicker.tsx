@@ -103,13 +103,13 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (originDataSource && originDataSource.length && !('value' in originDataSource[0])) {
         propertiItemList = originDataSource.map((v) => {
           const item = dimensionToPropertyItem(v as Dimension);
-          item.itemIcon = () => IconRender(item.groupId || '');
+          item.itemIcon = () => <IconRender group={item?.groupId} />;
           return item;
         });
       } else {
         propertiItemList = originDataSource.map((v) => {
           const item = v as PropertyItem;
-          item.itemIcon = () => IconRender(item.groupId);
+          item.itemIcon = () => <IconRender group={item?.groupId} />;
           return item;
         });
       }
@@ -253,10 +253,9 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       debounceSetDetailVisible(true);
     };
     const handleItemMouseLeave = () => {
-      setHoveredNodeValue(undefined);
+      // setHoveredNodeValue(undefined);
       debounceSetDetailVisible.cancel();
-      // debounceSetDetailVisible(false);
-      setDetailVisible(false);
+      // setDetailVisible(false);
     };
     const listItems = items.map((data: PropertyItem) => {
       const select =
@@ -353,6 +352,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     const childrens = [recentlyNodes, groupDataNodes];
     return childrens as React.ReactNode;
   };
+  // console.log(promisify<PropertyInfo>(fetchDetailData));
   const renderDetail = () =>
     hoverdNodeValue && <PropertyCard nodeData={hoverdNodeValue} fetchData={promisify(fetchDetailData)} />;
   const clsPrifx = usePrefixCls('property-picker');

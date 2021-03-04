@@ -25,9 +25,9 @@ const Template: Story<PropertySelectorProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   dataSource,
-  fetchDetailData: async (node: any) =>
+  fetchDetailData: (node: any) =>
     // eslint-disable-next-line no-return-await
-    await new Promise((resolve) => {
+    new Promise((resolve) => {
       setTimeout(
         () =>
           resolve({ ...node, description: '这里是描述描述这里是描述描述这里是描述描述这里是描述描述这里是描述描述' }),

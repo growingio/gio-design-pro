@@ -12,7 +12,8 @@ import {
   TagOutlined,
 } from '@gio-design/icons';
 
-const IconRender = (group?: string) => {
+const IconRender = (props: { group?: string }) => {
+  const { group = '' } = props;
   switch (group) {
     case 'cs':
       return <EventPropertyOutlined />;
@@ -45,7 +46,7 @@ const IconRender = (group?: string) => {
     case 'origin':
       return <UserOriginOutlined />;
     default:
-      return '';
+      return <></>;
   }
 };
 export default IconRender;

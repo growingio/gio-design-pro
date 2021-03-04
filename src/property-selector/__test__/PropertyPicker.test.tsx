@@ -13,7 +13,7 @@ const defaultPicker = <PropertyPicker dataSource={insightDimensions as Dimension
 const defaultProps = {
   dataSource: insightDimensions as Dimension[],
 };
-
+const propertyItems = insightDimensions.map((v: any) => dimensionToPropertyItem(v as Dimension));
 describe('PropertyPicker', () => {
   it('renders PropertyPicker by  insightDimensions', () => {
     render(defaultPicker);
@@ -24,7 +24,15 @@ describe('PropertyPicker', () => {
     expect(screen.queryAllByText('用户属性')).not.toBe([]);
     expect([]).toBeTruthy();
   });
-
+  it('renders PropertyPicker by PropertyItem Array', () => {
+    render(<PropertyPicker dataSource={propertyItems} />);
+    expect(screen.queryByPlaceholderText('搜索属性名称')).toBeTruthy();
+    expect(screen.queryByText('全部')).toBeTruthy();
+    expect(screen.queryAllByText('事件属性')).not.toBe([]);
+    expect(screen.queryAllByText('访问属性')).not.toBe([]);
+    expect(screen.queryAllByText('用户属性')).not.toBe([]);
+    expect([]).toBeTruthy();
+  });
   it('can change tab', () => {
     render(defaultPicker);
     const allPropertyCount = screen.queryAllByRole('option').length;
@@ -40,7 +48,7 @@ describe('PropertyPicker', () => {
     const handleSelect = jest.fn();
     const tobeClickedNode = dimensionToPropertyItem(insightDimensions[0] as Dimension);
     tobeClickedNode.disabled = false;
-    tobeClickedNode.itemIcon = () => IconRender(tobeClickedNode.groupId || '');
+    tobeClickedNode.itemIcon = () => <IconRender group={tobeClickedNode.groupId} />;
     tobeClickedNode.pinyinName = getShortPinyin(tobeClickedNode.label ?? '');
     render(<PropertyPicker {...defaultProps} onSelect={handleSelect} />);
 

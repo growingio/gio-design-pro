@@ -79,7 +79,9 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
             destroyTooltipOnHide
           >
             <span className="inner-input-wrap" ref={inputValueRef}>
-              <span className="icon">{IconRender(currentValue?.groupId)}</span>
+              <span className="icon">
+                <IconRender group={currentValue?.groupId} />
+              </span>
               <span>{currentValue?.label}</span>
             </span>
           </Popover>

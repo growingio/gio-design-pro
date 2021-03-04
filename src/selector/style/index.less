@@ -1,5 +1,5 @@
 @import '../../stylesheets/index.less';
-
+@import '~@gio-design/components/es/components/dropdown/style/index.less';
 @selector-prefix-cls: ~'@{component-prefix}-selector';
 
 .@{selector-prefix-cls} {
@@ -81,4 +81,7 @@
   background: @palette-white;
   box-shadow: 0 6px 14px rgba(223, 226, 237, 0.8);
   border-radius: 4px;
+}
+.@{dropdown-prefix-cls}-inner {
+  overflow: visible;
 }

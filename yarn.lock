@@ -1393,7 +1393,7 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@^21.2.3":
+"@gio-design/components@^21.2.4":
   version "21.2.4"
   resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.2.4.tgz#ef6dafef3912ba9a430a68b250520f6db85e47a3"
   integrity sha512-9EwIe6KxA0awbAgIcT7PCSXQgvCAVrfWQAOoGlfbyv6Dt1uww4RcDxuyx6IDEGvXQynZYy5KC5Gf/dcB3R6OZA==
