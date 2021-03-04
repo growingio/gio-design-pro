@@ -23,11 +23,11 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!src/**/index.{ts,tsx}',
-    '!src/**/interfaces.ts',
+    '!src/**/interfaces.ts?(x)',
     '!src/**/*.stories.{ts,tsx}',
     '!src/**/*.d.ts',
     '!src/**/types.ts',
-    '!src/**/__test__/data.{js,jsx,ts,tsx}',
+    '!src/**/__test?(s)__/*',
   ],
 
   // The directory where Jest should output its coverage files
@@ -161,10 +161,7 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "**/__tests__/**/*.[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).[tj]s?(x)"
-  // ],
+  testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [

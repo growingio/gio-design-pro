@@ -1,4 +1,8 @@
 import EmptyPrompt from './empty-prompt';
-import { PageViewEventForm, ElementEventForm } from './event-form';
 
-export default { EmptyPrompt, PageViewEventForm, ElementEventForm };
+export { PageViewEventForm, ElementEventForm } from './event-form';
+
+export { default as UserPicker, UserPickerProps } from './user-picker';
+export { default as UserSelector, UserSelectorProps } from './user-selector';
+
+export default { EmptyPrompt };
