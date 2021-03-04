@@ -18,25 +18,31 @@ Object {
             aria-disabled="false"
             class="gio-menu-item"
             role="menuitem"
-            style="padding-left: 16px;"
+            style="padding-left: 20px;"
           >
-            修改站点角色
+            <span>
+              修改站点角色
+            </span>
           </li>
           <li
             aria-disabled="false"
             class="gio-menu-item"
             role="menuitem"
-            style="padding-left: 16px;"
+            style="padding-left: 20px;"
           >
-            删除用户
+            <span>
+              删除用户
+            </span>
           </li>
           <li
             aria-disabled="true"
             class="gio-menu-item gio-menu-item-disabled"
             role="menuitem"
-            style="padding-left: 16px;"
+            style="padding-left: 20px;"
           >
-            删除用户2
+            <span>
+              删除用户2
+            </span>
           </li>
         </ul>
       </div>
@@ -56,25 +62,31 @@ Object {
           aria-disabled="false"
           class="gio-menu-item"
           role="menuitem"
-          style="padding-left: 16px;"
+          style="padding-left: 20px;"
         >
-          修改站点角色
+          <span>
+            修改站点角色
+          </span>
         </li>
         <li
           aria-disabled="false"
           class="gio-menu-item"
           role="menuitem"
-          style="padding-left: 16px;"
+          style="padding-left: 20px;"
         >
-          删除用户
+          <span>
+            删除用户
+          </span>
         </li>
         <li
           aria-disabled="true"
           class="gio-menu-item gio-menu-item-disabled"
           role="menuitem"
-          style="padding-left: 16px;"
+          style="padding-left: 20px;"
         >
-          删除用户2
+          <span>
+            删除用户2
+          </span>
         </li>
       </ul>
     </div>
@@ -151,25 +163,31 @@ Object {
             aria-disabled="false"
             class="gio-menu-item"
             role="menuitem"
-            style="padding-left: 16px;"
+            style="padding-left: 20px;"
           >
-            修改站点角色
+            <span>
+              修改站点角色
+            </span>
           </li>
           <li
             aria-disabled="false"
             class="gio-menu-item"
             role="menuitem"
-            style="padding-left: 16px;"
+            style="padding-left: 20px;"
           >
-            删除用户
+            <span>
+              删除用户
+            </span>
           </li>
           <li
             aria-disabled="true"
             class="gio-menu-item gio-menu-item-disabled"
             role="menuitem"
-            style="padding-left: 16px;"
+            style="padding-left: 20px;"
           >
-            删除用户2
+            <span>
+              删除用户2
+            </span>
           </li>
         </ul>
       </div>
@@ -189,25 +207,31 @@ Object {
           aria-disabled="false"
           class="gio-menu-item"
           role="menuitem"
-          style="padding-left: 16px;"
+          style="padding-left: 20px;"
         >
-          修改站点角色
+          <span>
+            修改站点角色
+          </span>
         </li>
         <li
           aria-disabled="false"
           class="gio-menu-item"
           role="menuitem"
-          style="padding-left: 16px;"
+          style="padding-left: 20px;"
         >
-          删除用户
+          <span>
+            删除用户
+          </span>
         </li>
         <li
           aria-disabled="true"
           class="gio-menu-item gio-menu-item-disabled"
           role="menuitem"
-          style="padding-left: 16px;"
+          style="padding-left: 20px;"
         >
-          删除用户2
+          <span>
+            删除用户2
+          </span>
         </li>
       </ul>
     </div>
