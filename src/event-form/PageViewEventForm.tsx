@@ -9,7 +9,7 @@ import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH, queryToKvs, kvsToQuery } from './uti
 import FormItemGroup from './components/FormItemGroup';
 import PathInput from './components/PathInput';
 import QueryInput from './components/QSInput';
-import { SubmitterProps } from './components/submitter';
+import { SubmitterProps } from './components/_Submitter';
 import { EventFormProps, PageViewEventFormProps, PageViewFormValues, Rule } from './interfaces';
 import './style';
 import '@gio-design/components/es/components/link/style/css.js';

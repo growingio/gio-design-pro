@@ -7,7 +7,7 @@ import Button, { ButtonProps } from '@gio-design/components/es/components/button
 import { cloneDeep, get, isEmpty, omit } from 'lodash';
 import { MAX_DESC_LENGTH, MAX_VALUE_LENGTH } from './utils';
 import FormItemGroup from './components/FormItemGroup';
-import { SubmitterProps } from './components/submitter';
+import { SubmitterProps } from './components/_Submitter';
 import { EventFormProps, ElementEventFormProps, Rule, ElementFormValues } from './interfaces';
 import './style';
 import '@gio-design/components/es/components/link/style/css.js';
