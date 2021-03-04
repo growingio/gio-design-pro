@@ -89,6 +89,7 @@ export interface ListItemSubgroupProps extends BaseProps {
 export interface ExpandItemProps extends BaseProps {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onKeyUp?: (event: React.KeyboardEvent<HTMLElement>) => void;
+  title?: React.ReactNode;
 }
 
 export interface DividerProps {

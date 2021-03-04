@@ -35,7 +35,7 @@ describe('ItemSubgroup', () => {
       items.push({ children: `Item ${i}` });
     }
     render(<ItemSubgroup title={defaultGroupTile} expandable items={items} />);
-    const expandItem = screen.getByText(expandItemText);
+    const expandItem = screen.getByText(expandItemText, { exact: false });
     expect(expandItem).not.toBeNull();
     expect(screen.queryAllByRole('option')).toHaveLength(11);
     fireEvent.click(expandItem);
