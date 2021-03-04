@@ -3,8 +3,8 @@ import { Form } from '@gio-design/components';
 import { FormInstance, FormProps } from '@gio-design/components/es/components/form';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { ButtonProps } from '@gio-design/components/es/components/button';
-import type { SubmitterProps } from './components/_Submitter';
-import Submitter from './components/_Submitter';
+import type { SubmitterProps } from './components/submitter';
+import Submitter from './components/submitter';
 import { CommonFormProps } from './interfaces';
 
 export type BaseFormProps = {
