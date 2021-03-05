@@ -2,8 +2,8 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserSelector from '../UserSelector';
-import { preparedSegments } from '../constant';
-import { segments, currentUserId } from './data';
+import { preparedSegments } from '../../user-picker/constant';
+import { segments, currentUserId } from '../../user-picker/__tests__/data';
 
 const defaultProps = {
   segments,

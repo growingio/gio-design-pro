@@ -1,0 +1,93 @@
+@import '../../stylesheets/index.less';
+@import '../../list/style/index.less';
+@import '../../selector/style/index.less';
+@import '../../base-picker/style/index.less';
+// @import '~@gio-design/components/es/components/tag/style/index.less';
+// @import '@gio-design/components/es/components/tooltip/style/index.css';
+@property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
+@property-selector-prefix-cls: ~'@{component-prefix}-property-selector';
+.@{property-picker-prefix-cls} {
+  width: auto;
+  min-width: 160px;
+
+  .@{picker-prefix-cls}__content {
+    max-height: 424px;
+  }
+  .@{list-prefix-cls}__item {
+    transition: all 0.3s ease;
+    &.selected,
+    &.active {
+      color: @palette-blue-5;
+      background-color: @palette-gray-1;
+    }
+    .item-icon {
+      margin-right: 12px;
+    }
+  }
+}
+.@{property-selector-prefix-cls} {
+  &.@{selector-prefix-cls} {
+    max-width: 100%;
+    width: fit-content;
+  }
+
+  &-dropdown {
+    width: 366px;
+  }
+  .inner-input-wrap {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: inherit;
+    max-width: 100%;
+    .icon {
+      margin-right: 12px;
+    }
+  }
+}
+.@{property-picker-prefix-cls}-card {
+  // min-height: 80px;
+  width: 320px;
+  &-title {
+    color: @palette-black-6;
+    font-size: @size-font-14;
+    font-weight: @weight-font-medium;
+    letter-spacing: 0;
+    line-height: 22px;
+    margin-right: 8px;
+  }
+  &-key {
+    margin-top: 4px;
+  }
+  &__divide {
+    display: block;
+    margin: 16px 0;
+    border-bottom: 1px solid @palette-gray-3;
+  }
+  &__footer {
+    font-family: @font-family-primary;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 22px;
+    color: @palette-black-6;
+    &__icon {
+      margin-right: 8px;
+    }
+  }
+  .gio-loading-wrapper-loading {
+    & > .gio-loading {
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+      width: 100%;
+      transform: translateY(-50%);
+    }
+  }
+}
+.property-card-overlay {
+  .gio-popover-inner-content {
+    margin: 0;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import Selector from '../selector';
-import UserPicker from './UserPicker';
+import UserPicker from '../user-picker';
 import { UserSelectorProps } from './interfaces';
 import { Resource } from '../utils/interfaces';
 

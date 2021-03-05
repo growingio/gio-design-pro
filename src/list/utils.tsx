@@ -10,7 +10,7 @@ const DEFAULT_SHOW_ITEMS_COUNT = 10;
 export const rootPrefixCls = () => usePrefixCls('list');
 
 export function renderItem(i: ListItemProps, idx: number) {
-  return <Item {...i} key={`item-${idx}`} />;
+  return <Item {...i} key={i.key ?? `item-${idx}`} />;
 }
 
 export function renderExpandableItems(expanded: boolean, currentItems: ListItemProps[], onExpand: () => void) {
@@ -21,7 +21,13 @@ export function renderExpandableItems(expanded: boolean, currentItems: ListItemP
     const showItems = currentItems.slice(0, DEFAULT_SHOW_ITEMS_COUNT);
     return showItems
       .map(renderItem)
-      .concat(<ExpandItem key={`expand-item-${showItems.length + 1}`} onClick={onExpand} />);
+      .concat(
+        <ExpandItem
+          title={`展开全部 (${currentItems.length - showItems.length})`}
+          key={`expand-item-${currentItems[0].key}-${showItems.length + 1}`}
+          onClick={onExpand}
+        />
+      );
   }
   return currentItems.map(renderItem);
 }
