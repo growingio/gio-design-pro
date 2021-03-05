@@ -1,19 +1,25 @@
 /* eslint-disable no-console */
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button, Form } from '@gio-design/components';
+import { Button } from '@gio-design/components';
 import { merge } from 'lodash';
 import ElementEventForm from './ElementEventForm';
 import { ElementEventFormProps, ElementFormValues } from './interfaces';
 import { spaceTags, deviceInfoMinp } from './__test__/data';
-import './eventform-style.less';
-import { DeviceInfo, ElementInfo, LimitCondition, PageInfo } from './types';
+// import './eventform-style.less';
+import { AppType, DeviceInfo, ElementInfo, LimitCondition, PageInfo } from './types';
 import { TagElement } from './TagElement';
 import { matchQuery } from './utils';
+import Docs from './EventForm.mdx';
 
 export default {
   title: 'Business Components/EventForm/ElementEventForm',
   component: ElementEventForm,
+  parameters: {
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
 const getLimitConditionWithElemInfo = (info: ElementInfo): LimitCondition => {
@@ -128,22 +134,17 @@ const searchPageRule1 = (pageInfo: PageInfo, tag: TagElement): boolean => {
 };
 const allDefinedTags = (spaceTags as unknown) as TagElement[];
 // const elementsInput = getInitialTagElement();
-export const Default: Story<ElementEventFormProps> = (args) => {
-  const [formR] = Form.useForm();
-  const formRef = useRef(formR);
-  const [, setSubmitDisabled] = useState(true);
-  function handleValuesChange(val: any, allVal: any) {
-    console.log('handleValuesChange', val, allVal);
-    setSubmitDisabled(false);
-  }
+const Template: Story<ElementEventFormProps> = (args) => {
   const [formValue, setFormValue] = useState<ElementFormValues>(getFormValues('element1'));
   // const formValue: ElementFormValues = getFormValues();
   const { domain, path, query } = formValue.definition;
   const currentPageTags = allDefinedTags.filter((v) =>
     searchPageRule1({ ...formValue, domain, path, query } as PageInfo, v)
   );
-
-  // const element = getInitialTagElement();
+  function handleElementClick(ele: string) {
+    const vals = getFormValues(ele);
+    setFormValue(vals);
+  }
   async function handleFinish(val: any) {
     await new Promise((resolve) => {
       setTimeout(() => {
@@ -151,29 +152,11 @@ export const Default: Story<ElementEventFormProps> = (args) => {
         allDefinedTags.push(submitVal);
         console.log('handleFinish', submitVal, allDefinedTags.length);
 
-        return resolve('success');
+        resolve('success');
       }, 2000);
     });
     //
     return true;
-  }
-  const dataChart = () => (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        height: '144px',
-        justifyContent: 'center',
-        border: '1px solid #dfe4ee',
-        borderRadius: '4px',
-      }}
-    >
-      <Button type="secondary">查看数据</Button>
-    </div>
-  );
-  function handleElementClick(ele: string) {
-    const vals = getFormValues(ele);
-    setFormValue(vals);
   }
   return (
     <div>
@@ -184,33 +167,47 @@ export const Default: Story<ElementEventFormProps> = (args) => {
         style={{
           width: '460px',
           boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)',
+          height: '600px',
+          position: 'relative',
         }}
-        className="demo"
       >
         <ElementEventForm
           {...args}
-          ref={formRef}
           definedTags={allDefinedTags}
-          onValuesChange={handleValuesChange}
-          // initialTagElement={element}
-          platform="android"
           initialValues={formValue}
           onFinish={handleFinish}
           pagePicker={{
             onActionButtonClick: () => console.log('go to define page'),
             currentPageTags: currentPageTags || [],
           }}
-          requiredMark
-          submitterExtra={
-            <Button type="text" onClick={() => console.log('extra link click')}>
-              手动模式
-            </Button>
-          }
-          submitter={{ resetText: '取消' }}
-          onFinishFailed={({ values }) => console.log('onFinishFailed', values)}
-          dataChart={dataChart()}
         />
       </div>
     </div>
   );
+};
+
+const DataChart = () => (
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      height: '144px',
+      justifyContent: 'center',
+      border: '1px solid #dfe4ee',
+      borderRadius: '4px',
+    }}
+  >
+    <Button type="secondary">查看数据</Button>
+  </div>
+);
+const defaultArgs = {
+  platform: 'android',
+  definedTags: (spaceTags as unknown) as TagElement[],
+  dataChart: <DataChart />,
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+  appType: AppType.MINP,
 };

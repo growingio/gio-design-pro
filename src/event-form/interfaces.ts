@@ -9,7 +9,7 @@ type FormSubmitter = SubmitterProps<{
   form?: FormInstance<any>;
 }>;
 
-type SubmitterType = FormSubmitter | false;
+export type SubmitterType = FormSubmitter | false;
 
 export interface CommonFormProps {
   submitter?: SubmitterType;

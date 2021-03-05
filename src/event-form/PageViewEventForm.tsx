@@ -50,7 +50,7 @@ function transformFormValues(pvFormValues: PageViewFormValues) {
   const definition = get(tempValue, 'definition');
   const path = { path: definition?.path, checked: !isEmpty(definition?.path) };
   const query = queryToKvs(definition?.query);
-  const { domain } = definition;
+  const domain = definition?.domain;
   return {
     ...tempValue,
     definition: { domain, path, query },
@@ -80,7 +80,7 @@ function conversionSubmitValue(values: any) {
   return { ...omit(tempValue, 'belongApp') } as PageViewFormValues;
   // return tempValue;
 }
-const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEventFormProps> = (
+const PageViewEventFormRender: React.ForwardRefRenderFunction<FormInstance, PageViewEventFormProps> = (
   props: EventFormProps,
   ref
 ) => {
@@ -469,5 +469,5 @@ const PageViewEventForm: React.ForwardRefRenderFunction<FormInstance, PageViewEv
     </div>
   );
 };
-
-export default React.forwardRef(PageViewEventForm);
+export const PageViewEventForm = React.forwardRef(PageViewEventFormRender);
+export default PageViewEventForm;

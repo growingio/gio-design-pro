@@ -63,10 +63,7 @@ function conversionSubmitValue(values: any) {
   tempValue.definition = newDefinition;
   return { ...omit(tempValue, 'limitCondition', 'belongPage', 'belongApp') } as ElementFormValues;
 }
-const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps> = (
-  props: EventFormProps,
-  ref
-) => {
+const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps> = (props: EventFormProps, ref) => {
   const {
     labelAlign = 'left',
     labelWidth = 68,
@@ -404,5 +401,5 @@ const ElementEventForm: React.ForwardRefRenderFunction<FormInstance, ElementEven
     </div>
   );
 };
-
-export default React.forwardRef(ElementEventForm);
+export const ElementEventForm = React.forwardRef(Render);
+export default ElementEventForm;
