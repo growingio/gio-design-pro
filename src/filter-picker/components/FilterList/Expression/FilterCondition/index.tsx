@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { DownFilled } from '@gio-design/icons';
-import { Dropdown, Tooltip } from '@gio-design/components';
+import { Tooltip } from '@gio-design/components';
 import moment from 'moment';
 
 import FilterAttrOverlay from './FilterAttrOverlay';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from './interfaces';
+
+import Selector from '../../../../../selector';
 
 interface FilterConditionProps {
   valueType: attributeValue;
@@ -219,11 +220,13 @@ function FilterCondition(props: FilterConditionProps) {
   const visibleChange = (v: boolean) => {
     setVisible(v);
   };
-  const curryDimensionValueRequest = ((timeRangeValue: string, measurementsValue: any[]) => {
-    return (dimension: string, keyword: string) => {
-      return dimensionValueRequest?.({ dimension, timeRange: timeRangeValue, metrics: measurementsValue, keyword });
-    };
-  })(timeRange, measurements);
+  const curryDimensionValueRequest = ((timeRangeValue: string, measurementsValue: any[]) => (
+    dimension: string,
+    keyword: string
+  ) => dimensionValueRequest?.({ dimension, timeRange: timeRangeValue, metrics: measurementsValue, keyword }))(
+    timeRange,
+    measurements
+  );
 
   const submit = (v: FilterValueType) => {
     setVisible(false);
@@ -233,41 +236,35 @@ function FilterCondition(props: FilterConditionProps) {
     setVisible(false);
     onCancel();
   };
+
+  const valueRender = () => (
+    <span className="filter-condition_select">
+      <Tooltip title={conditionText} disabled={conditionText === '选择过滤条件'} placement="topLeft">
+        <span className="filter-condition_select-text">{conditionText}</span>
+      </Tooltip>
+    </span>
+  );
+
+  const dropdownRender = () => (
+    <FilterAttrOverlay
+      valueType={valueType}
+      onSubmit={submit}
+      onCancel={cancel}
+      op={op}
+      curryDimensionValueRequest={curryDimensionValueRequest}
+      values={values}
+      exprKey={exprKey}
+    />
+  );
+
   return exprKey ? (
-    <Dropdown
-      visible={visible}
-      trigger={['click']}
-      onVisibleChange={visibleChange}
-      overlay={
-        <FilterAttrOverlay
-          valueType={valueType}
-          onSubmit={submit}
-          onCancel={cancel}
-          op={op}
-          curryDimensionValueRequest={curryDimensionValueRequest}
-          values={values}
-          exprKey={exprKey}
-        />
-      }
-      placement="bottomRight"
-      getTooltipContainer={() => document.getElementById('expression-box') || document.body}
-      destroyTooltipOnHide
-    >
-      <span className="filter-condition_select">
-        <Tooltip title={conditionText} disabled={conditionText === '选择过滤条件'} placement="topLeft">
-          <span className="filter-condition_select-text">{conditionText}</span>
-        </Tooltip>
-        <DownFilled
-          size="14px"
-          style={{
-            transform: visible ? 'rotate(0.5turn)' : '',
-            position: 'absolute',
-            right: '4px',
-            top: '7px',
-          }}
-        />
-      </span>
-    </Dropdown>
+    <Selector
+      valueRender={valueRender}
+      dropdownVisible={visible}
+      dropdownRender={dropdownRender}
+      onDropdownVisibleChange={visibleChange}
+      borderless
+    />
   ) : null;
 }
 export default FilterCondition;

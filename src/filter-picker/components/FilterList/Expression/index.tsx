@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design/components';
-import PropertyPicker from '../../../../property-picker';
-import '../../../../property-picker/style/index';
+import PropertyPicker from '../../../../property-selector';
+import '../../../../property-selector/style/index';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
@@ -82,7 +82,7 @@ function Expression(props: ExpressionProps) {
         <PropertyPicker
           data-testid="propertySelect"
           placeholder="选择属性"
-          initialValue={{ value: exprKey, label: exprName }}
+          value={exprKey && { value: exprKey, label: exprName, id: exprKey }}
           dataSource={propertyOptions.filter((option: any) => {
             const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];
             return option.id === exprKey || inavailableOptions.indexOf(option.id) === -1; // && !(/like/.test(operator) && option.id === 'cs1'）saas老逻辑，暂时不需要
