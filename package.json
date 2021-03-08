@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "21.3.1-beta.3",
+  "version": "21.3.1-beta.4",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -13,8 +13,7 @@
     "build",
     "lib",
     "es",
-    "package.json",
-    "src"
+    "package.json"
   ],
   "scripts": {
     "build": "npx gio-rewire lib compile",
