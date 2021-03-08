@@ -82,7 +82,7 @@ function Expression(props: ExpressionProps) {
         <PropertyPicker
           data-testid="propertySelect"
           placeholder="选择属性"
-          value={exprKey && { value: exprKey, label: exprName, id: exprKey }}
+          value={exprKey ? { value: exprKey, label: exprName, id: exprKey } : undefined}
           dataSource={propertyOptions.filter((option: any) => {
             const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];
             return option.id === exprKey || inavailableOptions.indexOf(option.id) === -1; // && !(/like/.test(operator) && option.id === 'cs1'）saas老逻辑，暂时不需要
