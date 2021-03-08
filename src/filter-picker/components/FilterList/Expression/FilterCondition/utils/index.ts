@@ -108,6 +108,32 @@ const parseIntValuesToText = (opMap: { [key: string]: string }, operation: strin
   }
 };
 
+const parseDateValuesRelativeToText = (relativeTime: number[]) => {
+  if (relativeTime.length === 1) {
+    const day = relativeTime[0];
+    if (day < 0) {
+      return `过去${Math.abs(day)}天前`;
+    }
+    return `未来${Math.abs(day)}天后`;
+  }
+  if (relativeTime.includes(0)) {
+    if (relativeTime[0]) {
+      if (relativeTime[0] < 0) {
+        return `过去${Math.abs(relativeTime[0])}天内`;
+      }
+      return `未来${Math.abs(relativeTime[0])}天内`;
+    }
+    if (relativeTime[1] < 0) {
+      return `过去${Math.abs(relativeTime[1])}天内`;
+    }
+    return `未来${Math.abs(relativeTime[1])}天内`;
+  }
+  if (relativeTime[0] < 0) {
+    return `过去${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])}天内`;
+  }
+  return `未来${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])}天内`;
+};
+
 const parseDateValuesToText = (opMap: { [key: string]: string }, operation: string, value: string[]) => {
   switch (operation) {
     case '!=': {
@@ -151,29 +177,7 @@ const parseDateValuesToText = (opMap: { [key: string]: string }, operation: stri
         .split(':')[1]
         .split(',')
         .map((ele: string) => parseInt(ele, 10));
-      if (relativeTime.length === 1) {
-        const day = relativeTime[0];
-        if (day < 0) {
-          return `过去${Math.abs(day)}天前`;
-        }
-        return `未来${Math.abs(day)}天后`;
-      }
-      if (relativeTime.includes(0)) {
-        if (relativeTime[0]) {
-          if (relativeTime[0] < 0) {
-            return `过去${Math.abs(relativeTime[0])}天内`;
-          }
-          return `未来${Math.abs(relativeTime[0])}天内`;
-        }
-        if (relativeTime[1] < 0) {
-          return `过去${Math.abs(relativeTime[1])}天内`;
-        }
-        return `未来${Math.abs(relativeTime[1])}天内`;
-      }
-      if (relativeTime[0] < 0) {
-        return `过去${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])}天内`;
-      }
-      return `未来${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])}天内`;
+      return parseDateValuesRelativeToText(relativeTime);
     }
     default:
       return opMap[operation] + moment(value[0]).format('YYYY-MM-DD');
