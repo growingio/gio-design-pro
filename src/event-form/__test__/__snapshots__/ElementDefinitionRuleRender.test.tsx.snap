@@ -1,0 +1,561 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ElementDefinitionRuleRender can render with content ,index,href, 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <span>
+        现在定义的是 
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          所属页面
+        </span>
+         中，
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          同类元素内
+        </span>
+        ，限定
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          元素内容
+          为
+          「
+          元素内容
+          」
+        </span>
+        ，
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          元素位置为「第1位」
+        </span>
+        ，限定
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          跳转链接
+        </span>
+        的元素。
+        <span>
+          若元素的内容、位置或跳转链接改变，就不再继续统计了。
+        </span>
+        <span />
+      </span>
+    </div>
+  </body>,
+  "container": <div>
+    <span>
+      现在定义的是 
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        所属页面
+      </span>
+       中，
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        同类元素内
+      </span>
+      ，限定
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        元素内容
+        为
+        「
+        元素内容
+        」
+      </span>
+      ，
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        元素位置为「第1位」
+      </span>
+      ，限定
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        跳转链接
+      </span>
+      的元素。
+      <span>
+        若元素的内容、位置或跳转链接改变，就不再继续统计了。
+      </span>
+      <span />
+    </span>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`ElementDefinitionRuleRender render with repeatTag 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <span>
+        <span>
+          该规则已被 
+          <b>
+            zhangxueqi
+          </b>
+           定义为
+          <span>
+            【
+            定义一个新的事件2
+            】。
+          </span>
+        </span>
+        现在定义的是 
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          所属页面
+        </span>
+         中，
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          同类元素内
+        </span>
+        ，限定
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          元素内容
+          为
+          「
+          主页
+          」
+        </span>
+        ，
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          元素位置为「第0位」
+        </span>
+        ，限定
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          跳转链接
+        </span>
+        的元素。
+        <span>
+          若元素的内容、位置或跳转链接改变，就不再继续统计了。
+        </span>
+        <span />
+      </span>
+    </div>
+  </body>,
+  "container": <div>
+    <span>
+      <span>
+        该规则已被 
+        <b>
+          zhangxueqi
+        </b>
+         定义为
+        <span>
+          【
+          定义一个新的事件2
+          】。
+        </span>
+      </span>
+      现在定义的是 
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        所属页面
+      </span>
+       中，
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        同类元素内
+      </span>
+      ，限定
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        元素内容
+        为
+        「
+        主页
+        」
+      </span>
+      ，
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        元素位置为「第0位」
+      </span>
+      ，限定
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        跳转链接
+      </span>
+      的元素。
+      <span>
+        若元素的内容、位置或跳转链接改变，就不再继续统计了。
+      </span>
+      <span />
+    </span>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`ElementDefinitionRuleRender render without content 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <span>
+        现在定义的是 
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          所属页面
+        </span>
+         中，
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          同类元素内
+        </span>
+        ，限定
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          元素位置为「第1位」
+        </span>
+        ，限定
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          跳转链接
+        </span>
+        的元素。
+        <span>
+          若元素的位置或跳转链接改变，就不再继续统计了。
+        </span>
+        <span>
+          即使元素内容改变，也会继续统计。
+        </span>
+      </span>
+    </div>
+  </body>,
+  "container": <div>
+    <span>
+      现在定义的是 
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        所属页面
+      </span>
+       中，
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        同类元素内
+      </span>
+      ，限定
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        元素位置为「第1位」
+      </span>
+      ，限定
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        跳转链接
+      </span>
+      的元素。
+      <span>
+        若元素的位置或跳转链接改变，就不再继续统计了。
+      </span>
+      <span>
+        即使元素内容改变，也会继续统计。
+      </span>
+    </span>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`ElementDefinitionRuleRender render without content,href,index 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <span>
+        现在定义的是 
+        <span
+          class="link"
+          style="color: rgb(56, 103, 244);"
+        >
+          所属页面
+        </span>
+         中，
+        <span>
+          所有同类元素的数据之和。我们已经将这组同类元素用虚线框标记出来。
+        </span>
+      </span>
+    </div>
+  </body>,
+  "container": <div>
+    <span>
+      现在定义的是 
+      <span
+        class="link"
+        style="color: rgb(56, 103, 244);"
+      >
+        所属页面
+      </span>
+       中，
+      <span>
+        所有同类元素的数据之和。我们已经将这组同类元素用虚线框标记出来。
+      </span>
+    </span>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
