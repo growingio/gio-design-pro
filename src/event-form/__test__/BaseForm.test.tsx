@@ -88,8 +88,8 @@ describe('BaseForm', () => {
     // console.log(container.querySelector('#name'));
     await act(async () => {
       const input = container.querySelector('#name') as HTMLInputElement;
-      input.focus();
-      fireEvent.keyPress(container.querySelector('#name'), { key: 'Enter', keyCode: 13 });
+      input?.focus();
+      fireEvent.keyPress(screen.getByPlaceholderText('请输入名称'), { key: 'Enter', keyCode: 13 });
       jest.runAllTimers();
     });
     expect(handleFinish).toHaveBeenCalledTimes(1);
