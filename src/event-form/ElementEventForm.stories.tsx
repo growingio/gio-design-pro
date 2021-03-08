@@ -98,7 +98,46 @@ function getInitialTagElement(elementname: string) {
 
   return elementInput;
 }
-
+const belongPage: any = {
+  id: 'JnG40OGz',
+  name: '是',
+  creator: 'haozhigang',
+  creatorId: 'rRGoYQml',
+  createdAt: '2021-01-14T07:08:25Z',
+  updater: 'haozhigang',
+  updaterId: 'rRGoYQml',
+  updatedAt: '2021-01-14T07:08:25Z',
+  description: '是  得到的',
+  platforms: ['minp'],
+  docType: 'page',
+  actions: ['page'],
+  patternMatched: false,
+  attrs: {
+    content: null,
+    index: null,
+    href: null,
+    path: 'pages/index/index',
+    pg: null,
+    query: null,
+    xpath: null,
+    contentType: null,
+    domain: 'wx123456',
+    urlScheme: null,
+  },
+  definition: {
+    domain: 'wx123456',
+    path: 'pages/index/index',
+    query: '得到的=s',
+    xpath: null,
+    index: null,
+    href: null,
+    content: null,
+    pg: null,
+    contentType: null,
+    urlScheme: null,
+  },
+  screenshot: { target: '', viewport: '' },
+};
 function getFormValues(elem: string) {
   //
   const deviceInfo: DeviceInfo = deviceInfoMinp as DeviceInfo;
@@ -113,6 +152,7 @@ function getFormValues(elem: string) {
   const res = {
     name: element.name,
     description: element.description,
+    belongPage,
     // domain: attrs.domain,
     // path: attrs.path,
     // query: attrs.query,
@@ -178,7 +218,9 @@ const Template: Story<ElementEventFormProps> = (args) => {
           onFinish={handleFinish}
           pagePicker={{
             onActionButtonClick: () => console.log('go to define page'),
-            currentPageTags: currentPageTags || [],
+            // currentPageTags: currentPageTags || [],
+            dataSource: (spaceTags as unknown) as TagElement[],
+            currentPageTags, // ([spaceTags[0]] as unknown) as TagElement[],
           }}
         />
       </div>
