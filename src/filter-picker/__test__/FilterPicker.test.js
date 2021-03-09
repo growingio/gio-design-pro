@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
+import { act } from 'react-test-renderer';
 import FilterPicker from '..';
 import { sleep } from './utils.ts';
 
@@ -65,10 +66,16 @@ describe('FilterPicker', () => {
     const buttons = wrapper.find('button[disabled]');
     expect(buttons.at(0).text()).toBe('添加过滤条件');
     expect(buttons.at(1).text()).toBe('确 认');
+<<<<<<< HEAD
 
     wrapper.find('.gio-picker-trigger').simulate('click');
     // 正确渲染 1 个属性
     expect(wrapper.find('.cascader-menu-item-inner')).toHaveLength(1);
+=======
+    wrapper.find('.gio-selector').simulate('click');
+    // 正确渲染 1 个属性
+    expect(wrapper.find('.gio-selector').hasClass('gio-selector--actived')).toBe(true);
+>>>>>>> feat(filter-picker): add Filter-Picker (#69)
   });
 
   it('cancel', () => {
@@ -80,6 +87,7 @@ describe('FilterPicker', () => {
 
   it('onConfirm', async () => {
     const onConfirm = jest.fn();
+<<<<<<< HEAD
     let wrapper = null;
     wrapper = mount(getFilterPicker({ onConfirm }));
     wrapper.find('button').at(0).simulate('click');
@@ -97,6 +105,39 @@ describe('FilterPicker', () => {
     wrapper.find('.gio-select-dropdown .gio-select-option').at(1).simulate('click');
     wrapper.find('Dropdown').at(2).find('.filter-contidion-footer').find('button').at(1).simulate('click');
     wrapper.find('Dropdown').at(0).find('.filter-contidion-footer').find('button').at(1).simulate('click');
+=======
+    const wrapper = mount(getFilterPicker({ onConfirm }));
+    act(() => {
+      wrapper.find('button').at(0).simulate('click');
+    });
+    act(() => {
+      wrapper.find('.gio-selector').simulate('click');
+    });
+    act(() => {
+      wrapper.find('Dropdown').at(1).find('.gio-list__item').at(0).simulate('click');
+    });
+    expect(wrapper.find('.gio-selector').at(0).text()).toBe('test_int_name');
+    expect(wrapper.find('.filter-condition_select').exists()).toBe(true);
+    act(() => {
+      wrapper.find('.gio-selector').at(1).simulate('click');
+    });
+    act(() => {
+      wrapper.find('.gio-select-selector').simulate('click');
+    });
+    act(() => {
+      wrapper.find('.gio-select-dropdown .gio-select-list-option').at(1).simulate('click');
+    });
+    await sleep(100);
+    wrapper.update();
+    act(() => {
+      wrapper.find('.filter-attr_select-box').find('.filter-contidion-footer').find('button').at(1).simulate('click');
+    });
+    await sleep(100);
+    wrapper.update();
+    act(() => {
+      wrapper.find('.filter-condition_box .filter-contidion-footer').at(1).find('button').at(1).simulate('click');
+    });
+>>>>>>> feat(filter-picker): add Filter-Picker (#69)
     expect(onConfirm).toBeCalledTimes(1);
   });
 });

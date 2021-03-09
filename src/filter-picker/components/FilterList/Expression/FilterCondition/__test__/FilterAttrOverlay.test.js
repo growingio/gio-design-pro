@@ -49,9 +49,9 @@ describe('<FilterAttrOverlay />', () => {
     it('when op is "="', () => {
       const wrapper = mount(<FilterAttrOverlay valueType="date" op="=" values={[]} />);
       expect(wrapper.render()).toMatchSnapshot();
-      wrapper.find('.gio-select').simulate('click');
+      wrapper.find('.gio-select-selector').simulate('click');
 
-      wrapper.find('.gio-select-dropdown .gio-select-option').at(1).simulate('click');
+      wrapper.find('.gio-select-dropdown .gio-select-list-option').at(1).simulate('click');
       expect(wrapper.find('.gio-select-item-text').text()).toBe('不等于');
     });
 
