@@ -46,7 +46,7 @@ describe('<NumberAttrSelect />', () => {
     );
     wrapper.find('input').simulate('focus');
     wrapper.find('input').simulate('change', { target: { value: '2' } });
-    expect(value[0]).toBe(2);
+    expect(value[0]).toBe('2');
     wrapper.find('input').simulate('change', { target: { value: '' } });
     expect(value[0]).toBe('0');
   });
@@ -67,7 +67,7 @@ describe('<NumberAttrSelect />', () => {
       .find('input')
       .at(0)
       .simulate('change', { target: { value: '-2' } });
-    expect(value[0]).toBe(-2);
+    expect(value[0]).toBe('-2');
 
     wrapper
       .find('input')
@@ -80,7 +80,7 @@ describe('<NumberAttrSelect />', () => {
       .find('input')
       .at(1)
       .simulate('change', { target: { value: '20' } });
-    expect(value[1]).toBe(20);
+    expect(value[1]).toBe('20');
     wrapper
       .find('input')
       .at(1)

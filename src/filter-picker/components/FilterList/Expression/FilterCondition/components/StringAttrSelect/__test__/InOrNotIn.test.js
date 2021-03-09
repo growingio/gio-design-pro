@@ -57,7 +57,7 @@ describe('<InOrNotIn />', () => {
     wrapper.find('.gio-input > input').simulate('change', { target: { value: '' } });
   });
 
-  it('自有输入', async () => {
+  it('free input', async () => {
     const wrapper = mount(
       <InOrNotIn
         attrChange={() => {}}
