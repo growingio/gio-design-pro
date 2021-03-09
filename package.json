@@ -13,7 +13,8 @@
     "build",
     "lib",
     "es",
-    "package.json"
+    "package.json",
+    "src"
   ],
   "scripts": {
     "build": "npx gio-rewire lib compile",
@@ -36,6 +37,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "pinyin-match": "^1.1.9"
   },
   "devDependencies": {
