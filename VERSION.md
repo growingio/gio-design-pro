@@ -1,9 +1,9 @@
-# [21.3.0](https://github.com/growingio/gio-design-pro/compare/v21.2.0...v21.3.0) (2021-03-05)
+## [21.3.1](https://github.com/growingio/gio-design-pro/compare/v21.3.0...v21.3.1) (2021-03-09)
 
 
 ### Features
 
-* **property-picker:** add component property-picker  ([#104](https://github.com/growingio/gio-design-pro/issues/104)) ([051ba9d](https://github.com/growingio/gio-design-pro/commit/051ba9d1f9db984841e4479b641f43f4dc813722))
+* **operation-menu:** 将dropdown拿到body下面 ([35212cf](https://github.com/growingio/gio-design-pro/commit/35212cfcaf4cfc381816c1e43b45e223519dd399))
 
 
 
