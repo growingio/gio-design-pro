@@ -15,7 +15,7 @@ const OperateMenu = (props: OperationMenuProps) => {
     mini = true,
     size,
     icon = <MoreOutlined />,
-    placement = 'bottomLeft',
+    placement = 'bottomRight',
     buttonType = 'assist',
     iconClassName,
   } = props;
