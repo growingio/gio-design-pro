@@ -30,6 +30,8 @@ function PropertyCard(props: PropertyCardProps) {
   }, [nodeData]);
   const prefixCls = usePrefixCls('property-picker');
   const propCardPrefixCls = `${prefixCls}-card`;
+  const valueMap = ValueTypeMap[data?.valueType?.toLowerCase() ?? ''];
+  // console.log(valueMap);
   return (
     <Card className={propCardPrefixCls}>
       <Loading size="small" title={false} loading={loading}>
@@ -48,8 +50,8 @@ function PropertyCard(props: PropertyCardProps) {
             <Card.Meta>
               <div className={`${propCardPrefixCls}__divide`} />
               <div className={`${propCardPrefixCls}__footer`}>
-                <span className={`${propCardPrefixCls}__footer__icon`}>{ValueTypeMap[data?.valueType ?? ''][1]}</span>
-                {ValueTypeMap[data?.valueType ?? ''][0]}
+                <span className={`${propCardPrefixCls}__footer__icon`}>{valueMap[1]}</span>
+                {valueMap[0]}
               </div>
             </Card.Meta>
           )}
