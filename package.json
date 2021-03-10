@@ -17,7 +17,7 @@
     "src"
   ],
   "scripts": {
-    "build": "npx gio-rewire lib compile",
+    "build": "gio-rewire lib compile",
     "build-sotrybook": "build-storybook -s public",
     "preversion": "git fetch --tags",
     "postversion": "yarn gen-version && yarn gen-changelog",
