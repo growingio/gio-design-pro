@@ -11,6 +11,8 @@ import '@gio-design/components/es/components/date-picker/style/css';
 import '@gio-design/components/es/components/checkbox/style/css';
 import '@gio-design/components/es/components/list/style/css';
 import './style/index.less';
+import { PropertyValue } from '../property-selector';
+import { PropertyInfo } from '../property-selector/interfaces';
 
 export default {
   title: 'Business Components/FilterPicker',
@@ -432,5 +434,12 @@ Default.args = {
   dimensionValueRequest: () =>
     new Promise((resolve) => {
       resolve(dimissionValue);
+    }),
+  fetchDetailData: (detail: PropertyValue) =>
+    new Promise<PropertyInfo>((resolve) => {
+      const { id: oldId } = detail;
+      /** 匹配以 `usr_` 开头的字符串（包括 `usr_usr_` 这种），并截掉 */
+      const id = oldId.replace(/^(usr_)\1*/, '');
+      resolve({ ...detail, id });
     }),
 };

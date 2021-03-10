@@ -7,10 +7,11 @@ exports[`FilterPicker should match FilterPicker base snapshot. 1`] = `
   type="button"
 >
   <span
+    aria-label="filter-outlined"
     class="gio-icon"
+    role="img"
   >
     <svg
-      class="gio-icon-svg"
       fill="currentColor"
       height="16px"
       viewBox="0 0 14 14"

@@ -5,6 +5,7 @@ import FilterList from '../FilterList';
 import { FilterValueType } from '../../interfaces';
 
 import './index.less';
+import { PropertyPickerProps } from '../../../property-selector';
 
 interface FilterOverflyProps {
   onCancel: () => void;
@@ -15,6 +16,7 @@ interface FilterOverflyProps {
   timeRange: string;
   measurements: any[];
   recentlyStorePrefix: string;
+  fetchDetailData?: PropertyPickerProps['fetchDetailData'];
 }
 function FilterOverlay(props: FilterOverflyProps) {
   const {
@@ -26,6 +28,7 @@ function FilterOverlay(props: FilterOverflyProps) {
     measurements,
     propertyOptions,
     recentlyStorePrefix,
+    fetchDetailData,
   } = props;
   return (
     <div className="filter-condition_box">
@@ -39,6 +42,7 @@ function FilterOverlay(props: FilterOverflyProps) {
         onCancel={onCancel}
         onSubmit={onSubmit}
         recentlyStorePrefix={recentlyStorePrefix}
+        fetchDetailData={fetchDetailData}
       />
     </div>
   );

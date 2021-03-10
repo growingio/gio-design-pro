@@ -1,3 +1,5 @@
+import { PropertyPickerProps } from '../property-selector';
+
 export interface FilterPickerProps {
   children?: any;
   getTooltipContainer: (node: HTMLElement) => HTMLElement;
@@ -8,6 +10,18 @@ export interface FilterPickerProps {
   onConfirm: (v: FilterValue) => void;
   dimensionValueRequest?: (data: any) => Promise<any>;
   recentlyStorePrefix: string;
+
+  /**
+   * 获取属性详情的方法，并且可以修改最后的展示数据
+   * @example
+   * fetchDetailData: (node: PropertyValue) => new Promise((resolve) => {
+   *   setTimeout(
+   *     () => resolve(node),
+   *     500
+   *   );
+   * })
+   */
+  fetchDetailData?: PropertyPickerProps['fetchDetailData'];
 }
 export type attributeValue = 'string' | 'int' | 'date';
 

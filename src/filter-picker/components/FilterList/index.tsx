@@ -6,6 +6,7 @@ import './index.less';
 import { FilterValueType } from '../../interfaces';
 import { defaultFilterItem } from '../../filterMap';
 import Footer from '../Footer';
+import { PropertyPickerProps } from '../../../property-selector';
 
 interface FilterListProps {
   list: FilterValueType[];
@@ -16,6 +17,7 @@ interface FilterListProps {
   onCancel: () => void;
   onSubmit: (v: FilterValueType[]) => void;
   recentlyStorePrefix: string;
+  fetchDetailData?: PropertyPickerProps['fetchDetailData'];
 }
 function FilterList(props: FilterListProps) {
   const {
@@ -27,6 +29,7 @@ function FilterList(props: FilterListProps) {
     onCancel,
     onSubmit,
     recentlyStorePrefix,
+    fetchDetailData,
   } = props;
   const [filterList, setFilterList] = useState<FilterValueType[]>([...list]);
   // const [subFilterList] = useState<FilterValueType[]>(list);
@@ -80,6 +83,7 @@ function FilterList(props: FilterListProps) {
             onChange={expressChange}
             propertyOptions={propertyOptions}
             recentlyStorePrefix={recentlyStorePrefix}
+            fetchDetailData={fetchDetailData}
           />
         ))}
       </div>

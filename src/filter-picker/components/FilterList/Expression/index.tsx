@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design/components';
-import PropertyPicker from '../../../../property-selector';
+import PropertyPicker, { PropertyPickerProps } from '../../../../property-selector';
 import '../../../../property-selector/style/index';
 import FilterCondition from './FilterCondition';
 import './index.less';
@@ -18,6 +18,7 @@ interface ExpressionProps {
   propertyOptions: any[];
   exprs: any[];
   recentlyStorePrefix: string;
+  fetchDetailData?: PropertyPickerProps['fetchDetailData'];
 }
 function Expression(props: ExpressionProps) {
   const {
@@ -31,6 +32,7 @@ function Expression(props: ExpressionProps) {
     propertyOptions,
     exprs,
     recentlyStorePrefix,
+    fetchDetailData,
   } = props;
   const [valueType, setValueType] = useState<attributeValue>(filterItem?.valueType || 'string');
   const [values, setValues] = useState<string[]>(filterItem?.values);
@@ -89,6 +91,7 @@ function Expression(props: ExpressionProps) {
           })}
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}
+          fetchDetailData={fetchDetailData}
         />
 
         <FilterCondition
