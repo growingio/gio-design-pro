@@ -30,4 +30,6 @@ export interface SelectorProps extends BaseProps {
    * Customize the vaule of input
    */
   valueRender: () => React.ReactNode;
+
+  overlayClassName?: string;
 }

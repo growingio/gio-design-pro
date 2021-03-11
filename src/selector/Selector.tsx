@@ -18,6 +18,7 @@ function Selector({
   style,
   valueRender,
   placeholder,
+  overlayClassName,
 }: SelectorProps) {
   const prefixCls = usePrefixCls('selector');
   const [visible, setVisible] = useControlledState(dropdownVisible, false);
@@ -35,6 +36,9 @@ function Selector({
     },
     className
   );
+
+  const overlayCls = classnames(overlayClassName, `${prefixCls}-overlay-dropdown`);
+
   const item = valueRender();
 
   return (
@@ -45,6 +49,7 @@ function Selector({
       overlay={<div className={`${prefixCls}-dropdown`}>{dropdownRender()}</div>}
       visible={visible}
       onVisibleChange={handleVisibleChange}
+      overlayClassName={overlayCls}
     >
       <div className={cls} style={style}>
         {!item && <span className={`${prefixCls}__placeholder`}>{placeholder}</span>}
