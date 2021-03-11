@@ -6,6 +6,8 @@ import './style/index.less';
 
 import { FilterPickerProps, FilterValueType } from './interfaces';
 
+export const FilterPickerContext = React.createContext<Pick<FilterPickerProps, 'fetchDetailData'>>({});
+
 const FilterPicker = (props: FilterPickerProps) => {
   const {
     children,
@@ -17,6 +19,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     measurements,
     timeRange,
     recentlyStorePrefix,
+    fetchDetailData,
   } = props;
   const [visible, setVisible] = useState(false);
   const visibleChange = (v: boolean) => {
@@ -30,28 +33,30 @@ const FilterPicker = (props: FilterPickerProps) => {
     onConfirm({ ...filter, exprs: v });
   };
   return (
-    <Dropdown
-      visible={visible}
-      trigger={['click']}
-      onVisibleChange={visibleChange}
-      overlay={
-        <FilterOverlay
-          onCancel={cancel}
-          onSubmit={submit}
-          filterList={filter.exprs}
-          propertyOptions={propertyOptions}
-          dimensionValueRequest={dimensionValueRequest}
-          measurements={measurements}
-          timeRange={timeRange}
-          recentlyStorePrefix={recentlyStorePrefix}
-        />
-      }
-      placement="bottomRight"
-      getTooltipContainer={getTooltipContainer}
-      destroyTooltipOnHide
-    >
-      {children || <Button icon={<FilterOutlined />} size="small" type={!visible ? 'assist' : 'secondary'} />}
-    </Dropdown>
+    <FilterPickerContext.Provider value={{ fetchDetailData }}>
+      <Dropdown
+        visible={visible}
+        trigger={['click']}
+        onVisibleChange={visibleChange}
+        overlay={
+          <FilterOverlay
+            onCancel={cancel}
+            onSubmit={submit}
+            filterList={filter.exprs}
+            propertyOptions={propertyOptions}
+            dimensionValueRequest={dimensionValueRequest}
+            measurements={measurements}
+            timeRange={timeRange}
+            recentlyStorePrefix={recentlyStorePrefix}
+          />
+        }
+        placement="bottomRight"
+        getTooltipContainer={getTooltipContainer}
+        destroyTooltipOnHide
+      >
+        {children || <Button icon={<FilterOutlined />} size="small" type={!visible ? 'assist' : 'secondary'} />}
+      </Dropdown>
+    </FilterPickerContext.Provider>
   );
 };
 

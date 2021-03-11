@@ -11,6 +11,7 @@ import '@gio-design/components/es/components/date-picker/style/css';
 import '@gio-design/components/es/components/checkbox/style/css';
 import '@gio-design/components/es/components/list/style/css';
 import './style/index.less';
+import { PropertyValue } from '../property-selector';
 
 export default {
   title: 'Business Components/FilterPicker',
@@ -432,5 +433,9 @@ Default.args = {
   dimensionValueRequest: () =>
     new Promise((resolve) => {
       resolve(dimissionValue);
+    }),
+  fetchDetailData: (node: PropertyValue) =>
+    new Promise((resolve) => {
+      setTimeout(() => resolve(node), 500);
     }),
 };

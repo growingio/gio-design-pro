@@ -6,6 +6,7 @@ import '../../../../property-selector/style/index';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
+import { FilterPickerContext } from '../../../FilterPicker';
 
 interface ExpressionProps {
   index?: number;
@@ -38,6 +39,9 @@ function Expression(props: ExpressionProps) {
   const [exprName, setExprName] = useState<string>(filterItem?.name || '');
   const [op, setOp] = useState<StringValue | NumberValue | DateValue>(filterItem?.op);
   const [subFilterItem, setSubFilterItem] = useState<FilterValueType>(filterItem);
+
+  const { fetchDetailData } = React.useContext(FilterPickerContext);
+
   const submit = (v: FilterValueType) => {
     const expr: FilterValueType = {
       key: exprKey,
@@ -89,6 +93,7 @@ function Expression(props: ExpressionProps) {
           })}
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}
+          fetchDetailData={fetchDetailData}
         />
 
         <FilterCondition
