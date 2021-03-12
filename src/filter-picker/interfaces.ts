@@ -1,4 +1,6 @@
-export interface FilterPickerProps {
+import { PropertyPickerProps } from '../property-selector';
+
+export interface FilterPickerProps extends Pick<PropertyPickerProps, 'fetchDetailData'> {
   children?: any;
   getTooltipContainer: (node: HTMLElement) => HTMLElement;
   filter: FilterValue;
