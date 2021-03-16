@@ -39,11 +39,14 @@ describe('<FilterAttrOverlay />', () => {
       // @see https://github.com/testing-library/react-testing-library/issues/353#issuecomment-510046921
       Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 320 });
       Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 160 });
+
+      jest.spyOn(Date, 'now').mockImplementation(() => new Date('2020-2-16').getTime());
     });
 
     afterEach(() => {
       Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight);
       Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
+      jest.spyOn(Date, 'now').mockReset();
     });
 
     it('when op is "="', () => {
