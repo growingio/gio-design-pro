@@ -1444,9 +1444,9 @@
     classnames "^2.2.6"
 
 "@gio-design/icons@^21.2.1":
-  version "21.2.2"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.2.2.tgz#8be142e8ab6a457dbc588250a0bf197193253ed8"
-  integrity sha512-GjsZw/rU5avioMhAggivdOpLexCZJuPS0RPc3dQG4KMReFSxkyK8pYplEQcURvNrPFkYJm5IVrjEZwcrsqYXPg==
+  version "21.3.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.3.0.tgz#31ee639a55f6e392b91738826c8c5c68625a0067"
+  integrity sha512-X28w7tH7mNdtWmq+p5E4OkpKqOnXgKPFKVp8ZuiqCdUOzeo73z3jT8myHe+ZYAjVkWw/ptGfmMIDKB1XommjkA==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
