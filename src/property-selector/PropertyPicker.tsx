@@ -253,9 +253,9 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       debounceSetDetailVisible(true);
     };
     const handleItemMouseLeave = () => {
-      // setHoveredNodeValue(undefined);
+      setHoveredNodeValue(undefined);
       debounceSetDetailVisible.cancel();
-      // setDetailVisible(false);
+      setDetailVisible(false);
     };
     const listItems = items.map((data: PropertyItem) => {
       const select =
