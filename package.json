@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "21.3.1-beta.12",
+  "version": "21.3.1-beta.13",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -13,10 +13,11 @@
     "build",
     "lib",
     "es",
-    "package.json"
+    "package.json",
+    "src"
   ],
   "scripts": {
-    "build": "npx gio-rewire lib compile",
+    "build": "gio-rewire lib compile",
     "build-sotrybook": "build-storybook -s public",
     "preversion": "git fetch --tags",
     "postversion": "yarn gen-version && yarn gen-changelog",
@@ -94,8 +95,8 @@
     "jest": "^26.6.3",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
-    "jsdom": "15.2.0",
-    "less": "^3.12.2",
+    "jsdom": "16.5.0",
+    "less": "^4.1.1",
     "less-loader": "^7.0.2",
     "lint-staged": "^10.4.0",
     "prettier": "2.2.1",

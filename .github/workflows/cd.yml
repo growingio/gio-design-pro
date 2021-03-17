@@ -109,6 +109,11 @@ jobs:
         with:
           node-version: 14
           registry-url: 'https://registry.npmjs.org'
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Restore package from cache
         uses: actions/cache@v2.1.4
         with:

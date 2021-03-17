@@ -15,7 +15,7 @@ const OperateMenu = (props: OperationMenuProps) => {
     mini = true,
     size,
     icon = <MoreOutlined />,
-    placement = 'bottomLeft',
+    placement = 'bottomRight',
     buttonType = 'assist',
     iconClassName,
   } = props;
@@ -23,7 +23,6 @@ const OperateMenu = (props: OperationMenuProps) => {
   return (
     <div onClick={(e: any) => e.stopPropagation()}>
       <Dropdown
-        getTooltipContainer={(triggerNode: any) => triggerNode?.parentElement! || document.body}
         overlay={
           <OperationMenuList width={width} options={options} onClick={(option: any) => props.onClick?.(option)} />
         }

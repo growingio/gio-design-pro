@@ -39,19 +39,22 @@ describe('<FilterAttrOverlay />', () => {
       // @see https://github.com/testing-library/react-testing-library/issues/353#issuecomment-510046921
       Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 320 });
       Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 160 });
+
+      jest.spyOn(Date, 'now').mockImplementation(() => new Date('2020-2-16').getTime());
     });
 
     afterEach(() => {
       Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight);
       Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
+      jest.spyOn(Date, 'now').mockReset();
     });
 
     it('when op is "="', () => {
       const wrapper = mount(<FilterAttrOverlay valueType="date" op="=" values={[]} />);
       expect(wrapper.render()).toMatchSnapshot();
-      wrapper.find('.gio-select').simulate('click');
+      wrapper.find('.gio-select-selector').simulate('click');
 
-      wrapper.find('.gio-select-dropdown .gio-select-option').at(1).simulate('click');
+      wrapper.find('.gio-select-dropdown .gio-select-list-option').at(1).simulate('click');
       expect(wrapper.find('.gio-select-item-text').text()).toBe('不等于');
     });
 
