@@ -6,6 +6,7 @@ import '../../../../property-selector/style/index';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
+import { PropertyInfo, PropertyValue } from '../../../../property-selector/interfaces';
 
 interface ExpressionProps {
   index?: number;
@@ -89,6 +90,14 @@ function Expression(props: ExpressionProps) {
           })}
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}
+          fetchDetailData={(detail: PropertyValue) =>
+            new Promise<PropertyInfo>((resolve) => {
+              const { id: oldId } = detail;
+              /** 匹配以 `usr_` 开头的字符串（包括 `usr_usr_` 这种），并截掉 */
+              const id = oldId?.replace(/^(usr_)\1*/, '');
+              resolve({ ...detail, id });
+            })
+          }
         />
 
         <FilterCondition
