@@ -1394,10 +1394,10 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@^21.2.4":
-  version "21.3.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.3.0.tgz#56ca2797c4f15cee6c522df08cd80f4e31ee9608"
-  integrity sha512-vPVAGczLZCL1w4qCwDn21lp2FS50nU0J0HOPDSDovJHjGq+mcoDQUVVElT/XOdgqM9zUNGXmzFoWwnNq3oz4Ww==
+"@gio-design/components@^21.3.1":
+  version "21.3.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.3.1.tgz#56d46b2f0753c031a571fda9503efd9a8a5ee5ab"
+  integrity sha512-oyJYYUcLK7txftVW38Y81RhGBp9UJKJVBj/4Whj0gp11ssqOtqJMYBrmo+/GziYUnU+hvy42Ikli44laAcxV2g==
   dependencies:
     "@gio-design/icons" "21.1.0"
     "@gio-design/tokens" "^21.3.0"
@@ -1443,7 +1443,7 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/icons@^21.2.1":
+"@gio-design/icons@^21.3.0":
   version "21.3.0"
   resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.3.0.tgz#31ee639a55f6e392b91738826c8c5c68625a0067"
   integrity sha512-X28w7tH7mNdtWmq+p5E4OkpKqOnXgKPFKVp8ZuiqCdUOzeo73z3jT8myHe+ZYAjVkWw/ptGfmMIDKB1XommjkA==
@@ -1451,7 +1451,7 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@^21.2.0", "@gio-design/tokens@^21.3.0":
+"@gio-design/tokens@^21.3.0":
   version "21.3.0"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.0.tgz#5f57874cd10a6282e90fb0c26f9d8c0bc3361151"
   integrity sha512-Z4fGw8cpaQMxOyIA43dzceMqDcgIrFpp7eMXztv9soCBTb4dfgiolA+ryS/86OwG/G3YEllNa4BpsOGDOwrygQ==
