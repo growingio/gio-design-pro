@@ -25,11 +25,11 @@ function BasePicker({
   }
 
   const cls = classnames(prefixCls, className);
-  let content = null;
-  if (items) {
-    content = <List items={items} />;
-  } else if (renderItems) {
+  let content;
+  if (renderItems) {
     content = <List>{renderItems()}</List>;
+  } else {
+    content = <List items={items} />;
   }
 
   return (
