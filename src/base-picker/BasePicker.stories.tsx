@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import BasePicker from '.';
-import { renderItems, renderGroups, footer, tabNavItems } from './__test__/data';
+import { renderItems, renderGroups, footer, tabNavItems } from './__tests__/data';
 
 import './style';
 
@@ -13,7 +13,8 @@ export default {
 export const demos = () => (
   <>
     <div style={{ display: 'inline-block', width: '50%', verticalAlign: 'top' }}>
-      <BasePicker renderItems={renderItems} />
+      <BasePicker items={null} />
+      <BasePicker renderItems={renderItems} style={{ marginTop: 10 }} />
       <BasePicker style={{ marginTop: 10 }} renderItems={renderGroups} />
       <BasePicker
         style={{ marginTop: 10 }}
