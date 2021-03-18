@@ -1394,17 +1394,17 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@^21.2.4":
-  version "21.2.4"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.2.4.tgz#ef6dafef3912ba9a430a68b250520f6db85e47a3"
-  integrity sha512-9EwIe6KxA0awbAgIcT7PCSXQgvCAVrfWQAOoGlfbyv6Dt1uww4RcDxuyx6IDEGvXQynZYy5KC5Gf/dcB3R6OZA==
+"@gio-design/components@^21.3.0":
+  version "21.3.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.3.1.tgz#56d46b2f0753c031a571fda9503efd9a8a5ee5ab"
+  integrity sha512-oyJYYUcLK7txftVW38Y81RhGBp9UJKJVBj/4Whj0gp11ssqOtqJMYBrmo+/GziYUnU+hvy42Ikli44laAcxV2g==
   dependencies:
     "@gio-design/icons" "21.1.0"
-    "@gio-design/tokens" "^21.2.0"
+    "@gio-design/tokens" "^21.3.0"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
-    "@types/react" "^16.8.23"
+    "@types/react" "^17.0.2"
     "@types/react-dnd" "^3.0.2"
     "@types/react-dom" "^17.0.1"
     "@types/react-virtualized" "^9.21.10"
@@ -1455,6 +1455,11 @@
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.2.0.tgz#7ff118e55688adf8766a362a51b8fea921a5e943"
   integrity sha512-5iddXmRK33GTZUdziUNjZnCNeoLxNCG+hI0/k/CPph11iCppqw8XtZW/Yx2ls5B0g7VdUGvBkZ9as/Qs6uR0RA==
+
+"@gio-design/tokens@^21.3.0":
+  version "21.3.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.0.tgz#5f57874cd10a6282e90fb0c26f9d8c0bc3361151"
+  integrity sha512-Z4fGw8cpaQMxOyIA43dzceMqDcgIrFpp7eMXztv9soCBTb4dfgiolA+ryS/86OwG/G3YEllNa4BpsOGDOwrygQ==
 
 "@graphql-codegen/cli@1.20.1":
   version "1.20.1"
@@ -2238,29 +2243,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@storybook/addon-a11y@^6.1.20":
-  version "6.1.21"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.1.21.tgz#28e44c9f3b7b9e8a319f59b112092fb9aa15fb96"
-  integrity sha512-FTHQ0QdPhL+0D/E/og/xkT6tIEEOSCgCV+eX9UcDn3shnxVAHEHbqJ7Yf1fF5B/nRx+ptY57c9O64vIFd7UMHg==
-  dependencies:
-    "@storybook/addons" "6.1.21"
-    "@storybook/api" "6.1.21"
-    "@storybook/channels" "6.1.21"
-    "@storybook/client-api" "6.1.21"
-    "@storybook/client-logger" "6.1.21"
-    "@storybook/components" "6.1.21"
-    "@storybook/core-events" "6.1.21"
-    "@storybook/theming" "6.1.21"
-    axe-core "^4.0.1"
-    core-js "^3.0.1"
-    global "^4.3.2"
-    lodash "^4.17.15"
-    react-sizeme "^2.5.2"
-    regenerator-runtime "^0.13.7"
-    ts-dedent "^2.0.0"
-    util-deprecate "^1.0.2"
-
-"@storybook/addon-actions@^6.1.20":
+"@storybook/addon-actions@^6.1.21":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.1.21.tgz#881dceb0ed650fe28086d9993703f8081b29f4ce"
   integrity sha512-H+nhSgK3X5L+JfArsC9ufvgJzQwPN9UXBxhMl74faEDCo9RGmq9ywNcjn9XlZGGnJ3jCaYrI/T1u0J7F6PBrTA==
@@ -2283,7 +2266,7 @@
     util-deprecate "^1.0.2"
     uuid "^8.0.0"
 
-"@storybook/addon-controls@^6.1.20":
+"@storybook/addon-controls@^6.1.21":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/addon-controls/-/addon-controls-6.1.21.tgz#14e3473cfa6dcdb88e57a74e1a42b57bd87c69ee"
   integrity sha512-IJgZWD2E9eLKj8DJLA9lT63N4jPfVneFJ05gnPco01ZJCEiDAo7babP5Ns2UTJDUaQEtX0m04UoIkidcteWKsA==
@@ -2297,7 +2280,7 @@
     core-js "^3.0.1"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-docs@^6.1.20":
+"@storybook/addon-docs@^6.1.21":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.1.21.tgz#2ab12698200e7353c4789d705b0a1972f6d268d8"
   integrity sha512-MvTmxrOSo+zZ5MaMx9LVWM8DlvVHeryCJKPJx8BYCEN38r8mIK7uCFYok8oMPmACrVe0MfXOdJCm1HKkBKjsMg==
@@ -2343,7 +2326,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-storysource@^6.1.20":
+"@storybook/addon-storysource@^6.1.21":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.1.21.tgz#d304d3d49aa22983e5727b634a95125f7e5dc9dc"
   integrity sha512-q3uaNRfwggfu31S0s5srrxbnBUuG8kNkp+Nb8xO3qW1iz4BtecvQlq03PZ2oNpHR+JDfH1MuzZeAQMJMa83QRg==
@@ -2363,7 +2346,7 @@
     react-syntax-highlighter "^13.5.0"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.1.21", "@storybook/addons@^6.1.20":
+"@storybook/addons@6.1.21", "@storybook/addons@^6.1.21":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.1.21.tgz#94bb66fc51d1dfee80d0fe84f5b83c10045651b5"
   integrity sha512-xo5TGu9EZVCqgh3D1veVnfuGzyKDWWsvOMo18phVqRxj21G3/+hScVyfIYwNTv7Ys5/Ahp9JxJUMXL3V3ny+tw==
@@ -2378,7 +2361,7 @@
     global "^4.3.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/api@6.1.21", "@storybook/api@^6.1.20":
+"@storybook/api@6.1.21", "@storybook/api@^6.1.21":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.1.21.tgz#be753ca8d3602efe4a11783c81c689463bee0825"
   integrity sha512-QjZk70VSXMw/wPPoWdMp5Bl9VmkfmGhIz8PALrFLLEZHjzptpfZE2qkGEEJHG0NAksFUv6NxGki2/632dzR7Ug==
@@ -2605,7 +2588,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/node-logger@6.1.21", "@storybook/node-logger@^6.1.20":
+"@storybook/node-logger@6.1.21", "@storybook/node-logger@^6.1.21":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.1.21.tgz#bcf882209697acfe4fc60bc224676400bce260ed"
   integrity sha512-wQZZw4n1PG3kGOsczWCBC6+8RagYkrGYDqsVOpUcs5shGbPg5beCXDuzP4nxz2IlsoP9ZtTSaX741H791OIOjA==
@@ -2623,7 +2606,7 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/react@^6.1.20":
+"@storybook/react@^6.1.21":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.1.21.tgz#1c4d01dba8d8f130f9b7da4038a380eeb9c61f38"
   integrity sha512-j3gq/ssWxRCCH5iCHbP3ihXSGS7lVWh1HpmBmGbbhHGHgdmSPsRjwDXiQGE81EmE7bzbC8NECBhU3zHJ6h1TvA==
@@ -3168,12 +3151,13 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
-"@types/react@^16.8.23":
-  version "16.14.4"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.4.tgz#365f6a1e117d1eec960ba792c7e1e91ecad38e6f"
-  integrity sha512-ETj7GbkPGjca/A4trkVeGvoIakmLV6ZtX3J8dcmOpzKzWVybbrOxanwaIPG71GZwImoMDY6Fq4wIe34lEqZ0FQ==
+"@types/react@^17.0.2":
+  version "17.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
+  integrity sha512-wYOUxIgs2HZZ0ACNiIayItyluADNbONl7kt8lkLjVK8IitMH5QMyAh75Fwhmo37r1m7L2JaFj03sIfxBVDvRAg==
   dependencies:
     "@types/prop-types" "*"
+    "@types/scheduler" "*"
     csstype "^3.0.2"
 
 "@types/reactcss@*":
@@ -3182,6 +3166,11 @@
   integrity sha512-d2gQQ0IL6hXLnoRfVYZukQNWHuVsE75DzFTLPUuyyEhJS8G2VvlE+qfQQ91SJjaMqlURRCNIsX7Jcsw6cEuJlA==
   dependencies:
     "@types/react" "*"
+
+"@types/scheduler@*":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
+  integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
 
 "@types/shallowequal@^1.1.1":
   version "1.1.1"
@@ -4263,7 +4252,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
-axe-core@^4.0.1, axe-core@^4.0.2:
+axe-core@^4.0.2:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.1.3.tgz#64a4c85509e0991f5168340edc4bedd1ceea6966"
   integrity sha512-vwPpH4Aj4122EW38mxO/fxhGKtwWTMLDIJfZ1He0Edbtjcfna/R3YB67yVhezUMzqc3Jr3+Ii50KRntlENL4xQ==
@@ -8617,10 +8606,9 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gio-rewire@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/gio-rewire/-/gio-rewire-1.0.4.tgz#68504fe64a8b4163b0b8749db1204987f86e5060"
-  integrity sha512-nWuIkXqFc8MiNykG3IdHe0VTc3mLPk0rgq8Dkb5LVyHKhwoQguWvxEZUuDU5/EWAzq5TYYt6z+3hhEI/4spkEA==
+"gio-rewire@https://github.com/growingio/gio-rewire.git":
+  version "1.0.5"
+  resolved "https://github.com/growingio/gio-rewire.git#aa18e74955f99150382fb829b7d2bec577c24570"
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/plugin-proposal-class-properties" "^7.4.4"
@@ -14610,7 +14598,7 @@ react-shallow-renderer@^16.13.1:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0"
 
-react-sizeme@^2.5.2, react-sizeme@^2.6.7:
+react-sizeme@^2.6.7:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/react-sizeme/-/react-sizeme-2.6.12.tgz#ed207be5476f4a85bf364e92042520499455453e"
   integrity sha512-tL4sCgfmvapYRZ1FO2VmBmjPVzzqgHA7kI8lSJ6JS6L78jXFNRdOZFpXyK6P1NBZvKPPCZxReNgzZNUajAerZw==
@@ -16129,7 +16117,7 @@ store2@^2.7.1:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-designs@^5.4.3:
+storybook-addon-designs@^5.4.5:
   version "5.4.5"
   resolved "https://registry.yarnpkg.com/storybook-addon-designs/-/storybook-addon-designs-5.4.5.tgz#28ae0070f0783a699af6b115051cfa73f38cd582"
   integrity sha512-IYzY/LNuQA62dJ6/au3/4sC+lOIrlPuIiQJv3co3mkvokd3sjqy8LqMXu7lqD/XXbdVreJQ3WNJ2NuFHJhRasA==

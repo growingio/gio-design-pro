@@ -3,6 +3,14 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
     '@storybook/addon-controls',
     '@storybook/addon-actions',
     {
@@ -13,16 +21,7 @@ module.exports = {
         },
       },
     },
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
-        },
-      },
-    },
     'storybook-addon-designs',
-    '@storybook/addon-a11y',
   ],
   webpackFinal: async (config) => {
     config.module.rules.push({

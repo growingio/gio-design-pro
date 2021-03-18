@@ -14,11 +14,15 @@ exports[`<FilterAttrOverlay /> date type when op is "!=" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -111,11 +115,15 @@ exports[`<FilterAttrOverlay /> date type when op is "<" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -269,11 +277,15 @@ exports[`<FilterAttrOverlay /> date type when op is "<=" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -428,11 +440,15 @@ exports[`<FilterAttrOverlay /> date type when op is "=" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -542,11 +558,15 @@ exports[`<FilterAttrOverlay /> date type when op is ">" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -700,11 +720,15 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -859,11 +883,15 @@ exports[`<FilterAttrOverlay /> date type when op is "hasValue" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -956,11 +984,15 @@ exports[`<FilterAttrOverlay /> date type when op is "noValue" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -1053,11 +1085,15 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -1116,11 +1152,15 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
         aria-controls="expandable"
         aria-disabled="false"
         aria-expanded="false"
+        aria-hidden="true"
         class="gio-select gio-select-middle gio-select-single gio-select-bordered"
         role="combobox"
         style="margin-right: 4px; width: 90px; cursor: pointer;"
+        tabindex="0"
       >
-        <div>
+        <div
+          id="selector"
+        >
           <div
             class="gio-select-selector"
           >
@@ -1245,11 +1285,15 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
         aria-controls="expandable"
         aria-disabled="false"
         aria-expanded="false"
+        aria-hidden="true"
         class="gio-select gio-select-middle gio-select-single gio-select-bordered"
         role="combobox"
         style="margin-left: 4px; width: 85px; cursor: pointer;"
+        tabindex="0"
       >
-        <div>
+        <div
+          id="selector"
+        >
           <div
             class="gio-select-selector"
           >
@@ -1340,11 +1384,15 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -1403,11 +1451,15 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
         aria-controls="expandable"
         aria-disabled="false"
         aria-expanded="false"
+        aria-hidden="true"
         class="gio-select gio-select-middle gio-select-single gio-select-bordered"
         role="combobox"
         style="margin-right: 4px; width: 90px; cursor: pointer;"
+        tabindex="0"
       >
-        <div>
+        <div
+          id="selector"
+        >
           <div
             class="gio-select-selector"
           >
@@ -1646,11 +1698,15 @@ exports[`<FilterAttrOverlay /> not defined type 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -1744,11 +1800,15 @@ exports[`<FilterAttrOverlay /> number type render 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -1841,11 +1901,15 @@ exports[`<FilterAttrOverlay /> string type render 1`] = `
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="width: 100%; margin-top: 16px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
