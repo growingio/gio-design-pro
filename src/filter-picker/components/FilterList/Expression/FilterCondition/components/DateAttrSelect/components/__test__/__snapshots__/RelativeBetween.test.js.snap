@@ -9,11 +9,15 @@ Array [
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="margin-right: 4px; width: 90px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -223,11 +227,15 @@ Array [
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="margin-right: 4px; width: 90px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -437,11 +445,15 @@ Array [
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="margin-right: 4px; width: 90px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -651,11 +663,15 @@ Array [
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="margin-right: 4px; width: 90px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -865,11 +881,15 @@ Array [
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="margin-right: 4px; width: 90px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >
@@ -1079,11 +1099,15 @@ Array [
       aria-controls="expandable"
       aria-disabled="false"
       aria-expanded="false"
+      aria-hidden="true"
       class="gio-select gio-select-middle gio-select-single gio-select-bordered"
       role="combobox"
       style="margin-right: 4px; width: 90px; cursor: pointer;"
+      tabindex="0"
     >
-      <div>
+      <div
+        id="selector"
+      >
         <div
           class="gio-select-selector"
         >

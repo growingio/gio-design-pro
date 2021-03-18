@@ -13,7 +13,7 @@ export default {
 export const demos = () => (
   <>
     <div style={{ display: 'inline-block', width: '50%', verticalAlign: 'top' }}>
-      <BasePicker items={null} />
+      <BasePicker />
       <BasePicker renderItems={renderItems} style={{ marginTop: 10 }} />
       <BasePicker style={{ marginTop: 10 }} renderItems={renderGroups} />
       <BasePicker
