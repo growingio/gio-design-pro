@@ -23,6 +23,10 @@ export interface UserPickerProps {
    * Callback when click creating button
    */
   onCreateSegment: () => void;
+  /**
+   * The delay of updating recent segements
+   */
+  updatingRecentDelay?: number;
 }
 
 export interface SegmentCardProps extends BaseProps {
