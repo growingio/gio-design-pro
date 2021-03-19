@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "21.3.3",
+  "version": "21.3.4",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -109,9 +109,9 @@
     "typescript": "~4.1.3"
   },
   "peerDependencies": {
+    "@gio-design/components": ">=21.3.0",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "@gio-design/components": ">=21.3.0"
+    "react-dom": ">=16.8.0"
   },
   "config": {
     "commitizen": {

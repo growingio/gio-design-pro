@@ -1,15 +1,21 @@
-## [21.3.3](https://github.com/growingio/gio-design-pro/compare/v21.3.2...v21.3.3) (2021-03-12)
+## [21.3.4](https://github.com/growingio/gio-design-pro/compare/v21.3.3...v21.3.4) (2021-03-19)
 
 
 ### Bug Fixes
 
-* **filter-picker:** 添加 fetchDetailData 方法, 删除 Picker ([#151](https://github.com/growingio/gio-design-pro/issues/151)) ([41e9f15](https://github.com/growingio/gio-design-pro/commit/41e9f15387859645c84018d90e7d6c603acc13fd))
-* **selector:** 修复 selector 组件的样式覆盖问题 ([#150](https://github.com/growingio/gio-design-pro/issues/150)) ([244ce56](https://github.com/growingio/gio-design-pro/commit/244ce5647cf3086435e7b8b402de12bd0740d3d2))
+* **property-picker:** 修复右侧浮动窗口 bug ([#159](https://github.com/growingio/gio-design-pro/issues/159)) ([383f5e4](https://github.com/growingio/gio-design-pro/commit/383f5e4e1f05677ed49d550e7670f303be362a5b))
+* **property-selector:** 修复property-selector value 没有监听变化,修改value,property-select没有变化 ([#165](https://github.com/growingio/gio-design-pro/issues/165)) ([7cdb303](https://github.com/growingio/gio-design-pro/commit/7cdb3037fca07d8279b04927b53d21d5684a6ae4))
+* **user-selector:** update recent with 100ms delay ([#164](https://github.com/growingio/gio-design-pro/issues/164)) ([b6e7a78](https://github.com/growingio/gio-design-pro/commit/b6e7a78813f6511f1cb6f2fe517e65e2a7852119)), closes [#130](https://github.com/growingio/gio-design-pro/issues/130)
 
 
-### Performance Improvements
+### Features
 
-* **property-picker:** 给 Fragment 组件添加 key，修复开发环境报 warning 的问题 ([#152](https://github.com/growingio/gio-design-pro/issues/152)) ([940ccb8](https://github.com/growingio/gio-design-pro/commit/940ccb8616e597fd006d8f9b873f10125e6fface))
+* upgrade dependencies ([#163](https://github.com/growingio/gio-design-pro/issues/163)) ([0944eaf](https://github.com/growingio/gio-design-pro/commit/0944eaf24fb25d0975d779ca1b0b5737e40ee5d4))
+
+
+### BREAKING CHANGES
+
+* Use @gio-design/components as peer dependency.
 
 
 
