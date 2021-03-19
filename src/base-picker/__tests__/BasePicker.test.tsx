@@ -1,16 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import BasePicker from '..';
-import { ITEMS_COUNT, items, renderItems, tabNavItems, footer } from './data';
+import { ITEMS_COUNT, renderItems, tabNavItems, footer } from './data';
 
 describe('BasePicker', () => {
   it('renders items with function', () => {
-    render(<BasePicker items={null} renderItems={renderItems} />);
+    render(<BasePicker items={undefined} renderItems={renderItems} />);
     expect(screen.getAllByText(/Content/)).toHaveLength(ITEMS_COUNT);
   });
 
   it('renders items with props', () => {
-    render(<BasePicker items={items} />);
+    render(<BasePicker items={undefined} />);
     expect(screen.getAllByText(/Content/)).toHaveLength(ITEMS_COUNT);
   });
 

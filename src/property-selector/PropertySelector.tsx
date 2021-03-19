@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Popover, usePrefixCls } from '@gio-design/components';
 import classNames from 'classnames';
 import PropertyPicker from './PropertyPicker';
@@ -26,7 +26,9 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   } = props;
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
   const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(value);
-
+  useEffect(() => {
+    setCurrentValue(value);
+  }, [value]);
   // const [textOverflow, setTextOverflow] = useState(false);
   const inputValueRef = useRef<HTMLSpanElement | null>(null);
   // useEffect(() => {
