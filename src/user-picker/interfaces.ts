@@ -27,6 +27,10 @@ export interface UserPickerProps {
    * The delay of updating recent segements
    */
   updatingRecentDelay?: number;
+  /**
+   * Callback when to show segment chart
+   */
+  onShowSegmentChart: (resource: Resource) => React.ReactNode;
 }
 
 export interface SegmentCardProps extends BaseProps {

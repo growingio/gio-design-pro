@@ -3,7 +3,10 @@ import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserSelector from '../UserSelector';
 import { preparedSegments } from '../../user-picker/constant';
+import { Resource } from '../../utils/interfaces';
 import { segments, currentUserId } from '../../user-picker/__tests__/data';
+
+const onShowSegmentChart = (resource: Resource) => <div>{`This is the trend chart of ${resource.name}.`}</div>;
 
 const defaultProps = {
   segments,
@@ -11,6 +14,7 @@ const defaultProps = {
   onCreateSegment: () => {},
   borderless: false,
   placeholder: '选择分群',
+  onShowSegmentChart,
 };
 
 describe('UserSelector', () => {

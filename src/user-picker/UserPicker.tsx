@@ -17,6 +17,7 @@ function UserPicker({
   onSelect,
   onCreateSegment,
   updatingRecentDelay = 0,
+  onShowSegmentChart,
 }: UserPickerProps) {
   const mappedSegements = React.useMemo<{ [key: string]: Resource }>(
     () => keyBy([...preparedSegments, ...segments], 'id'),
@@ -114,7 +115,9 @@ function UserPicker({
       items={dataSource}
       footer={footer}
       detailVisible={detailVisible}
-      renderDetail={() => hoveredResource && <SegmentCard {...hoveredResource} />}
+      renderDetail={() =>
+        hoveredResource && <SegmentCard {...hoveredResource} chart={onShowSegmentChart(hoveredResource)} />
+      }
     />
   );
 }

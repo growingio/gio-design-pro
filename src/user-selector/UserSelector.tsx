@@ -11,6 +11,7 @@ function UserSelector({
   segments,
   userId,
   onCreateSegment,
+  onShowSegmentChart,
   onSelect,
 }: UserSelectorProps) {
   const [input, setInput] = React.useState<string>('');
@@ -28,6 +29,7 @@ function UserSelector({
       segments={segments}
       userId={userId}
       onCreateSegment={onCreateSegment}
+      onShowSegmentChart={onShowSegmentChart}
       onSelect={handleSelect}
     />
   );
