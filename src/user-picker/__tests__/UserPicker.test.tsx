@@ -3,15 +3,26 @@ import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserPicker from '../UserPicker';
 import { preparedSegments } from '../constant';
+import { Resource } from '../../utils/interfaces';
 import { segments, currentUserId } from './data';
 
 jest.useFakeTimers();
 
-const defaultPicker = <UserPicker segments={segments} userId={currentUserId} onCreateSegment={() => {}} />;
+const onShowSegmentChart = (resource: Resource) => <div>{`This is the trend chart of ${resource.name}.`}</div>;
+
+const defaultPicker = (
+  <UserPicker
+    segments={segments}
+    userId={currentUserId}
+    onCreateSegment={() => {}}
+    onShowSegmentChart={onShowSegmentChart}
+  />
+);
 const defaultProps = {
   segments,
   userId: currentUserId,
   onCreateSegment: () => {},
+  onShowSegmentChart,
 };
 
 describe('UserPicker', () => {
