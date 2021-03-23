@@ -68,13 +68,14 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   } = props;
   const [scope, setScope] = useState('all');
   const [keyword, setKeyword] = useState<string | undefined>('');
-  const [recentlyUsedInMemo, setRecentlyUsedInMemo] = useState<{ [key: string]: any[] }>();
-  const [recentlyUsed, setRecentlyUsed] = useLocalStorage<{ [key: string]: any[] }>(
-    `${recentlyStorePrefix}_propertyPicker`,
-    {
-      all: [],
-    }
-  );
+  const [recentlyUsedInMemo, setRecentlyUsedInMemo] = useState<{
+    [key: string]: any[];
+  }>();
+  const [recentlyUsed, setRecentlyUsed] = useLocalStorage<{
+    [key: string]: any[];
+  }>(`${recentlyStorePrefix}_propertyPicker`, {
+    all: [],
+  });
   // const mounted = useMountedState();
   // useEffect(() => {
   //   console.log('setRecentlyUsedInMemo on mounted');
@@ -366,7 +367,10 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         detailVisible={detailVisible && !!hoverdNodeValue}
         renderDetail={renderDetail}
         loading={loading}
-        searchBar={{ placeholder: searchBar?.placeholder || '搜索属性名称', onSearch: handleSearch }}
+        searchBar={{
+          placeholder: searchBar?.placeholder || '搜索属性名称',
+          onSearch: handleSearch,
+        }}
         tabNav={{
           items: navRef.current,
           onChange: onTabNavChange,

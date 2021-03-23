@@ -81,7 +81,13 @@ function StringAttrSelect(props: StringAttrSelectProps) {
           <Input placeholder="请输入…" size="middle" value={inputValue} onChange={changInputValue} />
           {loadingStatue ? (
             <div
-              style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+              style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
             >
               <Loading />
             </div>

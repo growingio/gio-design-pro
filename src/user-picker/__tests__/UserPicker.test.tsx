@@ -88,7 +88,9 @@ describe('UserPicker', () => {
   it('can search a segment by name', () => {
     const query = segments[0].name;
     render(defaultPicker);
-    fireEvent.change(screen.getByPlaceholderText('搜索分群名'), { target: { value: query } });
+    fireEvent.change(screen.getByPlaceholderText('搜索分群名'), {
+      target: { value: query },
+    });
     expect(screen.queryAllByText(query)).toHaveLength(2);
   });
 });

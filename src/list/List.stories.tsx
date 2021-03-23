@@ -23,7 +23,16 @@ export default {
 } as Meta;
 
 const Wrapper = ({ children }: { children?: React.ReactNode }) => (
-  <div style={{ width: 220, border: '0.5px dashed #DCDFED', padding: 8, borderRadius: 4 }}>{children}</div>
+  <div
+    style={{
+      width: 220,
+      border: '0.5px dashed #DCDFED',
+      padding: 8,
+      borderRadius: 4,
+    }}
+  >
+    {children}
+  </div>
 );
 const Template: Story<ListProps> = (args) => (
   <Wrapper>

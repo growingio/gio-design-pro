@@ -73,7 +73,9 @@ describe('PropertyPicker', () => {
     const query = insightDimensions[0].name;
     // render(defaultPicker);
     render(<PropertyPicker {...defaultProps} shouldUpdateRecentlyUsed={false} />);
-    fireEvent.change(screen.getByPlaceholderText('搜索属性名称'), { target: { value: query } });
+    fireEvent.change(screen.getByPlaceholderText('搜索属性名称'), {
+      target: { value: query },
+    });
     expect(screen.queryAllByText(query).length).toBeGreaterThan(0);
   });
 });

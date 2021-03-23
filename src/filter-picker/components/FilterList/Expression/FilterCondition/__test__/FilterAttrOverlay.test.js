@@ -37,8 +37,14 @@ describe('<FilterAttrOverlay />', () => {
       // <AutoSizer /> uses offsetWidth and offsetHeight.
       // Jest runs in JSDom which doesn't support measurements APIs.
       // @see https://github.com/testing-library/react-testing-library/issues/353#issuecomment-510046921
-      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 320 });
-      Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 160 });
+      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+        configurable: true,
+        value: 320,
+      });
+      Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+        configurable: true,
+        value: 160,
+      });
 
       jest.spyOn(Date, 'now').mockImplementation(() => new Date('2020-2-16').getTime());
     });

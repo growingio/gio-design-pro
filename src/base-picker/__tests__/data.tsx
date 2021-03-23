@@ -10,7 +10,10 @@ function sortArray(count: number) {
   return Array.from({ length: count }, (_, index) => index + 1);
 }
 
-export const items = sortArray(ITEMS_COUNT).map((i) => ({ children: `${ITEM_CONTENT} ${i}`, key: `content-${i}` }));
+export const items = sortArray(ITEMS_COUNT).map((i) => ({
+  children: `${ITEM_CONTENT} ${i}`,
+  key: `content-${i}`,
+}));
 
 export const renderItems = () => (
   <>

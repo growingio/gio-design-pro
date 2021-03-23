@@ -17,7 +17,14 @@ export default {
 } as Meta;
 
 const Template: Story<PropertySelectorProps> = (args) => (
-  <div style={{ width: '410px', height: '500px', padding: '16px', boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)' }}>
+  <div
+    style={{
+      width: '410px',
+      height: '500px',
+      padding: '16px',
+      boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)',
+    }}
+  >
     <PropertySelector {...args} />
   </div>
 );
@@ -30,7 +37,10 @@ Default.args = {
     new Promise((resolve) => {
       setTimeout(
         () =>
-          resolve({ ...node, description: '这里是描述描述这里是描述描述这里是描述描述这里是描述描述这里是描述描述' }),
+          resolve({
+            ...node,
+            description: '这里是描述描述这里是描述描述这里是描述描述这里是描述描述这里是描述描述',
+          }),
         500
       );
     }),
