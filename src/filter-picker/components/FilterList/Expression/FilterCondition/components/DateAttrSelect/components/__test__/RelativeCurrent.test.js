@@ -24,6 +24,12 @@ describe('RelativeCurrent', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
+  it('4 values', () => {
+    const values = ['relativeTime:4'];
+    const wrapper = mount(<RelativeCurrent attrSelect="relativeCurrent" onChange={onChange} values={values} />);
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
   it('not values', () => {
     const values = [];
     const wrapper = mount(<RelativeCurrent attrSelect="relativeCurrent" onChange={onChange} values={values} />);
