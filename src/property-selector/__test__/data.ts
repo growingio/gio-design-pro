@@ -8,14 +8,7 @@ export const insightDimensions = [
     type: 'global',
     valueType: null,
   },
-  {
-    groupId: 'normal',
-    groupName: '常用维度',
-    id: 'b',
-    name: '应用平台',
-    type: 'global',
-    valueType: null,
-  },
+
   {
     groupId: 'normal',
     groupName: '常用维度',
@@ -241,6 +234,14 @@ export const insightDimensions = [
     id: 'tm',
     name:
       '时间我是超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字超级长的名字',
+    type: 'global',
+    valueType: null,
+  },
+  {
+    groupId: 'normal',
+    groupName: '常用维度',
+    id: 'b',
+    name: '应用平台',
     type: 'global',
     valueType: null,
   },

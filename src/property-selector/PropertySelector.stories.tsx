@@ -8,7 +8,7 @@ import { PropertySelectorProps } from './interfaces';
 import { insightDimensions } from './__test__/data';
 // import './style/index.less';
 import { dimensionToPropertyItem } from './util';
-import { Dimension } from '../types';
+import { Dimension } from './types';
 // const AllVariablesTable = _.flatten(_.values(allVariables));
 const dataSource = insightDimensions.map((v: any) => dimensionToPropertyItem(v as Dimension));
 export default {

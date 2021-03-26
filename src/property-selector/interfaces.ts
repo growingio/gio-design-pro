@@ -2,7 +2,7 @@
 // import { NodeData } from '@gio-design/components/es/components/cascader/interface';
 import React from 'react';
 import { BasePickerProps } from '../base-picker';
-import { Dimension } from '../types';
+import { Dimension } from './types';
 import { SelectorProps } from '../selector/interfaces';
 /**
  * 属性详情组件的参数

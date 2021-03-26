@@ -15,10 +15,10 @@ import { ListItemProps } from '../list/interfaces';
 import { renderExpandableItems } from '../list/utils';
 import PropertyCard from './PropertyCard';
 import './style';
-import { Dimension } from '../types';
+import { Dimension } from './types';
 import IconRender from './PropertyValueIconRender';
 
-const ExpandableGroupOrSubGroup = (props: {
+export const ExpandableGroupOrSubGroup = (props: {
   title?: string;
   type: 'group' | 'subgroup';
   items: ListItemProps[];
@@ -205,10 +205,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     if (newScopedRecent.length > 5) {
       newScopedRecent = newScopedRecent.slice(0, 5);
     }
-    let allScopedRecent = recent.all;
-    if (!allScopedRecent) {
-      allScopedRecent = [];
-    }
+    const allScopedRecent = recent.all || [];
+
     let newAllScopedRecent = uniq([v, ...allScopedRecent]);
     if (newAllScopedRecent.length > 5) {
       newAllScopedRecent = newAllScopedRecent.slice(0, 5);
