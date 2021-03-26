@@ -8,6 +8,7 @@ import IconRender from '../PropertyValueIconRender';
 import { Dimension } from '../types';
 import { ListItemProps } from '../../list/interfaces';
 import { PropertyItem } from '../interfaces';
+import localStorageMock from './localStorageMock';
 
 jest.useFakeTimers();
 
@@ -17,12 +18,11 @@ const defaultProps = {
 };
 const propertyItems = insightDimensions.map((v: any) => dimensionToPropertyItem(v as Dimension));
 describe('PropertyPicker', () => {
-  Object.defineProperty(window, 'localStorage', {
-    value: {
-      getItem: jest.fn(() => null),
-      setItem: jest.fn(() => null),
-    },
-    writable: true,
+  beforeEach(() => {
+    Object.defineProperty(window, 'localStorage', {
+      value: localStorageMock(),
+      writable: true,
+    });
   });
   it('renders PropertyPicker by  insightDimensions', () => {
     render(defaultPicker);
@@ -95,6 +95,26 @@ describe('PropertyPicker', () => {
       target: { value: query },
     });
     expect(screen.queryAllByText(query).length).toBeGreaterThan(0);
+  });
+  it(' can add to recentlyUsed', async () => {
+    const handleSelect = jest.fn();
+    const props = {
+      dataSource: insightDimensions as Dimension[],
+    };
+    const picker = <PropertyPicker {...defaultProps} onSelect={handleSelect} shouldUpdateRecentlyUsed />;
+    const { unmount } = render(picker);
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < 14; i++) {
+      fireEvent.click(screen.getByText(props.dataSource[i].name));
+    }
+
+    await act(() => {
+      unmount();
+    });
+
+    render(picker);
+    expect(screen.getByText('最近使用')).toBeTruthy();
   });
 });
 describe('ExpandableGroupOrSubGroup', () => {
