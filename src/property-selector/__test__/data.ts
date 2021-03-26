@@ -13,7 +13,7 @@ export const insightDimensions = [
     groupId: 'normal',
     groupName: '常用维度',
     id: 'cv',
-    name: 'App版本',
+    name: '应用版本',
     type: 'global',
     valueType: null,
   },
