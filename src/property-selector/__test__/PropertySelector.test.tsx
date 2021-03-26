@@ -51,9 +51,9 @@ describe('PropertySelector', () => {
         // for (let i = 0; i < 6; i++) {
         //   fireEvent.click(screen.getByText(props.dataSource[i].name || ''));
         // }
-        fireEvent.click(screen.queryAllByText(props.dataSource[i].name)[0]);
+        // screen.getByText()
+        fireEvent.click(screen.getByText(props.dataSource[i].name));
       });
-      // screen.getByTestId()
       fireEvent.click(container.querySelector('.gio-selector__item') as Element);
     }
     expect(screen.getByText('最近使用')).toBeTruthy();
