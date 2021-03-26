@@ -67,10 +67,9 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   );
   const fetchDetail = pickerRestProps.fetchDetailData ?? (async (data) => data);
   const inputRender = () => {
-    const content = () => {
-      if (!currentValue) return '';
-      return <PropertyCard nodeData={currentValue} fetchData={promisify(fetchDetail)} />;
-    };
+    const content = () =>
+      // if (!currentValue) return '';
+      currentValue && <PropertyCard nodeData={currentValue} fetchData={promisify(fetchDetail)} />;
     return (
       currentValue && (
         <>

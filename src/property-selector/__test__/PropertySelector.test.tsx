@@ -12,7 +12,7 @@ const defaultProps = {
   borderless: true,
   placeholder: '选择属性',
 };
-
+jest.useFakeTimers();
 describe('PropertySelector', () => {
   beforeEach(() => {
     Object.defineProperty(window, 'localStorage', {
@@ -46,13 +46,10 @@ describe('PropertySelector', () => {
     // fireEvent.click(screen.getByText('全部'));
     fireEvent.click(screen.getByText('选择属性'));
     // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 14; i++) {
       act(() => {
-        // for (let i = 0; i < 6; i++) {
-        //   fireEvent.click(screen.getByText(props.dataSource[i].name || ''));
-        // }
-        // screen.getByText()
         fireEvent.click(screen.getByText(props.dataSource[i].name));
+        jest.runAllTimers();
       });
       fireEvent.click(container.querySelector('.gio-selector__item') as Element);
     }
@@ -62,5 +59,9 @@ describe('PropertySelector', () => {
     render(<PropertySelector {...defaultProps} disabled />);
     fireEvent.click(screen.getByText('选择属性'));
     expect(screen.queryByText('全部')).toBeNull();
+  });
+  it('render with  props of placeholder', () => {
+    render(<PropertySelector {...defaultProps} placeholder="请选择" />);
+    expect(screen.queryByText('请选择')).toBeTruthy();
   });
 });

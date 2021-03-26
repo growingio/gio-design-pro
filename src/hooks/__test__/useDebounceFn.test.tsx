@@ -10,8 +10,13 @@ function sleep(time: number) {
 }
 interface ParamsObj {
   fn: (...arg: any) => any;
-  deps?: any[];
+  // deps?: any[];
   wait: number;
+  option?: {
+    leading?: boolean;
+    trailing?: boolean;
+    maxWait?: number;
+  };
 }
 
 let count = 0;
@@ -19,10 +24,15 @@ const debounceFn = (gap: number) => {
   count += gap;
 };
 
-const setUp = ({ fn, wait }: ParamsObj) => renderHook(() => useDebounceFn(fn, wait));
+let count2 = 0;
+const debounceFn2 = (gap: number) => {
+  count2 += gap;
+};
+const setUp = ({ fn, wait, option = { leading: false, trailing: true } }: ParamsObj) =>
+  renderHook(() => useDebounceFn(fn, wait, option));
 
 let hook: RenderHookResult<ParamsObj, ReturnType<typeof useDebounceFn>>;
-
+let hook2: RenderHookResult<ParamsObj, ReturnType<typeof useDebounceFn>>;
 describe('useDebounceFn', () => {
   it('should be defined', () => {
     expect(useDebounceFn).toBeDefined();
@@ -33,6 +43,14 @@ describe('useDebounceFn', () => {
       hook = setUp({
         fn: debounceFn,
         wait: 200,
+      });
+      hook2 = setUp({
+        fn: debounceFn2,
+        wait: 200,
+        option: {
+          leading: true,
+          trailing: false,
+        },
       });
     });
     await act(async () => {
@@ -56,6 +74,13 @@ describe('useDebounceFn', () => {
       expect(count).toBe(7);
       await sleep(300);
       expect(count).toBe(7);
+      hook2.result.current(2);
+      hook2.result.current(2);
+      hook2.result.current(2);
+      expect(count2).toBe(2);
+      await sleep(300);
+      expect(count2).toBe(2);
+      hook2.unmount();
     });
   });
 });
