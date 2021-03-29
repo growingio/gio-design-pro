@@ -9,3 +9,4 @@ export const PropertySelector = _PropertySelector;
 export const FilterPicker = _FilterPicker;
 export const { PropertyPicker } = _PropertySelector;
 export default { EmptyPrompt };
+export { TableCard, TableCardProps } from './table-card';
