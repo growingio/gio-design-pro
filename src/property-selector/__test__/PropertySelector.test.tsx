@@ -10,7 +10,7 @@ import localStorageMock from './localStorageMock';
 const defaultProps = {
   dataSource: insightDimensions as Dimension[],
   borderless: true,
-  placeholder: '选择属性',
+  // placeholder: '选择属性',
 };
 jest.useFakeTimers();
 describe('PropertySelector', () => {
