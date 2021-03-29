@@ -102,8 +102,7 @@ describe('PropertyPicker', () => {
       dataSource: insightDimensions as Dimension[],
     };
     const picker = <PropertyPicker {...defaultProps} onSelect={handleSelect} shouldUpdateRecentlyUsed />;
-    const { unmount, container } = render(picker);
-    expect(container).toMatchSnapshot();
+    const { unmount } = render(picker);
     fireEvent.click(screen.getByText('展开全部', { exact: false }));
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < 12; i++) {
