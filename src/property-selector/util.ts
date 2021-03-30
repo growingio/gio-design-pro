@@ -1,7 +1,7 @@
 // import { transform } from 'lodash';
 
 import { PropertyItem, PropertyTypes } from './interfaces';
-import { Dimension } from '../types';
+import { Dimension } from './types';
 
 type MapedType = 'usr' | 'event' | 'avar';
 type TypeMapping = (input: Dimension) => PropertyItem;
@@ -105,7 +105,6 @@ export function getShortPinyin(word: string) {
   const boundaryChar = '驁簿錯鵽樲鰒餜靃攟鬠纙鞪黁漚曝裠鶸蜶籜鶩鑂韻糳';
 
   if (!String.prototype.localeCompare) {
-    // throw Error('String.prototype.localeCompare not supported.');
     return word[0];
   }
 
