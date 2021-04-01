@@ -14,14 +14,14 @@ const defaultPicker = (
   <UserPicker
     segments={segments}
     userId={currentUserId}
-    onCreateSegment={() => {}}
+    onCreateSegment={() => { }}
     onShowSegmentChart={onShowSegmentChart}
   />
 );
 const defaultProps = {
   segments,
   userId: currentUserId,
-  onCreateSegment: () => {},
+  onCreateSegment: () => { },
   onShowSegmentChart,
 };
 
@@ -36,7 +36,11 @@ describe('UserPicker', () => {
     expect(screen.queryByText('新建分群')).toBeTruthy();
     expect(screen.queryAllByRole('option').length).toBeGreaterThan(0);
   });
-
+  it('renders segments with diabled item', () => {
+    const { container } = render(<UserPicker {...defaultProps} disabledValues={['y9pm1pme']} />);
+    // gio-list__item--disabled
+    expect(container.querySelector('.gio-list__item--disabled')).toBeTruthy();
+  });
   it('can trigger create segment callback', () => {
     const handleCreateSegment = jest.fn();
     render(<UserPicker {...defaultProps} onCreateSegment={handleCreateSegment} />);

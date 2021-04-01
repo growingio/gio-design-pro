@@ -17,6 +17,7 @@ export const Default = Template.bind({});
 Default.args = {
   segments,
   userId: currentUserId,
+  disabledValues: ['y9pm1pme'],
   onCreateSegment: action('create-segment'),
   onShowSegmentChart: (resource: Resource) => <div>{`This is the trend chart of ${resource.name}.`}</div>,
 };
