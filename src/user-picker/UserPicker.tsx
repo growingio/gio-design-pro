@@ -16,6 +16,7 @@ function UserPicker({
   userId,
   onSelect,
   onCreateSegment,
+  disabledValues = [],
   updatingRecentDelay = 0,
   onShowSegmentChart,
 }: UserPickerProps) {
@@ -65,7 +66,8 @@ function UserPicker({
       detailDebounced.cancel();
       setDetailVisible(false);
     };
-    return resourceToItem(current, { onClick, onMouseEnter, onMouseLeave });
+    const disabled = !!disabledValues && disabledValues.includes(current.id);
+    return resourceToItem(current, { onClick, onMouseEnter, onMouseLeave }, disabled);
   }
 
   const dataSource = React.useMemo(() => {
