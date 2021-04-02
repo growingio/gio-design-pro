@@ -1,21 +1,16 @@
-## [21.3.4](https://github.com/growingio/gio-design-pro/compare/v21.3.3...v21.3.4) (2021-03-19)
+# [21.4.0](https://github.com/growingio/gio-design-pro/compare/v21.3.4...v21.4.0) (2021-04-02)
 
 
 ### Bug Fixes
 
-* **property-picker:** 修复右侧浮动窗口 bug ([#159](https://github.com/growingio/gio-design-pro/issues/159)) ([383f5e4](https://github.com/growingio/gio-design-pro/commit/383f5e4e1f05677ed49d550e7670f303be362a5b))
-* **property-selector:** 修复property-selector value 没有监听变化,修改value,property-select没有变化 ([#165](https://github.com/growingio/gio-design-pro/issues/165)) ([7cdb303](https://github.com/growingio/gio-design-pro/commit/7cdb3037fca07d8279b04927b53d21d5684a6ae4))
-* **user-selector:** update recent with 100ms delay ([#164](https://github.com/growingio/gio-design-pro/issues/164)) ([b6e7a78](https://github.com/growingio/gio-design-pro/commit/b6e7a78813f6511f1cb6f2fe517e65e2a7852119)), closes [#130](https://github.com/growingio/gio-design-pro/issues/130)
+* **user-picker:** add onShowSegmentChart to show chart in segment card ([#167](https://github.com/growingio/gio-design-pro/issues/167)) ([5088bba](https://github.com/growingio/gio-design-pro/commit/5088bba6bbae223e45ef41888e0552ed3beb35ed))
 
 
 ### Features
 
-* upgrade dependencies ([#163](https://github.com/growingio/gio-design-pro/issues/163)) ([0944eaf](https://github.com/growingio/gio-design-pro/commit/0944eaf24fb25d0975d779ca1b0b5737e40ee5d4))
-
-
-### BREAKING CHANGES
-
-* Use @gio-design/components as peer dependency.
+* **peer depend gio-design/icons gio-design/tokens:** set icons and tokens as peer dependencies ([5e37235](https://github.com/growingio/gio-design-pro/commit/5e37235418b4d47f35218110e5b06ca4d0974c83))
+* **tablecard:** add tablecard component ([a8ecaad](https://github.com/growingio/gio-design-pro/commit/a8ecaad7087f7479e1702b52e89d9f26b208758e))
+* **user-picker:** add property disabledValues ([7b2d06d](https://github.com/growingio/gio-design-pro/commit/7b2d06dc96dcd13b4970cd62fbc056cd6e18fea6))
 
 
 
