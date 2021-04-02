@@ -28,7 +28,7 @@ function UserPicker({
   const [recentSegments, setRecentSegments] = useLocalStorage<string[]>(`${userId}-segments`, []);
   const [query, setQuery] = React.useState<string>('');
   const [scope, setScope] = React.useState<string>('my');
-  const [detailVisible, setDetailVisible] = React.useState(false);
+  const [, setDetailVisible] = React.useState(false);
   const detailDebounced = debounce(() => {
     setDetailVisible(true);
   }, itemOnHoverDelay);
@@ -116,7 +116,7 @@ function UserPicker({
       }}
       items={dataSource}
       footer={footer}
-      detailVisible={detailVisible}
+      detailVisible={false}
       renderDetail={() =>
         hoveredResource && <SegmentCard {...hoveredResource} chart={onShowSegmentChart(hoveredResource)} />
       }
