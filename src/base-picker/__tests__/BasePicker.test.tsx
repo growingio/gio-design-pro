@@ -1,12 +1,17 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import BasePicker from '..';
-import { renderItems, tabNavItems, footer } from './data';
+import { ITEMS_COUNT, renderItems, tabNavItems, footer } from './data';
 
 describe('BasePicker', () => {
-  it('renders items', () => {
-    render(<BasePicker renderItems={renderItems} />);
-    expect(screen.getAllByText('内容')).toHaveLength(5);
+  it('renders items with function', () => {
+    render(<BasePicker items={undefined} renderItems={renderItems} />);
+    expect(screen.getAllByText(/Content/)).toHaveLength(ITEMS_COUNT);
+  });
+
+  it('renders items with props', () => {
+    render(<BasePicker items={undefined} />);
+    expect(screen.getAllByText(/Content/)).toHaveLength(ITEMS_COUNT);
   });
 
   it('renders items with search bar', () => {
@@ -30,15 +35,15 @@ describe('BasePicker', () => {
   it('renders items with tab nav', () => {
     const handleOnTabNavChange = jest.fn();
     render(<BasePicker renderItems={renderItems} tabNav={{ items: tabNavItems, onChange: handleOnTabNavChange }} />);
-    expect(screen.queryAllByText(/选项/)).toHaveLength(2);
-    fireEvent.click(screen.getByText('选项 2'));
+    expect(screen.queryAllByText(/Option/)).toHaveLength(2);
+    fireEvent.click(screen.getByText('Option 2'));
     expect(handleOnTabNavChange).toHaveBeenCalledTimes(1);
-    expect(handleOnTabNavChange).toHaveBeenCalledWith('tab-2');
+    expect(handleOnTabNavChange).toHaveBeenCalledWith('option-2');
   });
 
   it('renders items with footer', () => {
     render(<BasePicker renderItems={renderItems} footer={footer} />);
-    expect(screen.queryByText('新建内容')).toBeTruthy();
+    expect(screen.queryByText('New Content')).toBeTruthy();
   });
 
   it('renders detail', () => {

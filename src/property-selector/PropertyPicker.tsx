@@ -253,9 +253,9 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       debounceSetDetailVisible(true);
     };
     const handleItemMouseLeave = () => {
-      // setHoveredNodeValue(undefined);
+      setHoveredNodeValue(undefined);
       debounceSetDetailVisible.cancel();
-      // setDetailVisible(false);
+      setDetailVisible(false);
     };
     const listItems = items.map((data: PropertyItem) => {
       const select =
@@ -309,7 +309,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       return <EmptyPrompt {...rest.emptyPrompt} />;
     }
     const recentlyNodes = recentlyPropertyItems?.length > 0 && (
-      <>
+      <React.Fragment key="recentlyNodes">
         <ExpandableGroupOrSubGroup
           groupKey="recently"
           key="exp-group-recently"
@@ -318,7 +318,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
           items={getListItems(recentlyPropertyItems, 'recently')}
         />
         <List.Divider key="divider-group-recently" />
-      </>
+      </React.Fragment>
     );
     const groupDataNodes = keys(groupDatasource).map((key, index) => {
       const groupData = groupDatasource[key];
@@ -328,7 +328,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (keys(subGroupDic).length === 1) {
         const items = getListItems(subGroupDic[keys(subGroupDic)[0]]);
         return (
-          <>
+          <React.Fragment key={`groupDataNodes-${index}`}>
             {index > 0 && <List.Divider key={`divider-group-${key}-${index}`} />}
             <ExpandableGroupOrSubGroup
               key={`exp-group-${key}`}
@@ -337,16 +337,16 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
               type="group"
               items={items}
             />
-          </>
+          </React.Fragment>
         );
       }
       return (
-        <>
+        <React.Fragment key={`groupDataNodes-${index}`}>
           {index > 0 && <List.Divider key={`divider-group-${key}-${index}`} />}
           <List.ItemGroup key={`group-${key}`} title={typeName} expandable={false}>
             {subGroupRender(subGroupDic)}
           </List.ItemGroup>
-        </>
+        </React.Fragment>
       );
     });
     const childrens = [recentlyNodes, groupDataNodes];

@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NumberAttrSelect /> attrSelect = "=" 1`] = `
+<div
+  class="gio-input gio-input--middle"
+>
+  <input
+    class="gio-input__content"
+    placeholder=""
+    type="text"
+    value="0"
+  />
+</div>
+`;
+
+exports[`<NumberAttrSelect /> attrSelect = "=" 2`] = `
+<div
+  class="gio-input gio-input--middle"
+>
+  <input
+    class="gio-input__content"
+    placeholder=""
+    type="text"
+    value="10"
+  />
+</div>
+`;
+
+exports[`<NumberAttrSelect /> attrSelect = "between" 1`] = `
+<div
+  style="display:flex;align-items:center"
+>
+  <div
+    class="gio-input gio-input--middle"
+    style="width:120px"
+  >
+    <input
+      class="gio-input__content"
+      placeholder=""
+      type="text"
+      value="0"
+    />
+  </div>
+  <div
+    style="margin:0 16px"
+  >
+    与
+  </div>
+  <div
+    class="gio-input gio-input--middle"
+    style="width:120px"
+  >
+    <input
+      class="gio-input__content"
+      placeholder=""
+      type="text"
+      value="0"
+    />
+  </div>
+</div>
+`;
+
+exports[`<NumberAttrSelect /> attrSelect = "between" 2`] = `
+<div
+  style="display:flex;align-items:center"
+>
+  <div
+    class="gio-input gio-input--middle"
+    style="width:120px"
+  >
+    <input
+      class="gio-input__content"
+      placeholder=""
+      type="text"
+      value="30"
+    />
+  </div>
+  <div
+    style="margin:0 16px"
+  >
+    与
+  </div>
+  <div
+    class="gio-input gio-input--middle"
+    style="width:120px"
+  >
+    <input
+      class="gio-input__content"
+      placeholder=""
+      type="text"
+      value="0"
+    />
+  </div>
+</div>
+`;
+
+exports[`<NumberAttrSelect /> attrSelect = "between" 3`] = `
+<div
+  style="display:flex;align-items:center"
+>
+  <div
+    class="gio-input gio-input--middle"
+    style="width:120px"
+  >
+    <input
+      class="gio-input__content"
+      placeholder=""
+      type="text"
+      value="-30"
+    />
+  </div>
+  <div
+    style="margin:0 16px"
+  >
+    与
+  </div>
+  <div
+    class="gio-input gio-input--middle"
+    style="width:120px"
+  >
+    <input
+      class="gio-input__content"
+      placeholder=""
+      type="text"
+      value="40"
+    />
+  </div>
+</div>
+`;
+
+exports[`<NumberAttrSelect /> attrSelect = "hasValue" 1`] = `null`;
+
+exports[`<NumberAttrSelect /> attrSelect = "noValue" 1`] = `null`;

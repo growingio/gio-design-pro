@@ -1,0 +1,88 @@
+import React, { useMemo, useState } from 'react';
+import { Tooltip } from '@gio-design/components';
+// import moment from 'moment';
+
+import parseValuesToText from './utils';
+
+import FilterAttrOverlay from './FilterAttrOverlay';
+import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from './interfaces';
+
+import Selector from '../../../../../selector';
+
+interface FilterConditionProps {
+  valueType: attributeValue;
+  onSubmit: (v: FilterValueType) => void;
+  onCancel: () => void;
+  op: StringValue | NumberValue | DateValue;
+  dimensionValueRequest?: (data: any) => Promise<any>;
+  timeRange: string;
+  measurements: any[];
+  values: string[];
+  exprKey: string;
+}
+
+function FilterCondition(props: FilterConditionProps) {
+  const {
+    valueType = 'string',
+    onSubmit,
+    onCancel,
+    op,
+    dimensionValueRequest,
+    timeRange,
+    measurements,
+    values,
+    exprKey,
+  } = props;
+  const [visible, setVisible] = useState(false);
+  const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
+  const visibleChange = (v: boolean) => {
+    setVisible(v);
+  };
+  const curryDimensionValueRequest = ((timeRangeValue: string, measurementsValue: any[]) => (
+    dimension: string,
+    keyword: string
+  ) => dimensionValueRequest?.({ dimension, timeRange: timeRangeValue, metrics: measurementsValue, keyword }))(
+    timeRange,
+    measurements
+  );
+
+  const submit = (v: FilterValueType) => {
+    setVisible(false);
+    onSubmit(v);
+  };
+  const cancel = () => {
+    setVisible(false);
+    onCancel();
+  };
+
+  const valueRender = () => (
+    <span className="filter-condition_select">
+      <Tooltip title={conditionText} disabled={conditionText === '选择过滤条件'} placement="topLeft">
+        <span className="filter-condition_select-text">{conditionText}</span>
+      </Tooltip>
+    </span>
+  );
+
+  const dropdownRender = () => (
+    <FilterAttrOverlay
+      valueType={valueType}
+      onSubmit={submit}
+      onCancel={cancel}
+      op={op}
+      curryDimensionValueRequest={curryDimensionValueRequest}
+      values={values}
+      exprKey={exprKey}
+    />
+  );
+
+  return exprKey ? (
+    <Selector
+      valueRender={valueRender}
+      dropdownVisible={visible}
+      dropdownRender={dropdownRender}
+      onDropdownVisibleChange={visibleChange}
+      borderless
+    />
+  ) : null;
+}
+export default FilterCondition;

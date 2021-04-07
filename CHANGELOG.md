@@ -1,3 +1,37 @@
+## [21.3.3](https://github.com/growingio/gio-design-pro/compare/v21.3.2...v21.3.3) (2021-03-12)
+
+
+### Bug Fixes
+
+* **filter-picker:** 添加 fetchDetailData 方法, 删除 Picker ([#151](https://github.com/growingio/gio-design-pro/issues/151)) ([41e9f15](https://github.com/growingio/gio-design-pro/commit/41e9f15387859645c84018d90e7d6c603acc13fd))
+* **selector:** 修复 selector 组件的样式覆盖问题 ([#150](https://github.com/growingio/gio-design-pro/issues/150)) ([244ce56](https://github.com/growingio/gio-design-pro/commit/244ce5647cf3086435e7b8b402de12bd0740d3d2))
+
+
+### Performance Improvements
+
+* **property-picker:** 给 Fragment 组件添加 key，修复开发环境报 warning 的问题 ([#152](https://github.com/growingio/gio-design-pro/issues/152)) ([940ccb8](https://github.com/growingio/gio-design-pro/commit/940ccb8616e597fd006d8f9b873f10125e6fface))
+
+
+
+## [21.3.2](https://github.com/growingio/gio-design-pro/compare/v21.3.1...v21.3.2) (2021-03-11)
+
+
+### Features
+
+* **filter-picker:** add Filter-Picker ([#69](https://github.com/growingio/gio-design-pro/issues/69)) ([af9990d](https://github.com/growingio/gio-design-pro/commit/af9990d1874e90b6f6094446de1f60ee18e1ab92))
+* **operation-menu:** operation-menu组件dropdowm默认弹出位置修改 ([edb37ae](https://github.com/growingio/gio-design-pro/commit/edb37aeef6d38426c62cbc4953f53f9c6673d9e6))
+
+
+
+## [21.3.1](https://github.com/growingio/gio-design-pro/compare/v21.3.0...v21.3.1) (2021-03-09)
+
+
+### Features
+
+* **operation-menu:** 将dropdown拿到body下面 ([35212cf](https://github.com/growingio/gio-design-pro/commit/35212cfcaf4cfc381816c1e43b45e223519dd399))
+
+
+
 # [21.3.0](https://github.com/growingio/gio-design-pro/compare/v21.2.0...v21.3.0) (2021-03-05)
 
 

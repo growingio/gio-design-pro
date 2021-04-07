@@ -58,7 +58,7 @@ const initialValues: ElementFormValues = {
   attrs: {
     domain: 'release-messages.growingio.cn',
     path: 'pages/index/index',
-    query: null,
+    // query: null,
     xpath: '/div.title/form.basic-grey/h1/span',
     index: '',
     href: '',
@@ -67,7 +67,7 @@ const initialValues: ElementFormValues = {
   definition: {
     domain: 'release-messages.growingio.cn',
     path: 'pages/index/index',
-    query: null,
+    // query: null,
     xpath: '/div.title/form.basic-grey/h1/span',
     index: '1',
     href: '/link',
