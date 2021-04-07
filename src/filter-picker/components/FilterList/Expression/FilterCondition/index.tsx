@@ -41,10 +41,13 @@ function FilterCondition(props: FilterConditionProps) {
   const curryDimensionValueRequest = ((timeRangeValue: string, measurementsValue: any[]) => (
     dimension: string,
     keyword: string
-  ) => dimensionValueRequest?.({ dimension, timeRange: timeRangeValue, metrics: measurementsValue, keyword }))(
-    timeRange,
-    measurements
-  );
+  ) =>
+    dimensionValueRequest?.({
+      dimension,
+      timeRange: timeRangeValue,
+      metrics: measurementsValue,
+      keyword,
+    }))(timeRange, measurements);
 
   const submit = (v: FilterValueType) => {
     setVisible(false);

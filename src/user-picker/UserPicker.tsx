@@ -10,7 +10,16 @@ import { resourceToItem } from '../utils';
 import { preparedSegments } from './constant';
 import { Resource } from '../utils/interfaces';
 
-function UserPicker({ itemOnHoverDelay = 750, segments, userId, onSelect, onCreateSegment }: UserPickerProps) {
+function UserPicker({
+  itemOnHoverDelay = 750,
+  segments,
+  userId,
+  onSelect,
+  onCreateSegment,
+  disabledValues = [],
+  updatingRecentDelay = 0,
+  onShowSegmentChart,
+}: UserPickerProps) {
   const mappedSegements = React.useMemo<{ [key: string]: Resource }>(
     () => keyBy([...preparedSegments, ...segments], 'id'),
     [preparedSegments, segments]
@@ -33,13 +42,20 @@ function UserPicker({ itemOnHoverDelay = 750, segments, userId, onSelect, onCrea
 
   function mapResource(current: Resource) {
     const onClick = () => {
-      const segIds = uniq([current.id, ...recentSegments]);
-      if (segIds.length > 5) {
-        setRecentSegments(segIds.slice(0, 5));
-      } else {
-        setRecentSegments(segIds);
-      }
       onSelect?.(current.id, current);
+      const updateRecent = () => {
+        const segIds = uniq([current.id, ...recentSegments]);
+        if (segIds.length > 5) {
+          setRecentSegments(segIds.slice(0, 5));
+        } else {
+          setRecentSegments(segIds);
+        }
+      };
+      if (updatingRecentDelay > 0) {
+        debounce(updateRecent, updatingRecentDelay)();
+      } else {
+        updateRecent();
+      }
     };
     const onMouseEnter = () => {
       setHoveredResource(current);
@@ -50,7 +66,8 @@ function UserPicker({ itemOnHoverDelay = 750, segments, userId, onSelect, onCrea
       detailDebounced.cancel();
       setDetailVisible(false);
     };
-    return resourceToItem(current, { onClick, onMouseEnter, onMouseLeave });
+    const disabled = !!disabledValues && disabledValues.includes(current.id);
+    return resourceToItem(current, { onClick, onMouseEnter, onMouseLeave }, disabled);
   }
 
   const dataSource = React.useMemo(() => {
@@ -100,7 +117,9 @@ function UserPicker({ itemOnHoverDelay = 750, segments, userId, onSelect, onCrea
       items={dataSource}
       footer={footer}
       detailVisible={detailVisible}
-      renderDetail={() => hoveredResource && <SegmentCard {...hoveredResource} />}
+      renderDetail={() =>
+        hoveredResource && <SegmentCard {...hoveredResource} chart={onShowSegmentChart(hoveredResource)} />
+      }
     />
   );
 }

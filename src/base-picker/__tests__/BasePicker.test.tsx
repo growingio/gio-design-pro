@@ -5,7 +5,7 @@ import { ITEMS_COUNT, renderItems, tabNavItems, footer } from './data';
 
 describe('BasePicker', () => {
   it('renders items with function', () => {
-    render(<BasePicker items={undefined} renderItems={renderItems} />);
+    render(<BasePicker renderItems={renderItems} />);
     expect(screen.getAllByText(/Content/)).toHaveLength(ITEMS_COUNT);
   });
 

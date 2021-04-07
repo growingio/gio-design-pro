@@ -3,15 +3,26 @@ import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserPicker from '../UserPicker';
 import { preparedSegments } from '../constant';
+import { Resource } from '../../utils/interfaces';
 import { segments, currentUserId } from './data';
 
 jest.useFakeTimers();
 
-const defaultPicker = <UserPicker segments={segments} userId={currentUserId} onCreateSegment={() => {}} />;
+const onShowSegmentChart = (resource: Resource) => <div>{`This is the trend chart of ${resource.name}.`}</div>;
+
+const defaultPicker = (
+  <UserPicker
+    segments={segments}
+    userId={currentUserId}
+    onCreateSegment={() => {}}
+    onShowSegmentChart={onShowSegmentChart}
+  />
+);
 const defaultProps = {
   segments,
   userId: currentUserId,
   onCreateSegment: () => {},
+  onShowSegmentChart,
 };
 
 describe('UserPicker', () => {
@@ -25,7 +36,11 @@ describe('UserPicker', () => {
     expect(screen.queryByText('新建分群')).toBeTruthy();
     expect(screen.queryAllByRole('option').length).toBeGreaterThan(0);
   });
-
+  it('renders segments with diabled item', () => {
+    const { container } = render(<UserPicker {...defaultProps} disabledValues={['y9pm1pme']} />);
+    // gio-list__item--disabled
+    expect(container.querySelector('.gio-list__item--disabled')).toBeTruthy();
+  });
   it('can trigger create segment callback', () => {
     const handleCreateSegment = jest.fn();
     render(<UserPicker {...defaultProps} onCreateSegment={handleCreateSegment} />);
@@ -77,7 +92,9 @@ describe('UserPicker', () => {
   it('can search a segment by name', () => {
     const query = segments[0].name;
     render(defaultPicker);
-    fireEvent.change(screen.getByPlaceholderText('搜索分群名'), { target: { value: query } });
+    fireEvent.change(screen.getByPlaceholderText('搜索分群名'), {
+      target: { value: query },
+    });
     expect(screen.queryAllByText(query)).toHaveLength(2);
   });
 });

@@ -1,0 +1,113 @@
+@import '../../stylesheets/index.less';
+
+@table-card-prefix-cls: ~'@{component-prefix}-table-card';
+@table-prefix-cls: ~'@{component-prefix}-table';
+@pagination-prefix-cls: ~'@{component-prefix}-pagination';
+@searchbar-prefix-cls: ~'@{component-prefix}-searchbar';
+@tabs-prefix-cls: ~'@{component-prefix}-tabs';
+@tabnav-prefix-cls: ~'@{component-prefix}-tabnav';
+
+.@{table-card-prefix-cls} {
+  background: #fff;
+  border: 1px solid #ebedf5;
+  box-shadow: 0 3px 8px rgba(36, 46, 89, 0.05);
+  border-radius: 4px;
+  padding: 0 20px 20px 20px;
+  box-sizing: border-box;
+  width: 100%;
+
+  &-title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #242e59;
+    margin: 20px 0 4px;
+  }
+  &-description {
+    font-size: 14px;
+    line-height: 22px;
+    color: #7b819c;
+  }
+
+  &-divider {
+    border-top: 1px solid #ebedf5;
+    border-left: unset;
+    border-right: unset;
+    border-bottom: unset;
+    width: calc(100% + 40px);
+    margin: 53px 0 -54px -20px;
+  }
+
+  &-opertor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 22px 0 20px;
+  }
+
+  &-select {
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+
+    &-number {
+      font-size: 14px;
+      line-height: 22px;
+      color: #313e75;
+    }
+    &-close {
+      margin: 0 4px;
+    }
+    &-divider {
+      display: inline-block;
+      height: 16px;
+      width: 1px;
+      border: 0;
+      margin: 0 4px 0 0;
+      background-color: #dfe4ee;
+    }
+  }
+
+  .@{tabs-prefix-cls} {
+    .@{tabnav-prefix-cls} {
+      margin: 12px 0 0;
+    }
+    &-content {
+      margin-top: 2px;
+    }
+  }
+
+  .@{pagination-prefix-cls} {
+    margin-bottom: 0;
+  }
+
+  .@{table-prefix-cls} {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    .@{table-prefix-cls}-thead > tr:first-child > .@{table-prefix-cls}-cell {
+      &:first-child {
+        border-top-left-radius: 0;
+      }
+      &:last-child {
+        border-top-right-radius: 0;
+      }
+    }
+    .@{table-prefix-cls}-tbody > tr:last-child > .@{table-prefix-cls}-cell {
+      &:first-child {
+        border-bottom-left-radius: 0;
+      }
+      &:last-child {
+        border-bottom-right-radius: 0;
+      }
+    }
+    .@{table-prefix-cls}-thead > tr > .@{table-prefix-cls}-cell,
+    .@{table-prefix-cls}-tbody > tr > .@{table-prefix-cls}-cell {
+      &:first-child {
+        border-left: unset;
+      }
+      &:last-child {
+        border-right: unset;
+      }
+    }
+  }
+}

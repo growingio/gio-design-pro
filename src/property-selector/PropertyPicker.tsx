@@ -15,10 +15,10 @@ import { ListItemProps } from '../list/interfaces';
 import { renderExpandableItems } from '../list/utils';
 import PropertyCard from './PropertyCard';
 import './style';
-import { Dimension } from '../types';
+import { Dimension } from './types';
 import IconRender from './PropertyValueIconRender';
 
-const ExpandableGroupOrSubGroup = (props: {
+export const ExpandableGroupOrSubGroup = (props: {
   title?: string;
   type: 'group' | 'subgroup';
   items: ListItemProps[];
@@ -68,13 +68,14 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   } = props;
   const [scope, setScope] = useState('all');
   const [keyword, setKeyword] = useState<string | undefined>('');
-  const [recentlyUsedInMemo, setRecentlyUsedInMemo] = useState<{ [key: string]: any[] }>();
-  const [recentlyUsed, setRecentlyUsed] = useLocalStorage<{ [key: string]: any[] }>(
-    `${recentlyStorePrefix}_propertyPicker`,
-    {
-      all: [],
-    }
-  );
+  const [recentlyUsedInMemo, setRecentlyUsedInMemo] = useState<{
+    [key: string]: any[];
+  }>();
+  const [recentlyUsed, setRecentlyUsed] = useLocalStorage<{
+    [key: string]: any[];
+  }>(`${recentlyStorePrefix}_propertyPicker`, {
+    all: [],
+  });
   // const mounted = useMountedState();
   // useEffect(() => {
   //   console.log('setRecentlyUsedInMemo on mounted');
@@ -204,10 +205,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     if (newScopedRecent.length > 5) {
       newScopedRecent = newScopedRecent.slice(0, 5);
     }
-    let allScopedRecent = recent.all;
-    if (!allScopedRecent) {
-      allScopedRecent = [];
-    }
+    const allScopedRecent = recent.all || [];
+
     let newAllScopedRecent = uniq([v, ...allScopedRecent]);
     if (newAllScopedRecent.length > 5) {
       newAllScopedRecent = newAllScopedRecent.slice(0, 5);
@@ -366,7 +365,10 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         detailVisible={detailVisible && !!hoverdNodeValue}
         renderDetail={renderDetail}
         loading={loading}
-        searchBar={{ placeholder: searchBar?.placeholder || '搜索属性名称', onSearch: handleSearch }}
+        searchBar={{
+          placeholder: searchBar?.placeholder || '搜索属性名称',
+          onSearch: handleSearch,
+        }}
         tabNav={{
           items: navRef.current,
           onChange: onTabNavChange,

@@ -7,10 +7,13 @@ export const ITEMS_COUNT = 10;
 export const ITEM_CONTENT = 'Content';
 
 function sortArray(count: number) {
-  return Array.from({ length: count }, (_item, index) => index + 1);
+  return Array.from({ length: count }, (_, index) => index + 1);
 }
 
-export const items = sortArray(ITEMS_COUNT).map((i) => ({ children: `${ITEM_CONTENT} ${i}`, key: `content-${i}` }));
+export const items = sortArray(ITEMS_COUNT).map((i) => ({
+  children: `${ITEM_CONTENT} ${i}`,
+  key: `content-${i}`,
+}));
 
 export const renderItems = () => (
   <>

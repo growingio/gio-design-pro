@@ -429,7 +429,14 @@ Default.args = {
   filter: { op: 'and', exprs: [], __typename: 'directivesFilterrR2q' },
   recentlyStorePrefix: 'currentUserId',
   timeRange: 'day:31,1',
-  measurements: [{ id: 'vv', type: 'prepared', attribute: 'count', __typename: 'Measurement265f' }],
+  measurements: [
+    {
+      id: 'vv',
+      type: 'prepared',
+      attribute: 'count',
+      __typename: 'Measurement265f',
+    },
+  ],
   dimensionValueRequest: () =>
     new Promise((resolve) => {
       resolve(dimissionValue);

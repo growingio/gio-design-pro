@@ -11,6 +11,7 @@ function UserSelector({
   segments,
   userId,
   onCreateSegment,
+  onShowSegmentChart,
   onSelect,
 }: UserSelectorProps) {
   const [input, setInput] = React.useState<string>('');
@@ -23,7 +24,14 @@ function UserSelector({
   }
 
   const dropdown = () => (
-    <UserPicker segments={segments} userId={userId} onCreateSegment={onCreateSegment} onSelect={handleSelect} />
+    <UserPicker
+      updatingRecentDelay={100}
+      segments={segments}
+      userId={userId}
+      onCreateSegment={onCreateSegment}
+      onShowSegmentChart={onShowSegmentChart}
+      onSelect={handleSelect}
+    />
   );
 
   return (

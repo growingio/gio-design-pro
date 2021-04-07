@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { BaseProps, Resource } from '../utils/interfaces';
 import { SelectorProps } from '../selector/interfaces';
@@ -23,6 +24,18 @@ export interface UserPickerProps {
    * Callback when click creating button
    */
   onCreateSegment: () => void;
+  /**
+   * The delay of updating recent segements
+   */
+  updatingRecentDelay?: number;
+  /**
+   * Callback when to show segment chart
+   */
+  onShowSegmentChart: (resource: Resource) => React.ReactNode;
+  /**
+   * disabled options ，an array of Resource.id s
+   */
+  disabledValues?: string[];
 }
 
 export interface SegmentCardProps extends BaseProps {
@@ -38,4 +51,4 @@ export interface SegmentCardProps extends BaseProps {
 
 export interface UserSelectorProps
   extends Omit<SelectorProps, 'dropdownRender' | 'valueRender'>,
-    Omit<UserPickerProps, 'className' | 'style'> {}
+  Omit<UserPickerProps, 'className' | 'style'> { }

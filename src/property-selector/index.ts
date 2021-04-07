@@ -14,7 +14,9 @@ const Picker = _PropertyPicker as TPropertyPicker;
 Picker.PropertyCard = _PropertyCard;
 
 export const PropertyPicker = Picker;
-type TPropertySelector = typeof _PropertySelector & { PropertyPicker: TPropertyPicker };
+type TPropertySelector = typeof _PropertySelector & {
+  PropertyPicker: TPropertyPicker;
+};
 const PropertySelector = _PropertySelector as TPropertySelector;
 PropertySelector.PropertyPicker = Picker;
 export default PropertySelector;

@@ -49,7 +49,12 @@ function StringAttrSelect(props: StringAttrSelectProps) {
       // 以逗号结尾时，前面的字符作为自由输入的结果
       const res = Array.from(new Set([...checkList, ...checkValue]));
       setInputCheckList(checkList);
-      setCheckOptions(checkList.map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })));
+      setCheckOptions(
+        checkList.map((ele: string) => ({
+          label: `自由输入：${ele}`,
+          value: ele,
+        }))
+      );
       setCheckValue(res);
       attrChange(res);
     } else {
@@ -86,7 +91,10 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       res.length &&
         setCheckOptions(
-          Array.from(new Set([...defaultList, ...res])).map((ele: string) => ({ label: ele, value: ele }))
+          Array.from(new Set([...defaultList, ...res])).map((ele: string) => ({
+            label: ele,
+            value: ele,
+          }))
         );
       setLoadingStatue(false);
     });
@@ -96,7 +104,15 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     <div style={{ height: '330px' }}>
       <Input placeholder="请输入…" size="middle" value={inputValue} onChange={changInputValue} />
       {loadingStatue ? (
-        <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <Loading />
         </div>
       ) : (

@@ -1,15 +1,16 @@
-## [21.3.3](https://github.com/growingio/gio-design-pro/compare/v21.3.2...v21.3.3) (2021-03-12)
+# [21.4.0](https://github.com/growingio/gio-design-pro/compare/v21.3.4...v21.4.0) (2021-04-02)
 
 
 ### Bug Fixes
 
-* **filter-picker:** 添加 fetchDetailData 方法, 删除 Picker ([#151](https://github.com/growingio/gio-design-pro/issues/151)) ([41e9f15](https://github.com/growingio/gio-design-pro/commit/41e9f15387859645c84018d90e7d6c603acc13fd))
-* **selector:** 修复 selector 组件的样式覆盖问题 ([#150](https://github.com/growingio/gio-design-pro/issues/150)) ([244ce56](https://github.com/growingio/gio-design-pro/commit/244ce5647cf3086435e7b8b402de12bd0740d3d2))
+* **user-picker:** add onShowSegmentChart to show chart in segment card ([#167](https://github.com/growingio/gio-design-pro/issues/167)) ([5088bba](https://github.com/growingio/gio-design-pro/commit/5088bba6bbae223e45ef41888e0552ed3beb35ed))
 
 
-### Performance Improvements
+### Features
 
-* **property-picker:** 给 Fragment 组件添加 key，修复开发环境报 warning 的问题 ([#152](https://github.com/growingio/gio-design-pro/issues/152)) ([940ccb8](https://github.com/growingio/gio-design-pro/commit/940ccb8616e597fd006d8f9b873f10125e6fface))
+* **peer depend gio-design/icons gio-design/tokens:** set icons and tokens as peer dependencies ([5e37235](https://github.com/growingio/gio-design-pro/commit/5e37235418b4d47f35218110e5b06ca4d0974c83))
+* **tablecard:** add tablecard component ([a8ecaad](https://github.com/growingio/gio-design-pro/commit/a8ecaad7087f7479e1702b52e89d9f26b208758e))
+* **user-picker:** add property disabledValues ([7b2d06d](https://github.com/growingio/gio-design-pro/commit/7b2d06dc96dcd13b4970cd62fbc056cd6e18fea6))
 
 
 

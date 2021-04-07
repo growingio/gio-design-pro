@@ -8,11 +8,15 @@ exports[`RelativeCurrent -1, 0 values 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-right: 4px; width: 90px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -137,11 +141,15 @@ exports[`RelativeCurrent -1, 0 values 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-left: 4px; width: 85px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -201,11 +209,15 @@ exports[`RelativeCurrent 0, 0 values 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-right: 4px; width: 90px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -330,11 +342,15 @@ exports[`RelativeCurrent 0, 0 values 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-left: 4px; width: 85px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -394,11 +410,15 @@ exports[`RelativeCurrent 1, 0 values 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-right: 4px; width: 90px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -523,11 +543,15 @@ exports[`RelativeCurrent 1, 0 values 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-left: 4px; width: 85px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -579,6 +603,207 @@ exports[`RelativeCurrent 1, 0 values 1`] = `
 </div>
 `;
 
+exports[`RelativeCurrent 4 values 1`] = `
+<div
+  style="display: flex; align-items: center; flex-wrap: wrap;"
+>
+  <div
+    aria-controls="expandable"
+    aria-disabled="false"
+    aria-expanded="false"
+    aria-hidden="true"
+    class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+    role="combobox"
+    style="margin-right: 4px; width: 90px; cursor: pointer;"
+    tabindex="0"
+  >
+    <div
+      id="selector"
+    >
+      <div
+        class="gio-select-selector"
+      >
+        <div
+          class="gio-select-values-wrapper"
+        >
+          <div
+            class="gio-select-item"
+          >
+            <span
+              class="gio-select-item-text"
+            >
+              未来
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="gio-select-arrow"
+      >
+        <span
+          class="gio-icon gio-select-icon-arrow"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g>
+              <g>
+                <path
+                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="down-filled_svg__down-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="gio-input gio-input--middle gio-input__container"
+    style="width: 80px; margin: 0px 4px;"
+  >
+    <input
+      class="gio-input__content gio-input__content-suffix"
+      placeholder=""
+      type="text"
+      value="4"
+    />
+    <div
+      class="gio-input__suffix"
+    >
+      <div
+        class="gio-input__suffix-iconGroup"
+      >
+        <span
+          class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g>
+              <g>
+                <path
+                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="down-filled_svg__down-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+        <span
+          class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g>
+              <g>
+                <path
+                  d="M6.61 4.49a.5.5 0 01.78 0l3 3.7a.51.51 0 01.06.53A.5.5 0 0110 9H4a.5.5 0 01-.45-.28.51.51 0 01.06-.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="up-filled_svg__up-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    style="white-space: nowrap; margin: 0px 4px;"
+  >
+    天
+  </div>
+  <div
+    aria-controls="expandable"
+    aria-disabled="false"
+    aria-expanded="false"
+    aria-hidden="true"
+    class="gio-select gio-select-middle gio-select-single gio-select-bordered"
+    role="combobox"
+    style="margin-left: 4px; width: 85px; cursor: pointer;"
+    tabindex="0"
+  >
+    <div
+      id="selector"
+    >
+      <div
+        class="gio-select-selector"
+      >
+        <div
+          class="gio-select-values-wrapper"
+        >
+          <div
+            class="gio-select-item"
+          >
+            <span
+              class="gio-select-item-text"
+            >
+              之后
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="gio-select-arrow"
+      >
+        <span
+          class="gio-icon gio-select-icon-arrow"
+        >
+          <svg
+            class="gio-icon-svg"
+            fill="currentColor"
+            height="16px"
+            viewBox="0 0 14 14"
+            width="16px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <g>
+              <g>
+                <path
+                  d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  id="down-filled_svg__down-2"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`RelativeCurrent input not number 1`] = `
 <div
   style="display: flex; align-items: center; flex-wrap: wrap;"
@@ -587,11 +812,15 @@ exports[`RelativeCurrent input not number 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-right: 4px; width: 90px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -716,11 +945,15 @@ exports[`RelativeCurrent input not number 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-left: 4px; width: 85px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -780,11 +1013,15 @@ exports[`RelativeCurrent input number 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-right: 4px; width: 90px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -909,11 +1146,15 @@ exports[`RelativeCurrent input number 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-left: 4px; width: 85px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -973,11 +1214,15 @@ exports[`RelativeCurrent not values 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-right: 4px; width: 90px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
@@ -1102,11 +1347,15 @@ exports[`RelativeCurrent not values 1`] = `
     aria-controls="expandable"
     aria-disabled="false"
     aria-expanded="false"
+    aria-hidden="true"
     class="gio-select gio-select-middle gio-select-single gio-select-bordered"
     role="combobox"
     style="margin-left: 4px; width: 85px; cursor: pointer;"
+    tabindex="0"
   >
-    <div>
+    <div
+      id="selector"
+    >
       <div
         class="gio-select-selector"
       >
