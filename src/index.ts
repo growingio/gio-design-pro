@@ -12,3 +12,4 @@ export default { EmptyPrompt };
 export { TableCard, TableCardProps } from './table-card';
 export { default as TitleInfoCard, TitleInfoCardProps } from './title-info-card';
 export { default as OperationMenu, OperationMenuProps } from './operation-menu';
+export { TreeCard, TreeCardProps } from './tree-card';

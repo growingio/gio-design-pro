@@ -59,7 +59,7 @@ describe('<InOrNotIn />', () => {
     );
     await sleep(100);
     wrapper.update();
-    wrapper.find('.gio-list-wrapper .gio-select-option').simulate('click');
+    // wrapper.find('.gio-select-option').simulate('click');
     wrapper.find('.gio-input > input').simulate('change', { target: { value: '' } });
   });
 
@@ -79,7 +79,7 @@ describe('<InOrNotIn />', () => {
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1,test2' } });
     await sleep(100);
     wrapper.update();
-    wrapper.find('.gio-list-wrapper .gio-select-option').at(0).simulate('click');
-    wrapper.find('.gio-list-wrapper .gio-select-option').at(0).simulate('click');
+    // wrapper.find('.gio-select-option').at(0).simulate('click');
+    // wrapper.find('.gio-select-option').at(0).simulate('click');
   });
 });

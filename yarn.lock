@@ -1420,13 +1420,11 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@^21.3.3":
-  version "21.3.3"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.3.3.tgz#f516e4556881276aeaf875017c9ad108efd4d6ed"
-  integrity sha512-SEUsI9VwV7q3X+jSyPJqToIOQg5A5+9qamUTcVSXO9s/6OMp4GINSihclYT8VufChrlDM1JqxxWDeZTKAqUJqg==
+"@gio-design/components@^21.4.2":
+  version "21.4.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.4.2.tgz#654b7f6f84e15143cbee5c569f4464101ca62be6"
+  integrity sha512-2ceClR97x9Vf4ymJ1aDgvsplmLh3W3qOlCsMA58vzwgvFylC2wO/qaw+jha0bMRahijTLkGSzaOEvOlgsPy0bw==
   dependencies:
-    "@gio-design/icons" "21.1.0"
-    "@gio-design/tokens" "^21.3.0"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -1461,31 +1459,18 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/icons@21.1.0":
-  version "21.1.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.1.0.tgz#9c16832a1b685110be810bb0cc59208c9ba8ed43"
-  integrity sha512-T4II9qzn8O4hF9IIPLDOFdCxm8LIQJ1/muCWk8zlv8ST3VK5hFVpOy7MfZQmbj/Prg7eQw81H9hxO1aH/A3GjA==
+"@gio-design/icons@^21.4.0":
+  version "21.4.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.0.tgz#033dea22cc460eb2b147bddd81974897dac8dbcd"
+  integrity sha512-TdGGUQdJOJVCfTbQ7vbdEVsA6c2RdTtpKqqa8ffMOfkzh0vTRxdSCVSXcI7zzB2ErT2yIxqcv4OtH3ucdBNpeg==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/icons@^21.3.2":
-  version "21.3.2"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.3.2.tgz#7b753b07ed4814e51ff6b33be518fd270cb198bc"
-  integrity sha512-GzfOfcgYtKtz1dBN9PkF+/aTcZMTU6xESlkq8PANHSxW7AI2Z//gAbOQmF+76adD6UR8gG4k0g8WNLqjoqB/fw==
-  dependencies:
-    "@types/classnames" "^2.2.11"
-    classnames "^2.2.6"
-
-"@gio-design/tokens@^21.3.0":
-  version "21.3.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.0.tgz#5f57874cd10a6282e90fb0c26f9d8c0bc3361151"
-  integrity sha512-Z4fGw8cpaQMxOyIA43dzceMqDcgIrFpp7eMXztv9soCBTb4dfgiolA+ryS/86OwG/G3YEllNa4BpsOGDOwrygQ==
-
-"@gio-design/tokens@^21.3.1":
-  version "21.3.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.1.tgz#ff2ed50151d42f93908ea17343957100aff0f69f"
-  integrity sha512-OIj89KegIDwe5iAAubjtOuxn4TlU2XQQ7Z4K9wOJBglXfImcmTJdiAx+joX5J3PDHof2lh16/Wv3OhoLBZZmpQ==
+"@gio-design/tokens@^21.4.1":
+  version "21.4.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.1.tgz#710494032c0ff0c61ae9ce3c0a7e2565d3eecade"
+  integrity sha512-U2iix98dSMNURsht4KK7ezmtVHcGMup55zrxflKYsKm7AahNNadTtDyHAeo5iUE78A2ga3lHpZZuyjbgCt6/bg==
 
 "@graphql-codegen/cli@1.20.1":
   version "1.20.1"
