@@ -1,3 +1,95 @@
+# [21.4.0](https://github.com/growingio/gio-design-pro/compare/v21.3.4...v21.4.0) (2021-04-02)
+
+
+### Bug Fixes
+
+* **user-picker:** add onShowSegmentChart to show chart in segment card ([#167](https://github.com/growingio/gio-design-pro/issues/167)) ([5088bba](https://github.com/growingio/gio-design-pro/commit/5088bba6bbae223e45ef41888e0552ed3beb35ed))
+
+
+### Features
+
+* **peer depend gio-design/icons gio-design/tokens:** set icons and tokens as peer dependencies ([5e37235](https://github.com/growingio/gio-design-pro/commit/5e37235418b4d47f35218110e5b06ca4d0974c83))
+* **tablecard:** add tablecard component ([a8ecaad](https://github.com/growingio/gio-design-pro/commit/a8ecaad7087f7479e1702b52e89d9f26b208758e))
+* **user-picker:** add property disabledValues ([7b2d06d](https://github.com/growingio/gio-design-pro/commit/7b2d06dc96dcd13b4970cd62fbc056cd6e18fea6))
+
+
+
+## [21.3.4](https://github.com/growingio/gio-design-pro/compare/v21.3.3...v21.3.4) (2021-03-19)
+
+
+### Bug Fixes
+
+* **property-picker:** 修复右侧浮动窗口 bug ([#159](https://github.com/growingio/gio-design-pro/issues/159)) ([383f5e4](https://github.com/growingio/gio-design-pro/commit/383f5e4e1f05677ed49d550e7670f303be362a5b))
+* **property-selector:** 修复property-selector value 没有监听变化,修改value,property-select没有变化 ([#165](https://github.com/growingio/gio-design-pro/issues/165)) ([7cdb303](https://github.com/growingio/gio-design-pro/commit/7cdb3037fca07d8279b04927b53d21d5684a6ae4))
+* **user-selector:** update recent with 100ms delay ([#164](https://github.com/growingio/gio-design-pro/issues/164)) ([b6e7a78](https://github.com/growingio/gio-design-pro/commit/b6e7a78813f6511f1cb6f2fe517e65e2a7852119)), closes [#130](https://github.com/growingio/gio-design-pro/issues/130)
+
+
+### Features
+
+* upgrade dependencies ([#163](https://github.com/growingio/gio-design-pro/issues/163)) ([0944eaf](https://github.com/growingio/gio-design-pro/commit/0944eaf24fb25d0975d779ca1b0b5737e40ee5d4))
+
+
+### BREAKING CHANGES
+
+* Use @gio-design/components as peer dependency.
+
+
+
+## [21.3.3](https://github.com/growingio/gio-design-pro/compare/v21.3.2...v21.3.3) (2021-03-12)
+
+
+### Bug Fixes
+
+* **filter-picker:** 添加 fetchDetailData 方法, 删除 Picker ([#151](https://github.com/growingio/gio-design-pro/issues/151)) ([41e9f15](https://github.com/growingio/gio-design-pro/commit/41e9f15387859645c84018d90e7d6c603acc13fd))
+* **selector:** 修复 selector 组件的样式覆盖问题 ([#150](https://github.com/growingio/gio-design-pro/issues/150)) ([244ce56](https://github.com/growingio/gio-design-pro/commit/244ce5647cf3086435e7b8b402de12bd0740d3d2))
+
+
+### Performance Improvements
+
+* **property-picker:** 给 Fragment 组件添加 key，修复开发环境报 warning 的问题 ([#152](https://github.com/growingio/gio-design-pro/issues/152)) ([940ccb8](https://github.com/growingio/gio-design-pro/commit/940ccb8616e597fd006d8f9b873f10125e6fface))
+
+
+
+## [21.3.2](https://github.com/growingio/gio-design-pro/compare/v21.3.1...v21.3.2) (2021-03-11)
+
+
+### Features
+
+* **filter-picker:** add Filter-Picker ([#69](https://github.com/growingio/gio-design-pro/issues/69)) ([af9990d](https://github.com/growingio/gio-design-pro/commit/af9990d1874e90b6f6094446de1f60ee18e1ab92))
+* **operation-menu:** operation-menu组件dropdowm默认弹出位置修改 ([edb37ae](https://github.com/growingio/gio-design-pro/commit/edb37aeef6d38426c62cbc4953f53f9c6673d9e6))
+
+
+
+## [21.3.1](https://github.com/growingio/gio-design-pro/compare/v21.3.0...v21.3.1) (2021-03-09)
+
+
+### Features
+
+* **operation-menu:** 将dropdown拿到body下面 ([35212cf](https://github.com/growingio/gio-design-pro/commit/35212cfcaf4cfc381816c1e43b45e223519dd399))
+
+
+
+# [21.3.0](https://github.com/growingio/gio-design-pro/compare/v21.2.0...v21.3.0) (2021-03-05)
+
+
+### Features
+
+* **property-picker:** add component property-picker  ([#104](https://github.com/growingio/gio-design-pro/issues/104)) ([051ba9d](https://github.com/growingio/gio-design-pro/commit/051ba9d1f9db984841e4479b641f43f4dc813722))
+
+
+
+# [21.2.0](https://github.com/growingio/gio-design-pro/compare/v20.12.2...v21.2.0) (2021-02-07)
+
+
+### Features
+
+* **base-picker:** add base picker for business pickers ([dc87f4a](https://github.com/growingio/gio-design-pro/commit/dc87f4a8d83d4b31e402a08cf585f5647b948d89))
+* **list:** complete list component with new style ([bc290a2](https://github.com/growingio/gio-design-pro/commit/bc290a2bbcb121cbaa09169e3f05c322415835cf))
+* **list:** set text-overflow for list item ([a93dfba](https://github.com/growingio/gio-design-pro/commit/a93dfba313de1af54a73017f98374751b8b9395d))
+* **user-selector:** add components for segement ([41878cb](https://github.com/growingio/gio-design-pro/commit/41878cbe845d391413a5f78ce3647dba7bc8dc7b))
+
+
+
 ## [20.12.2](https://github.com/growingio/gio-design-pro/compare/v20.12.1...v20.12.2) (2020-12-31)
 
 

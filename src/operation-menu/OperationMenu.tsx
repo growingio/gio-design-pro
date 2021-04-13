@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
-import { Dropdown, Button } from '@gio-design/components';
+import Dropdown from '@gio-design/components/es/components/dropdown';
+import Button from '@gio-design/components/es/components/button';
 import { MoreOutlined } from '@gio-design/icons';
 import { OperationMenuProps } from './interfaces';
 import OperationMenuList from './OperationMenuList';
@@ -14,7 +15,7 @@ const OperateMenu = (props: OperationMenuProps) => {
     mini = true,
     size,
     icon = <MoreOutlined />,
-    placement = 'bottomLeft',
+    placement = 'bottomRight',
     buttonType = 'assist',
     iconClassName,
   } = props;
@@ -22,7 +23,6 @@ const OperateMenu = (props: OperationMenuProps) => {
   return (
     <div onClick={(e: any) => e.stopPropagation()}>
       <Dropdown
-        getTooltipContainer={(triggerNode: any) => triggerNode?.parentElement! || document.body}
         overlay={
           <OperationMenuList width={width} options={options} onClick={(option: any) => props.onClick?.(option)} />
         }
