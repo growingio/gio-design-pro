@@ -1421,12 +1421,10 @@
     yargs "^16.2.0"
 
 "@gio-design/components@^21.3.3":
-  version "21.3.3"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.3.3.tgz#f516e4556881276aeaf875017c9ad108efd4d6ed"
-  integrity sha512-SEUsI9VwV7q3X+jSyPJqToIOQg5A5+9qamUTcVSXO9s/6OMp4GINSihclYT8VufChrlDM1JqxxWDeZTKAqUJqg==
+  version "21.4.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.4.0.tgz#18fbe84732d9c0b46db138bf5faf330630cad3c6"
+  integrity sha512-zlsh+ncOZcfNYmNKwnvMYG4VNVFFF0F0VQMX9YCFKOA5BzBKQKIPNivft3IwT9QlBu6Z31IDp5dPmqVtUiQNBA==
   dependencies:
-    "@gio-design/icons" "21.1.0"
-    "@gio-design/tokens" "^21.3.0"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -1461,14 +1459,6 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/icons@21.1.0":
-  version "21.1.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.1.0.tgz#9c16832a1b685110be810bb0cc59208c9ba8ed43"
-  integrity sha512-T4II9qzn8O4hF9IIPLDOFdCxm8LIQJ1/muCWk8zlv8ST3VK5hFVpOy7MfZQmbj/Prg7eQw81H9hxO1aH/A3GjA==
-  dependencies:
-    "@types/classnames" "^2.2.11"
-    classnames "^2.2.6"
-
 "@gio-design/icons@^21.3.2":
   version "21.3.2"
   resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.3.2.tgz#7b753b07ed4814e51ff6b33be518fd270cb198bc"
@@ -1476,11 +1466,6 @@
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
-
-"@gio-design/tokens@^21.3.0":
-  version "21.3.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.0.tgz#5f57874cd10a6282e90fb0c26f9d8c0bc3361151"
-  integrity sha512-Z4fGw8cpaQMxOyIA43dzceMqDcgIrFpp7eMXztv9soCBTb4dfgiolA+ryS/86OwG/G3YEllNa4BpsOGDOwrygQ==
 
 "@gio-design/tokens@^21.3.1":
   version "21.3.1"
@@ -3169,15 +3154,7 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16.9.0", "@types/react@^17.0.0":
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.2.tgz#3de24c4efef902dd9795a49c75f760cbe4f7a5a8"
-  integrity sha512-Xt40xQsrkdvjn1EyWe1Bc0dJLcil/9x2vAuW7ya+PuQip4UYUaXyhzWmAbwRsdMgwOFHpfp7/FFZebDU6Y8VHA==
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^3.0.2"
-
-"@types/react@^17.0.2":
+"@types/react@*", "@types/react@>=16.9.0", "@types/react@^17.0.0", "@types/react@^17.0.2":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
   integrity sha512-wYOUxIgs2HZZ0ACNiIayItyluADNbONl7kt8lkLjVK8IitMH5QMyAh75Fwhmo37r1m7L2JaFj03sIfxBVDvRAg==
