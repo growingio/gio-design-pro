@@ -48,7 +48,7 @@
     "@gio-design/components": "^21.3.3",
     "@gio-design/icons": "^21.3.2",
     "@gio-design/tokens": "^21.3.1",
-    "@graphql-codegen/cli": "1.20.1",
+    "@graphql-codegen/cli": "1.21.3",
     "@graphql-codegen/typescript": "1.20.0",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-controls": "^6.1.21",
