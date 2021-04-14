@@ -68,17 +68,18 @@ describe('PropertyPicker', () => {
     expect(handleSelect).toHaveBeenCalledTimes(1);
     expect(screen.queryAllByText(tobeClickedNode.name)).toHaveLength(1);
   });
-  it('can hover a property and show the detail of property', async () => {
-    render(<PropertyPicker {...defaultProps} detailVisibleDelay={10} />);
+  it('can hover a property and show the detail of property', () => {
+    render(<PropertyPicker {...defaultProps} detailVisibleDelay={1} />);
     fireEvent.click(screen.getByText('全部'));
     const item = screen.queryAllByText(insightDimensions[0].name)[0];
-    await act(async () => {
+    act(() => {
       fireEvent.mouseEnter(item);
-      // jest.runAllTimers();
+      jest.runAllTimers();
     });
+
     setTimeout(() => {
       expect(screen.queryByText(insightDimensions[0].id)).toBeTruthy();
-    }, 50);
+    }, 2);
     // screen.debug(screen.queryByText(insightDimensions[0].id));
     fireEvent.mouseLeave(item);
   });
