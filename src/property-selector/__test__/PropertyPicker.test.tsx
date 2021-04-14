@@ -82,7 +82,8 @@ describe('PropertyPicker', () => {
     expect(screen.queryByText(insightDimensions[0].id)).toBeTruthy();
 
     // screen.debug(screen.queryByText(insightDimensions[0].id));
-    // fireEvent.mouseLeave(item);
+    fireEvent.mouseLeave(item);
+    expect(screen.queryByText(insightDimensions[0].id)).toBeNull();
   });
 
   it('can search a property by name', () => {
