@@ -8,6 +8,7 @@ interface StringAttrSelectProps {
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
+  attrSelect: string;
 }
 
 type checkOptionsItem = {
@@ -15,8 +16,10 @@ type checkOptionsItem = {
   label: string;
 };
 
+let timer: any = null;
+
 function StringAttrSelect(props: StringAttrSelectProps) {
-  const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
+  const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey, attrSelect } = props;
   const [inputValue, setInputValue] = useState<string>('');
   const [checkValue, setCheckValue] = useState<string[]>(values);
   // check-options
@@ -31,11 +34,12 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   useEffect(() => {
     setCheckValue(values);
     setDefaultList(values);
+    setInputValue(values?.length ? values[0] : '');
   }, [values]);
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
     // 输入规则为：
-    // 当正常输入时，作为搜索关键字，进行查询，返回搜索结果，用户进行选择
+    // 当正常输入时，作为搜索关键字，进行查询，返回搜索结果，用户进行选择 
     // 当输入最后一个字符为英文逗号时，算自由输入，将用户输入的字符串直接作为选项，展示”自由输入：（string）“并为选中状态
     // 多个英文逗号分隔时，为多个自由输入，展示多条”自由输入：（string)“并选中
     // 当清空输入框内容时，如果有自由输入选项，自由输入选项保留，不清空，并始终保持选中状态，除非用户勾选取消
@@ -60,17 +64,32 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     } else {
       setLoadingStatue(true);
       const filterCheckedList: string[] = checkValue.filter((ele: string) => !checkList.includes(ele));
-      curryDimensionValueRequest?.(exprKey, valueList[valueList.length - 1] || '')?.then((res: string[]) => {
-        setCheckOptions([
-          // 所有的自由输入选项
-          ...inputCheckList
-            .filter((ele: string) => checkList.includes(ele))
-            .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
-          // 已选中的，过滤掉自由输入的选项
-          ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({ label: ele, value: ele })),
-        ]);
-        setLoadingStatue(false);
-      });
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        curryDimensionValueRequest?.(exprKey, valueList[valueList.length - 1] || '')?.then((res: string[]) => {
+          if (res.length) {
+            setCheckOptions([
+              // 所有的自由输入选项
+              ...inputCheckList
+                .filter((ele: string) => checkList.includes(ele))
+                .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
+              // 已选中的，过滤掉自由输入的选项
+              ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({ label: ele, value: ele })),
+            ]);
+          } else {
+            setCheckOptions([
+              // 所有的自由输入选项
+              ...inputCheckList
+                .filter((ele: string) => checkList.includes(ele))
+                .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
+            ]);
+          }
+          setLoadingStatue(false);
+        });
+      }, 500);
     }
 
     setInputValue(v.target.value);
@@ -88,6 +107,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   };
   // 初始化check-options
   useEffect(() => {
+    setLoadingStatue(true);
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       res.length &&
         setCheckOptions(
@@ -98,7 +118,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
         );
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey]);
+  }, [valueType, exprKey, attrSelect]);
 
   return (
     <div style={{ height: '330px' }}>
