@@ -329,7 +329,7 @@ export type Dimension = {
 
 export type DocProps = {
   __typename?: 'DocProps';
-  domain: Scalars['String'];
+  domain?: Scalars['String'];
   path?: Maybe<Scalars['String']>;
   query?: Maybe<Scalars['String']>;
   xpath?: Maybe<Scalars['String']>;

@@ -1,0 +1,27 @@
+import BaseForm from './BaseForm';
+import { ElementEventForm, PageViewEventForm } from './index';
+import { Meta, Subtitle, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import Submitter from './components/submitter';
+
+# EventForm
+
+<Subtitle>圈选组件，定义表单</Subtitle>
+
+- PageViewEventForm 页面定义
+- ElementEventForm 元素定义
+
+## 参数说明
+
+<ArgsTable components={{ ElementEventForm, PageViewEventForm, BaseForm, Submitter }} />
+
+## 代码演示
+
+<Subtitle>PageviewEventform APP 页面定义</Subtitle>
+
+<Story id="business-components-eventform-pagevieweventform--web" />
+
+##
+
+<Subtitle>ElementEventform 小程序 元素定义</Subtitle>
+
+<Story id="business-components-eventform-elementeventform--default" />

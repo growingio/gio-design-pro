@@ -1,0 +1,19 @@
+@import '../../../../stylesheets/index.less';
+@condition-prefix-cls: ~'@{component-prefix}-condition-checkbox-group';
+
+.@{condition-prefix-cls} {
+  position: relative;
+  flex: 1;
+  outline: none;
+  .condition-checkbox-option {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+    .action-btn {
+      padding: 0 8px;
+      color: '#ADB2C2';
+    }
+  }
+}

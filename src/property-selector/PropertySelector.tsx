@@ -29,7 +29,6 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   useEffect(() => {
     setCurrentValue(value);
   }, [value]);
-
   // const [textOverflow, setTextOverflow] = useState(false);
   const inputValueRef = useRef<HTMLSpanElement | null>(null);
   // useEffect(() => {
