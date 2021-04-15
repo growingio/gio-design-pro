@@ -27,7 +27,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   const [listValue, setListValue] = useState<string>(values.join(','));
   const [loadingStatue, setLoadingStatue] = useState<boolean>(true);
   useEffect(() => {
-    setInputValue(inputValue || '');
+    setInputValue(values?.length ? values[0] : '');
     setListValue(values?.[0]);
   }, [values]);
 
