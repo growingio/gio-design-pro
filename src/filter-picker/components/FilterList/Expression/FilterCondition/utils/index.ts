@@ -140,20 +140,20 @@ const parseDateValuesToText = (opMap: { [key: string]: string }, operation: stri
       if (value[0] === ' ') {
         return '有值';
       }
-      return opMap[operation] + moment(value[0]).format('YYYY-MM-DD');
+      return opMap[operation] + moment(parseInt(value[0], 10)).format('YYYY-MM-DD');
     }
     case '=': {
       if (value[0] === ' ') {
         return '无值';
       }
-      return opMap[operation] + moment(value[0]).format('YYYY-MM-DD');
+      return opMap[operation] + moment(parseInt(value[0], 10)).format('YYYY-MM-DD');
     }
     case '>':
     case '>=':
     case '<':
     case '<=': {
       const textList = opMap[operation].split(',');
-      return textList[0] + moment(value[0]).format('YYYY-MM-DD') + textList[1];
+      return textList[0] + moment(parseInt(value[0], 10)).format('YYYY-MM-DD') + textList[1];
     }
     // 判断，在。。。与。。。之间
     // 返回字符串 ---- ‘在（date1）与（data2）之间’
