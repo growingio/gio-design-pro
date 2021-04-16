@@ -30,7 +30,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   const [loadingStatue, setLoadingStatue] = useState<boolean>(true);
   // let timer: number | any = null;
   useEffect(() => {
-    setLoadingStatue(true);
     setInputValue(values?.length ? values[0] : '');
     setListValue(values?.[0]);
   }, [values]);
@@ -68,7 +67,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   };
 
   useEffect(() => {
-    setLoadingStatue(true);
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       if (res.length) {
         setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
