@@ -10,6 +10,7 @@ export interface FilterPickerProps extends Pick<PropertyPickerProps, 'fetchDetai
   onConfirm: (v: FilterValue) => void;
   dimensionValueRequest?: (data: any) => Promise<any>;
   recentlyStorePrefix: string;
+  operationsOption?: operationsOptionType;
 }
 export type attributeValue = 'string' | 'int' | 'date';
 
@@ -29,6 +30,22 @@ export type FilterValue = {
 export type StringValue = '=' | '!=' | '<' | '>';
 export type NumberValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'hasValue';
 export type DateValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'relativeTime';
+
+export type opStringType = '=' | '!=' | 'in' | 'not in' | 'like' | 'not like' | 'hasValue' | 'noValue';
+export type opNumberType = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'not between' | 'hasValue' | 'noValue';
+export type opDateType =
+  | '='
+  | '!='
+  | '>'
+  | '<'
+  | 'relativeBetween'
+  | 'relativeCurrent'
+  | 'between'
+  | 'not between'
+  | 'hasValue'
+  | 'noValue';
+
+type opSTRINGType = '=' | '!=' | 'in' | 'not in' | 'like' | 'not like';
 
 export interface titleGroup {
   string: string;
@@ -54,4 +71,11 @@ export interface selectOption {
     value: string;
     label: string;
   }[];
+}
+
+export interface operationsOptionType {
+  string: opStringType[];
+  int: opNumberType[];
+  date: opDateType[];
+  STRING: opSTRINGType[];
 }
