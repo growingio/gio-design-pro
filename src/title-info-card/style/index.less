@@ -1,0 +1,66 @@
+@import '../../stylesheets/index.less';
+@title-info-card-prefix-cls: ~'@{component-prefix}-title-info-card';
+
+.@{title-info-card-prefix-cls} {
+  padding: 20px;
+  background: #FFF;
+  border: 1px solid #EBEDF5;
+  box-shadow: 0 3px 8px rgba(36, 46, 89, 0.05);
+  border-radius: 4px;
+  &-title {
+    &-icon {
+      width: 48px;
+      height: 48px;
+      background: @palette-white;
+      border: 1px solid @color-border-card;
+      box-sizing: border-box;
+      margin-top: 5px;
+      margin-right: 16px;
+      float: left;
+      border-radius: 6px;
+      text-align: center;
+      line-height: 46px;
+      svg {
+        color: @palette-blue-5;
+      }
+    }
+    .only-title-icon {
+      margin-top: 0 !important;
+    }
+    &-text {
+      float: left;
+      h5 {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 32px;
+        color: @color-font-form-label;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .only-title {
+        margin-top: 8px;
+      }
+      .@{title-info-card-prefix-cls}-content-word-break {
+        word-break: break-word;
+        font-size: 14px;
+        line-height: 22px;
+        color: @color-text-card-description;
+        margin-top: 4px;
+        margin-bottom: 0;
+      }
+    }
+    .@{title-info-card-prefix-cls}-operation {
+      float: right;
+    }
+  }
+  .@{title-info-card-prefix-cls}-content {
+    margin-top: 20px;
+  }
+  .@{title-info-card-prefix-cls}-footer {
+    margin-top: 20px;
+    border-top: 1px solid @color-border-card;
+    padding-top: 20px;
+  }
+}

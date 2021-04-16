@@ -16,6 +16,7 @@ function UserPicker({
   userId,
   onSelect,
   onCreateSegment,
+  showSegmentCard = true,
   disabledValues = [],
   updatingRecentDelay = 0,
   onShowSegmentChart,
@@ -116,8 +117,9 @@ function UserPicker({
       }}
       items={dataSource}
       footer={footer}
-      detailVisible={detailVisible}
+      detailVisible={showSegmentCard && detailVisible}
       renderDetail={() =>
+        showSegmentCard &&
         hoveredResource && <SegmentCard {...hoveredResource} chart={onShowSegmentChart(hoveredResource)} />
       }
     />
