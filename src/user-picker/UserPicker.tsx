@@ -16,6 +16,7 @@ function UserPicker({
   userId,
   onSelect,
   onCreateSegment,
+  showSegmentCard = true,
   disabledValues = [],
   updatingRecentDelay = 0,
   onShowSegmentChart,
@@ -28,7 +29,7 @@ function UserPicker({
   const [recentSegments, setRecentSegments] = useLocalStorage<string[]>(`${userId}-segments`, []);
   const [query, setQuery] = React.useState<string>('');
   const [scope, setScope] = React.useState<string>('my');
-  const [, setDetailVisible] = React.useState(false);
+  const [detailVisible, setDetailVisible] = React.useState(false);
   const detailDebounced = debounce(() => {
     setDetailVisible(true);
   }, itemOnHoverDelay);
@@ -116,8 +117,9 @@ function UserPicker({
       }}
       items={dataSource}
       footer={footer}
-      detailVisible={false}
+      detailVisible={showSegmentCard && detailVisible}
       renderDetail={() =>
+        showSegmentCard &&
         hoveredResource && <SegmentCard {...hoveredResource} chart={onShowSegmentChart(hoveredResource)} />
       }
     />

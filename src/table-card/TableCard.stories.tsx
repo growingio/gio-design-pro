@@ -12,45 +12,54 @@ export default {
 
 const Default: Story<{
   showTitle: boolean;
+  showDescription: boolean;
   showSearchBar: boolean;
   showButtons: boolean;
   showPagination: boolean;
   showTableSelection: boolean;
-}> = (args) => {
+  showTabs: boolean;
+}> = ({ showButtons, showPagination, showTitle, showTableSelection, showSearchBar, showDescription, showTabs }) => {
   const [selectedRowKeys1, setSelectedRowKeys1] = useState<string[]>([]);
   const [selectedRowKeys2, setSelectedRowKeys2] = useState<string[]>([]);
 
   const config = getTableCardConfig(selectedRowKeys1, setSelectedRowKeys1, selectedRowKeys2, setSelectedRowKeys2);
 
-  if (!args.showTitle) {
+  if (!showTitle) {
     delete config.title;
   }
-  if (!args.showSearchBar) {
+
+  if (!showDescription) {
+    delete config.description;
+  }
+
+  if (!showSearchBar) {
     delete config.tabs[0].searchBar;
     delete config.tabs[1].searchBar;
   }
-  if (!args.showButtons) {
+  if (!showButtons) {
     delete config.tabs[0].buttons;
     delete config.tabs[1].buttons;
   }
-  if (!args.showPagination) {
+  if (!showPagination) {
     config.tabs[0].table.pagination = false;
     config.tabs[1].table.pagination = false;
   }
-  if (!args.showTableSelection) {
+  if (!showTableSelection) {
     delete config.tabs[0].table.rowSelection;
     delete config.tabs[1].table.rowSelection;
   }
 
-  return <TableCard {...config} />;
+  return <TableCard {...config} showTabs={showTabs} />;
 };
 
 Default.args = {
   showTitle: true,
+  showDescription: true,
   showSearchBar: true,
   showButtons: true,
   showPagination: true,
   showTableSelection: true,
+  showTabs: true,
 };
 
 export { Default };

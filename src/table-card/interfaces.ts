@@ -11,18 +11,18 @@ interface TableCardTableProps<RecordType> extends TableProps<RecordType> {
   rowSelection?: TableCardRowSelection<RecordType>;
 }
 
-interface TableCardTab<RecordType> {
+export interface TableCardTab<RecordType> {
   name: ReactNode;
   table: TableCardTableProps<RecordType>;
   searchBar?: SearchBarProps;
   buttons?: ButtonProps[];
   batchButtons?: ButtonProps[];
 }
-
 export interface TableCardProps<RecordType> {
   tabs: TableCardTab<RecordType>[];
   title?: ReactNode;
   description?: string;
+  showTabs?: boolean;
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;
