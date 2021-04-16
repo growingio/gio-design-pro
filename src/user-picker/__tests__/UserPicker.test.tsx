@@ -14,14 +14,14 @@ const defaultPicker = (
   <UserPicker
     segments={segments}
     userId={currentUserId}
-    onCreateSegment={() => { }}
+    onCreateSegment={() => {}}
     onShowSegmentChart={onShowSegmentChart}
   />
 );
 const defaultProps = {
   segments,
   userId: currentUserId,
-  onCreateSegment: () => { },
+  onCreateSegment: () => {},
   onShowSegmentChart,
 };
 
