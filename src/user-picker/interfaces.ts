@@ -36,6 +36,10 @@ export interface UserPickerProps {
    * disabled options ，an array of Resource.id s
    */
   disabledValues?: string[];
+  /**
+  * if true , a SegementCard will show when mouse hoverd an element
+  */
+  showSegmentCard?: boolean;
 }
 
 export interface SegmentCardProps extends BaseProps {
