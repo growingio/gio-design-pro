@@ -14,14 +14,14 @@ const defaultPicker = (
   <UserPicker
     segments={segments}
     userId={currentUserId}
-    onCreateSegment={() => {}}
+    onCreateSegment={() => { }}
     onShowSegmentChart={onShowSegmentChart}
   />
 );
 const defaultProps = {
   segments,
   userId: currentUserId,
-  onCreateSegment: () => {},
+  onCreateSegment: () => { },
   onShowSegmentChart,
 };
 
@@ -88,7 +88,19 @@ describe('UserPicker', () => {
     fireEvent.mouseLeave(item);
     expect(screen.queryByText(segments[0].creator)).toBeNull();
   });
+  it('set showSegementCard false ,detail will not show when hover a segment', () => {
+    render(<UserPicker {...defaultProps} showSegmentCard={false} itemOnHoverDelay={0} />);
+    fireEvent.click(screen.getByText('全部'));
+    const item = screen.getByText(segments[0].name);
+    act(() => {
+      fireEvent.mouseEnter(item);
+      jest.runAllTimers();
+    });
 
+    expect(screen.queryByText(segments[0].creator)).toBeNull();
+    fireEvent.mouseLeave(item);
+    expect(screen.queryByText(segments[0].creator)).toBeNull();
+  });
   it('can search a segment by name', () => {
     const query = segments[0].name;
     render(defaultPicker);
