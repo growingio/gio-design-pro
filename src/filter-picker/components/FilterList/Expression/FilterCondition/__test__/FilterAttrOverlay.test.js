@@ -61,7 +61,7 @@ describe('<FilterAttrOverlay />', () => {
       wrapper.find('.gio-select-selector').simulate('click');
 
       wrapper.find('.gio-select-dropdown .gio-select-list-option').at(1).simulate('click');
-      expect(wrapper.find('.gio-select-item-text').text()).toBe('不等于');
+      expect(wrapper.find('.gio-select-item-text').text()).toBe('等于');
     });
 
     it('when op is "<="', async () => {
