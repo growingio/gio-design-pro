@@ -8634,7 +8634,8 @@ getpass@^0.1.1:
 
 "gio-rewire@https://github.com/growingio/gio-rewire.git":
   version "1.0.5"
-  resolved "https://github.com/growingio/gio-rewire.git#aa18e74955f99150382fb829b7d2bec577c24570"
+  uid f0fb479ae0add5395102e666773f4a589871e6d1
+  resolved "https://github.com/growingio/gio-rewire.git#f0fb479ae0add5395102e666773f4a589871e6d1"
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/plugin-proposal-class-properties" "^7.4.4"
