@@ -34,7 +34,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   }, [values]);
 
   const changeListValue = (option: any) => {
-    console.log(option.currentTarget.innerText, 'option');
     const value = option.currentTarget.innerText;
     if (inputValue === value) {
       setInputValue('');

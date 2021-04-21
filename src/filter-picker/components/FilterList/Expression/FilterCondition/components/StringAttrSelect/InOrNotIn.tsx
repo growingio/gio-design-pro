@@ -37,7 +37,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   let timer: any = null;
 
   const changeCheckValue = (checkedValue: any) => {
-    console.log(checkedValue, 'checkValue');
     const value = checkedValue.currentTarget.innerText;
     if (!checkValue.includes(value)) {
       setCheckValue([...checkValue, value]);

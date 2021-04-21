@@ -57,7 +57,7 @@ describe('<InOrNotIn />', () => {
         values={[]}
       />
     );
-    await sleep(100);
+    await sleep(500);
     wrapper.update();
     // wrapper.find('.gio-select-option').simulate('click');
     wrapper.find('.gio-input > input').simulate('change', { target: { value: '' } });
