@@ -1,8 +1,6 @@
 import React from 'react';
-import Button from '@gio-design/components/es/components/button';
-import Tooltip from '@gio-design/components/es/components/tooltip';
 import classNames from 'classnames';
-import { usePrefixCls } from '@gio-design/components';
+import { usePrefixCls, Button, Tooltip } from '@gio-design/components';
 import { TooltipButtonProps } from './interfaces';
 
 import './style';
