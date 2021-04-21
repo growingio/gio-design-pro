@@ -63,6 +63,37 @@ describe('<InOrNotIn />', () => {
     wrapper.find('.gio-input > input').simulate('change', { target: { value: '' } });
   });
 
+  it('search without result', async () => {
+    const wrapper = mount(
+      <InOrNotIn
+        attrChange={() => {}}
+        curryDimensionValueRequest={() => new Promise((resolve) => resolve([]))}
+        valueType="string"
+        exprKey="test_key"
+        values={[]}
+      />
+    );
+    await sleep(500);
+    wrapper.update();
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1' } });
+    expect(wrapper.find('.gio-list__item')).toHaveLength(0);
+  });
+
+  it('list double click delete checkValue', async () => {
+    const wrapper = mount(
+      <InOrNotIn
+        attrChange={() => {}}
+        curryDimensionValueRequest={() => new Promise((resolve) => resolve(['test']))}
+        valueType="string"
+        exprKey="test_key"
+        values={['test']}
+      />
+    );
+    await sleep(500);
+    wrapper.update();
+    wrapper.find('.gio-list__item').at(0).simulate('click');
+  });
+
   it('free input', async () => {
     const wrapper = mount(
       <InOrNotIn
