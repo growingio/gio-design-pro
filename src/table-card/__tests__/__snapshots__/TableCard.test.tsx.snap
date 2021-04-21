@@ -112,7 +112,7 @@ exports[`<TableCard/> test should be stable 1`] = `
                 style="margin-right: 12px;"
               >
                 <button
-                  class="gio-btn gio-btn-primary"
+                  class="gio-btn gio-tooltip-button gio-tooltip-button-primary gio-tooltip-button-normal gio-btn-primary"
                   type="button"
                 >
                   <span
@@ -152,7 +152,7 @@ exports[`<TableCard/> test should be stable 1`] = `
                 style="margin-right: 12px;"
               >
                 <button
-                  class="gio-btn gio-btn-secondary"
+                  class="gio-btn gio-tooltip-button gio-tooltip-button-secondary gio-tooltip-button-disabled gio-btn-secondary"
                   type="button"
                 >
                   <span>
@@ -164,7 +164,7 @@ exports[`<TableCard/> test should be stable 1`] = `
                 class="gio-space-item"
               >
                 <button
-                  class="gio-btn gio-btn-secondary"
+                  class="gio-btn gio-tooltip-button gio-tooltip-button-secondary gio-tooltip-button-normal gio-btn-secondary"
                   type="button"
                 >
                   <span>
@@ -1152,7 +1152,7 @@ exports[`<TableCard/> test should be stable 1`] = `
                 style="margin-right: 12px;"
               >
                 <button
-                  class="gio-btn gio-btn-primary"
+                  class="gio-btn gio-tooltip-button gio-tooltip-button-primary gio-tooltip-button-normal gio-btn-primary"
                   type="button"
                 >
                   <span
@@ -1191,7 +1191,7 @@ exports[`<TableCard/> test should be stable 1`] = `
                 class="gio-space-item"
               >
                 <button
-                  class="gio-btn gio-btn-secondary"
+                  class="gio-btn gio-tooltip-button gio-tooltip-button-secondary gio-tooltip-button-normal gio-btn-secondary"
                   type="button"
                 >
                   <span>
