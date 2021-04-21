@@ -21,6 +21,7 @@ type listOptionsItem = {
   onClick: (checkedValue: listOptionsItem) => void;
 };
 
+let timer: any = null;
 function StringAttrSelect(props: StringAttrSelectProps) {
   const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
   const [inputValue, setInputValue] = useState<string>(values.join(','));
@@ -51,6 +52,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     if (timer) {
       clearTimeout(timer);
     }
+    const value = v?.target?.value;
     timer = setTimeout(() => {
       curryDimensionValueRequest?.(exprKey, value)?.then((res: string[]) => {
         if (res.length) {
