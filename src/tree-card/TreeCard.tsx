@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { usePrefixCls, Button, SearchBar } from '@gio-design/components';
+import { usePrefixCls, SearchBar } from '@gio-design/components';
 import classNames from 'classnames';
 import { union, isArray, without } from 'lodash';
 import { TreeCardProps } from './interfaces';
+import TooltipButton from '../tooltip-button';
 import Tree from './Tree';
 
 function TreeCard<RecordType>({
@@ -65,7 +66,7 @@ function TreeCard<RecordType>({
       <div className={`${prefixCls}-tree`}>{renderTrees()}</div>
       {footerButton && (
         <div className={`${prefixCls}-footer`}>
-          <Button
+          <TooltipButton
             {...footerButton}
             size="middle"
             className={classNames(`${prefixCls}-footer-button`, footerButton.className)}

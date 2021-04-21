@@ -34,7 +34,11 @@ function Tree<RecordType>({
 
     const treeNodeOperation =
       !isUndefined(operationMenu) && isArray(operationOptions) ? (
-        <OperationMenu {...operationMenu} options={operationOptions} />
+        <OperationMenu
+          {...operationMenu}
+          options={operationOptions}
+          onClick={(value) => operationMenu.onClick?.(value, treeNode)}
+        />
       ) : null;
     return (
       <div className={`${prefixCls}-tree-node-title-content`}>
