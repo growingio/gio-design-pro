@@ -10,6 +10,11 @@
   position: absolute;
   top: 45px;
   z-index: @zindex-dropdown;
+
+  .@{date-picker-prefix-cls}-dropdown {
+    left: 0 !important;
+  }
+
 }
 .@{date-picker-prefix-cls}-wrap-range {
   margin: 16px 0 0 16px;
@@ -37,33 +42,34 @@
     width: 298px;
     border: 1px solid @color-border-input-normal;
     border-radius: 4px;
-  }
 
-  .gio-date-picker-input-first {
-    width: 122px;
-    height: 36px;
-    border: none;
-    .gio-input__content {
-      text-align: left;
-      font-style: normal;
-      font-weight: normal;
-      font-family: 'PingFang SC', sans-serif;
-      color: #313e75;
+    .gio-date-picker-input-first {
+      width: 122px;
+      height: 36px;
+      border: none;
+      .gio-input__content {
+        text-align: left;
+        font-style: normal;
+        font-weight: normal;
+        font-family: 'PingFang SC', sans-serif;
+        color: #313e75;
+      }
+    }
+  
+    .gio-date-picker-input-second {
+      width: 158px;
+      height: 36px;
+      border: none;
+      .gio-input__content {
+        text-align: left;
+        font-style: normal;
+        font-weight: normal;
+        font-family: 'PingFang SC', sans-serif;
+        color: #313e75;
+      }
     }
   }
 
-  .gio-date-picker-input-second {
-    width: 160px;
-    height: 36px;
-    border: none;
-    .gio-input__content {
-      text-align: left;
-      font-style: normal;
-      font-weight: normal;
-      font-family: 'PingFang SC', sans-serif;
-      color: #313e75;
-    }
-  }
 
   .@{input-prefix-cls}-content {
     border: none;

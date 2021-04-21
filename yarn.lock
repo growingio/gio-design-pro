@@ -7577,7 +7577,7 @@ getpass@^0.1.1:
 
 "gio-rewire@https://github.com/growingio/gio-rewire.git":
   version "1.0.5"
-  resolved "https://github.com/growingio/gio-rewire.git#aa18e74955f99150382fb829b7d2bec577c24570"
+  resolved "https://github.com/growingio/gio-rewire.git#f0fb479ae0add5395102e666773f4a589871e6d1"
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/plugin-proposal-class-properties" "^7.4.4"
@@ -12685,6 +12685,12 @@ react-dom@^16.14.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.19.1"
+
+react-dotdotdot@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.npm.taobao.org/react-dotdotdot/download/react-dotdotdot-1.3.1.tgz#b94324bf66cdb70e4acffe5460e4480a91135e50"
+  dependencies:
+    object.pick "^1.3.0"
 
 react-draggable@^4.0.3:
   version "4.4.3"

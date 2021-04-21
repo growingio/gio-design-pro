@@ -24,7 +24,7 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
   // const [formatedTime, setFormatedTime] = useState(timeRange);
   const modeOptions = [
     { value: Mode.shortcut, label: '常用时间' },
-    { value: Mode.since, label: '自某天以后' },
+    // { value: Mode.since, label: '自某天以后' },
     { value: Mode.dynamic, label: '过去动态时段' },
     { value: Mode.absolute, label: '过去固定时段' },
   ];
@@ -33,24 +33,24 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
       { value: 'day:1,0', label: '今日' },
       { value: 'week:1,0', label: '本周' },
       { value: 'month:1,0', label: '本月' },
-      { value: 'quarter:1,0', label: '本季度' },
+      // { value: 'quarter:1,0', label: '本季度' },
       { value: 'year:1,0', label: '今年' },
       { value: 'day:8,1', label: '过去7天' },
       { value: 'day:31,1', label: '过去30天' },
       { value: 'day:181,1', label: '过去180天' },
-      { value: 'hour:24,0', label: '过去24小时' },
+      // { value: 'hour:24,0', label: '过去24小时' },
       { value: 'since', label: '开始至今' },
     ],
     [
       { value: 'day:2,1', label: '昨日' },
       { value: 'week:2,1', label: '上周' },
       { value: 'month:2,1', label: '上月' },
-      { value: 'quarter:2,1', label: '上季度' },
+      // { value: 'quarter:2,1', label: '上季度' },
       { value: 'year:2,1', label: '去年' },
       { value: 'day:15,1', label: '过去14天' },
       { value: 'day:91,1', label: '过去90天' },
       { value: 'day:366,1', label: '过去365天' },
-      { value: 'hour:48,0', label: '过去48小时' },
+      // { value: 'hour:48,0', label: '过去48小时' },
     ],
   ];
 
@@ -122,45 +122,41 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
     setMode(item.value);
   };
 
-  const renderCalendar = () => {
-    return (
-      <div
-        style={{
-          boxSizing: 'border-box',
-          width: '540px',
-          height: '430px',
-          position: 'relative',
-          display: 'block',
-          lineHeight: 1.5,
-          marginBottom: 16,
-        }}
-      >
-        <Calendar
-          prefixCls={prefixCls}
-          value={time}
-          onChange={onChange}
-          format={format}
-          onCancel={onCancel}
-          onConfirm={onConfirm}
-          mode={mode}
-          showFooter
-        />
-      </div>
-    );
-  };
+  const renderCalendar = () => (
+    <div
+      style={{
+        boxSizing: 'border-box',
+        width: '540px',
+        height: '430px',
+        position: 'relative',
+        display: 'block',
+        lineHeight: 1.5,
+        marginBottom: 16,
+      }}
+    >
+      <Calendar
+        prefixCls={prefixCls}
+        value={time}
+        onChange={onChange}
+        format={format}
+        onCancel={onCancel}
+        onConfirm={onConfirm}
+        mode={mode}
+        showFooter
+      />
+    </div>
+  );
 
-  const renderShortcuts = () => {
-    return (
-      <div
-        style={{
-          display: 'inline-flex',
-        }}
-      >
-        <List stateless dataSource={shortcutOptions[0]} width={128} onClick={onListClick} />
-        <List stateless dataSource={shortcutOptions[1]} width={128} onClick={onListClick} />
-      </div>
-    );
-  };
+  const renderShortcuts = () => (
+    <div
+      style={{
+        display: 'inline-flex',
+      }}
+    >
+      <List stateless dataSource={shortcutOptions[0]} width={128} onClick={onListClick} />
+      <List stateless dataSource={shortcutOptions[1]} width={128} onClick={onListClick} />
+    </div>
+  );
 
   return (
     <Dropdown
