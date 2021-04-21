@@ -109,12 +109,12 @@ describe('<InOrNotIn />', () => {
         curryDimensionValueRequest={() => new Promise((resolve) => resolve(['test']))}
         valueType="string"
         exprKey="test_key"
-        values={['test']}
+        values={['test', 'test2', 'test3']}
       />
     );
     await sleep(500);
     wrapper.update();
-    expect(wrapper.find('.gio-list__item')).toHaveLength(1);
+    expect(wrapper.find('.gio-list__item')).toHaveLength(3);
     expect(wrapper.find('.gio-list__item').at(0).text()).toBe('test');
     wrapper.find('.gio-list__item').at(0).simulate('click');
   });
@@ -133,7 +133,6 @@ describe('<InOrNotIn />', () => {
     wrapper.update();
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1' } });
     await sleep(100);
-    wrapper.update();
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test2' } });
   });
 
