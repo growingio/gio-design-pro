@@ -21,6 +21,7 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
   const [v, setV] = useState(false);
   const [mode, setMode] = useState<Mode>(Mode.shortcut);
   const [displayTime, setDisplayTime] = useState('今天');
+  const [value, setValue] = useState('day:2,1');
   // const [formatedTime, setFormatedTime] = useState(timeRange);
   const modeOptions = [
     { value: Mode.shortcut, label: '常用时间' },
@@ -62,7 +63,6 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
 
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
   const [time, setTime] = useState([moment(new Date()), moment(new Date())]);
-  // const [nextTime, setNextTime] = useState([moment(new Date()), moment(new Date())]);
   const format = 'YYYY/MM/DD';
   const formatDate = (_: Moment) => _.format(format);
 
@@ -83,35 +83,34 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
     return '';
   };
 
-  const onListClick = (item: any) => {
-    setDisplayTime(item.label);
-    // setFormatedTime(item.value);
-    setV(false);
-  };
-
-  const formatRange = (mode: Mode, value: Array<Moment>) => {
-    if (mode === Mode.since) {
-      // todo
-    }
+  const toGioFormat = (mode: Mode, value: Array<Moment>) => {
     if (mode === Mode.dynamic) {
-      const dynamicRight = value[1].diff(moment(), 'days');
-      const dynamicLeft = value[0].diff(moment(), 'days');
-      return `day:${-dynamicLeft + 1},${-dynamicRight + 1}`;
+      const dynamicRight = Math.abs(value[1].diff(moment(), 'days')) + 1;
+      const dynamicLeft = Math.abs(value[0].diff(moment(), 'days')) + 1;
+      return `day:${dynamicLeft},${dynamicRight}`;
     }
     if (mode === Mode.absolute) {
-      return `abs:${value[0].valueOf()},${value[1].valueOf()}`;
+      return `abs:${value[0].startOf('day').valueOf()},${value[1].startOf('day').valueOf()}`;
     }
-    return '';
+    return 'day:2,1';
+  };
+
+  const onListClick = (item: any) => {
+    setDisplayTime(item.label);
+    setValue(item.value);
+    props.onChange(value);
+    setV(false);
   };
 
   const onChange = (value: Array<Moment>) => {
     setDisplayTime(formatDisplayRange(mode, value));
-    formatRange(mode, value);
+    setValue(toGioFormat(mode, value));
     value && setTime(value);
   };
 
   const onConfirm = () => {
     setV(false);
+    props.onChange(value);
   };
 
   const onCancel = () => {

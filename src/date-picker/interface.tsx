@@ -4,6 +4,7 @@ import { Moment } from 'moment';
 export interface RangePickerProps {
   prefixCls?: string;
   timeRange?: string;
+  onChange?: (value: string) => void;
 }
 
 enum Mode {

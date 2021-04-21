@@ -55,21 +55,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(value);
   }, [value]);
 
-  useEffect(() => {
-    if (mode === 'since') {
-      setTimeRange([value[0], moment()]);
-      setFixedMode(true);
-    } else if (mode === 'dynamic') {
-      handleRightDynamicInput(7);
-      setFixedMode(true);
-      setLeftDynamicInputVisible(false);
-      setTimeRange([moment().subtract('days', 7), moment()]);
-    } else {
-      setFixedMode(false);
-      setTimeRange(value);
-    }
-  }, [mode]);
-
   const hackPanelClickToday = (e: any) => {
     if (e.target.className === 'gio-date-picker-date' && e.target.ariaDisabled === 'false') {
       const todayNode = document.querySelector('.gio-date-picker-today') as HTMLElement;
@@ -109,6 +94,21 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setRightDynamicInput(rightInput);
     setTimeRange([moment().add(-rightInput, 'days'), moment().add(-leftDynamicInput, 'days')]);
   };
+
+  useEffect(() => {
+    if (mode === 'since') {
+      setTimeRange([value[0], moment()]);
+      setFixedMode(true);
+    } else if (mode === 'dynamic') {
+      handleRightDynamicInput(7);
+      setFixedMode(true);
+      setLeftDynamicInputVisible(false);
+      setTimeRange([moment().subtract('days', 7), moment()]);
+    } else {
+      setFixedMode(false);
+      setTimeRange(value);
+    }
+  }, [mode]);
 
   const handleEndDayChange = (day: sinceEnd) => {
     if (day === 'today') {
@@ -228,92 +228,90 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     />
   );
 
-  const renderPanel = (renderMode: string) => {
-    return (
-      <RcDatePicker
-        calendar={calendar}
-        value={timeRange}
-        onChange={onChange}
-        prefixCls={`${prefixCls}-dropdown`}
-        getCalendarContainer={() => calendarContainerRef.current}
-        open={open}
-      >
-        {({ value: _value }: { value: Array<Moment> }) => (
-          <div className={classNames(`${prefixCls}-range-input-${renderMode}`)}>
-            {renderMode === 'absolute' && (
-              <div className={classNames(`${prefixCls}-range-input`)}>
-                <Input
-                  className={`${prefixCls}-input-first`}
-                  onChange={handleLeftInputChange}
-                  value={leftInputTimeRange || `${formatDate(_value[0])}`}
-                  onClick={() => setOpen(true)}
-                />
-                <span className={`${prefixCls}-split`}>—</span>
-                <Input
-                  className={`${prefixCls}-input-second`}
-                  onChange={handleRightInputChange}
-                  value={rightInputTimeRange || `${formatDate(_value[1])}`}
-                  onClick={() => setOpen(true)}
-                  suffix={<CalendarOutlined />}
-                />
-              </div>
-            )}
-            {renderMode === 'since' && (
-              <>
-                从
-                <Input
-                  className={`${prefixCls}-input-second`}
-                  onChange={handleLeftInputChange}
-                  value={leftInputTimeRange || `${formatDate(_value[0])}`}
-                  onClick={() => setOpen(true)}
-                  suffix={<CalendarOutlined />}
-                />
-                <Tabs activeKey={endDay} className={`${prefixCls}-tab`} size="middle" onChange={handleEndDayChange}>
-                  <TabPane tab="至今日" key="today" style={{ height: '36px' }} />
-                  <TabPane tab="至昨日" key="yesterday" style={{ height: '36px' }} />
-                </Tabs>
-              </>
-            )}
-            {renderMode === 'dynamic' && !leftDynamicInputVisible && (
-              <>
-                过去
-                <Input.InputNumber
-                  className={`${prefixCls}-input-second`}
-                  value={rightDynamicInput}
-                  onChange={handleRightDynamicInput as any}
-                  min={0}
-                />
-                天
-                <Button type="secondary" icon={<PlusCircleFilled />} onClick={handleEndDay}>
-                  结束日期
-                </Button>
-              </>
-            )}
-            {renderMode === 'dynamic' && leftDynamicInputVisible && (
-              <>
-                过去
-                <Input.InputNumber
-                  className={`${prefixCls}-input-second`}
-                  value={leftDynamicInput}
-                  onChange={handleLeftDynamicInput as any}
-                  min={0}
-                />
-                至
-                <Input.InputNumber
-                  className={`${prefixCls}-input-second`}
-                  value={rightDynamicInput}
-                  onChange={handleRightDynamicInput as any}
-                  min={0}
-                />
-                天
-              </>
-            )}
-            <div className={classNames(`${prefixCls}-wrapper`)} ref={calendarContainerRef} />
-          </div>
-        )}
-      </RcDatePicker>
-    );
-  };
+  const renderPanel = (renderMode: string) => (
+    <RcDatePicker
+      calendar={calendar}
+      value={timeRange}
+      onChange={onChange}
+      prefixCls={`${prefixCls}-dropdown`}
+      getCalendarContainer={() => calendarContainerRef.current}
+      open={open}
+    >
+      {({ value: _value }: { value: Array<Moment> }) => (
+        <div className={classNames(`${prefixCls}-range-input-${renderMode}`)}>
+          {renderMode === 'absolute' && (
+            <div className={classNames(`${prefixCls}-range-input`)}>
+              <Input
+                className={`${prefixCls}-input-first`}
+                onChange={handleLeftInputChange}
+                value={leftInputTimeRange || `${formatDate(_value[0])}`}
+                onClick={() => setOpen(true)}
+              />
+              <span className={`${prefixCls}-split`}>—</span>
+              <Input
+                className={`${prefixCls}-input-second`}
+                onChange={handleRightInputChange}
+                value={rightInputTimeRange || `${formatDate(_value[1])}`}
+                onClick={() => setOpen(true)}
+                suffix={<CalendarOutlined />}
+              />
+            </div>
+          )}
+          {renderMode === 'since' && (
+            <>
+              从
+              <Input
+                className={`${prefixCls}-input-second`}
+                onChange={handleLeftInputChange}
+                value={leftInputTimeRange || `${formatDate(_value[0])}`}
+                onClick={() => setOpen(true)}
+                suffix={<CalendarOutlined />}
+              />
+              <Tabs activeKey={endDay} className={`${prefixCls}-tab`} size="middle" onChange={handleEndDayChange}>
+                <TabPane tab="至今日" key="today" style={{ height: '36px' }} />
+                <TabPane tab="至昨日" key="yesterday" style={{ height: '36px' }} />
+              </Tabs>
+            </>
+          )}
+          {renderMode === 'dynamic' && !leftDynamicInputVisible && (
+            <>
+              过去
+              <Input.InputNumber
+                className={`${prefixCls}-input-second`}
+                value={rightDynamicInput}
+                onChange={handleRightDynamicInput as any}
+                min={0}
+              />
+              天
+              <Button type="secondary" icon={<PlusCircleFilled />} onClick={handleEndDay}>
+                结束日期
+              </Button>
+            </>
+          )}
+          {renderMode === 'dynamic' && leftDynamicInputVisible && (
+            <>
+              过去
+              <Input.InputNumber
+                className={`${prefixCls}-input-second`}
+                value={leftDynamicInput}
+                onChange={handleLeftDynamicInput as any}
+                min={0}
+              />
+              至
+              <Input.InputNumber
+                className={`${prefixCls}-input-second`}
+                value={rightDynamicInput}
+                onChange={handleRightDynamicInput as any}
+                min={0}
+              />
+              天
+            </>
+          )}
+          <div className={classNames(`${prefixCls}-wrapper`)} ref={calendarContainerRef} />
+        </div>
+      )}
+    </RcDatePicker>
+  );
 
   return <div className={classNames(`${prefixCls}-wrap-range`)}>{renderPanel(mode)}</div>;
 };
