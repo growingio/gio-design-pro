@@ -15,8 +15,8 @@ enum Mode {
 }
 
 export interface DateRangePickerProps {
-  onCancel: () => void;
-  onConfirm: () => void;
+  onCancel?: () => void;
+  onConfirm?: () => void;
   mode: Mode;
   /**
      自定义 `className`

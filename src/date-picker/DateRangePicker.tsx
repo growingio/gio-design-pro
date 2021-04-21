@@ -1,125 +1,66 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Button from '@gio-design/components/es/components/button';
 import List from '@gio-design/components/es/components/list';
 import Dropdown from '@gio-design/components/es/components/dropdown';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
-import moment, { Moment } from 'moment';
 import { CalendarOutlined } from '@gio-design/icons';
+import useRangePicker from './hooks/useRangePicker';
 import Calendar from './Calendar';
-import { RangePickerProps } from './interface';
+import { RangePickerProps } from './interfaces';
 
-enum Mode {
+export enum Mode {
   shortcut = 'shortcut',
   since = 'since',
   dynamic = 'dynamic',
   absolute = 'absolute',
 }
 
+export const shortcutOptions = [
+  [
+    { value: 'day:1,0', label: '今日' },
+    { value: 'week:1,0', label: '本周' },
+    { value: 'month:1,0', label: '本月' },
+    // { value: 'quarter:1,0', label: '本季度' },
+    { value: 'year:1,0', label: '今年' },
+    { value: 'day:8,1', label: '过去7天' },
+    { value: 'day:31,1', label: '过去30天' },
+    { value: 'day:181,1', label: '过去180天' },
+    // { value: 'hour:24,0', label: '过去24小时' },
+    { value: 'since', label: '开始至今' },
+  ],
+  [
+    { value: 'day:2,1', label: '昨日' },
+    { value: 'week:2,1', label: '上周' },
+    { value: 'month:2,1', label: '上月' },
+    // { value: 'quarter:2,1', label: '上季度' },
+    { value: 'year:2,1', label: '去年' },
+    { value: 'day:15,1', label: '过去14天' },
+    { value: 'day:91,1', label: '过去90天' },
+    { value: 'day:366,1', label: '过去365天' },
+    // { value: 'hour:48,0', label: '过去48小时' },
+  ],
+];
+
 const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) => {
   const { prefixCls: customizePrefixCls } = props;
-  const [v, setV] = useState(false);
-  const [mode, setMode] = useState<Mode>(Mode.shortcut);
-  const [displayTime, setDisplayTime] = useState('今天');
-  const [value, setValue] = useState('day:2,1');
   // const [formatedTime, setFormatedTime] = useState(timeRange);
+  const { state, actions, utils } = useRangePicker(props);
+
   const modeOptions = [
     { value: Mode.shortcut, label: '常用时间' },
     // { value: Mode.since, label: '自某天以后' },
     { value: Mode.dynamic, label: '过去动态时段' },
     { value: Mode.absolute, label: '过去固定时段' },
   ];
-  const shortcutOptions = [
-    [
-      { value: 'day:1,0', label: '今日' },
-      { value: 'week:1,0', label: '本周' },
-      { value: 'month:1,0', label: '本月' },
-      // { value: 'quarter:1,0', label: '本季度' },
-      { value: 'year:1,0', label: '今年' },
-      { value: 'day:8,1', label: '过去7天' },
-      { value: 'day:31,1', label: '过去30天' },
-      { value: 'day:181,1', label: '过去180天' },
-      // { value: 'hour:24,0', label: '过去24小时' },
-      { value: 'since', label: '开始至今' },
-    ],
-    [
-      { value: 'day:2,1', label: '昨日' },
-      { value: 'week:2,1', label: '上周' },
-      { value: 'month:2,1', label: '上月' },
-      // { value: 'quarter:2,1', label: '上季度' },
-      { value: 'year:2,1', label: '去年' },
-      { value: 'day:15,1', label: '过去14天' },
-      { value: 'day:91,1', label: '过去90天' },
-      { value: 'day:366,1', label: '过去365天' },
-      // { value: 'hour:48,0', label: '过去48小时' },
-    ],
-  ];
 
-  useEffect(() => {
-    if (v) {
-      setMode(Mode.shortcut);
-    }
-  }, [v]);
+  // useEffect(() => {
+  //   if (state.visible) {
+  //     actions.setMode(Mode.shortcut);
+  //   }
+  // }, [state.visible]);
 
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
-  const [time, setTime] = useState([moment(new Date()), moment(new Date())]);
-  const format = 'YYYY/MM/DD';
-  const formatDate = (_: Moment) => _.format(format);
-
-  const formatDisplayRange = (mode: Mode, value: Array<Moment>) => {
-    if (mode === Mode.since) {
-      const sinceStart = formatDate(value[0]);
-      const sinceEnd = value[1].day() === moment().day() ? '今天' : '昨天';
-      return `自 ${sinceStart} 至${sinceEnd}`;
-    }
-    if (mode === Mode.dynamic) {
-      const dynamicRight = value[1].diff(moment(), 'days');
-      const dynamicLeft = value[0].diff(moment(), 'days');
-      return dynamicRight === 0 ? `过去${-dynamicLeft}天` : `过去${-dynamicRight}-${-dynamicLeft}天`;
-    }
-    if (mode === Mode.absolute) {
-      return `从 ${formatDate(value[0])} 到 ${formatDate(value[1])} `;
-    }
-    return '';
-  };
-
-  const toGioFormat = (mode: Mode, value: Array<Moment>) => {
-    if (mode === Mode.dynamic) {
-      const dynamicRight = Math.abs(value[1].diff(moment(), 'days')) + 1;
-      const dynamicLeft = Math.abs(value[0].diff(moment(), 'days')) + 1;
-      return `day:${dynamicLeft},${dynamicRight}`;
-    }
-    if (mode === Mode.absolute) {
-      return `abs:${value[0].startOf('day').valueOf()},${value[1].startOf('day').valueOf()}`;
-    }
-    return 'day:2,1';
-  };
-
-  const onListClick = (item: any) => {
-    setDisplayTime(item.label);
-    setValue(item.value);
-    props.onChange(value);
-    setV(false);
-  };
-
-  const onChange = (value: Array<Moment>) => {
-    setDisplayTime(formatDisplayRange(mode, value));
-    setValue(toGioFormat(mode, value));
-    value && setTime(value);
-  };
-
-  const onConfirm = () => {
-    setV(false);
-    props.onChange(value);
-  };
-
-  const onCancel = () => {
-    setV(false);
-  };
-
-  const handleModeChange = (item: any) => {
-    setMode(item.value);
-  };
 
   const renderCalendar = () => (
     <div
@@ -135,12 +76,12 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
     >
       <Calendar
         prefixCls={prefixCls}
-        value={time}
-        onChange={onChange}
-        format={format}
-        onCancel={onCancel}
-        onConfirm={onConfirm}
-        mode={mode}
+        value={state.time}
+        onChange={actions.onChange}
+        format={utils.format}
+        onCancel={actions.onCancel}
+        onConfirm={actions.onConfirm}
+        mode={state.mode}
         showFooter
       />
     </div>
@@ -152,15 +93,15 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
         display: 'inline-flex',
       }}
     >
-      <List stateless dataSource={shortcutOptions[0]} width={128} onClick={onListClick} />
-      <List stateless dataSource={shortcutOptions[1]} width={128} onClick={onListClick} />
+      <List stateless dataSource={shortcutOptions[0]} width={128} onClick={actions.onListClick} />
+      <List stateless dataSource={shortcutOptions[1]} width={128} onClick={actions.onListClick} />
     </div>
   );
 
   return (
     <Dropdown
-      visible={v}
-      onVisibleChange={setV}
+      visible={state.visible}
+      onVisibleChange={actions.setVisible}
       overlay={
         <div
           style={{
@@ -177,15 +118,15 @@ const DateRangePicker: React.FC<RangePickerProps> = (props: RangePickerProps) =>
             dataSource={modeOptions}
             width={144}
             value={Mode.shortcut}
-            onClick={handleModeChange}
+            onClick={actions.handleModeChange}
           />
-          <div>{mode === Mode.shortcut ? renderShortcuts() : renderCalendar()}</div>
+          <div>{state.mode === Mode.shortcut ? renderShortcuts() : renderCalendar()}</div>
         </div>
       }
       placement="bottomRight"
     >
       <Button type="secondary" icon={<CalendarOutlined />}>
-        {displayTime}
+        {state.displayTime}
       </Button>
     </Dropdown>
   );

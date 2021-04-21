@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import DateRangePicker from './DateRangePicker';
-import { RangePickerProps } from './interface';
+import { RangePickerProps } from './interfaces';
 
 export default {
   title: 'Business Components/DateRangePicker',

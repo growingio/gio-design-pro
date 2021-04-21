@@ -1,16 +1,17 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
 import RcRangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import moment, { Moment } from 'moment';
-import { debounce, noop } from 'lodash';
+import { noop } from 'lodash';
 import Button from '@gio-design/components/es/components/button';
 import { Tabs, TabPane } from '@gio-design/components';
 import Input from '@gio-design/components/es/components/input';
 import { CalendarOutlined, PlusCircleFilled } from '@gio-design/icons';
-import { DateRangePickerProps } from './interface';
+import { DateRangePickerProps } from './interfaces';
+import useCalendar from './hooks/useCalendar';
 import './style';
 
 moment.locale('zh-cn', {
@@ -18,11 +19,6 @@ moment.locale('zh-cn', {
   monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
   weekdaysMin: '日_一_二_三_四_五_六'.split('_'),
 });
-
-enum sinceEnd {
-  yesterday = 'yesterday',
-  today = 'today',
-}
 
 const disabledDate = (current: Moment) => {
   const date = moment();
@@ -40,20 +36,9 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     mode,
   } = props;
 
-  const calendarContainerRef = useRef(null);
-  const [open, setOpen] = useState(true);
-  const [timeRange, setTimeRange] = useState(value);
-  const [leftInputTimeRange, setLeftInputTimeRange] = useState('');
-  const [rightInputTimeRange, setRightInputTimeRange] = useState('');
-  const [endDay, setEndDay] = useState<sinceEnd>(sinceEnd.today);
-  const [leftDynamicInput, setLeftDynamicInput] = useState<number>(0);
-  const [rightDynamicInput, setRightDynamicInput] = useState<number>(7);
-  const [leftDynamicInputVisible, setLeftDynamicInputVisible] = useState(false);
-  const [fixedMode, setFixedMode] = useState(false);
+  const { state, actions } = useCalendar(props);
 
-  useEffect(() => {
-    setTimeRange(value);
-  }, [value]);
+  const calendarContainerRef = useRef(null);
 
   const hackPanelClickToday = (e: any) => {
     if (e.target.className === 'gio-date-picker-date' && e.target.ariaDisabled === 'false') {
@@ -70,145 +55,58 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   };
 
   useEffect(() => {
+    actions.setTimeRange(value);
+  }, [value]);
+
+  useEffect(() => {
     // eslint-disable-next-line react/no-find-dom-node
     const panelNode = ReactDOM.findDOMNode(calendarContainerRef.current) as HTMLElement;
-    if (fixedMode) {
+    if (state.fixedMode) {
       // panelNode.addEventListener('click', handlePanelClick);
-      if (endDay === 'yesterday') {
+      if (state.endDay === 'yesterday') {
         panelNode.onclick = hackPanelClickYesterday;
       } else {
         panelNode.onclick = hackPanelClickToday;
       }
     } else {
-      // panelNode.removeEventListener('click', handlePanelClick);
       panelNode.onclick = noop;
     }
-  }, [fixedMode, endDay]);
-
-  const handleLeftDynamicInput = (leftInput: number) => {
-    setLeftDynamicInput(leftInput);
-    setTimeRange([timeRange[0], moment().add(-leftInput, 'days')]);
-  };
-
-  const handleRightDynamicInput = (rightInput: number) => {
-    setRightDynamicInput(rightInput);
-    setTimeRange([moment().add(-rightInput, 'days'), moment().add(-leftDynamicInput, 'days')]);
-  };
+  }, [state.fixedMode, state.endDay]);
 
   useEffect(() => {
     if (mode === 'since') {
-      setTimeRange([value[0], moment()]);
-      setFixedMode(true);
+      actions.setTimeRange([value[0], moment()]);
+      actions.setFixedMode(true);
     } else if (mode === 'dynamic') {
-      handleRightDynamicInput(7);
-      setFixedMode(true);
-      setLeftDynamicInputVisible(false);
-      setTimeRange([moment().subtract('days', 7), moment()]);
+      actions.handleRightDynamicInput(7);
+      actions.setFixedMode(true);
+      actions.setLeftDynamicInputVisible(false);
+      actions.setTimeRange([moment().subtract('days', 7), moment()]);
     } else {
-      setFixedMode(false);
-      setTimeRange(value);
+      actions.setFixedMode(false);
+      actions.setTimeRange(value);
     }
   }, [mode]);
-
-  const handleEndDayChange = (day: sinceEnd) => {
-    if (day === 'today') {
-      setTimeRange([timeRange[0], moment()]);
-    } else {
-      setTimeRange([timeRange[0], moment().add(-1, 'days')]);
-    }
-    setEndDay(day);
-  };
-
-  const onSelect = (values: Array<Moment>): void => {
-    setTimeRange(values);
-    // props.onSelect?.(values);
-    //! showFooter && setOpen(false);
-  };
-
-  const onChange = (values: Array<Moment>): void => {
-    if (mode === 'dynamic') {
-      setLeftDynamicInput(-values[1].diff(moment(), 'days'));
-      setRightDynamicInput(-values[0].diff(moment(), 'days'));
-    }
-    setTimeRange(values);
-  };
-
-  const onPanelChange = (values: Array<Moment>): void => {
-    setTimeRange(values);
-  };
-
-  const debounceLeftChange = debounce((e: string): void => {
-    const values = moment(e, props.format);
-    if (values.isValid() && values.isBefore(timeRange[1])) {
-      setTimeRange([values, timeRange[1]]);
-    } else {
-      setTimeRange(timeRange);
-    }
-  }, 500);
-
-  const debounceRightChange = debounce((e: string): void => {
-    const values = moment(e, props.format);
-    if (values.isValid() && values.isAfter(timeRange[0])) {
-      setTimeRange([timeRange[0], values]);
-    } else {
-      setTimeRange(timeRange);
-    }
-  }, 500);
-
-  const handleLeftInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    // e.persist();
-    setLeftInputTimeRange(e.target.value);
-    debounceLeftChange(e.target.value);
-  };
-
-  const handleRightInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    // e.persist();
-    setRightInputTimeRange(e.target.value);
-    debounceRightChange(e.target.value);
-  };
-
-  const handleEndDay = () => {
-    setLeftDynamicInputVisible(true);
-    setFixedMode(false);
-  };
 
   const CalendarCls = classNames(classNames, {
     [`${prefixCls}-no-footer`]: !showFooter,
   });
-
-  const onConfirm = () => {
-    // setOpen(false);
-    setTimeRange(timeRange);
-    setLeftInputTimeRange('');
-    setRightInputTimeRange('');
-    props.onChange?.(timeRange);
-    props.onConfirm();
-  };
-
-  const onCancel = () => {
-    // setOpen(false);
-    setTimeRange(value);
-    setLeftInputTimeRange('');
-    setRightInputTimeRange('');
-    props.onChange?.(value);
-    props.onCancel();
-  };
 
   const renderFooter = () => (
     <>
       {props.renderExtraFooter && (
         <div className={classNames(`${prefixCls}-extra-footer`)}>{props.renderExtraFooter()}</div>
       )}
-      <Button onClick={onCancel} type="secondary" size="middle" style={{ margin: ' 0 12px 0 0 ' }}>
+      <Button onClick={actions.onCancel} type="secondary" size="middle" style={{ margin: ' 0 12px 0 0 ' }}>
         取消
       </Button>
-      <Button onClick={onConfirm} size="middle">
+      <Button onClick={actions.onConfirm} size="middle">
         确定
       </Button>
     </>
   );
 
-  const formatDate = (v: Moment) => v.format(format);
+  const formatDate = (v: Moment) => v?.format(format);
 
   const calendar = (
     <RcRangeCalendar
@@ -217,8 +115,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
       defaultValue={defaultValue}
       disabledDate={disabledDate}
       // value={timeRange}
-      onSelect={onSelect}
-      onPanelChange={onPanelChange}
+      onSelect={actions.onSelect}
+      onPanelChange={actions.onPanelChange}
       showToday={false}
       showOk={false}
       showDateInput={false}
@@ -231,11 +129,11 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   const renderPanel = (renderMode: string) => (
     <RcDatePicker
       calendar={calendar}
-      value={timeRange}
-      onChange={onChange}
+      value={state.timeRange}
+      onChange={actions.onChange}
       prefixCls={`${prefixCls}-dropdown`}
       getCalendarContainer={() => calendarContainerRef.current}
-      open={open}
+      open={state.open}
     >
       {({ value: _value }: { value: Array<Moment> }) => (
         <div className={classNames(`${prefixCls}-range-input-${renderMode}`)}>
@@ -243,16 +141,16 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
             <div className={classNames(`${prefixCls}-range-input`)}>
               <Input
                 className={`${prefixCls}-input-first`}
-                onChange={handleLeftInputChange}
-                value={leftInputTimeRange || `${formatDate(_value[0])}`}
-                onClick={() => setOpen(true)}
+                onChange={actions.handleLeftInputChange}
+                value={state.leftInputTimeRange || `${formatDate(_value[0])}`}
+                onClick={actions.handleOpen}
               />
               <span className={`${prefixCls}-split`}>—</span>
               <Input
                 className={`${prefixCls}-input-second`}
-                onChange={handleRightInputChange}
-                value={rightInputTimeRange || `${formatDate(_value[1])}`}
-                onClick={() => setOpen(true)}
+                onChange={actions.handleRightInputChange}
+                value={state.rightInputTimeRange || `${formatDate(_value[1])}`}
+                onClick={actions.handleOpen}
                 suffix={<CalendarOutlined />}
               />
             </div>
@@ -262,46 +160,51 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
               从
               <Input
                 className={`${prefixCls}-input-second`}
-                onChange={handleLeftInputChange}
-                value={leftInputTimeRange || `${formatDate(_value[0])}`}
-                onClick={() => setOpen(true)}
+                onChange={actions.handleLeftInputChange}
+                value={state.leftInputTimeRange || `${formatDate(_value[0])}`}
+                onClick={actions.handleOpen}
                 suffix={<CalendarOutlined />}
               />
-              <Tabs activeKey={endDay} className={`${prefixCls}-tab`} size="middle" onChange={handleEndDayChange}>
+              <Tabs
+                activeKey={state.endDay}
+                className={`${prefixCls}-tab`}
+                size="middle"
+                onChange={actions.handleEndDayChange}
+              >
                 <TabPane tab="至今日" key="today" style={{ height: '36px' }} />
                 <TabPane tab="至昨日" key="yesterday" style={{ height: '36px' }} />
               </Tabs>
             </>
           )}
-          {renderMode === 'dynamic' && !leftDynamicInputVisible && (
+          {renderMode === 'dynamic' && !state.leftDynamicInputVisible && (
             <>
               过去
               <Input.InputNumber
                 className={`${prefixCls}-input-second`}
-                value={rightDynamicInput}
-                onChange={handleRightDynamicInput as any}
+                value={state.rightDynamicInput}
+                onChange={actions.handleRightDynamicInput as any}
                 min={0}
               />
               天
-              <Button type="secondary" icon={<PlusCircleFilled />} onClick={handleEndDay}>
+              <Button type="secondary" icon={<PlusCircleFilled />} onClick={actions.handleEndDay}>
                 结束日期
               </Button>
             </>
           )}
-          {renderMode === 'dynamic' && leftDynamicInputVisible && (
+          {renderMode === 'dynamic' && state.leftDynamicInputVisible && (
             <>
               过去
               <Input.InputNumber
                 className={`${prefixCls}-input-second`}
-                value={leftDynamicInput}
-                onChange={handleLeftDynamicInput as any}
+                value={state.leftDynamicInput}
+                onChange={actions.handleLeftDynamicInput}
                 min={0}
               />
               至
               <Input.InputNumber
                 className={`${prefixCls}-input-second`}
-                value={rightDynamicInput}
-                onChange={handleRightDynamicInput as any}
+                value={state.rightDynamicInput}
+                onChange={actions.handleRightDynamicInput as any}
                 min={0}
               />
               天
