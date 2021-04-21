@@ -16,46 +16,62 @@ interface StringAttrSelectProps {
 }
 
 type listOptionsItem = {
-  value: string;
-  label: string;
+  key: string;
+  children: string;
+  onClick: (checkedValue: listOptionsItem) => void;
 };
 
 function StringAttrSelect(props: StringAttrSelectProps) {
   const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
   const [inputValue, setInputValue] = useState<string>(values.join(','));
   const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
-  const [listValue, setListValue] = useState<string>(values.join(','));
+  // const [listValue, setListValue] = useState<string>(values.join(','));
   const [loadingStatue, setLoadingStatue] = useState<boolean>(true);
   useEffect(() => {
-    setInputValue(inputValue || '');
-    setListValue(values?.[0]);
+    setInputValue(values?.length ? values[0] : '');
+    // setListValue(values?.[0]);
   }, [values]);
+
+  const changeListValue = (option: any) => {
+    console.log(option.currentTarget.innerText, 'option');
+    const value = option.currentTarget.innerText;
+    if (inputValue === value) {
+      setInputValue('');
+      // setListValue('');
+      attrChange([' ']);
+    } else {
+      setInputValue(value);
+      // setListValue(value);
+      attrChange([value]);
+    }
+  };
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
     setLoadingStatue(true);
-    curryDimensionValueRequest?.(exprKey, v.target.value)?.then((res: string[]) => {
-      res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
-      setLoadingStatue(false);
-    });
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      curryDimensionValueRequest?.(exprKey, value)?.then((res: string[]) => {
+        if (res.length) {
+          setListOptions(res.map((ele: string) => ({ children: ele, key: ele, onClick: changeListValue })));
+        } else {
+          setListOptions([]);
+        }
+        setLoadingStatue(false);
+      });
+    }, 500);
     attrChange([v.target.value]);
     setInputValue(v.target.value);
   };
 
-  const changeListValue = (option: listOptionsItem) => {
-    if (inputValue === option.label) {
-      setInputValue('');
-      setListValue('');
-      attrChange([' ']);
-    } else {
-      setInputValue(option.label);
-      setListValue(option.label);
-      attrChange([option.label]);
-    }
-  };
-
   useEffect(() => {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
-      res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+      if (res.length) {
+        setListOptions(res.map((ele: string) => ({ children: ele, key: ele, onClick: changeListValue })));
+      } else {
+        setListOptions([]);
+      }
       setLoadingStatue(false);
     });
   }, [valueType, exprKey]);
@@ -92,14 +108,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
               <Loading />
             </div>
           ) : (
-            <List
-              stateless
-              value={listValue}
-              dataSource={listOptions}
-              width={293}
-              height={250}
-              onClick={changeListValue}
-            />
+            <List items={listOptions} />
           )}
         </div>
       );
