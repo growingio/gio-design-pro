@@ -73,9 +73,14 @@ describe('<InOrNotIn />', () => {
         values={[]}
       />
     );
+    await sleep(100);
+    wrapper.update();
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test' } });
+    await sleep(100);
+    wrapper.update();
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test' } });
     await sleep(500);
     wrapper.update();
-    wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1' } });
     expect(wrapper.find('.gio-list__item')).toHaveLength(0);
   });
 
@@ -91,6 +96,7 @@ describe('<InOrNotIn />', () => {
     );
     await sleep(500);
     wrapper.update();
+    expect(wrapper.find('.gio-list__item')).toHaveLength(1);
     wrapper.find('.gio-list__item').at(0).simulate('click');
   });
 
