@@ -96,9 +96,9 @@ describe('<InOrNotIn />', () => {
     await sleep(100);
     wrapper.update();
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 't,s,' } });
-    await sleep(500);
     wrapper.update();
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1' } });
+    await sleep(800);
     expect(wrapper.find('.gio-list__item')).toHaveLength(0);
   });
 
