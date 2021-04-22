@@ -55,6 +55,10 @@ describe('<TreeCard/> test', () => {
   });
 
   test('operationMenu options', () => {
+    let last;
+    const onClick = (f: any, l: any) => {
+      last = l;
+    };
     const args: TreeCardProps<DataType> = {
       treeConfig: {
         data,
@@ -68,12 +72,15 @@ describe('<TreeCard/> test', () => {
               { label: '删除', value: 'delete' },
             ];
           },
+          onClick,
         },
       },
     };
     const { container, getByText } = render(getTreeCard(args));
     fireEvent.click(container.getElementsByTagName('button')[0]);
     expect(getByText('添加')).toBeTruthy();
+    fireEvent.click(getByText('添加'));
+    expect(last).toEqual(data[0]);
   });
   it('should be n-1 divider lines ', () => {
     const args: TreeCardProps<DataType> = {
