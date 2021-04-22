@@ -106,17 +106,20 @@ describe('<InOrNotIn />', () => {
     const wrapper = mount(
       <InOrNotIn
         attrChange={() => {}}
-        curryDimensionValueRequest={() => new Promise((resolve) => resolve(['test']))}
+        curryDimensionValueRequest={() => new Promise((resolve) => resolve(['test', 'test1', 'test2']))}
         valueType="string"
         exprKey="test_key"
-        values={['test', 'test2', 'test3']}
+        values={['test']}
       />
     );
-    await sleep(500);
+    await sleep(100);
     wrapper.update();
     expect(wrapper.find('.gio-list__item')).toHaveLength(3);
     expect(wrapper.find('.gio-list__item').at(0).text()).toBe('test');
     wrapper.find('.gio-list__item').at(0).simulate('click');
+    await sleep(100);
+    // wrapper.update();
+    // expect(wrapper.find('.gio-input > .gio-input__content').instance().value).toBe('aaa');
   });
 
   it('Throttling input', async () => {
@@ -152,7 +155,6 @@ describe('<InOrNotIn />', () => {
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1,test2' } });
     await sleep(500);
     wrapper.update();
-    // wrapper.find('.gio-select-option').at(0).simulate('click');
     wrapper.find('.gio-list__item').at(0).simulate('click');
   });
 });

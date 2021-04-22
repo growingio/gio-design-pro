@@ -16,6 +16,8 @@ type checkOptionsItem = {
   onClick: (checkedValue: checkOptionsItem) => void;
 };
 
+let timer: any = null;
+
 function StringAttrSelect(props: StringAttrSelectProps) {
   const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
   const [inputValue, setInputValue] = useState<string>('');
@@ -34,18 +36,17 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     setDefaultList(values);
   }, [values]);
 
-  let timer: any = null;
-
   const changeCheckValue = (checkedValue: any) => {
     const value = checkedValue.currentTarget.innerText;
     if (!checkValue.includes(value)) {
       setCheckValue([...checkValue, value]);
       attrChange([...checkValue, value]);
-    } else {
-      const filter = checkValue.filter((ele: string) => ele !== value);
-      setCheckValue(filter);
-      attrChange(filter);
     }
+    // else {
+    //   const filter = checkValue.filter((ele: string) => ele !== value);
+    //   setCheckValue(filter);
+    //   attrChange(filter);
+    // }
   };
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +59,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     const filterValueList = valueList.filter((ele: string) => !!ele);
     // 本次输入的自由输入+当前编辑情况下曾经输入过的自由输入记录
     const checkList = Array.from(new Set([...filterValueList, ...inputCheckList]));
-
     // 当input输入字符串，存在英文逗号时，将字符串以英文逗号为分割点，
     if (valueList.length > 1 && valueList[valueList.length - 1] === '') {
       // 以逗号结尾时，前面的字符作为自由输入的结果
@@ -76,7 +76,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     } else {
       setLoadingStatue(true);
       const filterCheckedList: string[] = checkValue.filter((ele: string) => !checkList.includes(ele));
-
       if (timer) {
         clearTimeout(timer);
       }
