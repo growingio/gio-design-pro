@@ -50,7 +50,7 @@ exports[`expression test should match Expression snapshot. 1`] = `
     </div>
   </div>
   <button
-    class="gio-btn gio-btn-assist gio-btn-middle gio-btn-icon-only"
+    class="gio-btn gio-btn-text gio-btn-middle gio-btn-icon-only"
     type="button"
   >
     <span
