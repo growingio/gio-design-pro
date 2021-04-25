@@ -108,7 +108,7 @@ function Expression(props: ExpressionProps) {
           onCancel={cancel}
         />
       </div>
-      <Button type="assist" icon={<DeleteOutlined />} size="middle" onClick={() => deleteFilterItem(index)} />
+      <Button type="link" icon={<DeleteOutlined />} size="middle" onClick={() => deleteFilterItem(index)} />
     </div>
   );
 }

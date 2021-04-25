@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List, Loading } from '@gio-design/components';
+import { Input, Loading } from '@gio-design/components';
+import List from '@gio-design/components/es/components/list-pro';
 import { attributeValue } from '../../interfaces';
 import InOrNotIn from './InOrNotIn';
 
@@ -16,46 +17,34 @@ interface StringAttrSelectProps {
 }
 
 type listOptionsItem = {
-  key: string;
-  children: string;
-  onClick: (checkedValue: listOptionsItem) => void;
+  value: string;
+  label: string;
 };
 
 let timer: any = null;
+
 function StringAttrSelect(props: StringAttrSelectProps) {
   const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
   const [inputValue, setInputValue] = useState<string>(values.join(','));
   const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
-  // const [listValue, setListValue] = useState<string>(values.join(','));
+  const [listValue, setListValue] = useState<string>(values.join(','));
   const [loadingStatue, setLoadingStatue] = useState<boolean>(true);
+  // let timer: number | any = null;
   useEffect(() => {
     setInputValue(values?.length ? values[0] : '');
-    // setListValue(values?.[0]);
+    setListValue(values?.[0]);
   }, [values]);
 
-  const changeListValue = (option: any) => {
-    const value = option.currentTarget.innerText;
-    if (inputValue === value) {
-      setInputValue('');
-      // setListValue('');
-      attrChange([' ']);
-    } else {
-      setInputValue(value);
-      // setListValue(value);
-      attrChange([value]);
-    }
-  };
-
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = v.target;
     setLoadingStatue(true);
     if (timer) {
       clearTimeout(timer);
     }
-    const value = v?.target?.value;
     timer = setTimeout(() => {
       curryDimensionValueRequest?.(exprKey, value)?.then((res: string[]) => {
         if (res.length) {
-          setListOptions(res.map((ele: string) => ({ children: ele, key: ele, onClick: changeListValue })));
+          setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
         } else {
           setListOptions([]);
         }
@@ -66,22 +55,35 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     setInputValue(v.target.value);
   };
 
+  const changeListValue = (option: listOptionsItem) => {
+    if (inputValue === option.label) {
+      setInputValue('');
+      setListValue('');
+      attrChange([' ']);
+    } else {
+      setInputValue(option.label);
+      setListValue(option.label);
+      attrChange([option.label]);
+    }
+  };
+
   useEffect(() => {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       if (res.length) {
-        setListOptions(res.map((ele: string) => ({ children: ele, key: ele, onClick: changeListValue })));
+        setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
       } else {
         setListOptions([]);
       }
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey]);
+  }, [valueType, exprKey, attrSelect]);
 
   switch (attrSelect) {
     case 'in':
     case 'not in':
       return (
         <InOrNotIn
+          attrSelect={attrSelect}
           attrChange={attrChange}
           valueType={valueType}
           curryDimensionValueRequest={curryDimensionValueRequest}
@@ -109,7 +111,14 @@ function StringAttrSelect(props: StringAttrSelectProps) {
               <Loading />
             </div>
           ) : (
-            <List items={listOptions} />
+            <List
+              stateless
+              value={listValue}
+              dataSource={listOptions}
+              width={293}
+              height={250}
+              onClick={changeListValue}
+            />
           )}
         </div>
       );

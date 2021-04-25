@@ -45,7 +45,7 @@ function TableCard<RecordType>({
                     icon={<CloseOutlined />}
                     onClick={() => onChange?.([], [])}
                     size="small"
-                    type="assist"
+                    type="link"
                   />
                   {!isNil(batchButtons) && batchButtons?.length > 0 && <hr className={`${prefixCls}-select-divider`} />}
                 </div>

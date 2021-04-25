@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List, Loading } from '@gio-design/components';
+import { Input, Loading } from '@gio-design/components';
+import List from '@gio-design/components/es/components/list-pro';
 import { attributeValue } from '../../interfaces';
 
 interface StringAttrSelectProps {
@@ -8,18 +9,18 @@ interface StringAttrSelectProps {
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
+  attrSelect: string;
 }
 
 type checkOptionsItem = {
-  key: string;
-  children: string;
-  onClick: (checkedValue: checkOptionsItem) => void;
+  value: string;
+  label: string;
 };
 
 let timer: any = null;
 
 function StringAttrSelect(props: StringAttrSelectProps) {
-  const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
+  const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey, attrSelect } = props;
   const [inputValue, setInputValue] = useState<string>('');
   const [checkValue, setCheckValue] = useState<string[]>(values);
   // check-options
@@ -34,20 +35,8 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   useEffect(() => {
     setCheckValue(values);
     setDefaultList(values);
+    setInputValue(values?.length ? values[0] : '');
   }, [values]);
-
-  const changeCheckValue = (checkedValue: any) => {
-    const value = checkedValue.currentTarget.innerText;
-    if (!checkValue.includes(value)) {
-      setCheckValue([...checkValue, value]);
-      attrChange([...checkValue, value]);
-    }
-    // else {
-    //   const filter = checkValue.filter((ele: string) => ele !== value);
-    //   setCheckValue(filter);
-    //   attrChange(filter);
-    // }
-  };
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
     // 输入规则为：
@@ -59,6 +48,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     const filterValueList = valueList.filter((ele: string) => !!ele);
     // 本次输入的自由输入+当前编辑情况下曾经输入过的自由输入记录
     const checkList = Array.from(new Set([...filterValueList, ...inputCheckList]));
+
     // 当input输入字符串，存在英文逗号时，将字符串以英文逗号为分割点，
     if (valueList.length > 1 && valueList[valueList.length - 1] === '') {
       // 以逗号结尾时，前面的字符作为自由输入的结果
@@ -66,9 +56,8 @@ function StringAttrSelect(props: StringAttrSelectProps) {
       setInputCheckList(checkList);
       setCheckOptions(
         checkList.map((ele: string) => ({
-          children: `自由输入：${ele}`,
-          key: ele,
-          onClick: changeCheckValue,
+          label: `自由输入：${ele}`,
+          value: ele,
         }))
       );
       setCheckValue(res);
@@ -76,6 +65,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     } else {
       setLoadingStatue(true);
       const filterCheckedList: string[] = checkValue.filter((ele: string) => !checkList.includes(ele));
+
       if (timer) {
         clearTimeout(timer);
       }
@@ -86,24 +76,16 @@ function StringAttrSelect(props: StringAttrSelectProps) {
               // 所有的自由输入选项
               ...inputCheckList
                 .filter((ele: string) => checkList.includes(ele))
-                .map((ele: string) => ({
-                  children: `自由输入：${ele}`,
-                  key: ele,
-                  onClick: changeCheckValue,
-                })),
+                .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
               // 已选中的，过滤掉自由输入的选项
-              ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({
-                children: ele,
-                key: ele,
-                onClick: changeCheckValue,
-              })),
+              ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({ label: ele, value: ele })),
             ]);
           } else {
             setCheckOptions([
               // 所有的自由输入选项
               ...inputCheckList
                 .filter((ele: string) => checkList.includes(ele))
-                .map((ele: string) => ({ children: `自由输入：${ele}`, key: ele, onClick: changeCheckValue })),
+                .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
             ]);
           }
           setLoadingStatue(false);
@@ -114,20 +96,29 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     setInputValue(v.target.value);
   };
 
+  const changeCheckValue = (checkedValue: checkOptionsItem) => {
+    if (!checkValue.includes(checkedValue.value)) {
+      setCheckValue([...checkValue, checkedValue.value]);
+      attrChange([...checkValue, checkedValue.value]);
+    } else {
+      const filter = checkValue.filter((ele: string) => ele !== checkedValue.value);
+      setCheckValue(filter);
+      attrChange(filter);
+    }
+  };
   // 初始化check-options
   useEffect(() => {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       res.length &&
         setCheckOptions(
           Array.from(new Set([...defaultList, ...res])).map((ele: string) => ({
-            children: ele,
-            key: ele,
-            onClick: changeCheckValue,
+            label: ele,
+            value: ele,
           }))
         );
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey]);
+  }, [valueType, exprKey, attrSelect]);
 
   return (
     <div style={{ height: '330px' }}>
@@ -145,7 +136,15 @@ function StringAttrSelect(props: StringAttrSelectProps) {
           <Loading />
         </div>
       ) : (
-        <List items={checkOptions} />
+        <List
+          isMultiple
+          stateless
+          value={checkValue}
+          dataSource={checkOptions}
+          width={293}
+          height={250}
+          onClick={changeCheckValue}
+        />
       )}
     </div>
   );
