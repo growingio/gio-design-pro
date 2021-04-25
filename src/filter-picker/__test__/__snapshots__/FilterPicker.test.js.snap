@@ -2,7 +2,7 @@
 
 exports[`FilterPicker should match FilterPicker base snapshot. 1`] = `
 <button
-  class="gio-btn gio-btn-assist gio-btn-small gio-btn-icon-only"
+  class="gio-btn gio-btn-text gio-btn-small gio-btn-icon-only"
   style="cursor:pointer"
   type="button"
 >
