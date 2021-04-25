@@ -1420,10 +1420,10 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@^21.4.2":
-  version "21.4.2"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.4.2.tgz#654b7f6f84e15143cbee5c569f4464101ca62be6"
-  integrity sha512-2ceClR97x9Vf4ymJ1aDgvsplmLh3W3qOlCsMA58vzwgvFylC2wO/qaw+jha0bMRahijTLkGSzaOEvOlgsPy0bw==
+"@gio-design/components@>=21.4.2":
+  version "21.4.4"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.4.4.tgz#368dae407e1b0f0ef59ecdbe784d08cb8a3e3117"
+  integrity sha512-nIn/lEQ5lewuWdGrcI/d0TDiOJ/VNTuZx3CWrLpzFE1Pt0VjuKZ5qmSEBoPVf2SteDNmDGoidSyXOXtcFOCxYw==
   dependencies:
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
@@ -1459,18 +1459,18 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/icons@^21.4.0":
-  version "21.4.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.0.tgz#033dea22cc460eb2b147bddd81974897dac8dbcd"
-  integrity sha512-TdGGUQdJOJVCfTbQ7vbdEVsA6c2RdTtpKqqa8ffMOfkzh0vTRxdSCVSXcI7zzB2ErT2yIxqcv4OtH3ucdBNpeg==
+"@gio-design/icons@>=21.3.0":
+  version "21.4.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.1.tgz#5a9f5192107905b905439f4b937f8e9678fb2e69"
+  integrity sha512-1bOlEYHfWPfMwYKQ6pnWir0CNtvnKFEeqqVlj7euw6TQWUR85TT/l+t+J92CG6OhZOgWkSLe76X24QpyTp2Hzg==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@^21.4.1":
-  version "21.4.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.1.tgz#710494032c0ff0c61ae9ce3c0a7e2565d3eecade"
-  integrity sha512-U2iix98dSMNURsht4KK7ezmtVHcGMup55zrxflKYsKm7AahNNadTtDyHAeo5iUE78A2ga3lHpZZuyjbgCt6/bg==
+"@gio-design/tokens@>=21.4.1":
+  version "21.4.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
+  integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
 
 "@graphql-codegen/cli@1.20.1":
   version "1.20.1"
@@ -8619,7 +8619,6 @@ getpass@^0.1.1:
 
 "gio-rewire@https://github.com/growingio/gio-rewire.git":
   version "1.0.5"
-  uid f0fb479ae0add5395102e666773f4a589871e6d1
   resolved "https://github.com/growingio/gio-rewire.git#f0fb479ae0add5395102e666773f4a589871e6d1"
   dependencies:
     "@babel/core" "^7.4.5"

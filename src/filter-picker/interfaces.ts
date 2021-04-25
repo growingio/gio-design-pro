@@ -54,23 +54,16 @@ export interface titleGroup {
   STRING: string;
 }
 
+type selectItem = {
+  value: string;
+  label: string;
+};
+
 export interface selectOption {
-  string: {
-    value: string;
-    label: string;
-  }[];
-  STRING: {
-    value: string;
-    label: string;
-  }[];
-  int: {
-    value: string;
-    label: string;
-  }[];
-  date: {
-    value: string;
-    label: string;
-  }[];
+  string: selectItem[];
+  STRING: selectItem[];
+  int: selectItem[];
+  date: selectItem[];
 }
 
 export interface operationsOptionType {

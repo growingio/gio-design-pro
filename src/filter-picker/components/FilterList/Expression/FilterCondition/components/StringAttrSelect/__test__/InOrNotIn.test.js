@@ -57,10 +57,86 @@ describe('<InOrNotIn />', () => {
         values={[]}
       />
     );
+    await sleep(500);
+    wrapper.update();
+    wrapper.find('.gio-select-option').at(0).simulate('click');
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: '' } });
+  });
+
+  it('search without result', async () => {
+    const wrapper = mount(
+      <InOrNotIn
+        attrChange={() => {}}
+        curryDimensionValueRequest={() => new Promise((resolve) => resolve([]))}
+        valueType="string"
+        exprKey="test_key"
+        values={[]}
+      />
+    );
     await sleep(100);
     wrapper.update();
-    wrapper.find('.gio-list-wrapper .gio-select-option').simulate('click');
-    wrapper.find('.gio-input > input').simulate('change', { target: { value: '' } });
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test' } });
+    await sleep(100);
+    wrapper.update();
+    await sleep(500);
+    wrapper.update();
+    expect(wrapper.find('.gio-select-option')).toHaveLength(0);
+  });
+
+  it('free input without search result ', async () => {
+    const wrapper = mount(
+      <InOrNotIn
+        attrChange={() => {}}
+        curryDimensionValueRequest={() => new Promise((resolve) => resolve([]))}
+        valueType="string"
+        exprKey="test_key"
+        values={[]}
+      />
+    );
+    await sleep(100);
+    wrapper.update();
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: 't,s,' } });
+    wrapper.update();
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1' } });
+    await sleep(800);
+    expect(wrapper.find('.gio-select-option')).toHaveLength(0);
+  });
+
+  it('list double click delete checkValue', async () => {
+    const wrapper = mount(
+      <InOrNotIn
+        attrChange={() => {}}
+        curryDimensionValueRequest={() => new Promise((resolve) => resolve(['test', 'test1', 'test2']))}
+        valueType="string"
+        exprKey="test_key"
+        values={['test']}
+      />
+    );
+    await sleep(100);
+    wrapper.update();
+    expect(wrapper.find('.gio-select-option')).toHaveLength(3);
+    expect(wrapper.find('.gio-select-option').at(0).text()).toBe('test');
+    wrapper.find('.gio-select-option').at(0).simulate('click');
+    await sleep(100);
+    // wrapper.update();
+    // expect(wrapper.find('.gio-input > .gio-input__content').instance().value).toBe('aaa');
+  });
+
+  it('Throttling input', async () => {
+    const wrapper = mount(
+      <InOrNotIn
+        attrChange={() => {}}
+        curryDimensionValueRequest={() => new Promise((resolve) => resolve(['test']))}
+        valueType="string"
+        exprKey="test_key"
+        values={['test']}
+      />
+    );
+    await sleep(100);
+    wrapper.update();
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1' } });
+    await sleep(100);
+    wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test2' } });
   });
 
   it('free input', async () => {
@@ -79,7 +155,6 @@ describe('<InOrNotIn />', () => {
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1,test2' } });
     await sleep(500);
     wrapper.update();
-    // wrapper.find('.gio-list-wrapper .gio-select-option').at(0).simulate('click');
-    wrapper.find('.gio-list-wrapper .gio-select-option').at(0).simulate('click');
+    wrapper.find('.gio-select-option').at(0).simulate('click');
   });
 });

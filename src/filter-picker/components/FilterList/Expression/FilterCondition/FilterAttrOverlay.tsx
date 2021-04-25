@@ -100,9 +100,6 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
 
   const getAttrSelect = (attr: attributeValue, selectValue: string) => {
     switch (attr) {
-      case AttributeMap.int:
-        // 数值类型
-        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
       case AttributeMap.date:
         // 日期类型
         return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
@@ -120,7 +117,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
           />
         );
       default:
-        return null;
+        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
     }
   };
 
@@ -129,7 +126,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       <div>
         <div className="filter-attr_select-title">{titleMap[valueType] || '字符串类型'}</div>
         <Select
-          options={selectOptionMap[valueType].filter((opItem: any) =>
+          options={selectOptionMap?.[valueType]?.filter((opItem: any) =>
             operationsOption?.[valueType].includes(opItem.value)
           )}
           value={operationValue}

@@ -1,6 +1,14 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import FilterAttrOverlay from '../FilterAttrOverlay.tsx';
+import { FilterPickerContext } from '../../../../../FilterPicker';
+
+const defaultOperationsOption = {
+  string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
+  int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
+  date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
+  STRING: ['=', '!=', 'in', 'not in', 'like', 'not like'],
+};
 
 describe('<FilterAttrOverlay />', () => {
   it('onSubmit', () => {
@@ -56,12 +64,15 @@ describe('<FilterAttrOverlay />', () => {
     });
 
     it('when op is "="', () => {
-      const wrapper = mount(<FilterAttrOverlay valueType="date" op="=" values={[]} />);
+      const wrapper = mount(
+        <FilterPickerContext.Provider value={{ operationsOption: defaultOperationsOption }}>
+          <FilterAttrOverlay valueType="date" op="=" values={[]} />
+        </FilterPickerContext.Provider>
+      );
       expect(wrapper.render()).toMatchSnapshot();
       wrapper.find('.gio-select-selector').simulate('click');
-
       wrapper.find('.gio-select-dropdown .gio-select-list-option').at(1).simulate('click');
-      expect(wrapper.find('.gio-select-item-text').text()).toBe('等于');
+      expect(wrapper.find('.gio-select-item-text').text()).toBe('不等于');
     });
 
     it('when op is "<="', async () => {
@@ -117,17 +128,19 @@ describe('<FilterAttrOverlay />', () => {
   describe('string type', () => {
     it('render', () => {
       const wrapper = mount(
-        <FilterAttrOverlay
-          valueType="string"
-          op="="
-          values={[]}
-          recentlyStorePrefix="currentUserId"
-          dimensionValueRequest={() =>
-            new Promise((resolve) => {
-              resolve(['www.GrowingIO.com']);
-            })
-          }
-        />
+        <FilterPickerContext.Provider value={{ operationsOption: defaultOperationsOption }}>
+          <FilterAttrOverlay
+            valueType="string"
+            op="="
+            values={[]}
+            recentlyStorePrefix="currentUserId"
+            dimensionValueRequest={() =>
+              new Promise((resolve) => {
+                resolve(['www.GrowingIO.com']);
+              })
+            }
+          />
+        </FilterPickerContext.Provider>
       );
       expect(wrapper.render()).toMatchSnapshot();
     });

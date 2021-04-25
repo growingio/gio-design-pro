@@ -466,7 +466,7 @@ exports[`<FilterAttrOverlay /> date type when op is "=" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                =
+                等于
               </span>
             </div>
           </div>
@@ -1752,10 +1752,11 @@ exports[`<FilterAttrOverlay /> not defined type 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1781,6 +1782,16 @@ exports[`<FilterAttrOverlay /> not defined type 1`] = `
     <div
       class="filter-attr_dividingLine"
     />
+    <div
+      class="gio-input gio-input--middle"
+    >
+      <input
+        class="gio-input__content"
+        placeholder=""
+        type="text"
+        value="0"
+      />
+    </div>
   </div>
   <div
     class="filter-contidion-footer"
@@ -1798,7 +1809,6 @@ exports[`<FilterAttrOverlay /> not defined type 1`] = `
     />
     <button
       class="gio-btn gio-btn-primary gio-btn-small"
-      disabled=""
       type="button"
     >
       <span>
@@ -1946,7 +1956,7 @@ exports[`<FilterAttrOverlay /> string type render 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                =
+                等于
               </span>
             </div>
           </div>
