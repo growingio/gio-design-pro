@@ -1420,7 +1420,7 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@>=21.4.2":
+"@gio-design/components@^21.4.4":
   version "21.4.4"
   resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.4.4.tgz#368dae407e1b0f0ef59ecdbe784d08cb8a3e3117"
   integrity sha512-nIn/lEQ5lewuWdGrcI/d0TDiOJ/VNTuZx3CWrLpzFE1Pt0VjuKZ5qmSEBoPVf2SteDNmDGoidSyXOXtcFOCxYw==
@@ -1459,7 +1459,7 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/icons@>=21.3.0":
+"@gio-design/icons@^21.4.0":
   version "21.4.1"
   resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.1.tgz#5a9f5192107905b905439f4b937f8e9678fb2e69"
   integrity sha512-1bOlEYHfWPfMwYKQ6pnWir0CNtvnKFEeqqVlj7euw6TQWUR85TT/l+t+J92CG6OhZOgWkSLe76X24QpyTp2Hzg==
@@ -1467,7 +1467,7 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@>=21.4.1":
+"@gio-design/tokens@^21.4.2":
   version "21.4.2"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
   integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
