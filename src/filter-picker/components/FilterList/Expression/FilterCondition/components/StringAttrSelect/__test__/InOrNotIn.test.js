@@ -59,7 +59,7 @@ describe('<InOrNotIn />', () => {
     );
     await sleep(500);
     wrapper.update();
-    wrapper.find('.gio-list__item').at(0).simulate('click');
+    wrapper.find('.gio-select-option').at(0).simulate('click');
     wrapper.find('.gio-input > input').simulate('change', { target: { value: '' } });
   });
 
@@ -80,7 +80,7 @@ describe('<InOrNotIn />', () => {
     wrapper.update();
     await sleep(500);
     wrapper.update();
-    expect(wrapper.find('.gio-list__item')).toHaveLength(0);
+    expect(wrapper.find('.gio-select-option')).toHaveLength(0);
   });
 
   it('free input without search result ', async () => {
@@ -99,7 +99,7 @@ describe('<InOrNotIn />', () => {
     wrapper.update();
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1' } });
     await sleep(800);
-    expect(wrapper.find('.gio-list__item')).toHaveLength(0);
+    expect(wrapper.find('.gio-select-option')).toHaveLength(0);
   });
 
   it('list double click delete checkValue', async () => {
@@ -114,9 +114,9 @@ describe('<InOrNotIn />', () => {
     );
     await sleep(100);
     wrapper.update();
-    expect(wrapper.find('.gio-list__item')).toHaveLength(3);
-    expect(wrapper.find('.gio-list__item').at(0).text()).toBe('test');
-    wrapper.find('.gio-list__item').at(0).simulate('click');
+    expect(wrapper.find('.gio-select-option')).toHaveLength(3);
+    expect(wrapper.find('.gio-select-option').at(0).text()).toBe('test');
+    wrapper.find('.gio-select-option').at(0).simulate('click');
     await sleep(100);
     // wrapper.update();
     // expect(wrapper.find('.gio-input > .gio-input__content').instance().value).toBe('aaa');
@@ -155,6 +155,6 @@ describe('<InOrNotIn />', () => {
     wrapper.find('.gio-input > input').simulate('change', { target: { value: 'test1,test2' } });
     await sleep(500);
     wrapper.update();
-    wrapper.find('.gio-list__item').at(0).simulate('click');
+    wrapper.find('.gio-select-option').at(0).simulate('click');
   });
 });

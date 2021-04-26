@@ -14,14 +14,14 @@ interface DateAttrSelectProps {
 function DateAttrSelect(props: DateAttrSelectProps) {
   const { attrSelect, attrChange, values } = props;
   const [time, setTime] = useState<Moment>(
-    values[0] && parseFloat(values[0]).toString() !== 'NaN' ? moment(values[0]) : moment(Date.now())
+    values[0] && parseFloat(values[0]).toString() !== 'NaN' ? moment(parseInt(values[0], 10)) : moment(Date.now())
   );
   const [timeRange, setTimeRange] = useState<Moment[]>(
     values.length && values[0]?.includes?.('abs')
       ? [
-          moment(parseInt(values[0].split(':')[1].split(',')[0], 10)),
-          moment(parseInt(values[0].split(':')[1].split(',')[1], 10)),
-        ]
+        moment(parseInt(values[0].split(':')[1].split(',')[0], 10)),
+        moment(parseInt(values[0].split(':')[1].split(',')[1], 10)),
+      ]
       : [moment(Date.now()), moment(Date.now())]
   );
 
@@ -67,7 +67,7 @@ function DateAttrSelect(props: DateAttrSelectProps) {
             .valueOf()}`,
         ]);
       } else {
-        attrChange([time.valueOf()]);
+        attrChange([`${time.valueOf()}`]);
       }
     }
   }, [attrSelect]);

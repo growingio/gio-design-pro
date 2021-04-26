@@ -1460,9 +1460,9 @@
     shallowequal "^1.1.0"
 
 "@gio-design/icons@^21.4.0":
-  version "21.4.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.0.tgz#033dea22cc460eb2b147bddd81974897dac8dbcd"
-  integrity sha512-TdGGUQdJOJVCfTbQ7vbdEVsA6c2RdTtpKqqa8ffMOfkzh0vTRxdSCVSXcI7zzB2ErT2yIxqcv4OtH3ucdBNpeg==
+  version "21.4.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.1.tgz#5a9f5192107905b905439f4b937f8e9678fb2e69"
+  integrity sha512-1bOlEYHfWPfMwYKQ6pnWir0CNtvnKFEeqqVlj7euw6TQWUR85TT/l+t+J92CG6OhZOgWkSLe76X24QpyTp2Hzg==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"

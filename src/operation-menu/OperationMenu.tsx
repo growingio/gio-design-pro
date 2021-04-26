@@ -16,7 +16,7 @@ const OperateMenu = (props: OperationMenuProps) => {
     size,
     icon = <MoreOutlined />,
     placement = 'bottomRight',
-    buttonType = 'text',
+    buttonType = 'link',
     iconClassName,
   } = props;
 

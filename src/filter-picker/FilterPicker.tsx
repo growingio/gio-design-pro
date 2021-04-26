@@ -4,9 +4,18 @@ import { FilterOutlined } from '@gio-design/icons';
 import FilterOverlay from './components/FilterOverlay/index';
 import './style/index.less';
 
-import { FilterPickerProps, FilterValueType } from './interfaces';
+import { FilterPickerProps, FilterValueType, operationsOptionType } from './interfaces';
 
-export const FilterPickerContext = React.createContext<Pick<FilterPickerProps, 'fetchDetailData'>>({});
+export const FilterPickerContext = React.createContext<Pick<FilterPickerProps, 'fetchDetailData' | 'operationsOption'>>(
+  {}
+);
+
+const defaultOperationsOption: operationsOptionType = {
+  string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
+  int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
+  date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
+  STRING: ['=', '!=', 'in', 'not in', 'like', 'not like'],
+};
 
 const FilterPicker = (props: FilterPickerProps) => {
   const {
@@ -20,6 +29,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     timeRange,
     recentlyStorePrefix,
     fetchDetailData,
+    operationsOption,
   } = props;
   const [visible, setVisible] = useState(false);
   const visibleChange = (v: boolean) => {
@@ -33,7 +43,9 @@ const FilterPicker = (props: FilterPickerProps) => {
     onConfirm({ ...filter, exprs: v });
   };
   return (
-    <FilterPickerContext.Provider value={{ fetchDetailData }}>
+    <FilterPickerContext.Provider
+      value={{ fetchDetailData, operationsOption: { ...defaultOperationsOption, ...operationsOption } }}
+    >
       <Dropdown
         visible={visible}
         trigger={['click']}
@@ -54,7 +66,7 @@ const FilterPicker = (props: FilterPickerProps) => {
         getTooltipContainer={getTooltipContainer}
         destroyTooltipOnHide
       >
-        {children || <Button icon={<FilterOutlined />} size="small" type={!visible ? 'text' : 'secondary'} />}
+        {children || <Button icon={<FilterOutlined />} size="small" type={!visible ? 'link' : 'secondary'} />}
       </Dropdown>
     </FilterPickerContext.Provider>
   );

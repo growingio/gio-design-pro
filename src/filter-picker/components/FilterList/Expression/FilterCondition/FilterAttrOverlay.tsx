@@ -6,7 +6,7 @@ import DateAttrSelect from './components/DateAttrSelect';
 import StringAttrSelect from './components/StringAttrSelect/index';
 import Footer from '../../../Footer';
 import './attrSelect.less';
-
+import { FilterPickerContext } from '../../../../FilterPicker';
 import { attributeValue, StringValue, NumberValue, DateValue, FilterValueType } from './interfaces';
 
 interface FilterAttrOverlayProps {
@@ -25,6 +25,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
 
+  const { operationsOption } = React.useContext(FilterPickerContext);
   useEffect(() => {
     if (valueType === 'date') {
       // 此处是为了处理，日期类型时，包含当天，选项('>=', '<=')不在selectOptionMap里面
@@ -99,9 +100,6 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
 
   const getAttrSelect = (attr: attributeValue, selectValue: string) => {
     switch (attr) {
-      case AttributeMap.int:
-        // 数值类型
-        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
       case AttributeMap.date:
         // 日期类型
         return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
@@ -119,7 +117,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
           />
         );
       default:
-        return null;
+        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
     }
   };
 
@@ -128,7 +126,9 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       <div>
         <div className="filter-attr_select-title">{titleMap[valueType] || '字符串类型'}</div>
         <Select
-          options={selectOptionMap[valueType]}
+          options={selectOptionMap?.[valueType]?.filter((opItem: any) =>
+            operationsOption?.[valueType].includes(opItem.value)
+          )}
           value={operationValue}
           size="middle"
           style={{ width: '100%', marginTop: '16px' }}
