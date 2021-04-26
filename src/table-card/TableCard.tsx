@@ -4,6 +4,7 @@ import { CloseOutlined } from '@gio-design/icons';
 import { isNil } from 'lodash';
 import { Tabs, Table, SearchBar, Button, Space, usePrefixCls } from '@gio-design/components';
 import { TableCardProps, TableCardTab } from './interfaces';
+import TooltipButton from '../tooltip-button';
 
 function TableCard<RecordType>({
   className,
@@ -32,7 +33,7 @@ function TableCard<RecordType>({
             {selectedRowKeys?.length === 0 ? (
               <>
                 {buttons?.map((buttonProps, btnKey) => (
-                  <Button {...buttonProps} key={btnKey.toString()} />
+                  <TooltipButton {...buttonProps} key={btnKey.toString()} />
                 ))}
               </>
             ) : (
@@ -44,12 +45,12 @@ function TableCard<RecordType>({
                     icon={<CloseOutlined />}
                     onClick={() => onChange?.([], [])}
                     size="small"
-                    type="assist"
+                    type="link"
                   />
                   {!isNil(batchButtons) && batchButtons?.length > 0 && <hr className={`${prefixCls}-select-divider`} />}
                 </div>
                 {batchButtons?.map((batchButtonProps, batchBtnKey) => (
-                  <Button {...batchButtonProps} key={batchBtnKey.toString()} />
+                  <TooltipButton {...batchButtonProps} key={batchBtnKey.toString()} />
                 ))}
               </>
             )}

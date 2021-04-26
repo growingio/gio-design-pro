@@ -1473,13 +1473,11 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@^21.3.3":
-  version "21.3.3"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.3.3.tgz#f516e4556881276aeaf875017c9ad108efd4d6ed"
-  integrity sha512-SEUsI9VwV7q3X+jSyPJqToIOQg5A5+9qamUTcVSXO9s/6OMp4GINSihclYT8VufChrlDM1JqxxWDeZTKAqUJqg==
+"@gio-design/components@^21.4.4":
+  version "21.4.4"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.4.4.tgz#368dae407e1b0f0ef59ecdbe784d08cb8a3e3117"
+  integrity sha512-nIn/lEQ5lewuWdGrcI/d0TDiOJ/VNTuZx3CWrLpzFE1Pt0VjuKZ5qmSEBoPVf2SteDNmDGoidSyXOXtcFOCxYw==
   dependencies:
-    "@gio-design/icons" "21.1.0"
-    "@gio-design/tokens" "^21.3.0"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
@@ -1514,15 +1512,7 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/icons@21.1.0":
-  version "21.1.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.1.0.tgz#9c16832a1b685110be810bb0cc59208c9ba8ed43"
-  integrity sha512-T4II9qzn8O4hF9IIPLDOFdCxm8LIQJ1/muCWk8zlv8ST3VK5hFVpOy7MfZQmbj/Prg7eQw81H9hxO1aH/A3GjA==
-  dependencies:
-    "@types/classnames" "^2.2.11"
-    classnames "^2.2.6"
-
-"@gio-design/icons@^21.4.1":
+"@gio-design/icons@^21.4.0":
   version "21.4.1"
   resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.1.tgz#5a9f5192107905b905439f4b937f8e9678fb2e69"
   integrity sha512-1bOlEYHfWPfMwYKQ6pnWir0CNtvnKFEeqqVlj7euw6TQWUR85TT/l+t+J92CG6OhZOgWkSLe76X24QpyTp2Hzg==
@@ -1530,15 +1520,10 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@^21.3.0":
-  version "21.3.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.0.tgz#5f57874cd10a6282e90fb0c26f9d8c0bc3361151"
-  integrity sha512-Z4fGw8cpaQMxOyIA43dzceMqDcgIrFpp7eMXztv9soCBTb4dfgiolA+ryS/86OwG/G3YEllNa4BpsOGDOwrygQ==
-
-"@gio-design/tokens@^21.3.1":
-  version "21.3.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.1.tgz#ff2ed50151d42f93908ea17343957100aff0f69f"
-  integrity sha512-OIj89KegIDwe5iAAubjtOuxn4TlU2XQQ7Z4K9wOJBglXfImcmTJdiAx+joX5J3PDHof2lh16/Wv3OhoLBZZmpQ==
+"@gio-design/tokens@^21.4.2":
+  version "21.4.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
+  integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
 
 "@gio-design/utils@^21.4.0":
   version "21.4.0"
@@ -8725,7 +8710,7 @@ getpass@^0.1.1:
 
 "gio-rewire@https://github.com/growingio/gio-rewire.git":
   version "1.0.5"
-  resolved "https://github.com/growingio/gio-rewire.git#aa18e74955f99150382fb829b7d2bec577c24570"
+  resolved "https://github.com/growingio/gio-rewire.git#f0fb479ae0add5395102e666773f4a589871e6d1"
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/plugin-proposal-class-properties" "^7.4.4"
