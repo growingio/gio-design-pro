@@ -28,6 +28,7 @@
   &__item-group {
     &__title {
       color: @palette-blue-5;
+      font-weight: @weight-font-medium;
     }
   }
 
@@ -56,7 +57,11 @@
     &:active {
       color: @palette-blue-5;
     }
-
+    &.selected,
+    &.active {
+      color: @palette-blue-5;
+      background-color: @palette-gray-1;
+    }
     &--ellipsis {
       overflow: hidden;
       white-space: nowrap;

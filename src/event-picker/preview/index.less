@@ -1,0 +1,118 @@
+.event-preview {
+  // position: absolute;
+  padding: 16px 0;
+  // width: 320px;
+  height: 100%;
+  // top: 0;
+  // left: 100%;
+  background: #fff;
+  z-index: 9;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: -14px 0px 0px #fff,
+    0px 0 14px 0 rgba(123, 129, 156, 0.5);
+  border-left: 1px solid #dfe4ee;
+  cursor: auto;
+
+  &-inner {
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    overflow: auto;
+  }
+
+  &-name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #242e59;
+    margin-bottom: 8px;
+  }
+
+  &-sub-name {
+    margin-bottom: 16px;
+  }
+
+  &-instruction {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #7b819c;
+    margin-bottom: 16px;
+  }
+
+  &-head {
+    font-size: 12px;
+    color: #a3adc8;
+    margin-bottom: 4px;
+  }
+
+  &-attributes {
+    margin-bottom: 16px;
+    padding: 1px;
+
+    &-table {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px #dfe4ee;
+      border-spacing: 0;
+      border-style: hidden;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 6px 16px;
+        border: 1px solid #dfe4ee;
+      }
+
+      th {
+        color: #313e75;
+        font-weight: 500;
+        background: #f7f8fc;
+      }
+
+      td {
+        font-size: 12px;
+        color: #313e75;
+
+        &:last-child {
+          width: 87px;
+        }
+      }
+
+      tr {
+        &:first-child {
+          td,
+          th {
+            &:first-child {
+              border-top-left-radius: 4px;
+            }
+            &:last-child {
+              border-top-right-radius: 4px;
+            }
+          }
+        }
+
+        &:last-child {
+          td,
+          th {
+            &:first-child {
+              border-bottom-left-radius: 4px;
+            }
+            &:last-child {
+              border-bottom-right-radius: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-chart {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 16px;
+    border: 1px solid #dfe4ee;
+    border-radius: 4px;
+  }
+}
