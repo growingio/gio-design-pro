@@ -1,12 +1,7 @@
 import React from 'react';
 import { BasePickerProps } from '../base-picker';
 import { BaseProps } from '../utils/interfaces';
-// import { keyMapping as _KM, defaultTabs, getEventType, useEventData, withPrefix } from './helper';
 
-export declare type KeyMapping = {
-  label?: string;
-  value?: string;
-};
 export interface Attributes {
   id: string;
   name: string;
