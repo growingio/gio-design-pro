@@ -93,7 +93,12 @@ describe('<TreeCard/> test', () => {
   test('parentNodeSelectable === false', () => {
     const onExpand = jest.fn();
     const args: TreeCardProps<DataType> = {
-      treeConfig: [{ data }],
+      treeConfig: [
+        {
+          data,
+          customIsLeaf: (record) => (record.children?.length === undefined ? true : record.children?.length === 0),
+        },
+      ],
       parentNodeSelectable: false,
       onExpand,
     };
