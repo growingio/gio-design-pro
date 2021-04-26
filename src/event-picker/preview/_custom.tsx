@@ -2,7 +2,7 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { Card, usePrefixCls } from '@gio-design/components';
 import classnames from 'classnames';
-import PreviewChart from './Chart';
+import PreviewChart from './_chart';
 import { getTypeName } from './helper';
 import { PreviewProps } from './PreviewProps';
 

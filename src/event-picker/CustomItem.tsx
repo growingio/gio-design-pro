@@ -31,7 +31,7 @@ const renderKeyword = (label: string, keyword: string, ignoreCase: boolean) => {
       // eslint-disable-next-line react/no-array-index-key
       <span key={`${b}-${i}`}>
         <span>{b}</span>
-        <b className="keyword">{replaceValues.shift()}</b>
+        <b className="kw">{replaceValues.shift()}</b>
       </span>
     );
     return acc;
