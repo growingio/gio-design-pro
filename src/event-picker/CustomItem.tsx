@@ -3,9 +3,13 @@ import { makeSearchParttern } from '@gio-design/components/es/components/cascade
 import React, { ChangeEvent, useState, useEffect } from 'react';
 
 import TypeIcon from './TypeIcon';
-import { EventData } from './interfaces';
+import { EventData, ListItemPreviewEventProps } from './interfaces';
+import Preview from './preview';
+import { useDebounceFn } from '../hooks';
+import List from '../list';
+import { ListItemProps } from '../list/interfaces';
 
-export interface Props {
+export interface Props extends ListItemPreviewEventProps, Omit<ListItemProps, 'children'> {
   dataSource: EventData;
   keyword?: string;
   value?: string;
@@ -47,7 +51,12 @@ export const CustomItem: React.FC<Props> = (props) => {
     keyword,
     value,
     multiple,
+    detailVisibleDelay = 600,
     onCheckboxChange,
+    onShowEventChart,
+    previewCustomRender,
+    fetchDetailData,
+    ...rest
   } = props;
 
   const [checked, setChecked] = useState(dataSource.selectKey === value);
@@ -58,24 +67,67 @@ export const CustomItem: React.FC<Props> = (props) => {
     setChecked(e.target.checked);
     onCheckboxChange?.(dataSource, e.target.checked);
   };
+  const [detailVisible, setDetailVisible] = useState(false);
+  const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
+    setDetailVisible(visible);
+  }, detailVisibleDelay);
+
+  const [hidden, setHidden] = useState(false);
+  const debounceSetHidden = useDebounceFn((visible: boolean) => {
+    setHidden(visible);
+  }, 150);
+  const handleItemMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+    // setHoveredNodeValue(data);
+    debounceSetDetailVisible(true);
+    setHidden(false);
+    debounceSetHidden.cancel();
+    rest.onMouseEnter?.(e);
+    // console.log('handleItemMouseEnter', dataSource.name);
+  };
+  const handleItemMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+    // setHoveredNodeValue(undefined);
+    debounceSetDetailVisible.cancel();
+    debounceSetHidden(true);
+    // setDetailVisible(false);
+    rest.onMouseLeave?.(e);
+    // console.log('handleItemMouseLeave', dataSource.name);
+  };
   return (
-    <Tooltip overlay={<div>{dataSource.disabledTips ?? '暂不可用'}</div>} disabled={!disabled}>
-      <div className="item-content">
-        {multiple && (
-          <Checkbox
-            disabled={disabled}
-            onChange={handleCheckboxChange}
-            className="item-content-checkbox"
-            checked={checked}
-            // defaultChecked={dataSource.selectKey === value}
-          />
-        )}
-        <TypeIcon size="14px" className="item-content-icon" type={type || ''} />
-        <span className="item-content-body" title={name}>
-          {renderKeyword(name as string, keyword || '', true)}
-        </span>
-      </div>
-    </Tooltip>
+    <List.Item
+      style={{ scrollSnapAlign: 'start' }}
+      {...rest}
+      ellipsis={false}
+      onMouseEnter={handleItemMouseEnter}
+      onMouseLeave={handleItemMouseLeave}
+    >
+      <Tooltip overlay={<div>{dataSource.disabledTips ?? '暂不可用'}</div>} disabled={!disabled}>
+        <>
+          <div className="item-content">
+            {multiple && (
+              <Checkbox
+                disabled={disabled}
+                onChange={handleCheckboxChange}
+                className="item-content-checkbox"
+                checked={checked}
+              />
+            )}
+            <TypeIcon size="14px" className="item-content-icon" type={type || ''} />
+            <span className="item-content-body" title={name}>
+              {renderKeyword(name as string, keyword || '', true)}
+            </span>
+          </div>
+          {detailVisible && (
+            <Preview
+              style={{ display: hidden ? 'none' : 'block' }}
+              dataSource={dataSource}
+              onShowEventChart={onShowEventChart}
+              fetchDetailData={fetchDetailData ?? (async (o) => o)}
+              previewCustomRender={previewCustomRender}
+            />
+          )}
+        </>
+      </Tooltip>
+    </List.Item>
   );
 };
 

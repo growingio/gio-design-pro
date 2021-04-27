@@ -25,8 +25,28 @@ export interface Tab {
   label: string;
   value: string;
 }
+export interface ListItemPreviewEventProps {
+  /**
+   * 事件预览中展示图表的回调函数
+   */
+  onShowEventChart?: (event: EventData) => React.ReactNode;
+  /**
+   * 事件预览的自定义展示，用于 无埋点事件 详情展示
+   */
+  previewCustomRender?: (dataSource: EventData) => React.ReactNode;
+  /**
+   * 获取详情的方法
+   */
+  fetchDetailData?: (event: EventData) => Promise<EventData>;
+  /**
+   * 鼠标hover列表项详情面板延迟显示的毫秒数
+   */
+  detailVisibleDelay?: number;
+}
 export interface EventPickerProps
-  extends Omit<BasePickerProps, 'footer' | 'renderItems' | 'renderDetail' | 'tabNav' | 'searchBar'> {
+  extends Pick<BasePickerProps, 'emptyPrompt' | 'loading'>,
+    BaseProps,
+    ListItemPreviewEventProps {
   dataSource?: EventData[];
   // /**
   //  * 对数据进行过滤的回调函数
@@ -96,18 +116,10 @@ export interface EventPickerProps
    * 列表项点击的回调
    */
   onClick?: (e: EventData) => void;
-  /**
-   * 事件预览中展示图表的回调函数
-   */
-  onShowEventChart?: (event: EventData) => React.ReactNode;
-  /**
-   * 事件预览的自定义展示，用于 无埋点事件 详情展示
-   */
-  previewCustomRender?: (dataSource: EventData) => React.ReactNode;
 }
 
-export interface EventPickerPreviewProps extends BaseProps {
+export interface EventPickerPreviewProps extends BaseProps, ListItemPreviewEventProps {
   dataSource: EventData;
-  chart?: React.ReactNode;
-  fetchData?: (event: EventData) => Promise<EventData>;
+  // chart?: React.ReactNode;
+  // fetchData?: (event: EventData) => Promise<EventData>;
 }

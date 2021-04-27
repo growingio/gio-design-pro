@@ -3,8 +3,10 @@ import { cloneDeep, groupBy, uniq } from 'lodash';
 import React, { useEffect, useMemo, useState } from 'react';
 import { EventData } from './interfaces';
 import ListPanel from './ListPanel';
-import List from './List';
-import { GroupListItemEvent } from './GetGroupItemsProps';
+import List from './GroupList';
+import { GroupListItemEvent } from './ListItem';
+import EmptyPrompt, { EmptyPromptProps } from '../empty-prompt';
+
 /**
  * 本地存储历史记录
  */
@@ -60,6 +62,23 @@ interface Props extends GroupListItemEvent {
    * 选项的绑定值
    */
   value?: EventData[];
+  /**
+   * 事件预览中展示图表的回调函数
+   */
+  onShowEventChart?: (event: EventData) => React.ReactNode;
+  /**
+   * 事件预览的自定义展示，用于 无埋点事件 详情展示
+   */
+  previewCustomRender?: (dataSource: EventData) => React.ReactNode;
+  /**
+   * 获取详情的方法
+   */
+  fetchDetailData?: (event: EventData) => Promise<EventData>;
+  /**
+   * 无数据时的展示信息
+   */
+  emptyPrompt?: EmptyPromptProps;
+  footer: React.ReactNode;
 }
 const PickerContent = (props: Props) => {
   const {
@@ -77,6 +96,9 @@ const PickerContent = (props: Props) => {
     onClick,
     sort,
     value = [],
+    emptyPrompt,
+    footer,
+    ...rest
   } = props;
 
   const valueKeys = useMemo(() => value.map((v) => v?.selectKey || ''), [value]);
@@ -186,10 +208,14 @@ const PickerContent = (props: Props) => {
   function handleClearAll() {
     setSelect([]);
   }
+  if (valueKeys.length === 0 && dataSource.length === 0) {
+    return <EmptyPrompt {...(emptyPrompt || {})} />;
+  }
   return (
     <>
-      <ListPanel multiple={multiple} onCancel={() => handleCancel()} onOK={() => handleOk()}>
+      <ListPanel multiple={multiple} footer={footer} onCancel={() => handleCancel()} onOK={() => handleOk()}>
         <List
+          {...rest}
           dataSource={{
             history,
             dataList: groupData,
