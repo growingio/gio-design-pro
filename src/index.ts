@@ -4,6 +4,9 @@ import _FilterPicker, { FilterCondition } from './filter-picker';
 
 export { default as UserPicker, UserPickerProps } from './user-picker';
 export { default as UserSelector, UserSelectorProps } from './user-selector';
+export { EventPicker, EventPickerProps } from './event-picker';
+export { EventSelector, EventSelectorProps } from './event-selector';
+
 export const PropertySelector = _PropertySelector;
 
 export const FilterPicker = _FilterPicker;
