@@ -8,6 +8,14 @@ import FilterAttrOverlay from './FilterAttrOverlay';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from './interfaces';
 
 import Selector from '../../../../../selector';
+import { operationsOptionType } from '../../../../interfaces';
+
+const defaultOperationsOption: operationsOptionType = {
+  string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
+  int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
+  date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
+  STRING: ['=', '!=', 'in', 'not in', 'like', 'not like'],
+};
 
 interface FilterConditionProps {
   valueType: attributeValue;
@@ -19,6 +27,7 @@ interface FilterConditionProps {
   measurements: any[];
   values: string[];
   exprKey: string;
+  operationsOption?: operationsOptionType;
 }
 
 function FilterCondition(props: FilterConditionProps) {
@@ -32,12 +41,14 @@ function FilterCondition(props: FilterConditionProps) {
     measurements,
     values,
     exprKey,
+    operationsOption,
   } = props;
   const [visible, setVisible] = useState(false);
   const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
   const visibleChange = (v: boolean) => {
     setVisible(v);
   };
+
   const curryDimensionValueRequest = ((timeRangeValue: string, measurementsValue: any[]) => (
     dimension: string,
     keyword: string
@@ -75,6 +86,7 @@ function FilterCondition(props: FilterConditionProps) {
       curryDimensionValueRequest={curryDimensionValueRequest}
       values={values}
       exprKey={exprKey}
+      operationsOption={{ ...defaultOperationsOption, ...operationsOption }}
     />
   );
 
