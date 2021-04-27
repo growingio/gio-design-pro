@@ -7,7 +7,7 @@ Object {
     <div>
       <div>
         <button
-          class="gio-btn gio-btn-link gio-btn-mini gio-btn-icon-only"
+          class="gio-btn gio-btn-text gio-btn-mini gio-btn-icon-only"
           style="cursor: pointer;"
           type="button"
         >
@@ -37,7 +37,7 @@ Object {
   "container": <div>
     <div>
       <button
-        class="gio-btn gio-btn-link gio-btn-mini gio-btn-icon-only"
+        class="gio-btn gio-btn-text gio-btn-mini gio-btn-icon-only"
         style="cursor: pointer;"
         type="button"
       >
