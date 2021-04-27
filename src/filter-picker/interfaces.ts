@@ -11,6 +11,9 @@ export interface FilterPickerProps extends Pick<PropertyPickerProps, 'fetchDetai
   dimensionValueRequest?: (data: any) => Promise<any>;
   recentlyStorePrefix: string;
   operationsOption?: operationsOptionType;
+  hasVisible?: boolean;
+  visible?: boolean;
+  onVisibleChange?: (v: boolean) => void;
 }
 export type attributeValue = 'string' | 'int' | 'date';
 
