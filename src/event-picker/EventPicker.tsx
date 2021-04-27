@@ -1,15 +1,14 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
 import { isArray, isEqualWith, orderBy, uniqBy, xorWith } from 'lodash';
 import { injectPinyinWith } from '@gio-design/utils';
 import { EventData, EventPickerProps, Tab } from './interfaces';
-import { useDebounce, useDebounceFn } from '../hooks';
+import { useDebounce } from '../hooks';
 import BasePicker from '../base-picker';
 
 import { getEventType, defaultTabs, withSelectKey } from './helper';
-import Preview from './preview';
 import PickerContent from './PickerContent';
 import './style';
 
@@ -38,17 +37,18 @@ const EventPicker = (props: EventPickerProps) => {
     defaultKeyword,
     panelFooter,
     multiple,
+    // emptyPrompt,
     onShowEventChart,
+    fetchDetailData,
     ...rest
   } = props;
-  console.log(initialValue);
   const [keyword, setKeyword] = useState(defaultKeyword);
 
   const [debouncedKeyword, setDebouncedKeyword] = useDebounce(keyword, 300);
-  const [detailVisible, setDetailVisible] = useState(false);
-  const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
-    setDetailVisible(visible);
-  }, detailVisibleDelay);
+  // const [detailVisible, setDetailVisible] = useState(false);
+  // const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
+  //   setDetailVisible(visible);
+  // }, detailVisibleDelay);
 
   /**
    * tabNav
@@ -65,15 +65,17 @@ const EventPicker = (props: EventPickerProps) => {
   const navRef = useRef(mergedTabs.map((t) => ({ key: t.value, children: t.label })));
   const formatValue = (source: EventData[] | EventData | undefined) => {
     if (source) {
-      return isArray(source) ? source : [source];
+      const arr = isArray(source) ? source : [source];
+      return withSelectKey(arr);
     }
     return [];
   };
   const formatedValue = formatValue(initialValue);
   const [value, setValue] = useState<EventData[]>(formatedValue);
-  useEffect(() => {
-    setValue(formatedValue);
-  }, [formatedValue]);
+  // useEffect(() => {
+  //   setValue(formatedValue);
+  // }, [formatedValue]);
+
   // useEffect(() => {
   //   /**
   //    * 设置属性类型tab，如果传入的列表没有对应的类型 不显示该tab
@@ -155,9 +157,9 @@ const EventPicker = (props: EventPickerProps) => {
     return isEqualWith(a, b, (v, o) => v.selectKey === o.selectKey);
   }
   function handleSelect(selected: string[]) {
-    if (!selected || selected.length < 0) {
-      return;
-    }
+    // if (!selected || selected.length < 0) {
+    //   return;
+    // }
     // const selectEvent = selected
     //   .map((key) => processedDataSource.find((d) => d.selectKey === key))
     const selectEvent = processedDataSource.filter((d) => selected.includes(d.selectKey || ''));
@@ -171,31 +173,36 @@ const EventPicker = (props: EventPickerProps) => {
     }
     setValue(newValues);
 
-    if (!newValues || newValues.length < 1) {
-      return;
-    }
+    // if (!newValues || newValues.length < 1) {
+    //   return;
+    // }
     onSelect?.(multiple ? newValues : newValues[0]);
   }
   const handleItemClick = (node: EventData) => {
     onClick?.(node);
   };
 
-  const [hoverdNodeValue, setHoveredNodeValue] = useState<EventData | undefined>();
-  const handleItemMouseEnter = (data: EventData) => {
-    setHoveredNodeValue(data);
-    debounceSetDetailVisible(true);
-  };
-  const handleItemMouseLeave = () => {
-    setHoveredNodeValue(undefined);
-    debounceSetDetailVisible.cancel();
-    setDetailVisible(false);
-  };
-  const renderDetail = () =>
-    hoverdNodeValue && (
-      <Preview dataSource={hoverdNodeValue} chart={onShowEventChart} fetchData={async (data) => data} />
-    );
+  // const [hoverdNodeValue, setHoveredNodeValue] = useState<EventData | undefined>();
+  // const handleItemMouseEnter = (data: EventData) => {
+  //   setHoveredNodeValue(data);
+  //   debounceSetDetailVisible(true);
+  // };
+  // const handleItemMouseLeave = () => {
+  //   setHoveredNodeValue(undefined);
+  //   debounceSetDetailVisible.cancel();
+  //   setDetailVisible(false);
+  //   console.log('handleItemMouseLeave');
+  // };
+  // const renderDetail = () =>
+  //   hoverdNodeValue && (
+  //     <Preview dataSource={hoverdNodeValue} chart={onShowEventChart} fetchData={async (data) => data} />
+  //   );
+  const footer = panelFooter?.(activedTab, dataSource);
+
   const renderContent = () => (
     <PickerContent
+      {...rest}
+      // emptyPrompt={emptyPrompt}
       historyStoreKey={historyStoreKey}
       shouldUpdateRecentlyUsed={shouldUpdateRecentlyUsed}
       dataSource={dataSource}
@@ -208,11 +215,14 @@ const EventPicker = (props: EventPickerProps) => {
       filter={filterFunc}
       sort={sort}
       value={formatedValue}
-      onMouseEnter={handleItemMouseEnter}
-      onMouseLeave={handleItemMouseLeave}
+      footer={footer}
+      onShowEventChart={onShowEventChart}
+      fetchDetailData={fetchDetailData}
+      detailVisibleDelay={detailVisibleDelay}
+      // onMouseEnter={handleItemMouseEnter}
+      // onMouseLeave={handleItemMouseLeave}
     />
   );
-  const footer = panelFooter?.(activedTab, dataSource);
 
   const clsPrifx = usePrefixCls('event-picker');
 
@@ -225,18 +235,18 @@ const EventPicker = (props: EventPickerProps) => {
       };
   return (
     <BasePicker
-      {...rest}
+      // {...rest}
       style={style}
       className={cls}
       renderContent={renderContent}
-      detailVisible={detailVisible && !!hoverdNodeValue}
-      renderDetail={renderDetail}
+      detailVisible={false}
+      // renderDetail={renderDetail}
       loading={loading}
       searchBar={{
         placeholder: '搜索事件或指标名称',
         onSearch: handleSearch,
       }}
-      footer={footer}
+      // footer={footer}
       tabNav={tabNav}
     />
   );

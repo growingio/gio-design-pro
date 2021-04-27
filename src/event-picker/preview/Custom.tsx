@@ -2,15 +2,15 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { Card, usePrefixCls } from '@gio-design/components';
 import classnames from 'classnames';
-import PreviewChart from './_chart';
+import PreviewChart from './Chart';
 import { getTypeName } from './helper';
 import { PreviewProps } from './PreviewProps';
 
 const Custom: React.FC<PreviewProps> = (props) => {
-  const { eventData, chart } = props;
+  const { eventData, chart, className, previewCustomRender } = props;
   const { name, key = '', description = '', attributes = [], itemModels = [] } = eventData;
   const prefixCls = usePrefixCls('event-previw');
-  const cls = classnames(prefixCls, 'custom');
+  const cls = classnames(prefixCls, 'custom', className);
   return (
     <Card className={cls} clickable={false}>
       <Card.Meta title={name} />
@@ -20,7 +20,7 @@ const Custom: React.FC<PreviewProps> = (props) => {
       {description && <Card.Meta>{description as string}</Card.Meta>}
       {chart && (
         <Card.Meta>
-          <PreviewChart chart={chart} />
+          <PreviewChart chart={chart(eventData)} />
         </Card.Meta>
       )}
       {!isEmpty(attributes) && (
@@ -67,6 +67,7 @@ const Custom: React.FC<PreviewProps> = (props) => {
           </div>
         </Card.Meta>
       )}
+      {previewCustomRender?.(eventData)}
     </Card>
   );
 };

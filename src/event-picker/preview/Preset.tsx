@@ -7,22 +7,20 @@ import PreviewChart from './Chart';
 import { PreviewProps } from './PreviewProps';
 
 const Preset: React.FC<PreviewProps> = (props) => {
-  const {
-    eventData: { name, instruction },
-    chart,
-  } = props;
-
+  const { eventData, chart, className, previewCustomRender } = props;
+  const { name, instruction = '' } = eventData;
   const prefixCls = usePrefixCls('event-previw');
-  const cls = classnames(prefixCls, 'preset');
+  const cls = classnames(prefixCls, 'preset', className);
   return (
     <Card className={cls} clickable={false}>
       <Card.Meta title={name} />
       {instruction && <Card.Meta>{instruction as string}</Card.Meta>}
       {chart && (
         <Card.Meta>
-          <PreviewChart chart={chart} />
+          <PreviewChart chart={chart(eventData)} />
         </Card.Meta>
       )}
+      {previewCustomRender?.(eventData)}
     </Card>
   );
 };

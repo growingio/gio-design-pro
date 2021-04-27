@@ -21,7 +21,7 @@ export default {
 } as Meta;
 
 const Template: Story<EventPickerProps> = (args) => {
-  const [select, setSelect] = useState<EventData[]>(isArray(args.value) ? args.value : [args.value]);
+  const [select, setSelect] = useState<EventData[]>(isArray(args.value) ? args.value : []);
   function handleSelect(v: EventData | EventData[]) {
     setSelect(isArray(v) ? v : [v]);
   }
@@ -29,6 +29,17 @@ const Template: Story<EventPickerProps> = (args) => {
     // eslint-disable-next-line no-console
     console.log('picker changed,new value is', newVal);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const panelFooter = (tab: string, _: EventData[]) => {
+    if (tab === 'measurement') {
+      return (
+        <Button type="link" icon={<PlusCircleFilled />} size="small" onClick={() => {}}>
+          新建计算指标
+        </Button>
+      );
+    }
+    return null;
+  };
   return (
     <div>
       <div style={{ maxHeight: '80px', overflow: 'hidden', overflowY: 'auto', listStyle: 'none' }}>
@@ -39,7 +50,7 @@ const Template: Story<EventPickerProps> = (args) => {
           ))}
         </ul>
       </div>
-      <EventPicker {...args} onSelect={handleSelect} onChange={handleChange} value={select} />
+      <EventPicker {...args} onSelect={handleSelect} onChange={handleChange} value={select} panelFooter={panelFooter} />
     </div>
   );
 };
@@ -48,17 +59,7 @@ export const Default = Template.bind({});
 Default.args = {
   dataSource: events,
 };
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const panelFooter = (tab: string, _: EventData[]) => {
-  if (tab === 'measurement') {
-    return (
-      <Button type="text" icon={<PlusCircleFilled />} size="small" onClick={() => {}}>
-        新建计算指标
-      </Button>
-    );
-  }
-  return null;
-};
+
 const defaultSelect = events.slice(0, 5);
 export const Multiple = Template.bind({});
 Multiple.args = {
@@ -66,12 +67,10 @@ Multiple.args = {
   multiple: true,
   value: defaultSelect,
   showAllTab: true,
-  panelFooter,
 };
 export const WithoutTabNav = Template.bind({});
 WithoutTabNav.args = {
   dataSource: events,
   multiple: true,
   hideTabNav: true,
-  panelFooter,
 };
