@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List, Loading } from '@gio-design/components';
+import { Input, Loading } from '@gio-design/components';
+import List from '@gio-design/components/es/components/list-pro';
 import { attributeValue } from '../../interfaces';
 import InOrNotIn from './InOrNotIn';
 
@@ -20,23 +21,36 @@ type listOptionsItem = {
   label: string;
 };
 
+let timer: any = null;
+
 function StringAttrSelect(props: StringAttrSelectProps) {
   const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
   const [inputValue, setInputValue] = useState<string>(values.join(','));
   const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
   const [listValue, setListValue] = useState<string>(values.join(','));
   const [loadingStatue, setLoadingStatue] = useState<boolean>(true);
+  // let timer: number | any = null;
   useEffect(() => {
-    setInputValue(inputValue || '');
+    setInputValue(values?.length ? values[0] : '');
     setListValue(values?.[0]);
   }, [values]);
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = v.target;
     setLoadingStatue(true);
-    curryDimensionValueRequest?.(exprKey, v.target.value)?.then((res: string[]) => {
-      res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
-      setLoadingStatue(false);
-    });
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      curryDimensionValueRequest?.(exprKey, value)?.then((res: string[]) => {
+        if (res.length) {
+          setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+        } else {
+          setListOptions([]);
+        }
+        setLoadingStatue(false);
+      });
+    }, 500);
     attrChange([v.target.value]);
     setInputValue(v.target.value);
   };
@@ -55,16 +69,21 @@ function StringAttrSelect(props: StringAttrSelectProps) {
 
   useEffect(() => {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
-      res.length && setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+      if (res.length) {
+        setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+      } else {
+        setListOptions([]);
+      }
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey]);
+  }, [valueType, exprKey, attrSelect]);
 
   switch (attrSelect) {
     case 'in':
     case 'not in':
       return (
         <InOrNotIn
+          attrSelect={attrSelect}
           attrChange={attrChange}
           valueType={valueType}
           curryDimensionValueRequest={curryDimensionValueRequest}

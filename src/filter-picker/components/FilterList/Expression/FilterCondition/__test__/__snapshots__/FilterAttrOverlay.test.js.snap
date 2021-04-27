@@ -35,7 +35,7 @@ exports[`<FilterAttrOverlay /> date type when op is "!=" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                有值
+                hasValue
               </span>
             </div>
           </div>
@@ -45,10 +45,11 @@ exports[`<FilterAttrOverlay /> date type when op is "!=" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -136,7 +137,7 @@ exports[`<FilterAttrOverlay /> date type when op is "<" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                在某天之前
+                &lt;
               </span>
             </div>
           </div>
@@ -146,10 +147,11 @@ exports[`<FilterAttrOverlay /> date type when op is "<" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -197,10 +199,11 @@ exports[`<FilterAttrOverlay /> date type when op is "<" 1`] = `
       style="margin-top: 16px;"
     >
       <span
+        aria-label="check-outlined"
         class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+        role="img"
       >
         <svg
-          class="gio-icon-svg"
           fill="currentColor"
           height="16px"
           viewBox="0 0 14 14"
@@ -298,7 +301,7 @@ exports[`<FilterAttrOverlay /> date type when op is "<=" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                在某天之前
+                &lt;
               </span>
             </div>
           </div>
@@ -308,10 +311,11 @@ exports[`<FilterAttrOverlay /> date type when op is "<=" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -359,10 +363,11 @@ exports[`<FilterAttrOverlay /> date type when op is "<=" 1`] = `
       style="margin-top: 16px;"
     >
       <span
+        aria-label="check-outlined"
         class="gio-icon gio-checkbox-icon gio-checkbox-icon-checked"
+        role="img"
       >
         <svg
-          class="gio-icon-svg"
           fill="currentColor"
           height="16px"
           viewBox="0 0 14 14"
@@ -471,10 +476,11 @@ exports[`<FilterAttrOverlay /> date type when op is "=" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -579,7 +585,7 @@ exports[`<FilterAttrOverlay /> date type when op is ">" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                在某天之后
+                &gt;
               </span>
             </div>
           </div>
@@ -589,10 +595,11 @@ exports[`<FilterAttrOverlay /> date type when op is ">" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -640,10 +647,11 @@ exports[`<FilterAttrOverlay /> date type when op is ">" 1`] = `
       style="margin-top: 16px;"
     >
       <span
+        aria-label="check-outlined"
         class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+        role="img"
       >
         <svg
-          class="gio-icon-svg"
           fill="currentColor"
           height="16px"
           viewBox="0 0 14 14"
@@ -741,7 +749,7 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                在某天之后
+                &gt;
               </span>
             </div>
           </div>
@@ -751,10 +759,11 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -802,10 +811,11 @@ exports[`<FilterAttrOverlay /> date type when op is ">=" 1`] = `
       style="margin-top: 16px;"
     >
       <span
+        aria-label="check-outlined"
         class="gio-icon gio-checkbox-icon gio-checkbox-icon-checked"
+        role="img"
       >
         <svg
-          class="gio-icon-svg"
           fill="currentColor"
           height="16px"
           viewBox="0 0 14 14"
@@ -904,7 +914,7 @@ exports[`<FilterAttrOverlay /> date type when op is "hasValue" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                有值
+                hasValue
               </span>
             </div>
           </div>
@@ -914,10 +924,11 @@ exports[`<FilterAttrOverlay /> date type when op is "hasValue" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1005,7 +1016,7 @@ exports[`<FilterAttrOverlay /> date type when op is "noValue" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                无值
+                noValue
               </span>
             </div>
           </div>
@@ -1015,10 +1026,11 @@ exports[`<FilterAttrOverlay /> date type when op is "noValue" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1106,7 +1118,7 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                相对现在
+                relativeCurrent
               </span>
             </div>
           </div>
@@ -1116,10 +1128,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1183,10 +1196,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
             class="gio-select-arrow"
           >
             <span
+              aria-label="down-filled"
               class="gio-icon gio-select-icon-arrow"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1226,10 +1240,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
             class="gio-input__suffix-iconGroup"
           >
             <span
+              aria-label="down-filled"
               class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1250,10 +1265,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
               </svg>
             </span>
             <span
+              aria-label="up-filled"
               class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1316,10 +1332,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 1`] = `
             class="gio-select-arrow"
           >
             <span
+              aria-label="down-filled"
               class="gio-icon gio-select-icon-arrow"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1405,7 +1422,7 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
               <span
                 class="gio-select-item-text"
               >
-                相对区间
+                relativeBetween
               </span>
             </div>
           </div>
@@ -1415,10 +1432,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1482,10 +1500,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
             class="gio-select-arrow"
           >
             <span
+              aria-label="down-filled"
               class="gio-icon gio-select-icon-arrow"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1525,10 +1544,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
             class="gio-input__suffix-iconGroup"
           >
             <span
+              aria-label="down-filled"
               class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1549,10 +1569,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
               </svg>
             </span>
             <span
+              aria-label="up-filled"
               class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1601,10 +1622,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
             class="gio-input__suffix-iconGroup"
           >
             <span
+              aria-label="down-filled"
               class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1625,10 +1647,11 @@ exports[`<FilterAttrOverlay /> date type when op is "relativeTime" 2`] = `
               </svg>
             </span>
             <span
+              aria-label="up-filled"
               class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+              role="img"
             >
               <svg
-                class="gio-icon-svg"
                 fill="currentColor"
                 height="16px"
                 viewBox="0 0 14 14"
@@ -1729,10 +1752,11 @@ exports[`<FilterAttrOverlay /> not defined type 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1758,6 +1782,16 @@ exports[`<FilterAttrOverlay /> not defined type 1`] = `
     <div
       class="filter-attr_dividingLine"
     />
+    <div
+      class="gio-input gio-input--middle"
+    >
+      <input
+        class="gio-input__content"
+        placeholder=""
+        type="text"
+        value="0"
+      />
+    </div>
   </div>
   <div
     class="filter-contidion-footer"
@@ -1775,7 +1809,6 @@ exports[`<FilterAttrOverlay /> not defined type 1`] = `
     />
     <button
       class="gio-btn gio-btn-primary gio-btn-small"
-      disabled=""
       type="button"
     >
       <span>
@@ -1821,7 +1854,7 @@ exports[`<FilterAttrOverlay /> number type render 1`] = `
               <span
                 class="gio-select-item-text"
               >
-                无值
+                noValue
               </span>
             </div>
           </div>
@@ -1831,10 +1864,11 @@ exports[`<FilterAttrOverlay /> number type render 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1932,10 +1966,11 @@ exports[`<FilterAttrOverlay /> string type render 1`] = `
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"

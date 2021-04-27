@@ -40,10 +40,11 @@ Array [
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -83,10 +84,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -107,10 +109,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -159,10 +162,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -183,10 +187,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -258,10 +263,11 @@ Array [
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -301,10 +307,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -325,10 +332,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -377,10 +385,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -401,10 +410,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -476,10 +486,11 @@ Array [
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -519,10 +530,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -543,10 +555,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -595,10 +608,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -619,10 +633,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -694,10 +709,11 @@ Array [
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -737,10 +753,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -761,10 +778,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -813,10 +831,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -837,10 +856,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -912,10 +932,11 @@ Array [
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -955,10 +976,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -979,10 +1001,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1031,10 +1054,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon-disabled"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1055,10 +1079,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1130,10 +1155,11 @@ Array [
           class="gio-select-arrow"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-select-icon-arrow"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1173,10 +1199,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1197,10 +1224,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1249,10 +1277,11 @@ Array [
           class="gio-input__suffix-iconGroup"
         >
           <span
+            aria-label="down-filled"
             class="gio-icon gio-input__suffix-iconGroup-bottom gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"
@@ -1273,10 +1302,11 @@ Array [
             </svg>
           </span>
           <span
+            aria-label="up-filled"
             class="gio-icon gio-input__suffix-iconGroup-top gio-input__suffix-icon"
+            role="img"
           >
             <svg
-              class="gio-icon-svg"
               fill="currentColor"
               height="16px"
               viewBox="0 0 14 14"

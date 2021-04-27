@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Input, List, Loading } from '@gio-design/components';
+import { Input, Loading } from '@gio-design/components';
+import List from '@gio-design/components/es/components/list-pro';
 import { attributeValue } from '../../interfaces';
 
 interface StringAttrSelectProps {
@@ -8,6 +9,7 @@ interface StringAttrSelectProps {
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
+  attrSelect: string;
 }
 
 type checkOptionsItem = {
@@ -15,8 +17,10 @@ type checkOptionsItem = {
   label: string;
 };
 
+let timer: any = null;
+
 function StringAttrSelect(props: StringAttrSelectProps) {
-  const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
+  const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey, attrSelect } = props;
   const [inputValue, setInputValue] = useState<string>('');
   const [checkValue, setCheckValue] = useState<string[]>(values);
   // check-options
@@ -31,6 +35,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   useEffect(() => {
     setCheckValue(values);
     setDefaultList(values);
+    setInputValue(values?.length ? values[0] : '');
   }, [values]);
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,17 +65,32 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     } else {
       setLoadingStatue(true);
       const filterCheckedList: string[] = checkValue.filter((ele: string) => !checkList.includes(ele));
-      curryDimensionValueRequest?.(exprKey, valueList[valueList.length - 1] || '')?.then((res: string[]) => {
-        setCheckOptions([
-          // 所有的自由输入选项
-          ...inputCheckList
-            .filter((ele: string) => checkList.includes(ele))
-            .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
-          // 已选中的，过滤掉自由输入的选项
-          ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({ label: ele, value: ele })),
-        ]);
-        setLoadingStatue(false);
-      });
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        curryDimensionValueRequest?.(exprKey, valueList[valueList.length - 1] || '')?.then((res: string[]) => {
+          if (res.length) {
+            setCheckOptions([
+              // 所有的自由输入选项
+              ...inputCheckList
+                .filter((ele: string) => checkList.includes(ele))
+                .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
+              // 已选中的，过滤掉自由输入的选项
+              ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({ label: ele, value: ele })),
+            ]);
+          } else {
+            setCheckOptions([
+              // 所有的自由输入选项
+              ...inputCheckList
+                .filter((ele: string) => checkList.includes(ele))
+                .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
+            ]);
+          }
+          setLoadingStatue(false);
+        });
+      }, 500);
     }
 
     setInputValue(v.target.value);
@@ -98,7 +118,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
         );
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey]);
+  }, [valueType, exprKey, attrSelect]);
 
   return (
     <div style={{ height: '330px' }}>

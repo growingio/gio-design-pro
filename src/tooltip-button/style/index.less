@@ -1,0 +1,48 @@
+@import '../../stylesheets/index.less';
+@tooltip-button-prefix-cls: ~'@{component-prefix}-tooltip-button';
+
+.@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-disabled {
+  cursor: not-allowed !important;
+  > * {
+    pointer-events: none;
+  }
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: @palette-black-3 !important;
+    background: @palette-gray-1 !important;
+    border-color: @palette-gray-1 !important;
+    > a:only-child {
+      color: currentColor;
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: transparent;
+        content: '';
+      }
+    }
+
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  svg {
+    color: @palette-black-6 !important;
+    path {
+      fill: @palette-black-6 !important;
+    }
+  }
+}
+
+.@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-text.@{tooltip-button-prefix-cls}-disabled, .@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-link.@{tooltip-button-prefix-cls}-disabled {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    background: transparent !important;
+    border-color: transparent !important;
+  }
+}

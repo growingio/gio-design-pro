@@ -1,3 +1,42 @@
+## [21.4.3-alpha.2](https://github.com/growingio/gio-design-pro/compare/v21.4.2...v21.4.3-alpha.2) (2021-04-27)
+
+
+### Bug Fixes
+
+* **filter-picker:** 修复日期类型,返回值为数字,以及添加op配置字段 ([#214](https://github.com/growingio/gio-design-pro/issues/214)) ([dcb5a7d](https://github.com/growingio/gio-design-pro/commit/dcb5a7d5fc707f2b2f6a35ed4da320db207aaab3))
+* **operation-menu:** 修复因为gio-design版本升级导致的样式问题 ([#212](https://github.com/growingio/gio-design-pro/issues/212)) ([da7c3e7](https://github.com/growingio/gio-design-pro/commit/da7c3e72fa44086c776dbd399005f733811b9bdc))
+
+
+### Features
+
+* **event-picker:** add component event-picker ([41dfcc3](https://github.com/growingio/gio-design-pro/commit/41dfcc318396404acc4c51cefe3fca719bcfb99a))
+* **event-picker:** add component event-picker ([1417fdc](https://github.com/growingio/gio-design-pro/commit/1417fdc7113ae067d980c15dc5dd4fe6a47d400a))
+* **event-selector:** add component event-selector ([efb0fb6](https://github.com/growingio/gio-design-pro/commit/efb0fb67d31f4cf7fbc5590dab5c5d36ce7e199d))
+
+
+
+## [21.4.2](https://github.com/growingio/gio-design-pro/compare/v21.4.1...v21.4.2) (2021-04-22)
+
+
+### Features
+
+* **tablecard:** add showtabs prop ([f748aac](https://github.com/growingio/gio-design-pro/commit/f748aacef0b8811660a5912db2d6a17d24fb181a))
+* **tablecard:** button support tooltip ([#210](https://github.com/growingio/gio-design-pro/issues/210)) ([d1439ac](https://github.com/growingio/gio-design-pro/commit/d1439acead2f066cc54d8c170c86573ef6b211c9))
+* **tooltip-button:** add tooltip button 组件 ([#209](https://github.com/growingio/gio-design-pro/issues/209)) ([d2d9697](https://github.com/growingio/gio-design-pro/commit/d2d9697b6bf24eea9cd09f57b6282b8958a14762))
+* **treecard:** add treecard component ([#200](https://github.com/growingio/gio-design-pro/issues/200)) ([033d1d8](https://github.com/growingio/gio-design-pro/commit/033d1d8c14447b43a16694a61cb4d7134263490f))
+* **user-picker:** add parameters disabledValues and showSegmentCard ([#203](https://github.com/growingio/gio-design-pro/issues/203)) ([b1e9dfe](https://github.com/growingio/gio-design-pro/commit/b1e9dfe51dde1b4eb88bd5aa406e662d52458021))
+
+
+
+## [21.4.1](https://github.com/growingio/gio-design-pro/compare/v21.4.0...v21.4.1) (2021-04-14)
+
+
+### Features
+
+* **title-info-card:** add title-info-card component ([7d50c73](https://github.com/growingio/gio-design-pro/commit/7d50c73bab72e5650ce2bc4f65e34280cc4d63af))
+
+
+
 # [21.4.0](https://github.com/growingio/gio-design-pro/compare/v21.3.4...v21.4.0) (2021-04-02)
 
 

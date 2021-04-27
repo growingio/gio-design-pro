@@ -1,16 +1,17 @@
-# [21.4.0](https://github.com/growingio/gio-design-pro/compare/v21.3.4...v21.4.0) (2021-04-02)
+## [21.4.3-alpha.2](https://github.com/growingio/gio-design-pro/compare/v21.4.2...v21.4.3-alpha.2) (2021-04-27)
 
 
 ### Bug Fixes
 
-* **user-picker:** add onShowSegmentChart to show chart in segment card ([#167](https://github.com/growingio/gio-design-pro/issues/167)) ([5088bba](https://github.com/growingio/gio-design-pro/commit/5088bba6bbae223e45ef41888e0552ed3beb35ed))
+* **filter-picker:** 修复日期类型,返回值为数字,以及添加op配置字段 ([#214](https://github.com/growingio/gio-design-pro/issues/214)) ([dcb5a7d](https://github.com/growingio/gio-design-pro/commit/dcb5a7d5fc707f2b2f6a35ed4da320db207aaab3))
+* **operation-menu:** 修复因为gio-design版本升级导致的样式问题 ([#212](https://github.com/growingio/gio-design-pro/issues/212)) ([da7c3e7](https://github.com/growingio/gio-design-pro/commit/da7c3e72fa44086c776dbd399005f733811b9bdc))
 
 
 ### Features
 
-* **peer depend gio-design/icons gio-design/tokens:** set icons and tokens as peer dependencies ([5e37235](https://github.com/growingio/gio-design-pro/commit/5e37235418b4d47f35218110e5b06ca4d0974c83))
-* **tablecard:** add tablecard component ([a8ecaad](https://github.com/growingio/gio-design-pro/commit/a8ecaad7087f7479e1702b52e89d9f26b208758e))
-* **user-picker:** add property disabledValues ([7b2d06d](https://github.com/growingio/gio-design-pro/commit/7b2d06dc96dcd13b4970cd62fbc056cd6e18fea6))
+* **event-picker:** add component event-picker ([41dfcc3](https://github.com/growingio/gio-design-pro/commit/41dfcc318396404acc4c51cefe3fca719bcfb99a))
+* **event-picker:** add component event-picker ([1417fdc](https://github.com/growingio/gio-design-pro/commit/1417fdc7113ae067d980c15dc5dd4fe6a47d400a))
+* **event-selector:** add component event-selector ([efb0fb6](https://github.com/growingio/gio-design-pro/commit/efb0fb67d31f4cf7fbc5590dab5c5d36ce7e199d))
 
 
 
