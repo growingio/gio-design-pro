@@ -84,12 +84,15 @@ const GroupList = (props: Props) => {
       );
       return listNode;
     });
+  /**
+   * 最近使用分组列表，只展示 没有选中状态
+   */
   const renderRecentlyNodes = useMemo(
     () =>
       history?.length > 0 && (
         <React.Fragment key="historyNodes">
           <Group groupKey="history" key="exp-group-history" title="最近使用">
-            {listItems(history, value, 'history')}
+            {listItems(history, [], 'history')}
           </Group>
           <List.Divider key="divider-group-history" />
         </React.Fragment>

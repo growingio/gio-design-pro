@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { isArray } from 'lodash';
@@ -28,7 +29,7 @@ const Template: Story<EventSelectorProps> = (args) => {
   }
   return (
     <div style={{ maxWidth: '288px' }}>
-      <EventSelector {...args} onChange={handleChange} value={select} />
+      <EventSelector {...args} onChange={handleChange} value={select} onClick={(i) => console.log('item clicked', i)} />
     </div>
   );
 };
@@ -41,4 +42,5 @@ export const Multiple = Template.bind({});
 Multiple.args = {
   dataSource: events,
   multiple: true,
+  value: events.slice(0, 10),
 };
