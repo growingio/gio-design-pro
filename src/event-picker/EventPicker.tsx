@@ -140,8 +140,8 @@ const EventPicker = (props: EventPickerProps) => {
   const dataSource = useMemo(() => {
     const filteredData =
       activedTab === 'all' || mergedHideTabNav
-        ? originDataSource
-        : originDataSource.filter((d) => getTabKey(d) === activedTab);
+        ? processedDataSource
+        : processedDataSource.filter((d) => getTabKey(d) === activedTab);
     // const source = isFunction(filter) ? filter(originDataSource) : originDataSource;
 
     return filteredData;
@@ -166,8 +166,8 @@ const EventPicker = (props: EventPickerProps) => {
     const selectEvent = processedDataSource.filter((d) => selected.includes(d.selectKey || ''));
     const newValues = uniqBy([...(selectEvent || [])], 'selectKey');
 
-    const def = xorWith(newValues, value, isEqualEventData);
-    if (def && def.length) {
+    const diff = xorWith(newValues, value, isEqualEventData);
+    if (diff && diff.length) {
       const retNewVal = multiple ? newValues : newValues[0];
       const retOldVal = multiple ? value : value[0];
       onChange?.(retNewVal, retOldVal);
