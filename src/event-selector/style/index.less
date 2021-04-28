@@ -1,0 +1,24 @@
+@import '../../list/style/index.less';
+@import '../../selector/style/index.less';
+@event-selector-prefix-cls: ~'@{component-prefix}-event-selector';
+.@{event-selector-prefix-cls} {
+  &.@{selector-prefix-cls} {
+    max-width: 100%;
+    width: fit-content;
+  }
+
+  &-dropdown {
+    width: 366px;
+  }
+  .inner-input-wrap {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: inherit;
+    max-width: 100%;
+    .icon {
+      margin-right: 12px;
+    }
+  }
+}

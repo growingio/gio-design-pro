@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { isArray } from 'lodash';
 import Docs from './EventSelector.mdx';
 import { EventSelector, EventSelectorProps } from './index';
 import { events } from './__tests__/data';
+import { EventData } from '../event-picker/interfaces';
 
 export default {
   title: 'Business Components/EventSelector',
@@ -14,9 +16,29 @@ export default {
   },
 } as Meta;
 
-const Template: Story<EventSelectorProps> = (args) => <EventSelector {...args} />;
+const Template: Story<EventSelectorProps> = (args) => {
+  const [select, setSelect] = useState<EventData[]>(isArray(args.value) ? args.value : []);
+
+  function handleChange(newVal: any, _: any) {
+    // eslint-disable-next-line no-console
+    console.log('picker changed,new value is', newVal, _);
+    if (newVal) {
+      setSelect(isArray(newVal) ? newVal : [newVal]);
+    }
+  }
+  return (
+    <div style={{ maxWidth: '288px' }}>
+      <EventSelector {...args} onChange={handleChange} value={select} />
+    </div>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
   dataSource: events,
+};
+export const Multiple = Template.bind({});
+Multiple.args = {
+  dataSource: events,
+  multiple: true,
 };

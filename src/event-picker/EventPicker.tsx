@@ -32,6 +32,7 @@ const EventPicker = (props: EventPickerProps) => {
     onChange,
     onSelect,
     onClick,
+    onCancel,
     detailVisibleDelay = 600,
     getTabKey = getEventType,
     defaultKeyword,
@@ -219,6 +220,7 @@ const EventPicker = (props: EventPickerProps) => {
       onShowEventChart={onShowEventChart}
       fetchDetailData={fetchDetailData}
       detailVisibleDelay={detailVisibleDelay}
+      onCancel={onCancel}
       // onMouseEnter={handleItemMouseEnter}
       // onMouseLeave={handleItemMouseLeave}
     />

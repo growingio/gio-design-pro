@@ -116,6 +116,11 @@ export interface EventPickerProps
    * 列表项点击的回调
    */
   onClick?: (e: EventData) => void;
+
+  /**
+   * 多选取消按钮点击的回调
+   */
+  onCancel?: () => void;
 }
 
 export interface EventPickerPreviewProps extends BaseProps, ListItemPreviewEventProps {
