@@ -7,6 +7,7 @@ import Selector from '../selector';
 import { EventData } from '../event-picker/interfaces';
 import { withSelectKey } from '../event-picker/helper';
 import { EventPicker } from '../event-picker';
+import './style';
 
 const EventSelector = ({
   borderless = false,
@@ -60,6 +61,10 @@ const EventSelector = ({
     onSelect?.(item);
     setDropdownVisibleInner(false);
   };
+  const handleCancel = () => {
+    setDropdownVisibleInner(false);
+    pickerRestProps.onCancel?.();
+  };
   const dropdownRender = () => (
     <EventPicker
       className={`${clsPrifx}-dropdown`}
@@ -69,6 +74,7 @@ const EventSelector = ({
       dataSource={dataSource}
       onChange={handleValueChange}
       onSelect={handleSelect}
+      onCancel={handleCancel}
     />
   );
   const inputRender = () => (
