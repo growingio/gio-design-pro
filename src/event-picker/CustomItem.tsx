@@ -53,6 +53,7 @@ export const CustomItem: React.FC<Props> = (props) => {
     multiple,
     detailVisibleDelay = 600,
     onCheckboxChange,
+    onClick,
     onShowEventChart,
     previewCustomRender,
     fetchDetailData,
@@ -65,8 +66,10 @@ export const CustomItem: React.FC<Props> = (props) => {
   }, [dataSource, value]);
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
-    onCheckboxChange?.(dataSource, e.target.checked);
   };
+  useEffect(() => {
+    onCheckboxChange?.(dataSource, checked);
+  }, [checked]);
   const [detailVisible, setDetailVisible] = useState(false);
   const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
     setDetailVisible(visible);
@@ -82,15 +85,18 @@ export const CustomItem: React.FC<Props> = (props) => {
     setHidden(false);
     debounceSetHidden.cancel();
     rest.onMouseEnter?.(e);
-    // console.log('handleItemMouseEnter', dataSource.name);
   };
   const handleItemMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
-    // setHoveredNodeValue(undefined);
     debounceSetDetailVisible.cancel();
     debounceSetHidden(true);
-    // setDetailVisible(false);
     rest.onMouseLeave?.(e);
-    // console.log('handleItemMouseLeave', dataSource.name);
+  };
+  const handleListItemClick: ListItemProps['onClick'] = (e) => {
+    // e.stopPropagation();
+    if (multiple) {
+      setChecked((p) => !p);
+    }
+    onClick?.(e);
   };
   return (
     <List.Item
@@ -99,6 +105,7 @@ export const CustomItem: React.FC<Props> = (props) => {
       ellipsis={false}
       onMouseEnter={handleItemMouseEnter}
       onMouseLeave={handleItemMouseLeave}
+      onClick={handleListItemClick}
     >
       <Tooltip overlay={<div>{dataSource.disabledTips ?? '暂不可用'}</div>} disabled={!disabled}>
         <>
