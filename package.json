@@ -30,6 +30,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@gio-design/utils": "^21.4.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "lodash": "^4.17.20",
