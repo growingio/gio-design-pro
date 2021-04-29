@@ -37,6 +37,7 @@ const Template: Story<EventSelectorProps> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   dataSource: events,
+  size: 'small',
 };
 export const Multiple = Template.bind({});
 Multiple.args = {

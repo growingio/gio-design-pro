@@ -64,11 +64,9 @@ export const CustomItem: React.FC<Props> = (props) => {
   useEffect(() => {
     setChecked(dataSource.selectKey === value);
   }, [dataSource, value]);
-  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked);
-  };
+
   useEffect(() => {
-    onCheckboxChange?.(dataSource, checked);
+    if (multiple) onCheckboxChange?.(dataSource, checked);
   }, [checked]);
   const [detailVisible, setDetailVisible] = useState(false);
   const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
@@ -92,11 +90,14 @@ export const CustomItem: React.FC<Props> = (props) => {
     rest.onMouseLeave?.(e);
   };
   const handleListItemClick: ListItemProps['onClick'] = (e) => {
-    // e.stopPropagation();
+    e.stopPropagation();
     if (multiple) {
       setChecked((p) => !p);
     }
     onClick?.(e);
+  };
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setChecked(e.target.checked);
   };
   return (
     <List.Item
