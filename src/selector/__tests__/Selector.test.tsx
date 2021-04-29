@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Selector from '../Selector';
+import { ButtonMode } from '../Selector.stories';
 
 const defaultProps = {
   dropdownRender: () => <div>custom dropdown</div>,
@@ -35,5 +36,17 @@ describe('Selector', () => {
   it('renders with size', () => {
     const { container } = render(<Selector {...defaultProps} size="large" />);
     expect(container.getElementsByClassName('gio-selector--large')).toHaveLength(1);
+  });
+
+  it('renders value in button mode', () => {
+    render(<ButtonMode {...ButtonMode.args} />);
+    expect(screen.getByText(/value/i)).toBeDefined();
+  });
+
+  it('renders placeholder in button mode', () => {
+    render(
+      <ButtonMode {...ButtonMode.args} valueRender={() => undefined as React.ReactNode} placeholder="placeholder" />
+    );
+    expect(screen.getByText(/placeholder/i)).toBeDefined();
   });
 });

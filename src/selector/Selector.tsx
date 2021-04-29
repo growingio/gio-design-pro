@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Dropdown } from '@gio-design/components';
+import { Button, Dropdown } from '@gio-design/components';
 import { UpFilled, DownFilled } from '@gio-design/icons';
 import useControlledState from '@gio-design/components/es/utils/hooks/useControlledState';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
@@ -22,6 +22,8 @@ function Selector({
   overlayClassName,
   getContainer,
   size: customizeSize,
+  mode = 'input',
+  icon,
 }: SelectorProps) {
   const prefixCls = usePrefixCls('selector');
   const size = customizeSize || useSize();
@@ -46,6 +48,31 @@ function Selector({
 
   const item = valueRender();
 
+  function renderChild() {
+    if (mode === 'button') {
+      return (
+        <Button type="secondary" icon={icon} size={size} disabled={disabled}>
+          {item || placeholder}
+        </Button>
+      );
+    }
+
+    return (
+      <div className={cls} style={style}>
+        {item ? (
+          <span className={`${prefixCls}__item`}>{item}</span>
+        ) : (
+          <span className={`${prefixCls}__placeholder`}>{placeholder}</span>
+        )}
+        {visible ? (
+          <UpFilled size="14px" className={`${prefixCls}__arrow`} />
+        ) : (
+          <DownFilled size="14px" className={`${prefixCls}__arrow`} />
+        )}
+      </div>
+    );
+  }
+
   return (
     <Dropdown
       trigger={['click']}
@@ -61,15 +88,7 @@ function Selector({
       overlayClassName={overlayCls}
       getContainer={getContainer}
     >
-      <div className={cls} style={style}>
-        {!item && <span className={`${prefixCls}__placeholder`}>{placeholder}</span>}
-        {item && <span className={`${prefixCls}__item`}>{item}</span>}
-        {visible ? (
-          <UpFilled size="14px" className={`${prefixCls}__arrow`} />
-        ) : (
-          <DownFilled size="14px" className={`${prefixCls}__arrow`} />
-        )}
-      </div>
+      {renderChild()}
     </Dropdown>
   );
 }

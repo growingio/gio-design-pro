@@ -4,5 +4,14 @@ module.exports = {
     '@babel/plugin-transform-modules-commonjs',
     '@babel/transform-runtime',
   ],
-  presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: 'defaults',
+      },
+    ],
+    '@babel/preset-react',
+    '@babel/preset-typescript',
+  ],
 };
