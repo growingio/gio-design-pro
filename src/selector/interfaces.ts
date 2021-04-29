@@ -1,4 +1,5 @@
 import React from 'react';
+import { SizeType } from '@gio-design/utils/es/design-context';
 import { BaseProps } from '../utils/interfaces';
 
 export interface SelectorProps extends BaseProps {
@@ -32,4 +33,8 @@ export interface SelectorProps extends BaseProps {
   valueRender: () => React.ReactNode;
 
   overlayClassName?: string;
+  /**
+   * 组件输入框的尺寸
+   */
+  size?: SizeType;
 }

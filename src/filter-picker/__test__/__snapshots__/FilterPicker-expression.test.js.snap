@@ -14,7 +14,7 @@ exports[`expression test should match Expression snapshot. 1`] = `
       1
     </div>
     <div
-      class="gio-selector gio-selector--borderless gio-property-selector"
+      class="gio-selector gio-selector--middle gio-selector--borderless gio-property-selector"
       style="cursor:pointer"
     >
       <span

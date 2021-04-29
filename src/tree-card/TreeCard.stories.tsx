@@ -95,6 +95,7 @@ export const DisplayModeTree = () => {
             customIsLeaf: (record) => (record.children?.length === undefined ? true : record.children?.length === 0),
           },
           {
+            title: '自定义分类',
             data: filteredData,
             customIcon: () => <FolderOutlined />,
             customIsLeaf: (record) => (record.children?.length === undefined ? true : record.children?.length === 0),

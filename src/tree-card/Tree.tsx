@@ -53,18 +53,18 @@ function Tree<RecordType>({
     );
   };
 
-  const recursionRenderTreeNode = (childrenTredataeNode: RecordType[]): React.ReactNode =>
-    childrenTredataeNode.map((item) => {
-      const _childrenTreeNode = get(item, childrenField);
+  const recursionRenderTreeNode = (childrenTreeDataNode: RecordType[]): React.ReactNode =>
+    childrenTreeDataNode.map((item) => {
+      const _childrenTreeNode = get(item, childrenField) || [];
       const treeNodeKey = isFunction(customKey) ? customKey(item) : get(item, customKey);
-      if (_childrenTreeNode?.length > 0 && !customIsLeaf(item)) {
-        return (
-          <GioTree.TreeNode key={treeNodeKey} title={renderTreeNodeTitle(item)} isLeaf={false}>
-            {recursionRenderTreeNode(_childrenTreeNode as RecordType[])}
-          </GioTree.TreeNode>
-        );
+      if (customIsLeaf(item)) {
+        return <GioTree.TreeNode key={treeNodeKey} title={renderTreeNodeTitle(item)} isLeaf />;
       }
-      return <GioTree.TreeNode key={treeNodeKey} title={renderTreeNodeTitle(item)} isLeaf />;
+      return (
+        <GioTree.TreeNode key={treeNodeKey} title={renderTreeNodeTitle(item)} isLeaf={false}>
+          {recursionRenderTreeNode(_childrenTreeNode as RecordType[])}
+        </GioTree.TreeNode>
+      );
     });
 
   return (

@@ -6,8 +6,8 @@ import DateAttrSelect from './components/DateAttrSelect';
 import StringAttrSelect from './components/StringAttrSelect/index';
 import Footer from '../../../Footer';
 import './attrSelect.less';
-import { FilterPickerContext } from '../../../../FilterPicker';
 import { attributeValue, StringValue, NumberValue, DateValue, FilterValueType } from './interfaces';
+import { operationsOptionType } from '../../../../interfaces';
 
 interface FilterAttrOverlayProps {
   valueType: attributeValue;
@@ -17,15 +17,15 @@ interface FilterAttrOverlayProps {
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
+  operationsOption?: operationsOptionType;
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
-  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey } = props;
+  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey, operationsOption } = props;
   const [operationValue, setValue] = useState<StringValue | NumberValue | DateValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
 
-  const { operationsOption } = React.useContext(FilterPickerContext);
   useEffect(() => {
     if (valueType === 'date') {
       // 此处是为了处理，日期类型时，包含当天，选项('>=', '<=')不在selectOptionMap里面
@@ -126,9 +126,13 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       <div>
         <div className="filter-attr_select-title">{titleMap[valueType] || '字符串类型'}</div>
         <Select
-          options={selectOptionMap?.[valueType]?.filter((opItem: any) =>
-            operationsOption?.[valueType].includes(opItem.value)
-          )}
+          options={
+            operationsOption
+              ? selectOptionMap?.[valueType]?.filter((opItem: any) =>
+                  operationsOption?.[valueType].includes(opItem.value)
+                )
+              : selectOptionMap?.[valueType]
+          }
           value={operationValue}
           size="middle"
           style={{ width: '100%', marginTop: '16px' }}

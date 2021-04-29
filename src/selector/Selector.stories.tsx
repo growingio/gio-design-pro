@@ -6,7 +6,7 @@ import Selector, { SelectorProps } from '.';
 import './style';
 
 export default {
-  title: 'Abstract Components/Selector',
+  title: 'Selectors/Selector',
   component: Selector,
 } as Meta;
 
