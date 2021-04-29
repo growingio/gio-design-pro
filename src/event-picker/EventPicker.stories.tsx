@@ -23,11 +23,17 @@ export default {
 const Template: Story<EventPickerProps> = (args) => {
   const [select, setSelect] = useState<EventData[]>(isArray(args.value) ? args.value : []);
   function handleSelect(v: EventData | EventData[]) {
+    console.log('handleSelect', v);
     setSelect(isArray(v) ? v : [v]);
   }
-  function handleChange(newVal: any, _: any) {
+  function handleChange(newVal: any, old: any) {
     // eslint-disable-next-line no-console
-    console.log('picker changed,new value is', newVal);
+    console.log('picker changed,new value is', newVal, old);
+  }
+
+  function handleClick(newVal: any) {
+    // eslint-disable-next-line no-console
+    console.log('handleClick', newVal);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const panelFooter = (tab: string, _: EventData[]) => {
@@ -50,7 +56,14 @@ const Template: Story<EventPickerProps> = (args) => {
           ))}
         </ul>
       </div>
-      <EventPicker {...args} onSelect={handleSelect} onChange={handleChange} value={select} panelFooter={panelFooter} />
+      <EventPicker
+        {...args}
+        onSelect={handleSelect}
+        onChange={handleChange}
+        value={select}
+        panelFooter={panelFooter}
+        onClick={handleClick}
+      />
     </div>
   );
 };
@@ -58,6 +71,7 @@ const Template: Story<EventPickerProps> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   dataSource: events,
+  // onClick: undefined,
 };
 
 const defaultSelect = events.slice(0, 5);

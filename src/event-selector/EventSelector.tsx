@@ -11,6 +11,7 @@ import './style';
 
 const EventSelector = ({
   borderless = false,
+  size,
   disabled,
   placeholder = '选择属性',
   dropdownVisible,
@@ -87,6 +88,7 @@ const EventSelector = ({
   return (
     <>
       <Selector
+        size={size}
         className={selectorCls}
         borderless={borderless}
         disabled={disabled}
