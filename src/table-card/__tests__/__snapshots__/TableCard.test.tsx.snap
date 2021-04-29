@@ -15,9 +15,6 @@ exports[`<TableCard/> test should be stable 1`] = `
     >
       这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题
     </div>
-    <hr
-      class="gio-table-card-divider"
-    />
     <div
       class="gio-tabs gio-tabs-line gio-tabs-lg"
     >
@@ -56,6 +53,9 @@ exports[`<TableCard/> test should be stable 1`] = `
           class="gio-tabs-tabpane gio-tabs-tabpane-active"
           style=""
         >
+          <hr
+            class="gio-table-card-divider gio-table-card-divider-withTabs"
+          />
           <div
             class="gio-table-card-opertor"
           >
@@ -1154,6 +1154,9 @@ exports[`<TableCard/> test should be stable 1`] = `
           class="gio-tabs-tabpane"
           style="display: none;"
         >
+          <hr
+            class="gio-table-card-divider gio-table-card-divider-withTabs"
+          />
           <div
             class="gio-table-card-opertor"
           >
