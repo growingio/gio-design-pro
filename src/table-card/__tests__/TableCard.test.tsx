@@ -61,4 +61,11 @@ describe('<TableCard/> test', () => {
     fireEvent.click(container.getElementsByClassName('gio-table-card-select-close')[0]);
     expect(onChange).toBeCalledWith([], []);
   });
+
+  test('divider display logic', () => {
+    const { container, rerender } = render(getTableCard(getTableCardConfig(['1'])));
+    expect(container.getElementsByClassName('gio-table-card-divider')).toHaveLength(2);
+    rerender(getTableCard({ ...getTableCardConfig(['1']), title: undefined, showTabs: false }));
+    expect(container.getElementsByClassName('gio-table-card-divider')).toHaveLength(0);
+  });
 });

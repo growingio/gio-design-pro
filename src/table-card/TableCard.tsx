@@ -23,6 +23,9 @@ function TableCard<RecordType>({
     const onChange = table?.rowSelection?.onChange;
     return (
       <>
+        {(!isNil(title) || showTabs) && (!isNil(searchBar) || !isNil(buttons) || selectedRowKeys?.length !== 0) && (
+          <hr className={classNames(`${prefixCls}-divider`, { [`${prefixCls}-divider-withTabs`]: showTabs })} />
+        )}
         <div
           className={classNames({
             [`${prefixCls}-opertor`]: !isNil(searchBar) || !isNil(buttons) || selectedRowKeys?.length !== 0,
@@ -65,7 +68,6 @@ function TableCard<RecordType>({
     <div className={classNames(prefixCls, className)} style={style}>
       {title && <div className={`${prefixCls}-title`}>{title}</div>}
       {title && description && <div className={`${prefixCls}-description`}>{description}</div>}
-      {showTabs && <hr className={`${prefixCls}-divider`} />}
       <Tabs type="line" className={classNames({ [`${prefixCls}-hide-tabNav`]: !showTabs })}>
         {tabs.map((tab, index) => (
           <Tabs.Pane tab={tab.name} key={index.toString()}>
