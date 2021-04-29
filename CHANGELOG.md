@@ -1,17 +1,36 @@
+## [21.4.4-alpha.2](https://github.com/growingio/gio-design-pro/compare/v21.4.3...v21.4.4-alpha.2) (2021-04-29)
+
+
+### Bug Fixes
+
+* **event-picker:** fix bug: cant trigger onChange error ([a3ae729](https://github.com/growingio/gio-design-pro/commit/a3ae7293c7a065b18f31d863fbe17b8b704bab8e))
+* **event-picker:** fix:PI-33185 ([f97b4ad](https://github.com/growingio/gio-design-pro/commit/f97b4ad09f03266baba4e531d1921e18863c7f0a))
+* **event-selector:** bind onCancel ([0da8232](https://github.com/growingio/gio-design-pro/commit/0da8232cfcb4629d5fa0f16e6799ae39e2fe2d9a))
+* **property-picker:** change picker width 366px ([64f0531](https://github.com/growingio/gio-design-pro/commit/64f0531a369228d5c64d5d1d0c9fe10a82031914))
+
+
+### Features
+
+* **event-picker:** add component event-picker ([41dfcc3](https://github.com/growingio/gio-design-pro/commit/41dfcc318396404acc4c51cefe3fca719bcfb99a))
+* **event-picker:** add component event-picker ([1417fdc](https://github.com/growingio/gio-design-pro/commit/1417fdc7113ae067d980c15dc5dd4fe6a47d400a))
+* **event-selector:** add component event-selector ([efb0fb6](https://github.com/growingio/gio-design-pro/commit/efb0fb67d31f4cf7fbc5590dab5c5d36ce7e199d))
+
+
+
 ## [21.4.3](https://github.com/growingio/gio-design-pro/compare/v21.4.2...v21.4.3) (2021-04-29)
 
 
 ### Bug Fixes
 
-* **filter-picker:** filter-picker添加operationsOption字段 ([#223](https://github.com/growingio/gio-design-pro/issues/223)) ([4c9456e](https://github.com/growingio/gio-design-pro/commit/4c9456e1bb4211c1d33fe07393d3edbe6ec44dfa))
 * **filter-picker:** 修复日期类型,返回值为数字,以及添加op配置字段 ([#214](https://github.com/growingio/gio-design-pro/issues/214)) ([dcb5a7d](https://github.com/growingio/gio-design-pro/commit/dcb5a7d5fc707f2b2f6a35ed4da320db207aaab3))
-* **operation-menu:** 修复因为gio-design版本升级导致的样式问题 ([#212](https://github.com/growingio/gio-design-pro/issues/212)) ([da7c3e7](https://github.com/growingio/gio-design-pro/commit/da7c3e72fa44086c776dbd399005f733811b9bdc))
+* **filter-picker:** filter-picker添加operationsOption字段 ([#223](https://github.com/growingio/gio-design-pro/issues/223)) ([4c9456e](https://github.com/growingio/gio-design-pro/commit/4c9456e1bb4211c1d33fe07393d3edbe6ec44dfa))
 * **operation-menu:** 默认button类型错误 ([86a07a5](https://github.com/growingio/gio-design-pro/commit/86a07a5551ba55ec23efd88721f8700fc1768ae3))
+* **operation-menu:** 修复因为gio-design版本升级导致的样式问题 ([#212](https://github.com/growingio/gio-design-pro/issues/212)) ([da7c3e7](https://github.com/growingio/gio-design-pro/commit/da7c3e72fa44086c776dbd399005f733811b9bdc))
 * **selector:** support size context for selector component ([#228](https://github.com/growingio/gio-design-pro/issues/228)) ([46d28c6](https://github.com/growingio/gio-design-pro/commit/46d28c61493493e18bf5f3f2ed65062a6ea5f148))
 * **table-card:** fix divider style error ([4891af7](https://github.com/growingio/gio-design-pro/commit/4891af7346f540c0e3c629a594eeae7fdd1addc3))
 * **tooltip-button:** 修复tooltip disabled状态颜色的问题 ([#226](https://github.com/growingio/gio-design-pro/issues/226)) ([1aba7c3](https://github.com/growingio/gio-design-pro/commit/1aba7c3f3a6f25b482cf07c5ced3c7e913f2ebe5))
-* **tree-card:** fix style error ([#225](https://github.com/growingio/gio-design-pro/issues/225)) ([36b28fc](https://github.com/growingio/gio-design-pro/commit/36b28fc998baa163a3e03219576be53bdb6b4b65))
 * **tree-card:** 修复tree card组件isLeaf判断的问题 ([#215](https://github.com/growingio/gio-design-pro/issues/215)) ([c93a7eb](https://github.com/growingio/gio-design-pro/commit/c93a7eb33e8826d98c7e48e7688f77cfc88fc430))
+* **tree-card:** fix style error ([#225](https://github.com/growingio/gio-design-pro/issues/225)) ([36b28fc](https://github.com/growingio/gio-design-pro/commit/36b28fc998baa163a3e03219576be53bdb6b4b65))
 
 
 ### Features
