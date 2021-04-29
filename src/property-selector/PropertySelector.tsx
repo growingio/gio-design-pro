@@ -13,6 +13,7 @@ import { promisify } from './util';
 const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   const {
     borderless = true,
+    size,
     disabled,
     placeholder = '选择属性',
     dropdownVisible,
@@ -94,6 +95,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   return (
     <>
       <Selector
+        size={size}
         className={selectorCls}
         borderless={borderless}
         disabled={disabled}
