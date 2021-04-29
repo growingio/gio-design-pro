@@ -30,16 +30,21 @@ const FilterPicker = (props: FilterPickerProps) => {
     recentlyStorePrefix,
     fetchDetailData,
     operationsOption,
+    hasVisible = false,
+    visible,
+    onVisibleChange,
   } = props;
-  const [visible, setVisible] = useState(false);
+  const [localVisible, setLocalVisible] = useState(false);
   const visibleChange = (v: boolean) => {
-    setVisible(v);
+    setLocalVisible(v);
   };
   const cancel = () => {
-    setVisible(false);
+    setLocalVisible(false);
+    hasVisible && onVisibleChange?.(false);
   };
   const submit = (v: FilterValueType[]) => {
-    setVisible(false);
+    setLocalVisible(false);
+    hasVisible && onVisibleChange?.(false);
     onConfirm({ ...filter, exprs: v });
   };
   return (
@@ -47,7 +52,7 @@ const FilterPicker = (props: FilterPickerProps) => {
       value={{ fetchDetailData, operationsOption: { ...defaultOperationsOption, ...operationsOption } }}
     >
       <Dropdown
-        visible={visible}
+        visible={hasVisible ? visible : localVisible}
         trigger={['click']}
         onVisibleChange={visibleChange}
         overlay={
@@ -66,7 +71,7 @@ const FilterPicker = (props: FilterPickerProps) => {
         getTooltipContainer={getTooltipContainer}
         destroyTooltipOnHide
       >
-        {children || <Button icon={<FilterOutlined />} size="small" type={!visible ? 'link' : 'secondary'} />}
+        {children || <Button icon={<FilterOutlined />} size="small" type={!localVisible ? 'link' : 'secondary'} />}
       </Dropdown>
     </FilterPickerContext.Provider>
   );
