@@ -87,4 +87,5 @@ WithoutTabNav.args = {
   dataSource: events,
   multiple: true,
   hideTabNav: true,
+  showPreview: false,
 };

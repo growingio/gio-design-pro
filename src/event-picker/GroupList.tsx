@@ -33,6 +33,10 @@ export interface Props extends Omit<GroupItemsProps, 'dataSource' | 'keyPrefix'>
    * 获取详情的方法
    */
   fetchDetailData?: (event: EventData) => Promise<EventData>;
+  /**
+   * 是否显示preview 弹出面板
+   */
+  showPreview?: boolean;
 }
 const GroupList = (props: Props) => {
   const {
@@ -80,6 +84,7 @@ const GroupList = (props: Props) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           onMouseEnter={(_) => rest.onMouseEnter?.(data)}
           onMouseLeave={() => rest.onMouseLeave?.()}
+          showPreview={rest.showPreview}
         />
       );
       return listNode;

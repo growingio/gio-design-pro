@@ -15,6 +15,10 @@ export interface Props extends ListItemPreviewEventProps, Omit<ListItemProps, 'c
   value?: string;
   multiple?: boolean;
   onCheckboxChange?: (data: EventData, checked: boolean) => void;
+  /**
+   * 是否显示preview 弹出面板
+   */
+  showPreview?: boolean;
   // onMouseEnter?: (e: React.MouseEvent, data: EventData) => void;
   // onMouseLeave?: (e: React.MouseEvent) => void;
 }
@@ -57,6 +61,7 @@ export const CustomItem: React.FC<Props> = (props) => {
     onShowEventChart,
     previewCustomRender,
     fetchDetailData,
+    showPreview,
     ...rest
   } = props;
 
@@ -124,7 +129,7 @@ export const CustomItem: React.FC<Props> = (props) => {
               {renderKeyword(name as string, keyword || '', true)}
             </span>
           </div>
-          {detailVisible && (
+          {showPreview && detailVisible && (
             <Preview
               style={{ display: hidden ? 'none' : 'block' }}
               dataSource={dataSource}

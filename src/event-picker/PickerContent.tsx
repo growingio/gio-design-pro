@@ -75,6 +75,10 @@ interface Props extends GroupListItemEvent {
    */
   fetchDetailData?: (event: EventData) => Promise<EventData>;
   /**
+   * 是否显示preview 弹出面板
+   */
+  showPreview?: boolean;
+  /**
    * 无数据时的展示信息
    */
   emptyPrompt?: EmptyPromptProps;
