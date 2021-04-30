@@ -13,7 +13,7 @@ const EventSelector = ({
   borderless = false,
   size,
   disabled,
-  placeholder = '选择属性',
+  placeholder = '请选择',
   dropdownVisible,
   onDropdownVisibleChange,
   className,
@@ -78,13 +78,14 @@ const EventSelector = ({
       onCancel={handleCancel}
     />
   );
-  const inputRender = () => (
-    <Tooltip disabled={!textOverflow} title={inputValueText}>
-      <span className="inner-input-wrap" ref={inputValueRef}>
-        <span>{inputValueText}</span>
-      </span>
-    </Tooltip>
-  );
+  const inputRender = () =>
+    inputValueText && (
+      <Tooltip disabled={!textOverflow} title={inputValueText}>
+        <span className="inner-input-wrap" ref={inputValueRef}>
+          <span>{inputValueText}</span>
+        </span>
+      </Tooltip>
+    );
   return (
     <>
       <Selector

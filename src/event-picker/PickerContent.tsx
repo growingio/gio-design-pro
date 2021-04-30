@@ -213,7 +213,11 @@ const PickerContent = (props: Props) => {
     setSelect([]);
   }
   if (valueKeys.length === 0 && dataSource.length === 0) {
-    return <EmptyPrompt {...(emptyPrompt || {})} />;
+    return (
+      <div style={{ padding: '8px' }}>
+        <EmptyPrompt {...(emptyPrompt || {})} />
+      </div>
+    );
   }
   return (
     <>

@@ -1,15 +1,13 @@
 @import '../../list/style/index.less';
 @import '../../selector/style/index.less';
 @event-selector-prefix-cls: ~'@{component-prefix}-event-selector';
+@event-selector-dropdown-cls: ~'@{component-prefix}-event-selector-dropdown';
 .@{event-selector-prefix-cls} {
-  &.@{selector-prefix-cls} {
-    max-width: 100%;
-    width: fit-content;
-  }
+  // &.@{dropdown-prefix-cls} {
+  //   max-width: 100%;
+  //   width: fit-content;
+  // }
 
-  &-dropdown {
-    width: 366px;
-  }
   .inner-input-wrap {
     display: inline-block;
     overflow: hidden;
@@ -21,4 +19,8 @@
       margin-right: 12px;
     }
   }
+}
+.@{event-selector-dropdown-cls} {
+  max-width: 100%;
+  width: fit-content;
 }
