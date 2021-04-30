@@ -87,5 +87,12 @@ WithoutTabNav.args = {
   dataSource: events,
   multiple: true,
   hideTabNav: true,
+  // showPreview: false,
+};
+export const Empty = Template.bind({});
+Empty.args = {
+  dataSource: [],
+  multiple: true,
+  // hideTabNav: true,
   showPreview: false,
 };

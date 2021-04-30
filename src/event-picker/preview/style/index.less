@@ -25,6 +25,9 @@
   cursor: auto;
   .event-preview-card {
     height: 100%;
+    &:hover {
+      box-shadow: 0 0 4px rgb(123 129 156 / 50%);
+    }
   }
   &-inner {
     width: 100%;
@@ -126,5 +129,11 @@
     margin-bottom: 16px;
     border: 1px solid #dfe4ee;
     border-radius: 4px;
+  }
+}
+.hide-tab-nav {
+  .event-preview {
+    height: calc(100% + 56px);
+    top: -56px;
   }
 }
