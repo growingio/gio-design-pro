@@ -1,13 +1,15 @@
-## [21.4.4-alpha.4](https://github.com/growingio/gio-design-pro/compare/v21.4.3...v21.4.4-alpha.4) (2021-04-29)
+## [21.4.4-alpha.6](https://github.com/growingio/gio-design-pro/compare/v21.4.3...v21.4.4-alpha.6) (2021-04-30)
 
 
 ### Bug Fixes
 
+* **event-picker:** add props showPreview ([5fc8384](https://github.com/growingio/gio-design-pro/commit/5fc8384d5e1c1af985d7dfc01e134044e50dd931))
 * **event-picker:** fix bug: cant trigger onChange error ([a3ae729](https://github.com/growingio/gio-design-pro/commit/a3ae7293c7a065b18f31d863fbe17b8b704bab8e))
 * **event-picker:** fix onclick trigger problem ([e76ccd2](https://github.com/growingio/gio-design-pro/commit/e76ccd2b23aa65d36a10dba69789a7436736165a))
 * **event-picker:** fix:PI-33185 ([f97b4ad](https://github.com/growingio/gio-design-pro/commit/f97b4ad09f03266baba4e531d1921e18863c7f0a))
 * **event-selector:** bind onCancel ([0da8232](https://github.com/growingio/gio-design-pro/commit/0da8232cfcb4629d5fa0f16e6799ae39e2fe2d9a))
 * **property-picker:** change picker width 366px ([64f0531](https://github.com/growingio/gio-design-pro/commit/64f0531a369228d5c64d5d1d0c9fe10a82031914))
+* **property-selector:** fix support selector prop size ([05a4ac9](https://github.com/growingio/gio-design-pro/commit/05a4ac93f4abe69f39e353bc66d0ac77dc249631))
 
 
 ### Features
