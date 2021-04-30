@@ -121,6 +121,10 @@ export interface EventPickerProps
    * 多选取消按钮点击的回调
    */
   onCancel?: () => void;
+  /**
+   * 是否显示preview 弹出面板
+   */
+  showPreview?: boolean;
 }
 
 export interface EventPickerPreviewProps extends BaseProps, ListItemPreviewEventProps {

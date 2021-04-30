@@ -41,6 +41,7 @@ const EventPicker = (props: EventPickerProps) => {
     // emptyPrompt,
     onShowEventChart,
     fetchDetailData,
+    showPreview = true,
     ...rest
   } = props;
   const [keyword, setKeyword] = useState(defaultKeyword);
@@ -221,6 +222,7 @@ const EventPicker = (props: EventPickerProps) => {
       fetchDetailData={fetchDetailData}
       detailVisibleDelay={detailVisibleDelay}
       onCancel={onCancel}
+      showPreview={showPreview}
       // onMouseEnter={handleItemMouseEnter}
       // onMouseLeave={handleItemMouseLeave}
     />
