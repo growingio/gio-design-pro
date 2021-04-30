@@ -1,8 +1,9 @@
-## [21.4.4-alpha.6](https://github.com/growingio/gio-design-pro/compare/v21.4.3...v21.4.4-alpha.6) (2021-04-30)
+## [21.4.4-alpha.7](https://github.com/growingio/gio-design-pro/compare/v21.4.3...v21.4.4-alpha.7) (2021-04-30)
 
 
 ### Bug Fixes
 
+* **evemt-selector:** display error when empty ([00584eb](https://github.com/growingio/gio-design-pro/commit/00584eb6e50c935393c2fae8bb8b26199eadb168))
 * **event-picker:** add props showPreview ([5fc8384](https://github.com/growingio/gio-design-pro/commit/5fc8384d5e1c1af985d7dfc01e134044e50dd931))
 * **event-picker:** fix bug: cant trigger onChange error ([a3ae729](https://github.com/growingio/gio-design-pro/commit/a3ae7293c7a065b18f31d863fbe17b8b704bab8e))
 * **event-picker:** fix onclick trigger problem ([e76ccd2](https://github.com/growingio/gio-design-pro/commit/e76ccd2b23aa65d36a10dba69789a7436736165a))
