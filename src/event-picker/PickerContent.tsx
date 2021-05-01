@@ -212,7 +212,10 @@ const PickerContent = (props: Props) => {
   function handleClearAll() {
     setSelect([]);
   }
-  if (valueKeys.length === 0 && dataSource.length === 0) {
+  /**
+   * 多选时要没有选中项再展示空态
+   */
+  if ((!multiple && dataSource.length === 0) || (valueKeys.length === 0 && dataSource.length === 0)) {
     return (
       <div style={{ padding: '8px' }}>
         <EmptyPrompt {...(emptyPrompt || {})} />
