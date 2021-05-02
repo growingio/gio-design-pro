@@ -85,6 +85,7 @@ const GroupList = (props: Props) => {
           onMouseEnter={(_) => rest.onMouseEnter?.(data)}
           onMouseLeave={() => rest.onMouseLeave?.()}
           showPreview={rest.showPreview}
+          onShowEventChart={rest.onShowEventChart}
         />
       );
       return listNode;
