@@ -58,10 +58,10 @@ function Tree<RecordType>({
       const _childrenTreeNode = get(item, childrenField) || [];
       const treeNodeKey = isFunction(customKey) ? customKey(item) : get(item, customKey);
       if (customIsLeaf(item)) {
-        return <GioTree.TreeNode key={treeNodeKey} title={renderTreeNodeTitle(item)} isLeaf />;
+        return <GioTree.TreeNode {...item} key={treeNodeKey} title={renderTreeNodeTitle(item)} isLeaf />;
       }
       return (
-        <GioTree.TreeNode key={treeNodeKey} title={renderTreeNodeTitle(item)} isLeaf={false}>
+        <GioTree.TreeNode {...item} key={treeNodeKey} title={renderTreeNodeTitle(item)} isLeaf={false}>
           {recursionRenderTreeNode(_childrenTreeNode as RecordType[])}
         </GioTree.TreeNode>
       );
