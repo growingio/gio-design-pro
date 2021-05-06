@@ -23,6 +23,7 @@ export default {
 const Template: Story<EventPickerProps> = (args) => {
   const [select, setSelect] = useState<EventData[]>(isArray(args.value) ? args.value : []);
   function handleSelect(v: EventData | EventData[]) {
+    // eslint-disable-next-line no-console
     console.log('handleSelect', v);
     setSelect(isArray(v) ? v : [v]);
   }
