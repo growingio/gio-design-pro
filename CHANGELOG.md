@@ -1,8 +1,11 @@
-## [21.4.4-alpha.9](https://github.com/growingio/gio-design-pro/compare/v21.4.3...v21.4.4-alpha.9) (2021-05-01)
+## [21.4.4-alpha.12](https://github.com/growingio/gio-design-pro/compare/v21.4.3...v21.4.4-alpha.12) (2021-05-06)
 
 
 ### Bug Fixes
 
+* **event-picker:** preview card overflow style error ([da753ce](https://github.com/growingio/gio-design-pro/commit/da753ce14b9195020b4111cf1476510cdb4361dd))
+* 事件选择器,详情,当详情内容过多时,展示错误 ([9c6f821](https://github.com/growingio/gio-design-pro/commit/9c6f8214c104045e6f994bfc2bd2280fd4132a48))
+* event-selector 选择器,onShowEventChart参数缺失 ([70a171d](https://github.com/growingio/gio-design-pro/commit/70a171d86be66af2c2d1402459aa059df8538d8c))
 * **evemt-selector:** display error when empty ([00584eb](https://github.com/growingio/gio-design-pro/commit/00584eb6e50c935393c2fae8bb8b26199eadb168))
 * **event-picker:** add props showPreview ([5fc8384](https://github.com/growingio/gio-design-pro/commit/5fc8384d5e1c1af985d7dfc01e134044e50dd931))
 * **event-picker:** fix :单选时，如果有选中项 不显示搜索为空的 空数据提示 ([d2664bc](https://github.com/growingio/gio-design-pro/commit/d2664bc1da54e1739eed9fac090c9192da477010))
