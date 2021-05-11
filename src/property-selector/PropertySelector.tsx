@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { Popover, usePrefixCls } from '@gio-design/components';
 import classNames from 'classnames';
 import PropertyPicker from './PropertyPicker';
@@ -29,8 +29,8 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(value);
   useEffect(() => {
     setCurrentValue(value);
-  }, [value]);
-
+  }, [value?.id]);
+  const inputText = useMemo(() => currentValue?.name || currentValue?.label, [currentValue]);
   // const [textOverflow, setTextOverflow] = useState(false);
   const inputValueRef = useRef<HTMLSpanElement | null>(null);
   // useEffect(() => {
@@ -85,7 +85,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
               <span className="icon">
                 <IconRender group={currentValue?.groupId} />
               </span>
-              <span>{currentValue?.label}</span>
+              <span>{inputText}</span>
             </span>
           </Popover>
         </>
