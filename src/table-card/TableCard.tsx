@@ -11,6 +11,7 @@ function TableCard<RecordType>({
   style,
   prefixCls: customizePrefixCls,
   tabs,
+  otherTabs,
   title,
   description,
   showTabs = true,
@@ -72,6 +73,12 @@ function TableCard<RecordType>({
         {tabs.map((tab, index) => (
           <Tabs.Pane tab={tab.name} key={index.toString()}>
             {renderTable(tab)}
+          </Tabs.Pane>
+        ))}
+        {otherTabs?.map((tab, index) => (
+          <Tabs.Pane tab={tab.name} key={(tabs.length + index).toString()}>
+            <hr className={`${prefixCls}-divider`} />
+            {tab.content}
           </Tabs.Pane>
         ))}
       </Tabs>
