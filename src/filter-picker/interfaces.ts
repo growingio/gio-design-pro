@@ -14,6 +14,7 @@ export interface FilterPickerProps extends Pick<PropertyPickerProps, 'fetchDetai
   hasVisible?: boolean;
   visible?: boolean;
   onVisibleChange?: (v: boolean) => void;
+  placement?: 'bottomLeft' | 'bottom' | 'bottomRight';
 }
 export type attributeValue = 'string' | 'int' | 'date';
 
