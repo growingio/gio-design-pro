@@ -159,11 +159,6 @@ const EventPicker = (props: EventPickerProps) => {
     return isEqualWith(a, b, (v, o) => v.selectKey === o.selectKey);
   }
   function handleSelect(selected: string[]) {
-    // if (!selected || selected.length < 0) {
-    //   return;
-    // }
-    // const selectEvent = selected
-    //   .map((key) => processedDataSource.find((d) => d.selectKey === key))
     const selectEvent = processedDataSource.filter((d) => selected.includes(d.selectKey || ''));
     const newValues = uniqBy([...(selectEvent || [])], 'selectKey');
 

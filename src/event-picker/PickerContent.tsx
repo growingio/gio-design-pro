@@ -191,7 +191,7 @@ const PickerContent = (props: Props) => {
     if (checked) {
       setSelect((p) => uniq([...p, node.selectKey || '']));
     } else {
-      const idx = select.indexOf(node.selectKey || '', 1);
+      const idx = select.indexOf(node.selectKey || '');
 
       if (idx > -1) {
         setSelect((p) => {
