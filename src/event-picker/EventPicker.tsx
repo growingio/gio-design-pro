@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
