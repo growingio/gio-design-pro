@@ -164,7 +164,7 @@ const EventPicker = (props: EventPickerProps) => {
       .map((k) => processedDataSource.find((d) => d.selectKey === k))
       .filter((v) => !isUndefined(v));
     // const selectEvent = processedDataSource.filter((d) => selected.includes(d.selectKey || ''));
-    const newValues = uniqBy([...(selectEvent || [])], 'selectKey');
+    const newValues = uniqBy([...(selectEvent || [])], 'selectKey') as EventData[];
 
     const diff = xorWith(newValues, value, isEqualEventData);
     if (diff && diff.length) {

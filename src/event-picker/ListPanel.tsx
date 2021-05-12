@@ -16,7 +16,7 @@ const _ListPanel: React.ForwardRefRenderFunction<unknown, React.PropsWithChildre
   const { children, multiple, onCancel, onOK, footer } = props;
   const clsPrefix = usePrefixCls('event-picker');
   const cls = `${clsPrefix}-list-panel`;
-  const wrapElemRef = useRef<HTMLDivElement | undefined>();
+  const wrapElemRef = useRef<HTMLDivElement | null>(null);
   React.useImperativeHandle(ref, () => wrapElemRef?.current);
   return (
     <>
