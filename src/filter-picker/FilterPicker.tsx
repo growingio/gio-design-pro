@@ -37,6 +37,7 @@ const FilterPicker = (props: FilterPickerProps) => {
   const [localVisible, setLocalVisible] = useState(false);
   const visibleChange = (v: boolean) => {
     setLocalVisible(v);
+    onVisibleChange?.(v);
   };
   const cancel = () => {
     setLocalVisible(false);
