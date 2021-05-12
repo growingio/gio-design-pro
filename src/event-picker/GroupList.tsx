@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { EventData } from './interfaces';
 import List from '../list';
 import Group from './Group';
-import { GroupItemsProps } from './ListItem';
+import { GroupItemsProps } from './GroupListItemProps';
 import CustomItem from './CustomItem';
 // 类型与名称映射
 export const nameMap: { [key: string]: string } = {
@@ -54,12 +54,9 @@ const GroupList = (props: Props) => {
   };
   const handleCheckboxChange = (node: EventData, checked: boolean) => {
     rest.onCheckboxChange?.(node, checked);
-    rest.onClick?.(node);
   };
   const handleItemClick = (node: EventData) => {
-    if (!multiple) {
-      rest.onClick?.(node);
-    }
+    rest.onClick?.(node);
   };
   const listItems = (items: EventData[], selectValue: string[], keyPrefix = '') =>
     items.map((d: EventData) => {

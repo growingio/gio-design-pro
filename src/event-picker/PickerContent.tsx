@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { EventData } from './interfaces';
 import ListPanel from './ListPanel';
 import List from './GroupList';
-import { GroupListItemEvent } from './ListItem';
+import { GroupListItemEvent } from './GroupListItemProps';
 import EmptyPrompt, { EmptyPromptProps } from '../empty-prompt';
 
 /**

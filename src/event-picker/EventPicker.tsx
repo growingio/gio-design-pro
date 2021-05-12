@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
-import { isArray, isEqualWith, orderBy, uniqBy, xorWith } from 'lodash';
+import { isArray, isEqualWith, isUndefined, orderBy, uniqBy, xorWith } from 'lodash';
 import { injectPinyinWith } from '@gio-design/utils';
 import { EventData, EventPickerProps, Tab } from './interfaces';
 import { useDebounce } from '../hooks';
@@ -159,7 +159,10 @@ const EventPicker = (props: EventPickerProps) => {
     return isEqualWith(a, b, (v, o) => v.selectKey === o.selectKey);
   }
   function handleSelect(selected: string[]) {
-    const selectEvent = processedDataSource.filter((d) => selected.includes(d.selectKey || ''));
+    const selectEvent = selected
+      .map((k) => processedDataSource.find((d) => d.selectKey === k))
+      .filter((v) => !isUndefined(v));
+    // const selectEvent = processedDataSource.filter((d) => selected.includes(d.selectKey || ''));
     const newValues = uniqBy([...(selectEvent || [])], 'selectKey');
 
     const diff = xorWith(newValues, value, isEqualEventData);
