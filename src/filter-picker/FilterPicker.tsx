@@ -33,6 +33,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     hasVisible = false,
     visible,
     onVisibleChange,
+    placement = 'bottomRight',
   } = props;
   const [localVisible, setLocalVisible] = useState(false);
   const visibleChange = (v: boolean) => {
@@ -68,7 +69,7 @@ const FilterPicker = (props: FilterPickerProps) => {
             recentlyStorePrefix={recentlyStorePrefix}
           />
         }
-        placement="bottomRight"
+        placement={placement}
         getTooltipContainer={getTooltipContainer}
         destroyTooltipOnHide
       >
