@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
@@ -151,6 +151,7 @@ const EventPicker = (props: EventPickerProps) => {
   function onTabNavChange(key: string) {
     setActivedTab(key);
   }
+  useEffect(() => {}, [activedTab]);
   const handleSearch = (query: string) => {
     setKeyword(query);
     setDebouncedKeyword(query);

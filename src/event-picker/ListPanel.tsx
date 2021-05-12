@@ -1,5 +1,5 @@
 import { Button } from '@gio-design/components';
-import React from 'react';
+import React, { useRef } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import classNames from 'classnames';
 
@@ -12,13 +12,15 @@ interface ListPanelProps {
   footer?: React.ReactNode;
   // onSelect: (values: EventData[]) => void;
 }
-const ListPanel: React.FC<ListPanelProps> = (props) => {
+const _ListPanel: React.ForwardRefRenderFunction<unknown, React.PropsWithChildren<ListPanelProps>> = (props, ref) => {
   const { children, multiple, onCancel, onOK, footer } = props;
   const clsPrefix = usePrefixCls('event-picker');
   const cls = `${clsPrefix}-list-panel`;
+  const wrapElemRef = useRef<HTMLDivElement | undefined>();
+  React.useImperativeHandle(ref, () => wrapElemRef?.current);
   return (
     <>
-      <div className={cls}>
+      <div className={cls} ref={wrapElemRef}>
         <div className={classNames([`${cls}__body`, multiple ? 'multi-select' : '', footer ? 'with-footer' : ''])}>
           {children}
         </div>
@@ -46,4 +48,5 @@ const ListPanel: React.FC<ListPanelProps> = (props) => {
     </>
   );
 };
+const ListPanel = React.forwardRef(_ListPanel);
 export default ListPanel;

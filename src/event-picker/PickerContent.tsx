@@ -1,6 +1,7 @@
 import { useLocalStorage } from '@gio-design/utils';
 import { cloneDeep, groupBy, uniq } from 'lodash';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { usePrefixCls } from '@gio-design/components';
 import { EventData } from './interfaces';
 import ListPanel from './ListPanel';
 import List from './GroupList';
@@ -107,6 +108,22 @@ const PickerContent = (props: Props) => {
 
   const valueKeys = useMemo(() => value.map((v) => v?.selectKey || ''), [value]);
   const [select, setSelect] = useState<string[]>(valueKeys);
+  const panelRef = useRef();
+  const panelBodyCls = usePrefixCls('event-picker-list-panel__body');
+  /**
+   * 当切换tab时 将滚动条滚动到顶部
+   */
+  useEffect(() => {
+    if (panelRef.current) {
+      const panelDom = panelRef.current as HTMLDivElement;
+      if (panelDom) {
+        const bodyDiv = panelDom.querySelector(`.${panelBodyCls}`);
+        if (bodyDiv) {
+          bodyDiv.scrollTop = 0;
+        }
+      }
+    }
+  }, [tabKey, keyword, originDataSource, shouldUpdateRecentlyUsed]);
   // const [history, setHistory] = useState<EventData[]>([]);
   const [historyInMemo, setHistoryInMemo] = useState<{
     [key: string]: any[];
@@ -224,7 +241,13 @@ const PickerContent = (props: Props) => {
   }
   return (
     <>
-      <ListPanel multiple={multiple} footer={footer} onCancel={() => handleCancel()} onOK={() => handleOk()}>
+      <ListPanel
+        ref={panelRef}
+        multiple={multiple}
+        footer={footer}
+        onCancel={() => handleCancel()}
+        onOK={() => handleOk()}
+      >
         <List
           {...rest}
           dataSource={{
