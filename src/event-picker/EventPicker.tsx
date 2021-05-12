@@ -151,7 +151,6 @@ const EventPicker = (props: EventPickerProps) => {
   function onTabNavChange(key: string) {
     setActivedTab(key);
   }
-  useEffect(() => {}, [activedTab]);
   const handleSearch = (query: string) => {
     setKeyword(query);
     setDebouncedKeyword(query);
