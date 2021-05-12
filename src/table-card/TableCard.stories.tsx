@@ -49,7 +49,7 @@ const Default: Story<{
     delete config.tabs[1].table.rowSelection;
   }
 
-  return <TableCard {...config} showTabs={showTabs} />;
+  return <TableCard {...config} showTabs={showTabs} otherTabs={[{ name: 'XXX', content: '1' }]} />;
 };
 
 Default.args = {
