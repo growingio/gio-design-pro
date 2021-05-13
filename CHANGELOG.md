@@ -1,4 +1,4 @@
-## [21.5.2-alpha.1](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2-alpha.1) (2021-05-12)
+## [21.5.2-alpha.2](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2-alpha.2) (2021-05-13)
 
 
 ### Bug Fixes
@@ -15,6 +15,7 @@
 * **event-picker:** fix onClick trigger multiple error ([59fdd94](https://github.com/growingio/gio-design-pro/commit/59fdd94bb5c3a2a3e06a44521cf7282e6b14de9f))
 * **event-picker:** fix onclick trigger problem ([adc60f5](https://github.com/growingio/gio-design-pro/commit/adc60f53abc7e7203ab5f0f709265d17d9dc201b))
 * **event-picker:** fix onclick trigger problem ([e76ccd2](https://github.com/growingio/gio-design-pro/commit/e76ccd2b23aa65d36a10dba69789a7436736165a))
+* **event-picker:** fix preview style error ([e5f1208](https://github.com/growingio/gio-design-pro/commit/e5f12083cc07cd19fdcc4bae344a2bf994b7da5c))
 * **event-picker:** fix:PI-33185 ([783837d](https://github.com/growingio/gio-design-pro/commit/783837dbcb149777edbed1bab19b51d816c1fbe4))
 * **event-picker:** fix:PI-33185 ([f97b4ad](https://github.com/growingio/gio-design-pro/commit/f97b4ad09f03266baba4e531d1921e18863c7f0a))
 * **event-picker:** preview card overflow style error ([7f185e0](https://github.com/growingio/gio-design-pro/commit/7f185e0eb8513c121df571da83f6d83fad2204bd))
