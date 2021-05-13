@@ -1,4 +1,4 @@
-## [21.5.2-alpha.2](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2-alpha.2) (2021-05-13)
+## [21.5.2-alpha.4](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2-alpha.4) (2021-05-13)
 
 
 ### Bug Fixes

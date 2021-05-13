@@ -2,6 +2,7 @@
 @import '../../selector/style/index.less';
 @event-selector-prefix-cls: ~'@{component-prefix}-event-selector';
 @event-selector-dropdown-cls: ~'@{component-prefix}-event-selector-dropdown';
+@event-selector-input-tooltip-cls: ~'@{component-prefix}-event-selector-input-tooltip';
 .@{event-selector-prefix-cls} {
   // &.@{dropdown-prefix-cls} {
   //   max-width: 100%;
@@ -23,4 +24,7 @@
 .@{event-selector-dropdown-cls} {
   max-width: 100%;
   // width: fit-content;
+}
+.@{event-selector-input-tooltip-cls} {
+  max-width: 360px;
 }

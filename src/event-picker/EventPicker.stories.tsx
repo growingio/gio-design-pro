@@ -9,6 +9,134 @@ import { EventPicker, EventPickerProps } from './index';
 import { events } from './__tests__/data';
 import { EventData } from './interfaces';
 
+const simpleEvents = [
+  {
+    id: 'nxGKB4pa',
+    name: '现在定义的是 所属页面 中，当前位置 ，限定 元素内容为「U',
+    type: 'simple',
+    action: 'clck',
+    elementId: 'zZDbXYp9',
+    valueType: '',
+    platforms: ['iOS'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'simple-nxGKB4pa',
+    groups: ['unknown'],
+  },
+  {
+    id: 'zqQRjOQo',
+    name: '现在定义的是页面 /UITabBarController 。',
+    type: 'simple',
+    action: 'page',
+    elementId: 'mgGJAmpA',
+    valueType: '',
+    platforms: ['iOS'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'simple-zqQRjOQo',
+    groups: ['unknown'],
+  },
+  {
+    id: 'meQ8NxGn',
+    name: '现在定义的是页面 /UITabBarController/U',
+    type: 'simple',
+    action: 'page',
+    elementId: 'meQ8NxGn',
+    valueType: '',
+    platforms: ['iOS'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'simple-meQ8NxGn',
+    groups: ['unknown'],
+  },
+  {
+    id: 'klGvyjp7',
+    name: '现在定义的是页面 pages/* 。',
+    type: 'simple',
+    action: 'page',
+    elementId: 'WkDyvqQe',
+    valueType: '',
+    platforms: ['minp'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'simple-klGvyjp7',
+    groups: ['unknown'],
+  },
+  {
+    id: 'n1QVdoGy',
+    name: '现在定义的是页面 pages/form/form 。',
+    type: 'simple',
+    action: 'page',
+    elementId: 'klGvBYG7',
+    valueType: '',
+    platforms: ['minp'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'simple-n1QVdoGy',
+    groups: ['unknown'],
+  },
+  {
+    id: 'AbQ343pY',
+    name: '现在定义的是页面 pages/index/index 。',
+    type: 'simple',
+    action: 'page',
+    elementId: 'rRGoj8pm',
+    valueType: '',
+    platforms: ['minp'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'simple-AbQ343pY',
+    groups: ['unknown'],
+  },
+  {
+    id: 'wWDrydGM',
+    name: '现在定义的是页面 pages/popular/popular',
+    type: 'prepared',
+    action: 'page',
+    elementId: 'AVpZqAQK',
+    valueType: '',
+    platforms: ['minp'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'simple-wWDrydGM',
+    groups: ['unknown'],
+  },
+  {
+    id: '9yGOAjQl',
+    name: '页面渲染成功',
+    type: 'custom',
+    action: '',
+    elementId: '',
+    valueType: 'counter',
+    platforms: ['all'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'custom-9yGOAjQl',
+    groups: ['unknown'],
+  },
+  {
+    id: 'oNGzr2Gg',
+    name: 'xihee',
+    type: 'complex',
+    action: '',
+    elementId: '',
+    valueType: '',
+    platforms: ['all'],
+    favorites: false,
+    isComplexDistinct: false,
+    __typename: 'Measurable',
+    selectKey: 'complex-oNGzr2Gg',
+    groups: ['unknown'],
+  },
+];
 export default {
   title: 'Business Components/EventPicker',
   // title: 'EventPicker',
@@ -96,4 +224,45 @@ Empty.args = {
   multiple: true,
   // hideTabNav: true,
   showPreview: false,
+};
+export const DisabledOption = Template.bind({});
+const dataSourceWithDisabledItem = simpleEvents.map((v, index) => ({ ...v, disabled: index % 3 === 1 }));
+DisabledOption.args = {
+  dataSource: dataSourceWithDisabledItem,
+  multiple: true,
+  // hideTabNav: true,
+  showPreview: true,
+};
+const defaultTabs = [
+  { label: '预置指标', value: 'prepared' },
+  { label: '事件', value: 'event' },
+  { label: '计算指标', value: 'measurement' },
+];
+
+// 数据类型映射
+const getEventType = (data: EventData): string => {
+  const { type } = data;
+
+  switch (type) {
+    case 'simple': // 无埋点事件
+    case 'custom': // 埋点事件
+    case 'merged':
+      return 'event';
+    case 'prepared':
+      return 'prepared';
+    case 'complex':
+      return 'measurement';
+
+    default:
+      return 'unknow';
+  }
+};
+export const CustomTabGroup = Template.bind({});
+CustomTabGroup.args = {
+  dataSource: dataSourceWithDisabledItem,
+  multiple: true,
+  getTabKey: getEventType,
+  tabs: defaultTabs,
+  showTabAll: false,
+  // hideTabNav: true,
 };

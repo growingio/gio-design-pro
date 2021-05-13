@@ -80,7 +80,7 @@ const EventSelector = ({
   );
   const inputRender = () =>
     inputValueText && (
-      <Tooltip disabled={!textOverflow} title={inputValueText}>
+      <Tooltip disabled={!textOverflow} title={<div className={`${clsPrifx}-input-tooltip`}>{inputValueText}</div>}>
         <span className="inner-input-wrap" ref={inputValueRef}>
           <span>{inputValueText}</span>
         </span>
