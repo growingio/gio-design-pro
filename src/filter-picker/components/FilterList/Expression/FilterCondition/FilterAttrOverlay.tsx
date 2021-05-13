@@ -46,7 +46,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     if (values[0] === ' ') {
       setValue(op === '!=' ? 'hasValue' : 'noValue');
     }
-  }, [op]);
+  }, [op, valueType]);
 
   const handleChange = (e: any) => {
     setChecked(e.target.checked);
