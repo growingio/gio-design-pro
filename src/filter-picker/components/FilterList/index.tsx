@@ -83,7 +83,12 @@ function FilterList(props: FilterListProps) {
           />
         ))}
       </div>
-      <Button icon={<PlusCircleFilled />} type="text" disabled={filterList.length >= 5} onClick={addFilter}>
+      <Button
+        icon={<PlusCircleFilled />}
+        type="text"
+        disabled={filterList.length >= 5 || filterList.some((ele: FilterValueType) => !ele.values.length)}
+        onClick={addFilter}
+      >
         添加过滤条件
       </Button>
       <Footer
