@@ -18,10 +18,21 @@ interface FilterAttrOverlayProps {
   values: string[];
   exprKey: string;
   operationsOption?: operationsOptionType;
+  numType?: 'positivedecimal' | 'negativedecimal';
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
-  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey, operationsOption } = props;
+  const {
+    valueType,
+    onSubmit,
+    onCancel,
+    op,
+    curryDimensionValueRequest,
+    values,
+    exprKey,
+    operationsOption,
+    numType,
+  } = props;
   const [operationValue, setValue] = useState<StringValue | NumberValue | DateValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
@@ -117,7 +128,9 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
           />
         );
       default:
-        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
+        return (
+          <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} type={numType} />
+        );
     }
   };
 

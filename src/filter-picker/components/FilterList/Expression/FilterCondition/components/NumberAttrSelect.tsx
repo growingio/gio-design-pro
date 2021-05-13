@@ -5,9 +5,10 @@ interface NumberAttrSelectProps {
   attrSelect: string;
   attrChange: (v: any) => void;
   values: string[];
+  type?: 'positivedecimal' | 'negativedecimal';
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
-  const { attrSelect, attrChange, values } = props;
+  const { attrSelect, attrChange, values, type } = props;
   const [value, setValue] = useState<number | string>(values[0] ? parseInt(values[0], 10) : 0);
   const [value1, setValue1] = useState<number | string>(values[0] ? parseInt(values[0], 10) : 0);
   const [value2, setValue2] = useState<number | string>(values[1] ? parseInt(values[1], 10) : 0);
@@ -25,6 +26,21 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     }
   }, [attrSelect]);
 
+  const checkRegExp = (numType: string, v: string) => {
+    const typeLowCase = numType.toLowerCase();
+    // if (typeLowCase === 'integer') {
+    //   return /^(-|\+)?\d?$/.test(`${v}`);
+    // }
+    if (typeLowCase === 'positivedecimal') {
+      return /^\d+(\.\d+)?$/.test(`${v}`);
+    }
+
+    if (typeLowCase === 'negativedecimal') {
+      return /^((-\d+(\.\d+)?)|(0+(\.0+)?))$/.test(`${v}`);
+    }
+    return /^(-|\+)?\d?$/.test(`${v}`);
+  };
+
   const setValue1Number = (val: React.ChangeEvent<HTMLInputElement>) => {
     const v = val.target.value;
     if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
@@ -41,7 +57,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   // 设置数值
   const setNumberValue = (val: React.ChangeEvent<HTMLInputElement>) => {
     const v = val.target.value;
-    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
+    if (v && checkRegExp(type, v)) {
       setValue(v);
       if (v !== '-') {
         attrChange([v]);
@@ -54,7 +70,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   // 设置区间方法
   const setBetweenNumberValue = (val: React.ChangeEvent<HTMLInputElement>) => {
     const v = val.target.value;
-    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
+    if (v && checkRegExp(type, v)) {
       setValue2(v);
       if (v !== '-') {
         attrChange([value1, v]);

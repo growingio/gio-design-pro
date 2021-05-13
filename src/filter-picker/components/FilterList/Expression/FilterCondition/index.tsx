@@ -28,6 +28,7 @@ interface FilterConditionProps {
   values: string[];
   exprKey: string;
   operationsOption?: operationsOptionType;
+  numType?: 'positivedecimal' | 'negativedecimal';
 }
 
 function FilterCondition(props: FilterConditionProps) {
@@ -42,6 +43,7 @@ function FilterCondition(props: FilterConditionProps) {
     values,
     exprKey,
     operationsOption,
+    numType,
   } = props;
   const [visible, setVisible] = useState(false);
   const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
@@ -87,6 +89,7 @@ function FilterCondition(props: FilterConditionProps) {
       values={values}
       exprKey={exprKey}
       operationsOption={{ ...defaultOperationsOption, ...operationsOption }}
+      numType={numType}
     />
   );
 
