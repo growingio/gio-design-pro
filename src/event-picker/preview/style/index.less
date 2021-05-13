@@ -1,3 +1,4 @@
+@import '../../../stylesheets/index.less';
 .event-preview {
   position: absolute;
   top: 0;
@@ -29,7 +30,7 @@
   .event-preview-card {
     min-height: 100%;
     &:hover {
-      box-shadow: 0 0 4px rgb(123 129 156 / 50%);
+      box-shadow: @shadow-card-normal;
     }
   }
   &-inner {
