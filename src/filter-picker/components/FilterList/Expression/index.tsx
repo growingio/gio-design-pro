@@ -109,7 +109,7 @@ function Expression(props: ExpressionProps) {
           operationsOption={operationsOption}
         />
       </div>
-      <Button type="text" icon={<DeleteOutlined />} size="middle" onClick={() => deleteFilterItem(index)} />
+      <Button type="text" icon={<DeleteOutlined size={'16px'}/>} size="middle" onClick={() => deleteFilterItem(index)} />
     </div>
   );
 }
