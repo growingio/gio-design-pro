@@ -20,6 +20,7 @@ function Selector({
   valueRender,
   placeholder,
   overlayClassName,
+  getContainer,
   size: customizeSize,
 }: SelectorProps) {
   const prefixCls = usePrefixCls('selector');
@@ -58,6 +59,7 @@ function Selector({
       visible={visible}
       onVisibleChange={handleVisibleChange}
       overlayClassName={overlayCls}
+      getContainer={getContainer}
     >
       <div className={cls} style={style}>
         {!item && <span className={`${prefixCls}__placeholder`}>{placeholder}</span>}
