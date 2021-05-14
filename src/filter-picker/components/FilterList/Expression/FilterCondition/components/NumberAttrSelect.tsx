@@ -59,9 +59,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     const v = val.target.value;
     if (v && checkRegExp(type, v)) {
       setValue(v);
-      if (v !== '-') {
-        attrChange([v]);
-      }
+      attrChange([v]);
     } else if (!v) {
       setValue(v);
       attrChange(['0']);
@@ -72,9 +70,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     const v = val.target.value;
     if (v && checkRegExp(type, v)) {
       setValue2(v);
-      if (v !== '-') {
-        attrChange([value1, v]);
-      }
+      attrChange([value1, v]);
     } else if (!v) {
       setValue2(v);
       attrChange([value1, '0']);

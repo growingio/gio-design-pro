@@ -81,7 +81,7 @@ function DateAttrSelect(props: DateAttrSelectProps) {
             .valueOf()}`,
         ]);
       } else {
-        attrChange([`${time.valueOf()}`]);
+        attrChange([`${moment(Date.now())}`]);
       }
     }
   }, [attrSelect]);
