@@ -25,6 +25,20 @@ function DateAttrSelect(props: DateAttrSelectProps) {
       : [moment(Date.now()), moment(Date.now())]
   );
 
+  useEffect(() => {
+    setTime(
+      values[0] && parseFloat(values[0]).toString() !== 'NaN' ? moment(parseInt(values[0], 10)) : moment(Date.now())
+    )
+    setTimeRange(
+      values.length && values[0]?.includes?.('abs')
+        ? [
+          moment(parseInt(values[0].split(':')[1].split(',')[0], 10)),
+          moment(parseInt(values[0].split(':')[1].split(',')[1], 10)),
+        ]
+        : [moment(Date.now()), moment(Date.now())]
+    )
+  }, [values])
+
   const checkInitValue = (attr: string, vals: string[]) => {
     if (!vals.length) {
       return true;

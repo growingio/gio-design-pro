@@ -24,7 +24,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     } else {
       attrChange([num]);
     }
-  }, [attrSelect]);
+  }, [attrSelect, values]);
 
   const checkRegExp = (numType: string | undefined, v: string) => {
     const typeLowCase = numType?.toLowerCase();

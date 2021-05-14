@@ -36,7 +36,7 @@ function FilterCondition(props: FilterConditionProps) {
     valueType = 'string',
     onSubmit,
     onCancel,
-    op,
+    op = '=',
     dimensionValueRequest,
     timeRange,
     measurements,
