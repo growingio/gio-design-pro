@@ -1,4 +1,4 @@
-## [21.5.2-alpha.5](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2-alpha.5) (2021-05-13)
+## [21.5.2-alpha.6](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2-alpha.6) (2021-05-14)
 
 
 ### Bug Fixes
@@ -16,23 +16,25 @@
 * **event-picker:** fix onclick trigger problem ([adc60f5](https://github.com/growingio/gio-design-pro/commit/adc60f53abc7e7203ab5f0f709265d17d9dc201b))
 * **event-picker:** fix onclick trigger problem ([e76ccd2](https://github.com/growingio/gio-design-pro/commit/e76ccd2b23aa65d36a10dba69789a7436736165a))
 * **event-picker:** fix preview style error ([e5f1208](https://github.com/growingio/gio-design-pro/commit/e5f12083cc07cd19fdcc4bae344a2bf994b7da5c))
+* **event-picker:** fix some style error ([6bbaa9a](https://github.com/growingio/gio-design-pro/commit/6bbaa9a14b423d26155364d027ea5140db066b28))
 * **event-picker:** fix:PI-33185 ([783837d](https://github.com/growingio/gio-design-pro/commit/783837dbcb149777edbed1bab19b51d816c1fbe4))
 * **event-picker:** fix:PI-33185 ([f97b4ad](https://github.com/growingio/gio-design-pro/commit/f97b4ad09f03266baba4e531d1921e18863c7f0a))
 * **event-picker:** preview card overflow style error ([7f185e0](https://github.com/growingio/gio-design-pro/commit/7f185e0eb8513c121df571da83f6d83fad2204bd))
+* **event-picker:** preview card overflow style error ([da753ce](https://github.com/growingio/gio-design-pro/commit/da753ce14b9195020b4111cf1476510cdb4361dd))
 * **event-picker:** scroll top when tab changed ([3fd7c69](https://github.com/growingio/gio-design-pro/commit/3fd7c699d3630d53771a1f721f62e10c4589f2d1))
 * **event-picker:** set selector input tooltip maxwidth 360px ([63d5b28](https://github.com/growingio/gio-design-pro/commit/63d5b2849e733d7625e0804bbca80cf510f24eb4))
-* **property-picker:** fix selector dropdown style width ([8150594](https://github.com/growingio/gio-design-pro/commit/8150594c3be52b6684663f9876ca66db150e5541))
-* 事件选择器,详情,当详情内容过多时,展示错误 ([b739c84](https://github.com/growingio/gio-design-pro/commit/b739c84510068b36a162bde888b9d0b995272c3a))
-* event-selector 选择器,onShowEventChart参数缺失 ([8a5f126](https://github.com/growingio/gio-design-pro/commit/8a5f1269f7b0e7820dca7106ed7e54db8385225a))
-* **event-picker:** preview card overflow style error ([da753ce](https://github.com/growingio/gio-design-pro/commit/da753ce14b9195020b4111cf1476510cdb4361dd))
 * **event-selector:** bind onCancel ([9a9b9d6](https://github.com/growingio/gio-design-pro/commit/9a9b9d6bc949f3a3990d4095cb306c868dd29f26))
 * **event-selector:** bind onCancel ([0da8232](https://github.com/growingio/gio-design-pro/commit/0da8232cfcb4629d5fa0f16e6799ae39e2fe2d9a))
 * **property-picker:** change picker width 366px ([b786e53](https://github.com/growingio/gio-design-pro/commit/b786e53a0d1c7cde2408d7aff06988e260acc245))
-* **property-picker:** fix selector dropdown style width ([d3ffda0](https://github.com/growingio/gio-design-pro/commit/d3ffda0f563f7edcf304496cbb5c7ea28c8f9875))
-* **property-selector:** fix support selector prop size ([e7e8f01](https://github.com/growingio/gio-design-pro/commit/e7e8f01cce378452f22d03f87dfc621ee349e46f))
-* 事件选择器,详情,当详情内容过多时,展示错误 ([9c6f821](https://github.com/growingio/gio-design-pro/commit/9c6f8214c104045e6f994bfc2bd2280fd4132a48))
-* event-selector 选择器,onShowEventChart参数缺失 ([70a171d](https://github.com/growingio/gio-design-pro/commit/70a171d86be66af2c2d1402459aa059df8538d8c))
 * **property-picker:** change picker width 366px ([64f0531](https://github.com/growingio/gio-design-pro/commit/64f0531a369228d5c64d5d1d0c9fe10a82031914))
+* **property-picker:** fix selector dropdown style width ([8150594](https://github.com/growingio/gio-design-pro/commit/8150594c3be52b6684663f9876ca66db150e5541))
+* **property-selector:** fix support selector prop size ([e7e8f01](https://github.com/growingio/gio-design-pro/commit/e7e8f01cce378452f22d03f87dfc621ee349e46f))
+* **selector:** selector参数dropdownRender判断如果是函数,执行渲染返回元素,如果不是函数,直接渲染元素 ([c345ab6](https://github.com/growingio/gio-design-pro/commit/c345ab66f5197d630fe71a5df7e5005091134cf8))
+* 事件选择器,详情,当详情内容过多时,展示错误 ([b739c84](https://github.com/growingio/gio-design-pro/commit/b739c84510068b36a162bde888b9d0b995272c3a))
+* 事件选择器,详情,当详情内容过多时,展示错误 ([9c6f821](https://github.com/growingio/gio-design-pro/commit/9c6f8214c104045e6f994bfc2bd2280fd4132a48))
+* event-selector 选择器,onShowEventChart参数缺失 ([8a5f126](https://github.com/growingio/gio-design-pro/commit/8a5f1269f7b0e7820dca7106ed7e54db8385225a))
+* **property-picker:** fix selector dropdown style width ([d3ffda0](https://github.com/growingio/gio-design-pro/commit/d3ffda0f563f7edcf304496cbb5c7ea28c8f9875))
+* event-selector 选择器,onShowEventChart参数缺失 ([70a171d](https://github.com/growingio/gio-design-pro/commit/70a171d86be66af2c2d1402459aa059df8538d8c))
 * **property-selector:** fix support selector prop size ([05a4ac9](https://github.com/growingio/gio-design-pro/commit/05a4ac93f4abe69f39e353bc66d0ac77dc249631))
 
 
@@ -44,6 +46,9 @@
 * **event-picker:** add component event-picker ([1417fdc](https://github.com/growingio/gio-design-pro/commit/1417fdc7113ae067d980c15dc5dd4fe6a47d400a))
 * **event-selector:** add component event-selector ([0d1dce1](https://github.com/growingio/gio-design-pro/commit/0d1dce12b337bd9a46959964dae926356404099a))
 * **event-selector:** add component event-selector ([efb0fb6](https://github.com/growingio/gio-design-pro/commit/efb0fb67d31f4cf7fbc5590dab5c5d36ce7e199d))
+* **event-selector:** support getContainer ([378450c](https://github.com/growingio/gio-design-pro/commit/378450cf1484b94670dd1918112c318e503a6cb1))
+* **selector:** add prop getContainer ([d88d052](https://github.com/growingio/gio-design-pro/commit/d88d0525a5f6d10f939ffea124bb8f37a536191c))
+* **tablecard:** add otherTabs prop ([9e6b115](https://github.com/growingio/gio-design-pro/commit/9e6b115defacd4a2db73b0657fb3112f737d9414))
 
 
 
