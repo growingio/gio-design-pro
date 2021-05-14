@@ -37,4 +37,8 @@ export interface SelectorProps extends BaseProps {
    * 组件输入框的尺寸
    */
   size?: SizeType;
+  /**
+   * dropdown overlay 要渲染的父元素
+   */
+  getContainer?: (node: HTMLElement) => HTMLElement;
 }
