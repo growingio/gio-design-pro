@@ -18,7 +18,7 @@ export interface SelectorProps extends BaseProps {
   /**
    * Customize dropdown content
    */
-  dropdownRender: () => React.ReactElement;
+  dropdownRender: () => React.ReactElement | React.ReactElement;
   /**
    * Called when the dropdown visible state is changed
    */
