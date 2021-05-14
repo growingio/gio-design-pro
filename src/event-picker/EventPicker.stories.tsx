@@ -226,7 +226,11 @@ Empty.args = {
   showPreview: false,
 };
 export const DisabledOption = Template.bind({});
-const dataSourceWithDisabledItem = simpleEvents.map((v, index) => ({ ...v, disabled: index % 3 === 1 }));
+const dataSourceWithDisabledItem = simpleEvents.map((v, index) => ({
+  ...v,
+  disabled: index % 3 === 1,
+  disabledTips: '为什么不可用',
+}));
 DisabledOption.args = {
   dataSource: dataSourceWithDisabledItem,
   multiple: true,

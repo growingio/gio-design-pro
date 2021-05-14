@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePrefixCls } from '@gio-design/components';
 import { EventData } from './interfaces';
 import ListPanel from './ListPanel';
-import List from './GroupList';
+import GroupList from './GroupList';
 import { GroupListItemEvent } from './GroupListItemProps';
 import EmptyPrompt, { EmptyPromptProps } from '../empty-prompt';
 
@@ -137,6 +137,8 @@ const PickerContent = (props: Props) => {
     if (shouldUpdateRecentlyUsed) {
       // console.log('setRecentlyUsedInMemo on recentlyUsed update');
       setHistoryInMemo(historyStore);
+      // 重置选项
+      setSelect(valueKeys);
     }
   }, [shouldUpdateRecentlyUsed]);
   /**
@@ -248,7 +250,7 @@ const PickerContent = (props: Props) => {
         onCancel={() => handleCancel()}
         onOK={() => handleOk()}
       >
-        <List
+        <GroupList
           {...rest}
           dataSource={{
             history,

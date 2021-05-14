@@ -113,8 +113,12 @@ export const CustomItem: React.FC<Props> = (props) => {
       onMouseLeave={handleItemMouseLeave}
       onClick={handleListItemClick}
     >
-      <Tooltip overlay={<div>{dataSource.disabledTips ?? '暂不可用'}</div>} disabled={!disabled}>
-        <>
+      <>
+        <Tooltip
+          placement="top"
+          overlay={<div style={{ maxWidth: '360px' }}>{dataSource.disabledTips ?? '暂不可用'}</div>}
+          disabled={!disabled || !dataSource.disabledTips}
+        >
           <div className="item-content">
             {multiple && (
               <Checkbox
@@ -125,21 +129,23 @@ export const CustomItem: React.FC<Props> = (props) => {
               />
             )}
             <TypeIcon size="14px" className="item-content-icon" type={type || ''} />
+
             <span className="item-content-body" title={name}>
               {renderKeyword(name as string, keyword || '', true)}
             </span>
           </div>
-          {showPreview && detailVisible && (
-            <Preview
-              style={{ display: hidden ? 'none' : 'block' }}
-              dataSource={dataSource}
-              onShowEventChart={onShowEventChart}
-              fetchDetailData={fetchDetailData ?? (async (o) => o)}
-              previewCustomRender={previewCustomRender}
-            />
-          )}
-        </>
-      </Tooltip>
+        </Tooltip>
+      </>
+
+      {showPreview && detailVisible && (
+        <Preview
+          style={{ display: hidden ? 'none' : 'block' }}
+          dataSource={dataSource}
+          onShowEventChart={onShowEventChart}
+          fetchDetailData={fetchDetailData ?? (async (o) => o)}
+          previewCustomRender={previewCustomRender}
+        />
+      )}
     </List.Item>
   );
 };

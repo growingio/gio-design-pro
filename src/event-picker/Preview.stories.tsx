@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
@@ -89,4 +90,19 @@ simple.args = {
 export const Preset = Template.bind({});
 Preset.args = {
   dataSource: presetData,
+};
+
+export const CustomRender = Template.bind({});
+CustomRender.args = {
+  dataSource: presetData,
+  previewCustomRender: (data: any) => (
+    <div>
+      <h1>自定义渲染</h1>
+      <div>{data.name}</div>
+      <div>{data.type}</div>
+      <div>
+        <Button onClick={() => alert('编辑')}>编辑</Button>
+      </div>
+    </div>
+  ),
 };

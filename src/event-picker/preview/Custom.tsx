@@ -2,6 +2,7 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { Card, usePrefixCls } from '@gio-design/components';
 import classnames from 'classnames';
+import { isFunction } from 'lodash';
 import PreviewChart from './Chart';
 import { getTypeName } from './helper';
 import { PreviewProps } from './PreviewProps';
@@ -11,6 +12,13 @@ const Custom: React.FC<PreviewProps> = (props) => {
   const { name, key = '', description = '', attributes = [], itemModels = [] } = eventData;
   const prefixCls = usePrefixCls('event-previw');
   const cls = classnames(prefixCls, 'custom', className);
+  if (previewCustomRender && isFunction(previewCustomRender)) {
+    return (
+      <Card className={cls} clickable={false}>
+        {previewCustomRender(eventData)}
+      </Card>
+    );
+  }
   return (
     <Card className={cls} clickable={false}>
       <Card.Meta title={name} />

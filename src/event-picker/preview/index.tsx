@@ -1,12 +1,15 @@
 // import './index.less';
 import React from 'react';
-import { Loading } from '@gio-design/components';
+import { Loading, Card, usePrefixCls } from '@gio-design/components';
 import { EventPickerPreviewProps } from '../interfaces';
 import useAsync from '../../hooks/useAsync';
 import AutoTrack from './AutoTrack';
 // import Complex from './ComplexMetric';
 import Custom from './Custom';
 import './style';
+import { isFunction } from 'lodash';
+import classnames from 'classnames';
+
 // todo: implement ComplexMetric component
 const Complex = Custom;
 
@@ -16,14 +19,24 @@ const Preview: React.FC<EventPickerPreviewProps> = (props) => {
     dataSource: { type },
     fetchDetailData = async (data) => data,
     onShowEventChart,
+    previewCustomRender,
     style,
   } = props;
   const { loading, value: eventData = { id: '', name: '' } } = useAsync(async () => {
     const res = await fetchDetailData(dataSource);
     return res;
   }, [dataSource]);
-  const previewProps = { eventData, chart: onShowEventChart, className: 'event-preview-card' };
+  const prefixCls = usePrefixCls('event-previw');
+  const cls = classnames(prefixCls, 'custom-render', 'event-preview-card');
+  const previewProps = { eventData, chart: onShowEventChart, previewCustomRender, className: 'event-preview-card' };
   const children = () => {
+    if (previewCustomRender && isFunction(previewCustomRender)) {
+      return (
+        <Card className={cls} clickable={false}>
+          {previewCustomRender(eventData)}
+        </Card>
+      );
+    }
     switch (type) {
       case 'prepared':
         return <Complex {...previewProps} />;
@@ -38,7 +51,13 @@ const Preview: React.FC<EventPickerPreviewProps> = (props) => {
   };
 
   return (
-    <div className="event-preview" style={{ ...style }}>
+    <div
+      role="document"
+      className="event-preview"
+      aria-hidden="true"
+      style={{ ...style }}
+      onClick={(e) => e.stopPropagation()}
+    >
       <Loading size="small" title={false} loading={loading}>
         {children()}
       </Loading>
