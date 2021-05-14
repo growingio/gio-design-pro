@@ -1,4 +1,4 @@
-## [21.5.2-alpha.4](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2-alpha.4) (2021-05-13)
+## [21.5.2-alpha.5](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2-alpha.5) (2021-05-13)
 
 
 ### Bug Fixes
@@ -20,6 +20,7 @@
 * **event-picker:** fix:PI-33185 ([f97b4ad](https://github.com/growingio/gio-design-pro/commit/f97b4ad09f03266baba4e531d1921e18863c7f0a))
 * **event-picker:** preview card overflow style error ([7f185e0](https://github.com/growingio/gio-design-pro/commit/7f185e0eb8513c121df571da83f6d83fad2204bd))
 * **event-picker:** scroll top when tab changed ([3fd7c69](https://github.com/growingio/gio-design-pro/commit/3fd7c699d3630d53771a1f721f62e10c4589f2d1))
+* **event-picker:** set selector input tooltip maxwidth 360px ([63d5b28](https://github.com/growingio/gio-design-pro/commit/63d5b2849e733d7625e0804bbca80cf510f24eb4))
 * **property-picker:** fix selector dropdown style width ([8150594](https://github.com/growingio/gio-design-pro/commit/8150594c3be52b6684663f9876ca66db150e5541))
 * 事件选择器,详情,当详情内容过多时,展示错误 ([b739c84](https://github.com/growingio/gio-design-pro/commit/b739c84510068b36a162bde888b9d0b995272c3a))
 * event-selector 选择器,onShowEventChart参数缺失 ([8a5f126](https://github.com/growingio/gio-design-pro/commit/8a5f1269f7b0e7820dca7106ed7e54db8385225a))
