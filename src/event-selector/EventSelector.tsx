@@ -21,6 +21,8 @@ const EventSelector = ({
   dataSource,
   onSelect,
   onChange,
+  getContainer,
+  overlayClassName,
   ...pickerRestProps
 }: EventSelectorProps) => {
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
@@ -98,6 +100,8 @@ const EventSelector = ({
         dropdownRender={dropdownRender}
         onDropdownVisibleChange={handleDropDownVisibleChange}
         valueRender={inputRender}
+        getContainer={getContainer}
+        overlayClassName={overlayClassName}
       />
     </>
   );
