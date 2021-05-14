@@ -50,7 +50,11 @@ function Selector({
       trigger={['click']}
       placement="bottomLeft"
       disabled={disabled}
-      overlay={<div className={`${prefixCls}-dropdown`}>{dropdownRender()}</div>}
+      overlay={
+        <div className={`${prefixCls}-dropdown`}>
+          {typeof dropdownRender === 'function' ? dropdownRender() : dropdownRender}
+        </div>
+      }
       visible={visible}
       onVisibleChange={handleVisibleChange}
       overlayClassName={overlayCls}
