@@ -33,7 +33,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     operationsOption,
     numType,
   } = props;
-  const [operationValue, setValue] = useState<StringValue | NumberValue | DateValue>(op);
+  const [operationValue, setOperationValue] = useState<StringValue | NumberValue | DateValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
 
@@ -41,30 +41,35 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     if (valueType === 'date') {
       // 此处是为了处理，日期类型时，包含当天，选项('>=', '<=')不在selectOptionMap里面
       if (op === '>=') {
-        setValue('>');
+        setOperationValue('>');
       } else if (op === '<=') {
-        setValue('<');
+        setOperationValue('<');
       } else if (op === 'relativeTime') {
         // 相对现在和相对区间，传的参数都为relativeTime，需要转换成relativeCurrent（相对现在），relativeBetween（相对区间）
         const relativeTime = values[0].split(':')[1].split(',');
         if (relativeTime.length === 1 || relativeTime.includes('0')) {
-          setValue('relativeCurrent');
+          setOperationValue('relativeCurrent');
         } else {
-          setValue('relativeBetween');
+          setOperationValue('relativeBetween');
         }
       }
     }
     if (values[0] === ' ') {
-      setValue(op === '!=' ? 'hasValue' : 'noValue');
+      setOperationValue(op === '!=' ? 'hasValue' : 'noValue');
     }
   }, [op, valueType]);
+
+  useEffect(() => {
+    setOperationValue(op);
+    setAttrValue(values);
+  }, [values, valueType, op]);
 
   const handleChange = (e: any) => {
     setChecked(e.target.checked);
   };
 
   const selectChange = (v: StringValue | NumberValue) => {
-    v && setValue(v);
+    v && setOperationValue(v);
     v && setAttrValue([]);
     v && setChecked(false);
   };
