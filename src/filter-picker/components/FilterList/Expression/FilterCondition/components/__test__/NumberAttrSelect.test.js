@@ -51,6 +51,46 @@ describe('<NumberAttrSelect />', () => {
     expect(value[0]).toBe('0');
   });
 
+  it('input positivedecimal', async () => {
+    let value = '';
+    const wrapper = mount(
+      <NumberAttrSelect
+        values={[10]}
+        attrSelect="="
+        attrChange={(val) => {
+          value = val;
+        }}
+        type="positivedecimal"
+      />
+    );
+
+    wrapper.find('input').simulate('focus');
+    wrapper.find('input').simulate('change', { target: { value: '2.5' } });
+    expect(value[0]).toBe('2.5');
+    wrapper.find('input').simulate('change', { target: { value: '' } });
+    expect(value[0]).toBe('0');
+  });
+
+  it('input negativedecimal', async () => {
+    let value = '';
+    const wrapper = mount(
+      <NumberAttrSelect
+        values={[10]}
+        attrSelect="="
+        attrChange={(val) => {
+          value = val;
+        }}
+        type="negativedecimal"
+      />
+    );
+
+    wrapper.find('input').simulate('focus');
+    wrapper.find('input').simulate('change', { target: { value: '-2.5' } });
+    expect(value[0]).toBe('-2.5');
+    wrapper.find('input').simulate('change', { target: { value: '' } });
+    expect(value[0]).toBe('0');
+  });
+
   it('between change', () => {
     let value = [];
     const wrapper = mount(
