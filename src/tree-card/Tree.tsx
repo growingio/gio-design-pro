@@ -24,7 +24,6 @@ function Tree<RecordType>({
   selectedKeys,
   expandedKeys,
 }: TreeProps<RecordType>) {
-  const { onSelect, onExpand, ...restTreeProps } = treeProps;
   const renderTreeNodeTitle = (treeNode: RecordType) => {
     const treeNodeTitle = isFunction(customTitle) ? customTitle(treeNode) : get(treeNode, customTitle);
     const treeNodeIcon = isFunction(customIcon) ? customIcon(treeNode) : customIcon;
@@ -72,15 +71,13 @@ function Tree<RecordType>({
       {hasDivider && <hr className={classNames(`${prefixCls}-divider`, `${prefixCls}-tree-divider`)} />}
       {title && <span className={`${prefixCls}-subTitle`}>{title}</span>}
       <GioTree
-        {...restTreeProps}
+        {...treeProps}
         selectedKeys={selectedKeys}
         expandedKeys={expandedKeys}
         onExpand={(...args) => {
-          onExpand?.(...args);
           onExpandFromInner?.(...args);
         }}
         onSelect={(...args) => {
-          onSelect?.(...args);
           onSelectFromInner?.(...args);
         }}
       >

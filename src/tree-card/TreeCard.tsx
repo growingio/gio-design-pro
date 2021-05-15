@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { usePrefixCls, SearchBar } from '@gio-design/components';
 import classNames from 'classnames';
 import { union, isArray, without } from 'lodash';
+import { useControlledState } from '@gio-design/utils';
 import { TreeCardProps } from './interfaces';
 import TooltipButton from '../tooltip-button';
 import Tree from './Tree';
@@ -19,10 +20,18 @@ function TreeCard<RecordType>({
   onSelect,
   selectedKeys,
   expandedKeys,
+  defaultExpandedKeys = [],
+  defaultSelectedKeys = [],
 }: TreeCardProps<RecordType>) {
   const prefixCls = usePrefixCls('tree-card', customizePrefixCls);
-  const [localSelectedKeys, setSelectedKeys] = useState<(string | number)[]>([]);
-  const [localExpandedKeys, setExpandedKeys] = useState<(string | number)[]>([]);
+  const [localSelectedKeys, setSelectedKeys] = useControlledState<(string | number)[]>(
+    selectedKeys,
+    defaultSelectedKeys
+  );
+  const [localExpandedKeys, setExpandedKeys] = useControlledState<(string | number)[]>(
+    expandedKeys,
+    defaultExpandedKeys
+  );
 
   const renderTrees = () => {
     const _treeConfig = isArray(treeConfig) ? treeConfig : [treeConfig];
@@ -30,8 +39,8 @@ function TreeCard<RecordType>({
       <Tree
         {...config}
         key={index.toString()}
-        selectedKeys={selectedKeys || localSelectedKeys}
-        expandedKeys={expandedKeys || localExpandedKeys}
+        selectedKeys={localSelectedKeys}
+        expandedKeys={localExpandedKeys}
         hasDivider={index !== 0}
         prefixCls={prefixCls}
         onSelect={(_selectedKeys, e) => {

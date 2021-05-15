@@ -3,8 +3,15 @@ import { SearchBarProps, TreeProps as GioTreeProps } from '@gio-design/component
 import { TooltipButtonProps } from '../tooltip-button/interfaces';
 import { OperationMenuProps, OperationMenuListOption } from '../operation-menu';
 
-export interface TreeCardProps<RecordType>
-  extends Pick<GioTreeProps, 'onExpand' | 'onSelect' | 'selectedKeys' | 'expandedKeys'> {
+type UnifiedTreeProps =
+  | 'onExpand'
+  | 'onSelect'
+  | 'selectedKeys'
+  | 'expandedKeys'
+  | 'defaultExpandedKeys'
+  | 'defaultSelectedKeys';
+
+export interface TreeCardProps<RecordType> extends Pick<GioTreeProps, UnifiedTreeProps> {
   className?: string;
   style?: React.CSSProperties;
   prefixCls?: string;
@@ -18,7 +25,7 @@ export interface TreeCardProps<RecordType>
 interface TreeConfig<RecordType> {
   data: RecordType[];
   title?: React.ReactNode;
-  treeProps?: Omit<GioTreeProps, 'children' | 'treeData' | 'selectedKeys' | 'expandedKeys'>;
+  treeProps?: Omit<GioTreeProps, 'children' | 'treeData' | UnifiedTreeProps>;
   customIcon?: ((record: RecordType) => React.ReactNode) | React.ReactNode;
   customTitle?: ((record: RecordType) => React.ReactNode) | string[] | string;
   customKey?: ((record: RecordType) => string) | string[] | string;
@@ -31,9 +38,7 @@ interface TreeConfig<RecordType> {
   tooltipDisabled?: boolean;
 }
 
-export interface TreeProps<RecordType>
-  extends TreeConfig<RecordType>,
-    Pick<GioTreeProps, 'onExpand' | 'onSelect' | 'selectedKeys' | 'expandedKeys'> {
+export interface TreeProps<RecordType> extends TreeConfig<RecordType>, Pick<GioTreeProps, UnifiedTreeProps> {
   hasDivider: boolean;
   prefixCls: string;
 }

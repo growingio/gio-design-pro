@@ -70,6 +70,8 @@ export const DisplayModeTree = () => {
       <TreeCard<DataType>
         parentNodeSelectable={false}
         title="展示"
+        defaultExpandedKeys={['1-3-1-1']}
+        defaultSelectedKeys={['1-3-1-1']}
         searchBar={{
           placeholder: '搜索...',
           value: searchText,
