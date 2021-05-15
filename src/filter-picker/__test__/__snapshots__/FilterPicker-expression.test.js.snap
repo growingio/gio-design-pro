@@ -50,7 +50,7 @@ exports[`expression test should match Expression snapshot. 1`] = `
     </div>
   </div>
   <button
-    class="gio-btn gio-btn-link gio-btn-middle gio-btn-icon-only"
+    class="gio-btn gio-btn-text gio-btn-middle gio-btn-icon-only"
     type="button"
   >
     <span
@@ -60,9 +60,9 @@ exports[`expression test should match Expression snapshot. 1`] = `
     >
       <svg
         fill="currentColor"
-        height="16px"
+        height="14px"
         viewBox="0 0 14 14"
-        width="16px"
+        width="14px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs />

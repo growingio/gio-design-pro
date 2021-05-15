@@ -8,13 +8,13 @@ import IncludeToday from './components/IncludeToday';
 
 interface DateAttrSelectProps {
   attrSelect: string;
-  attrChange: (v: any) => void;
+  attrChange: (v: string[]) => void;
   values: string[];
 }
 function DateAttrSelect(props: DateAttrSelectProps) {
   const { attrSelect, attrChange, values } = props;
   const [time, setTime] = useState<Moment>(
-    values[0] && parseFloat(values[0]).toString() !== 'NaN' ? moment(parseInt(values[0], 10)) : moment(Date.now())
+    values?.[0] && parseFloat(values[0]).toString() !== 'NaN' ? moment(parseInt(values[0], 10)) : moment(Date.now())
   );
   const [timeRange, setTimeRange] = useState<Moment[]>(
     values.length && values[0]?.includes?.('abs')
@@ -63,13 +63,11 @@ function DateAttrSelect(props: DateAttrSelectProps) {
     if (attrSelect !== 'relativeTime' && (!values.length || checkInitValue(attrSelect, values))) {
       // console.log(checkInitValue(attrSelect, values), 'checkInitValue(attrSelect, values)')
       if (attrSelect.includes('relative')) {
-        // console.log(attrSelect, values, 'attrSelect')
         if (attrSelect.includes('Current')) {
           // console.log('current')
           // 相对现在，values值的初始化
           attrChange(['relativeTime:-1,0']);
         } else {
-          // console.log('between')
           // 相对区间，值的初始化
           attrChange(['relativeTime:-1,-1']);
         }
@@ -88,7 +86,7 @@ function DateAttrSelect(props: DateAttrSelectProps) {
 
   const changeDate = (value: Moment | null) => {
     value && setTime(value);
-    attrChange([moment(value, 'YYYY-MM-DD').startOf('day').valueOf()]);
+    attrChange([`${moment(value, 'YYYY-MM-DD').startOf('day').valueOf()}`]);
   };
   const relativeDateChange = (v: string) => {
     // console.log(v, 'vvvvv');

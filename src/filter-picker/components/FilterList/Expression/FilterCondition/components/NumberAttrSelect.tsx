@@ -24,7 +24,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     } else {
       attrChange([num]);
     }
-  }, [attrSelect, values]);
+  }, [attrSelect]);
 
   const checkRegExp = (numType: string | undefined, v: string) => {
     const typeLowCase = numType?.toLowerCase();
@@ -36,14 +36,14 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     }
 
     if (typeLowCase === 'negativedecimal') {
-      return /^((-\d+(\.\d+)?)|(0+(\.0+)?))$/.test(`${v}`);
+      return v === '-' || /^((-\d+(\.\d+)?)|(0+(\.0+)?))$/.test(`${v}`);
     }
-    return /^(-|\+)?\d?$/.test(`${v}`);
+    return v === '-' || /^(-|\+)?\d+?$/.test(`${v}`);
   };
 
   const setValue1Number = (val: React.ChangeEvent<HTMLInputElement>) => {
     const v = val.target.value;
-    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
+    if (v && checkRegExp(type, v)) {
       setValue1(v);
       if (v !== '-') {
         attrChange([v, value2]);

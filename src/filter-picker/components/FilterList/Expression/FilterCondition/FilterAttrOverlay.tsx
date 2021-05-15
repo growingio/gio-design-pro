@@ -59,10 +59,11 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     }
   }, [op, valueType]);
 
-  useEffect(() => {
-    setOperationValue(op);
-    setAttrValue(values);
-  }, [values, valueType, op]);
+  // useEffect(() => {
+  //   console.log(values, 'values-1');
+  //   // setOperationValue(op);
+  //   // setAttrValue(values);
+  // }, [values, valueType, op]);
 
   const handleChange = (e: any) => {
     setChecked(e.target.checked);
