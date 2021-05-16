@@ -9,18 +9,18 @@ interface NumberAttrSelectProps {
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
   const { attrSelect, attrChange, values, type } = props;
-  const [value, setValue] = useState<number | string>(values[0] ? parseInt(values[0], 10) : 0);
-  const [value1, setValue1] = useState<number | string>(values[0] ? parseInt(values[0], 10) : 0);
-  const [value2, setValue2] = useState<number | string>(values[1] ? parseInt(values[1], 10) : 0);
+  const [value, setValue] = useState<number | string>(values?.[0] ? parseInt(values?.[0], 10) : 0);
+  const [value1, setValue1] = useState<number | string>(values?.[0] ? parseInt(values?.[0], 10) : 0);
+  const [value2, setValue2] = useState<number | string>(values?.[1] ? parseInt(values?.[1], 10) : 0);
 
   // 初始化attrValue值
   useEffect(() => {
-    const num = values[0] && values[0] !== ' ' ? values[0] : '0';
-    setValue(parseInt(values[0], 10) || 0);
-    setValue1(parseInt(values[0], 10) || 0);
-    setValue2(Number.isNaN(parseInt(values[1], 10)) ? num : parseInt(values[1], 10));
+    const num = values?.[0] && values?.[0] !== ' ' ? values?.[0] : '0';
+    setValue(parseInt(values?.[0], 10) || 0);
+    setValue1(parseInt(values?.[0], 10) || 0);
+    setValue2(Number.isNaN(parseInt(values?.[1], 10)) ? num : parseInt(values?.[1], 10));
     if (attrSelect === 'between' || attrSelect === 'not between') {
-      attrChange([num, values[1] || num]);
+      attrChange([num, values?.[1] || num]);
     } else {
       attrChange([num]);
     }

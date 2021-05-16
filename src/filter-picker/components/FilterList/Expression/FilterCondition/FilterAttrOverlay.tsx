@@ -46,7 +46,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
         setOperationValue('<');
       } else if (op === 'relativeTime') {
         // 相对现在和相对区间，传的参数都为relativeTime，需要转换成relativeCurrent（相对现在），relativeBetween（相对区间）
-        const relativeTime = values[0].split(':')[1].split(',');
+        const relativeTime = values?.[0].split(':')[1].split(',');
         if (relativeTime.length === 1 || relativeTime.includes('0')) {
           setOperationValue('relativeCurrent');
         } else {
@@ -54,7 +54,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
         }
       }
     }
-    if (values[0] === ' ') {
+    if (values?.[0] === ' ') {
       setOperationValue(op === '!=' ? 'hasValue' : 'noValue');
     }
   }, [op, valueType]);
