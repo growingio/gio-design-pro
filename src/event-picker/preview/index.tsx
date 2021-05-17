@@ -1,14 +1,14 @@
 // import './index.less';
 import React from 'react';
 import { Loading, Card, usePrefixCls } from '@gio-design/components';
+import { isFunction } from 'lodash';
+import classnames from 'classnames';
 import { EventPickerPreviewProps } from '../interfaces';
 import useAsync from '../../hooks/useAsync';
 import AutoTrack from './AutoTrack';
 // import Complex from './ComplexMetric';
 import Custom from './Custom';
 import './style';
-import { isFunction } from 'lodash';
-import classnames from 'classnames';
 
 // todo: implement ComplexMetric component
 const Complex = Custom;
