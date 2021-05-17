@@ -1,5 +1,5 @@
 import { useLocalStorage } from '@gio-design/utils';
-import { cloneDeep, debounce, groupBy, uniq } from 'lodash';
+import { cloneDeep, groupBy, uniq } from 'lodash';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePrefixCls } from '@gio-design/components';
 import { EventData } from './interfaces';
