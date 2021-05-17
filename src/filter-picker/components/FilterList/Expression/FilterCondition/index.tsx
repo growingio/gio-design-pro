@@ -29,6 +29,7 @@ interface FilterConditionProps {
   exprKey: string;
   operationsOption?: operationsOptionType;
   numType?: 'positivedecimal' | 'decimal';
+  disabled?: boolean;
 }
 
 function FilterCondition(props: FilterConditionProps) {
@@ -44,6 +45,7 @@ function FilterCondition(props: FilterConditionProps) {
     exprKey,
     operationsOption,
     numType,
+    disabled = false,
   } = props;
   const [visible, setVisible] = useState(false);
   const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
@@ -99,6 +101,7 @@ function FilterCondition(props: FilterConditionProps) {
       dropdownVisible={visible}
       dropdownRender={dropdownRender}
       onDropdownVisibleChange={visibleChange}
+      disabled={disabled}
       borderless
     />
   ) : null;
