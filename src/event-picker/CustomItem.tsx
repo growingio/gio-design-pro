@@ -5,7 +5,7 @@ import React, { ChangeEvent, useState, useEffect } from 'react';
 import TypeIcon from './TypeIcon';
 import { EventData, ListItemPreviewEventProps } from './interfaces';
 import Preview from './preview';
-import { useDebounceFn } from '../hooks';
+import { useDebounceFn, useMountedState } from '../hooks';
 import List from '../list';
 import { ListItemProps } from '../list/interfaces';
 
@@ -64,7 +64,7 @@ export const CustomItem: React.FC<Props> = (props) => {
     showPreview,
     ...rest
   } = props;
-
+  const isMounted = useMountedState();
   const [checked, setChecked] = useState(dataSource.selectKey === value);
   useEffect(() => {
     setChecked(dataSource.selectKey === value);
@@ -80,7 +80,7 @@ export const CustomItem: React.FC<Props> = (props) => {
 
   const [hidden, setHidden] = useState(false);
   const debounceSetHidden = useDebounceFn((visible: boolean) => {
-    setHidden(visible);
+    isMounted() && setHidden(visible);
   }, 150);
   const handleItemMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     // setHoveredNodeValue(data);

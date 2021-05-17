@@ -28,7 +28,7 @@ const EventPicker = (props: EventPickerProps) => {
     loading = false,
     dataSource: originDataSource = [],
     historyStoreKey = '_',
-    shouldUpdateRecentlyUsed = true,
+    shouldUpdate: shouldUpdateRecentlyUsed = true,
     onChange,
     onSelect,
     onClick,
@@ -204,7 +204,7 @@ const EventPicker = (props: EventPickerProps) => {
       {...rest}
       // emptyPrompt={emptyPrompt}
       historyStoreKey={historyStoreKey}
-      shouldUpdateRecentlyUsed={shouldUpdateRecentlyUsed}
+      shouldUpdate={shouldUpdateRecentlyUsed}
       dataSource={dataSource}
       getTabKey={getTabKey}
       tabKey={activedTab}

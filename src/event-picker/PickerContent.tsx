@@ -1,5 +1,5 @@
 import { useLocalStorage } from '@gio-design/utils';
-import { cloneDeep, groupBy, uniq } from 'lodash';
+import { cloneDeep, debounce, groupBy, uniq } from 'lodash';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePrefixCls } from '@gio-design/components';
 import { EventData } from './interfaces';
@@ -46,7 +46,7 @@ interface Props extends GroupListItemEvent {
   /**
    * 刷新最近使用，只有在点选后下次打开时才会更新最近使用
    */
-  shouldUpdateRecentlyUsed?: boolean;
+  shouldUpdate?: boolean;
   /**
    * 选中的回调
    */
@@ -92,7 +92,7 @@ const PickerContent = (props: Props) => {
     keyword,
     filter,
     historyStoreKey = '_',
-    shouldUpdateRecentlyUsed = true,
+    shouldUpdate = true,
     multiple = false,
     onMouseEnter,
     onMouseLeave,
@@ -123,7 +123,7 @@ const PickerContent = (props: Props) => {
         }
       }
     }
-  }, [tabKey, keyword, originDataSource, shouldUpdateRecentlyUsed]);
+  }, [tabKey, keyword, originDataSource, shouldUpdate]);
   // const [history, setHistory] = useState<EventData[]>([]);
   const [historyInMemo, setHistoryInMemo] = useState<{
     [key: string]: any[];
@@ -133,14 +133,16 @@ const PickerContent = (props: Props) => {
   }>(`${STORE_KEY_PREFIX}_${historyStoreKey}`, {
     all: [],
   });
+
   useEffect(() => {
-    if (shouldUpdateRecentlyUsed) {
+    if (shouldUpdate) {
       // console.log('setRecentlyUsedInMemo on recentlyUsed update');
       setHistoryInMemo(historyStore);
+
       // 重置选项
       setSelect(valueKeys);
     }
-  }, [shouldUpdateRecentlyUsed]);
+  }, [shouldUpdate]);
   /**
    * 点选时 设置最近使用
    * @param item
@@ -250,21 +252,23 @@ const PickerContent = (props: Props) => {
         onCancel={() => handleCancel()}
         onOK={() => handleOk()}
       >
-        <GroupList
-          {...rest}
-          dataSource={{
-            history,
-            dataList: groupData,
-            select: value,
-          }}
-          value={select}
-          multiple={multiple}
-          onDeselectAll={handleClearAll}
-          onCheckboxChange={handleCheckboxChange}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          onClick={handleClick}
-        />
+        {shouldUpdate && (
+          <GroupList
+            {...rest}
+            dataSource={{
+              history,
+              dataList: groupData,
+              select: value,
+            }}
+            value={select}
+            multiple={multiple}
+            onDeselectAll={handleClearAll}
+            onCheckboxChange={handleCheckboxChange}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onClick={handleClick}
+          />
+        )}
       </ListPanel>
     </>
   );

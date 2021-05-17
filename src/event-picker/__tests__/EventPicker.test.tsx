@@ -48,9 +48,7 @@ describe('<EventPicker/> test', () => {
   it(' can add to recentlyUsed', async () => {
     const handleSelect = jest.fn();
     const datas = events.slice(0, 9);
-    const picker = (
-      <EventPicker {...defaultProps} dataSource={datas} onSelect={handleSelect} shouldUpdateRecentlyUsed />
-    );
+    const picker = <EventPicker {...defaultProps} dataSource={datas} onSelect={handleSelect} shouldUpdate />;
     // const picker = <PropertyPicker {...defaultProps} onSelect={handleSelect} shouldUpdateRecentlyUsed />;
     const { unmount } = render(picker);
     // fireEvent.click(screen.getByText('展开全部', { exact: false }));

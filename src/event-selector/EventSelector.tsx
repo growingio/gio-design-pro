@@ -72,7 +72,7 @@ const EventSelector = ({
     <EventPicker
       className={`${clsPrifx}-dropdown`}
       {...pickerRestProps}
-      shouldUpdateRecentlyUsed={dropdownVisibleInner}
+      shouldUpdate={dropdownVisibleInner}
       value={value}
       dataSource={dataSource}
       onChange={handleValueChange}

@@ -95,7 +95,7 @@ export interface EventPickerProps
    * 是否重新从localstorage加载最近使用选项,最近使用选项会在点选时自动存储到localstorage,
    * 需要在picker重新渲染或者shouldUpdateRecentlyUsed属性值从false->true时重新加载
    */
-  shouldUpdateRecentlyUsed?: boolean;
+  shouldUpdate?: boolean;
   /**
    * 鼠标hover列表项详情面板延迟显示的毫秒数
    */
