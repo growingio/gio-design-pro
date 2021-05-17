@@ -25,7 +25,6 @@ jobs:
   lint:
     name: Lint codes
     needs: install
-    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -48,7 +47,6 @@ jobs:
   unit_test:
     name: Unit test
     needs: install
-    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -71,8 +69,8 @@ jobs:
           directory: coverage/
   ui_test:
     name: UI test
+    if: ${{ !github.event.pull_request.head.repo.fork }}
     needs: install
-    if: ${{ startsWith(github.event.pull_request.title, 'feat') || startsWith(github.event.pull_request.title, 'fix') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
