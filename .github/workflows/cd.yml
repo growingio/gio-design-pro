@@ -6,7 +6,6 @@ on:
 jobs:
   install:
     name: Install dependencies
-    if: ${{ !(startsWith(github.event.head_commit.message, 'chore') || startsWith(github.event.head_commit.message, 'ci')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,7 +26,6 @@ jobs:
   lint:
     name: Lint codes
     needs: install
-    if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -48,7 +46,6 @@ jobs:
   unit_test:
     name: Unit test
     needs: install
-    if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

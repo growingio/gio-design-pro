@@ -19,8 +19,14 @@ export interface TableCardTab<RecordType> {
   buttons?: TooltipButtonProps[];
   batchButtons?: TooltipButtonProps[];
 }
+
+export interface TableCardOtherTab {
+  name: ReactNode;
+  content: ReactNode;
+}
 export interface TableCardProps<RecordType> {
   tabs: TableCardTab<RecordType>[];
+  otherTabs?: TableCardOtherTab[];
   title?: ReactNode;
   description?: string;
   showTabs?: boolean;

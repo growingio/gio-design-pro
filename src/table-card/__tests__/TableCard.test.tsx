@@ -68,4 +68,10 @@ describe('<TableCard/> test', () => {
     rerender(getTableCard({ ...getTableCardConfig(['1']), title: undefined, showTabs: false }));
     expect(container.getElementsByClassName('gio-table-card-divider')).toHaveLength(0);
   });
+
+  test('otherTabs prop', () => {
+    const { getAllByTestId } = render(getTableCard({ otherTabs: [{ name: 'other', content: 'content' }] }));
+    fireEvent.click(getAllByTestId('tabnav-item')[2]);
+    expect(getAllByTestId('tabnav-item')[2].textContent.includes('other')).toBe(true);
+  });
 });
