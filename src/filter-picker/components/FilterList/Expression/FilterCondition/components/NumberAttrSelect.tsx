@@ -5,10 +5,10 @@ interface NumberAttrSelectProps {
   attrSelect: string;
   attrChange: (v: any) => void;
   values: string[];
-  type?: 'positivedecimal' | 'negativedecimal';
+  type?: 'positivedecimal' | 'decimal';
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
-  const { attrSelect, attrChange, values, type } = props;
+  const { attrSelect, attrChange, values, type = 'decimal' } = props;
   const [value, setValue] = useState<number | string>(values?.[0] ? parseInt(values?.[0], 10) : 0);
   const [value1, setValue1] = useState<number | string>(values?.[0] ? parseInt(values?.[0], 10) : 0);
   const [value2, setValue2] = useState<number | string>(values?.[1] ? parseInt(values?.[1], 10) : 0);
@@ -32,11 +32,11 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     //   return /^(-|\+)?\d?$/.test(`${v}`);
     // }
     if (typeLowCase === 'positivedecimal') {
-      return /^\d+(\.\d+)?$/.test(`${v}`);
+      return /^\d+(\.)?(\d+)?$/.test(`${v}`);
     }
 
-    if (typeLowCase === 'negativedecimal') {
-      return v === '-' || /^((-\d+(\.\d+)?)|(0+(\.0+)?))$/.test(`${v}`);
+    if (typeLowCase === 'decimal') {
+      return v === '-' || /^((-\d+(\.)?(\d+)?)|(0+(\.)?(0+)?))$/.test(`${v}`) || /^\d+(\.)?(\d+)?$/.test(`${v}`);
     }
     return v === '-' || /^(-|\+)?\d+?$/.test(`${v}`);
   };

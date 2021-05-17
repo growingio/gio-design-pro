@@ -18,7 +18,7 @@ interface FilterAttrOverlayProps {
   values: string[];
   exprKey: string;
   operationsOption?: operationsOptionType;
-  numType?: 'positivedecimal' | 'negativedecimal';
+  numType?: 'positivedecimal' | 'decimal';
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {

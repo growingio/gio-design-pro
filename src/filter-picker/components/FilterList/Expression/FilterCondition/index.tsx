@@ -28,7 +28,7 @@ interface FilterConditionProps {
   values: string[];
   exprKey: string;
   operationsOption?: operationsOptionType;
-  numType?: 'positivedecimal' | 'negativedecimal';
+  numType?: 'positivedecimal' | 'decimal';
 }
 
 function FilterCondition(props: FilterConditionProps) {
