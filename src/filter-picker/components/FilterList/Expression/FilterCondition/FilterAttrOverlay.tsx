@@ -116,7 +116,11 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   };
 
   const cancel = () => {
-    setAttrValue([]);
+    // setAttrValue([]);
+    onSubmit({
+      op: '=',
+      values: [],
+    });
     onCancel();
   };
 
