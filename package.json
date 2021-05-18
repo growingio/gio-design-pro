@@ -101,7 +101,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-test-renderer": "^17.0.1",
-    "storybook-addon-designs": "^5.4.5",
+    "storybook-addon-designs": "^6.0.0",
     "stylelint": "^13.7.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^21.0.0",
