@@ -18,7 +18,8 @@ export default {
 } as Meta;
 
 const Template: Story<EventSelectorProps> = (args) => {
-  const [select, setSelect] = useState<EventData[]>(isArray(args.value) ? args.value : []);
+  const { value } = args;
+  const [select, setSelect] = useState<EventData[]>(isArray(value) ? value : []);
 
   function handleChange(newVal: any, _: any) {
     // eslint-disable-next-line no-console

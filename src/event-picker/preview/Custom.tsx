@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { Card, usePrefixCls } from '@gio-design/components';
@@ -35,8 +36,8 @@ const Custom: React.FC<PreviewProps> = (props) => {
                     <th>名称</th>
                     <th>类型</th>
                   </tr>
-                  {attributes.map((attr) => (
-                    <tr key={attr.name}>
+                  {attributes.map((attr, index) => (
+                    <tr key={`${attr.name}_${index}`}>
                       <td>{attr.name}</td>
                       <td>{getTypeName(attr.valueType)}</td>
                     </tr>
@@ -57,8 +58,8 @@ const Custom: React.FC<PreviewProps> = (props) => {
                   <th>名称</th>
                   <th>类型</th>
                 </tr>
-                {itemModels.map((attr) => (
-                  <tr key={attr.name}>
+                {itemModels.map((attr, index) => (
+                  <tr key={`${attr.name}_${index}`}>
                     <td>{attr.name}</td>
                     <td>{getTypeName(attr.valueType)}</td>
                   </tr>

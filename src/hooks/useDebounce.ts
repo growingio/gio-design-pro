@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import useDebounceFn from './useDebounceFn';
 import useMountedState from './useMountedState';
 
@@ -6,17 +6,26 @@ type SetStateAction<S> = S | ((prevState: S) => S);
 type Dispatch<A> = (value: A) => void;
 
 const useDebounce = <T = undefined>(value: T, wait: number = 500): [T, Dispatch<SetStateAction<T | undefined>>] => {
-  const [debounced, setDebounced] = useState(value);
   const isMounted = useMountedState();
-  const debouncedCallback = useDebounceFn(() => {
-    isMounted() && setDebounced(value);
-  }, wait);
+  // const debouncedCallback = useDebounceFn((v) => {
+  //   isMounted() && setDebounced(v);
+  // }, wait);
+
+  // useEffect(() => {
+  //   debouncedCallback(value);
+  // }, [value, debouncedCallback]);
+
+  // return [debounced, debouncedCallback];
+
+  const [state, dispatch] = useState(value);
+  const callback = useCallback((_v: T) => isMounted() && dispatch(_v), [dispatch]);
+  const debounced = useDebounceFn(callback, wait);
 
   useEffect(() => {
-    debouncedCallback();
-  }, [value]);
+    debounced(value);
+  }, [value, debounced]);
 
-  return [debounced, setDebounced];
+  return [state, debounced];
 };
 
 export default useDebounce;

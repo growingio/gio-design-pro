@@ -6,12 +6,12 @@ import classnames from 'classnames';
 import { EventPickerPreviewProps } from '../interfaces';
 import useAsync from '../../hooks/useAsync';
 import AutoTrack from './AutoTrack';
-// import Complex from './ComplexMetric';
+import Complex from './ComplexMetric';
 import Custom from './Custom';
 import './style';
 
 // todo: implement ComplexMetric component
-const Complex = Custom;
+// const Complex = Custom;
 
 const Preview: React.FC<EventPickerPreviewProps> = (props) => {
   const {
@@ -39,10 +39,11 @@ const Preview: React.FC<EventPickerPreviewProps> = (props) => {
     }
     switch (type) {
       case 'prepared':
-        return <Complex {...previewProps} />;
       case 'custom':
-      case 'complex':
         return <Custom {...previewProps} />;
+      case 'complex':
+      case 'preparedComplex':
+        return <Complex {...previewProps} />;
       case 'simple':
         return <AutoTrack {...previewProps} />;
       default:

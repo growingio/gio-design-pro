@@ -1,14 +1,11 @@
 /* eslint-disable no-alert */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { isArray } from 'lodash';
-import { PlusCircleFilled } from '@gio-design/icons';
 import { Button } from '@gio-design/components';
 import Docs from './EventPicker.mdx';
-import { EventPicker } from './index';
-import { events } from './__tests__/data';
-import { EventData, EventPickerPreviewProps } from './interfaces';
+import { EventPickerPreviewProps } from './interfaces';
 import Preview from './preview';
 
 const presetData = {

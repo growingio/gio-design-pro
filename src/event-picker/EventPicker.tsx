@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { isArray, isEqualWith, isUndefined, orderBy, uniqBy, xorWith } from 'lodash';
 import { injectPinyinWith } from '@gio-design/utils';
 import { EventData, EventPickerProps, Tab } from './interfaces';
-import { useDebounce } from '../hooks';
 import BasePicker from '../base-picker';
 
 import { getEventType, defaultTabs, withSelectKey } from './helper';
@@ -46,7 +45,6 @@ const EventPicker = (props: EventPickerProps) => {
   } = props;
   const [keyword, setKeyword] = useState(defaultKeyword);
 
-  const [debouncedKeyword, setDebouncedKeyword] = useDebounce(keyword, 300);
   // const [detailVisible, setDetailVisible] = useState(false);
   // const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
   //   setDetailVisible(visible);
@@ -65,32 +63,12 @@ const EventPicker = (props: EventPickerProps) => {
   const mergedHideTabNav = hideTabNav ?? tabs.length + +showTabAll === 1;
 
   const navRef = useRef(mergedTabs.map((t) => ({ key: t.value, children: t.label })));
-  const formatValue = (source: EventData[] | EventData | undefined) => {
-    if (source) {
-      const arr = isArray(source) ? source : [source];
-      return withSelectKey(arr);
-    }
-    return [];
+  const formatValue = (source: EventData[] | EventData) => {
+    const arr = isArray(source) ? source : [source];
+    return withSelectKey(arr);
   };
   const formatedValue = formatValue(initialValue);
   const [value, setValue] = useState<EventData[]>(formatedValue);
-  // useEffect(() => {
-  //   setValue(formatedValue);
-  // }, [formatedValue]);
-
-  // useEffect(() => {
-  //   /**
-  //    * 设置属性类型tab，如果传入的列表没有对应的类型 不显示该tab
-  //    */
-  //   const types = uniq(dataList.map(getEventType));
-  //   const tabs = mergedTabs.filter((t) => types.indexOf(t.value) > -1);
-  //   navRef.current = tabs.map((t) => ({ key: t.value, children: t.label }));
-  // }, []);
-  // const filteredDataSource = useMemo(() => {
-  //   const source = isFunction(filter) ? filter(originDataSource) : originDataSource;
-  //   const target = injectPinyinWith(source, 'name');
-  //   return target;
-  // }, [originDataSource]);
   /**
    * 搜索关键字的方法，支持拼音匹配
    * @param input 带匹配的项
@@ -122,7 +100,7 @@ const EventPicker = (props: EventPickerProps) => {
 
   const keywordFilter = (input: string = '', key: string = '') => {
     if (!input || !key) return true;
-    return !!pinyinMatch?.match(input, key);
+    return !!pinyinMatch.match(input, key);
   };
   const filterFunc = (data: EventData[], kw: string) => data.filter((d) => keywordFilter(d.name as string, kw));
   // 按照拼音字母排序
@@ -153,7 +131,7 @@ const EventPicker = (props: EventPickerProps) => {
   }
   const handleSearch = (query: string) => {
     setKeyword(query);
-    setDebouncedKeyword(query);
+    // debouncedKeyword(query);
   };
   function isEqualEventData(a: EventData, b: EventData) {
     return isEqualWith(a, b, (v, o) => v.selectKey === o.selectKey);
@@ -182,33 +160,17 @@ const EventPicker = (props: EventPickerProps) => {
     onClick?.(node);
   };
 
-  // const [hoverdNodeValue, setHoveredNodeValue] = useState<EventData | undefined>();
-  // const handleItemMouseEnter = (data: EventData) => {
-  //   setHoveredNodeValue(data);
-  //   debounceSetDetailVisible(true);
-  // };
-  // const handleItemMouseLeave = () => {
-  //   setHoveredNodeValue(undefined);
-  //   debounceSetDetailVisible.cancel();
-  //   setDetailVisible(false);
-  //   console.log('handleItemMouseLeave');
-  // };
-  // const renderDetail = () =>
-  //   hoverdNodeValue && (
-  //     <Preview dataSource={hoverdNodeValue} chart={onShowEventChart} fetchData={async (data) => data} />
-  //   );
   const footer = panelFooter?.(activedTab, dataSource);
 
   const renderContent = () => (
     <PickerContent
       {...rest}
-      // emptyPrompt={emptyPrompt}
       historyStoreKey={historyStoreKey}
       shouldUpdate={shouldUpdateRecentlyUsed}
       dataSource={dataSource}
       getTabKey={getTabKey}
       tabKey={activedTab}
-      keyword={debouncedKeyword}
+      keyword={keyword}
       multiple={multiple}
       onClick={handleItemClick}
       onSelect={handleSelect}

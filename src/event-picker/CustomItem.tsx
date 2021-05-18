@@ -70,9 +70,9 @@ export const CustomItem: React.FC<Props> = (props) => {
     setChecked(dataSource.selectKey === value);
   }, [dataSource, value]);
 
-  useEffect(() => {
-    if (multiple) onCheckboxChange?.(dataSource, checked);
-  }, [checked]);
+  // useEffect(() => {
+  //   if (multiple) onCheckboxChange?.(dataSource, checked);
+  // }, [checked]);
   const [detailVisible, setDetailVisible] = useState(false);
   const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
     setDetailVisible(visible);
@@ -97,12 +97,15 @@ export const CustomItem: React.FC<Props> = (props) => {
   const handleListItemClick: ListItemProps['onClick'] = (e) => {
     e.stopPropagation();
     if (multiple) {
-      setChecked((p) => !p);
+      const _checked = !checked;
+      setChecked(_checked);
+      onCheckboxChange?.(dataSource, _checked);
     }
     onClick?.(e);
   };
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
+    // onCheckboxChange?.(dataSource, e.target.checked);
   };
   return (
     <List.Item
@@ -119,7 +122,7 @@ export const CustomItem: React.FC<Props> = (props) => {
           overlay={<div style={{ maxWidth: '360px' }}>{dataSource.disabledTips ?? '暂不可用'}</div>}
           disabled={!disabled || !dataSource.disabledTips}
         >
-          <div className="item-content">
+          <div className="item-content" role="listitem">
             {multiple && (
               <Checkbox
                 disabled={disabled}
@@ -142,7 +145,7 @@ export const CustomItem: React.FC<Props> = (props) => {
           style={{ display: hidden ? 'none' : 'block' }}
           dataSource={dataSource}
           onShowEventChart={onShowEventChart}
-          fetchDetailData={fetchDetailData ?? (async (o) => o)}
+          fetchDetailData={fetchDetailData}
           previewCustomRender={previewCustomRender}
         />
       )}

@@ -2,7 +2,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { EventSelector, EventSelectorProps } from '../index';
-import localStorageMock from '../../__mock__/localStorageMock';
+import localStorageMock from '../../../__mocks__/localStorageMock';
 // import { events } from './data';
 const dataSource = [
   {

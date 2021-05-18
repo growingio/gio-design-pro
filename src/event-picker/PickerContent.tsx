@@ -7,6 +7,7 @@ import ListPanel from './ListPanel';
 import GroupList from './GroupList';
 import { GroupListItemEvent } from './GroupListItemProps';
 import EmptyPrompt, { EmptyPromptProps } from '../empty-prompt';
+import { useDebounce } from '../hooks';
 
 /**
  * 本地存储历史记录
@@ -89,7 +90,7 @@ const PickerContent = (props: Props) => {
   const {
     dataSource: originDataSource,
     tabKey,
-    keyword,
+    keyword: _keyword,
     filter,
     historyStoreKey = '_',
     shouldUpdate = true,
@@ -110,6 +111,8 @@ const PickerContent = (props: Props) => {
   const [select, setSelect] = useState<string[]>(valueKeys);
   const panelRef = useRef();
   const panelBodyCls = usePrefixCls('event-picker-list-panel__body');
+  const [keyword] = useDebounce(_keyword, 300);
+
   /**
    * 当切换tab时 将滚动条滚动到顶部
    */
@@ -260,6 +263,7 @@ const PickerContent = (props: Props) => {
               dataList: groupData,
               select: value,
             }}
+            keyword={keyword}
             value={select}
             multiple={multiple}
             onDeselectAll={handleClearAll}
