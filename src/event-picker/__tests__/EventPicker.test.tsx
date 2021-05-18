@@ -188,7 +188,7 @@ describe('<EventPicker/> test', () => {
 
   it('can deselect by click clearAll', async () => {
     const handleSelect = jest.fn();
-    const handleChange = jest.fn();
+    const handleChange = jest.fn((v) => console.log('value changed', v));
     const datas = events.slice(0, 9);
     const selecValue = datas.slice(0, 2);
     const picker = (
@@ -204,9 +204,13 @@ describe('<EventPicker/> test', () => {
     );
     render(picker);
 
-    act(() => {
+    await act(async () => {
       fireEvent.click(screen.getByText('清空全部已选'));
+      jest.runAllTimers();
+    });
+    await act(async () => {
       fireEvent.click(screen.getByText('确 定'));
+      jest.runAllTimers();
     });
     expect(handleSelect).toBeCalledTimes(1);
     expect(handleChange).toBeCalledTimes(1);

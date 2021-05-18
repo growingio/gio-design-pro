@@ -2,7 +2,6 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { EventSelector, EventSelectorProps } from '../index';
-import localStorageMock from '../../../__mocks__/localStorageMock';
 // import { events } from './data';
 const dataSource = [
   {
@@ -60,10 +59,7 @@ const defaultProps: EventSelectorProps = {
 jest.useFakeTimers();
 describe('<EventSelector/> test', () => {
   beforeEach(() => {
-    Object.defineProperty(window, 'localStorage', {
-      value: localStorageMock(),
-      writable: true,
-    });
+    localStorage.clear();
   });
   it('can be selected', () => {
     const handleSelect = jest.fn();

@@ -61,7 +61,7 @@ describe('<CustomItem/> test', () => {
       // jest.runOnlyPendingTimers();
       await sleep(1);
       fireEvent.mouseLeave(container.firstElementChild);
-      await sleep(150);
+      await sleep(152);
     });
     expect(container.querySelector('.event-preview')).toBeTruthy();
     expect(fetchDetailData).toHaveBeenCalled();
