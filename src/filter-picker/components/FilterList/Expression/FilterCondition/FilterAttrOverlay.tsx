@@ -115,6 +115,11 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     onSubmit(filterValue);
   };
 
+  const cancel = () => {
+    setAttrValue([]);
+    onCancel();
+  };
+
   const getAttrSelect = (attr: attributeValue, selectValue: string) => {
     switch (attr) {
       case AttributeMap.date:
@@ -168,7 +173,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       </div>
       <Footer
         onSubmit={submit}
-        onCancel={onCancel}
+        onCancel={cancel}
         // 当values为空，同时不时无值，有值状态下，确认按钮disable
         comfirmStatus={operationValue !== 'hasValue' && operationValue !== 'noValue' && !attrValue.length}
       />
