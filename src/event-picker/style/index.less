@@ -25,11 +25,7 @@
     position: relative;
     max-height: 429px;
     height: fit-content;
-    // padding: 0 8px;
-    // scroll-snap-align: start;
     overflow: visible;
-    // overflow-y: auto;
-    position: relative;
     &__body {
       max-height: 429px;
       min-height: 200px;
@@ -68,10 +64,10 @@
     .multi-select {
       padding-bottom: 68px;
     }
-    .with-footer{
+    .with-footer {
       padding-bottom: 114px;
     }
-    .multi-select.with-footer{
+    .multi-select.with-footer {
       padding-bottom: 114px;
     }
     &__footer {
@@ -79,26 +75,27 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: #ffffff;
+      background-color: #fff;
       z-index: 1001;
-     
+
       &-content {
         position: relative;
         .multiple {
           padding: 16px;
-          &>button {
+          & > button {
             float: right;
           }
-          
+
           button + button {
             margin-right: 8px;
           }
-          &::before,&::after{
+          &::before,
+          &::after {
             content: ' ';
             display: block;
             line-height: 0;
           }
-          &::after{
+          &::after {
             clear: both;
           }
         }
@@ -117,8 +114,8 @@
     }
   }
 }
-.@{event-picker-prefix-cls}.hide-tab-nav{
-  .@{picker-prefix-cls}__content{
+.@{event-picker-prefix-cls}.hide-tab-nav {
+  .@{picker-prefix-cls}__content {
     margin-top: 8px;
   }
 }
