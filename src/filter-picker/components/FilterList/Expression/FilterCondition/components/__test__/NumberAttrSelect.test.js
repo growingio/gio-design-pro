@@ -89,6 +89,12 @@ describe('<NumberAttrSelect />', () => {
     expect(value[0]).toBe('-2.5');
     wrapper.find('input').simulate('change', { target: { value: '' } });
     expect(value[0]).toBe('0');
+    wrapper.find('input').simulate('change', { target: { value: '2.5' } });
+    expect(value[0]).toBe('2.5');
+    wrapper.find('input').simulate('change', { target: { value: '-0.25' } });
+    expect(value[0]).toBe('-0.25');
+    wrapper.find('input').simulate('change', { target: { value: '0.25' } });
+    expect(value[0]).toBe('0.25');
   });
 
   it('between change', () => {
