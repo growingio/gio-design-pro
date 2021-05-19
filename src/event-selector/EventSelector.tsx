@@ -26,12 +26,9 @@ const EventSelector = ({
   ...pickerRestProps
 }: EventSelectorProps) => {
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
-  const formatValue = (source: EventData[] | EventData | undefined) => {
-    if (source) {
-      const arr = isArray(source) ? source : [source];
-      return withSelectKey(arr);
-    }
-    return [];
+  const formatValue = (source: EventData[] | EventData) => {
+    const arr = isArray(source) ? source : [source];
+    return withSelectKey(arr);
   };
   // const formatedValue = formatValue(initialValue);
   const [value, setValue] = useState<EventData[]>(formatValue(initialValue));

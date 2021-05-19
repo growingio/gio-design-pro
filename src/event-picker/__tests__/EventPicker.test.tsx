@@ -188,7 +188,7 @@ describe('<EventPicker/> test', () => {
 
   it('can deselect by click clearAll', async () => {
     const handleSelect = jest.fn();
-    const handleChange = jest.fn((v) => console.log('value changed', v));
+    const handleChange = jest.fn();
     const datas = events.slice(0, 9);
     const selecValue = datas.slice(0, 2);
     const picker = (
@@ -230,7 +230,7 @@ describe('<EventPicker/> test', () => {
     await act(async () => {
       const query2 = datas[0].name;
       fireEvent.change(searchBar, { target: { value: query2 } });
-      await sleep(305);
+      await sleep(400);
     });
     expect(screen.queryAllByRole('option')).toHaveLength(1);
   });
@@ -242,7 +242,7 @@ describe('<EventPicker/> test', () => {
     await act(async () => {
       const query = 'no result';
       fireEvent.change(searchBar, { target: { value: query } });
-      await sleep(305);
+      await sleep(400);
     });
     expect(screen.queryAllByRole('option')).toHaveLength(0);
   });

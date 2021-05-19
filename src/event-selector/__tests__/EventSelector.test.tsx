@@ -75,4 +75,30 @@ describe('<EventSelector/> test', () => {
     expect(screen.queryByText('请选择')).toBeNull();
     // expect(handleSelect).toHaveBeenCalledWith(tobeClickedNode);
   });
+  it('click cancel button will do nothing', () => {
+    const handleSelect = jest.fn();
+    const handleChange = jest.fn();
+    const handleCancel = jest.fn();
+    render(
+      <EventSelector
+        {...defaultProps}
+        multiple
+        onSelect={handleSelect}
+        onCancel={handleCancel}
+        onChange={handleChange}
+      />
+    );
+    fireEvent.click(screen.getByText('请选择'));
+    act(() => {
+      fireEvent.click(screen.getByText(dataSource[0].name));
+    });
+    act(() => {
+      fireEvent.click(screen.getByText('取 消'));
+    });
+    expect(handleSelect).toHaveBeenCalledTimes(0);
+    expect(handleChange).toHaveBeenCalledTimes(0);
+    expect(handleCancel).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText('请选择')).toBeTruthy();
+    // expect(handleSelect).toHaveBeenCalledWith(tobeClickedNode);
+  });
 });
