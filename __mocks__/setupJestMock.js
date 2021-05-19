@@ -1,4 +1,4 @@
-import LocalStorage from './localstorage';
+import LocalStorage from './localStorage';
 
 if (typeof global._localStorage !== 'undefined') {
   Object.defineProperty(global, '_localStorage', {
