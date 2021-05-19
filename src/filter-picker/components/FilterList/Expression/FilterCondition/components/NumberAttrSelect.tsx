@@ -5,29 +5,54 @@ interface NumberAttrSelectProps {
   attrSelect: string;
   attrChange: (v: any) => void;
   values: string[];
+  type?: 'positivedecimal' | 'decimal';
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
-  const { attrSelect, attrChange, values } = props;
-  const [value, setValue] = useState<number | string>(values[0] ? parseInt(values[0], 10) : 0);
-  const [value1, setValue1] = useState<number | string>(values[0] ? parseInt(values[0], 10) : 0);
-  const [value2, setValue2] = useState<number | string>(values[1] ? parseInt(values[1], 10) : 0);
+  const { attrSelect, attrChange, values, type } = props;
+  const [value, setValue] = useState<number | string>(values?.[0] ? parseFloat(values?.[0]) : 0);
+  const [value1, setValue1] = useState<number | string>(values?.[0] ? parseFloat(values?.[0]) : 0);
+  const [value2, setValue2] = useState<number | string>(values?.[1] ? parseFloat(values?.[1]) : 0);
 
   // 初始化attrValue值
   useEffect(() => {
-    const num = values[0] && values[0] !== ' ' ? values[0] : '0';
-    setValue(parseInt(values[0], 10) || 0);
-    setValue1(parseInt(values[0], 10) || 0);
-    setValue2(Number.isNaN(parseInt(values[1], 10)) ? num : parseInt(values[1], 10));
+    const num = values?.[0] && values?.[0] !== ' ' ? values?.[0] : '0';
+    setValue(parseFloat(values?.[0]) || 0);
+    setValue1(parseFloat(values?.[0]) || 0);
+    setValue2(Number.isNaN(parseFloat(values?.[1])) ? num : parseFloat(values?.[1]));
     if (attrSelect === 'between' || attrSelect === 'not between') {
-      attrChange([num, values[1] || num]);
+      attrChange([num, values?.[1] || num]);
     } else {
       attrChange([num]);
     }
   }, [attrSelect]);
 
+  const checkRegExp = (numType: string | undefined, v: string) => {
+    const typeLowCase = numType?.toLowerCase();
+    // if (typeLowCase === 'integer') {
+    //   return /^(-|\+)?\d?$/.test(`${v}`);
+    // }
+    if (typeLowCase === 'positivedecimal') {
+      return /^[1-9]\d*(\.)?(\d+)?$/.test(`${v}`) || /^[0]$/.test(`${v}`) || /^[0](\.)(\d+)?$/.test(`${v}`);
+    }
+
+    if (typeLowCase === 'decimal') {
+      return (
+        v === '-' ||
+        /^((-[1-9]\d*(\.)?(\d+)?)|(0+(\.)?(0+)?))$/.test(`${v}`) ||
+        /^[1-9]\d*(\.)?(\d+)?$/.test(`${v}`) ||
+        /^(-[0])$/.test(`${v}`) ||
+        /^-[0](\.)(\d+)?$/.test(`${v}`) ||
+        /^[1-9]\d*(\.)?(\d+)?$/.test(`${v}`) ||
+        /^[0]$/.test(`${v}`) ||
+        /^[0](\.)(\d+)?$/.test(`${v}`)
+      );
+    }
+    return v === '-' || /^(-|\+)?[1-9]\d*?$/.test(`${v}`) || /^[0]$/.test(`${v}`);
+  };
+
   const setValue1Number = (val: React.ChangeEvent<HTMLInputElement>) => {
     const v = val.target.value;
-    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
+    if (v && checkRegExp(type, v)) {
       setValue1(v);
       if (v !== '-') {
         attrChange([v, value2]);
@@ -41,11 +66,9 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   // 设置数值
   const setNumberValue = (val: React.ChangeEvent<HTMLInputElement>) => {
     const v = val.target.value;
-    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
+    if (v && checkRegExp(type, v)) {
       setValue(v);
-      if (v !== '-') {
-        attrChange([v]);
-      }
+      attrChange([v]);
     } else if (!v) {
       setValue(v);
       attrChange(['0']);
@@ -54,11 +77,9 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   // 设置区间方法
   const setBetweenNumberValue = (val: React.ChangeEvent<HTMLInputElement>) => {
     const v = val.target.value;
-    if ((v && /^-?[0-9]\d*$/.test(`${v}`)) || v === '-') {
+    if (v && checkRegExp(type, v)) {
       setValue2(v);
-      if (v !== '-') {
-        attrChange([value1, v]);
-      }
+      attrChange([value1, v]);
     } else if (!v) {
       setValue2(v);
       attrChange([value1, '0']);

@@ -188,7 +188,7 @@ const parseDateValuesToText = (opMap: { [key: string]: string }, operation: stri
 // 对NumberAttrSelect，StringAttrSelect，DateAttrSelect返回的values值进行转换,生成属性选择框的属性规则展示文本
 export default function parseValuesToText(type: attributeValue, operation: string, value: string[]): string {
   const opMap = operationMap[type];
-  if (value.length) {
+  if (value.length && !!value?.[0]) {
     if (type === 'string' || type === 'STRING') {
       // 字符串类型
       return parseStringValuesToText(opMap, operation, value);

@@ -73,7 +73,9 @@ const FilterPicker = (props: FilterPickerProps) => {
         getTooltipContainer={getTooltipContainer}
         destroyTooltipOnHide
       >
-        {children || <Button icon={<FilterOutlined />} size="small" type={!localVisible ? 'link' : 'secondary'} />}
+        {children || (
+          <Button icon={<FilterOutlined size="14px" />} size="small" type={!localVisible ? 'text' : 'secondary'} />
+        )}
       </Dropdown>
     </FilterPickerContext.Provider>
   );

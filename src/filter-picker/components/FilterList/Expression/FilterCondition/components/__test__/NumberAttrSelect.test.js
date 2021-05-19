@@ -3,9 +3,9 @@ import { shallow, mount } from 'enzyme';
 import NumberAttrSelect from '../NumberAttrSelect.tsx';
 
 describe('<NumberAttrSelect />', () => {
-  it('should throw error', () => {
-    expect(() => shallow(<NumberAttrSelect />)).toThrowError();
-  });
+  // it('should throw error', () => {
+  //   expect(() => shallow(<NumberAttrSelect />)).toThrowError();
+  // });
 
   it('attrSelect = "="', () => {
     let wrapper = shallow(<NumberAttrSelect values={[]} attrSelect="=" attrChange={() => {}} />);
@@ -49,6 +49,52 @@ describe('<NumberAttrSelect />', () => {
     expect(value[0]).toBe('2');
     wrapper.find('input').simulate('change', { target: { value: '' } });
     expect(value[0]).toBe('0');
+  });
+
+  it('input positivedecimal', async () => {
+    let value = '';
+    const wrapper = mount(
+      <NumberAttrSelect
+        values={[10]}
+        attrSelect="="
+        attrChange={(val) => {
+          value = val;
+        }}
+        type="positivedecimal"
+      />
+    );
+
+    wrapper.find('input').simulate('focus');
+    wrapper.find('input').simulate('change', { target: { value: '2.5' } });
+    expect(value[0]).toBe('2.5');
+    wrapper.find('input').simulate('change', { target: { value: '' } });
+    expect(value[0]).toBe('0');
+  });
+
+  it('input decimal', async () => {
+    let value = '';
+    const wrapper = mount(
+      <NumberAttrSelect
+        values={[10]}
+        attrSelect="="
+        attrChange={(val) => {
+          value = val;
+        }}
+        type="decimal"
+      />
+    );
+
+    wrapper.find('input').simulate('focus');
+    wrapper.find('input').simulate('change', { target: { value: '-2.5' } });
+    expect(value[0]).toBe('-2.5');
+    wrapper.find('input').simulate('change', { target: { value: '' } });
+    expect(value[0]).toBe('0');
+    wrapper.find('input').simulate('change', { target: { value: '2.5' } });
+    expect(value[0]).toBe('2.5');
+    wrapper.find('input').simulate('change', { target: { value: '-0.25' } });
+    expect(value[0]).toBe('-0.25');
+    wrapper.find('input').simulate('change', { target: { value: '0.25' } });
+    expect(value[0]).toBe('0.25');
   });
 
   it('between change', () => {
