@@ -27,11 +27,16 @@ describe('<Preview/> test', () => {
     expect(container2.querySelector('.item-models')).toBeTruthy();
   });
   it('render Preview of type simple', async () => {
-    const { container } = render(<Preview dataSource={simple} />);
+    const { container } = render(<Preview dataSource={simple} onShowEventChart={onShowEventChart} />);
     await act(async () => {
       jest.runOnlyPendingTimers();
     });
     expect(container.querySelector('.auto-track')).toBeTruthy();
+    const { container: container2 } = render(<Preview dataSource={simple} />);
+    await act(async () => {
+      jest.runOnlyPendingTimers();
+    });
+    expect(container2.querySelector('.event-previw__chart')).toBeNull();
   });
   it('render Preview of complex', async () => {
     const { container } = render(<Preview dataSource={complex} />);
