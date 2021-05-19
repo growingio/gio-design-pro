@@ -19,10 +19,7 @@ const useDebounce = <T = undefined>(value: T, wait: number = 500): [T, Dispatch<
 
   const [state, dispatch] = useState(value);
   const callback = useCallback((_v: T) => isMounted() && dispatch(_v), [dispatch]);
-  const debounced = useDebounceFn(callback, wait, {
-    leading: true,
-    trailing: false,
-  });
+  const debounced = useDebounceFn(callback, wait);
 
   useEffect(() => {
     debounced(value);

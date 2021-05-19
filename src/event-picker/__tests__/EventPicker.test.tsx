@@ -187,6 +187,7 @@ describe('<EventPicker/> test', () => {
   });
 
   it('can deselect by click clearAll', async () => {
+    jest.useFakeTimers();
     const handleSelect = jest.fn();
     const handleChange = jest.fn();
     const datas = events.slice(0, 9);
@@ -216,16 +217,11 @@ describe('<EventPicker/> test', () => {
     expect(handleChange).toBeCalledTimes(1);
   });
   it('search options', async () => {
+    jest.useRealTimers();
     const datas = events.slice(0, 2);
     const picker = <EventPicker {...defaultProps} dataSource={datas} />;
     render(picker);
     const searchBar = screen.getByPlaceholderText('搜索事件或指标名称');
-    // await act(async () => {
-    //   const query = 'no result';
-    //   fireEvent.change(searchBar, { target: { value: query } });
-    //   await sleep(305);
-    // });
-    // expect(screen.queryAllByRole('option')).toHaveLength(0);
 
     await act(async () => {
       const query2 = datas[0].name;
@@ -235,6 +231,7 @@ describe('<EventPicker/> test', () => {
     expect(screen.queryAllByRole('option')).toHaveLength(1);
   });
   it('search options with no result', async () => {
+    jest.useRealTimers();
     const datas = events.slice(0, 2);
     const picker = <EventPicker {...defaultProps} dataSource={datas} />;
     render(picker);
