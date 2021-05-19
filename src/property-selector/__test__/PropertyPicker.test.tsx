@@ -99,9 +99,12 @@ describe('PropertyPicker', () => {
     const query = insightDimensions[0].name;
     // render(defaultPicker);
     render(<PropertyPicker {...defaultProps} dataSource={dataSource} />);
-    fireEvent.change(screen.getByPlaceholderText('搜索属性名称'), {
-      target: { value: query },
+    act(() => {
+      fireEvent.change(screen.getByPlaceholderText('搜索属性名称'), {
+        target: { value: query },
+      });
     });
+
     // jest.runAllTimers();
     // jest.advanceTimersByTime(1000);
     await sleep(400);

@@ -207,11 +207,11 @@ describe('<EventPicker/> test', () => {
 
     await act(async () => {
       fireEvent.click(screen.getByText('清空全部已选'));
-      jest.runAllTimers();
+      jest.runOnlyPendingTimers();
     });
     await act(async () => {
       fireEvent.click(screen.getByText('确 定'));
-      jest.runAllTimers();
+      jest.runOnlyPendingTimers();
     });
     expect(handleSelect).toBeCalledTimes(1);
     expect(handleChange).toBeCalledTimes(1);

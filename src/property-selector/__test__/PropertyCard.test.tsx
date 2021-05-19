@@ -24,7 +24,7 @@ describe('PropertyCard', () => {
         </div>
       );
 
-      jest.runAllTimers();
+      jest.runOnlyPendingTimers();
     });
     expect(fetchData).toHaveBeenCalledTimes(1);
     expect(screen.getByTestId('t_PropertyCard_warp')).toMatchSnapshot();
@@ -51,7 +51,7 @@ describe('PropertyCard', () => {
         </div>
       );
 
-      jest.runAllTimers();
+      jest.runOnlyPendingTimers();
     });
     expect(screen.queryByText('usr_sex002_key')).toBeTruthy();
     expect(screen.getByTestId('t_PropertyCard_wrap_2').querySelector('gio-property-picker-card__footer')).toBeNull();
@@ -120,7 +120,7 @@ describe('PropertyCard', () => {
         </div>
       );
 
-      jest.runAllTimers();
+      jest.runOnlyPendingTimers();
     });
 
     expect(screen.getByTestId('valuetype_list')).toMatchSnapshot();
