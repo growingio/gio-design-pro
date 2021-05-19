@@ -3,9 +3,9 @@ import { shallow, mount } from 'enzyme';
 import NumberAttrSelect from '../NumberAttrSelect.tsx';
 
 describe('<NumberAttrSelect />', () => {
-  it('should throw error', () => {
-    expect(() => shallow(<NumberAttrSelect />)).toThrowError();
-  });
+  // it('should throw error', () => {
+  //   expect(() => shallow(<NumberAttrSelect />)).toThrowError();
+  // });
 
   it('attrSelect = "="', () => {
     let wrapper = shallow(<NumberAttrSelect values={[]} attrSelect="=" attrChange={() => {}} />);
@@ -71,7 +71,7 @@ describe('<NumberAttrSelect />', () => {
     expect(value[0]).toBe('0');
   });
 
-  it('input negativedecimal', async () => {
+  it('input decimal', async () => {
     let value = '';
     const wrapper = mount(
       <NumberAttrSelect
@@ -80,7 +80,7 @@ describe('<NumberAttrSelect />', () => {
         attrChange={(val) => {
           value = val;
         }}
-        type="negativedecimal"
+        type="decimal"
       />
     );
 
