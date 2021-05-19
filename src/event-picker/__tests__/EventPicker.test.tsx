@@ -37,6 +37,11 @@ describe('<EventPicker/> test', () => {
     expect(screen.queryAllByText('事件')).not.toBe([]);
     expect(screen.queryAllByRole('option').length).toBeGreaterThan(0);
   });
+  it('renders EventPicker without tab all and without data', () => {
+    render(<EventPicker tabs={[]} showTabAll={false} />);
+    expect(screen.queryByText('全部')).toBeNull();
+    expect(screen.queryAllByRole('option')).toHaveLength(0);
+  });
   it('can change tab', () => {
     render(<EventPicker {...defaultProps} dataSource={events.slice(0, 9)} />);
     fireEvent.click(screen.getByText('事件'));

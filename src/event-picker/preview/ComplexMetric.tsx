@@ -3,7 +3,7 @@ import React from 'react';
 import { Card } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import classnames from 'classnames';
-import { PreviewProps } from './PreviewProps';
+import { PreviewProps } from './previewProps';
 
 const ComplexMetric: React.FC<PreviewProps> = (props) => {
   const { eventData, className } = props;

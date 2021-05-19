@@ -5,7 +5,8 @@ import { Card, usePrefixCls } from '@gio-design/components';
 import classnames from 'classnames';
 import PreviewChart from './Chart';
 import { getTypeName } from './helper';
-import { PreviewProps } from './PreviewProps';
+import { PreviewProps } from './previewProps';
+import { Attributes } from '../interfaces';
 
 const Custom: React.FC<PreviewProps> = (props) => {
   const { eventData, chart, className } = props;
@@ -36,7 +37,7 @@ const Custom: React.FC<PreviewProps> = (props) => {
                     <th>名称</th>
                     <th>类型</th>
                   </tr>
-                  {attributes.map((attr, index) => (
+                  {attributes.map((attr: Attributes, index: Number) => (
                     <tr key={`${attr.name}_${index}`}>
                       <td>{attr.name}</td>
                       <td>{getTypeName(attr.valueType)}</td>
@@ -58,7 +59,7 @@ const Custom: React.FC<PreviewProps> = (props) => {
                   <th>名称</th>
                   <th>类型</th>
                 </tr>
-                {itemModels.map((attr, index) => (
+                {itemModels.map((attr: Attributes, index: Number) => (
                   <tr key={`${attr.name}_${index}`}>
                     <td>{attr.name}</td>
                     <td>{getTypeName(attr.valueType)}</td>

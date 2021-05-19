@@ -4,7 +4,7 @@ import { Card } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import classnames from 'classnames';
 import PreviewChart from './Chart';
-import { PreviewProps } from './PreviewProps';
+import { PreviewProps } from './previewProps';
 
 const AutoTrack: React.FC<PreviewProps> = (props) => {
   const { eventData, className, chart } = props;
