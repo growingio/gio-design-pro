@@ -283,4 +283,23 @@ describe('<EventPicker/> test', () => {
     });
     expect(screen.queryAllByRole('option')).toHaveLength(0);
   });
+
+  it('will not show recentlyused group when shouldUpdate=false', () => {
+    const datas = events.slice(0, 5);
+    const picker = (
+      <EventPicker {...defaultProps} historyStoreKey={undefined} dataSource={datas} shouldUpdate={false} />
+    );
+    const { rerender } = render(picker);
+    fireEvent.click(screen.getByText('全部'));
+    const all = screen.queryAllByRole('option');
+    all.slice(0, 7).forEach((opt) => {
+      fireEvent.click(opt);
+    });
+    expect(localStorage.__GIO_EVENT_TARGET_PICK_HISTORY_).not.toBeNull();
+    act(() => {
+      rerender(picker);
+    });
+
+    expect(screen.queryByText('最近使用')).toBeNull();
+  });
 });
