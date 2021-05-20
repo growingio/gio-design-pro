@@ -168,7 +168,6 @@ const EventPicker = (props: EventPickerProps) => {
       historyStoreKey={historyStoreKey}
       shouldUpdate={shouldUpdateRecentlyUsed}
       dataSource={dataSource}
-      getTabKey={getTabKey}
       tabKey={activedTab}
       keyword={keyword}
       multiple={multiple}

@@ -39,7 +39,7 @@ interface Props extends GroupListItemEvent {
    * 搜索的筛选函数
    */
   filter?: (dataSource: EventData[], kw?: string) => EventData[];
-  getTabKey: (event: EventData) => string;
+  // getTabKey: (event: EventData) => string;
   /**
    * 列表项的排序函数
    */
@@ -84,7 +84,7 @@ interface Props extends GroupListItemEvent {
    * 无数据时的展示信息
    */
   emptyPrompt?: EmptyPromptProps;
-  footer: React.ReactNode;
+  footer?: React.ReactNode;
 }
 const PickerContent = (props: Props) => {
   const {
