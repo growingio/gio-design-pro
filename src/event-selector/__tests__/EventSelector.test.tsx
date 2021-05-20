@@ -53,7 +53,6 @@ const defaultProps: EventSelectorProps = {
   showTabAll: true,
   multiple: false,
   tabs: defaultTabs,
-  placeholder: '请选择',
 };
 // const defaultRender = <EventSelector {...defaultProps} />;
 jest.useFakeTimers();
@@ -100,5 +99,9 @@ describe('<EventSelector/> test', () => {
     expect(handleCancel).toHaveBeenCalledTimes(1);
     expect(screen.queryByText('请选择')).toBeTruthy();
     // expect(handleSelect).toHaveBeenCalledWith(tobeClickedNode);
+  });
+  it('can set placeholder', () => {
+    render(<EventSelector {...defaultProps} placeholder="选择事件" />);
+    expect(screen.queryByText('选择事件')).toBeTruthy();
   });
 });
