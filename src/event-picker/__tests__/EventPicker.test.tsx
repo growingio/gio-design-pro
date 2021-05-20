@@ -3,7 +3,7 @@ import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import EventPicker from '../EventPicker';
 import { events } from './data';
-import { EventPickerProps } from '../interfaces';
+import { EventData, EventPickerProps } from '../interfaces';
 
 function sleep(time: number) {
   return new Promise<void>((resolve) => {
@@ -37,10 +37,45 @@ describe('<EventPicker/> test', () => {
     expect(screen.queryAllByText('事件')).not.toBe([]);
     expect(screen.queryAllByRole('option').length).toBeGreaterThan(0);
   });
-  it('renders EventPicker without tab all and without data', () => {
+  it('no render tabnav when showTabAll=false and tabs=[]', () => {
     render(<EventPicker tabs={[]} showTabAll={false} />);
     expect(screen.queryByText('全部')).toBeNull();
     expect(screen.queryAllByRole('option')).toHaveLength(0);
+  });
+  it('no render tabnav when showTabAll=true and tabs=[]', () => {
+    const { container } = render(<EventPicker tabs={[]} showTabAll={false} />);
+    expect(container.querySelector('gio-tabnav')).toBeNull();
+  });
+  it('render tabnav without tab all', () => {
+    const { container } = render(<EventPicker showTabAll={false} />);
+    expect(container.querySelector('.gio-tabnav')).toBeTruthy();
+    expect(screen.queryByText('全部')).toBeNull();
+  });
+  it('render custom tabnav', () => {
+    const tabs = [
+      { label: '指标', value: 'measurement' },
+      { label: '事件', value: 'event' },
+    ];
+
+    const getEventType = (data: EventData): string => {
+      const { type } = data;
+
+      switch (type) {
+        case 'simple':
+        case 'custom': // 埋点事件
+          return 'event';
+        case 'merged':
+        case 'prepared':
+        case 'complex':
+          return 'measurement';
+        default:
+          return 'unknow';
+      }
+    };
+    const { container } = render(<EventPicker tabs={tabs} getTabKey={getEventType} showTabAll={false} />);
+    expect(container.querySelector('.gio-tabnav')).toBeTruthy();
+    expect(screen.queryByText('全部')).toBeNull();
+    expect(screen.queryByText('指标')).toBeTruthy();
   });
   it('can change tab', () => {
     render(<EventPicker {...defaultProps} dataSource={events.slice(0, 9)} />);
