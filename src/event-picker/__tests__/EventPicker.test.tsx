@@ -18,7 +18,6 @@ const defaultTabs = [
 ];
 const defaultProps: EventPickerProps = {
   dataSource: events,
-  showTabAll: true,
   multiple: false,
   tabs: defaultTabs,
   historyStoreKey: 'unit_test',
@@ -43,9 +42,14 @@ describe('<EventPicker/> test', () => {
     expect(screen.queryAllByRole('option')).toHaveLength(0);
   });
   it('no render tabnav when showTabAll=true and tabs=[]', () => {
-    const { container } = render(<EventPicker tabs={[]} showTabAll={false} />);
+    const { container } = render(<EventPicker tabs={[]} showTabAll />);
     expect(container.querySelector('gio-tabnav')).toBeNull();
   });
+  it('no render tabnav when hideTabNav=true', () => {
+    const { container } = render(<EventPicker hideTabNav />);
+    expect(container.querySelector('gio-tabnav')).toBeNull();
+  });
+
   it('render tabnav without tab all', () => {
     const { container } = render(<EventPicker showTabAll={false} />);
     expect(container.querySelector('.gio-tabnav')).toBeTruthy();
