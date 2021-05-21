@@ -34,7 +34,7 @@ const EventSelector = ({
   const [value, setValue] = useState<EventData[]>(formatValue(initialValue));
   const [afterVisible, setVisible] = useState(true);
   useEffect(() => {
-    setTimeout(() => setVisible(dropdownVisibleInner), 0);
+    setTimeout(() => setVisible(dropdownVisibleInner || false), 0);
   }, [dropdownVisibleInner]);
   const inputValueText = useMemo(() => (value || []).map((v) => v.name).join(','), [value]);
   const [textOverflow, setTextOverflow] = useState(false);
@@ -81,7 +81,7 @@ const EventSelector = ({
     inputValueText && (
       <Tooltip disabled={!textOverflow} title={<div className={`${clsPrifx}-input-tooltip`}>{inputValueText}</div>}>
         <span className="inner-input-wrap" ref={inputValueRef}>
-          {!pickerRestProps.multiple && <TypeIcon style={{ marginRight: '8px' }} type={value[0].type} />}
+          {!pickerRestProps.multiple && <TypeIcon style={{ marginRight: '8px' }} type={value[0]?.type ?? ''} />}
           <span>{inputValueText}</span>
         </span>
       </Tooltip>
