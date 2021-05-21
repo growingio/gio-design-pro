@@ -7,6 +7,7 @@ import Selector from '../selector';
 import { EventData } from '../event-picker/interfaces';
 import { withSelectKey } from '../event-picker/helper';
 import { EventPicker } from '../event-picker';
+import TypeIcon from '../event-picker/TypeIcon';
 import './style';
 
 const EventSelector = ({
@@ -30,9 +31,7 @@ const EventSelector = ({
     const arr = isArray(source) ? source : [source];
     return withSelectKey(arr);
   };
-  // const formatedValue = formatValue(initialValue);
   const [value, setValue] = useState<EventData[]>(formatValue(initialValue));
-  // const [currentValue, setCurrentValue] = useState<Event | undefined>(value);
   const [afterVisible, setVisible] = useState(true);
   useEffect(() => {
     setTimeout(() => setVisible(dropdownVisibleInner), 0);
@@ -82,6 +81,7 @@ const EventSelector = ({
     inputValueText && (
       <Tooltip disabled={!textOverflow} title={<div className={`${clsPrifx}-input-tooltip`}>{inputValueText}</div>}>
         <span className="inner-input-wrap" ref={inputValueRef}>
+          {!pickerRestProps.multiple && <TypeIcon style={{ marginRight: '8px' }} type={value[0].type} />}
           <span>{inputValueText}</span>
         </span>
       </Tooltip>
