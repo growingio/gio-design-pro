@@ -19,5 +19,6 @@ Default.args = {
   userId: currentUserId,
   disabledValues: ['y9pm1pme'],
   onCreateSegment: action('create-segment'),
+  showSegmentCard: false,
   onShowSegmentChart: (resource: Resource) => <div>{`This is the trend chart of ${resource.name}.`}</div>,
 };

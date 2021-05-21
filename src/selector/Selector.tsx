@@ -4,6 +4,7 @@ import { Dropdown } from '@gio-design/components';
 import { UpFilled, DownFilled } from '@gio-design/icons';
 import useControlledState from '@gio-design/components/es/utils/hooks/useControlledState';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
+import { useSize } from '@gio-design/utils/es/hooks';
 import { SelectorProps } from './interfaces';
 
 import './style';
@@ -19,8 +20,11 @@ function Selector({
   valueRender,
   placeholder,
   overlayClassName,
+  getContainer,
+  size: customizeSize,
 }: SelectorProps) {
   const prefixCls = usePrefixCls('selector');
+  const size = customizeSize || useSize();
   const [visible, setVisible] = useControlledState(dropdownVisible, false);
 
   function handleVisibleChange(current: boolean) {
@@ -30,6 +34,7 @@ function Selector({
 
   const cls = classnames(
     prefixCls,
+    `${prefixCls}--${size}`,
     {
       [`${prefixCls}--borderless`]: borderless,
       [`${prefixCls}--actived`]: visible,
@@ -46,10 +51,15 @@ function Selector({
       trigger={['click']}
       placement="bottomLeft"
       disabled={disabled}
-      overlay={<div className={`${prefixCls}-dropdown`}>{dropdownRender()}</div>}
+      overlay={
+        <div className={`${prefixCls}-dropdown`}>
+          {typeof dropdownRender === 'function' ? dropdownRender() : dropdownRender}
+        </div>
+      }
       visible={visible}
       onVisibleChange={handleVisibleChange}
       overlayClassName={overlayCls}
+      getContainer={getContainer}
     >
       <div className={cls} style={style}>
         {!item && <span className={`${prefixCls}__placeholder`}>{placeholder}</span>}

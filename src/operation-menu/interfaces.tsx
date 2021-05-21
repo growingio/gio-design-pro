@@ -26,7 +26,7 @@ export interface OperationMenuProps {
   mini?: boolean;
   placement?: string;
   icon?: any;
-  buttonType?: 'primary' | 'secondary' | 'assist' | 'text';
+  buttonType?: 'primary' | 'secondary' | 'link' | 'text';
   options: OperationMenuListOption[];
   width?: number;
   onClick?: (value: OperationMenuListOption) => void;

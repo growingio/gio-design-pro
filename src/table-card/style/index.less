@@ -34,9 +34,14 @@
     border-left: unset;
     border-right: unset;
     border-bottom: unset;
-    width: calc(100% + 40px);
-    margin: 53px 0 -54px -20px;
+    width: calc(100% + 40px);  
+    margin: 0 -20px 20px;
+    &-withTabs {
+      margin: 0 -20px;
+    }
   }
+
+
 
   &-opertor {
     display: flex;
@@ -65,6 +70,13 @@
       border: 0;
       margin: 0 4px 0 0;
       background-color: #dfe4ee;
+    }
+  }
+
+  &-hide-tabNav {
+    margin-top: 20px;
+    .@{tabnav-prefix-cls} {
+      display: none;
     }
   }
 

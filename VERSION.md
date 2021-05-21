@@ -1,16 +1,15 @@
-# [21.4.0](https://github.com/growingio/gio-design-pro/compare/v21.3.4...v21.4.0) (2021-04-02)
+## [21.5.3](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.3) (2021-05-17)
 
 
 ### Bug Fixes
 
-* **user-picker:** add onShowSegmentChart to show chart in segment card ([#167](https://github.com/growingio/gio-design-pro/issues/167)) ([5088bba](https://github.com/growingio/gio-design-pro/commit/5088bba6bbae223e45ef41888e0552ed3beb35ed))
+* **selector:** selector参数dropdownRender判断如果是函数,执行渲染返回元素,如果不是函数,直接渲染元素 ([c345ab6](https://github.com/growingio/gio-design-pro/commit/c345ab66f5197d630fe71a5df7e5005091134cf8))
 
 
 ### Features
 
-* **peer depend gio-design/icons gio-design/tokens:** set icons and tokens as peer dependencies ([5e37235](https://github.com/growingio/gio-design-pro/commit/5e37235418b4d47f35218110e5b06ca4d0974c83))
-* **tablecard:** add tablecard component ([a8ecaad](https://github.com/growingio/gio-design-pro/commit/a8ecaad7087f7479e1702b52e89d9f26b208758e))
-* **user-picker:** add property disabledValues ([7b2d06d](https://github.com/growingio/gio-design-pro/commit/7b2d06dc96dcd13b4970cd62fbc056cd6e18fea6))
+* **selector:** add prop getContainer ([d88d052](https://github.com/growingio/gio-design-pro/commit/d88d0525a5f6d10f939ffea124bb8f37a536191c))
+* **tablecard:** add otherTabs prop ([9e6b115](https://github.com/growingio/gio-design-pro/commit/9e6b115defacd4a2db73b0657fb3112f737d9414))
 
 
 

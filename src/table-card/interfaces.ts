@@ -1,6 +1,7 @@
 import { CSSProperties, ReactNode } from 'react';
-import { TableProps, ButtonProps, SearchBarProps } from '@gio-design/components';
+import { TableProps, SearchBarProps } from '@gio-design/components';
 import { RowSelection } from '@gio-design/components/es/components/table/interface';
+import { TooltipButtonProps } from '../tooltip-button/interfaces';
 
 interface TableCardRowSelection<RecordType> extends RowSelection<RecordType> {
   selectedRowKeys: string[];
@@ -11,18 +12,24 @@ interface TableCardTableProps<RecordType> extends TableProps<RecordType> {
   rowSelection?: TableCardRowSelection<RecordType>;
 }
 
-interface TableCardTab<RecordType> {
+export interface TableCardTab<RecordType> {
   name: ReactNode;
   table: TableCardTableProps<RecordType>;
   searchBar?: SearchBarProps;
-  buttons?: ButtonProps[];
-  batchButtons?: ButtonProps[];
+  buttons?: TooltipButtonProps[];
+  batchButtons?: TooltipButtonProps[];
 }
 
+export interface TableCardOtherTab {
+  name: ReactNode;
+  content: ReactNode;
+}
 export interface TableCardProps<RecordType> {
   tabs: TableCardTab<RecordType>[];
+  otherTabs?: TableCardOtherTab[];
   title?: ReactNode;
   description?: string;
+  showTabs?: boolean;
   prefixCls?: string;
   className?: string;
   style?: CSSProperties;

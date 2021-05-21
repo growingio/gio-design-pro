@@ -26,4 +26,14 @@ describe('Selector', () => {
     const { container } = render(<Selector {...defaultProps} borderless />);
     expect(container.getElementsByClassName('gio-selector--borderless')).toHaveLength(1);
   });
+
+  it('has default size', () => {
+    const { container } = render(<Selector {...defaultProps} />);
+    expect(container.getElementsByClassName('gio-selector--middle')).toHaveLength(1);
+  });
+
+  it('renders with size', () => {
+    const { container } = render(<Selector {...defaultProps} size="large" />);
+    expect(container.getElementsByClassName('gio-selector--large')).toHaveLength(1);
+  });
 });

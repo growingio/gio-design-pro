@@ -6,8 +6,8 @@ import DateAttrSelect from './components/DateAttrSelect';
 import StringAttrSelect from './components/StringAttrSelect/index';
 import Footer from '../../../Footer';
 import './attrSelect.less';
-
 import { attributeValue, StringValue, NumberValue, DateValue, FilterValueType } from './interfaces';
+import { operationsOptionType } from '../../../../interfaces';
 
 interface FilterAttrOverlayProps {
   valueType: attributeValue;
@@ -17,10 +17,11 @@ interface FilterAttrOverlayProps {
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
+  operationsOption?: operationsOptionType;
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
-  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey } = props;
+  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey, operationsOption } = props;
   const [operationValue, setValue] = useState<StringValue | NumberValue | DateValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
@@ -99,9 +100,6 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
 
   const getAttrSelect = (attr: attributeValue, selectValue: string) => {
     switch (attr) {
-      case AttributeMap.int:
-        // 数值类型
-        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
       case AttributeMap.date:
         // 日期类型
         return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
@@ -119,7 +117,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
           />
         );
       default:
-        return null;
+        return <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
     }
   };
 
@@ -128,7 +126,13 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       <div>
         <div className="filter-attr_select-title">{titleMap[valueType] || '字符串类型'}</div>
         <Select
-          options={selectOptionMap[valueType]}
+          options={
+            operationsOption
+              ? selectOptionMap?.[valueType]?.filter((opItem: any) =>
+                  operationsOption?.[valueType].includes(opItem.value)
+                )
+              : selectOptionMap?.[valueType]
+          }
           value={operationValue}
           size="middle"
           style={{ width: '100%', marginTop: '16px' }}

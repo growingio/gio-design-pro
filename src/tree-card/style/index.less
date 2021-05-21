@@ -1,0 +1,102 @@
+@import '../../stylesheets/index.less';
+
+@nested-list-card-prefix-cls: ~'@{component-prefix}-tree-card'; 
+@tree-prefix-cls: ~'@{component-prefix}-tree';
+
+.@{nested-list-card-prefix-cls} {
+  height: 100%;
+  padding: 20px 12px;
+  background: #FFF;
+  border: 1px solid #EBEDF5;
+  box-shadow: 0 3px 8px rgba(36, 46, 89, 0.05);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+
+  &-title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #242E59;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  &-divider {
+    background-color: #EBEDF5;
+    height: 1px;
+    border: 0;
+    margin: 0 -12px;
+  }
+
+  &-searchbar {
+    margin-top: 20px;
+  }
+  
+  &-tree-divider {
+    margin: 12px 0;
+  }
+
+  &-tree {
+    margin: 12px -8px 12px 0;
+    padding-right: 8px;
+    overflow: hidden auto;
+    flex: 1;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(36, 46, 89, 0.5);
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color:rgba(36, 46, 89, 0.5);
+    }
+  }
+
+  &-tree-node-title-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &-tree-node {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    &-title {
+      flex: auto;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 0 8px;
+    }
+    &-operation{
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      overflow: hidden;
+    }
+  }
+
+  &-subTitle {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #313E75;
+    display: block;
+    height: 28px;
+    padding: 4px 0;
+    margin-bottom: 4px;
+  }
+
+  &-footer {
+    margin-top: 12px;
+    &-button {
+      width: 100%;
+    }
+  }
+
+  .@{tree-prefix-cls} {
+    &-node-content-wrapper{
+      overflow: hidden;
+    }
+  }
+}

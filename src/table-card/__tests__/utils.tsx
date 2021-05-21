@@ -79,7 +79,7 @@ export const getTableCardConfig = (
       },
       buttons: [
         { children: '新建账号', icon: <PlusCircleFilled /> },
-        { children: '次要按钮', type: 'secondary' },
+        { children: '次要按钮', type: 'secondary', disabled: true, tooltipProps: { overlay: 'XXXX' } },
         { children: '次要按钮', type: 'secondary' },
       ],
       batchButtons: [

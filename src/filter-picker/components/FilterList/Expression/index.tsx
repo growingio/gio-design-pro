@@ -40,7 +40,7 @@ function Expression(props: ExpressionProps) {
   const [op, setOp] = useState<StringValue | NumberValue | DateValue>(filterItem?.op);
   const [subFilterItem, setSubFilterItem] = useState<FilterValueType>(filterItem);
 
-  const { fetchDetailData } = React.useContext(FilterPickerContext);
+  const { fetchDetailData, operationsOption } = React.useContext(FilterPickerContext);
 
   const submit = (v: FilterValueType) => {
     const expr: FilterValueType = {
@@ -106,9 +106,10 @@ function Expression(props: ExpressionProps) {
           values={values}
           exprKey={exprKey}
           onCancel={cancel}
+          operationsOption={operationsOption}
         />
       </div>
-      <Button type="assist" icon={<DeleteOutlined />} size="middle" onClick={() => deleteFilterItem(index)} />
+      <Button type="link" icon={<DeleteOutlined />} size="middle" onClick={() => deleteFilterItem(index)} />
     </div>
   );
 }

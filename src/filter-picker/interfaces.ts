@@ -10,6 +10,11 @@ export interface FilterPickerProps extends Pick<PropertyPickerProps, 'fetchDetai
   onConfirm: (v: FilterValue) => void;
   dimensionValueRequest?: (data: any) => Promise<any>;
   recentlyStorePrefix: string;
+  operationsOption?: operationsOptionType;
+  hasVisible?: boolean;
+  visible?: boolean;
+  onVisibleChange?: (v: boolean) => void;
+  placement?: 'bottomLeft' | 'bottom' | 'bottomRight';
 }
 export type attributeValue = 'string' | 'int' | 'date';
 
@@ -30,6 +35,22 @@ export type StringValue = '=' | '!=' | '<' | '>';
 export type NumberValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'hasValue';
 export type DateValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'relativeTime';
 
+export type opStringType = '=' | '!=' | 'in' | 'not in' | 'like' | 'not like' | 'hasValue' | 'noValue';
+export type opNumberType = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'not between' | 'hasValue' | 'noValue';
+export type opDateType =
+  | '='
+  | '!='
+  | '>'
+  | '<'
+  | 'relativeBetween'
+  | 'relativeCurrent'
+  | 'between'
+  | 'not between'
+  | 'hasValue'
+  | 'noValue';
+
+type opSTRINGType = '=' | '!=' | 'in' | 'not in' | 'like' | 'not like';
+
 export interface titleGroup {
   string: string;
   int: string;
@@ -37,21 +58,21 @@ export interface titleGroup {
   STRING: string;
 }
 
+type selectItem = {
+  value: string;
+  label: string;
+};
+
 export interface selectOption {
-  string: {
-    value: string;
-    label: string;
-  }[];
-  STRING: {
-    value: string;
-    label: string;
-  }[];
-  int: {
-    value: string;
-    label: string;
-  }[];
-  date: {
-    value: string;
-    label: string;
-  }[];
+  string: selectItem[];
+  STRING: selectItem[];
+  int: selectItem[];
+  date: selectItem[];
+}
+
+export interface operationsOptionType {
+  string: opStringType[];
+  int: opNumberType[];
+  date: opDateType[];
+  STRING: opSTRINGType[];
 }

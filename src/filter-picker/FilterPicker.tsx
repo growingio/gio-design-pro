@@ -4,9 +4,18 @@ import { FilterOutlined } from '@gio-design/icons';
 import FilterOverlay from './components/FilterOverlay/index';
 import './style/index.less';
 
-import { FilterPickerProps, FilterValueType } from './interfaces';
+import { FilterPickerProps, FilterValueType, operationsOptionType } from './interfaces';
 
-export const FilterPickerContext = React.createContext<Pick<FilterPickerProps, 'fetchDetailData'>>({});
+export const FilterPickerContext = React.createContext<Pick<FilterPickerProps, 'fetchDetailData' | 'operationsOption'>>(
+  {}
+);
+
+const defaultOperationsOption: operationsOptionType = {
+  string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
+  int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
+  date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
+  STRING: ['=', '!=', 'in', 'not in', 'like', 'not like'],
+};
 
 const FilterPicker = (props: FilterPickerProps) => {
   const {
@@ -20,22 +29,32 @@ const FilterPicker = (props: FilterPickerProps) => {
     timeRange,
     recentlyStorePrefix,
     fetchDetailData,
+    operationsOption,
+    hasVisible = false,
+    visible,
+    onVisibleChange,
+    placement = 'bottomRight',
   } = props;
-  const [visible, setVisible] = useState(false);
+  const [localVisible, setLocalVisible] = useState(false);
   const visibleChange = (v: boolean) => {
-    setVisible(v);
+    setLocalVisible(v);
+    onVisibleChange?.(v);
   };
   const cancel = () => {
-    setVisible(false);
+    setLocalVisible(false);
+    hasVisible && onVisibleChange?.(false);
   };
   const submit = (v: FilterValueType[]) => {
-    setVisible(false);
+    setLocalVisible(false);
+    hasVisible && onVisibleChange?.(false);
     onConfirm({ ...filter, exprs: v });
   };
   return (
-    <FilterPickerContext.Provider value={{ fetchDetailData }}>
+    <FilterPickerContext.Provider
+      value={{ fetchDetailData, operationsOption: { ...defaultOperationsOption, ...operationsOption } }}
+    >
       <Dropdown
-        visible={visible}
+        visible={hasVisible ? visible : localVisible}
         trigger={['click']}
         onVisibleChange={visibleChange}
         overlay={
@@ -50,11 +69,11 @@ const FilterPicker = (props: FilterPickerProps) => {
             recentlyStorePrefix={recentlyStorePrefix}
           />
         }
-        placement="bottomRight"
+        placement={placement}
         getTooltipContainer={getTooltipContainer}
         destroyTooltipOnHide
       >
-        {children || <Button icon={<FilterOutlined />} size="small" type={!visible ? 'assist' : 'secondary'} />}
+        {children || <Button icon={<FilterOutlined />} size="small" type={!localVisible ? 'link' : 'secondary'} />}
       </Dropdown>
     </FilterPickerContext.Provider>
   );

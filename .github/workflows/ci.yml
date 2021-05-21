@@ -15,7 +15,7 @@ jobs:
           node-version: 12
       - name: Cache Node.js modules
         id: cache-node-modules
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.5
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -25,7 +25,6 @@ jobs:
   lint:
     name: Lint codes
     needs: install
-    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -35,7 +34,7 @@ jobs:
         with:
           node-version: 12
       - name: Restore Node.js modules
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.5
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -48,7 +47,6 @@ jobs:
   unit_test:
     name: Unit test
     needs: install
-    if: ${{ !startsWith(github.event.pull_request.title, 'docs') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -58,7 +56,7 @@ jobs:
         with:
           node-version: 12
       - name: Restore Node.js modules
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.5
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -71,8 +69,8 @@ jobs:
           directory: coverage/
   ui_test:
     name: UI test
+    if: ${{ !github.event.pull_request.head.repo.fork }}
     needs: install
-    if: ${{ startsWith(github.event.pull_request.title, 'feat') || startsWith(github.event.pull_request.title, 'fix') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -84,7 +82,7 @@ jobs:
         with:
           node-version: 12
       - name: Restore Node.js modules
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.5
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -115,7 +113,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: Restore Node.js modules
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.5
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
