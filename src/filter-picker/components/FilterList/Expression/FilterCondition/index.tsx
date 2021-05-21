@@ -28,6 +28,8 @@ interface FilterConditionProps {
   values: string[];
   exprKey: string;
   operationsOption?: operationsOptionType;
+  numType?: 'positivedecimal' | 'decimal';
+  disabled?: boolean;
 }
 
 function FilterCondition(props: FilterConditionProps) {
@@ -35,13 +37,15 @@ function FilterCondition(props: FilterConditionProps) {
     valueType = 'string',
     onSubmit,
     onCancel,
-    op,
+    op = '=',
     dimensionValueRequest,
     timeRange,
     measurements,
     values,
     exprKey,
     operationsOption,
+    numType,
+    disabled = false,
   } = props;
   const [visible, setVisible] = useState(false);
   const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
@@ -87,6 +91,7 @@ function FilterCondition(props: FilterConditionProps) {
       values={values}
       exprKey={exprKey}
       operationsOption={{ ...defaultOperationsOption, ...operationsOption }}
+      numType={numType}
     />
   );
 
@@ -96,6 +101,7 @@ function FilterCondition(props: FilterConditionProps) {
       dropdownVisible={visible}
       dropdownRender={dropdownRender}
       onDropdownVisibleChange={visibleChange}
+      disabled={disabled}
       borderless
     />
   ) : null;

@@ -20,7 +20,9 @@ describe('<FilterAttrOverlay />', () => {
 
   it('onCancel', () => {
     const onCancel = jest.fn();
-    const wrapper = mount(<FilterAttrOverlay onCancel={onCancel} valueType="int" op="=" values={[]} />);
+    const wrapper = mount(
+      <FilterAttrOverlay onCancel={onCancel} onSubmit={() => {}} valueType="int" op="=" values={[]} />
+    );
     wrapper.find('.filter-contidion-footer').find('button').at(0).simulate('click');
     expect(onCancel).toBeCalledTimes(1);
   });
