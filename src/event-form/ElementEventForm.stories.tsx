@@ -11,6 +11,7 @@ import { AppType, DeviceInfo, ElementInfo, LimitCondition, PageInfo } from './ty
 import { TagElement } from './TagElement';
 import { matchQuery } from './utils';
 import Docs from './EventForm.mdx';
+import './style';
 
 export default {
   title: 'Business Components/EventForm/ElementEventForm',

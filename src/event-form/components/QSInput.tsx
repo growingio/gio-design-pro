@@ -80,7 +80,7 @@ const QSInput = (props: Props) => {
             </div>
           ))}
           <Form.Item labelWidth={0} className="query-input-add-filed">
-            <Button type="text" onClick={() => add()}>
+            <Button type="link" onClick={() => add()}>
               添加查询条件
             </Button>
           </Form.Item>

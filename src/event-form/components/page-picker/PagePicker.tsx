@@ -129,7 +129,7 @@ const Picker = (props: PagePickerProps) => {
             <PageList dataSource={listDataSource} value={inputValue} onSelect={handleSelect} onChange={handleChange} />
           </div>
           <div className="footer">
-            <Button size="small" type="text" icon={<PlusCircleFilled />} onClick={handleActionButtonClick}>
+            <Button size="small" type="link" icon={<PlusCircleFilled />} onClick={handleActionButtonClick}>
               定义新页面
             </Button>
           </div>

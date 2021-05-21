@@ -1,7 +1,6 @@
 import _PropertyPicker from './PropertyPicker';
 import _PropertyCard from './PropertyCard';
 import _PropertySelector from './PropertySelector';
-// import './style/index';
 
 export type { PropertySelectorProps, PropertyPickerProps, PropertyValue } from './interfaces';
 

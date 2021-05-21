@@ -9,6 +9,7 @@ import { spaceTags, deviceInfoApp, currentPageMinp, currentPageApp } from './__t
 import { AppType, DeviceInfo, PageInfo } from './types';
 import { TagElement } from './TagElement';
 import Docs from './EventForm.mdx';
+import './style';
 
 export default {
   title: 'Business Components/EventForm/PageViewEventForm',

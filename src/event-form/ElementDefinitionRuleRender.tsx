@@ -258,7 +258,7 @@ const renderDefinitionRuleText = (props: {
 
   return (
     <span>
-      {repeatTag && (
+      {!!repeatTag && (
         <span>
           该规则已被 <b>{repeatTag.creator}</b> 定义为
           <span>【{repeatTag.name}】。</span>
