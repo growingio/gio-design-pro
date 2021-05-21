@@ -33,9 +33,10 @@ const EventSelector = ({
   // const formatedValue = formatValue(initialValue);
   const [value, setValue] = useState<EventData[]>(formatValue(initialValue));
   // const [currentValue, setCurrentValue] = useState<Event | undefined>(value);
+  const [shouldUpdate, updatePicker] = useState(true);
   useEffect(() => {
-    // setValue(formatValue(initialValue));
-  }, [initialValue]);
+    setTimeout(() => updatePicker(dropdownVisibleInner), 1);
+  }, [dropdownVisibleInner]);
   const inputValueText = useMemo(() => (value || []).map((v) => v.name).join(','), [value]);
   const [textOverflow, setTextOverflow] = useState(false);
   const inputValueRef = useRef<HTMLSpanElement | null>(null);
@@ -69,7 +70,7 @@ const EventSelector = ({
     <EventPicker
       className={`${clsPrifx}-dropdown`}
       {...pickerRestProps}
-      shouldUpdate={dropdownVisibleInner}
+      shouldUpdate={shouldUpdate}
       value={value}
       dataSource={dataSource}
       onChange={handleValueChange}
