@@ -1,0 +1,30 @@
+@import '../../stylesheets/index.less';
+
+@prefix-cls: ~'@{component-prefix}-past-time-picker';
+@list-prefix-cls: ~'@{component-prefix}-list';
+
+.@{prefix-cls} {
+  width: fit-content;
+  max-width: fit-content;
+  display: flex;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(223, 226, 237, 0.8);
+  border-radius: 4px;
+
+  &__time-mode {
+    width: 160px;
+    border-right: 1px solid #e7eaf9;
+    padding: 8px;
+
+    .@{list-prefix-cls}__item {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  &__panel {
+    width: fit-content;
+    max-width: fit-content;
+    flex-grow: 1;
+  }
+}
