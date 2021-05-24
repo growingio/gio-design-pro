@@ -1,0 +1,138 @@
+@import '../../stylesheets/index.less';
+@import '~@gio-design/components/es/components/alert/style/index.less';
+@import '~@gio-design/components/es/components/button/style/index.less';
+@import '~@gio-design/components/es/components/input/style/index.less';
+@import '~@gio-design/components/es/components/form/style/index.less';
+@import '~@gio-design/components/es/components/popconfirm/style/index.less';
+// @import '@gio-design/components/es/components/form'
+@event-form-prefix-cls: ~'@{component-prefix}-event-form';
+
+.@{event-form-prefix-cls} {
+  * {
+    box-sizing: border-box;
+  }
+  &-wrap {
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+    overflow: auto;
+    padding: 24px;
+    padding-bottom: 70px;
+    flex-direction: column;
+    .footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1002;
+    }
+  }
+  &-body {
+    flex: 1;
+  }
+  &-item-group {
+    &__header {
+      display: flex;
+      flex: 0 1 auto;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .title {
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        flex: 1 1 0%;
+        line-height: 22px;
+        font-size: 14px;
+        color: #242e59;
+        font-weight: 500;
+        letter-spacing: 0;
+
+        .badge {
+          height: 20px;
+          width: 20px;
+          background-color: #3867f4;
+          border-radius: 50%;
+          color: #fff;
+          letter-spacing: 0;
+          text-align: center;
+          display: inline-block;
+          margin-right: 8px;
+          line-height: 20px;
+        }
+      }
+
+      .extra {
+        float: right;
+        margin-left: auto;
+        font-size: 12px;
+        color: #3867f4;
+        text-align: right;
+      }
+    }
+
+    &__body {
+      // .@{alert-prefix-cls} {
+      //   box-sizing: border-box;
+      // }
+      .feedback {
+        word-break: break-all;
+        .@{field-prefix-cls}-label {
+          padding-right: 0;
+        }
+        .link {
+          color: #3867f4;
+        }
+      }
+      .feedback:not(:empty) {
+        margin-bottom: 16px;
+      }
+
+      .path-input {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        & > div {
+          flex: auto;
+        }
+
+        .right-toggle {
+          margin-left: 8px;
+        }
+      }
+
+      .query-input {
+        flex: 1;
+        &-add-filed {
+          .gio-field-label {
+            padding-right: 0;
+          }
+        }
+        .query-filed-wrap {
+          .query__filed {
+            margin-bottom: 0;
+            flex: 1 1 0;
+            .gio-field-label {
+              padding-right: 0;
+            }
+            input {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .data-chart-wrap {
+        box-sizing: border-box;
+        flex: 1;
+        display: block;
+        // height: 160px;
+        // width: 100%;
+        // border: 1px solid #dfe4ee;
+        // border-radius: 4px;
+        // background-color: #fff;
+      }
+    }
+  }
+}
