@@ -3,16 +3,9 @@ import React from 'react';
 import { DocProps, TagElement } from './TagElement';
 // import { LimitCondition } from './types';
 
-const renderDefinitionRuleText = (props: {
-  attrs: DocProps;
-  repeatTag?: TagElement;
-  // appType: AppType;
-  limitCondition: DocProps;
-}) => {
+const renderDefinitionRuleText = (props: { attrs: DocProps; repeatTag?: TagElement; limitCondition: DocProps }) => {
   const { attrs: originAttrs, repeatTag, limitCondition } = props;
-  // console.warn('props', { originAttrs, limitCondition });
 
-  // const isNative = appType === AppType.NATIVE;
   let attrs = originAttrs;
   let limit = limitCondition as DocProps;
   if (repeatTag) {

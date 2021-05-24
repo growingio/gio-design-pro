@@ -19,29 +19,29 @@ export interface Kv {
  * 去除字符串字段中前后的空格
  * @param val
  */
-export function trim(val: any): any {
-  if (!val) {
-    return val;
-  }
+// export function trim(val: any): any {
+//   if (!val) {
+//     return val;
+//   }
 
-  if (val.trim) {
-    return val.trim.call(val);
-  }
+//   if (val.trim) {
+//     return val.trim.call(val);
+//   }
 
-  if (Array.isArray(val)) {
-    return val.map((v) => trim(v));
-  }
+//   if (Array.isArray(val)) {
+//     return val.map((v) => trim(v));
+//   }
 
-  if (typeof val === 'object') {
-    const obj = {} as any;
-    Object.keys(val).forEach((key) => {
-      obj[trim(key)] = trim(val[key]);
-    });
-    return obj;
-  }
+//   if (typeof val === 'object') {
+//     const obj = {} as any;
+//     Object.keys(val).forEach((key) => {
+//       obj[trim(key)] = trim(val[key]);
+//     });
+//     return obj;
+//   }
 
-  return val;
-}
+//   return val;
+// }
 
 export const isEmptyStr = (val: string) => {
   if (!val) {
@@ -50,9 +50,9 @@ export const isEmptyStr = (val: string) => {
   return val?.trim().length === 0;
 };
 
-export const isObject = (o: any) => Object.prototype.toString.call(o) === '[object Object]';
+// export const isObject = (o: any) => Object.prototype.toString.call(o) === '[object Object]';
 
-export const isEmptyValue = (val: any) => val === null || val === undefined || val === '';
+// export const isEmptyValue = (val: any) => val === null || val === undefined || val === '';
 
 export const kvsToQuery = (kvs: Kv[]): any => {
   if (!kvs || kvs.length === 0) return;
@@ -110,21 +110,21 @@ export const qsParse = (search: string): Query => {
   });
   return query;
 };
-/**
- * 判断某个元素是不是一个元素的子元素
- * @param elem 目标元素
- * @param parentElem 父元素
- */
-export const isChildOfElement = (elem: Element, parentElem: Element) => {
-  let p = elem.parentElement;
-  while (p && p !== document.body) {
-    if (p === parentElem) {
-      return true;
-    }
-    p = p.parentElement;
-  }
-  return false;
-};
+// /**
+//  * 判断某个元素是不是一个元素的子元素
+//  * @param elem 目标元素
+//  * @param parentElem 父元素
+//  */
+// export const isChildOfElement = (elem: Element, parentElem: Element) => {
+//   let p = elem.parentElement;
+//   while (p && p !== document.body) {
+//     if (p === parentElem) {
+//       return true;
+//     }
+//     p = p.parentElement;
+//   }
+//   return false;
+// };
 export const matchString = (likePattern?: string, value?: string, accurate = false): boolean => {
   if (!accurate && (!likePattern || value == null)) {
     return false;
