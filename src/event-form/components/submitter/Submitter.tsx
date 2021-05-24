@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { FormInstance } from '@gio-design/components/es/components/form';
 import Button, { ButtonProps } from '@gio-design/components/es/components/button';
 // import '../style';
@@ -35,7 +35,7 @@ export type SubmitterProps<T = {}> = {
   /**
    * @name 自定义操作的渲染
    */
-  render?: ((props: SubmitterProps & T, dom: JSX.Element[]) => React.ReactNode[] | React.ReactNode | false) | false;
+  render?: ((props: SubmitterProps & T, dom: ReactElement[]) => React.ReactNode[] | React.ReactNode | false) | false;
 };
 
 /**
@@ -99,7 +99,7 @@ const Submitter: React.FC<SubmitterProps & { form: FormInstance }> = (props) => 
     }
     return <>{renderDom}</>;
   }
-  return renderDom as JSX.Element;
+  return renderDom as ReactElement;
 };
 
 export default Submitter;

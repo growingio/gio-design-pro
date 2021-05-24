@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import classNames from 'classnames';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import './footer-toolbar.less';
@@ -9,7 +9,7 @@ export interface FooterToolbarProps {
   extra?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
-  renderContent?: (props: FooterToolbarProps & { leftWidth?: string }, dom: JSX.Element) => ReactNode;
+  renderContent?: (props: FooterToolbarProps & { leftWidth?: string }, dom: ReactElement) => ReactNode;
 }
 const FooterToolbar: React.FC<FooterToolbarProps> = (props) => {
   const { children, className, extra, style, renderContent } = props;

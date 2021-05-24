@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo, ReactElement } from 'react';
 import { Tooltip, Input, Form, Alert, Link, Popconfirm } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { FormInstance } from '@gio-design/components/es/components/form';
@@ -224,20 +224,20 @@ const PageViewEventFormRender: React.ForwardRefRenderFunction<FormInstance, Page
   };
 
   const [loading, setLoading] = useState<ButtonProps['loading']>(false);
-  const defaultSubmitRender = (prop: SubmitterProps, submitterDom: JSX.Element[]) => {
+  const defaultSubmitRender = (prop: SubmitterProps, submitterDom: ReactElement[]) => {
     const [preBtn, resetBtn, submitBtn] = submitterDom;
     const { defaultRenderContainer } = prop;
     if (defaultRenderContainer) {
       return (
         <FooterToolbar container={prop.defaultRenderContainer} extra={showPreButton && preBtn}>
-          {[resetBtn, submitBtn] as JSX.Element[]}
+          {[resetBtn, submitBtn] as ReactElement[]}
         </FooterToolbar>
       );
     }
     return (
       <div className="footer">
         <FooterToolbar container={prop.defaultRenderContainer} extra={showPreButton && preBtn}>
-          {[resetBtn, submitBtn] as JSX.Element[]}
+          {[resetBtn, submitBtn] as ReactElement[]}
         </FooterToolbar>
       </div>
     );
@@ -320,7 +320,7 @@ const PageViewEventFormRender: React.ForwardRefRenderFunction<FormInstance, Page
         {submitter?.resetText ?? '取消'}
       </Button>
     );
-    const submitterDom = [pre, reset, submit] as JSX.Element[];
+    const submitterDom = [pre, reset, submit] as ReactElement[];
     const _render = submitter?.render || defaultSubmitRender;
     const submitterProps: any = {
       form: formRef?.current,

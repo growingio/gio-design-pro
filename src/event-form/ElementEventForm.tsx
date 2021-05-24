@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-pattern */
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { ReactElement, useEffect, useMemo, useRef, useState } from 'react';
 import { Input, Form, Alert, Popconfirm } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { FormInstance } from '@gio-design/components/es/components/form';
@@ -193,7 +193,7 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
   };
 
   const [loading, setLoading] = useState<ButtonProps['loading']>(false);
-  const defaultSubmitRender = (prop: SubmitterProps, submitterDom: JSX.Element[]) => {
+  const defaultSubmitRender = (prop: SubmitterProps, submitterDom: ReactElement[]) => {
     const [manual, resetBtn, submitBtn] = submitterDom;
     const { defaultRenderContainer } = prop;
     if (defaultRenderContainer) {
@@ -203,7 +203,7 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
           // style={{ position: 'static' }}
           extra={submitterExtra || (!showBelongApp && manual)}
         >
-          {[resetBtn, submitBtn] as JSX.Element[]}
+          {[resetBtn, submitBtn] as ReactElement[]}
         </FooterToolbar>
       );
     }
@@ -214,7 +214,7 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
           // style={{ position: 'static' }}
           extra={submitterExtra || (!showBelongApp && manual)}
         >
-          {[resetBtn, submitBtn] as JSX.Element[]}
+          {[resetBtn, submitBtn] as ReactElement[]}
         </FooterToolbar>
       </div>
     );
@@ -298,7 +298,7 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
         {manualModeStatue ? '关闭手动模式' : '打开手动模式'}
       </Button>
     );
-    const submitterDom = [manual, reset, submit] as JSX.Element[];
+    const submitterDom = [manual, reset, submit] as ReactElement[];
     const _render = submitter?.render || defaultSubmitRender;
     const submitterProps: any = {
       form: formRef?.current,

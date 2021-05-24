@@ -38,7 +38,7 @@ export interface EventFormProps extends FormProps, CommonFormProps {
    * 所有已定义的标签
    */
   definedTags: TagElement[];
-  dataChart?: JSX.Element;
+  dataChart?: ReactElement;
   repeatRuleTag?: TagElement;
   ruleText?: ReactNode;
 }
@@ -72,7 +72,7 @@ export interface ElementEventFormProps extends Omit<EventFormProps, 'initialValu
     currentPageTags: TagElement[];
     dataSource?: TagElement[];
   };
-  manualMode?: JSX.Element;
+  manualMode?: ReactElement;
   submitterExtra?: (() => ReactElement) | ReactElement;
   /**
    * 页面选择器定义新页面按钮的click事件回调
