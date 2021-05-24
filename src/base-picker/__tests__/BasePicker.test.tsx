@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import BasePicker from '..';
-import { ITEMS_COUNT, renderItems, tabNavItems, footer } from './data';
+import { ITEMS_COUNT, items, renderItems, tabNavItems, footer } from './data';
 
 describe('BasePicker', () => {
   it('renders items with function', () => {
@@ -10,7 +10,7 @@ describe('BasePicker', () => {
   });
 
   it('renders items with props', () => {
-    render(<BasePicker items={undefined} />);
+    render(<BasePicker items={items} />);
     expect(screen.getAllByText(/Content/)).toHaveLength(ITEMS_COUNT);
   });
 
