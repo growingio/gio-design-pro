@@ -1,9 +1,9 @@
 import { cloneDeep, get, isEmpty, omit } from 'lodash';
 // import { DocProps } from '../types';
-import { ElementFormValues, PageViewFormValues, Rule } from './interfaces';
+import { ElementFormValues, Rule } from './interfaces';
 import { TagElement, DocProps } from './TagElement';
 import { LimitCondition } from './types';
-import { matchString, matchQuery, kvsToQuery } from './utils';
+import { matchString, matchQuery } from './utils';
 
 const whitespaceRule = {
   pattern: /^\S.*\S$|(^\S{0,1}\S$)/,
@@ -15,8 +15,8 @@ class ValidatorHelper {
 
   public tagNames: string[];
 
-  constructor(projectTdefinedTags: TagElement[]) {
-    this.definedTags = projectTdefinedTags;
+  constructor(projectDefinedTags: TagElement[]) {
+    this.definedTags = projectDefinedTags;
     this.tagNames = this.definedTags?.map((v) => v.name);
   }
 
@@ -104,25 +104,25 @@ class ValidatorHelper {
     });
   }
 
-  static conversionPageViewSubmitValue = (formValues: any): PageViewFormValues => {
-    const tempValue = cloneDeep(formValues);
-    const defined = get(tempValue, 'definition', {});
+  // static conversionPageViewSubmitValue = (formValues: any): PageViewFormValues => {
+  //   const tempValue = cloneDeep(formValues);
+  //   const defined = get(tempValue, 'definition', {});
 
-    const path = get(defined, 'path', {});
-    if (path && path.checked) {
-      defined.path = path.path;
-    } else {
-      defined.path = undefined;
-    }
-    const query = get(tempValue, 'definition.query');
-    if (query) {
-      defined.query = kvsToQuery(query);
-    } else {
-      defined.query = undefined;
-    }
-    tempValue.definition = defined;
-    return { ...omit(tempValue, 'belongApp') } as PageViewFormValues;
-  };
+  //   const path = get(defined, 'path', {});
+  //   if (path && path.checked) {
+  //     defined.path = path.path;
+  //   } else {
+  //     defined.path = undefined;
+  //   }
+  //   const query = get(tempValue, 'definition.query');
+  //   if (query) {
+  //     defined.query = kvsToQuery(query);
+  //   } else {
+  //     defined.query = undefined;
+  //   }
+  //   tempValue.definition = defined;
+  //   return { ...omit(tempValue, 'belongApp') } as PageViewFormValues;
+  // };
 
   static conversionElementSubmitValue = (formValues: any): ElementFormValues => {
     const tempValue = cloneDeep(formValues);

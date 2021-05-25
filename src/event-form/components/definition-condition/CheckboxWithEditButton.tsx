@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-script-url */
 import React, { useEffect, useState } from 'react';
@@ -45,7 +46,9 @@ const _Checkbox: React.FC<Prop> = (props) => {
       className="condition-checkbox-option"
       onMouseLeave={onMouseLeave}
       onMouseOver={onMouseOver}
-      onFocus={() => undefined}
+      role="document"
+      aria-hidden
+      // onFocus={() => undefined}
     >
       <Checkbox {...omit(props, ['onClick'])}>{children}</Checkbox>
       <span>
