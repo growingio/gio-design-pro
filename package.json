@@ -47,7 +47,7 @@
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.12.1",
     "@commitlint/cli": "^12.0.1",
-    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/config-conventional": "^12.1.4",
     "@gio-design/cli": "^21.2.0",
     "@gio-design/components": "^21.4.4",
     "@gio-design/icons": "^21.5.0",
