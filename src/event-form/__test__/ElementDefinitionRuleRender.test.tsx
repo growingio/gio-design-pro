@@ -333,14 +333,66 @@ describe('ElementDefinitionRuleRender Similar', () => {
     expect(screen.queryByText(/若元素的内容或跳转链接改变，就不再继续统计了。/)).toBeTruthy();
     expect(screen.queryByText(/即使元素位置改变，也会继续统计。/)).toBeTruthy();
   });
-});
-describe('ElementDefinitionRuleRender NoSimilar', () => {
-  it('render NoSimilar with limit', async () => {
+  it('render Similar with content, href and content,index limit', async () => {
     const attrs = {
       domain: 'release-messages.growingio.cn',
       path: 'pages/index/index',
       xpath: '/div.title/form.basic-grey/h1/span',
-      // index: '1',
+      index: '1',
+      href: '/link',
+      content: '元素内容',
+    };
+    const limitCondition = {
+      domain: 'release-messages.growingio.cn',
+      path: 'pages/index/index',
+      index: '1',
+      // href: '/link',
+      content: '元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容',
+      contentType: 'match_phrase',
+    };
+    // const { container } = render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    // expect(container).toMatchSnapshot();
+    render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    expect(screen.queryByText(/同类元素内/)).toBeTruthy();
+    expect(
+      screen.queryByText(/元素内容包含「元素内容元素内容元素内容元素内容元素内容元素内容元素内容...」/)
+    ).toBeTruthy();
+    expect(screen.queryByText(/元素位置为「第1位」/)).toBeTruthy();
+    expect(screen.queryByText(/若元素的跳转链接改变，就不再继续统计了。/)).toBeTruthy();
+    expect(screen.queryByText(/即使元素内容和位置改变，也会继续统计。/)).toBeTruthy();
+  });
+  it('render Similar with content, href and href,index limit', async () => {
+    const attrs = {
+      domain: 'release-messages.growingio.cn',
+      path: 'pages/index/index',
+      xpath: '/div.title/form.basic-grey/h1/span',
+      index: '1',
+      href: '/link',
+      content: '元素内容',
+    };
+    const limitCondition = {
+      domain: 'release-messages.growingio.cn',
+      path: 'pages/index/index',
+      index: '1',
+      href: '/link',
+      // content: '元素内容',
+      contentType: '=',
+    };
+    // const { container } = render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    // expect(container).toMatchSnapshot();
+    render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    expect(screen.queryByText(/同类元素内/)).toBeTruthy();
+    expect(screen.queryByText(/元素位置为「第1位」/)).toBeTruthy();
+    expect(screen.queryByText(/若元素的位置或跳转链接改变，就不再继续统计了。/)).toBeTruthy();
+    expect(screen.queryByText(/即使元素内容改变，也会继续统计。/)).toBeTruthy();
+  });
+});
+describe('ElementDefinitionRuleRender NoSimilar', () => {
+  it('render NoSimilar with href,content and href,content limit', async () => {
+    const attrs = {
+      domain: 'release-messages.growingio.cn',
+      path: 'pages/index/index',
+      xpath: '/div.title/form.basic-grey/h1/span',
       href: '/link',
       content: '元素内容',
     };
@@ -350,12 +402,16 @@ describe('ElementDefinitionRuleRender NoSimilar', () => {
       index: '1',
       href: '/link',
       content: '元素内容',
-      contentType: '=',
+      contentType: 'match_phrase',
     };
-    const { container } = render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
-    expect(container).toMatchSnapshot();
+    // const { container } = render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    // expect(container).toMatchSnapshot();
+    render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    expect(screen.queryByText(/当前位置/)).toBeTruthy();
+    expect(screen.queryByText(/元素内容包含「元素内容」/)).toBeTruthy();
+    expect(screen.queryByText(/若元素的内容或跳转链接改变，就不再继续统计了。/)).toBeTruthy();
   });
-  it('render NoSimilar with href limit', async () => {
+  it('render NoSimilar with href,content and href limit', async () => {
     const attrs = {
       domain: 'release-messages.growingio.cn',
       path: 'pages/index/index',
@@ -372,8 +428,12 @@ describe('ElementDefinitionRuleRender NoSimilar', () => {
       // content: '元素内容',
       contentType: '=',
     };
-    const { container } = render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
-    expect(container).toMatchSnapshot();
+    // const { container } = render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    // expect(container).toMatchSnapshot();
+    render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    expect(screen.queryByText(/当前位置/)).toBeTruthy();
+    expect(screen.queryByText(/若元素的跳转链接改变，就不再继续统计了。/)).toBeTruthy();
+    expect(screen.queryByText(/即使元素内容改变，也会继续统计。/)).toBeTruthy();
   });
   it('render NoSimilar without limit', async () => {
     const attrs = {
@@ -389,8 +449,9 @@ describe('ElementDefinitionRuleRender NoSimilar', () => {
       // href: '/link',
       contentType: '=',
     };
-    const { container } = render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
-    expect(container).toMatchSnapshot();
+    render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);
+    expect(screen.queryByText(/当前位置/)).toBeTruthy();
+    expect(screen.queryByText(/即使元素内容和跳转链接改变，也会继续统计。/)).toBeTruthy();
   });
   it('render NoSimilar without attrs and without limit', async () => {
     const attrs = {
@@ -455,7 +516,7 @@ describe('ElementDefinitionRuleRender NoSimilar', () => {
       domain: 'release-messages.growingio.cn',
       path: 'pages/index/index',
       // href: '/link',
-      content: '元素内容',
+      content: '元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容元素内容',
       contentType: '=',
     };
     const { container } = render(<ElementDefinitionRuleRender attrs={attrs} limitCondition={limitCondition} />);

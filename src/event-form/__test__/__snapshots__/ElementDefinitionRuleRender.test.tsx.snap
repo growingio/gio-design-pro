@@ -25,7 +25,7 @@ exports[`ElementDefinitionRuleRender NoSimilar render NoSimilar with content ,hr
       元素内容
       为
       「
-      元素内容
+      元素内容元素内容元素内容元素内容元素内容元素内容元素内容...
       」
     </span>
     的元素。
@@ -35,85 +35,6 @@ exports[`ElementDefinitionRuleRender NoSimilar render NoSimilar with content ,hr
     <span>
       即使元素跳转链接改变，也会继续统计。
     </span>
-  </span>
-</div>
-`;
-
-exports[`ElementDefinitionRuleRender NoSimilar render NoSimilar with href limit 1`] = `
-<div>
-  <span>
-    现在定义的是 
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      所属页面
-    </span>
-     中，
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      当前位置
-    </span>
-    ，限定
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      跳转链接
-    </span>
-    的元素。
-    <span>
-      若元素的跳转链接改变，就不再继续统计了。
-    </span>
-    <span>
-      即使元素内容改变，也会继续统计。
-    </span>
-  </span>
-</div>
-`;
-
-exports[`ElementDefinitionRuleRender NoSimilar render NoSimilar with limit 1`] = `
-<div>
-  <span>
-    现在定义的是 
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      所属页面
-    </span>
-     中，
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      当前位置
-    </span>
-    ，限定
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      元素内容
-      为
-      「
-      元素内容
-      」
-    </span>
-    ，限定
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      跳转链接
-    </span>
-    的元素。
-    <span>
-      若元素的内容或跳转链接改变，就不再继续统计了。
-    </span>
-    <span />
   </span>
 </div>
 `;
@@ -231,32 +152,6 @@ exports[`ElementDefinitionRuleRender NoSimilar render NoSimilar without content 
     <span />
     <span>
       即使元素跳转链接改变，也会继续统计。
-    </span>
-  </span>
-</div>
-`;
-
-exports[`ElementDefinitionRuleRender NoSimilar render NoSimilar without limit 1`] = `
-<div>
-  <span>
-    现在定义的是 
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      所属页面
-    </span>
-     中，
-    <span
-      class="link"
-      style="color: rgb(56, 103, 244);"
-    >
-      当前位置
-    </span>
-    的元素。
-    <span />
-    <span>
-      即使元素内容和跳转链接改变，也会继续统计。
     </span>
   </span>
 </div>
