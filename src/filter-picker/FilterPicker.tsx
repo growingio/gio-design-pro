@@ -34,6 +34,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     visible,
     onVisibleChange,
     placement = 'bottomRight',
+    disabled,
   } = props;
   const [localVisible, setLocalVisible] = useState(false);
   const visibleChange = (v: boolean) => {
@@ -72,6 +73,7 @@ const FilterPicker = (props: FilterPickerProps) => {
         placement={placement}
         getTooltipContainer={getTooltipContainer}
         destroyTooltipOnHide
+        disabled={disabled}
       >
         {children || (
           <Button icon={<FilterOutlined size="14px" />} size="small" type={!localVisible ? 'text' : 'secondary'} />
