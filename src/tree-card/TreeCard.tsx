@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { usePrefixCls, SearchBar } from '@gio-design/components';
 import classNames from 'classnames';
-import { union, isArray, without } from 'lodash';
+import { isArray } from 'lodash';
 import { TreeCardProps } from './interfaces';
 import TooltipButton from '../tooltip-button';
 import Tree from './Tree';
@@ -34,20 +34,11 @@ function TreeCard<RecordType>({
         expandedKeys={expandedKeys || localExpandedKeys}
         hasDivider={index !== 0}
         prefixCls={prefixCls}
+        parentNodeSelectable={parentNodeSelectable}
         onSelect={(_selectedKeys, e) => {
           if (parentNodeSelectable || e.node.isLeaf) {
             setSelectedKeys(_selectedKeys);
             onSelect?.(_selectedKeys, e);
-          } else if (!parentNodeSelectable && !e.node.isLeaf) {
-            const isExpanded = !localExpandedKeys.includes(e.node.key);
-            const _expandedKeys = isExpanded
-              ? union(localExpandedKeys, [e.node.key])
-              : without(localExpandedKeys, e.node.key);
-            setExpandedKeys(_expandedKeys);
-            delete e.event;
-            delete e.selectedNodes;
-            delete e.selected;
-            onExpand?.(_expandedKeys, { ...e, expanded: isExpanded });
           }
         }}
         onExpand={(_expandedKeys, e) => {
