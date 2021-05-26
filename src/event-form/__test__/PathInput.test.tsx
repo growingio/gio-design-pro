@@ -2,7 +2,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { Form, Input } from '@gio-design/components';
 import PathInput from '../components/PathInput';
 import { AppType } from '../types';
 // import { mount, shallow, render } from 'enzyme';

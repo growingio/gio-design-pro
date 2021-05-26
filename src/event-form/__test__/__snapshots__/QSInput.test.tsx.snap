@@ -1,0 +1,374 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QSInput render QSInput 1`] = `
+<div>
+  <form
+    class="gio-form gio-event-form gio-form-middle gio-form-horizontal"
+  >
+    <div
+      class="gio-field"
+    >
+      <div
+        class="gio-field-label"
+      >
+        <label
+          title="查询条件"
+        >
+          查询条件
+          
+        </label>
+      </div>
+      <div
+        class="gio-field-control"
+      >
+        <div
+          class="gio-field-control-input"
+        >
+          <div
+            class="query-input"
+          >
+            <div
+              class="query-filed-wrap"
+              style="display: flex; flex: 1; align-items: flex-start; margin-bottom: 8px;"
+            >
+              <div
+                class="gio-field query__filed"
+              >
+                <div
+                  class="gio-field-label"
+                  style="width: 0px;"
+                />
+                <div
+                  class="gio-field-control"
+                >
+                  <div
+                    class="gio-field-control-input"
+                  >
+                    <div
+                      class="gio-input gio-input--middle"
+                    >
+                      <input
+                        class="gio-input__content"
+                        id="definition_query_0_key"
+                        placeholder="请输入参数"
+                        type="text"
+                        value="name"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="gio-field-message"
+                    data-has-feedback="false"
+                  />
+                </div>
+              </div>
+              <div
+                style="padding: 8px;"
+              >
+                =
+              </div>
+              <div
+                class="gio-field query__filed"
+              >
+                <div
+                  class="gio-field-label"
+                  style="width: 0px;"
+                />
+                <div
+                  class="gio-field-control"
+                >
+                  <div
+                    class="gio-field-control-input"
+                  >
+                    <div
+                      class="gio-input gio-input--middle"
+                    >
+                      <input
+                        class="gio-input__content"
+                        id="definition_query_0_value"
+                        placeholder="请输入参数值"
+                        type="text"
+                        value="hello"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="gio-field-message"
+                    data-has-feedback="false"
+                  />
+                </div>
+              </div>
+              <div>
+                <span
+                  aria-label="plus-outlined"
+                  class="gio-icon"
+                  role="img"
+                  style="transform: rotate(45deg); padding: 8px; cursor: pointer;"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="16px"
+                    viewBox="0 0 14 14"
+                    width="16px"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <style />
+                    </defs>
+                    <g>
+                      <g>
+                        <path
+                          d="M6 6.51A.54.54 0 006.51 6V.49a.49.49 0 011 0V6a.54.54 0 00.49.51h5.48a.49.49 0 010 1H8a.54.54 0 00-.51.49v5.48a.49.49 0 01-1 0V8A.54.54 0 006 7.49H.49a.49.49 0 010-1z"
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                          id="plus-outlined_svg__plus"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div
+              class="query-filed-wrap"
+              style="display: flex; flex: 1; align-items: flex-start; margin-bottom: 8px;"
+            >
+              <div
+                class="gio-field query__filed"
+              >
+                <div
+                  class="gio-field-label"
+                  style="width: 0px;"
+                />
+                <div
+                  class="gio-field-control"
+                >
+                  <div
+                    class="gio-field-control-input"
+                  >
+                    <div
+                      class="gio-input gio-input--middle"
+                    >
+                      <input
+                        class="gio-input__content"
+                        id="definition_query_1_key"
+                        placeholder="请输入参数"
+                        type="text"
+                        value="a"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="gio-field-message"
+                    data-has-feedback="false"
+                  />
+                </div>
+              </div>
+              <div
+                style="padding: 8px;"
+              >
+                =
+              </div>
+              <div
+                class="gio-field query__filed"
+              >
+                <div
+                  class="gio-field-label"
+                  style="width: 0px;"
+                />
+                <div
+                  class="gio-field-control"
+                >
+                  <div
+                    class="gio-field-control-input"
+                  >
+                    <div
+                      class="gio-input gio-input--middle"
+                    >
+                      <input
+                        class="gio-input__content"
+                        id="definition_query_1_value"
+                        placeholder="请输入参数值"
+                        type="text"
+                        value="3"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="gio-field-message"
+                    data-has-feedback="false"
+                  />
+                </div>
+              </div>
+              <div>
+                <span
+                  aria-label="plus-outlined"
+                  class="gio-icon"
+                  role="img"
+                  style="transform: rotate(45deg); padding: 8px; cursor: pointer;"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="16px"
+                    viewBox="0 0 14 14"
+                    width="16px"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <style />
+                    </defs>
+                    <g>
+                      <g>
+                        <path
+                          d="M6 6.51A.54.54 0 006.51 6V.49a.49.49 0 011 0V6a.54.54 0 00.49.51h5.48a.49.49 0 010 1H8a.54.54 0 00-.51.49v5.48a.49.49 0 01-1 0V8A.54.54 0 006 7.49H.49a.49.49 0 010-1z"
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                          id="plus-outlined_svg__plus"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div
+              class="query-filed-wrap"
+              style="display: flex; flex: 1; align-items: flex-start; margin-bottom: 8px;"
+            >
+              <div
+                class="gio-field query__filed"
+              >
+                <div
+                  class="gio-field-label"
+                  style="width: 0px;"
+                />
+                <div
+                  class="gio-field-control"
+                >
+                  <div
+                    class="gio-field-control-input"
+                  >
+                    <div
+                      class="gio-input gio-input--middle"
+                    >
+                      <input
+                        class="gio-input__content"
+                        id="definition_query_2_key"
+                        placeholder="请输入参数"
+                        type="text"
+                        value="name"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="gio-field-message"
+                    data-has-feedback="false"
+                  />
+                </div>
+              </div>
+              <div
+                style="padding: 8px;"
+              >
+                =
+              </div>
+              <div
+                class="gio-field query__filed"
+              >
+                <div
+                  class="gio-field-label"
+                  style="width: 0px;"
+                />
+                <div
+                  class="gio-field-control"
+                >
+                  <div
+                    class="gio-field-control-input"
+                  >
+                    <div
+                      class="gio-input gio-input--middle"
+                    >
+                      <input
+                        class="gio-input__content"
+                        id="definition_query_2_value"
+                        placeholder="请输入参数值"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="gio-field-message"
+                    data-has-feedback="false"
+                  />
+                </div>
+              </div>
+              <div>
+                <span
+                  aria-label="plus-outlined"
+                  class="gio-icon"
+                  role="img"
+                  style="transform: rotate(45deg); padding: 8px; cursor: pointer;"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="16px"
+                    viewBox="0 0 14 14"
+                    width="16px"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <style />
+                    </defs>
+                    <g>
+                      <g>
+                        <path
+                          d="M6 6.51A.54.54 0 006.51 6V.49a.49.49 0 011 0V6a.54.54 0 00.49.51h5.48a.49.49 0 010 1H8a.54.54 0 00-.51.49v5.48a.49.49 0 01-1 0V8A.54.54 0 006 7.49H.49a.49.49 0 010-1z"
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                          id="plus-outlined_svg__plus"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div
+              class="gio-field query-input-add-filed"
+            >
+              <div
+                class="gio-field-label"
+                style="width: 0px;"
+              />
+              <div
+                class="gio-field-control"
+              >
+                <div
+                  class="gio-field-control-input"
+                >
+                  <button
+                    class="gio-btn gio-btn-link"
+                    type="button"
+                  >
+                    <span>
+                      添加查询条件
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="gio-field-message"
+                  data-has-feedback="false"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="gio-field-message"
+          data-has-feedback="false"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+`;
