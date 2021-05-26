@@ -14,6 +14,7 @@ describe('TitleInfoCard', () => {
       description: '这是一段很长很长的描述，这是一段很长很长的描述',
       operationContent: <Button>操作</Button>,
       footerContent: '底部的一堆东西',
+      clamp: 2,
     };
 
     render(<TitleInfoCard {...args} />);
