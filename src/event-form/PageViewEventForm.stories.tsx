@@ -114,6 +114,9 @@ WEB.args = {
   ...defaultArgs,
   appType: AppType.WEB,
   platform: 'android',
+  onPre: () => {
+    console.log('on pre click');
+  },
   initialValues: getFormValues(deviceInfoApp, currentPageMinp),
 };
 

@@ -49,7 +49,7 @@ describe('QSInput', () => {
       fireEvent.focus(screen.queryAllByPlaceholderText('请输入参数')[2]);
       fireEvent.change(screen.queryAllByPlaceholderText('请输入参数')[2], { target: { value: 'a' } });
       fireEvent.blur(screen.queryAllByPlaceholderText('请输入参数')[2]);
-      jest.runAllTimers();
+      jest.runOnlyPendingTimers();
       // fireEvent.change(screen.queryAllByPlaceholderText('请输入参数值')[2], { target: { value: '2' } });
     });
     // expect(screen.queryByText('参数不能重复')).toBeTruthy();

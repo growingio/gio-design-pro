@@ -70,12 +70,8 @@ function conversionSubmitValue(values: any) {
   } else {
     defined.path = undefined;
   }
-  const query = get(tempValue, 'definition.query');
-  if (query) {
-    defined.query = kvsToQuery(query);
-  } else {
-    defined.query = undefined;
-  }
+  const query = get(tempValue, 'definition.query', []);
+  defined.query = kvsToQuery(query);
   tempValue.definition = defined;
   return { ...omit(tempValue, 'belongApp') } as PageViewFormValues;
   // return tempValue;
@@ -230,14 +226,18 @@ const PageViewEventFormRender: React.ForwardRefRenderFunction<FormInstance, Page
     if (defaultRenderContainer) {
       return (
         <FooterToolbar container={prop.defaultRenderContainer} extra={showPreButton && preBtn}>
-          {[resetBtn, submitBtn] as ReactElement[]}
+          {/* {[resetBtn, submitBtn] as ReactElement[]} */}
+          {resetBtn}
+          {submitBtn}
         </FooterToolbar>
       );
     }
     return (
       <div className="footer">
         <FooterToolbar container={prop.defaultRenderContainer} extra={showPreButton && preBtn}>
-          {[resetBtn, submitBtn] as ReactElement[]}
+          {resetBtn}
+          {submitBtn}
+          {/* {[resetBtn, submitBtn] as ReactElement[]} */}
         </FooterToolbar>
       </div>
     );
