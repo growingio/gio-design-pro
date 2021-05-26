@@ -11,4 +11,5 @@ export interface TitleInfoCardProps {
   footerContent?: React.ReactNode;
   prefixCls?: string;
   className?: string;
+  clamp?: number;
 }
