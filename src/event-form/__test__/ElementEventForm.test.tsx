@@ -81,6 +81,7 @@ describe('ElementEventForm', () => {
       console.log(value);
     });
     const handleActionButtonClick = jest.fn();
+    const handleResetClick = jest.fn();
     render(
       <ElementEventForm
         definedTags={(spaceTags as unknown) as TagElement[]}
@@ -88,7 +89,7 @@ describe('ElementEventForm', () => {
         appType={AppType.MINP}
         onFinish={handleFinish}
         initialValues={initialValues}
-        submitter={{ submitText: '保存' }}
+        submitter={{ submitText: '保存', resetText: '不保存', onReset: handleResetClick }}
         pagePicker={{
           dataSource: (spaceTags as unknown) as TagElement[],
           onActionButtonClick: handleActionButtonClick,
@@ -96,6 +97,10 @@ describe('ElementEventForm', () => {
         }}
       />
     );
+    await act(async () => {
+      fireEvent.click(screen.getByText('不保存'));
+    });
+    expect(handleResetClick).toHaveBeenCalled();
     // screen.debug(container);
     await act(async () => {
       fireEvent.click(screen.getByText('保 存'));
