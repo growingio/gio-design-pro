@@ -36,4 +36,5 @@ export interface TreeProps<RecordType>
     Pick<GioTreeProps, 'onExpand' | 'onSelect' | 'selectedKeys' | 'expandedKeys'> {
   hasDivider: boolean;
   prefixCls: string;
+  parentNodeSelectable: boolean;
 }

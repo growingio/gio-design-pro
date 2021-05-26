@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { isBoolean, get, isFunction, isUndefined, isArray } from 'lodash';
 import { Tree as GioTree } from '@gio-design/components';
@@ -23,8 +23,10 @@ function Tree<RecordType>({
   onSelect: onSelectFromInner,
   selectedKeys,
   expandedKeys,
+  parentNodeSelectable,
 }: TreeProps<RecordType>) {
-  const { onSelect, onExpand, ...restTreeProps } = treeProps;
+  const { onSelect, onExpand, onClick, ...restTreeProps } = treeProps;
+  const treeRef = useRef<any>();
   const renderTreeNodeTitle = (treeNode: RecordType) => {
     const treeNodeTitle = isFunction(customTitle) ? customTitle(treeNode) : get(treeNode, customTitle);
     const treeNodeIcon = isFunction(customIcon) ? customIcon(treeNode) : customIcon;
@@ -72,6 +74,13 @@ function Tree<RecordType>({
       {hasDivider && <hr className={classNames(`${prefixCls}-divider`, `${prefixCls}-tree-divider`)} />}
       {title && <span className={`${prefixCls}-subTitle`}>{title}</span>}
       <GioTree
+        ref={treeRef}
+        onClick={(e, node) => {
+          if (!parentNodeSelectable) {
+            treeRef.current?.onNodeExpand(e, node);
+          }
+          onClick?.(e, node);
+        }}
         {...restTreeProps}
         selectedKeys={selectedKeys}
         expandedKeys={expandedKeys}
