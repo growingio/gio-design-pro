@@ -378,8 +378,8 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
             <Form.Item name="belongPage" label="所属页面" rules={validateRules.belongPage}>
               <PagePicker
                 dataSource={pagePickerDataSource}
-                actionButton={{ onClick: pagePicker?.onActionButtonClick }}
-                currentPageTags={pagePicker?.currentPageTags ?? []}
+                actionButton={{ onClick: pagePicker.onActionButtonClick }}
+                currentPageTags={pagePicker.currentPageTags ?? []}
               />
             </Form.Item>
             {hasLimit() && (

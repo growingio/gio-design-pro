@@ -155,7 +155,50 @@ describe('ElementEventForm', () => {
     });
     expect(screen.queryByText('关闭手动模式')).toBeTruthy();
   });
-
+  it('render ElementEventForm with props platform=web, appType.WEB,without limit show', async () => {
+    const handleFinish = jest.fn();
+    const handleResetClick = jest.fn();
+    const formvalue: any = {
+      name: 'define element',
+      description: '',
+      belongApp: '小程序无埋点 | wx123456',
+      // belongPage: belongPage as TagElement,
+      attrs: {
+        domain: 'wx123456',
+        path: 'pages/index/index',
+        query: null,
+        xpath: '/div.title/form.basic-grey/h1/span',
+        // index: '',
+        // href: '',
+        // content: 'element1:一共测试4种数据类型, change, click, submit, page,',
+      },
+      definition: {
+        domain: 'wx123456',
+        path: 'pages/index/index',
+        query: null,
+        xpath: '/div.title/form.basic-grey/h1/span',
+        // index: '1',
+        // href: '/link',
+        // content: 'element1:一共测试4种数据类型, change, click, submit, page,',
+        // contentType: '=',
+      },
+    };
+    render(
+      <ElementEventForm
+        definedTags={(definedElements as unknown) as TagElement[]}
+        platform="web"
+        appType={AppType.WEB}
+        onFinish={handleFinish}
+        initialValues={formvalue}
+        submitter={{ submitText: '保存', resetText: '不保存', onReset: handleResetClick }}
+        pagePicker={{
+          dataSource: (definedElements as unknown) as TagElement[],
+          currentPageTags: (definedPages as unknown) as TagElement[],
+        }}
+      />
+    );
+    expect(screen.queryByLabelText('限定条件')).toBeNull();
+  });
   it('can render ElementEventForm ,and test validation', async () => {
     const defined: any = {
       name: 'element1',
