@@ -137,9 +137,7 @@ describe('BaseForm', () => {
     expect(screen.getByDisplayValue('username')).toBeTruthy();
   });
   it('should submit when pressing enter', async () => {
-    const handleFinish = jest.fn(async (value: any) => {
-      console.log(value);
-    });
+    const handleFinish = jest.fn();
     const { container } = render(
       <BaseForm
         onFinish={handleFinish}

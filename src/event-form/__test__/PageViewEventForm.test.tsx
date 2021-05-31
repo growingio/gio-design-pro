@@ -126,12 +126,8 @@ describe('PageViewEventForm', () => {
   });
 
   it('render PageViewEventForm and trigger validate', async () => {
-    const handleFinish = jest.fn(async (v) => {
-      console.log(v);
-    });
-    const handleFormValuesChange = jest.fn(async (v) => {
-      console.log('handleFormValuesChange', v);
-    });
+    const handleFinish = jest.fn();
+    const handleFormValuesChange = jest.fn();
 
     const defined: any = {
       name: '',
@@ -188,9 +184,7 @@ describe('PageViewEventForm', () => {
     expect(screen.queryByText(/参数不能重复/)).toBeTruthy();
   });
   it('render PageViewEventForm with appType.NATIVE without submit', async () => {
-    const handleFinish = jest.fn(async (v) => {
-      console.log(v);
-    });
+    const handleFinish = jest.fn();
 
     render(
       <PageViewEventForm
@@ -209,9 +203,7 @@ describe('PageViewEventForm', () => {
     expect(screen.queryByText('保 存')).toBeNull();
   });
   it('render PageViewEventForm with appType.NATIVE', async () => {
-    const handleFinish = jest.fn(async (v) => {
-      console.log(v);
-    });
+    const handleFinish = jest.fn();
     const handleResetClick = jest.fn();
     const root = document.createElement('div');
     root.id = 'root';
