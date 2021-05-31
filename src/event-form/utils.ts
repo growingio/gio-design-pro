@@ -67,11 +67,11 @@ export const kvsToQuery = (kvs: Kv[]): any => {
     .join('&');
 };
 
-export const objToQuery = (obj: any) =>
-  Object.keys(obj || {})
-    .map((key) => `${key}=${obj[key]}`)
-    .filter((v) => v)
-    .join('&');
+// export const objToQuery = (obj: any) =>
+//   Object.keys(obj || {})
+//     .map((key) => `${key}=${obj[key]}`)
+//     .filter((v) => v)
+//     .join('&');
 
 // 查询参数转化到kv结构数组，过滤掉key不存在的
 export const queryToKvs = (query?: string): Kv[] => {

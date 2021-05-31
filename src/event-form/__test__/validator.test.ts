@@ -1,8 +1,7 @@
-import { TagElement } from '../TagElement';
 import Validator from '../validator';
-import { spaceTags } from './data';
+import { definedElements } from './elements.data';
 
-const currentPage: TagElement = {
+const currentPage: any = {
   id: 'zZDb6aD9',
   name: '1月13，21次',
   creator: 'lvyuqiang',
@@ -42,11 +41,13 @@ const currentPage: TagElement = {
   },
 };
 describe('validator test', () => {
-  const validatorHelper = new Validator(spaceTags);
+  const validatorHelper = new Validator(definedElements);
 
   it('validatorHelper.checkName', async () => {
-    await expect(validatorHelper.checkName('事件4')).rejects.toEqual(new Error('该名称已存在'));
-    expect(await validatorHelper.checkName('事件1234567788990')).toBe(true);
+    const { name: existName } = definedElements[0];
+    const unExistName = '这个名字 没有出现过';
+    await expect(validatorHelper.checkName(existName)).rejects.toEqual(new Error('该名称已存在'));
+    expect(await validatorHelper.checkName(unExistName)).toBe(true);
   });
   it('validatorHelper.checkPath', async () => {
     await expect(validatorHelper.checkPath({ path: '', checked: true })).rejects.toEqual(
@@ -58,9 +59,9 @@ describe('validator test', () => {
   });
   it('validatorHelper.findRepeatElementTag', async () => {
     const definition = {
-      domain: 'wx265d0fa6fa70fae9',
+      domain: 'wx123456',
       path: 'pages/index/index',
-      query: '12=12',
+      query: 'a=1',
       xpath: '#onTabItemTap',
       index: '0',
       href: 'pages/index/index',
@@ -79,8 +80,58 @@ describe('validator test', () => {
       contentType: '=',
       // urlScheme: null,
     };
-    expect(validatorHelper.findRepeatElementTag(definition)).toBeTruthy();
+    const definition3: any = {
+      domain: 'wx123456',
+      path: 'pages/index/index',
+      query: null,
+      xpath: '/div.title/form.basic-grey/h1/span',
+      index: '1',
+      href: '/link',
+      content: 'element1:一共测试4种数据类型, change, click, submit, page,',
+      contentType: '=',
+    };
+    expect(validatorHelper.findRepeatElementTag(definition)).toBeFalsy();
     expect(validatorHelper.findRepeatElementTag(definition2)).toBeFalsy();
+    expect(validatorHelper.findRepeatElementTag(definition3)).toBeTruthy();
+  });
+  it('validatorHelper.findRepeatPageTag', async () => {
+    const definition: any = {
+      domain: 'wx123456',
+      path: '/pages/index/index',
+      query: 'a=1',
+      xpath: null,
+      index: null,
+      href: null,
+      content: null,
+      pg: null,
+      contentType: null,
+      urlScheme: null,
+      __typename: 'DocProps',
+    };
+    const definition2 = {
+      domain: 'wx265d0fa6fa70fae9',
+      path: 'pages/index/index',
+      query: 'q=12&s=1&a=d',
+      xpath: '#onTabItemTap',
+      index: '0',
+      href: 'pages/index/index',
+      content: '主页',
+      contentType: '=',
+      // urlScheme: null,
+    };
+    const definition3: any = {
+      domain: 'wx123456',
+      path: 'pages/index/index',
+      query: null,
+      xpath: '/div.title/form.basic-grey/h1/span',
+      index: '1',
+      href: '/link',
+      content: 'element1:一共测试4种数据类型, change, click, submit, page,',
+      contentType: '=',
+    };
+    expect(validatorHelper.findRepeatPageTag(definition)).toBeTruthy();
+    expect(validatorHelper.findRepeatPageTag(definition2)).toBeFalsy();
+    expect(validatorHelper.findRepeatPageTag(definition3)).toBeTruthy();
   });
   it('validatorHelper.conversionElementSubmitValue', async () => {
     const formValues: any = {

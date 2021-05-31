@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { qsParse, matchString, matchQuery } from '../utils';
+import { qsParse, matchString, matchQuery, kvsToQuery } from '../utils';
 // import { mount, shallow, render } from 'enzyme';
 
 jest.useFakeTimers();
@@ -9,7 +9,7 @@ describe('utils test', () => {
     const qs = '?a=1&b=2';
     expect(qsParse(qs)).toEqual({ a: '1', b: '2' });
     expect(qsParse('?a=1&b')).toEqual({ a: '1', b: '' });
-    expect(qsParse('?a=1&a=2&b')).toEqual({ a: ['1', '2'], b: '' });
+    expect(qsParse('?a=1&a=2&a=&b')).toEqual({ a: ['', '1', '2'], b: '' });
   });
   it('matchString', async () => {
     expect(matchString()).toEqual(false);
@@ -27,5 +27,10 @@ describe('utils test', () => {
     expect(matchQuery('a=1&b=1&b=2', 'a=1&b=2&b=1', false)).toEqual(true);
     expect(matchQuery('a=1&b=1&b=2', 'a=1&b=2&b=1', true)).toEqual(true);
     expect(matchQuery('b=1&b=2&a=1', 'a=1&b=2', true)).toEqual(false);
+    expect(matchQuery('b=1&b=2', 'b=2&b=3&b=4', true)).toEqual(false);
+  });
+  it('kvsToQuery', async () => {
+    expect(kvsToQuery([])).toEqual(undefined);
+    expect(kvsToQuery([{ key: 'a', value: '1' }, null])).toEqual('a=1');
   });
 });

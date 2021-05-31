@@ -39,8 +39,8 @@ export interface EventFormProps extends FormProps, CommonFormProps {
    */
   definedTags: TagElement[];
   dataChart?: ReactElement;
-  repeatRuleTag?: TagElement;
-  ruleText?: ReactNode;
+  // repeatRuleTag?: TagElement;
+  // ruleText?: ReactNode;
 }
 export type StepSubmitterProps = SubmitterProps<{
   showPreButton: boolean;

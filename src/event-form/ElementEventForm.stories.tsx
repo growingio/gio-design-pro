@@ -1,17 +1,20 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button } from '@gio-design/components';
+import { Button, Card, Input } from '@gio-design/components';
 import { merge } from 'lodash';
 import ElementEventForm from './ElementEventForm';
 import { ElementEventFormProps, ElementFormValues } from './interfaces';
-import { spaceTags, deviceInfoMinp } from './__test__/data';
+import { deviceInfoMinp } from './__test__/device.data';
+
 // import './eventform-style.less';
 import { AppType, DeviceInfo, ElementInfo, LimitCondition, PageInfo } from './types';
 import { TagElement } from './TagElement';
 import { matchQuery } from './utils';
 import Docs from './EventForm.mdx';
 import './style';
+// import { definedPages } from './__test__/pagePicker.data';
+import { elements, definedElements } from './__test__/elements.data';
 
 export default {
   title: 'Business Components/EventForm/ElementEventForm',
@@ -35,35 +38,7 @@ const getLimitConditionWithElemInfo = (info: ElementInfo): LimitCondition => {
   !!info.href && (limit.href = info.href);
   return limit;
 };
-function getInitialTagElement(elementname: string) {
-  const elements: any = {
-    element1: {
-      name: 'element1',
-      content: 'element1:一共测试4种数据类型, change, click, submit, page,',
-      index: '1',
-      href: '/link',
-      path: '/push/cdp/testgio-cdpcircel.html',
-      pg: null,
-      query: null,
-      xpath: '/div.title/form.basic-grey/h1/span',
-      contentType: null,
-      domain: 'release-messages.growingio.cn',
-      urlScheme: 'growing.447120b8e608d6b9',
-      actions: ['clck'],
-    },
-    element2: {
-      name: 'element2',
-      content: 'element2:这是2',
-      path: '/push/cdp/testgio-cdpcircel.html',
-      pg: null,
-      query: null,
-      xpath: '/div.title/form.basic-grey/h1/span',
-      contentType: null,
-      domain: 'release-messages.growingio.cn',
-      urlScheme: 'growing.447120b8e608d6b9',
-      actions: ['clck'],
-    },
-  };
+function getInitialTagElement(elementname: string, platform: string) {
   const currentElem = elements[elementname] || {};
   // console.log('currentPageInfo', currentPageInfo);
   const deviceInfo: DeviceInfo = deviceInfoMinp as DeviceInfo;
@@ -83,7 +58,7 @@ function getInitialTagElement(elementname: string) {
 
   const { actions } = currentElem;
 
-  const platform = deviceInfo ? deviceInfo.os : 'web';
+  // const _platform = platform;
   const elementInput = {
     name: currentElem?.name,
     description: '',
@@ -94,70 +69,22 @@ function getInitialTagElement(elementname: string) {
       ...attrs,
       ...limitCondition,
     },
-    platforms: [platform],
+    platforms: [platform ?? 'web'],
   };
 
   return elementInput;
 }
-const belongPage: any = {
-  id: 'JnG40OGz',
-  name: '是',
-  creator: 'haozhigang',
-  creatorId: 'rRGoYQml',
-  createdAt: '2021-01-14T07:08:25Z',
-  updater: 'haozhigang',
-  updaterId: 'rRGoYQml',
-  updatedAt: '2021-01-14T07:08:25Z',
-  description: '是  得到的',
-  platforms: ['minp'],
-  docType: 'page',
-  actions: ['page'],
-  patternMatched: false,
-  attrs: {
-    content: null,
-    index: null,
-    href: null,
-    path: 'pages/index/index',
-    pg: null,
-    query: null,
-    xpath: null,
-    contentType: null,
-    domain: 'wx123456',
-    urlScheme: null,
-  },
-  definition: {
-    domain: 'wx123456',
-    path: 'pages/index/index',
-    query: '得到的=s',
-    xpath: null,
-    index: null,
-    href: null,
-    content: null,
-    pg: null,
-    contentType: null,
-    urlScheme: null,
-  },
-  screenshot: { target: '', viewport: '' },
-};
-function getFormValues(elem: string) {
+
+function getFormValues(element: any) {
   //
   const deviceInfo: DeviceInfo = deviceInfoMinp as DeviceInfo;
-  const element = getInitialTagElement(elem);
+  // const element = getInitialTagElement(elem);
   const { attrs, definition } = element;
-  // const isNative = currentPageInfo.appType === AppType.NATIVE;
-  // const res = {
-  //   belongApp: '小程序无埋点测试 | wx123456',
-  //   attrs: { domain: 'wx123456', path: 'pages/index/index', xpath: '#getUserInfo', index: '0' },
-  //   definition: { domain: 'wx123456', path: 'pages/index/index', xpath: '#getUserInfo', index: '0' },
-  // };
+
   const res = {
     name: element.name,
     description: element.description,
-    belongPage,
-    // domain: attrs.domain,
-    // path: attrs.path,
-    // query: attrs.query,
-    // ...omit(definition, ['domain', 'path', 'query']),
+    // belongPage: { name: 'none' },
     belongApp: deviceInfo && `${deviceInfo.name} | ${deviceInfo.domain}`,
     attrs,
     definition,
@@ -173,59 +100,89 @@ const searchPageRule1 = (pageInfo: PageInfo, tag: TagElement): boolean => {
     matchQuery(pageInfo.query as any, tagDef.query, true)
   );
 };
-const allDefinedTags = (spaceTags as unknown) as TagElement[];
-// const elementsInput = getInitialTagElement();
+const DEFINED_TAGS = (definedElements as unknown) as TagElement[];
 const Template: Story<ElementEventFormProps> = (args) => {
-  const [formValue, setFormValue] = useState<ElementFormValues>(getFormValues('element1'));
+  const { platform } = args;
+  const [element, setElement] = useState<any>();
+  const [formValue, setFormValue] = useState<ElementFormValues>();
+  const [allDefinedTags, updateDefinedTags] = useState(() => DEFINED_TAGS);
   // const formValue: ElementFormValues = getFormValues();
-  const { domain, path, query } = formValue.definition;
-  const currentPageTags = allDefinedTags.filter((v) =>
-    searchPageRule1({ ...formValue, domain, path, query } as PageInfo, v)
-  );
   function handleElementClick(ele: string) {
-    const vals = getFormValues(ele);
+    const _element = getInitialTagElement(ele, platform);
+    setElement(_element);
+    const vals = getFormValues(_element);
     setFormValue(vals);
   }
+
+  const currentPageTags = useMemo(() => {
+    if (!element) return [];
+    const { domain, path, query } = element?.definition;
+    const pages = allDefinedTags.filter((v) => searchPageRule1({ domain, path, query } as PageInfo, v));
+    return pages;
+  }, [element]);
   async function handleFinish(val: any) {
+    const submitVal = merge(element, val);
+    updateDefinedTags((pre) => [...pre, submitVal]);
     await new Promise((resolve) => {
       setTimeout(() => {
-        const submitVal = merge(formValue, val);
-        allDefinedTags.push(submitVal);
         console.log('handleFinish', submitVal, allDefinedTags.length);
-
+        // eslint-disable-next-line no-alert
+        alert('保存成功！');
         resolve('success');
-      }, 2000);
+      }, 1000);
     });
     //
     return true;
   }
   return (
     <div>
-      <Button onClick={() => handleElementClick('element1')}>元素一</Button>{' '}
-      <Button onClick={() => handleElementClick('element2')}>元素二</Button>
+      <Card style={{ width: '460px' }}>
+        <Card.Meta title="点击元素圈选" />
+        {platform !== 'web' && (
+          <Card.Meta>
+            <Button onClick={() => handleElementClick('element1')}>元素一</Button>
+            <Button type="secondary" onClick={() => handleElementClick('element2')}>
+              元素二
+            </Button>
+          </Card.Meta>
+        )}
+        {platform === 'web' && (
+          <Card.Meta>
+            <Button onClick={() => handleElementClick('element3')}>元素三</Button>
+            <Button type="secondary" onClick={() => handleElementClick('element4')}>
+              元素四
+            </Button>
+          </Card.Meta>
+        )}
+        <Card.Meta />
+      </Card>
+
       <div style={{ margin: '8px 0px', height: '1px' }} />
-      <div
-        style={{
-          width: '460px',
-          height: '600px',
-          overflow: 'hidden',
-          boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)',
-          position: 'relative',
-        }}
-      >
-        <ElementEventForm
-          {...args}
-          definedTags={allDefinedTags}
-          initialValues={formValue}
-          onFinish={handleFinish}
-          pagePicker={{
-            onActionButtonClick: () => console.log('go to define page'),
-            // currentPageTags: currentPageTags || [],
-            dataSource: (spaceTags as unknown) as TagElement[],
-            currentPageTags, // ([spaceTags[0]] as unknown) as TagElement[],
+      {formValue && (
+        <Card
+          style={{
+            width: '460px',
+            height: '600px',
+            padding: 0,
+            overflow: 'hidden',
+            boxShadow: '0px 0px 2px 1px rgba(0, 0, 0, 0.1)',
+            position: 'relative',
           }}
-        />
-      </div>
+        >
+          <ElementEventForm
+            {...args}
+            definedTags={allDefinedTags}
+            initialValues={formValue}
+            onFinish={handleFinish}
+            pagePicker={{
+              onActionButtonClick: () => console.log('go to define page'),
+              // currentPageTags: currentPageTags || [],
+              // dataSource: (spaceTags as unknown) as TagElement[],
+              currentPageTags, // ([spaceTags[0]] as unknown) as TagElement[],
+            }}
+          />
+        </Card>
+      )}
     </div>
   );
 };
@@ -246,12 +203,20 @@ const DataChart = () => (
 );
 const defaultArgs = {
   platform: 'android',
-  definedTags: (spaceTags as unknown) as TagElement[],
+  // definedTags: (spaceTags as unknown) as TagElement[],
   dataChart: <DataChart />,
 };
 
-export const Default = Template.bind({});
-Default.args = {
+export const MINP = Template.bind({});
+MINP.args = {
   ...defaultArgs,
   appType: AppType.MINP,
+};
+
+export const WEB = Template.bind({});
+WEB.args = {
+  ...defaultArgs,
+  platform: 'web',
+  manualMode: <Input placeholder="定义手动模式" />,
+  appType: AppType.WEB,
 };

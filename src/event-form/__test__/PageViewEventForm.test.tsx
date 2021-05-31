@@ -3,51 +3,11 @@ import React from 'react';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import PageViewEventForm from '../PageViewEventForm';
-import { spaceTags } from './data';
+import { definedPages as definedElements } from './pagePicker.data';
 import { PageViewFormValues } from '../interfaces';
 import { AppType } from '../types';
 import { TagElement } from '../TagElement';
 
-const belongPage: any = {
-  id: 'JnG40OGz',
-  name: '是',
-  creator: 'haozhigang',
-  creatorId: 'rRGoYQml',
-  createdAt: '2021-01-14T07:08:25Z',
-  updater: 'haozhigang',
-  updaterId: 'rRGoYQml',
-  updatedAt: '2021-01-14T07:08:25Z',
-  description: '是  得到的',
-  platforms: ['minp'],
-  docType: 'page',
-  actions: ['page'],
-  patternMatched: false,
-  attrs: {
-    content: null,
-    index: null,
-    href: null,
-    path: 'pages/index/index',
-    pg: null,
-    query: null,
-    xpath: null,
-    contentType: null,
-    domain: 'wx123456',
-    urlScheme: null,
-  },
-  definition: {
-    domain: 'wx123456',
-    path: 'pages/index/index',
-    query: '得到的=s',
-    xpath: null,
-    index: null,
-    href: null,
-    content: null,
-    pg: null,
-    contentType: null,
-    urlScheme: null,
-  },
-  screenshot: { target: '', viewport: '' },
-};
 const initialValues: PageViewFormValues = {
   name: 'pageview',
   description: '',
@@ -65,7 +25,7 @@ describe('PageViewEventForm', () => {
     const newDescription = 'this is descrption';
     render(
       <PageViewEventForm
-        definedTags={(spaceTags as unknown) as TagElement[]}
+        definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"
         appType={AppType.MINP}
         showPreButton={false}
@@ -106,15 +66,13 @@ describe('PageViewEventForm', () => {
   });
 
   it('render PageViewEventForm with appType.WEB', async () => {
-    const handleFinish = jest.fn(async (v) => {
-      console.log(v);
-    });
+    const handleFinish = jest.fn();
     const handlePreClick = jest.fn();
     const handleResetClick = jest.fn();
     const newDescription = 'this is descrption';
     const { container } = render(
       <PageViewEventForm
-        definedTags={(spaceTags as unknown) as TagElement[]}
+        definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"
         appType={AppType.WEB}
         onFinish={handleFinish}
@@ -145,7 +103,7 @@ describe('PageViewEventForm', () => {
     });
 
     expect(handleFinish).toHaveBeenCalledTimes(0);
-    const repeatName = '页面1'; // spaceTags[0].name;
+    const repeatName = definedElements[0].name;
     await act(async () => {
       fireEvent.change(screen.getByLabelText('页面名称'), { target: { value: repeatName } });
     });
@@ -185,7 +143,7 @@ describe('PageViewEventForm', () => {
     };
     const { container } = render(
       <PageViewEventForm
-        definedTags={(spaceTags as unknown) as TagElement[]}
+        definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"
         appType={AppType.WEB}
         onFinish={handleFinish}
@@ -245,7 +203,7 @@ describe('PageViewEventForm', () => {
 
     const { container, baseElement, unmount } = render(
       <PageViewEventForm
-        definedTags={(spaceTags as unknown) as TagElement[]}
+        definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"
         appType={AppType.NATIVE}
         onFinish={handleFinish}
@@ -272,7 +230,7 @@ describe('PageViewEventForm', () => {
     root.appendChild(footerDiv);
     const { container, baseElement, unmount } = render(
       <PageViewEventForm
-        definedTags={(spaceTags as unknown) as TagElement[]}
+        definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"
         appType={AppType.NATIVE}
         onFinish={handleFinish}

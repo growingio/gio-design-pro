@@ -66,7 +66,7 @@ function conversionSubmitValue(values: any) {
 const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps> = (props: EventFormProps, ref) => {
   const {
     labelAlign = 'left',
-    labelWidth = 68,
+    labelWidth = 70,
     appType = AppType.WEB,
     platform,
     initialValues,
@@ -76,7 +76,7 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
     submitter,
     submitterExtra,
     pagePicker = {
-      onActionButtonClick: () => undefined,
+      // onActionButtonClick: () => undefined,
       currentPageTags: [],
       dataSource: [],
     },
@@ -203,7 +203,9 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
           // style={{ position: 'static' }}
           extra={submitterExtra || (!showBelongApp && manual)}
         >
-          {[resetBtn, submitBtn] as ReactElement[]}
+          {resetBtn}
+          {submitBtn}
+          {/* {[resetBtn, submitBtn] as ReactElement[]} */}
         </FooterToolbar>
       );
     }
@@ -214,7 +216,9 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
           // style={{ position: 'static' }}
           extra={submitterExtra || (!showBelongApp && manual)}
         >
-          {[resetBtn, submitBtn] as ReactElement[]}
+          {resetBtn}
+          {submitBtn}
+          {/* {[resetBtn, submitBtn] as ReactElement[]} */}
         </FooterToolbar>
       </div>
     );
@@ -290,7 +294,7 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
     const manual = (
       <Button
         key="manualMode"
-        type="text"
+        type="link"
         onClick={() => {
           setManualMode(!manualModeStatue);
         }}
