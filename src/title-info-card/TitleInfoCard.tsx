@@ -9,6 +9,7 @@ import './style/index';
 const TitleInfoCard = (props: TitleInfoCardProps) => {
   const {
     children,
+    clamp = 3,
     titleIcon,
     centerWidth = 'auto',
     rightWidth = 'auto',
@@ -33,7 +34,7 @@ const TitleInfoCard = (props: TitleInfoCardProps) => {
         <div className={`${prefixCls}-title-text`} style={{ width: centerWidth }}>
           <h5 className={`${!description && 'only-title'}`}>{title}</h5>
           {description && (
-            <Dotdotdot className={`${prefixCls}-content-word-break`} clamp={3}>
+            <Dotdotdot className={`${prefixCls}-content-word-break`} clamp={clamp}>
               {description}
             </Dotdotdot>
           )}
