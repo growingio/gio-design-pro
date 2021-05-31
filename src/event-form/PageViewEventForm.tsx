@@ -328,9 +328,9 @@ const PageViewEventFormRender: React.ForwardRefRenderFunction<FormInstance, Page
 
       // },
       showPreButton,
-      onPre: () => {
-        restProps.onPre?.();
-      },
+      // onPre: () => {
+      //   restProps.onPre?.();
+      // },
       submitButtonProps: {
         loading,
         ...submitter?.submitButtonProps,

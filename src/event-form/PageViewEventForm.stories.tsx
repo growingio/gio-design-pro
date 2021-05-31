@@ -4,7 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from '@gio-design/components';
 import PageViewEventForm from './PageViewEventForm';
 import { PageViewEventFormProps } from './interfaces';
-import { spaceTags, deviceInfoApp, currentPageMinp, currentPageApp } from './__test__/data';
+import { deviceInfoApp, currentPageMinp, currentPageApp } from './__test__/device.data';
+import { definedPages } from './__test__/pagePicker.data';
 // import './eventform-style.less';
 import { AppType, DeviceInfo, PageInfo } from './types';
 import { TagElement } from './TagElement';
@@ -20,6 +21,8 @@ export default {
     },
   },
 } as Meta;
+
+const allDefinedTags = [...definedPages];
 function getInitialTagElement(deviceInfo: DeviceInfo, currentPage: PageInfo) {
   const currentPageInfo = currentPage;
   // console.log('currentPageInfo', currentPageInfo);
@@ -93,6 +96,7 @@ const DataChart = () => (
   </div>
 );
 async function handleFinish(val: any) {
+  allDefinedTags.push(val);
   await new Promise((resolve) => {
     setTimeout(() => {
       console.log('handleFinish', val);
@@ -104,7 +108,7 @@ async function handleFinish(val: any) {
 }
 const defaultArgs = {
   platform: 'android',
-  definedTags: (spaceTags as unknown) as TagElement[],
+  definedTags: (allDefinedTags as unknown) as TagElement[],
   onFinish: handleFinish,
   dataChart: <DataChart />,
 };

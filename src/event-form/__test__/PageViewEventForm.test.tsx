@@ -23,7 +23,7 @@ describe('PageViewEventForm', () => {
   it('render PageViewEventForm with appType.MINP ,and click submit button and  call onFinish,', async () => {
     const handleFinish = jest.fn();
     const newDescription = 'this is descrption';
-    render(
+    const wrapper = render(
       <PageViewEventForm
         definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"
@@ -63,6 +63,26 @@ describe('PageViewEventForm', () => {
       },
     };
     expect(handleFinish).toHaveBeenCalledWith(expectValue);
+
+    await act(async () => {
+      fireEvent.click(wrapper.container.querySelector('.gio-toggles'));
+    });
+    await act(async () => {
+      fireEvent.click(screen.getByText('保 存'));
+    });
+    await act(async () => {
+      fireEvent.click(screen.getByText('确 认'));
+    });
+    const expectValue2 = {
+      name: 'pageview',
+      description: newDescription,
+      definition: {
+        domain: 'release-messages.growingio.cn',
+        // path: 'pages/index/index',
+        query: 'q=1',
+      },
+    };
+    expect(handleFinish).toHaveBeenCalledWith(expectValue2);
   });
 
   it('render PageViewEventForm with appType.WEB', async () => {
@@ -70,7 +90,7 @@ describe('PageViewEventForm', () => {
     const handlePreClick = jest.fn();
     const handleResetClick = jest.fn();
     const newDescription = 'this is descrption';
-    const { container } = render(
+    render(
       <PageViewEventForm
         definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"
@@ -103,25 +123,6 @@ describe('PageViewEventForm', () => {
     });
 
     expect(handleFinish).toHaveBeenCalledTimes(0);
-    const repeatName = definedElements[0].name;
-    await act(async () => {
-      fireEvent.change(screen.getByLabelText('页面名称'), { target: { value: repeatName } });
-    });
-    await act(async () => {
-      fireEvent.click(screen.getByText('保 存'));
-      jest.runOnlyPendingTimers();
-    });
-    expect(screen.queryByText(/该名称已存在/)).toBeTruthy();
-    // const expectValue = {
-    //   name: 'pageview',
-    //   description: newDescription,
-    //   definition: {
-    //     domain: 'release-messages.growingio.cn',
-    //     path: 'pages/index/index',
-    //     query: 'q=1',
-    //   },
-    // };
-    // expect(handleFinish).toHaveBeenCalledWith(expectValue);
   });
 
   it('render PageViewEventForm and trigger validate', async () => {
@@ -131,15 +132,12 @@ describe('PageViewEventForm', () => {
     const handleFormValuesChange = jest.fn(async (v) => {
       console.log('handleFormValuesChange', v);
     });
-    const initialFormValue: PageViewFormValues = {
+
+    const defined: any = {
       name: '',
       description: '',
-      belongApp: '小程序无埋点 | wx123456',
-      definition: {
-        domain: 'release-messages.growingio.cn',
-        path: 'pages/index/index',
-        // query: 'q=1',
-      },
+      belongApp: 'Android无埋点测试 | com.growingio.android.cdp',
+      definition: { domain: 'wx123456', path: '/pages/index/index', query: 'a=1' },
     };
     const { container } = render(
       <PageViewEventForm
@@ -149,59 +147,52 @@ describe('PageViewEventForm', () => {
         onFinish={handleFinish}
         onValuesChange={(_, av) => handleFormValuesChange(av)}
         // showPreButton={false}
-        initialValues={initialFormValue}
+        initialValues={defined}
         submitter={{ submitText: '保存', resetText: '不保存' }}
       />
     );
+    const repeatName = definedElements[0].name;
     await act(async () => {
-      fireEvent.click(container.querySelector('.gio-toggles'));
-    });
-    await act(async () => {
-      fireEvent.change(screen.getByLabelText('页面名称'), { target: { value: 'pageview' } });
+      fireEvent.change(screen.getByLabelText('页面名称'), { target: { value: repeatName } });
     });
     await act(async () => {
       fireEvent.click(screen.getByText('保 存'));
+      jest.runOnlyPendingTimers();
+    });
+    expect(screen.queryByText(/该名称已存在/)).toBeTruthy();
+
+    await act(async () => {
+      fireEvent.change(screen.getByLabelText('页面名称'), { target: { value: 'pageview' } });
+    });
+    expect(container.querySelector('.gio-alert-error')).toBeTruthy();
+    await act(async () => {
+      fireEvent.click(screen.getByText('添加查询条件'));
     });
     await act(async () => {
-      fireEvent.click(screen.getByText('确 认'));
+      const definitionQueryKeys = screen.getAllByPlaceholderText('请输入参数');
+      fireEvent.change(definitionQueryKeys[1], { target: { value: 'b' } });
+      jest.runOnlyPendingTimers();
     });
-    const expectValue: any = {
-      name: 'pageview',
-      description: '',
-      definition: {
-        domain: 'release-messages.growingio.cn',
-        path: undefined,
-        query: undefined,
-      },
-    };
-    expect(handleFinish).toHaveBeenCalledWith(expectValue);
-    // expect(handleFinish).toHaveBeenCalledTimes(0);
-    // const repeatName = '页面1'; // spaceTags[0].name;
-    // await act(async () => {
-    //   fireEvent.change(screen.getByLabelText('页面名称'), { target: { value: repeatName } });
-    // });
-    // await act(async () => {
-    //   fireEvent.click(screen.getByText('保 存'));
-    //   jest.runOnlyPendingTimers();
-    // });
-    // expect(screen.queryByText(/该名称已存在/)).toBeTruthy();
-    // const expectValue = {
-    //   name: 'pageview',
-    //   description: newDescription,
-    //   definition: {
-    //     domain: 'release-messages.growingio.cn',
-    //     path: 'pages/index/index',
-    //     query: 'q=1',
-    //   },
-    // };
-    // expect(handleFinish).toHaveBeenCalledWith(expectValue);
+    await act(async () => {
+      const definitionQueryKeys = screen.getAllByPlaceholderText('请输入参数');
+      fireEvent.change(definitionQueryKeys[1], { target: { value: '' } });
+      jest.runOnlyPendingTimers();
+    });
+    expect(screen.queryByText(/参数不能为空/)).toBeTruthy();
+    await act(async () => {
+      const definitionQueryKeys = screen.getAllByPlaceholderText('请输入参数');
+      fireEvent.change(definitionQueryKeys[1], { target: { value: 'a' } });
+      jest.runOnlyPendingTimers();
+    });
+
+    expect(screen.queryByText(/参数不能重复/)).toBeTruthy();
   });
   it('render PageViewEventForm with appType.NATIVE without submit', async () => {
     const handleFinish = jest.fn(async (v) => {
       console.log(v);
     });
 
-    const { container, baseElement, unmount } = render(
+    render(
       <PageViewEventForm
         definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"
@@ -228,7 +219,7 @@ describe('PageViewEventForm', () => {
     footerDiv.style.position = 'relative';
     footerDiv.id = 'submitContainer';
     root.appendChild(footerDiv);
-    const { container, baseElement, unmount } = render(
+    const { unmount } = render(
       <PageViewEventForm
         definedTags={(definedElements as unknown) as TagElement[]}
         platform="android"

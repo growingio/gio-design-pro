@@ -11,12 +11,13 @@ export const currentPageMinp = {
   timestamp: 1610954652616,
   ip: '111.198.136.131',
   domain: 'wx123456',
-  query: 'name=hello&a=3',
+  path: '/pages/index/index',
+  query: 'a=1',
   platform: 'MinP',
-  path: 'pages/index/index',
   appType: 0,
   actions: ['clck'],
 };
+
 export const deviceInfoApp = {
   projectId: '91eaf9b283361032',
   msgType: 'ready',

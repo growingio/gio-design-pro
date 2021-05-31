@@ -21,7 +21,7 @@ const QSInput = (props: Props) => {
       { required: true, message: '参数不能为空' },
       { pattern: /^((?!\*).)*$/, message: '参数不支持通配' },
       {
-        validateTrigger: 'onBlur',
+        // validateTrigger: 'onBlur',
         validator: async (_: any, v: string) => {
           if (v) {
             const kv = querySet?.filter((q) => q?.key === v);
@@ -80,7 +80,7 @@ const QSInput = (props: Props) => {
             </div>
           ))}
           <Form.Item labelWidth={0} className="query-input-add-filed">
-            <Button type="link" onClick={() => add()}>
+            <Button type="text" onClick={() => add()}>
               添加查询条件
             </Button>
           </Form.Item>
