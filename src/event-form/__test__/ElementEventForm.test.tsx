@@ -78,16 +78,6 @@ const initialValues: ElementFormValues = {
   },
 };
 
-const definition_minp: any = {
-  domain: 'wx123456',
-  path: 'pages/index/index',
-  query: 'a=1',
-  xpath: '/div.title/form.basic-grey/h1/span',
-  index: '1',
-  href: '/link',
-  content: 'element1:一共测试4种数据类型, change, click, submit, page,',
-  contentType: '=',
-};
 describe('ElementEventForm', () => {
   it('can render ElementEventForm with appType.MINP ,and click submit button and  call onFinish,', async () => {
     const handleFinish = jest.fn();

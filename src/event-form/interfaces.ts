@@ -1,5 +1,5 @@
 import { FormInstance, FormProps } from '@gio-design/components/es/components/form';
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
 import { ButtonProps } from '@gio-design/components';
 import { SubmitterProps } from './components/submitter';
 import { AppType } from './types';

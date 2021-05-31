@@ -5,7 +5,6 @@ import { act } from 'react-dom/test-utils';
 import { Form } from '@gio-design/components';
 import QSInput from '../components/QSInput';
 import BaseForm from '../BaseForm';
-import { AppType } from '../types';
 // import { mount, shallow, render } from 'enzyme';
 
 jest.useFakeTimers();

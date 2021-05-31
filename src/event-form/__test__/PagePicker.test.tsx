@@ -3,7 +3,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import PagePicker from '../components/page-picker';
-import { AppType, PageInfo } from '../types';
+import { PageInfo } from '../types';
 // import { mount, shallow, render } from 'enzyme';
 import { pageInfo, definedPages } from './pagePicker.data';
 import { TagElement } from '../TagElement';
