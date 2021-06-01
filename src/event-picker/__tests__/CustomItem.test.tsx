@@ -3,6 +3,7 @@ import { act } from 'react-dom/test-utils';
 import { render, fireEvent } from '@testing-library/react';
 import CustomItem from '../CustomItem';
 import { simple, custom } from './eventDatas';
+import TypeIcon from '../TypeIcon';
 
 //
 function sleep(time: number) {
@@ -13,6 +14,7 @@ function sleep(time: number) {
   });
 }
 describe('<CustomItem/> test', () => {
+  const getTypeIcon = (type: string) => <TypeIcon size="14px" className="item-content-icon" type={type || ''} />;
   it('render CustomItem', async () => {
     // jest.useFakeTimers();
     const handleItemMouseEnter = jest.fn();
@@ -21,6 +23,7 @@ describe('<CustomItem/> test', () => {
     const { container } = render(
       <CustomItem
         multiple
+        getTypeIcon={getTypeIcon}
         dataSource={custom}
         onMouseEnter={handleItemMouseEnter}
         onClick={handleItemClick}
@@ -47,6 +50,7 @@ describe('<CustomItem/> test', () => {
     const { container } = render(
       <CustomItem
         multiple
+        getTypeIcon={getTypeIcon}
         dataSource={simple}
         onMouseEnter={handleItemMouseEnter}
         onMouseLeave={handleItemMouseLeave}

@@ -25,6 +25,17 @@ export const getEventType = (data: EventData): string => {
       return 'unknow';
   }
 };
+export const getGroupName = (groupKey: string): string => {
+  const nameMap: { [key: string]: string } = {
+    custom: '埋点事件',
+    simple: '无埋点事件',
+    prepared: '预置计算指标',
+    complex: '自定义计算指标',
+    merged: '合成事件',
+  };
+  return nameMap[groupKey] || '未知类型';
+};
+export const getGroupKey = (data: EventData): string => data.type || 'unkwon';
 /**
  * 因为不同类型的事件 id可能重复，此处用 type 和 id 组合出一个唯一key
  * @param data Array<EventData>

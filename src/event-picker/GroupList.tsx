@@ -3,20 +3,20 @@ import { keys } from 'lodash';
 import React, { useCallback, useMemo } from 'react';
 import { Button } from '@gio-design/components';
 import classNames from 'classnames';
-import { EventData } from './interfaces';
+import { EventData, EventPickerProps } from './interfaces';
 import List from '../list';
 import Group from './Group';
 import { GroupItemsProps } from './GroupListItemProps';
 import CustomItem from './CustomItem';
 // 类型与名称映射
-export const nameMap: { [key: string]: string } = {
-  history: '最近使用',
-  custom: '埋点事件',
-  simple: '无埋点事件',
-  prepared: '预置计算指标',
-  complex: '自定义计算指标',
-  merged: '合成事件',
-};
+// export const nameMap: { [key: string]: string } = {
+//   history: '最近使用',
+//   custom: '埋点事件',
+//   simple: '无埋点事件',
+//   prepared: '预置计算指标',
+//   complex: '自定义计算指标',
+//   merged: '合成事件',
+// };
 export interface Props extends Omit<GroupItemsProps, 'dataSource' | 'keyPrefix'> {
   dataSource: { history?: EventData[]; dataList: Record<string, EventData[]>; select?: EventData[] };
   // value: string[];
@@ -37,6 +37,8 @@ export interface Props extends Omit<GroupItemsProps, 'dataSource' | 'keyPrefix'>
    * 是否显示preview 弹出面板
    */
   showPreview?: boolean;
+  getGroupName: EventPickerProps['getGroupName'];
+  getTypeIcon: EventPickerProps['getTypeIcon'];
 }
 const GroupList = (props: Props) => {
   const {
@@ -44,12 +46,14 @@ const GroupList = (props: Props) => {
     value = [],
     multiple,
     keyword,
+    getGroupName,
     onDeselectAll,
+    getTypeIcon,
     ...rest
   } = props;
 
-  const getGroupName = (nodes: EventData[], type: string) => {
-    const name = nameMap[type] || '未知类型';
+  const getGroupNameInner = (nodes: EventData[], type: string) => {
+    const name = getGroupName(type) || '未知类型';
     return `${name}(${nodes.length})`;
   };
   const handleCheckboxChange = (node: EventData, checked: boolean) => {
@@ -64,6 +68,7 @@ const GroupList = (props: Props) => {
       const isSelect = selectValue.includes(data.selectKey || '');
       const listNode = (
         <CustomItem
+          getTypeIcon={getTypeIcon}
           dataSource={data}
           keyword={keyword}
           multiple={multiple}
@@ -133,7 +138,7 @@ const GroupList = (props: Props) => {
   const groupDataNodes = keys(dataList).map((key, index) => {
     const items = dataList[key] || [];
     // getListItems(groupData[key]);
-    const groupName = getGroupName(items, key);
+    const groupName = getGroupNameInner(items, key);
     return (
       <React.Fragment key={`groupDataNodes-${index}`}>
         {index > 0 && <List.Divider key={`divider-group-${key}-${index}`} />}

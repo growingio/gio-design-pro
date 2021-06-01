@@ -2,7 +2,7 @@ import { useLocalStorage } from '@gio-design/utils';
 import { cloneDeep, groupBy, uniq } from 'lodash';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePrefixCls } from '@gio-design/components';
-import { EventData } from './interfaces';
+import { EventData, EventPickerProps } from './interfaces';
 import ListPanel from './ListPanel';
 import GroupList from './GroupList';
 import { GroupListItemEvent } from './GroupListItemProps';
@@ -85,6 +85,9 @@ interface Props extends GroupListItemEvent {
    */
   emptyPrompt?: EmptyPromptProps;
   footer?: React.ReactNode;
+  getGroupKey: EventPickerProps['getGroupKey'];
+  getGroupName: EventPickerProps['getGroupName'];
+  getTypeIcon: EventPickerProps['getTypeIcon'];
 }
 const PickerContent = (props: Props) => {
   const {
@@ -104,6 +107,9 @@ const PickerContent = (props: Props) => {
     value = [],
     emptyPrompt,
     footer,
+    getGroupKey,
+    getGroupName,
+    getTypeIcon,
     ...rest
   } = props;
 
@@ -195,7 +201,7 @@ const PickerContent = (props: Props) => {
    */
   const groupData = useMemo(() => {
     const source = multiple ? dataSource.filter((d) => !valueKeys.includes(d.selectKey || '')) : dataSource;
-    return groupBy(source, 'type') as Record<string, EventData[]>;
+    return groupBy(source, getGroupKey) as Record<string, EventData[]>;
   }, [dataSource, valueKeys]);
 
   /**
@@ -263,6 +269,8 @@ const PickerContent = (props: Props) => {
               dataList: groupData,
               select: value,
             }}
+            getGroupName={getGroupName}
+            getTypeIcon={getTypeIcon}
             keyword={keyword}
             value={select}
             multiple={multiple}

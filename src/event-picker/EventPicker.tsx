@@ -6,8 +6,14 @@ import { isArray, isEqualWith, isUndefined, orderBy, uniqBy, xorWith } from 'lod
 import { injectPinyinWith } from '@gio-design/utils';
 import { EventData, EventPickerProps, Tab } from './interfaces';
 import BasePicker from '../base-picker';
-
-import { getEventType, defaultTabs, withSelectKey } from './helper';
+import TypeIcon from './TypeIcon';
+import {
+  getEventType,
+  defaultTabs,
+  withSelectKey,
+  getGroupName as defaultGetGroupName,
+  getGroupKey as defaultGetGroupKey,
+} from './helper';
 import PickerContent from './PickerContent';
 import './style';
 
@@ -34,6 +40,9 @@ const EventPicker = (props: EventPickerProps) => {
     onCancel,
     detailVisibleDelay = 600,
     getTabKey = getEventType,
+    getGroupName = defaultGetGroupName,
+    getGroupKey = defaultGetGroupKey,
+    getTypeIcon,
     defaultKeyword,
     panelFooter,
     multiple,
@@ -161,10 +170,14 @@ const EventPicker = (props: EventPickerProps) => {
   };
 
   const footer = panelFooter?.(activedTab, dataSource);
-
+  const defaultGetTypeIcon = (type: string) => <TypeIcon size="14px" className="item-content-icon" type={type || ''} />;
+  const getGroupIcon = getTypeIcon || defaultGetTypeIcon;
   const renderContent = () => (
     <PickerContent
       {...rest}
+      getGroupKey={getGroupKey}
+      getGroupName={getGroupName}
+      getTypeIcon={getGroupIcon}
       historyStoreKey={historyStoreKey}
       shouldUpdate={shouldUpdateRecentlyUsed}
       dataSource={dataSource}

@@ -2,9 +2,10 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import GroupList from '../GroupList';
-import { withSelectKey } from '../helper';
+import { withSelectKey, getGroupName } from '../helper';
 import { events } from './data';
 import { EventData } from '../interfaces';
+import TypeIcon from '../TypeIcon';
 
 jest.useFakeTimers();
 const customEvents = withSelectKey((events.filter((e) => e.type === 'custom').slice(0, 15) as unknown) as EventData[]);
@@ -14,8 +15,17 @@ describe('<GroupList/> test', () => {
       giochart<div>{data.id}</div>
     </div>
   ));
+  const getTypeIcon = (type: string) => <TypeIcon size="14px" className="item-content-icon" type={type || ''} />;
+
   it('render GroupList', async () => {
-    render(<GroupList dataSource={{ dataList: { custom: customEvents } }} onShowEventChart={onShowEventChart} />);
+    render(
+      <GroupList
+        getGroupName={getGroupName}
+        getTypeIcon={getTypeIcon}
+        dataSource={{ dataList: { custom: customEvents } }}
+        onShowEventChart={onShowEventChart}
+      />
+    );
 
     expect(screen.getByText(/展开全部/)).toBeTruthy();
     act(() => {
@@ -29,6 +39,8 @@ describe('<GroupList/> test', () => {
     render(
       <GroupList
         multiple
+        getGroupName={getGroupName}
+        getTypeIcon={getTypeIcon}
         dataSource={{ dataList: { custom: customEvents } }}
         onCheckboxChange={handleCheckboxChange}
         onClick={handleClick}
@@ -52,6 +64,8 @@ describe('<GroupList/> test', () => {
     const handleItemMouseLeave = jest.fn();
     render(
       <GroupList
+        getGroupName={getGroupName}
+        getTypeIcon={getTypeIcon}
         dataSource={{ dataList: { custom: customEvents } }}
         onMouseEnter={handleItemMouseEnter}
         onMouseLeave={handleItemMouseLeave}
@@ -77,6 +91,8 @@ describe('<GroupList/> test', () => {
     render(
       <GroupList
         multiple
+        getGroupName={getGroupName}
+        getTypeIcon={getTypeIcon}
         dataSource={{ dataList: groupdata, select }}
         onDeselectAll={onDeselectAll}
         onCheckboxChange={handleCheckboxChange}

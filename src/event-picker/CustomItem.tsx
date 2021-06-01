@@ -3,7 +3,7 @@ import { makeSearchParttern } from '@gio-design/components/es/components/cascade
 import React, { ChangeEvent, useState, useEffect } from 'react';
 
 import TypeIcon from './TypeIcon';
-import { EventData, ListItemPreviewEventProps } from './interfaces';
+import { EventData, ListItemPreviewEventProps, EventPickerProps } from './interfaces';
 import Preview from './preview';
 import { useDebounceFn, useMountedState } from '../hooks';
 import List from '../list';
@@ -19,6 +19,7 @@ export interface Props extends ListItemPreviewEventProps, Omit<ListItemProps, 'c
    * 是否显示preview 弹出面板
    */
   showPreview?: boolean;
+  getTypeIcon: EventPickerProps['getTypeIcon'];
   // onMouseEnter?: (e: React.MouseEvent, data: EventData) => void;
   // onMouseLeave?: (e: React.MouseEvent) => void;
 }
@@ -62,6 +63,7 @@ export const CustomItem: React.FC<Props> = (props) => {
     previewCustomRender,
     fetchDetailData,
     showPreview,
+    getTypeIcon,
     ...rest
   } = props;
   const isMounted = useMountedState();
@@ -107,6 +109,7 @@ export const CustomItem: React.FC<Props> = (props) => {
     setChecked(e.target.checked);
     // onCheckboxChange?.(dataSource, e.target.checked);
   };
+  const typeIcon = getTypeIcon(type);
   return (
     <List.Item
       style={{ scrollSnapAlign: 'start' }}
@@ -131,8 +134,7 @@ export const CustomItem: React.FC<Props> = (props) => {
                 checked={checked}
               />
             )}
-            <TypeIcon size="14px" className="item-content-icon" type={type || ''} />
-
+            {typeIcon}
             <span className="item-content-body" title={name}>
               {renderKeyword(name as string, keyword || '', true)}
             </span>

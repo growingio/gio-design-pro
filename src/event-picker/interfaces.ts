@@ -74,6 +74,7 @@ export interface EventPickerProps
    * 最终的值将与 `tabs` 项里的 `value` 进行比较
    */
   getTabKey?: (nodeData: EventData) => string;
+
   defaultKeyword?: string;
   /**
    * 是否多选
@@ -84,7 +85,7 @@ export interface EventPickerProps
    */
   panelFooter?: (tabKey: string, data: EventData[]) => React.ReactElement;
   /**
-   * 是否隐藏tabNav
+   * 是否隐藏tabNav,设置为true 不显示tabNav，如果只有一个tab 也不显示tabNav
    */
   hideTabNav?: boolean;
   /**
@@ -125,6 +126,19 @@ export interface EventPickerProps
    * 是否显示preview 弹出面板
    */
   showPreview?: boolean;
+  /**
+   * 获取事件分组的名称；getGroupName，getGroupKey，getTypeIcon 组合用于自定义分组
+   */
+  getGroupName?: (groupKey: string) => string;
+  /**
+   * 获取事件分组的key；
+   * @default (nodeData:EventData)=>nodeData.type
+   */
+  getGroupKey?: (nodeData: EventData) => string;
+  /**
+   * 获取事件分组的Icon；
+   */
+  getTypeIcon?: (type: string) => React.ReactElement;
 }
 
 export interface EventPickerPreviewProps extends BaseProps, ListItemPreviewEventProps {

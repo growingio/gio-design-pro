@@ -2,7 +2,13 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { isArray } from 'lodash';
-import { PlusCircleFilled } from '@gio-design/icons';
+import {
+  CodelessTrackingOutlined,
+  EventsPresetOutlined,
+  MetricsCustomOutlined,
+  MetricsPresetOutlined,
+  PlusCircleFilled,
+} from '@gio-design/icons';
 import { Button } from '@gio-design/components';
 import Docs from './EventPicker.mdx';
 import { EventPicker, EventPickerProps } from './index';
@@ -270,4 +276,42 @@ CustomTabGroup.args = {
   tabs: defaultTabs,
   showTabAll: false,
   // hideTabNav: true,
+};
+const TypeIcon: React.FC<{ type: string; size?: string }> = (props) => {
+  const { type, ...others } = props;
+  switch (type) {
+    case 'custom':
+      // return <Icon id={Preset} title='埋点事件' {...others} />;
+      return <EventsPresetOutlined {...others} />;
+    case 'simple':
+      // return <Icon id={Codeless} title="无埋点事件" {...others} />;
+      return <CodelessTrackingOutlined {...others} />;
+    case 'prepared':
+      // return <Icon id={MetricsPreset} title="预置计算指标" {...others} />;
+      return <MetricsPresetOutlined {...others} />;
+    case 'complex':
+      // return <Icon id={MetricsCustom} title="自定义计算指标" {...others} />;
+      return <MetricsCustomOutlined {...others} />;
+    default:
+      return <EventsPresetOutlined {...others} />;
+  }
+};
+export const CustomGroup = Template.bind({});
+CustomGroup.args = {
+  dataSource: events,
+  multiple: true,
+  getTabKey: getEventType,
+  tabs: defaultTabs,
+  showTabAll: false,
+  getGroupKey: (data: EventData) => {
+    if (data.type === 'simple') return 'simple';
+    if (data.type === 'custom' || data.type === 'complex') return 'metric';
+    return 'other';
+  },
+  getGroupName: (type: string) => {
+    if (type === 'simple') return '无埋点事件';
+    if (type === 'metric') return '埋点事件和计算指标';
+    return '其他';
+  },
+  getTypeIcon: (type: string) => <TypeIcon type={type} size="14px" />,
 };

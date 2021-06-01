@@ -39,6 +39,19 @@
         &-checkbox {
           margin-right: 8px;
         }
+        span[class*='-icon'] {
+          margin-right: 8px;
+          line-height: 0px;
+          vertical-align: middle;
+          svg {
+            * {
+              fill: currentColor;
+            }
+            path {
+              fill: currentColor;
+            }
+          }
+        }
         &-icon {
           margin-right: 8px;
           line-height: 0px;
@@ -51,6 +64,9 @@
               fill: currentColor;
             }
           }
+        }
+        &-body {
+          vertical-align: middle;
         }
         .kw {
           background: #ffef84;

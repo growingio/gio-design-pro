@@ -36,7 +36,7 @@ const TypeIcon: React.FC<Props> = (props) => {
       // return <Icon id={MetricsCustom} title="自定义计算指标" {...others} />;
       return <MetricsCustomOutlined {...others} />;
     default:
-      return null;
+      return <EventsPresetOutlined {...others} />;
   }
 };
 
