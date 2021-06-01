@@ -39,6 +39,7 @@ export const Default = Template.bind({});
 Default.args = {
   dataSource: events,
   size: 'small',
+  showValueIcon: true,
 };
 export const Multiple = Template.bind({});
 Multiple.args = {

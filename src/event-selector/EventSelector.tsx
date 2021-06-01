@@ -24,6 +24,7 @@ const EventSelector = ({
   onChange,
   getContainer,
   overlayClassName,
+  showValueIcon = false,
   ...pickerRestProps
 }: EventSelectorProps) => {
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
@@ -77,11 +78,14 @@ const EventSelector = ({
       onCancel={handleCancel}
     />
   );
+  const getIcon =
+    pickerRestProps.getTypeIcon || ((type: string) => <TypeIcon style={{ marginRight: '8px' }} type={type} />);
+  const typeIcon = showValueIcon ? getIcon(value[0]?.type ?? '') : null;
   const inputRender = () =>
     inputValueText && (
       <Tooltip disabled={!textOverflow} title={<div className={`${clsPrifx}-input-tooltip`}>{inputValueText}</div>}>
         <span className="inner-input-wrap" ref={inputValueRef}>
-          {!pickerRestProps.multiple && <TypeIcon style={{ marginRight: '8px' }} type={value[0]?.type ?? ''} />}
+          {!pickerRestProps.multiple && typeIcon}
           <span>{inputValueText}</span>
         </span>
       </Tooltip>
