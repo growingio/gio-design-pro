@@ -12946,9 +12946,11 @@ pinkie@^2.0.0:
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
 pinyin-match@^1.1.9:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/pinyin-match/-/pinyin-match-1.2.1.tgz#c6b5cd2a5f933e0c23acbc8be8b2fb1de21323ae"
-  integrity sha512-C9zYmY5sPa7lZ0Pb844WVgjFPckkcZZ4G4oGvLBiNRVhRfPvcWd1JFsuQPeF4rAU9eXAB4DPkgwIE4cGe+lpLA==
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/pinyin-match/-/pinyin-match-1.2.2.tgz#24a60a5bce89fb2903f33f37492782d3f8e34eeb"
+  integrity sha512-C0yOq4LkToJMkDHiQFKOY69El2GRcwdS2lVEjgWjIV8go3wE4mloGFNkVicGHFGYHDg523m2/lKzW8Hh+JR9nw==
+  dependencies:
+    rollup "^2.44.0"
 
 pinyin@^2.9.1:
   version "2.10.2"
@@ -14775,6 +14777,13 @@ rollup@^1.31.0:
     "@types/estree" "*"
     "@types/node" "*"
     acorn "^7.1.0"
+
+rollup@^2.44.0:
+  version "2.50.5"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.50.5.tgz#bbee9d6411af3f5fa5c6e7e2c69f7a65b753e568"
+  integrity sha512-Ztz4NurU2LbS3Jn5rlhnYv35z6pkjBUmYKr94fOBIKINKRO6kug9NTFHArT7jqwMP2kqEZ39jJuEtkk91NBltQ==
+  optionalDependencies:
+    fsevents "~2.3.1"
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"
