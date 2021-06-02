@@ -1,0 +1,33 @@
+@import '../../stylesheets/index.less';
+
+@footer-bar-prefix-cls: ~'@{component-prefix}-event-form-footer-bar';
+
+.@{footer-bar-prefix-cls} {
+  // position: fixed;
+  // right: 0;
+  // bottom: 0;
+  z-index: 99;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 0 24px;
+  line-height: 44px;
+  background: #fff;
+  background-color: #fff;
+  box-shadow: 0 -1px 0 0 #dfe4ee;
+  height: 60px;
+
+  &-left {
+    flex: 1;
+  }
+
+  &-right {
+    & > * {
+      margin-right: 8px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
