@@ -53,7 +53,7 @@ const GroupList = (props: Props) => {
   } = props;
 
   const getGroupNameInner = (nodes: EventData[], type: string) => {
-    const name = getGroupName(type) || '未知类型';
+    const name = getGroupName?.(type) || '未知类型';
     return `${name}(${nodes.length})`;
   };
   const handleCheckboxChange = (node: EventData, checked: boolean) => {
