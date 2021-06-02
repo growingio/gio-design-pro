@@ -14,6 +14,9 @@ import Docs from './EventPicker.mdx';
 import { EventPicker, EventPickerProps } from './index';
 import { events } from './__tests__/data';
 import { EventData } from './interfaces';
+import Preview from './preview/index';
+import TypeIcon from './TypeIcon';
+import CustomItem from './CustomItem';
 
 const simpleEvents = [
   {
@@ -148,9 +151,11 @@ export default {
   // title: 'EventPicker',
   component: EventPicker,
   parameters: {
-    docs: {
-      page: Docs,
-    },
+    subcomponents: { Preview, TypeIcon, CustomItem },
+
+    // docs: {
+    //   page: Docs,
+    // },
   },
 } as Meta;
 
@@ -277,7 +282,7 @@ CustomTabGroup.args = {
   showTabAll: false,
   // hideTabNav: true,
 };
-const TypeIcon: React.FC<{ type: string; size?: string }> = (props) => {
+const MyTypeIcon: React.FC<{ type: string; size?: string }> = (props) => {
   const { type, ...others } = props;
   switch (type) {
     case 'custom':
@@ -313,5 +318,5 @@ CustomGroup.args = {
     if (type === 'metric') return '埋点事件和计算指标';
     return '其他';
   },
-  getTypeIcon: (type: string) => <TypeIcon type={type} size="14px" />,
+  getTypeIcon: (type: string) => <MyTypeIcon type={type} size="14px" />,
 };
