@@ -2,7 +2,6 @@ import { Tooltip, Checkbox } from '@gio-design/components';
 import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
 import React, { ChangeEvent, useState, useEffect } from 'react';
 
-import TypeIcon from './TypeIcon';
 import { EventData, ListItemPreviewEventProps, EventPickerProps } from './interfaces';
 import Preview from './preview';
 import { useDebounceFn, useMountedState } from '../hooks';
@@ -109,7 +108,7 @@ export const CustomItem: React.FC<Props> = (props) => {
     setChecked(e.target.checked);
     // onCheckboxChange?.(dataSource, e.target.checked);
   };
-  const typeIcon = getTypeIcon(type);
+  const typeIcon = getTypeIcon?.(type??'');
   return (
     <List.Item
       style={{ scrollSnapAlign: 'start' }}
@@ -134,7 +133,7 @@ export const CustomItem: React.FC<Props> = (props) => {
                 checked={checked}
               />
             )}
-            {typeIcon}
+            {typeIcon??''}
             <span className="item-content-body" title={name}>
               {renderKeyword(name as string, keyword || '', true)}
             </span>
