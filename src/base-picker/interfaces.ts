@@ -57,6 +57,10 @@ export interface BasePickerProps extends BaseProps {
   // dataSource?: T[];
   // renderItem?: (item: T, index: number) => React.ReactNode;
   renderItems?: () => React.ReactNode;
+  /**
+   * main content render
+   */
+  renderContent?: () => React.ReactNode;
   items?: (ListItemGroupProps | ListItemProps)[];
   /**
    * Callback when select some data

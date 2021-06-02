@@ -7,8 +7,9 @@
 @property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
 @property-selector-prefix-cls: ~'@{component-prefix}-property-selector';
 .@{property-picker-prefix-cls} {
-  width: auto;
-  min-width: 160px;
+  &.@{picker-prefix-cls} {
+    width: 366px;
+  }
 
   .@{picker-prefix-cls}__content {
     max-height: 424px;

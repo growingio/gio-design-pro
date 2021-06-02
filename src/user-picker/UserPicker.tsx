@@ -94,7 +94,7 @@ function UserPicker({
       return [preparedGroup, otherGroup];
     }
     return [...preparedSegments, ...filter(segments, filterSegment)].map(mapResource);
-  }, [preparedSegments, segments, recentSegments, scope, query]);
+  }, [preparedSegments, segments, recentSegments, scope, query, disabledValues]);
 
   const items = React.useRef([
     { key: 'my', children: '我的' },

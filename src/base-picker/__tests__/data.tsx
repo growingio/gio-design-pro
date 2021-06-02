@@ -34,7 +34,7 @@ export const renderGroups = () => (
     ))}
   </>
 );
-
+export const renderContent = () => <List>{renderItems()}</List>;
 export const footer = (
   <Button type="text" icon={<PlusCircleFilled />} size="small">
     New Content

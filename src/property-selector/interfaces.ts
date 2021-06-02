@@ -27,6 +27,7 @@ type FetchData<T extends {}> = (node: PropertyValue) => T | Promise<T>;
  */
 export interface PropertyValue extends Iterable {
   id: string;
+  name?:string;
   label?: string;
   value?: string;
   valueType?: string;
