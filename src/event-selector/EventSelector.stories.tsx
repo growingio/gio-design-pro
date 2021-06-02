@@ -2,19 +2,23 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { isArray } from 'lodash';
-import Docs from './EventSelector.mdx';
+// import Docs from './EventSelector.mdx';
 import { EventSelector, EventSelectorProps } from './index';
 import { events } from './__tests__/data';
 import { EventData } from '../event-picker/interfaces';
+import { EventPicker } from '../event-picker';
 
 export default {
   title: 'Business Components/EventSelector',
   component: EventSelector,
   parameters: {
-    docs: {
-      page: Docs,
-    },
+    subcomponents: { EventPicker },
+
+    // docs: {
+    //   page: Docs,
+    // },
   },
+  excludeStories: ['users', 'dataSource'],
 } as Meta;
 
 const Template: Story<EventSelectorProps> = (args) => {
