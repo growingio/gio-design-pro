@@ -10,7 +10,9 @@ function formatPath(path: string = '', isMinp: boolean): string {
   let res = '';
 
   if (isMinp) {
-    res = path.startsWith('/') ? path.substr(1) : path;
+    // 小程序不处理 开头的/；@warn :新的逻辑 要求 小程序嵌入页面 需要携带 开头/；
+    // res = path.startsWith('/') ? path.substr(1) : path;
+    res = path;
   } else {
     res = path.startsWith('/') ? path : `/${path}`;
   }
