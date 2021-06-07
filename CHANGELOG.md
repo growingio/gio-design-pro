@@ -1,4 +1,20 @@
-## [21.5.4](https://github.com/growingio/gio-design-pro/compare/v21.5.3...v21.5.4) (2021-05-22)
+# [21.6.0](https://github.com/growingio/gio-design-pro/compare/v21.5.4...v21.6.0) (2021-06-07)
+
+
+### Bug Fixes
+
+* **filter-picker:** filter-picker添加disabled字段 ([#271](https://github.com/growingio/gio-design-pro/issues/271)) ([ca903cd](https://github.com/growingio/gio-design-pro/commit/ca903cd7c53a86adc9729fde2f43162786cb14bc))
+* **tree-card:** fix expand bug ([#274](https://github.com/growingio/gio-design-pro/issues/274)) ([9e52296](https://github.com/growingio/gio-design-pro/commit/9e52296277bbf65370ac356524563faaf9d3b1e3))
+
+
+### Features
+
+* **title-info-card:** 支持clamp 可传入 ([#273](https://github.com/growingio/gio-design-pro/issues/273)) ([43f95dc](https://github.com/growingio/gio-design-pro/commit/43f95dc144a18dbf58ee39d85e9e87ccc3598a54))
+* **user-selector:** UserSelector补充部分属性 ([#281](https://github.com/growingio/gio-design-pro/issues/281)) ([9b19f43](https://github.com/growingio/gio-design-pro/commit/9b19f438b921a282fcaecf390e863a211a94e38d))
+
+
+
+## [21.5.4](https://github.com/growingio/gio-design-pro/compare/v21.5.3...v21.5.4) (2021-05-24)
 
 
 ### Bug Fixes
@@ -12,7 +28,11 @@
 
 
 
-## [21.5.3](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.3) (2021-05-17)
+## [21.5.3](https://github.com/growingio/gio-design-pro/compare/v21.5.2...v21.5.3) (2021-05-17)
+
+
+
+## [21.5.2](https://github.com/growingio/gio-design-pro/compare/v21.5.1...v21.5.2) (2021-05-15)
 
 
 ### Bug Fixes
@@ -32,8 +52,8 @@
 
 ### Bug Fixes
 
-* **filter-picker:** fix filterlist reset ([#242](https://github.com/growingio/gio-design-pro/issues/242)) ([d24b7a3](https://github.com/growingio/gio-design-pro/commit/d24b7a33db29313edb692c4f542660cbef7e71db))
 * **filter-picker:** 参数visible&onChange ([#243](https://github.com/growingio/gio-design-pro/issues/243)) ([81cfb85](https://github.com/growingio/gio-design-pro/commit/81cfb8546cc1428f9ea1b6de959239d51c0221cf))
+* **filter-picker:** fix filterlist reset ([#242](https://github.com/growingio/gio-design-pro/issues/242)) ([d24b7a3](https://github.com/growingio/gio-design-pro/commit/d24b7a33db29313edb692c4f542660cbef7e71db))
 
 
 ### Features
@@ -56,15 +76,15 @@
 
 ### Bug Fixes
 
-* **filter-picker:** filter-picker添加operationsOption字段 ([#223](https://github.com/growingio/gio-design-pro/issues/223)) ([4c9456e](https://github.com/growingio/gio-design-pro/commit/4c9456e1bb4211c1d33fe07393d3edbe6ec44dfa))
 * **filter-picker:** 修复日期类型,返回值为数字,以及添加op配置字段 ([#214](https://github.com/growingio/gio-design-pro/issues/214)) ([dcb5a7d](https://github.com/growingio/gio-design-pro/commit/dcb5a7d5fc707f2b2f6a35ed4da320db207aaab3))
-* **operation-menu:** 修复因为gio-design版本升级导致的样式问题 ([#212](https://github.com/growingio/gio-design-pro/issues/212)) ([da7c3e7](https://github.com/growingio/gio-design-pro/commit/da7c3e72fa44086c776dbd399005f733811b9bdc))
+* **filter-picker:** filter-picker添加operationsOption字段 ([#223](https://github.com/growingio/gio-design-pro/issues/223)) ([4c9456e](https://github.com/growingio/gio-design-pro/commit/4c9456e1bb4211c1d33fe07393d3edbe6ec44dfa))
 * **operation-menu:** 默认button类型错误 ([86a07a5](https://github.com/growingio/gio-design-pro/commit/86a07a5551ba55ec23efd88721f8700fc1768ae3))
+* **operation-menu:** 修复因为gio-design版本升级导致的样式问题 ([#212](https://github.com/growingio/gio-design-pro/issues/212)) ([da7c3e7](https://github.com/growingio/gio-design-pro/commit/da7c3e72fa44086c776dbd399005f733811b9bdc))
 * **selector:** support size context for selector component ([#228](https://github.com/growingio/gio-design-pro/issues/228)) ([46d28c6](https://github.com/growingio/gio-design-pro/commit/46d28c61493493e18bf5f3f2ed65062a6ea5f148))
 * **table-card:** fix divider style error ([4891af7](https://github.com/growingio/gio-design-pro/commit/4891af7346f540c0e3c629a594eeae7fdd1addc3))
 * **tooltip-button:** 修复tooltip disabled状态颜色的问题 ([#226](https://github.com/growingio/gio-design-pro/issues/226)) ([1aba7c3](https://github.com/growingio/gio-design-pro/commit/1aba7c3f3a6f25b482cf07c5ced3c7e913f2ebe5))
-* **tree-card:** fix style error ([#225](https://github.com/growingio/gio-design-pro/issues/225)) ([36b28fc](https://github.com/growingio/gio-design-pro/commit/36b28fc998baa163a3e03219576be53bdb6b4b65))
 * **tree-card:** 修复tree card组件isLeaf判断的问题 ([#215](https://github.com/growingio/gio-design-pro/issues/215)) ([c93a7eb](https://github.com/growingio/gio-design-pro/commit/c93a7eb33e8826d98c7e48e7688f77cfc88fc430))
+* **tree-card:** fix style error ([#225](https://github.com/growingio/gio-design-pro/issues/225)) ([36b28fc](https://github.com/growingio/gio-design-pro/commit/36b28fc998baa163a3e03219576be53bdb6b4b65))
 
 
 ### Features
