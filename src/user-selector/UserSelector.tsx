@@ -13,6 +13,10 @@ function UserSelector({
   onCreateSegment,
   onShowSegmentChart,
   onSelect,
+  size,
+  style,
+  showSegmentCard,
+  className,
 }: UserSelectorProps) {
   const [input, setInput] = React.useState<string>('');
   const [dropdownVisible, setDropdownVisible] = React.useState<boolean>(false);
@@ -31,6 +35,7 @@ function UserSelector({
       onCreateSegment={onCreateSegment}
       onShowSegmentChart={onShowSegmentChart}
       onSelect={handleSelect}
+      showSegmentCard={showSegmentCard}
     />
   );
 
@@ -43,6 +48,9 @@ function UserSelector({
       dropdownRender={dropdown}
       onDropdownVisibleChange={setDropdownVisible}
       valueRender={() => input}
+      className={className}
+      size={size}
+      style={style}
     />
   );
 }
