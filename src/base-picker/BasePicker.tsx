@@ -12,6 +12,7 @@ function BasePicker({
   tabNav,
   items,
   renderItems,
+  renderContent,
   footer,
   detailVisible = false,
   renderDetail,
@@ -26,7 +27,9 @@ function BasePicker({
 
   const cls = classnames(prefixCls, className);
   let content;
-  if (renderItems) {
+  if (renderContent) {
+    content = renderContent();
+  } else if (renderItems) {
     content = <List>{renderItems()}</List>;
   } else {
     content = <List items={items} />;

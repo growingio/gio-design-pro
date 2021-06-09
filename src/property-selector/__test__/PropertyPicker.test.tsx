@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
@@ -8,21 +9,23 @@ import IconRender from '../PropertyValueIconRender';
 import { Dimension } from '../types';
 import { ListItemProps } from '../../list/interfaces';
 import { PropertyItem } from '../interfaces';
-import localStorageMock from './localStorageMock';
-
-jest.useFakeTimers();
 
 const defaultPicker = <PropertyPicker dataSource={insightDimensions as Dimension[]} />;
 const defaultProps = {
   dataSource: insightDimensions as Dimension[],
 };
 const propertyItems = insightDimensions.map((v: any) => dimensionToPropertyItem(v as Dimension));
+
+function sleep(time: number) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+}
 describe('PropertyPicker', () => {
   beforeEach(() => {
-    Object.defineProperty(window, 'localStorage', {
-      value: localStorageMock(),
-      writable: true,
-    });
+    localStorage.clear();
   });
   it('renders PropertyPicker by  insightDimensions', () => {
     render(defaultPicker);
@@ -69,6 +72,8 @@ describe('PropertyPicker', () => {
     expect(screen.queryAllByText(tobeClickedNode.name)).toHaveLength(1);
   });
   it('can hover a property and show the detail of property', async () => {
+    jest.useFakeTimers();
+
     render(<PropertyPicker {...defaultProps} detailVisibleDelay={0} />);
     fireEvent.click(screen.getByText('全部'));
     const item = screen.queryAllByText(insightDimensions[0].name)[0];
@@ -84,17 +89,32 @@ describe('PropertyPicker', () => {
     // screen.debug(screen.queryByText(insightDimensions[0].id));
     fireEvent.mouseLeave(item);
     expect(screen.queryByText(insightDimensions[0].id)).toBeNull();
+    jest.clearAllTimers();
   });
 
-  it('can search a property by name', () => {
+  it('can search a property by name', async () => {
+    jest.useRealTimers();
+    // jest.useFakeTimers();
+    const dataSource = insightDimensions.slice(0, 5);
     const query = insightDimensions[0].name;
     // render(defaultPicker);
-    render(<PropertyPicker {...defaultProps} shouldUpdateRecentlyUsed={false} />);
-    fireEvent.change(screen.getByPlaceholderText('搜索属性名称'), {
-      target: { value: query },
+    render(<PropertyPicker {...defaultProps} dataSource={dataSource} />);
+    act(() => {
+      fireEvent.change(screen.getByPlaceholderText('搜索属性名称'), {
+        target: { value: query },
+      });
     });
-    expect(screen.queryAllByText(query).length).toBeGreaterThan(0);
+
+    // jest.runAllTimers();
+    // jest.advanceTimersByTime(1000);
+    await sleep(400);
+    // await jest.advanceTimersByTime(400);
+    // jest.runAllTimers();
+    // jest.advanceTimersByTime(1000);
+    expect(screen.queryAllByRole('option')).toHaveLength(1);
+    // expect(screen.queryAllByText(query).length).toBeGreaterThan(0);
   });
+
   it(' can add to recentlyUsed', async () => {
     const handleSelect = jest.fn();
     const props = {
