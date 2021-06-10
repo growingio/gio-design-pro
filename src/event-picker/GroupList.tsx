@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { keys } from 'lodash';
 import React, { useCallback, useMemo } from 'react';
-import { Button } from '@gio-design/components';
+import { Link } from '@gio-design/components';
 import classNames from 'classnames';
 import { EventData, EventPickerProps } from './interfaces';
 import List from '../list';
@@ -120,9 +120,12 @@ const GroupList = (props: Props) => {
             key="exp-group-selected"
             title={
               <div>
-                <Button className="clear-button" size="small" type="link" onClick={() => handleClearAll()}>
+                <Link // eslint-disable-line
+                  className="clear-button"
+                  onClick={() => handleClearAll()}
+                >
                   清空全部已选
-                </Button>
+                </Link>
               </div>
             }
           >
