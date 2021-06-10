@@ -15,7 +15,7 @@
   border-radius: 4px;
   padding: 0 32px 0 16px;
 
-  &:hover {
+  &:not(&--disabled):hover {
     border: 1px solid @color-border-input-hover;
   }
 
@@ -25,14 +25,17 @@
       color: @palette-black-6;
     }
   }
-
-  &--borderless:hover {
+  &--disabled {
+    background: @palette-gray-1;
+    border: 1px solid @palette-gray-4;
+  }
+  &--borderless:not(&--disabled):hover {
     border: 1px solid transparent;
     background: @palette-gray-3;
   }
 
-  &:active,
-  &--actived {
+  &:not(&--disabled):active,
+  &--actived:not(&--disabled) {
     border: 1px solid @color-border-input-active;
   }
 
@@ -54,7 +57,9 @@
   &__placeholder {
     color: @palette-black-2;
   }
-
+  &--disabled > &__item {
+    color: @palette-black-3;
+  }
   &--small {
     height: 30px;
   }

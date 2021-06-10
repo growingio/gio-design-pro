@@ -133,7 +133,7 @@ export const CustomItem: React.FC<Props> = (props) => {
                 checked={checked}
               />
             )}
-            {typeIcon ?? ''}
+            {typeIcon}
             <span className="item-content-body" title={name}>
               {renderKeyword(name as string, keyword || '', true)}
             </span>

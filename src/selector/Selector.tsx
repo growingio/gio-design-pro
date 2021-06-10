@@ -39,6 +39,7 @@ function Selector({
     `${prefixCls}--${size}`,
     {
       [`${prefixCls}--borderless`]: borderless,
+      [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--actived`]: visible,
     },
     className
