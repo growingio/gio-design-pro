@@ -1,4 +1,4 @@
-## [21.6.1-preview.4](https://github.com/growingio/gio-design-pro/compare/v21.6.0...v21.6.1-preview.4) (2021-06-10)
+## [21.6.1-preview.5](https://github.com/growingio/gio-design-pro/compare/v21.6.0...v21.6.1-preview.5) (2021-06-10)
 
 
 ### Bug Fixes
