@@ -24,12 +24,14 @@ const TypeIcon: React.FC<Props> = (props) => {
   const { type, ...others } = props;
   switch (type) {
     case 'custom':
+    case 'prepared':
+    case 'virtual':
       // return <Icon id={Preset} title='埋点事件' {...others} />;
       return <EventsPresetOutlined {...others} />;
     case 'simple':
       // return <Icon id={Codeless} title="无埋点事件" {...others} />;
       return <CodelessTrackingOutlined {...others} />;
-    case 'prepared':
+    case 'preparedComplex':
       // return <Icon id={MetricsPreset} title="预置计算指标" {...others} />;
       return <MetricsPresetOutlined {...others} />;
     case 'complex':
