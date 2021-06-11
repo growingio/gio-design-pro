@@ -49,7 +49,7 @@
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.1.4",
     "@gio-design/cli": "^21.2.0",
-    "@gio-design/components": "^21.4.4",
+    "@gio-design/components": "^21.6.1",
     "@gio-design/icons": "^21.5.0",
     "@gio-design/tokens": "^21.4.2",
     "@storybook/addon-actions": "^6.2.9",
