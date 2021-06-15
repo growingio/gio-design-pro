@@ -1,4 +1,4 @@
-## [21.6.1-preview.6](https://github.com/growingio/gio-design-pro/compare/v21.6.0...v21.6.1-preview.6) (2021-06-11)
+## [21.6.1-preview.7](https://github.com/growingio/gio-design-pro/compare/v21.6.0...v21.6.1-preview.7) (2021-06-15)
 
 
 ### Bug Fixes
@@ -51,6 +51,7 @@
 * **event-picker:** add component event-picker ([1417fdc](https://github.com/growingio/gio-design-pro/commit/1417fdc7113ae067d980c15dc5dd4fe6a47d400a))
 * **event-picker:** add component event-picker & event-selector ([#224](https://github.com/growingio/gio-design-pro/issues/224)) ([7c36968](https://github.com/growingio/gio-design-pro/commit/7c36968dd841a40ac816625f6eb74aa347bb4207))
 * **event-picker:** add props getGroupName,getGroupKey,getTypeIcon ([054aa64](https://github.com/growingio/gio-design-pro/commit/054aa644bd3b5cd470791daa5b04f787c02afe92))
+* **event-picker:** support virtual event ([1e0c71c](https://github.com/growingio/gio-design-pro/commit/1e0c71cf87cd2b04d2c3439f85596d4344a1bc3d))
 * **event-selector:** add component event-selector ([0d1dce1](https://github.com/growingio/gio-design-pro/commit/0d1dce12b337bd9a46959964dae926356404099a))
 * **event-selector:** add component event-selector ([efb0fb6](https://github.com/growingio/gio-design-pro/commit/efb0fb67d31f4cf7fbc5590dab5c5d36ce7e199d))
 * **event-selector:** add prop showValueIcon ([3ab2cfc](https://github.com/growingio/gio-design-pro/commit/3ab2cfcb40574fe56adb1e807a724dc544522e52))
