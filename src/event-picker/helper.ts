@@ -15,6 +15,7 @@ export const getEventType = (data: EventData): string => {
     case 'simple': // 无埋点事件
     case 'custom': // 埋点事件
     case 'prepared':
+    case 'virtual':
     case 'merged':
       return 'event';
 
@@ -29,6 +30,7 @@ export const getEventType = (data: EventData): string => {
 export const getGroupName = (groupKey: string): string => {
   const nameMap: { [key: string]: string } = {
     custom: '埋点事件',
+    virtual: '虚拟事件',
     simple: '无埋点事件',
     preparedComplex: '预置计算指标',
     prepared: '预置事件',
