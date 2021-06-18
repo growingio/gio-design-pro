@@ -19,6 +19,12 @@ describe('PastTimePicker', () => {
     expect(handleOnSelect).toHaveBeenCalledWith('day:15,1');
   });
 
+  it('renders shortcut mode and with shortcutFilter', () => {
+    render(<PastTimePicker shortcutFilter={(s) => s.value !== 'day:1,0'} timeRange="day:8,1" />);
+    fireEvent.click(screen.getByText('常用时间'));
+    expect(() => screen.getByText('今日')).toThrow('Unable to find an element');
+  });
+
   it('renders since mode', () => {
     render(<Since {...Since.args} timeRange="since:1618329600000" onSelect={handleOnSelect} />);
     fireEvent.click(screen.getByText(/确 定/));

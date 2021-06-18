@@ -7,7 +7,7 @@ import { TimeCalculationMode, PastTimePickerProps } from './interfaces';
 import { panelModeOptions, shortcutOptions } from './constant';
 import { parseTimeCalcMode } from './utils';
 
-function PastTimePicker({ timeRange, onSelect, onCancel, experimental = false }: PastTimePickerProps) {
+function PastTimePicker({ timeRange, onSelect, onCancel, experimental = false, shortcutFilter }: PastTimePickerProps) {
   const [mode, setMode] = React.useState<string | undefined>(parseTimeCalcMode(timeRange) ?? 'shortcut');
   const [currentRange, setCurrentRange] = useState(timeRange, undefined);
   const prefixCls = usePrefixCls('past-time-picker');
@@ -24,7 +24,12 @@ function PastTimePicker({ timeRange, onSelect, onCancel, experimental = false }:
       onCancel,
     };
     if (currentMode === 'shortcut') {
-      return <ShortcutPanel {...valueProps} options={shortcutOptions} />;
+      const shortcuts =
+        typeof shortcutFilter === 'function'
+          ? shortcutOptions.map((partial) => partial.filter(shortcutFilter))
+          : shortcutOptions;
+
+      return <ShortcutPanel {...valueProps} options={shortcuts} />;
     }
     return <RangePanel {...valueProps} timeCalculationMode={mode as TimeCalculationMode} />;
   };
