@@ -139,6 +139,10 @@ export interface EventPickerProps
    * 获取事件分组的Icon；
    */
   getTypeIcon?: (type: string) => React.ReactElement;
+  /**
+   * 分组排序方法，默认预制事件排在前面
+   */
+  groupSort?: (a: string, b: string) => number;
 }
 
 export interface EventPickerPreviewProps extends BaseProps, ListItemPreviewEventProps {
