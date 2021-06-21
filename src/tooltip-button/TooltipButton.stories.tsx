@@ -13,14 +13,15 @@ export default {
 
 const Wrapper = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <section style={{ backgroundColor: '#cecece80', boxSizing: 'border-box', padding: 30 }}>{children}</section>;
+  return <section style={{ backgroundColor: '#fff', boxSizing: 'border-box', padding: 50 }}>{children}</section>;
 };
 
 const Template: Story<TooltipButtonProps> = (args) => (
   <Wrapper>
     <TooltipButton {...args} type="primary" style={{ marginRight: 10 }} />
     <TooltipButton {...args} type="secondary" style={{ marginRight: 10 }} />
-    <TooltipButton {...args} type="text" />
+    <TooltipButton {...args} type="text" style={{ marginRight: 10 }} />
+    <TooltipButton {...args} type="link" />
   </Wrapper>
 );
 

@@ -10,9 +10,10 @@
   &:hover,
   &:focus,
   &:active {
-    color: @palette-black-3 !important;
-    background: @palette-gray-1 !important;
-    border-color: @palette-gray-1 !important;
+    color: @palette-black-3;
+    background: @palette-gray-1;
+    border-color: @palette-gray-1;
+
     > a:only-child {
       color: currentColor;
       &::after {
@@ -29,6 +30,9 @@
     text-shadow: none !important;
     box-shadow: none !important;
   }
+  &::after {
+    transition: none;
+  }
   svg {
     color: @palette-black-3 !important;
     path {
@@ -37,12 +41,59 @@
   }
 }
 
-.@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-text.@{tooltip-button-prefix-cls}-disabled,
+.@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-primary.@{tooltip-button-prefix-cls}-disabled {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: @palette-gray-5;
+    background: @palette-gray-1;
+    border: @palette-gray-1;
+  }
+}
+
+.@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-secondary.@{tooltip-button-prefix-cls}-disabled {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: @palette-gray-5;
+    border-color: @palette-gray-4 !important;
+    background: transparent !important;
+  }
+}
+
+.@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-text.@{tooltip-button-prefix-cls}-disabled {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: @palette-gray-5;
+    border-color: transparent !important;
+    background: transparent !important;
+  }
+}
+
+.@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-link {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: @palette-blue-4;
+    background: transparent !important;
+    border-color: transparent !important;
+  }
+  &::after {
+    transition: none;
+  }
+}
+
 .@{tooltip-button-prefix-cls}.@{tooltip-button-prefix-cls}-link.@{tooltip-button-prefix-cls}-disabled {
   &,
   &:hover,
   &:focus,
   &:active {
+    color: @palette-black-3;
     background: transparent !important;
     border-color: transparent !important;
   }

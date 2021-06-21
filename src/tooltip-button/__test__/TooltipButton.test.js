@@ -13,7 +13,7 @@ describe('Testing tooltip button', () => {
   it('disabled', () => {
     const onClickMock = jest.fn();
     render(
-      <TooltipButton disabled tooltipProps={{ title: '无权限' }} onClick={onClickMock}>
+      <TooltipButton disabled type="link" tooltipProps={{ title: '无权限' }} onClick={onClickMock}>
         添加
       </TooltipButton>
     );

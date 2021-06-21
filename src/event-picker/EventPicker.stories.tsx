@@ -9,7 +9,7 @@ import {
   MetricsPresetOutlined,
   PlusCircleFilled,
 } from '@gio-design/icons';
-import { Button } from '@gio-design/components';
+import { Button, Link } from '@gio-design/components';
 import Docs from './EventPicker.mdx';
 import { EventPicker, EventPickerProps } from './index';
 import { events } from './__tests__/data';
@@ -180,9 +180,10 @@ const Template: Story<EventPickerProps> = (args) => {
   const panelFooter = (tab: string, _: EventData[]) => {
     if (tab === 'measurement') {
       return (
-        <Button type="link" icon={<PlusCircleFilled />} size="small" onClick={() => {}}>
+        // eslint-disable-next-line
+        <Link icon={<PlusCircleFilled />} onClick={() => { }}>
           新建计算指标
-        </Button>
+        </Link>
       );
     }
     return null;
