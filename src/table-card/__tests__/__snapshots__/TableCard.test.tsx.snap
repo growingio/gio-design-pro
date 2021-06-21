@@ -286,49 +286,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -359,49 +361,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -432,49 +436,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -505,49 +511,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -578,49 +586,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -651,49 +661,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -724,49 +736,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -797,49 +811,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -870,49 +886,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -943,49 +961,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1329,49 +1349,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1402,49 +1424,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1475,49 +1499,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1548,49 +1574,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1621,49 +1649,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1694,49 +1724,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1767,49 +1799,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1840,49 +1874,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1913,49 +1949,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
@@ -1986,49 +2024,51 @@ exports[`<TableCard/> test should be stable 1`] = `
                               class="gio-table-cell"
                               style="text-align: center;"
                             >
-                              <label
-                                class="gio-checkbox-wrapper"
-                              >
-                                <span
-                                  aria-label="check-outlined"
-                                  class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
-                                  role="img"
+                              <div>
+                                <label
+                                  class="gio-checkbox-wrapper"
                                 >
-                                  <svg
-                                    fill="currentColor"
-                                    height="16px"
-                                    viewBox="0 0 14 14"
-                                    width="16px"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <defs>
-                                      <style />
-                                    </defs>
-                                    <g>
-                                      <g>
-                                        <path
-                                          d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
-                                          fill="currentColor"
-                                          fill-rule="evenodd"
-                                          id="check-outlined_svg__check"
-                                        />
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </span>
-                                <span
-                                  class="gio-checkbox gio-checkbox-cool"
-                                >
-                                  <input
-                                    class="gio-checkbox-input"
-                                    type="checkbox"
-                                    value=""
-                                  />
                                   <span
-                                    class="gio-checkbox-inner"
-                                  />
-                                </span>
-                              </label>
+                                    aria-label="check-outlined"
+                                    class="gio-icon gio-checkbox-icon gio-checkbox-icon-cool"
+                                    role="img"
+                                  >
+                                    <svg
+                                      fill="currentColor"
+                                      height="16px"
+                                      viewBox="0 0 14 14"
+                                      width="16px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <defs>
+                                        <style />
+                                      </defs>
+                                      <g>
+                                        <g>
+                                          <path
+                                            d="M5.76 10.9l-.35.35a.5.5 0 01-.71 0l-.37-.37L.81 7.36a.51.51 0 010-.7.49.49 0 01.36-.15.47.47 0 01.35.15L4.89 10a.19.19 0 00.28 0l7.28-7.27a.48.48 0 01.36-.15.51.51 0 01.37.15.53.53 0 01.15.36.56.56 0 01-.15.37z"
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            id="check-outlined_svg__check"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <span
+                                    class="gio-checkbox gio-checkbox-cool"
+                                  >
+                                    <input
+                                      class="gio-checkbox-input"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="gio-checkbox-inner"
+                                    />
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td
                               class="gio-table-cell"
