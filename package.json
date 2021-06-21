@@ -92,7 +92,7 @@
     "gio-rewire": "https://github.com/growingio/gio-rewire.git",
     "graphql": "^15.4.0",
     "husky": "^4.3.0",
-    "jest": "^26.6.3",
+    "jest": "^27.0.4",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
     "jsdom": "16.6.0",
