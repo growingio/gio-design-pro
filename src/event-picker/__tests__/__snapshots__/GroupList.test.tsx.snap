@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GroupList/> test render list by custom sort function 1`] = `
+NodeList [
+  <div
+    class="gio-list__item-group__title"
+  >
+    埋点事件(1)
+  </div>,
+  <div
+    class="gio-list__item-group__title"
+  >
+    无埋点事件(1)
+  </div>,
+  <div
+    class="gio-list__item-group__title"
+  >
+    预置事件(1)
+  </div>,
+]
+`;

@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { keys } from 'lodash';
+import { isFunction, keys } from 'lodash';
 import React, { useCallback, useMemo } from 'react';
 import { Link } from '@gio-design/components';
 import classNames from 'classnames';
@@ -39,6 +39,10 @@ export interface Props extends Omit<GroupItemsProps, 'dataSource' | 'keyPrefix'>
   showPreview?: boolean;
   getGroupName: EventPickerProps['getGroupName'];
   getTypeIcon: EventPickerProps['getTypeIcon'];
+  /**
+   * 分组的排序方法
+   */
+  groupSort?: EventPickerProps['groupSort'];
 }
 const GroupList = (props: Props) => {
   const {
@@ -49,6 +53,7 @@ const GroupList = (props: Props) => {
     getGroupName,
     onDeselectAll,
     getTypeIcon,
+    groupSort,
     ...rest
   } = props;
 
@@ -138,19 +143,31 @@ const GroupList = (props: Props) => {
   );
 
   // const groupData = useMemo(() => groupBy(dataList, getTabKey ?? 'type'), [dataList]);
-  const groupDataNodes = keys(dataList).map((key, index) => {
-    const items = dataList[key] || [];
-    // getListItems(groupData[key]);
-    const groupName = getGroupNameInner(items, key);
-    return (
-      <React.Fragment key={`groupDataNodes-${index}`}>
-        {index > 0 && <List.Divider key={`divider-group-${key}-${index}`} />}
-        <Group key={`exp-group-${key}`} groupKey={`${key}`} title={groupName} {...rest}>
-          {listItems(items, value)}
-        </Group>
-      </React.Fragment>
-    );
-  });
+  const orderWeight: { [key: string]: number } = {
+    prepared: 90,
+    preparedComplex: 80,
+    custom: 70,
+    simple: 60,
+    complex: 50,
+  };
+  const orderSort = isFunction(groupSort)
+    ? groupSort
+    : (a: any, b: any) => (orderWeight[b] || 0) - (orderWeight[a] || 0);
+  const groupDataNodes = keys(dataList)
+    .sort(orderSort)
+    .map((key, index) => {
+      const items = dataList[key] || [];
+      // getListItems(groupData[key]);
+      const groupName = getGroupNameInner(items, key);
+      return (
+        <React.Fragment key={`groupDataNodes-${index}`}>
+          {index > 0 && <List.Divider key={`divider-group-${key}-${index}`} />}
+          <Group key={`exp-group-${key}`} groupKey={`${key}`} title={groupName} {...rest}>
+            {listItems(items, value)}
+          </Group>
+        </React.Fragment>
+      );
+    });
 
   return (
     <List>

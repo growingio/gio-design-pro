@@ -14,8 +14,8 @@ describe('<TypeIcon/> test', () => {
     expect(container3.querySelector('.gio-icon')).toBeTruthy();
     const { container: container4 } = render(<TypeIcon type="complex" size="small" />);
     expect(container4.querySelector('.gio-icon')).toBeTruthy();
-    // const { container: container5 } = render(<TypeIcon type="merged" size="small" />);
-    // expect(container5.querySelector('.gio-icon')).toBeTruthy();
+    const { container: container5 } = render(<TypeIcon type="preparedComplex" size="small" />);
+    expect(container5.querySelector('.gio-icon')).toBeTruthy();
     const { container: container6 } = render(<TypeIcon type="other" size="small" />);
     expect(container6.querySelector('.gio-icon')).toBeTruthy();
   });

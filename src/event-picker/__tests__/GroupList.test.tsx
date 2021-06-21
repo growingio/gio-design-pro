@@ -104,4 +104,63 @@ describe('<GroupList/> test', () => {
 
     expect(onDeselectAll).toHaveBeenCalledTimes(1);
   });
+  it('render list by custom sort function', async () => {
+    const groupdata = {
+      prepared: [
+        {
+          id: 'pv',
+          name: '页面浏览量',
+          description: '用户实际浏览过的网页数量，简称 PV',
+          instruction: '',
+          platforms: ['all'],
+          selectKey: '-pv',
+          groups: ['prepared'],
+          type: 'prepared',
+        },
+      ],
+      simple: [
+        {
+          id: 'WlGkX4Da',
+          name: '1217定义元素圈选',
+          type: 'simple',
+          action: 'clck',
+          elementId: 'WlGkX4Da',
+          valueType: '',
+          platforms: ['web'],
+          favorites: false,
+          __typename: 'Measurable',
+          selectKey: 'simple-WlGkX4Da',
+          groups: ['unknown'],
+        },
+      ],
+      custom: [
+        {
+          id: 'oNGzwEDg',
+          name: '按钮点击测试',
+          type: 'custom',
+          elementId: '',
+          valueType: 'counter',
+          platforms: ['all'],
+          favorites: false,
+          __typename: 'Measurable',
+          selectKey: 'custom-oNGzwEDg',
+        },
+      ],
+    };
+    const sortMap: { [key: string]: number } = {
+      custom: 1,
+      simple: 2,
+      prepared: 3,
+    };
+    const { container } = render(
+      <GroupList
+        groupSort={(a: any, b: any) => (sortMap[a] || 0) - (sortMap[b] || 0)}
+        getGroupName={getGroupName}
+        getTypeIcon={getTypeIcon}
+        dataSource={{ dataList: groupdata, select: [] }}
+      />
+    );
+
+    expect(container.querySelectorAll('.gio-list__item-group__title')).toMatchSnapshot();
+  });
 });
