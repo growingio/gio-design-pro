@@ -1,0 +1,36 @@
+@import '../../stylesheets/index.less';
+
+@panel-prefix-cls: ~'@{component-prefix}-panel';
+@table-prefix-cls: ~'@{component-prefix}-table';
+
+.@{panel-prefix-cls} {
+  .@{table-prefix-cls}-thead > tr:first-child > .@{table-prefix-cls}-cell {
+    &:first-child {
+      border-top-left-radius: 0;
+    }
+    &:last-child {
+      border-top-right-radius: 0;
+    }
+  }
+  .@{table-prefix-cls}-tbody > tr:last-child > .@{table-prefix-cls}-cell {
+    &:first-child {
+      border-bottom-left-radius: 0;
+    }
+    &:last-child {
+      border-bottom-right-radius: 0;
+    }
+  }
+  .@{table-prefix-cls}-thead > tr > .@{table-prefix-cls}-cell,
+  .@{table-prefix-cls}-tbody > tr > .@{table-prefix-cls}-cell {
+    &:first-child {
+      border-left: unset;
+    }
+    &:last-child {
+      border-right: unset;
+    }
+  }
+
+  .@{table-prefix-cls}-pagination {
+    padding-right: 20px;
+  }
+}

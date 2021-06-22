@@ -1,0 +1,18 @@
+@import '../../stylesheets/index.less';
+
+@panel-prefix-cls: ~'@{component-prefix}-panel__tab-panel';
+
+.@{panel-prefix-cls} {
+  &__container {
+    grid-row-gap: 12px;
+    padding: 20px 14px;
+    margin-left: -6px;
+    margin-right: -6px;
+    overflow: hidden;
+  }
+
+  &__tool-bar {
+    margin-right: 6px;
+    margin-left: 6px;
+  }
+}

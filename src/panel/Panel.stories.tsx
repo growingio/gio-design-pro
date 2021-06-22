@@ -1,0 +1,87 @@
+import React, { useState } from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { SearchBar, Button, Space } from '@gio-design/components';
+import { CloseCircleOutlined, PlusCircleFilled } from '@gio-design/icons';
+import Panel from './Panel';
+import TabPanel from './TabPanel';
+import { PanelProps } from './interfaces';
+import ToolBar from './ToolBar';
+import Table from './Table';
+import BatchActions from './BatchActions';
+
+import { dataSource1, dataSource2, columns1, columns2 } from './__test__/tableData';
+
+export default {
+  component: Panel,
+  title: 'Business Components/Panel',
+  argTypes: {
+    title: {
+      defaultValue: '',
+      description: '标题',
+    },
+    description: {
+      defaultValue: '',
+      description: '描述',
+    },
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/wOB978UAlbYxjKXKL4CONN/%E5%8D%A1%E7%89%87%E5%BC%8F---%E8%AE%BE%E8%AE%A1%E6%94%B9%E7%89%88?node-id=303%3A141',
+    },
+  },
+} as Meta;
+
+const Template: Story<PanelProps> = (args) => {
+  const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
+
+  return (
+    <Panel {...args}>
+      <TabPanel key="1" name="成员">
+        <ToolBar>
+          <SearchBar style={{ width: 360 }} />
+        </ToolBar>
+        <ToolBar float="right">
+          {selectedRowKeys.length > 0 ? (
+            <BatchActions count={selectedRowKeys.length} onClose={() => setSelectedRowKeys([])}>
+              <Button type="secondary">批量移动</Button>
+              <Button type="secondary">批量删除 </Button>
+            </BatchActions>
+          ) : (
+            <>
+              <Button icon={<PlusCircleFilled />}>新建账号</Button>
+              <Button type="secondary">次要按钮</Button>
+              <Button type="secondary">次要按钮</Button>
+            </>
+          )}
+        </ToolBar>
+        <Table
+          dataSource={dataSource1}
+          columns={columns1}
+          rowSelection={{ selectedRowKeys, onChange: setSelectedRowKeys }}
+        />
+      </TabPanel>
+      <TabPanel key="2" name="权限">
+        <ToolBar>
+          <SearchBar style={{ width: 360 }} />
+        </ToolBar>
+        <ToolBar float="right">
+          <Button icon={<CloseCircleOutlined />}>新建账号</Button>
+          <Button type="secondary">次要按钮</Button>
+          <Button type="secondary">次要按钮</Button>
+        </ToolBar>
+        <Table dataSource={dataSource2} columns={columns2} />
+      </TabPanel>
+      <TabPanel key="3" name="资格">
+        123
+      </TabPanel>
+    </Panel>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  title: '全部成员(233)',
+  description: '这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题',
+};
