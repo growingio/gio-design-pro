@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { SearchBar, Button, Space } from '@gio-design/components';
+import { SearchBar, Button } from '@gio-design/components';
 import { CloseCircleOutlined, PlusCircleFilled } from '@gio-design/icons';
 import Panel from './Panel';
 import TabPanel from './TabPanel';
@@ -42,20 +42,22 @@ const Template: Story<PanelProps> = (args) => {
         <ToolBar>
           <SearchBar style={{ width: 360 }} />
         </ToolBar>
-        <ToolBar float="right">
-          {selectedRowKeys.length > 0 ? (
+        {selectedRowKeys.length > 0 ? (
+          <ToolBar float="right">
             <BatchActions count={selectedRowKeys.length} onClose={() => setSelectedRowKeys([])}>
               <Button type="secondary">批量移动</Button>
               <Button type="secondary">批量删除 </Button>
             </BatchActions>
-          ) : (
+          </ToolBar>
+        ) : (
+          <ToolBar float="right">
             <>
               <Button icon={<PlusCircleFilled />}>新建账号</Button>
               <Button type="secondary">次要按钮</Button>
               <Button type="secondary">次要按钮</Button>
             </>
-          )}
-        </ToolBar>
+          </ToolBar>
+        )}
         <Table
           dataSource={dataSource1}
           columns={columns1}

@@ -1,10 +1,10 @@
 @import '../../stylesheets/index.less';
 
 @panel-prefix-cls: ~'@{component-prefix}-panel';
-@table-prefix-cls: ~'@{component-prefix}-table';
+@panel-table-prefix-cls: ~'@{component-prefix}-table';
 
 .@{panel-prefix-cls} {
-  .@{table-prefix-cls}-thead > tr:first-child > .@{table-prefix-cls}-cell {
+  .@{panel-table-prefix-cls}-thead > tr:first-child > .@{panel-table-prefix-cls}-cell {
     &:first-child {
       border-top-left-radius: 0;
     }
@@ -12,7 +12,7 @@
       border-top-right-radius: 0;
     }
   }
-  .@{table-prefix-cls}-tbody > tr:last-child > .@{table-prefix-cls}-cell {
+  .@{panel-table-prefix-cls}-tbody > tr:last-child > .@{panel-table-prefix-cls}-cell {
     &:first-child {
       border-bottom-left-radius: 0;
     }
@@ -20,8 +20,8 @@
       border-bottom-right-radius: 0;
     }
   }
-  .@{table-prefix-cls}-thead > tr > .@{table-prefix-cls}-cell,
-  .@{table-prefix-cls}-tbody > tr > .@{table-prefix-cls}-cell {
+  .@{panel-table-prefix-cls}-thead > tr > .@{panel-table-prefix-cls}-cell,
+  .@{panel-table-prefix-cls}-tbody > tr > .@{panel-table-prefix-cls}-cell {
     &:first-child {
       border-left: unset;
     }
@@ -30,7 +30,7 @@
     }
   }
 
-  .@{table-prefix-cls}-pagination {
+  .@{panel-table-prefix-cls}-pagination {
     padding-right: 20px;
   }
 }
