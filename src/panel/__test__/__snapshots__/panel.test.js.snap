@@ -12,6 +12,16 @@ Object {
           class="gio-panel__header"
         >
           <div
+            class="gio-panel__header__container gio-panel__header__container--hidden"
+          >
+            <div
+              class="gio-panel__header__title gio-panel__header__title--hidden"
+            />
+            <div
+              class="gio-panel__header__description gio-panel__header__description--hidden"
+            />
+          </div>
+          <div
             class="gio-tabnav gio-tabnav-line gio-tabnav-md"
           >
             <div
@@ -1235,6 +1245,16 @@ Object {
       <div
         class="gio-panel__header"
       >
+        <div
+          class="gio-panel__header__container gio-panel__header__container--hidden"
+        >
+          <div
+            class="gio-panel__header__title gio-panel__header__title--hidden"
+          />
+          <div
+            class="gio-panel__header__description gio-panel__header__description--hidden"
+          />
+        </div>
         <div
           class="gio-tabnav gio-tabnav-line gio-tabnav-md"
         >
@@ -2515,7 +2535,18 @@ Object {
       >
         <div
           class="gio-panel__header gio-panel__header--hidden"
-        />
+        >
+          <div
+            class="gio-panel__header__container gio-panel__header__container--hidden"
+          >
+            <div
+              class="gio-panel__header__title gio-panel__header__title--hidden"
+            />
+            <div
+              class="gio-panel__header__description gio-panel__header__description--hidden"
+            />
+          </div>
+        </div>
         <div
           class="gio-panel__content"
         >
@@ -3589,7 +3620,18 @@ Object {
     >
       <div
         class="gio-panel__header gio-panel__header--hidden"
-      />
+      >
+        <div
+          class="gio-panel__header__container gio-panel__header__container--hidden"
+        >
+          <div
+            class="gio-panel__header__title gio-panel__header__title--hidden"
+          />
+          <div
+            class="gio-panel__header__description gio-panel__header__description--hidden"
+          />
+        </div>
+      </div>
       <div
         class="gio-panel__content"
       >

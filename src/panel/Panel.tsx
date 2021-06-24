@@ -52,20 +52,22 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
   return (
     <div ref={ref} className={classnames(prefix(), className)} style={style}>
       <div className={classnames(prefix('__header'), { [prefix('__header--hidden')]: !showHeader })}>
-        {title || description ? (
-          <div className={prefix('__header__container')}>
-            <div className={classnames(prefix('__header__title'), { [prefix('__header__title--hidden')]: !title })}>
-              {title}
-            </div>
-            <div
-              className={classnames(prefix('__header__description'), {
-                [prefix('__header__description--hidden')]: !description,
-              })}
-            >
-              {description}
-            </div>
+        <div
+          className={classnames(prefix('__header__container'), {
+            [prefix('__header__container--hidden')]: !title && !description,
+          })}
+        >
+          <div className={classnames(prefix('__header__title'), { [prefix('__header__title--hidden')]: !title })}>
+            {title}
           </div>
-        ) : null}
+          <div
+            className={classnames(prefix('__header__description'), {
+              [prefix('__header__description--hidden')]: !description,
+            })}
+          >
+            {description}
+          </div>
+        </div>
 
         {!isSinglePanel ? (
           <TabNav
