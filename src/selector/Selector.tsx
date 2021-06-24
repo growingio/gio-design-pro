@@ -24,6 +24,7 @@ function Selector({
   size: customizeSize,
   mode = 'input',
   icon,
+  destroyTooltipOnHide,
 }: SelectorProps) {
   const prefixCls = usePrefixCls('selector');
   const size = customizeSize || useSize();
@@ -88,6 +89,7 @@ function Selector({
       onVisibleChange={handleVisibleChange}
       overlayClassName={overlayCls}
       getContainer={getContainer}
+      destroyTooltipOnHide={destroyTooltipOnHide}
     >
       {renderChild()}
     </Dropdown>

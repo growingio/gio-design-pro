@@ -1,5 +1,6 @@
 import React from 'react';
 import { SizeType } from '@gio-design/utils/es/design-context';
+import { DropdownProps } from '@gio-design/components';
 import { BaseProps } from '../utils/interfaces';
 
 export interface SelectorProps extends BaseProps {
@@ -51,4 +52,8 @@ export interface SelectorProps extends BaseProps {
    * 选择器的图标
    */
   icon?: React.ReactNode;
+  /**
+   * 关闭销毁
+   */
+  destroyTooltipOnHide?: DropdownProps['destroyTooltipOnHide'];
 }
