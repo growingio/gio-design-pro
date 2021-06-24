@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { BatchActions } from '../batchActions.stories';
 
 describe('Render BatchActions with default args', () => {
