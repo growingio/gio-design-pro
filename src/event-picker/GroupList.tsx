@@ -73,6 +73,7 @@ const GroupList = (props: Props) => {
       const isSelect = selectValue.includes(data.selectKey || '');
       const listNode = (
         <CustomItem
+          {...rest}
           getTypeIcon={getTypeIcon}
           dataSource={data}
           keyword={keyword}
