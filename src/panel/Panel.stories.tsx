@@ -7,9 +7,11 @@ import TabPanel from './TabPanel';
 import { PanelProps } from './interfaces';
 import ToolBar from './ToolBar';
 import Table from './Table';
-import { BatchActions } from './batchActions.stories';
+import { Default as BatchActions } from './batchActions.stories';
 
 import { dataSource1, dataSource2, columns1, columns2 } from './__test__/tableData';
+
+import './style';
 
 export default {
   component: Panel,
@@ -50,6 +52,7 @@ export default {
       url:
         'https://www.figma.com/file/wOB978UAlbYxjKXKL4CONN/%E5%8D%A1%E7%89%87%E5%BC%8F---%E8%AE%BE%E8%AE%A1%E6%94%B9%E7%89%88?node-id=303%3A141',
     },
+    subcomponents: { TabPanel, ToolBar, Table },
   },
 } as Meta;
 

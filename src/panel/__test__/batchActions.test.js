@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BatchActions } from '../batchActions.stories';
+import { Default as BatchActions } from '../batchActions.stories';
 
 describe('Render BatchActions with default args', () => {
   it('should render actions', () => {
