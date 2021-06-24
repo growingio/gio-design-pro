@@ -6,8 +6,6 @@ import { TabNav } from '@gio-design/components';
 import { PanelProps, TabPaneProps } from './interfaces';
 import TabPanel from './TabPanel';
 
-import './style/index.less';
-
 const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (props, ref) => {
   const {
     title,

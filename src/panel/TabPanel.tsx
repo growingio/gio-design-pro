@@ -5,8 +5,6 @@ import { TabNavProps } from '@gio-design/components';
 import { TabPaneProps } from './interfaces';
 import ToolBar from './ToolBar';
 
-import './style/tabPanel.less';
-
 const TabPanel: React.FC<TabPaneProps> = (props) => {
   const { className, style, children } = props;
 

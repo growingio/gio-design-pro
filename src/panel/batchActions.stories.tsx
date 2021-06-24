@@ -6,7 +6,7 @@ import { BatchActionProps } from './interfaces';
 
 export default {
   component: InternalBatchActions,
-  title: 'Business Components/Panel',
+  title: 'Business Components/Panel/BatchActions',
   argTypes: {
     count: {
       defaultValue: 0,
