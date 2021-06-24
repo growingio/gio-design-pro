@@ -63,9 +63,9 @@ export default {
   // title: 'EventPicker',
   component: Preview,
   parameters: {
-    docs: {
-      page: Docs,
-    },
+    // docs: {
+    //   page: Docs,
+    // },
   },
 } as Meta;
 
