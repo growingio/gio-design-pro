@@ -4,8 +4,8 @@ import { BaseProps } from '../utils/interfaces';
 export interface PanelProps extends PropsWithChildren<BaseProps> {
   title?: React.ReactNode;
   description?: React.ReactNode;
-  type?: 'line' | 'block';
-  size?: 'small' | 'middle' | 'large';
+  tabType?: 'line' | 'block';
+  tabSize?: 'small' | 'middle' | 'large';
   onTabClick?: (key: string) => void;
   onChange?: (key: string) => void;
   activeKey?: string;

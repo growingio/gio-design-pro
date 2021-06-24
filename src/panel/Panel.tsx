@@ -14,8 +14,8 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
     description,
     children,
     footer,
-    type = 'line',
-    size = 'middle',
+    tabType = 'line',
+    tabSize = 'middle',
     activeKey,
     defaultActiveKey,
     onTabClick,
@@ -54,36 +54,42 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
   return (
     <div ref={ref} className={classnames(prefix(), className)} style={style}>
       <div className={classnames(prefix('__header'), { [prefix('__header--hidden')]: !showHeader })}>
-        {title ? <div className={classnames(prefix('__header__title'))}>{title}</div> : null}
-        {description ? <div className={prefix('__header__description')}>{description}</div> : null}
-        {!isSinglePanel ? (
-          // TabNav组件 className没有生效, 只能暂时把这个逻辑加在外层
-          <div
-            className={classnames(prefix('__header__nav'), {
-              [prefix('__header__nav--standlone')]: !title && !description,
-            })}
-          >
-            <TabNav
-              size={size}
-              type={type}
-              activeKey={key}
-              onTabClick={onTabClick}
-              defaultActiveKey={key}
-              onChange={onTabChange}
-            >
-              {tabs.map((tab) => {
-                const {
-                  key: _key,
-                  props: { name, disabled },
-                } = tab;
-                return (
-                  <TabNav.Item disabled={disabled} key={String(_key).slice(2)}>
-                    {name}
-                  </TabNav.Item>
-                );
+        {title || description ? (
+          <div className={prefix('__header__container')}>
+            <div className={classnames(prefix('__header__title'), { [prefix('__header__title--hidden')]: !title })}>
+              {title}
+            </div>
+            <div
+              className={classnames(prefix('__header__description'), {
+                [prefix('__header__description--hidden')]: !description,
               })}
-            </TabNav>
+            >
+              {description}
+            </div>
           </div>
+        ) : null}
+
+        {!isSinglePanel ? (
+          <TabNav
+            size={tabSize}
+            type={tabType}
+            activeKey={key}
+            onTabClick={onTabClick}
+            defaultActiveKey={key}
+            onChange={onTabChange}
+          >
+            {tabs.map((tab) => {
+              const {
+                key: _key,
+                props: { name, disabled },
+              } = tab;
+              return (
+                <TabNav.Item disabled={disabled} key={String(_key).slice(2)}>
+                  {name}
+                </TabNav.Item>
+              );
+            })}
+          </TabNav>
         ) : null}
       </div>
       <div className={prefix('__content')}>{tabs[currentTabIndex]}</div>

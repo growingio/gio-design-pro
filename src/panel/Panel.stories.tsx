@@ -7,7 +7,7 @@ import TabPanel from './TabPanel';
 import { PanelProps } from './interfaces';
 import ToolBar from './ToolBar';
 import Table from './Table';
-import BatchActions from './BatchActions';
+import { BatchActions } from './batchActions.stories';
 
 import { dataSource1, dataSource2, columns1, columns2 } from './__test__/tableData';
 
@@ -23,6 +23,26 @@ export default {
       defaultValue: '',
       description: '描述',
     },
+    tabType: {
+      defaultValue: 'line',
+      description: 'TabNav的类型',
+    },
+    tabSize: {
+      defaultValue: 'middle',
+      description: 'TabNav的大小',
+    },
+    activeKey: {
+      defaultValue: undefined,
+      description: '当前激活的tabPanel的key',
+    },
+    defaultActiveKey: {
+      defaultValue: undefined,
+      description: '默认激活的tabPanel的key, 如设置activeKey 此值无效',
+    },
+    footer: {
+      defaultValue: undefined,
+      description: '注脚部分',
+    },
   },
   parameters: {
     design: {
@@ -33,35 +53,31 @@ export default {
   },
 } as Meta;
 
-const Template: Story<PanelProps> = (args) => {
+const MultiplePanel: Story<PanelProps> = (args) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
 
   return (
-    <Panel {...args}>
+    <Panel {...args} style={{ height: 'calc(100vh - 40px)' }}>
       <TabPanel key="1" name="成员">
         <ToolBar>
           <SearchBar style={{ width: 360 }} />
         </ToolBar>
         {selectedRowKeys.length > 0 ? (
           <ToolBar float="right">
-            <BatchActions count={selectedRowKeys.length} onClose={() => setSelectedRowKeys([])}>
-              <Button type="secondary">批量移动</Button>
-              <Button type="secondary">批量删除 </Button>
-            </BatchActions>
+            <BatchActions count={selectedRowKeys.length} onClose={() => setSelectedRowKeys([])} />
           </ToolBar>
         ) : (
           <ToolBar float="right">
-            <>
-              <Button icon={<PlusCircleFilled />}>新建账号</Button>
-              <Button type="secondary">次要按钮</Button>
-              <Button type="secondary">次要按钮</Button>
-            </>
+            <Button icon={<PlusCircleFilled />}>新建账号</Button>
+            <Button type="secondary">次要按钮</Button>
+            <Button type="secondary">次要按钮</Button>
           </ToolBar>
         )}
         <Table
           dataSource={dataSource1}
           columns={columns1}
           rowSelection={{ selectedRowKeys, onChange: setSelectedRowKeys }}
+          scroll={{ x: 1200, y: 'calc(100vh - 359px)' as any }}
         />
       </TabPanel>
       <TabPanel key="2" name="权限">
@@ -73,7 +89,7 @@ const Template: Story<PanelProps> = (args) => {
           <Button type="secondary">次要按钮</Button>
           <Button type="secondary">次要按钮</Button>
         </ToolBar>
-        <Table dataSource={dataSource2} columns={columns2} />
+        <Table dataSource={dataSource2} columns={columns2} scroll={{ x: 1200, y: 'calc(100vh - 359px)' as any }} />
       </TabPanel>
       <TabPanel key="3" name="资格">
         123
@@ -82,8 +98,30 @@ const Template: Story<PanelProps> = (args) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
+const SinglePanel: Story<PanelProps> = (args) => {
+  const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
+
+  return (
+    <Panel {...args} style={{ height: 'calc(100vh - 40px)' }}>
+      <TabPanel key="1" name="成员">
+        <Table
+          dataSource={dataSource1}
+          columns={columns1}
+          rowSelection={{ selectedRowKeys, onChange: setSelectedRowKeys }}
+          scroll={{ x: 1200, y: 'calc(100vh - 359px)' as any }}
+        />
+      </TabPanel>
+    </Panel>
+  );
+};
+
+export const TableCard = MultiplePanel.bind({});
+TableCard.args = {
   title: '全部成员(233)',
   description: '这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题',
+};
+
+export const TableCardSingle = SinglePanel.bind({});
+TableCardSingle.args = {
+  ...TableCard.args,
 };

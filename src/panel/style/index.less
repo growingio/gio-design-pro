@@ -10,31 +10,29 @@
   &__header {
     padding: 20px 20px 0 20px;
     border-bottom: 1px solid @palette-gray-3;
+
+    &__container {
+      margin-bottom: 16px;
+    }
+
     &__title {
       font-style: normal;
       font-weight: 500;
       font-size: 18px;
-      line-height: 28px;
-      margin-bottom: 4px;
+      line-height: 32px;
+      &--hidden {
+        display: none;
+      }
     }
 
     &__description {
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
-      line-height: 22px;
+      line-height: 28px;
       color: @palette-black-4;
-      margin-bottom: 4px;
-    }
-
-    &__nav {
-      .gio-tabnav {
-        margin-top: 16px;
-      }
-      &--standlone {
-        .gio-tabnav {
-          margin-top: 0;
-        }
+      &--hidden {
+        display: none;
       }
     }
   }
