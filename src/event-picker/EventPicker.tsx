@@ -3,7 +3,7 @@ import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
 import { isArray, isEqualWith, isUndefined, orderBy, uniqBy, xorWith } from 'lodash';
-import { injectPinyinWith, useControlledState } from '@gio-design/utils';
+import { injectPinyinWith } from '@gio-design/utils';
 import { EventData, EventPickerProps, Tab } from './interfaces';
 import BasePicker from '../base-picker';
 import TypeIcon from './TypeIcon';
