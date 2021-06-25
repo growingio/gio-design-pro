@@ -1,0 +1,60 @@
+@import '../../stylesheets/index.less';
+
+@panel-prefix-cls: ~'@{component-prefix}-panel';
+
+.@{panel-prefix-cls} {
+  background: #fff;
+  border: 1px solid @palette-gray-3;
+  box-shadow: 0 3px 8px rgba(36, 46, 89, 0.05);
+  border-radius: 4px;
+  &__header {
+    padding: 20px 20px 0 20px;
+    border-bottom: 1px solid @palette-gray-3;
+
+    &__container {
+      margin-bottom: 16px;
+      &--hidden {
+        display: none;
+      }
+    }
+
+    &__title {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 32px;
+      &--hidden {
+        display: none;
+      }
+    }
+
+    &__description {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 28px;
+      color: @palette-black-4;
+      &--hidden {
+        display: none;
+      }
+    }
+  }
+
+  &__header--hidden {
+    display: none;
+  }
+
+  &__tabs--hidden {
+    display: none;
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__footer {
+    padding: 20px 0;
+    margin: 0 20px;
+    border-top: 1px solid #ebedf5;
+  }
+}

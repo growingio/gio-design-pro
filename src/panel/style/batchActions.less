@@ -1,0 +1,36 @@
+@import '../../stylesheets/index.less';
+
+@panel-batch-actions-prefix-cls: ~'@{component-prefix}-panel__batch-actions';
+
+.@{panel-batch-actions-prefix-cls} {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: @palette-black-6;
+  &__text {
+    margin-right: 12px;
+  }
+
+  &__close {
+    margin-bottom: -1px;
+  }
+
+  &__divider {
+    display: inline-block;
+    height: 16px;
+    width: 1px;
+    border: 0;
+    margin: 0 4px 0 0;
+    background-color: #dfe4ee;
+    margin-left: 12px;
+    margin-right: 4px;
+  }
+
+  &__children {
+    & > * {
+      margin-left: 12px;
+    }
+  }
+}
