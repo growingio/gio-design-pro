@@ -58,7 +58,11 @@ function TableCard<RecordType>({
             )}
           </Space>
         </div>
-        <Table {...table} />
+        <Table
+          className={classNames({ 'gio-table-content-empty': table.dataSource?.length === 0 })}
+          pagination={{ hideOnSinglePage: true }}
+          {...table}
+        />
       </>
     );
   };
