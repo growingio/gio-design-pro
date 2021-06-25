@@ -9,7 +9,7 @@ const BatchActions: React.FC<BatchActionProps> = ({ onClose, count = 0, children
   return (
     <div className={prefixCls}>
       <span className={`${prefixCls}__text`}>{`已经选择 ${count} 项`}</span>
-      <Button type="text" icon={<CloseOutlined />} onClick={onClose} />
+      <Button size="small" type="text" icon={<CloseOutlined />} onClick={onClose} />
       <span className={`${prefixCls}__divider`} />
       <span className={`${prefixCls}__children`}>{children}</span>
     </div>
