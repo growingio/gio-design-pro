@@ -60,7 +60,7 @@ const MultiplePanel: Story<PanelProps> = (args) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
 
   return (
-    <Panel {...args} style={{ height: 'calc(100vh - 40px)' }}>
+    <Panel {...args}>
       <TabPanel key="1" name="成员">
         <ToolBar>
           <SearchBar style={{ width: 360 }} />
@@ -92,7 +92,8 @@ const MultiplePanel: Story<PanelProps> = (args) => {
           <Button type="secondary">次要按钮</Button>
           <Button type="secondary">次要按钮</Button>
         </ToolBar>
-        <Table dataSource={dataSource2} columns={columns2} scroll={{ x: 1200, y: 'calc(100vh - 359px)' as any }} />
+        {/** Table高度自适应通过 scoll.y 实现 */}
+        <Table dataSource={dataSource2} columns={columns2} scroll={{ y: 'calc(100vh - 359px)' as any }} />
       </TabPanel>
       <TabPanel key="3" name="资格">
         123
