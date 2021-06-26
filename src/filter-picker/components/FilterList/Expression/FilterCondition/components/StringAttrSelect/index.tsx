@@ -70,7 +70,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   useEffect(() => {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       if (res.length) {
-        setListOptions(res.map((ele: string) => ({ label: ele, value: ele })));
+        setListOptions(res.filter((e: string) => e).map((ele: string) => ({ label: ele, value: ele })));
       } else {
         setListOptions([]);
       }

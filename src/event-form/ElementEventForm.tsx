@@ -294,7 +294,7 @@ const Render: React.ForwardRefRenderFunction<FormInstance, ElementEventFormProps
     const manual = (
       <Button
         key="manualMode"
-        type="link"
+        type="text"
         onClick={() => {
           setManualMode(!manualModeStatue);
         }}

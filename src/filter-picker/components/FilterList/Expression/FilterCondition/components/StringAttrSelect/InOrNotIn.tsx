@@ -78,7 +78,9 @@ function StringAttrSelect(props: StringAttrSelectProps) {
                 .filter((ele: string) => checkList.includes(ele))
                 .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
               // 已选中的，过滤掉自由输入的选项
-              ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({ label: ele, value: ele })),
+              ...Array.from(new Set([...filterCheckedList, ...res]))
+                .filter((e: string) => e)
+                .map((ele: string) => ({ label: ele, value: ele })),
             ]);
           } else {
             setCheckOptions([
@@ -111,7 +113,9 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     curryDimensionValueRequest?.(exprKey, '')?.then((res: string[]) => {
       res.length &&
         setCheckOptions(
-          Array.from(new Set([...defaultList, ...res])).map((ele: string) => ({
+          Array.from(new Set([...defaultList, ...res]))
+            .filter((e: string) => e)
+            .map((ele: string) => ({
             label: ele,
             value: ele,
           }))
