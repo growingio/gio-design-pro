@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { CloseOutlined } from '@gio-design/icons';
 import { isNil } from 'lodash';
-import { Tabs, Table, SearchBar, Button, Space, usePrefixCls } from '@gio-design/components';
+import { Tabs, Table, SearchBar, Space, usePrefixCls, Link } from '@gio-design/components';
 import { TableCardProps, TableCardTab } from './interfaces';
 import TooltipButton from '../tooltip-button';
 
@@ -44,12 +44,10 @@ function TableCard<RecordType>({
               <>
                 <div className={`${prefixCls}-select`}>
                   <span className={`${prefixCls}-select-number`}>已选择 {selectedRowKeys?.length} 项</span>
-                  <Button
+                  <Link  // eslint-disable-line
                     className={`${prefixCls}-select-close`}
                     icon={<CloseOutlined />}
                     onClick={() => onChange?.([], [])}
-                    size="small"
-                    type="link"
                   />
                   {!isNil(batchButtons) && batchButtons?.length > 0 && <hr className={`${prefixCls}-select-divider`} />}
                 </div>

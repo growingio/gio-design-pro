@@ -1,5 +1,10 @@
 import { Moment } from 'moment';
 
+export interface Option {
+  label: string;
+  value: string;
+}
+
 interface ExperimentProps {
   /**
    * 实验特性
@@ -24,6 +29,10 @@ export interface PastTimePickerProps {
    * 实验特性
    */
   experimental?: boolean;
+  /**
+   * 常用时间过滤
+   */
+  shortcutFilter?: (shortcut: Option) => boolean;
 }
 
 export interface RangeCalendarProps {
@@ -60,7 +69,7 @@ export enum TimeCalculationMode {
 }
 
 export interface SelectListProps {
-  options: { label: string; value: string }[];
+  options: Option[];
   value?: string;
   onSelect?: (value: string) => void;
 }
@@ -79,7 +88,7 @@ export interface ShortcutPanelProps extends PanelProps {
   /**
    * 快捷选项列表，
    */
-  options: { label: string; value: string }[][];
+  options: Option[][];
 }
 
 export type EndDateFixedMode = false | 'today' | 'yesterday';

@@ -13,6 +13,7 @@ const PastTimeSelector = ({
   onCancel,
   dropdownVisible,
   onDropdownVisibleChange,
+  shortcutFilter,
 }: PastTimeSelectorProps) => {
   const [controlledVisible, setControlledVisible] = useControlledState<boolean>(dropdownVisible, false);
   const [timeRange, setTimeRange] = useControlledState<string>(value, '');
@@ -32,7 +33,12 @@ const PastTimeSelector = ({
     onDropdownVisibleChange?.(visible);
   };
   const dropdownRender = () => (
-    <PastTimePicker timeRange={timeRange} onSelect={handleOnSelect} onCancel={handleOnCancel} />
+    <PastTimePicker
+      timeRange={timeRange}
+      onSelect={handleOnSelect}
+      onCancel={handleOnCancel}
+      shortcutFilter={shortcutFilter}
+    />
   );
 
   return (

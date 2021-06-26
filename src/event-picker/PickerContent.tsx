@@ -88,6 +88,7 @@ interface Props extends GroupListItemEvent {
   getGroupKey: EventPickerProps['getGroupKey'];
   getGroupName: EventPickerProps['getGroupName'];
   getTypeIcon: EventPickerProps['getTypeIcon'];
+  groupSort?: EventPickerProps['groupSort'];
 }
 const PickerContent = (props: Props) => {
   const {

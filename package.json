@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "21.6.1-preview.7",
+  "version": "21.6.2-preview.2",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -49,7 +49,7 @@
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.1.4",
     "@gio-design/cli": "^21.2.0",
-    "@gio-design/components": "^21.4.4",
+    "@gio-design/components": "^21.6.1",
     "@gio-design/icons": "^21.5.0",
     "@gio-design/tokens": "^21.4.2",
     "@storybook/addon-actions": "^6.2.9",

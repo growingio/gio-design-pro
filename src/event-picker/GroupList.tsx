@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
-import { keys } from 'lodash';
+import { isFunction, keys } from 'lodash';
 import React, { useCallback, useMemo } from 'react';
-import { Button } from '@gio-design/components';
+import { Link } from '@gio-design/components';
 import classNames from 'classnames';
 import { EventData, EventPickerProps } from './interfaces';
 import List from '../list';
@@ -39,6 +39,10 @@ export interface Props extends Omit<GroupItemsProps, 'dataSource' | 'keyPrefix'>
   showPreview?: boolean;
   getGroupName: EventPickerProps['getGroupName'];
   getTypeIcon: EventPickerProps['getTypeIcon'];
+  /**
+   * 分组的排序方法
+   */
+  groupSort?: EventPickerProps['groupSort'];
 }
 const GroupList = (props: Props) => {
   const {
@@ -49,6 +53,7 @@ const GroupList = (props: Props) => {
     getGroupName,
     onDeselectAll,
     getTypeIcon,
+    groupSort,
     ...rest
   } = props;
 
@@ -121,9 +126,12 @@ const GroupList = (props: Props) => {
             key="exp-group-selected"
             title={
               <div>
-                <Button className="clear-button" size="small" type="link" onClick={() => handleClearAll()}>
+                <Link // eslint-disable-line
+                  className="clear-button"
+                  onClick={() => handleClearAll()}
+                >
                   清空全部已选
-                </Button>
+                </Link>
               </div>
             }
           >
@@ -143,7 +151,9 @@ const GroupList = (props: Props) => {
     simple: 60,
     complex: 50,
   };
-  const orderSort = (a: any, b: any) => orderWeight[b] - orderWeight[a] || 0;
+  const orderSort = isFunction(groupSort)
+    ? groupSort
+    : (a: any, b: any) => (orderWeight[b] || 0) - (orderWeight[a] || 0);
   const groupDataNodes = keys(dataList)
     .sort(orderSort)
     .map((key, index) => {
