@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
@@ -77,7 +77,11 @@ const EventPicker = (props: EventPickerProps) => {
     return withSelectKey(arr);
   };
   const formatedValue = formatValue(initialValue);
+  const controlledValueEffect = useMemo(() => formatedValue.map((v) => v.selectKey).join(','), [formatedValue]);
   const [value, setValue] = useState<EventData[]>(formatedValue);
+  useEffect(() => {
+    setValue(formatedValue);
+  }, [controlledValueEffect]);
   /**
    * 搜索关键字的方法，支持拼音匹配
    * @param input 带匹配的项

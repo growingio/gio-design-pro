@@ -5,6 +5,7 @@ import {
   MetricsCustomOutlined,
   CodelessTrackingOutlined,
   EventsPresetOutlined,
+  EventsTrackingOutlined,
 } from '@gio-design/icons';
 import { BaseProps } from '../utils/interfaces';
 
@@ -24,21 +25,18 @@ const TypeIcon: React.FC<Props> = (props) => {
   const { type, ...others } = props;
   switch (type) {
     case 'custom':
-    case 'prepared':
     case 'virtual':
-      // return <Icon id={Preset} title='埋点事件' {...others} />;
+      return <EventsTrackingOutlined {...others} />;
+    case 'prepared':
       return <EventsPresetOutlined {...others} />;
     case 'simple':
-      // return <Icon id={Codeless} title="无埋点事件" {...others} />;
       return <CodelessTrackingOutlined {...others} />;
     case 'preparedComplex':
-      // return <Icon id={MetricsPreset} title="预置计算指标" {...others} />;
       return <MetricsPresetOutlined {...others} />;
     case 'complex':
-      // return <Icon id={MetricsCustom} title="自定义计算指标" {...others} />;
       return <MetricsCustomOutlined {...others} />;
     default:
-      return <EventsPresetOutlined {...others} />;
+      return <EventsTrackingOutlined {...others} />;
   }
 };
 

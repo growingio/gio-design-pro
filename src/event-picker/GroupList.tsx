@@ -128,6 +128,7 @@ const GroupList = (props: Props) => {
               <div>
                 <Link // eslint-disable-line
                   className="clear-button"
+                  component="span"
                   onClick={() => handleClearAll()}
                 >
                   清空全部已选
