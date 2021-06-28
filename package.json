@@ -50,7 +50,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@gio-design/cli": "^21.2.0",
     "@gio-design/components": "^21.6.1",
-    "@gio-design/icons": "^21.5.0",
+    "@gio-design/icons": "^21.6.1",
     "@gio-design/tokens": "^21.4.2",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-controls": "^6.2.9",
@@ -113,7 +113,7 @@
   },
   "peerDependencies": {
     "@gio-design/components": ">=21.4.2",
-    "@gio-design/icons": ">=21.3.0",
+    "@gio-design/icons": ">=21.6.1",
     "@gio-design/tokens": ">=21.4.1",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
