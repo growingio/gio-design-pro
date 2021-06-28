@@ -14,7 +14,7 @@ Object {
           已经选择 0 项
         </span>
         <button
-          class="gio-btn gio-btn-text gio-btn-icon-only"
+          class="gio-btn gio-btn-text gio-btn-small gio-btn-icon-only"
           type="button"
         >
           <span
@@ -81,7 +81,7 @@ Object {
         已经选择 0 项
       </span>
       <button
-        class="gio-btn gio-btn-text gio-btn-icon-only"
+        class="gio-btn gio-btn-text gio-btn-small gio-btn-icon-only"
         type="button"
       >
         <span
@@ -205,7 +205,7 @@ Object {
           已经选择 1 项
         </span>
         <button
-          class="gio-btn gio-btn-text gio-btn-icon-only"
+          class="gio-btn gio-btn-text gio-btn-small gio-btn-icon-only"
           type="button"
         >
           <span
@@ -272,7 +272,7 @@ Object {
         已经选择 1 项
       </span>
       <button
-        class="gio-btn gio-btn-text gio-btn-icon-only"
+        class="gio-btn gio-btn-text gio-btn-small gio-btn-icon-only"
         type="button"
       >
         <span
