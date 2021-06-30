@@ -176,7 +176,7 @@ Object {
     <div>
       <div
         class="operation-menu"
-        style="width: 160px;"
+        style="width: auto;"
       >
         <ul
           class="gio-menu  gio-menu-root gio-menu-inline"
@@ -232,7 +232,7 @@ Object {
   "container": <div>
     <div
       class="operation-menu"
-      style="width: 160px;"
+      style="width: auto;"
     >
       <ul
         class="gio-menu  gio-menu-root gio-menu-inline"

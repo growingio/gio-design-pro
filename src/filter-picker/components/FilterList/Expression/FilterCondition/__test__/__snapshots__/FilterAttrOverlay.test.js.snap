@@ -2015,110 +2015,27 @@ exports[`<FilterAttrOverlay /> string type render 1`] = `
         <div
           class="gio-loading gio-loading-large"
         >
-          <div
-            class="gio-loading-ring"
+          <span
+            class="gio-loading-strip"
           >
-            <div
-              class="gio-loading-ring-line gio-loading-ring-line-1"
-            >
-              <div
-                class="gio-loading-ring-line-cog"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-left"
-                />
-              </div>
-              <div
-                class="gio-loading-ring-line-ticker"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-center"
-                />
-              </div>
-              <div
-                class="gio-loading-ring-line-cog"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-right"
-                />
-              </div>
-            </div>
-            <div
-              class="gio-loading-ring-line gio-loading-ring-line-2"
-            >
-              <div
-                class="gio-loading-ring-line-cog"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-left"
-                />
-              </div>
-              <div
-                class="gio-loading-ring-line-ticker"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-center"
-                />
-              </div>
-              <div
-                class="gio-loading-ring-line-cog"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-right"
-                />
-              </div>
-            </div>
-            <div
-              class="gio-loading-ring-line gio-loading-ring-line-3"
-            >
-              <div
-                class="gio-loading-ring-line-cog"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-left"
-                />
-              </div>
-              <div
-                class="gio-loading-ring-line-ticker"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-center"
-                />
-              </div>
-              <div
-                class="gio-loading-ring-line-cog"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-right"
-                />
-              </div>
-            </div>
-            <div
-              class="gio-loading-ring-line gio-loading-ring-line-4"
-            >
-              <div
-                class="gio-loading-ring-line-cog"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-left"
-                />
-              </div>
-              <div
-                class="gio-loading-ring-line-ticker"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-center"
-                />
-              </div>
-              <div
-                class="gio-loading-ring-line-cog"
-              >
-                <div
-                  class="gio-loading-ring-line-cog-inner gio-loading-ring-line-cog-inner-right"
-                />
-              </div>
-            </div>
-          </div>
+            <span
+              class="gio-loading-strip-item"
+            />
+            <span
+              class="gio-loading-strip-item"
+            />
+            <span
+              class="gio-loading-strip-item"
+            />
+            <span
+              class="gio-loading-strip-item"
+            />
+          </span>
+          <span
+            class="gio-loading-title gio-loading-title-bottom"
+          >
+            加载中...
+          </span>
         </div>
       </div>
     </div>

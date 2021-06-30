@@ -10,7 +10,7 @@ import OperationMenuList from './OperationMenuList';
 const OperateMenu = (props: OperationMenuProps) => {
   const {
     options,
-    width = 160,
+    width = 'auto',
     trigger = ['click'],
     mini = true,
     size,
