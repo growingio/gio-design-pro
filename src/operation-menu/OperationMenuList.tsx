@@ -4,7 +4,7 @@ import { Tooltip } from '@gio-design/components';
 import { OperationMenuListOption, OperationMenuListProps } from './interfaces';
 
 const OperationMenuList = (props: OperationMenuListProps) => {
-  const { options, width = 160 } = props;
+  const { options, width = 'auto' } = props;
 
   return (
     <div className="operation-menu" style={{ width }}>

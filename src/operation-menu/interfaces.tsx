@@ -15,7 +15,7 @@ export interface OperationMenuListOption {
 
 export interface OperationMenuListProps {
   options: OperationMenuListOption[];
-  width?: number;
+  width?: number | 'auto';
   onClick?: (value: OperationMenuListOption) => void;
 }
 
@@ -28,7 +28,7 @@ export interface OperationMenuProps {
   icon?: any;
   buttonType?: 'primary' | 'secondary' | 'text';
   options: OperationMenuListOption[];
-  width?: number;
+  width?: number | 'auto';
   onClick?: (value: OperationMenuListOption) => void;
   onVisibleChange?: (visible: boolean) => void;
 }
