@@ -4,6 +4,7 @@ on:
     types: [opened, synchronize]
 jobs:
   install:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Install dependencies
     runs-on: ubuntu-latest
     steps:
