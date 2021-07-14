@@ -1,5 +1,422 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`List change item size 1`] = `
+<ul
+  class="gio-list"
+>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 1
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 2
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 3
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction gio-list__item-multifunction--disabled"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 4
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 5
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction gio-list__item-multifunction-selected"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 6
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction gio-list__item-multifunction-selected"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 7
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis gio-list__item-multifunction--title_large"
+        >
+          Item 888888888888888888888888888888888888888888888888
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction gio-list__item-multifunction-selected"
+  >
+    <div
+      class="gio-list__item-multifunction--content gio-list__item-multifunction--content_tag"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis gio-list__item-multifunction--title_large"
+        >
+          Item 999999999999999999999999999999999999999999999999
+        </div>
+      </div>
+    </div>
+    <span
+      aria-hidden="true"
+      class="gio-tag gio-tag-size-middle gio-tag-type-normal tag_website_demo_tag gio-list__item-multifunction--tag"
+    >
+      <span
+        class="gio-tag-label"
+      >
+        超管
+      </span>
+    </span>
+  </div>
+</ul>
+`;
+
+exports[`List change item size 2`] = `
+<ul
+  class="gio-list"
+>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 1
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 2
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 3
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction gio-list__item-multifunction--disabled"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 4
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 5
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction gio-list__item-multifunction-selected"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 6
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction gio-list__item-multifunction-selected"
+  >
+    <div
+      class="gio-list__item-multifunction--content"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner gio-list__item-multifunction--content_inner_descrition"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis"
+        >
+          Item 7
+        </div>
+        <div
+          class="gio-list__item-multifunction--descrition gio-list__item-multifunction--ellipsis"
+        >
+          这是一段描述
+        </div>
+      </div>
+    </div>
+  </div>
+  <li
+    aria-selected="true"
+    class="gio-list__item gio-list__item--ellipsis"
+    role="option"
+  >
+    Item 888888888888888888888888888888888888888888888888
+  </li>
+  <div
+    aria-hidden="true"
+    class="gio-list__item-multifunction gio-list__item-multifunction-selected"
+  >
+    <div
+      class="gio-list__item-multifunction--content gio-list__item-multifunction--content_tag"
+    >
+      <div
+        class="gio-list__item-multifunction--content_inner"
+      >
+        <div
+          class="gio-list__item-multifunction--title gio-list__item-multifunction--ellipsis gio-list__item-multifunction--title_small"
+        >
+          Item 999999999999999999999999999999999999999999999999
+        </div>
+      </div>
+    </div>
+    <span
+      aria-hidden="true"
+      class="gio-tag gio-tag-size-middle gio-tag-type-normal tag_website_demo_tag gio-list__item-multifunction--tag"
+    >
+      <span
+        class="gio-tag-label"
+      >
+        超管
+      </span>
+    </span>
+  </div>
+</ul>
+`;
+
 exports[`List multiply allSelect change 1`] = `
 Array [
   <div

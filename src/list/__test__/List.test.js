@@ -68,6 +68,22 @@ describe('List', () => {
     wrapperSingle.find('.gio-list__item-multifunction').at(0).simulate('click');
   });
 
+  it('change item size', () => {
+    let wrapperSingle = mount(
+      <List
+        items={multiplePropertys}
+        values={['item-7', 'item-6', 'item-9', 'item-4']}
+        allSelected={false}
+        size="large"
+      />
+    );
+    expect(wrapperSingle.render()).toMatchSnapshot();
+    wrapperSingle = mount(
+      <List items={multiplePropertys} values={['item-7', 'item-6', 'item-9', 'item-4']} allSelected={false} />
+    );
+    expect(wrapperSingle.render()).toMatchSnapshot();
+  });
+
   it('multiply item change', () => {
     const wrapperMultiple = mount(
       <List
