@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import Docs from './List.mdx';
 import List from '.';
 import { ListProps } from './interfaces';
-import { properties } from './__test__/data';
+import { properties, multiplePropertys } from './__test__/data';
 import './style';
 
 export default {
@@ -71,3 +71,27 @@ export const Ellipsis = () => (
     </List>
   </Wrapper>
 );
+
+export const Multiple = Template.bind({});
+Multiple.args = {
+  items: multiplePropertys,
+  multiple: true,
+  allSelected: true,
+  size: 'large',
+  values: ['item-7', 'item-6', 'item-9'],
+};
+
+export const Normal = Template.bind({});
+Normal.args = {
+  items: multiplePropertys,
+  // multiple: true,
+  allSelected: false,
+  size: 'small',
+  values: ['item-7'],
+};
+
+// export const Multiple = () => (
+//   <Wrapper>
+//     <List></List>
+//   </Wrapper>
+// )

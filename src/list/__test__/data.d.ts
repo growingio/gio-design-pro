@@ -204,6 +204,19 @@ export const properties = [
   },
 ];
 
+export const multiplePropertys = [
+  { key: 'item-1', children: 'Item 1', descrition: '这是一段描述' },
+  { key: 'item-2', children: 'Item 2', descrition: '这是一段描述', disabled: true },
+  { key: 'item-3', children: 'Item 3', descrition: '这是一段描述' },
+  { key: 'item-4', children: 'Item 4', descrition: '这是一段描述' },
+  { key: 'item-5', children: 'Item 5', descrition: '这是一段描述' },
+  { key: 'item-6', children: 'Item 6', descrition: '这是一段描述' },
+  { key: 'item-7', children: 'Item 7', descrition: '这是一段描述' },
+  { key: 'item-8', children: 'Item 8', multiple: true },
+  { key: 'item-9', children: 'Item 9', tagInfo: '超管' },
+  // { key: 'item-4', children: 'Item 4', tagInfo: '超管' },
+];
+
 export const defaultGroupTile = 'Group 1';
 export const expandItemText = '展开全部';
 export const defaultItems = [

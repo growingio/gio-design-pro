@@ -11,6 +11,8 @@ interface BaseProps {
   style?: React.CSSProperties;
 }
 
+type sizeType = 'small' | 'large';
+
 export interface ListProps extends BaseProps {
   children?: React.ReactNode;
   /**
@@ -21,6 +23,28 @@ export interface ListProps extends BaseProps {
    * 是否可展开，当列表项超过 10 个，收起后续列表项
    */
   expandable?: boolean;
+  /**
+   * 选中的item的key
+   */
+  values?: string[];
+  /**
+   * 是否为复选，默认为false（单选）
+   */
+  multiple?: boolean;
+  /**
+   * 全选预留接口, 当为true时，全选
+   * false时，全部为未选中状态
+   * 不传递值时，按照用户选中状态呈现
+   */
+  allSelected?: boolean;
+  /**
+   * 选中之后的回调事件，单选，复选通过同一个方法回调
+   */
+  onChange?: (v: string[]) => void;
+  /**
+   * item尺寸
+   */
+  size?: sizeType;
 }
 
 export interface ListItemProps extends BaseProps {
@@ -37,9 +61,25 @@ export interface ListItemProps extends BaseProps {
    * 列表项的唯一 key
    */
   key?: string;
+  /**
+   * 列表项的唯一 id,区别于原来的key字段
+   */
+  id?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   onMouseEnter?: (e: React.MouseEvent<HTMLElement>) => void;
   onMouseLeave?: (e: React.MouseEvent<HTMLElement>) => void;
+  /**
+   * 描述字段
+   */
+  descrition?: string;
+  /**
+   * 头像
+   */
+  prefix?: React.ReactNode;
+  /**
+   * 标签字段
+   */
+  tagInfo?: string;
 }
 
 export interface ListItemGroupProps extends BaseProps {
