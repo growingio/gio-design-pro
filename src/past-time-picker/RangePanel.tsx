@@ -49,9 +49,9 @@ function RangePanel({ value, timeCalculationMode, onSelect, onCancel, experiment
       const element = e.target as HTMLDivElement;
       if (element.className.endsWith('calendar-date')) {
         const date = fixedMode === 'today' ? moment() : moment().subtract(1, 'day');
-        (calendarContainerRef?.current?.querySelector(
-          `td[title='${date.format('M月 D, YYYY')}']`
-        ) as HTMLElement)?.click();
+        (
+          calendarContainerRef?.current?.querySelector(`td[title='${date.format('M月 D, YYYY')}']`) as HTMLElement
+        )?.click();
       }
     }
   };

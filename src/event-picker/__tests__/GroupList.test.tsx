@@ -8,7 +8,7 @@ import { EventData } from '../interfaces';
 import TypeIcon from '../TypeIcon';
 
 jest.useFakeTimers();
-const customEvents = withSelectKey((events.filter((e) => e.type === 'custom').slice(0, 15) as unknown) as EventData[]);
+const customEvents = withSelectKey(events.filter((e) => e.type === 'custom').slice(0, 15) as unknown as EventData[]);
 describe('<GroupList/> test', () => {
   const onShowEventChart = jest.fn((data) => (
     <div data-testid="gio-chart">

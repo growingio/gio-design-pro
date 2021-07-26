@@ -53,16 +53,15 @@ function FilterCondition(props: FilterConditionProps) {
     setVisible(v);
   };
 
-  const curryDimensionValueRequest = ((timeRangeValue: string, measurementsValue: any[]) => (
-    dimension: string,
-    keyword: string
-  ) =>
-    dimensionValueRequest?.({
-      dimension,
-      timeRange: timeRangeValue,
-      metrics: measurementsValue,
-      keyword,
-    }))(timeRange, measurements);
+  const curryDimensionValueRequest = (
+    (timeRangeValue: string, measurementsValue: any[]) => (dimension: string, keyword: string) =>
+      dimensionValueRequest?.({
+        dimension,
+        timeRange: timeRangeValue,
+        metrics: measurementsValue,
+        keyword,
+      })
+  )(timeRange, measurements);
 
   const submit = (v: FilterValueType) => {
     setVisible(false);

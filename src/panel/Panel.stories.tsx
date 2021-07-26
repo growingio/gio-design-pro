@@ -49,8 +49,7 @@ export default {
   parameters: {
     design: {
       type: 'figma',
-      url:
-        'https://www.figma.com/file/wOB978UAlbYxjKXKL4CONN/%E5%8D%A1%E7%89%87%E5%BC%8F---%E8%AE%BE%E8%AE%A1%E6%94%B9%E7%89%88?node-id=303%3A141',
+      url: 'https://www.figma.com/file/wOB978UAlbYxjKXKL4CONN/%E5%8D%A1%E7%89%87%E5%BC%8F---%E8%AE%BE%E8%AE%A1%E6%94%B9%E7%89%88?node-id=303%3A141',
     },
     subcomponents: { TabPanel, ToolBar, Table },
   },
