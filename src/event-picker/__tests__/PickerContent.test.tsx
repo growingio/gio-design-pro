@@ -6,7 +6,7 @@ import { events } from './data';
 import { EventData } from '../interfaces';
 import TypeIcon from '../TypeIcon';
 
-const customEvents = withSelectKey((events.filter((e) => e.type === 'custom').slice(0, 15) as unknown) as EventData[]);
+const customEvents = withSelectKey(events.filter((e) => e.type === 'custom').slice(0, 15) as unknown as EventData[]);
 describe('<PickerContent/> test', () => {
   it('render PickerContent', async () => {
     const getTypeIcon = (type: string) => <TypeIcon size="14px" className="item-content-icon" type={type || ''} />;

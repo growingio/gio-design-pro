@@ -124,7 +124,7 @@ const EventPicker = (props: EventPickerProps) => {
   const processedDataSource = useMemo(() => {
     const withSelectedKeyData = withSelectKey(originDataSource || []);
     const dataWithPinyin = injectPinyinWith(withSelectedKeyData, 'name');
-    return (dataWithPinyin as unknown) as EventData[];
+    return dataWithPinyin as unknown as EventData[];
   }, [originDataSource]);
   /**
    * 列表数据源

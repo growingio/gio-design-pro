@@ -22,17 +22,8 @@ interface FilterAttrOverlayProps {
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
-  const {
-    valueType,
-    onSubmit,
-    onCancel,
-    op,
-    curryDimensionValueRequest,
-    values,
-    exprKey,
-    operationsOption,
-    numType,
-  } = props;
+  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey, operationsOption, numType } =
+    props;
   const [operationValue, setOperationValue] = useState<StringValue | NumberValue | DateValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));

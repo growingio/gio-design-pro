@@ -233,9 +233,10 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     onClick?.(e);
   };
   const [recentlyPropertyItems, propertyItems] = dataSource;
-  const groupDatasource = useMemo(() => groupBy([...propertyItems], (o) => replace(o.type, /^recently¥/, '')), [
-    propertyItems,
-  ]);
+  const groupDatasource = useMemo(
+    () => groupBy([...propertyItems], (o) => replace(o.type, /^recently¥/, '')),
+    [propertyItems]
+  );
 
   function labelRender(item: PropertyItem) {
     return (

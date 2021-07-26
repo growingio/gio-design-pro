@@ -61,9 +61,10 @@ export const DisplayModeTree = () => {
         item.name.includes(searchText) || (isArray(item.children) && treeFilterBySearchText(item.children).length !== 0)
     );
 
-  const filteredData = useMemo(() => (searchText === '' ? data : treeFilterBySearchText(cloneDeep(data))), [
-    searchText,
-  ]);
+  const filteredData = useMemo(
+    () => (searchText === '' ? data : treeFilterBySearchText(cloneDeep(data))),
+    [searchText]
+  );
 
   return (
     <div style={{ height: 'calc(100vh - 50px)' }}>

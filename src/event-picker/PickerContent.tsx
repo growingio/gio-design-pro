@@ -125,7 +125,7 @@ const PickerContent = (props: Props) => {
    */
   useEffect(() => {
     if (panelRef.current) {
-      const panelDom = (panelRef.current as unknown) as HTMLDivElement;
+      const panelDom = panelRef.current as unknown as HTMLDivElement;
       if (panelDom) {
         const bodyDiv = panelDom.querySelector(`.${panelBodyCls}`);
         if (bodyDiv) {
