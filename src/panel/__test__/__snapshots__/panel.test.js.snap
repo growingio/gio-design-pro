@@ -129,7 +129,7 @@ Object {
                   type="button"
                 >
                   <span
-                    aria-label="plus-circle-filled"
+                    aria-label="plus-outlined"
                     class="gio-icon"
                     role="img"
                   >
@@ -146,10 +146,10 @@ Object {
                       <g>
                         <g>
                           <path
-                            d="M7.7 6.5a.2.2 0 01-.2-.2V3.5A.51.51 0 007 3a.51.51 0 00-.5.5v2.8a.2.2 0 01-.2.2H3.5A.51.51 0 003 7a.51.51 0 00.5.5h2.8a.2.2 0 01.2.2v2.8a.51.51 0 00.5.5.51.51 0 00.5-.5V7.7a.2.2 0 01.2-.2h2.8A.51.51 0 0011 7a.51.51 0 00-.5-.5zM7 0a7 7 0 11-7 7 7 7 0 017-7z"
+                            d="M6 6.51A.54.54 0 006.51 6V.49a.49.49 0 011 0V6a.54.54 0 00.49.51h5.48a.49.49 0 010 1H8a.54.54 0 00-.51.49v5.48a.49.49 0 01-1 0V8A.54.54 0 006 7.49H.49a.49.49 0 010-1z"
                             fill="currentColor"
                             fill-rule="evenodd"
-                            id="plus-circle-filled_svg__plus-circle"
+                            id="plus-outlined_svg__plus"
                           />
                         </g>
                       </g>
@@ -1363,7 +1363,7 @@ Object {
                 type="button"
               >
                 <span
-                  aria-label="plus-circle-filled"
+                  aria-label="plus-outlined"
                   class="gio-icon"
                   role="img"
                 >
@@ -1380,10 +1380,10 @@ Object {
                     <g>
                       <g>
                         <path
-                          d="M7.7 6.5a.2.2 0 01-.2-.2V3.5A.51.51 0 007 3a.51.51 0 00-.5.5v2.8a.2.2 0 01-.2.2H3.5A.51.51 0 003 7a.51.51 0 00.5.5h2.8a.2.2 0 01.2.2v2.8a.51.51 0 00.5.5.51.51 0 00.5-.5V7.7a.2.2 0 01.2-.2h2.8A.51.51 0 0011 7a.51.51 0 00-.5-.5zM7 0a7 7 0 11-7 7 7 7 0 017-7z"
+                          d="M6 6.51A.54.54 0 006.51 6V.49a.49.49 0 011 0V6a.54.54 0 00.49.51h5.48a.49.49 0 010 1H8a.54.54 0 00-.51.49v5.48a.49.49 0 01-1 0V8A.54.54 0 006 7.49H.49a.49.49 0 010-1z"
                           fill="currentColor"
                           fill-rule="evenodd"
-                          id="plus-circle-filled_svg__plus-circle"
+                          id="plus-outlined_svg__plus"
                         />
                       </g>
                     </g>
