@@ -49,8 +49,8 @@ export interface RangeCalendarProps {
 
 export interface RangeHeaderProps {
   experimental?: boolean;
-  dateRange: (Moment | undefined)[];
-  onRangeChange: (dates: (Moment | undefined)[]) => void;
+  dateRange: [Date, Date];
+  onRangeChange: (dates: [Date, Date]) => void;
   onModeChange?: (mode: EndDateFixedMode) => void;
 }
 

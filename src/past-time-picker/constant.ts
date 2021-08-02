@@ -1,6 +1,6 @@
 import { TimeCalculationMode } from './interfaces';
 
-export const DATE_FORMAT = 'YYYY/MM/DD';
+export const DATE_FORMAT = 'yyyy/MM/dd';
 
 export const panelModeOptions = [
   { value: 'shortcut', label: '常用时间' },

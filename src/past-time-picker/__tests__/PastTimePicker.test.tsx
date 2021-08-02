@@ -6,10 +6,10 @@ import PastTimePicker from '../PastTimePicker';
 describe('PastTimePicker', () => {
   const handleOnSelect = jest.fn();
 
-  beforeAll(() => {
-    // mock today is 2021-05-13 00:00:00
-    Date.now = jest.fn(() => 1620835200000);
-  });
+  // beforeAll(() => {
+  //   // mock today is 2021-05-13 00:00:00
+  //   Date.now = jest.fn(() => 1620835200000);
+  // });
 
   it('renders shortcut mode', () => {
     render(<Shortcut {...Shortcut.args} onSelect={handleOnSelect} />);

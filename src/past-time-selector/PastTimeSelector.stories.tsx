@@ -17,9 +17,6 @@ export default {
   },
 } as Meta;
 
-// mock now is 2021/05/20 00:00:00.000
-Date.now = () => 1621440000000;
-
 const Template: Story<PastTimeSelectorProps> = (args) => <PastTimeSelector {...args} />;
 
 export const Shortcut = Template.bind({});

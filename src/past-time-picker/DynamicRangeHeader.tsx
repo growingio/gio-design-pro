@@ -2,11 +2,12 @@ import React from 'react';
 import { Input, Button } from '@gio-design/components';
 import { usePrefixCls } from '@gio-design/utils';
 import { PlusCircleFilled } from '@gio-design/icons';
-import moment, { Moment } from 'moment';
+import { differenceInDays, startOfToday } from 'date-fns';
+import { subDays } from 'date-fns/esm';
 import { RangeHeaderProps } from './interfaces';
 
-const convertDateToDays = (date: Moment | undefined, defaultValue: number) =>
-  date ? moment().diff(date, 'days') : defaultValue;
+const convertDateToDays = (date: Date | undefined, defaultValue: number) =>
+  date ? differenceInDays(startOfToday(), date) : defaultValue;
 
 function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHeaderProps) {
   const [startDays, setStartDays] = React.useState<number>(convertDateToDays(dateRange[0], 8));
@@ -15,8 +16,8 @@ function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHea
 
   const basePrefixCls = usePrefixCls('range-panel');
   const setRange = (start: number, end: number) => {
-    const startDate = moment().startOf('day').subtract(start, 'days');
-    const endDate = moment().startOf('day').subtract(end, 'days');
+    const startDate = subDays(startOfToday(), start);
+    const endDate = subDays(startOfToday(), end);
     onRangeChange([startDate, endDate]);
   };
 

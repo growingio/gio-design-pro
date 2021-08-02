@@ -6,6 +6,7 @@ import startOfToday from 'date-fns/startOfToday';
 import subMonths from 'date-fns/subMonths';
 import subDays from 'date-fns/subDays';
 import getTime from 'date-fns/getTime';
+import { startOfYesterday } from 'date-fns';
 import Docs from './PastTimePicker.mdx';
 import PastTimePicker from './PastTimePicker';
 import { PastTimePickerProps } from './interfaces';
@@ -27,9 +28,6 @@ export default {
     },
   },
 } as Meta;
-
-// mock now is 2021/05/20 00:00:00.000
-Date.now = () => 1621440000000;
 
 const Template: Story<PastTimePickerProps> = (args) => {
   const { timeRange, onSelect } = args;
@@ -62,7 +60,7 @@ Dynamic.args = {
 
 export const Absolute = Template.bind({});
 Absolute.args = {
-  timeRange: `abs:${getTime(subMonths(startOfToday(), 1))},${getTime(startOfToday())}`,
+  timeRange: `abs:${getTime(subMonths(startOfToday(), 1))},${getTime(startOfYesterday())}`,
 };
 
 export const Experiment = Template.bind({});

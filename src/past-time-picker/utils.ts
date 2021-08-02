@@ -1,6 +1,7 @@
 import has from 'lodash/has';
 import get from 'lodash/get';
 import moment from 'moment-timezone';
+import { startOfToday, sub } from 'date-fns';
 import { TimeCalculationMode } from './interfaces';
 import { DATE_FORMAT, SHORTCUT_MAPPING } from './constant';
 
@@ -23,23 +24,24 @@ export const parseTimeCalcMode = (timeRange: string | undefined) => {
   }
 };
 
-export const parseStartAndEndDate = (timeRange: string | undefined) => {
+export const parseStartAndEndDate = (timeRange: string | undefined): [Date | undefined, Date | undefined] => {
   if (!timeRange || timeRange.split(':').length !== 2) {
     return [undefined, undefined];
   }
   const items = timeRange.split(':');
-  const times = items[1].split(',');
+  const times = items[1].split(',').map((str) => parseInt(str, 10));
+  const today = startOfToday();
   if (items[0] === 'since') {
     if (times.length === 1) {
-      return [moment(parseInt(times[0], 10)), moment().startOf('day')];
+      return [new Date(times[0]), today];
     }
-    return [moment(parseInt(times[0], 10)), moment().startOf('day').subtract(times[1], 'day')];
+    return [new Date(times[0]), sub(today, { days: times[1] })];
   }
   if (items[0] === 'abs') {
-    return [moment(parseInt(times[0], 10)), moment(parseInt(times[1], 10))];
+    return [new Date(times[0]), new Date(times[1])];
   }
   if (items[0] === 'day') {
-    return [moment().startOf('day').subtract(times[0], 'days'), moment().startOf('day').subtract(times[1], 'days')];
+    return [sub(today, { days: times[0] }), sub(today, { days: times[1] })];
   }
   return [undefined, undefined];
 };

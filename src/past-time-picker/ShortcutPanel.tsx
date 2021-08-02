@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePrefixCls, useControlledState as useState } from '@gio-design/utils';
-import SelectList from './SelectList';
+import SelectList from '@gio-design/components/es/list-picker';
 import { ShortcutPanelProps } from './interfaces';
 import { experimentalShortcutOptions } from './constant';
 

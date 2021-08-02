@@ -1,10 +1,12 @@
 import React from 'react';
-import { Input, TabNav } from '@gio-design/components';
+import { TabNav } from '@gio-design/components';
+import InputTrigger from '@gio-design/components/es/selector/InputTrigger';
 import { usePrefixCls } from '@gio-design/utils';
 import { CalendarOutlined } from '@gio-design/icons';
 import moment from 'moment';
-import { EndDateFixedMode, RangeHeaderProps } from './interfaces';
+import { format, parse, startOfToday, subDays } from 'date-fns';
 import { DATE_FORMAT, END_DATE_MAPPING } from './constant';
+import { EndDateFixedMode, RangeHeaderProps } from './interfaces';
 
 const SinceRangeHeader: React.FC<RangeHeaderProps> = ({
   dateRange,
@@ -19,8 +21,8 @@ const SinceRangeHeader: React.FC<RangeHeaderProps> = ({
 
   const handleDateChange = (currentStart: string | undefined, currentEndKey: string | undefined) => {
     if (moment(currentStart, DATE_FORMAT, true).isValid()) {
-      const startDate = moment(currentStart, DATE_FORMAT);
-      const endDate = moment().startOf('day').subtract(endDateKeys.indexOf(currentEndKey), 'days');
+      const startDate = parse(currentStart, DATE_FORMAT, new Date());
+      const endDate = subDays(startOfToday(), endDateKeys.indexOf(currentEndKey));
       onRangeChange([startDate, endDate]);
     }
     setStart(currentStart);
@@ -28,7 +30,7 @@ const SinceRangeHeader: React.FC<RangeHeaderProps> = ({
   };
 
   React.useEffect(() => {
-    setStart(dateRange[0] ? dateRange[0].format(DATE_FORMAT) : '');
+    // setStart(dateRange[0] ? dateRange[0].format(DATE_FORMAT) : '');
     setEndKey(dateRange[1] ? endDateKeys[moment().diff(dateRange[1], 'days')] : 'today');
   }, [dateRange]);
 
@@ -36,13 +38,10 @@ const SinceRangeHeader: React.FC<RangeHeaderProps> = ({
     <>
       <span className={`${prefixCls}__header__text`}>从</span>
       <span className={`${prefixCls}__header__input`}>
-        <Input
-          size="middle"
+        <InputTrigger
           suffix={<CalendarOutlined />}
-          value={start}
-          onChange={(e) => {
-            handleDateChange(e.target.value, endKey);
-          }}
+          itemRender={() => (dateRange[0] ? format(dateRange[0], DATE_FORMAT) : undefined)}
+          placeholder="选择日期"
         />
       </span>
       <span className={`${prefixCls}__header__options`}>
