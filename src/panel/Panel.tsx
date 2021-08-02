@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useControlledState } from '@gio-design/utils';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import classnames from 'classnames';
