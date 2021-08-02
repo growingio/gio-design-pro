@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useControlledState } from '@gio-design/utils';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import classnames from 'classnames';
 import { TabNav } from '@gio-design/components';
+import { difference } from 'lodash';
+import Text from '@gio-design/components/es/text';
 import { PanelProps, TabPaneProps } from './interfaces';
 import TabPanel from './TabPanel';
 
@@ -18,6 +20,9 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
     defaultActiveKey,
     onTabClick,
     onChange,
+    avatar,
+    actions,
+    bordered = true,
     className,
     style,
   } = props;
@@ -33,7 +38,11 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
     (child) => React.isValidElement(child) && child.type === TabPanel
   ) as React.ReactElement<TabPaneProps>[];
 
-  const isSinglePanel = tabs.length < 2;
+  const otherChilds = difference(childs, tabs);
+
+  const showTabs = tabs.length > 1;
+
+  const hasChildren = childs.length > 0;
 
   useEffect(() => {
     const _currentIndex = tabs.findIndex((tab) => tab.key === `.$${key}`);
@@ -42,7 +51,7 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
     }
   }, [key]);
 
-  const showHeader = title || description || !isSinglePanel;
+  const showHeader = title || description || !showTabs;
 
   const onTabChange = (_key: string) => {
     setKey(_key);
@@ -50,26 +59,27 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
   };
 
   return (
-    <div ref={ref} className={classnames(prefix(), className)} style={style}>
-      <div className={classnames(prefix('__header'), { [prefix('__header--hidden')]: !showHeader })}>
-        <div
-          className={classnames(prefix('__header__container'), {
-            [prefix('__header__container--hidden')]: !title && !description,
-          })}
-        >
-          <div className={classnames(prefix('__header__title'), { [prefix('__header__title--hidden')]: !title })}>
-            {title}
-          </div>
-          <div
-            className={classnames(prefix('__header__description'), {
-              [prefix('__header__description--hidden')]: !description,
-            })}
-          >
-            {description}
+    <div ref={ref} className={classnames(prefix(), className, { [prefix('--bordered')]: bordered })} style={style}>
+      <div
+        className={classnames(
+          prefix('__header'),
+          { [prefix(`__header__border--bottom`)]: hasChildren && !showTabs },
+          { [prefix('__header--hidden')]: !showHeader }
+        )}
+      >
+        <div className={prefix('__header__avatar')}>
+          <div className={prefix('__header__avatar--icon')}>{avatar}</div>
+        </div>
+        <div className={prefix('__header__meta')}>
+          <div className={classnames(prefix('__header__meta__title'))}>{title}</div>
+          <div className={classnames(prefix('__header__meta__description'))}>
+            <Text lines={3}>{description}</Text>
           </div>
         </div>
-
-        {!isSinglePanel ? (
+        <div className={classnames(prefix('__header__actions'))}>{actions}</div>
+      </div>
+      {showTabs ? (
+        <div className={classnames(prefix('__tabs'))}>
           <TabNav
             size={tabSize}
             type={tabType}
@@ -90,9 +100,12 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
               );
             })}
           </TabNav>
-        ) : null}
+        </div>
+      ) : null}
+      <div className={prefix('__content')}>
+        {tabs[currentTabIndex]}
+        {otherChilds}
       </div>
-      <div className={prefix('__content')}>{tabs[currentTabIndex]}</div>
       {footer && <div className={prefix('__footer')}>{footer}</div>}
     </div>
   );

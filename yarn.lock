@@ -1570,6 +1570,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.14.8":
+  version "7.14.8"
+  resolved "https://registry.nlark.com/@babel/runtime/download/@babel/runtime-7.14.8.tgz?cache=0&sync_timestamp=1626804296663&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
+  integrity sha1-cRmlb0IQGIUmlCkLn5FICXORtEY=
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.12.13", "@babel/template@^7.12.7", "@babel/template@^7.3.3", "@babel/template@^7.4.0":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.12.13.tgz#530265be8a2589dbb37523844c5bcb55947fb327"
@@ -2023,20 +2030,24 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@^21.6.1":
-  version "21.6.2"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.6.2.tgz#e543ea1a00d64095d4d52d214fa73f31b488b87c"
-  integrity sha512-N5Z6gNw1rCVIeXh4+AXuZxoFvL4rIdDkIOIiNKQxCMko5zdM2dwOmEXZKtORadiIrdZgz1lwZNyiWKaXU+Opiw==
+"@gio-design/components@^21.7.7":
+  version "21.7.7"
+  resolved "https://registry.nlark.com/@gio-design/components/download/@gio-design/components-21.7.7.tgz#5a1e2b41656dbd9bf36ab8a119a5e63bcda40bb4"
+  integrity sha1-Wh4rQWVtvZvzarihGaXmO82kC7Q=
   dependencies:
+    "@gio-design/table" "7.14.0"
+    "@gio-design/utils" "^21.7.0"
     "@types/classnames" "^2.2.9"
     "@types/lodash" "^4.14.136"
     "@types/raf" "^3.4.0"
     "@types/react" "^17.0.2"
     "@types/react-dnd" "^3.0.2"
     "@types/react-dom" "^17.0.1"
+    "@types/react-truncate" "^2.3.3"
     "@types/react-virtualized" "^9.21.10"
     "@types/shallowequal" "^1.1.1"
     classnames "^2.2.6"
+    date-fns "^2.21.3"
     lodash "^4.17.14"
     moment "^2.26.0"
     raf "^3.4.1"
@@ -2048,16 +2059,17 @@
     rc-field-form "^1.11.0"
     rc-menu "^8.5.1"
     rc-notification "^4.5.4"
-    rc-table "https://github.com/growingio/table.git"
+    rc-picker "^2.5.10"
     rc-tooltip "^5.0.1"
     rc-tree "3.9.5"
     rc-tree-select "4.1.2"
     rc-trigger "^4.3.0"
-    rc-upload "^3.2.0"
+    rc-upload "4.3.1"
     rc-util "^5.0.5"
     rc-virtual-list "^3.2.6"
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^14.0.0"
+    react-truncate "^2.4.0"
     react-use "^15.3.3"
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
@@ -2070,6 +2082,18 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
+"@gio-design/table@7.14.0":
+  version "7.14.0"
+  resolved "https://registry.nlark.com/@gio-design/table/download/@gio-design/table-7.14.0.tgz#57a33db86c2bc1096c2e52ad1d3e56ebfc1fb036"
+  integrity sha1-V6M9uGwrwQlsLlKtHT5W6/wfsDY=
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.5"
+    lodash "^4.17.21"
+    rc-resize-observer "^1.0.0"
+    rc-util "^5.4.0"
+    shallowequal "^1.1.0"
+
 "@gio-design/tokens@^21.4.2":
   version "21.4.2"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
@@ -2080,6 +2104,16 @@
   resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.5.0.tgz#1719f9bda49ebed14945f7a756a70a96c8c47a31"
   integrity sha512-oSR5aHF2y3FnpobwZdOM3Ffwarww9I7j4cdt00SyZIZ9zP0rSLtESOkib9bz8QuPnmagPjBLxQvYbQFis8ceYw==
   dependencies:
+    lodash "^4.17.21"
+    pinyin "^2.9.1"
+    react-intl "^5.15.8"
+
+"@gio-design/utils@^21.7.0":
+  version "21.8.0"
+  resolved "https://registry.nlark.com/@gio-design/utils/download/@gio-design/utils-21.8.0.tgz#66b351b2708c3c22b6aa2c9b96a65b75a49855fe"
+  integrity sha1-ZrNRsnCMPCK2qiyblqZbdaSYVf4=
+  dependencies:
+    "@babel/runtime" "^7.14.8"
     lodash "^4.17.21"
     pinyin "^2.9.1"
     react-intl "^5.15.8"
@@ -3578,6 +3612,13 @@
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-17.0.1.tgz#3120f7d1c157fba9df0118dae20cb0297ee0e06b"
   integrity sha512-3Fi2O6Zzq/f3QR9dRnlnHso9bMl7weKCviFmfF6B4LS1Uat6Hkm15k0ZAQuDz+UBq6B3+g+NM6IT2nr5QgPzCw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-truncate@^2.3.3":
+  version "2.3.4"
+  resolved "https://registry.nlark.com/@types/react-truncate/download/@types/react-truncate-2.3.4.tgz#1d5002e71e393b81b7877a147992a050f40075fa"
+  integrity sha1-HVAC5x45O4G3h3oUeZKgUPQAdfo=
   dependencies:
     "@types/react" "*"
 
@@ -6693,6 +6734,11 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
+date-fns@2.x, date-fns@^2.21.3:
+  version "2.23.0"
+  resolved "https://registry.nlark.com/date-fns/download/date-fns-2.23.0.tgz?cache=0&sync_timestamp=1627020353586&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdate-fns%2Fdownload%2Fdate-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
+  integrity sha1-TohslBZZrwz3sw+v3R6qN+iHiKk=
+
 date-fns@^2.16.1:
   version "2.22.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.22.1.tgz#1e5af959831ebb1d82992bf67b765052d8f0efc4"
@@ -6702,6 +6748,11 @@ dateformat@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
   integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
+
+dayjs@1.x:
+  version "1.10.6"
+  resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.6.tgz?cache=0&sync_timestamp=1625557508682&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdayjs%2Fdownload%2Fdayjs-1.10.6.tgz#288b2aa82f2d8418a6c9d4df5898c0737ad02a63"
+  integrity sha1-KIsqqC8thBimydTfWJjAc3rQKmM=
 
 debug-fabulous@1.X:
   version "1.1.0"
@@ -12266,7 +12317,7 @@ moment-timezone@^0.5.33:
   dependencies:
     moment ">= 2.9.0"
 
-moment@2.x, "moment@>= 2.9.0", moment@^2.26.0, moment@^2.29.1:
+moment@2.x, "moment@>= 2.9.0", moment@^2.24.0, moment@^2.26.0, moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
@@ -14008,6 +14059,20 @@ rc-notification@^4.5.4:
     rc-motion "^2.2.0"
     rc-util "^5.0.1"
 
+rc-picker@^2.5.10:
+  version "2.5.14"
+  resolved "https://registry.nlark.com/rc-picker/download/rc-picker-2.5.14.tgz?cache=0&sync_timestamp=1625122710240&other_urls=https%3A%2F%2Fregistry.nlark.com%2Frc-picker%2Fdownload%2Frc-picker-2.5.14.tgz#dfa919f7f7cc72496df45cb1cad9c82ad2fc019b"
+  integrity sha1-36kZ9/fMcklt9FyxytnIKtL8AZs=
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.1"
+    date-fns "2.x"
+    dayjs "1.x"
+    moment "^2.24.0"
+    rc-trigger "^5.0.4"
+    rc-util "^5.4.0"
+    shallowequal "^1.1.0"
+
 rc-resize-observer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/rc-resize-observer/-/rc-resize-observer-1.0.0.tgz#97fb89856f62fec32ab6e40933935cf58e2e102d"
@@ -14030,17 +14095,6 @@ rc-select@^11.1.1:
     rc-util "^5.0.1"
     rc-virtual-list "^3.2.0"
     warning "^4.0.3"
-
-"rc-table@https://github.com/growingio/table.git":
-  version "7.14.0"
-  resolved "https://github.com/growingio/table.git#ba846b3e5a5d4c6895f034de4262be5edf176d2d"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.5"
-    lodash "^4.17.21"
-    rc-resize-observer "^1.0.0"
-    rc-util "^5.4.0"
-    shallowequal "^1.1.0"
 
 rc-tooltip@^5.0.1:
   version "5.1.0"
@@ -14119,10 +14173,10 @@ rc-trigger@^5.0.0, rc-trigger@^5.0.4, rc-trigger@^5.1.2:
     rc-motion "^2.0.0"
     rc-util "^5.5.0"
 
-rc-upload@^3.2.0:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/rc-upload/-/rc-upload-3.3.4.tgz#b0668d18661595c69c0621cec220fd116cc79952"
-  integrity sha512-v2sirR4JL31UTHD/f0LGUdd+tpFaOVUTPeIEjAXRP9kRN8TFhqOgcXl5ixtyqj90FmtRUmKmafCv0EmhBQUHqQ==
+rc-upload@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.nlark.com/rc-upload/download/rc-upload-4.3.1.tgz#d6ee66b8bd1e1dd2f78526c486538423f7e7ed84"
+  integrity sha1-1u5muL0eHdL3hSbEhlOEI/fn7YQ=
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.5"
@@ -14433,6 +14487,11 @@ react-textarea-autosize@^8.3.0:
     "@babel/runtime" "^7.10.2"
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
+
+react-truncate@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.nlark.com/react-truncate/download/react-truncate-2.4.0.tgz#3cf5ff09ab86f93e3c078d359f4de6d75aa60510"
+  integrity sha1-PPX/CauG+T48B401n03m11qmBRA=
 
 react-universal-interface@^0.6.2:
   version "0.6.2"

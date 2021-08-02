@@ -6,7 +6,7 @@ describe('Render Panel with default args', () => {
   it('should render multiple panel', () => {
     const onTabClick = jest.fn();
     const onChange = jest.fn();
-    const wrapper = render(<TableCard onChange={onChange} onTabClick={onTabClick} />);
+    const wrapper = render(<TableCard onChange={onChange} onTabClick={onTabClick} footer={<div>test</div>} />);
     expect(wrapper).toMatchSnapshot();
   });
 

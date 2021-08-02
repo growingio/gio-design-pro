@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { SearchBar, Button } from '@gio-design/components';
-import { CloseCircleOutlined, PlusCircleFilled } from '@gio-design/icons';
+import { CloseCircleOutlined, PlusCircleFilled, UserOutlined } from '@gio-design/icons';
 import Panel from './Panel';
 import TabPanel from './TabPanel';
 import { PanelProps } from './interfaces';
@@ -118,6 +118,8 @@ const SinglePanel: Story<PanelProps> = (args) => {
   );
 };
 
+const TitleInfoCardStory: Story<PanelProps> = (args) => <Panel {...args} />;
+
 export const TableCard = MultiplePanel.bind({});
 TableCard.args = {
   title: '全部成员(233)',
@@ -127,4 +129,19 @@ TableCard.args = {
 export const TableCardSingle = SinglePanel.bind({});
 TableCardSingle.args = {
   ...TableCard.args,
+};
+
+export const TitleInfoCard = TitleInfoCardStory.bind({});
+TitleInfoCard.args = {
+  title: '北区项目组',
+  footer: '这里是footer区域',
+  description: '这是一个副标题这是一个副标题',
+  avatar: <UserOutlined />,
+  actions: (
+    <div>
+      <Button style={{ marginRight: 8 }}>Button</Button>
+      <Button type="secondary">Button</Button>
+    </div>
+  ),
+  bordered: true,
 };
