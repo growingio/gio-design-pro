@@ -324,7 +324,7 @@ Object {
                             <tr
                               aria-hidden="true"
                               class="gio-table-measure-row"
-                              style="height: 0px; font-size: 0;"
+                              style="height: 0px; font-size: 0px;"
                             >
                               <td
                                 style="padding: 0px; border: 0px; height: 0px;"
@@ -1595,7 +1595,7 @@ Object {
                           <tr
                             aria-hidden="true"
                             class="gio-table-measure-row"
-                            style="height: 0px; font-size: 0;"
+                            style="height: 0px; font-size: 0px;"
                           >
                             <td
                               style="padding: 0px; border: 0px; height: 0px;"
@@ -2606,6 +2606,7 @@ Object {
     <div>
       <div
         class="gio-panel gio-panel--bordered"
+        style="height: calc(100vh - 40px);"
       >
         <div
           class="gio-panel__header gio-panel__header__border--bottom"
@@ -2770,7 +2771,7 @@ Object {
                             <tr
                               aria-hidden="true"
                               class="gio-table-measure-row"
-                              style="height: 0px; font-size: 0;"
+                              style="height: 0px; font-size: 0px;"
                             >
                               <td
                                 style="padding: 0px; border: 0px; height: 0px;"
@@ -3717,6 +3718,7 @@ Object {
   "container": <div>
     <div
       class="gio-panel gio-panel--bordered"
+      style="height: calc(100vh - 40px);"
     >
       <div
         class="gio-panel__header gio-panel__header__border--bottom"
@@ -3881,7 +3883,7 @@ Object {
                           <tr
                             aria-hidden="true"
                             class="gio-table-measure-row"
-                            style="height: 0px; font-size: 0;"
+                            style="height: 0px; font-size: 0px;"
                           >
                             <td
                               style="padding: 0px; border: 0px; height: 0px;"

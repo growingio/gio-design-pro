@@ -20,7 +20,7 @@ const ShortcutPanel: React.FC<ShortcutPanelProps> = ({
 
   const handleOnSelect = (selectedValue: string) => {
     setCurrentValue(selectedValue);
-    onSelect?.(selectedValue);
+    onSelect(selectedValue);
   };
 
   return (

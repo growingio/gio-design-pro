@@ -1,11 +1,8 @@
 import has from 'lodash/has';
 import get from 'lodash/get';
-import moment from 'moment-timezone';
-import { startOfToday, sub } from 'date-fns';
+import { format, startOfToday, sub } from 'date-fns';
 import { TimeCalculationMode } from './interfaces';
 import { DATE_FORMAT, SHORTCUT_MAPPING } from './constant';
-
-moment.tz.setDefault('Asia/Shanghai');
 
 export const parseTimeCalcMode = (timeRange: string | undefined) => {
   if (!timeRange || has(SHORTCUT_MAPPING, timeRange)) {
@@ -72,22 +69,22 @@ export const humanizeTimeRange = (timeRange: string, defaultString: string = '�
     return get(SHORTCUT_MAPPING, timeRange);
   }
   const items = timeRange.split(':');
-  const times = items[1].split(',');
+  const times = items[1].split(',').map((str) => parseInt(str, 10));
   if (items[0] === 'since') {
-    const start = moment(parseInt(times[0], 10)).format(DATE_FORMAT);
+    const start = format(times[0], DATE_FORMAT);
     if (times.length === 1) {
       return `自 ${start} 至今日`;
     }
     return `自 ${start} 至昨日`;
   }
   if (items[0] === 'abs') {
-    const start = moment(parseInt(times[0], 10)).format(DATE_FORMAT);
-    const end = moment(parseInt(times[1], 10)).format(DATE_FORMAT);
+    const start = format(times[0], DATE_FORMAT);
+    const end = format(times[1], DATE_FORMAT);
     return `从 ${start} 至 ${end}`;
   }
   if (items[0] === 'day') {
-    if (times[1] === '1') {
-      return `过去 ${parseInt(times[0], 10) - parseInt(times[1], 10)} 天`;
+    if (times[1] === 1) {
+      return `过去 ${times[0] - times[1]} 天`;
     }
     return `过去 ${times[1]}-${times[0]} 天`;
   }
