@@ -1,5 +1,5 @@
 import React from 'react';
-import { SizeType } from '@gio-design/utils/es/design-context';
+import { SizeType } from '@gio-design/utils';
 import { DropdownProps } from '@gio-design/components';
 import { BaseProps } from '../utils/interfaces';
 
