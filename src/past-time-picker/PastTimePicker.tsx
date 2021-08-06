@@ -1,15 +1,19 @@
 import React from 'react';
-import { usePrefixCls, useControlledState as useState } from '@gio-design/utils';
-import SelectList from './SelectList';
+import { usePrefixCls } from '@gio-design/utils';
+import SelectList from '@gio-design/components/es/list-picker';
 import ShortcutPanel from './ShortcutPanel';
-import RangePanel from './RangePanel';
 import { TimeCalculationMode, PastTimePickerProps } from './interfaces';
 import { panelModeOptions, shortcutOptions } from './constant';
 import { parseTimeCalcMode } from './utils';
+import AbsoluteRangePanel from './AbsoluteRangePanel';
+import SinceRangePanel from './SinceRangePanel';
+import DynamicRangePanel from './DynamicRangePanel';
 
 function PastTimePicker({ timeRange, onSelect, onCancel, experimental = false, shortcutFilter }: PastTimePickerProps) {
-  const [mode, setMode] = React.useState<string | undefined>(parseTimeCalcMode(timeRange) ?? 'shortcut');
-  const [currentRange, setCurrentRange] = useState(timeRange, undefined);
+  const originMode = parseTimeCalcMode(timeRange);
+  const [mode, setMode] = React.useState<string | undefined>(originMode ?? 'shortcut');
+  // const [currentRange, setCurrentRange] = useState(timeRange, undefined);
+  const [currentRange, setCurrentRange] = React.useState(timeRange);
   const prefixCls = usePrefixCls('past-time-picker');
 
   const handleOnSelect = (value: string) => {
@@ -19,7 +23,7 @@ function PastTimePicker({ timeRange, onSelect, onCancel, experimental = false, s
   const renderPanel = (currentMode: string | undefined) => {
     const valueProps = {
       experimental,
-      value: currentRange,
+      value: currentMode === originMode ? currentRange : undefined,
       onSelect: handleOnSelect,
       onCancel,
     };
@@ -31,7 +35,15 @@ function PastTimePicker({ timeRange, onSelect, onCancel, experimental = false, s
 
       return <ShortcutPanel {...valueProps} options={shortcuts} />;
     }
-    return <RangePanel {...valueProps} timeCalculationMode={mode as TimeCalculationMode} />;
+    switch (currentMode) {
+      case TimeCalculationMode.Since:
+        return <SinceRangePanel {...valueProps} />;
+      case TimeCalculationMode.Dynamic:
+        return <DynamicRangePanel {...valueProps} />;
+      case TimeCalculationMode.Absolute:
+      default:
+        return <AbsoluteRangePanel {...valueProps} />;
+    }
   };
 
   React.useEffect(() => {
