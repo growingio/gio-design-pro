@@ -1,10 +1,11 @@
-# [21.7.0](https://github.com/growingio/gio-design-pro/compare/v21.6.3...v21.7.0) (2021-07-26)
+# [21.8.0](https://github.com/growingio/gio-design-pro/compare/v21.7.0...v21.8.0) (2021-08-06)
 
 
-### Bug Fixes
+### Features
 
-* **event-picker:** replace custom/virtual event type icon to EventsTrackingOutlined ([#315](https://github.com/growingio/gio-design-pro/issues/315)) ([35b0a70](https://github.com/growingio/gio-design-pro/commit/35b0a700555af9e66cfa619d7e985b18f07c8e8b))
-* **panel:** fix batch actions close button style ([#313](https://github.com/growingio/gio-design-pro/issues/313)) ([f79df5e](https://github.com/growingio/gio-design-pro/commit/f79df5e3d08851b9ca86fbf8893d738e94ede9b2))
+* refactor past time picker with new UI ([#355](https://github.com/growingio/gio-design-pro/issues/355)) ([f66e228](https://github.com/growingio/gio-design-pro/commit/f66e22817d466765ab0076e1fddd73a27aacea07))
+* **panel:** implement title info card into panel ([#349](https://github.com/growingio/gio-design-pro/issues/349)) ([1b6b400](https://github.com/growingio/gio-design-pro/commit/1b6b4005fdda4fb6fc315a0fa664949ea3723f35))
+* **title-info-card:** change icon size ([#346](https://github.com/growingio/gio-design-pro/issues/346)) ([7fd0055](https://github.com/growingio/gio-design-pro/commit/7fd005548b9e9b03d165f2b287ff1e3e2bd022a9))
 
 
 
