@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { SearchBar, Button } from '@gio-design/components';
-import { CloseCircleOutlined, PlusCircleFilled, UserOutlined } from '@gio-design/icons';
+import { PlusOutlined } from '@gio-design/icons';
 import Panel from './Panel';
 import TabPanel from './TabPanel';
 import { PanelProps } from './interfaces';
@@ -70,7 +70,7 @@ const MultiplePanel: Story<PanelProps> = (args) => {
           </ToolBar>
         ) : (
           <ToolBar float="right">
-            <Button icon={<PlusCircleFilled />}>新建账号</Button>
+            <Button icon={<PlusOutlined />}>新建账号</Button>
             <Button type="secondary">次要按钮</Button>
             <Button type="secondary">次要按钮</Button>
           </ToolBar>
@@ -87,7 +87,7 @@ const MultiplePanel: Story<PanelProps> = (args) => {
           <SearchBar style={{ width: 360 }} />
         </ToolBar>
         <ToolBar float="right">
-          <Button icon={<CloseCircleOutlined />}>新建账号</Button>
+          <Button icon={<PlusOutlined />}>新建账号</Button>
           <Button type="secondary">次要按钮</Button>
           <Button type="secondary">次要按钮</Button>
         </ToolBar>
