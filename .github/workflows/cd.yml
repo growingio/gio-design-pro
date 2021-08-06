@@ -62,7 +62,7 @@ jobs:
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2.0.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: coverage/
@@ -135,32 +135,3 @@ jobs:
           body_path: VERSION.md
           draft: false
           prerelease: false
-  publish-storybook:
-    name: Publish storybook
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.3.0
-        with:
-          node-version: 14
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Build Storybook
-        run: yarn build-storybook
-      - name: Upload to Chromatic
-        uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
-          storybookBuildDir: storybook-static/
-          exitZeroOnChanges: true
-          exitOnceUploaded: true
-          allowConsoleErrors: true

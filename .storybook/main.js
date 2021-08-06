@@ -10,8 +10,11 @@ module.exports = {
         },
       },
     },
-    '@storybook/addon-controls',
+    '@storybook/addon-measure',
+    '@storybook/addon-outline',
     '@storybook/addon-actions',
+    '@storybook/addon-controls',
+    'storybook-addon-designs',
     {
       name: '@storybook/addon-storysource',
       options: {
@@ -20,7 +23,6 @@ module.exports = {
         },
       },
     },
-    'storybook-addon-designs',
   ],
   features: {
     postcss: false,

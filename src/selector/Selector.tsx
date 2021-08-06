@@ -4,7 +4,7 @@ import { Button, Dropdown } from '@gio-design/components';
 import { UpFilled, DownFilled } from '@gio-design/icons';
 import useControlledState from '@gio-design/components/es/utils/hooks/useControlledState';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
-import { useSize } from '@gio-design/utils/es/hooks';
+import { useSize } from '@gio-design/utils';
 import { SelectorProps } from './interfaces';
 
 import './style';
