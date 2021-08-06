@@ -2151,6 +2151,16 @@
     pinyin "^2.9.1"
     react-intl "^5.15.8"
 
+"@gio-design/utils@^21.7.0":
+  version "21.8.0"
+  resolved "https://registry.nlark.com/@gio-design/utils/download/@gio-design/utils-21.8.0.tgz#66b351b2708c3c22b6aa2c9b96a65b75a49855fe"
+  integrity sha1-ZrNRsnCMPCK2qiyblqZbdaSYVf4=
+  dependencies:
+    "@babel/runtime" "^7.14.8"
+    lodash "^4.17.21"
+    pinyin "^2.9.1"
+    react-intl "^5.15.8"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"

@@ -6,21 +6,51 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="gio-panel"
+        class="gio-panel gio-panel--bordered"
       >
         <div
-          class="gio-panel__header"
+          class="gio-panel__header gio-panel__header--hidden"
         >
           <div
-            class="gio-panel__header__container gio-panel__header__container--hidden"
+            class="gio-panel__header__avatar"
           >
             <div
-              class="gio-panel__header__title gio-panel__header__title--hidden"
-            />
-            <div
-              class="gio-panel__header__description gio-panel__header__description--hidden"
+              class="gio-panel__header__avatar--icon"
             />
           </div>
+          <div
+            class="gio-panel__header__meta"
+          >
+            <div
+              class="gio-panel__header__meta__title"
+            />
+            <div
+              class="gio-panel__header__meta__description"
+            >
+              <div
+                class="gio-text"
+              >
+                <span
+                  width="0"
+                >
+                  <span />
+                  <span />
+                  <span
+                    style="position: fixed; visibility: hidden; top: 0px; left: 0px;"
+                  >
+                    ...
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="gio-panel__header__actions"
+          />
+        </div>
+        <div
+          class="gio-panel__tabs"
+        >
           <div
             class="gio-tabnav gio-tabnav-line gio-tabnav-md"
           >
@@ -1235,26 +1265,63 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="gio-panel__footer"
+        >
+          <div>
+            test
+          </div>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="gio-panel"
+      class="gio-panel gio-panel--bordered"
     >
       <div
-        class="gio-panel__header"
+        class="gio-panel__header gio-panel__header--hidden"
       >
         <div
-          class="gio-panel__header__container gio-panel__header__container--hidden"
+          class="gio-panel__header__avatar"
         >
           <div
-            class="gio-panel__header__title gio-panel__header__title--hidden"
-          />
-          <div
-            class="gio-panel__header__description gio-panel__header__description--hidden"
+            class="gio-panel__header__avatar--icon"
           />
         </div>
+        <div
+          class="gio-panel__header__meta"
+        >
+          <div
+            class="gio-panel__header__meta__title"
+          />
+          <div
+            class="gio-panel__header__meta__description"
+          >
+            <div
+              class="gio-text"
+            >
+              <span
+                width="0"
+              >
+                <span />
+                <span />
+                <span
+                  style="position: fixed; visibility: hidden; top: 0px; left: 0px;"
+                >
+                  ...
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="gio-panel__header__actions"
+        />
+      </div>
+      <div
+        class="gio-panel__tabs"
+      >
         <div
           class="gio-tabnav gio-tabnav-line gio-tabnav-md"
         >
@@ -2469,6 +2536,13 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="gio-panel__footer"
+      >
+        <div>
+          test
+        </div>
+      </div>
     </div>
   </div>,
   "debug": [Function],
@@ -2531,21 +2605,47 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="gio-panel"
+        class="gio-panel gio-panel--bordered"
       >
         <div
-          class="gio-panel__header gio-panel__header--hidden"
+          class="gio-panel__header gio-panel__header__border--bottom"
         >
           <div
-            class="gio-panel__header__container gio-panel__header__container--hidden"
+            class="gio-panel__header__avatar"
           >
             <div
-              class="gio-panel__header__title gio-panel__header__title--hidden"
-            />
-            <div
-              class="gio-panel__header__description gio-panel__header__description--hidden"
+              class="gio-panel__header__avatar--icon"
             />
           </div>
+          <div
+            class="gio-panel__header__meta"
+          >
+            <div
+              class="gio-panel__header__meta__title"
+            />
+            <div
+              class="gio-panel__header__meta__description"
+            >
+              <div
+                class="gio-text"
+              >
+                <span
+                  width="0"
+                >
+                  <span />
+                  <span />
+                  <span
+                    style="position: fixed; visibility: hidden; top: 0px; left: 0px;"
+                  >
+                    ...
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="gio-panel__header__actions"
+          />
         </div>
         <div
           class="gio-panel__content"
@@ -3616,21 +3716,47 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="gio-panel"
+      class="gio-panel gio-panel--bordered"
     >
       <div
-        class="gio-panel__header gio-panel__header--hidden"
+        class="gio-panel__header gio-panel__header__border--bottom"
       >
         <div
-          class="gio-panel__header__container gio-panel__header__container--hidden"
+          class="gio-panel__header__avatar"
         >
           <div
-            class="gio-panel__header__title gio-panel__header__title--hidden"
-          />
-          <div
-            class="gio-panel__header__description gio-panel__header__description--hidden"
+            class="gio-panel__header__avatar--icon"
           />
         </div>
+        <div
+          class="gio-panel__header__meta"
+        >
+          <div
+            class="gio-panel__header__meta__title"
+          />
+          <div
+            class="gio-panel__header__meta__description"
+          >
+            <div
+              class="gio-text"
+            >
+              <span
+                width="0"
+              >
+                <span />
+                <span />
+                <span
+                  style="position: fixed; visibility: hidden; top: 0px; left: 0px;"
+                >
+                  ...
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="gio-panel__header__actions"
+        />
       </div>
       <div
         class="gio-panel__content"

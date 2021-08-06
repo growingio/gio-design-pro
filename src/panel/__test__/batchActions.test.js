@@ -4,7 +4,7 @@ import { Default as BatchActions } from '../batchActions.stories';
 
 describe('Render BatchActions with default args', () => {
   it('should render actions', () => {
-    const wrapper = render(<BatchActions count={0} />);
+    const wrapper = render(<BatchActions />);
     expect(wrapper).toMatchSnapshot();
   });
 
