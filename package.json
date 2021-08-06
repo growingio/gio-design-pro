@@ -53,7 +53,6 @@
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^13.1.0",
     "@gio-design/cli": "^21.2.0",
-    "@gio-design/components": "^21.7.7",
     "@gio-design/components": "21.8.0",
     "@gio-design/icons": "^21.6.1",
     "@gio-design/tokens": "^21.4.2",
