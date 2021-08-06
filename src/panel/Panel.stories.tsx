@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { SearchBar, Button } from '@gio-design/components';
-import { PlusOutlined } from '@gio-design/icons';
+import { PlusOutlined, UserOutlined } from '@gio-design/icons';
 import Panel from './Panel';
 import TabPanel from './TabPanel';
 import { PanelProps } from './interfaces';
