@@ -1,5 +1,5 @@
+import { startOfToday, startOfYesterday } from 'date-fns';
 import { get } from 'lodash';
-import moment from 'moment';
 import { TimeCalculationMode } from '../interfaces';
 import { parseFixedMode, parseStartAndEndDate, parseTimeCalcMode, humanizeTimeRange } from '../utils';
 
@@ -23,8 +23,8 @@ describe('PastTimePicker utils', () => {
     expect(parseStartAndEndDate('hour')).toEqual([undefined, undefined]);
     expect(parseStartAndEndDate('hour:2,1')).toEqual([undefined, undefined]);
 
-    const today = moment().startOf('day');
-    const yesterday = moment().startOf('day').subtract(1, 'days');
+    const today = startOfToday();
+    const yesterday = startOfYesterday();
 
     const sinceTimeRange = `since:${today.valueOf()}`;
     const sinceTimeRangeToYesterday = `since:${today.valueOf()},1`;
