@@ -2179,17 +2179,10 @@
     pinyin "^2.9.1"
     react-intl "^5.15.8"
 
-<<<<<<< HEAD
-"@gio-design/utils@^21.7.0":
-  version "21.8.0"
-  resolved "https://registry.nlark.com/@gio-design/utils/download/@gio-design/utils-21.8.0.tgz#66b351b2708c3c22b6aa2c9b96a65b75a49855fe"
-  integrity sha1-ZrNRsnCMPCK2qiyblqZbdaSYVf4=
-=======
 "@gio-design/utils@^21.8.1":
   version "21.8.1"
   resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.8.1.tgz#eb4c66b47ee2e6fe54617459f47e974e4a79ab33"
   integrity sha512-2iWuJtrflcAdDbSOZUqFCAUaXcN9DXZTU5G2goMRxB8EXNSgPsuHIZwHKbChVhYEjOy48f6jaEVAU7HPyePz/w==
->>>>>>> f617fc9 (feat: refactor past time picker with new UI)
   dependencies:
     "@babel/runtime" "^7.14.8"
     lodash "^4.17.21"
@@ -9181,11 +9174,6 @@ graceful-fs@4.X, graceful-fs@^4.0.0, graceful-fs@^4.1.11, graceful-fs@^4.1.15, g
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
   integrity sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==
 
-graphql@^15.4.0:
-  version "15.5.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.0.tgz#39d19494dbe69d1ea719915b578bf920344a69d5"
-  integrity sha512-OmaM7y0kaK31NKG31q4YbD2beNYa6jBBKtMFT6gLYJljHLJr42IqJ8KX08u3Li/0ifzTU5HjmoOOrwa5BRLeDA==
-
 group-array@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/group-array/-/group-array-1.0.0.tgz#e2e8d8890e5b46f72eb49b71e8af675173a9d0f7"
@@ -12125,14 +12113,7 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-moment-timezone@^0.5.33:
-  version "0.5.33"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.33.tgz#b252fd6bb57f341c9b59a5ab61a8e51a73bbd22c"
-  integrity sha512-PTc2vcT8K9J5/9rDEPe5czSIKgLoGsH8UNpA4qZTVw0Vd/Uz19geE9abbIOQKaAQFcnQ3v5YEXrbSc5BpshH+w==
-  dependencies:
-    moment ">= 2.9.0"
-
-moment@2.x, "moment@>= 2.9.0", moment@^2.24.0, moment@^2.26.0, moment@^2.29.1:
+moment@2.x, moment@^2.24.0, moment@^2.26.0, moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
