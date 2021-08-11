@@ -4,17 +4,17 @@ import { usePrefixCls } from '@gio-design/utils';
 import { PlusOutlined } from '@gio-design/icons';
 import { differenceInDays, startOfDay, startOfToday } from 'date-fns';
 import { subDays } from 'date-fns/esm';
-import { RangeHeaderProps } from './interfaces';
+import { RelativeRangeHeaderProps } from './interfaces';
 
 const convertDateToDays = (date: Date | undefined, defaultValue: number | undefined) =>
   date ? differenceInDays(startOfToday(), startOfDay(date)) : defaultValue;
 
-function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHeaderProps) {
+function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: RelativeRangeHeaderProps) {
   const [startDays, setStartDays] = React.useState<number | undefined>(convertDateToDays(dateRange[0], undefined));
   const [endDays, setEndDays] = React.useState<number | undefined>(convertDateToDays(dateRange[1], 1));
   const [endDaysHidden, setEndDaysHidden] = React.useState(endDays === 1);
 
-  const basePrefixCls = usePrefixCls('range-panel');
+  const basePrefixCls = usePrefixCls('range-panel__header');
   const setRange = (start: number, end: number) => {
     const startDate = subDays(startOfToday(), start);
     const endDate = subDays(startOfToday(), end);
@@ -25,8 +25,8 @@ function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHea
     const duration = startDays && endDays ? startDays - endDays : undefined;
     return (
       <>
-        <span className={`${basePrefixCls}__header__text`}>过去</span>
-        <span className={`${basePrefixCls}__header__input-number`} data-testid="duration">
+        <span className={`${basePrefixCls}__text`}>过去</span>
+        <span className={`${basePrefixCls}__input-number`} data-testid="duration">
           <Input.InputNumber
             min={endDays}
             max={10000}
@@ -38,9 +38,9 @@ function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHea
             size="small"
           />
         </span>
-        <span className={`${basePrefixCls}__header__text`}>天</span>
+        <span className={`${basePrefixCls}__text`}>天</span>
         <Button
-          className={`${basePrefixCls}__header__button`}
+          className={`${basePrefixCls}__button`}
           type="secondary"
           icon={<PlusOutlined />}
           onClick={() => {
@@ -59,8 +59,8 @@ function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHea
   };
   const renderRange = () => (
     <>
-      <span className={`${basePrefixCls}__header__text`}>过去</span>
-      <span className={`${basePrefixCls}__header__input-number`} data-testid="end-days">
+      <span className={`${basePrefixCls}__text`}>过去</span>
+      <span className={`${basePrefixCls}__input-number`} data-testid="end-days">
         <Input.InputNumber
           min={0}
           max={startDays}
@@ -72,8 +72,8 @@ function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHea
           size="small"
         />
       </span>
-      <span className={`${basePrefixCls}__header__text`}>至</span>
-      <span className={`${basePrefixCls}__header__input-number`} data-testid="start-days">
+      <span className={`${basePrefixCls}__text`}>至</span>
+      <span className={`${basePrefixCls}__input-number`} data-testid="start-days">
         <Input.InputNumber
           min={endDays}
           max={10000}
@@ -85,7 +85,7 @@ function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHea
           size="small"
         />
       </span>
-      <span className={`${basePrefixCls}__header__text`}>天</span>
+      <span className={`${basePrefixCls}__text`}>天</span>
     </>
   );
 
@@ -98,4 +98,4 @@ function DynamicRangeHeader({ dateRange, onRangeChange, onModeChange }: RangeHea
   return endDaysHidden ? renderDuration() : renderRange();
 }
 
-export default DynamicRangeHeader;
+export default RelativeRangeHeader;

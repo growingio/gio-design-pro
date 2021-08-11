@@ -1,4 +1,4 @@
-import { DATE_FORMAT, experimentalShortcutOptions } from '../constant';
+import { DATE_FORMAT, experimentalQuickOptions } from '../constant';
 
 describe('PastTimePicker constant', () => {
   it('has date format', () => {
@@ -6,10 +6,10 @@ describe('PastTimePicker constant', () => {
   });
 
   it('has experimental shortcut options', () => {
-    expect(experimentalShortcutOptions).toHaveLength(2);
-    expect(experimentalShortcutOptions[0]).toHaveLength(2);
-    expect(experimentalShortcutOptions[1]).toHaveLength(1);
-    experimentalShortcutOptions.forEach((os) => {
+    expect(experimentalQuickOptions).toHaveLength(2);
+    expect(experimentalQuickOptions[0]).toHaveLength(2);
+    expect(experimentalQuickOptions[1]).toHaveLength(1);
+    experimentalQuickOptions.forEach((os) => {
       os.forEach((o) => {
         expect(o.value.startsWith('hour:')).toBeTruthy();
       });

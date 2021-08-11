@@ -1,7 +1,7 @@
 import { startOfToday, startOfYesterday } from 'date-fns';
 import { get } from 'lodash';
-import { TimeCalculationMode } from '../interfaces';
-import { parseFixedMode, parseStartAndEndDate, parseTimeCalcMode, humanizeTimeRange } from '../utils';
+import { TimeMode } from '../interfaces';
+import { parseFixedMode, parseStartAndEndDate, parseTimeMode, humanizeTimeRange } from '../utils';
 
 describe('PastTimePicker utils', () => {
   it('can parse fixed mode', () => {
@@ -44,19 +44,19 @@ describe('PastTimePicker utils', () => {
 
   it('can parse time calc mode', () => {
     let timeRange = 'day:8,1';
-    expect(parseTimeCalcMode(timeRange)).toEqual('shortcut');
+    expect(parseTimeMode(timeRange)).toEqual('quick');
 
     timeRange = 'since:';
-    expect(parseTimeCalcMode(timeRange)).toEqual(TimeCalculationMode.Since);
+    expect(parseTimeMode(timeRange)).toEqual(TimeMode.Since);
 
     timeRange = 'day:';
-    expect(parseTimeCalcMode(timeRange)).toEqual(TimeCalculationMode.Dynamic);
+    expect(parseTimeMode(timeRange)).toEqual(TimeMode.Relative);
 
     timeRange = 'abs:';
-    expect(parseTimeCalcMode(timeRange)).toEqual(TimeCalculationMode.Absolute);
+    expect(parseTimeMode(timeRange)).toEqual(TimeMode.Absolute);
 
     timeRange = 'hour:';
-    expect(parseTimeCalcMode(timeRange)).toEqual(undefined);
+    expect(parseTimeMode(timeRange)).toEqual(undefined);
   });
 
   it('can humanize time range', () => {

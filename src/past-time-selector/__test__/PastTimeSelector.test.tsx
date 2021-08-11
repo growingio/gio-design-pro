@@ -1,12 +1,12 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Shortcut } from '../demos/PastTimeSelector.stories';
+import { Quick } from '../demos/PastTimeSelector.stories';
 import PastTimeSelector from '../PastTimeSelector';
 
 describe('PastTimeSelector', () => {
   it('should to be selected', () => {
     const handleOnSelect = jest.fn();
-    render(<Shortcut {...Shortcut.args} onSelect={handleOnSelect} />);
+    render(<Quick {...Quick.args} onSelect={handleOnSelect} />);
     expect(screen.getByText(/过去 7 天/)).toBeDefined();
     fireEvent.click(screen.getByText(/过去 7 天/));
     fireEvent.click(screen.getByText('今日'));

@@ -1,21 +1,24 @@
 import has from 'lodash/has';
 import get from 'lodash/get';
 import { format, startOfToday, sub } from 'date-fns';
-import { TimeCalculationMode } from './interfaces';
-import { DATE_FORMAT, SHORTCUT_MAPPING } from './constant';
+import { TimeMode } from './interfaces';
+import { DATE_FORMAT, QUICK_MAPPING } from './constant';
 
-export const parseTimeCalcMode = (timeRange: string | undefined) => {
-  if (!timeRange || has(SHORTCUT_MAPPING, timeRange)) {
-    return 'shortcut';
+export const parseTimeMode = (timeRange: string | undefined) => {
+  if (!timeRange) {
+    return undefined;
+  }
+  if (has(QUICK_MAPPING, timeRange)) {
+    return 'quick';
   }
   const items = timeRange.split(':');
   switch (items[0]) {
     case 'since':
-      return TimeCalculationMode.Since;
+      return TimeMode.Since;
     case 'abs':
-      return TimeCalculationMode.Absolute;
+      return TimeMode.Absolute;
     case 'day':
-      return TimeCalculationMode.Dynamic;
+      return TimeMode.Relative;
     default:
       return undefined;
   }
@@ -65,8 +68,8 @@ export const humanizeTimeRange = (timeRange: string, defaultString: string = 'æ—
   if (!timeRange || timeRange.split(':').length !== 2) {
     return defaultString;
   }
-  if (has(SHORTCUT_MAPPING, timeRange)) {
-    return get(SHORTCUT_MAPPING, timeRange);
+  if (has(QUICK_MAPPING, timeRange)) {
+    return get(QUICK_MAPPING, timeRange);
   }
   const items = timeRange.split(':');
   const times = items[1].split(',').map((str) => parseInt(str, 10));
@@ -92,7 +95,7 @@ export const humanizeTimeRange = (timeRange: string, defaultString: string = 'æ—
 };
 
 export default {
-  parseTimeCalcMode,
+  parseTimeMode,
   parseStartAndEndDate,
   humanizeTimeRange,
 };

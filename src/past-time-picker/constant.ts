@@ -1,15 +1,15 @@
-import { TimeCalculationMode } from './interfaces';
+import { TimeMode } from './interfaces';
 
 export const DATE_FORMAT = 'yyyy/MM/dd';
 
-export const panelModeOptions = [
-  { value: 'shortcut', label: '常用时间' },
-  { value: TimeCalculationMode.Since, label: '自某天以后' },
-  { value: TimeCalculationMode.Dynamic, label: '过去动态时段' },
-  { value: TimeCalculationMode.Absolute, label: '过去固定时段' },
+export const PICKER_OPTIONS: { label: string; value: TimeMode | 'quick' }[] = [
+  { value: 'quick', label: '常用时间' },
+  { value: TimeMode.Since, label: '自某天以后' },
+  { value: TimeMode.Relative, label: '过去动态时段' },
+  { value: TimeMode.Absolute, label: '过去固定时段' },
 ];
 
-export const shortcutOptions = [
+export const quickOptions = [
   [
     { value: 'day:1,0', label: '今日' },
     { value: 'week:1,0', label: '本周' },
@@ -32,7 +32,7 @@ export const shortcutOptions = [
   ],
 ];
 
-export const experimentalShortcutOptions = [
+export const experimentalQuickOptions = [
   [
     { value: 'hour:25,1', label: '过去 24 小时' },
     { value: 'hour:73,1', label: '过去 72 小时' },
@@ -40,7 +40,7 @@ export const experimentalShortcutOptions = [
   [{ value: 'hour:49,1', label: '过去 48 小时' }],
 ];
 
-export const SHORTCUT_MAPPING = {
+export const QUICK_MAPPING = {
   'day:1,0': '今日',
   'week:1,0': '本周',
   'month:1,0': '本月',
@@ -66,8 +66,8 @@ export const END_DATE_MAPPING: { [key: string]: string } = {
 
 export default {
   DATE_FORMAT,
-  panelModeOptions,
-  shortcutOptions,
-  SHORTCUT_MAPPING,
+  experimentalQuickOptions,
+  quickOptions,
+  QUICK_MAPPING,
   END_DATE_MAPPING,
 };

@@ -4,11 +4,11 @@ import DateRangePicker from '@gio-design/components/es/date-range-picker';
 import { formatDates } from '@gio-design/components/es/date-range-selector/utils';
 import { usePrefixCls } from '@gio-design/utils';
 import InnerRangePanel from './InnerRangePanel';
-import { RangePanelProps } from './interfaces';
+import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 
-function AbsoluteRangePanel({ value, onSelect, onCancel }: RangePanelProps) {
-  const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(parseStartAndEndDate(value));
+function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onCancel }: RangePickerProps) {
+  const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(parseStartAndEndDate(timeRange));
   const prefixCls = usePrefixCls('range-panel__header');
 
   const renderHeader = () => {
@@ -17,6 +17,7 @@ function AbsoluteRangePanel({ value, onSelect, onCancel }: RangePanelProps) {
     const text = [dateStrings[0] ?? placeholder[0], dateStrings[1] ?? placeholder[1]];
     return <span className={`${prefixCls}__text`}>{`从 ${text[0]} 至 ${text[1]}`}</span>;
   };
+  const handleDisabledDate = (current: Date) => disabledDate?.(current) || !isBefore(current, startOfToday());
   const handleOnOK = () => {
     // @ts-ignore
     onSelect(`abs:${getTime(startOfDay(dates[0]))},${getTime(endOfDay(dates[1]))}`);
@@ -29,7 +30,7 @@ function AbsoluteRangePanel({ value, onSelect, onCancel }: RangePanelProps) {
       body={
         <DateRangePicker
           defaultViewDates={[subMonths(startOfToday(), 1), startOfToday()]}
-          disabledDate={(current: Date) => !isBefore(current, startOfToday())}
+          disabledDate={handleDisabledDate}
           onSelect={setDates}
           // @ts-ignore
           value={dates}
@@ -41,4 +42,4 @@ function AbsoluteRangePanel({ value, onSelect, onCancel }: RangePanelProps) {
   );
 }
 
-export default AbsoluteRangePanel;
+export default AbsoluteRangePicker;
