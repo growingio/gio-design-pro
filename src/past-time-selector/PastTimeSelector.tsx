@@ -7,12 +7,14 @@ import PastTimePicker from '../past-time-picker';
 import { humanizeTimeRange } from '../past-time-picker/utils';
 
 const PastTimeSelector = ({
+  disabledDate,
+  experimental,
   fitContent = true,
+  modes,
   value,
   onSelect,
   onCancel,
-  shortcutFilter,
-  experimental,
+  quickOptionsFilter,
   ...restProps
 }: PastTimeSelectorProps) => {
   const [controlledVisible, setControlledVisible] = React.useState<boolean>(false);
@@ -35,11 +37,13 @@ const PastTimeSelector = ({
   };
   const dropdownRender = () => (
     <PastTimePicker
+      disabledDate={disabledDate}
+      modes={modes}
       experimental={experimental}
       timeRange={timeRange}
       onSelect={handleOnSelect}
       onCancel={handleOnCancel}
-      shortcutFilter={shortcutFilter}
+      quickOptionsFilter={quickOptionsFilter}
     />
   );
   const renderItem = () => {

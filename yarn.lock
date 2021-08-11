@@ -2155,10 +2155,10 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@21.8.2":
-  version "21.8.2"
-  resolved "https://registry.npmjs.org/@gio-design/components/-/components-21.8.2.tgz#a38478abd9cdb6df9980a002057e31c270d41efb"
-  integrity sha512-1JuX+0hny8Ib40TZcDtfEHsgd/xeofd1ggiphCp4Lu9IwbFWTchEFQghAhvxFuRkjqvvNHJkc0UWMIwHMU5bMA==
+"@gio-design/components@21.8.4":
+  version "21.8.4"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.8.4.tgz#e22d0af5988370cf325c8490fab5b29dae591801"
+  integrity sha512-/icKuxbu0YMeDQV20gh+yS9A9afCIEB7UnY6ttMCYHE51yvQmHTgSEUgYO718mldrq4AJTCLBGgTfiX6Otjv0Q==
   dependencies:
     "@gio-design/table" "7.14.0"
     "@gio-design/utils" "21.8.1"

@@ -1,34 +1,33 @@
 import React from 'react';
 import { differenceInDays, startOfToday, isBefore, startOfDay, isValid, isYesterday, startOfYesterday } from 'date-fns';
-import DynamicRangeBody from './DynamicRangeBody';
-import DynamicRangeHeader from './DynamicRangeHeader';
+import RelativeRangeBody from './RelativeRangeBody';
+import RelativeRangeHeader from './RelativeRangeHeader';
 import InnerRangePanel from './InnerRangePanel';
-import { RangePanelProps } from './interfaces';
+import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 
-function DynamicRangePanel({ value, onSelect, onCancel }: RangePanelProps) {
-  const defaultDates = parseStartAndEndDate(value);
+function RelativeRangePciker({ disabledDate, timeRange, onSelect, onCancel }: RangePickerProps) {
+  const defaultDates = parseStartAndEndDate(timeRange);
   const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(defaultDates);
   const [endDateHidden, setEndDateHidden] = React.useState<boolean>(
     defaultDates[1] ? isYesterday(defaultDates[1]) : true
   );
 
-  const disabledDate = (current: Date) =>
-    !isBefore(startOfDay(current), endDateHidden ? startOfYesterday() : startOfToday());
+  const handleDisabledDate = (current: Date) =>
+    disabledDate?.(current) || !isBefore(startOfDay(current), endDateHidden ? startOfYesterday() : startOfToday());
   const handleOnOK = () => {
     // @ts-ignore
-    const timeRange = `day:${differenceInDays(startOfToday(), dates[0])},${differenceInDays(startOfToday(), dates[1])}`;
-    onSelect(timeRange);
+    onSelect(`day:${differenceInDays(startOfToday(), dates[0])},${differenceInDays(startOfToday(), dates[1])}`);
   };
   return (
     <InnerRangePanel
       disableOK={!isValid(dates[0]) || !isValid(dates[1])}
-      header={<DynamicRangeHeader dateRange={dates} onRangeChange={setDates} onModeChange={setEndDateHidden} />}
+      header={<RelativeRangeHeader dateRange={dates} onRangeChange={setDates} onModeChange={setEndDateHidden} />}
       body={
-        <DynamicRangeBody
+        <RelativeRangeBody
           dateRange={dates}
           fixedMode={endDateHidden}
-          disabledDate={disabledDate}
+          disabledDate={handleDisabledDate}
           onRangeChange={setDates}
         />
       }
@@ -38,4 +37,4 @@ function DynamicRangePanel({ value, onSelect, onCancel }: RangePanelProps) {
   );
 }
 
-export default DynamicRangePanel;
+export default RelativeRangePciker;

@@ -6,7 +6,7 @@ import startOfToday from 'date-fns/startOfToday';
 import subMonths from 'date-fns/subMonths';
 import subDays from 'date-fns/subDays';
 import getTime from 'date-fns/getTime';
-import { startOfYesterday } from 'date-fns';
+import { differenceInDays, startOfYesterday } from 'date-fns';
 import Docs from './PastTimePicker.mdx';
 import PastTimePicker from '../PastTimePicker';
 import { PastTimePickerProps } from '../interfaces';
@@ -33,8 +33,8 @@ const Template: Story<PastTimePickerProps> = (args) => (
   <PastTimePicker onSelect={action('selected value:')} {...args} />
 );
 
-export const Shortcut = Template.bind({});
-Shortcut.args = {
+export const Quick = Template.bind({});
+Quick.args = {
   timeRange: 'day:8,1',
 };
 
@@ -43,8 +43,8 @@ Since.args = {
   timeRange: `since:${getTime(subDays(startOfToday(), 7))}`,
 };
 
-export const Dynamic = Template.bind({});
-Dynamic.args = {
+export const Relative = Template.bind({});
+Relative.args = {
   timeRange: 'day:9,1',
 };
 
@@ -56,4 +56,14 @@ Absolute.args = {
 export const Experiment = Template.bind({});
 Experiment.args = {
   experimental: true,
+};
+
+export const Modes = Template.bind({});
+Modes.args = {
+  modes: ['since', 'relative'],
+};
+
+export const DisabledDate = Template.bind({});
+DisabledDate.args = {
+  disabledDate: (current: Date) => differenceInDays(startOfToday(), current) > 31,
 };

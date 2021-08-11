@@ -2,9 +2,9 @@ import React from 'react';
 import DatePicker from '@gio-design/components/es/date-picker';
 import DateRangePicker from '@gio-design/components/es/date-range-picker';
 import { startOfDay, startOfToday, startOfYesterday, subMonths } from 'date-fns';
-import { RangeBodyProps } from './interfaces';
+import { RelativeRangeBodyProps } from './interfaces';
 
-function DynamicRangeBody({ dateRange, fixedMode, onRangeChange, disabledDate }: RangeBodyProps) {
+function RelativeRangeBody({ dateRange, fixedMode, onRangeChange, disabledDate }: RelativeRangeBodyProps) {
   if (fixedMode) {
     const handleOnSelect = (current: Date) => {
       onRangeChange([startOfDay(current), startOfYesterday()]);
@@ -22,4 +22,4 @@ function DynamicRangeBody({ dateRange, fixedMode, onRangeChange, disabledDate }:
   );
 }
 
-export default DynamicRangeBody;
+export default RelativeRangeBody;

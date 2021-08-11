@@ -13,13 +13,13 @@ import { usePrefixCls } from '@gio-design/utils';
 import { TabNav } from '@gio-design/components';
 import DatePicker from '@gio-design/components/es/date-picker';
 import InnerRangePanel from './InnerRangePanel';
-import { RangePanelProps } from './interfaces';
+import { RangePickerProps } from './interfaces';
 import { DATE_FORMAT, END_DATE_MAPPING } from './constant';
 import { parseStartAndEndDate } from './utils';
 
-function SinceRangePanel({ value, onSelect, onCancel, experimental }: RangePanelProps) {
+function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experimental }: RangePickerProps) {
   const endDateKeys = ['today', experimental ? 'yesterday' : undefined];
-  const dates = parseStartAndEndDate(value);
+  const dates = parseStartAndEndDate(timeRange);
   const prefixCls = usePrefixCls('range-panel__header');
   const [startDate, setStartDate] = React.useState<Date | undefined>(dates[0]);
   const [endKey, setEndKey] = React.useState(endDateKeys[dates[1] ? differenceInDays(startOfToday(), dates[1]) : 0]);
@@ -43,8 +43,8 @@ function SinceRangePanel({ value, onSelect, onCancel, experimental }: RangePanel
       </>
     );
   };
-  const disabledDate = (current: Date) =>
-    !isBefore(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday());
+  const handleDisabledDate = (current: Date) =>
+    disabledDate?.(current) || !isBefore(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday());
 
   const handleOnOK = () => {
     // @ts-ignore
@@ -54,11 +54,11 @@ function SinceRangePanel({ value, onSelect, onCancel, experimental }: RangePanel
     <InnerRangePanel
       disableOK={!isValid(startDate)}
       header={renderHeader()}
-      body={<DatePicker disabledDate={disabledDate} value={startDate} onSelect={setStartDate} />}
+      body={<DatePicker disabledDate={handleDisabledDate} value={startDate} onSelect={setStartDate} />}
       onCancel={onCancel}
       onOK={handleOnOK}
     />
   );
 }
 
-export default SinceRangePanel;
+export default SinceRangePicker;

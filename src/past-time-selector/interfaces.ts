@@ -4,9 +4,19 @@ import { PastTimePickerProps } from '../past-time-picker/interfaces';
 export interface PastTimeSelectorProps
   extends Pick<
       SelectorProps,
-      'borderless' | 'disabled' | 'fitContent' | 'placeholder' | 'size' | 'triggerClassName' | 'triggerStyle'
+      | 'allowClear'
+      | 'borderless'
+      | 'disabled'
+      | 'fitContent'
+      | 'placeholder'
+      | 'size'
+      | 'triggerClassName'
+      | 'triggerStyle'
     >,
-    Pick<PastTimePickerProps, 'experimental' | 'onCancel' | 'onSelect' | 'shortcutFilter'> {
+    Pick<
+      PastTimePickerProps,
+      'disabledDate' | 'experimental' | 'modes' | 'onCancel' | 'onSelect' | 'quickOptionsFilter'
+    > {
   /**
    *  选择的时间范围
    */

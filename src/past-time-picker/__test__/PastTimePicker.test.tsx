@@ -1,7 +1,9 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { differenceInDays, startOfDay } from 'date-fns';
+import startOfToday from 'date-fns/startOfToday';
 import PastTimePicker from '../PastTimePicker';
-import { Dynamic, Since } from '../demos/PastTimePicker.stories';
+import { Relative, Since, Modes } from '../demos/PastTimePicker.stories';
 
 describe('PastTimePicker', () => {
   const handleOnSelect = jest.fn();
@@ -26,7 +28,7 @@ describe('PastTimePicker', () => {
   });
 
   it('renders shortcut mode and with shortcutFilter', () => {
-    render(<PastTimePicker shortcutFilter={(s) => s.value !== 'day:1,0'} />);
+    render(<PastTimePicker quickOptionsFilter={(s) => s.value !== 'day:1,0'} />);
     expect(screen.queryByText('今日')).toBeNull();
   });
 
@@ -63,11 +65,11 @@ describe('PastTimePicker', () => {
     fireEvent.click(screen.getByText(/确 定/));
     expect(handleOnSelect).toHaveBeenCalledWith('day:20,2');
 
-    rerender(<PastTimePicker {...Dynamic.args} />);
+    rerender(<PastTimePicker {...Relative.args} />);
     fireEvent.click(screen.getByText(/确 定/));
   });
 
-  it('renders dynamic mode with end date', () => {
+  it('renders relative mode with end date', () => {
     render(defaultComponent());
     fireEvent.click(screen.getByText('过去动态时段'));
     fireEvent.click(screen.getByText('结束日期'));
@@ -102,5 +104,26 @@ describe('PastTimePicker', () => {
   it('has default mode', () => {
     render(<PastTimePicker timeRange="hour:2,1" />);
     expect(screen.getAllByText(/过去 \d+ 天/)).toHaveLength(6);
+  });
+
+  it('can be customize modes', () => {
+    render(<Modes {...Modes.args} />);
+    expect(screen.queryByText('过去固定时段')).toBeNull();
+  });
+
+  it('can be disabled some dates', () => {
+    render(<PastTimePicker disabledDate={(date) => differenceInDays(startOfToday(), startOfDay(date)) > 5} />);
+    const clickedDateString = '2021-05-10';
+    fireEvent.click(screen.getByText('自某天以后'));
+    fireEvent.click(screen.getByTitle(clickedDateString));
+    expect(screen.queryByText('开始日期')).toBeDefined();
+
+    fireEvent.click(screen.getByText('过去动态时段'));
+    fireEvent.click(screen.getByTitle(clickedDateString));
+    expect(screen.getByTestId('duration').firstElementChild.firstElementChild.getAttribute('value')).toEqual('');
+
+    fireEvent.click(screen.getByText('过去固定时段'));
+    fireEvent.click(screen.getByTitle(clickedDateString));
+    expect(screen.queryByText('开始日期')).toBeDefined();
   });
 });

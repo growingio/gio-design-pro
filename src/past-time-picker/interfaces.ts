@@ -1,13 +1,13 @@
 import React from 'react';
-import { DatePickerProps } from '@gio-design/components/es/date-picker/interfaces';
+import type { DatePickerProps } from '@gio-design/components/es/date-picker/interfaces';
 import type { Option } from '@gio-design/components/es/list-picker/interfaces';
 
 export type EndDateFixedMode = false | 'today' | 'yesterday';
 
-export enum TimeCalculationMode {
-  Since = 'since',
-  Dynamic = 'dynamic',
+export enum TimeMode {
   Absolute = 'absolute',
+  Since = 'since',
+  Relative = 'relative',
 }
 
 interface ExperimentProps {
@@ -17,7 +17,7 @@ interface ExperimentProps {
   experimental?: boolean;
 }
 
-export interface PastTimePickerProps extends ExperimentProps {
+interface PickerProps extends ExperimentProps, Pick<DatePickerProps, 'disabledDate'> {
   /**
    * 时间范围
    */
@@ -25,53 +25,44 @@ export interface PastTimePickerProps extends ExperimentProps {
   /**
    * 选择完后的回调，参数为选中项的 timeRange 值
    */
-  onSelect?: (timeRange: string) => void;
+  onSelect: (timeRange: string) => void;
+}
+
+export interface PastTimePickerProps extends Omit<PickerProps, 'onSelect'> {
+  /**
+   * 显示的面板，默认都显示
+   */
+  modes?: TimeMode[];
+  /**
+   * 常用时间过滤
+   */
+  quickOptionsFilter?: (o: Option) => boolean;
   /**
    * 点击取消按钮时回调
    */
   onCancel?: () => void;
   /**
-   * 常用时间过滤
+   * 选择完后的回调，参数为选中项的 timeRange 值
    */
-  shortcutFilter?: (shortcut: Option) => boolean;
+  onSelect?: (timeRange: string) => void;
 }
 
-export interface PanelSharedProps {
+export interface RangePickerProps extends PickerProps {
   /**
-   * 日期范围
+   * 点击取消按钮时回调
    */
-  dateRange: [Date | undefined, Date | undefined];
-  /**
-   * 日期范围改变时的回调
-   */
-  onRangeChange: (dates: [Date, Date]) => void;
-}
-
-export interface RangeHeaderProps extends ExperimentProps, PanelSharedProps {
-  /**
-   * 结束日期固定模式改变时的回调
-   */
-  onModeChange: (fixedMode: boolean) => void;
-}
-
-export interface RangeBodyProps extends PanelSharedProps, Pick<DatePickerProps, 'disabledDate'> {
-  fixedMode?: boolean;
-}
-
-export interface PanelProps extends ExperimentProps {
-  value?: string;
-  onSelect: (value: string) => void;
-}
-
-export interface RangePanelProps extends PanelProps {
   onCancel?: () => void;
 }
 
-export interface ShortcutPanelProps extends PanelProps {
+export interface QuickPickerProps extends PickerProps {
   /**
-   * 快捷选项列表，
+   * 快捷选项列表
    */
   options: Option[][];
+  /**
+   * 快捷选项过滤
+   */
+  optionsFilter?: (o: Option) => boolean;
 }
 
 export interface InnerRangePanelProps {
@@ -86,4 +77,26 @@ export interface InnerRangePanelProps {
    * 点击取消按钮时回调
    */
   onCancel?: () => void;
+}
+
+interface RangePickerInnerProps {
+  /**
+   * 日期范围
+   */
+  dateRange: [Date | undefined, Date | undefined];
+  /**
+   * 日期范围改变时的回调
+   */
+  onRangeChange: (dates: [Date, Date]) => void;
+}
+
+export interface RelativeRangeHeaderProps extends ExperimentProps, RangePickerInnerProps {
+  /**
+   * 结束日期固定模式改变时的回调
+   */
+  onModeChange: (fixedMode: boolean) => void;
+}
+
+export interface RelativeRangeBodyProps extends RangePickerInnerProps, Pick<DatePickerProps, 'disabledDate'> {
+  fixedMode?: boolean;
 }

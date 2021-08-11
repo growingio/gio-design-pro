@@ -1,18 +1,27 @@
 import React from 'react';
 import { usePrefixCls } from '@gio-design/utils';
 import SelectList from '@gio-design/components/es/list-picker';
-import ShortcutPanel from './ShortcutPanel';
-import { TimeCalculationMode, PastTimePickerProps } from './interfaces';
-import { panelModeOptions, shortcutOptions } from './constant';
-import { parseTimeCalcMode } from './utils';
-import AbsoluteRangePanel from './AbsoluteRangePanel';
-import SinceRangePanel from './SinceRangePanel';
-import DynamicRangePanel from './DynamicRangePanel';
+import { filter } from 'lodash';
+import QuickPicker from './QuickPicker';
+import { PastTimePickerProps, TimeMode } from './interfaces';
+import { quickOptions, PICKER_OPTIONS } from './constant';
+import { parseTimeMode } from './utils';
+import AbsoluteRangePicker from './AbsoluteRangePicker';
+import SinceRangePicker from './SinceRangePicker';
+import RelativeRangePicker from './RelativeRangePicker';
 
-function PastTimePicker({ timeRange, onSelect, onCancel, experimental = false, shortcutFilter }: PastTimePickerProps) {
-  const originMode = parseTimeCalcMode(timeRange);
-  const [mode, setMode] = React.useState<string | undefined>(originMode ?? 'shortcut');
-  // const [currentRange, setCurrentRange] = useState(timeRange, undefined);
+function PastTimePicker({
+  disabledDate,
+  modes = [TimeMode.Since, TimeMode.Relative, TimeMode.Absolute],
+  timeRange,
+  onSelect,
+  onCancel,
+  experimental = false,
+  quickOptionsFilter,
+}: PastTimePickerProps) {
+  const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
+  const originMode = parseMode(timeRange) ?? 'quick';
+  const [mode, setMode] = React.useState<string | undefined>(originMode);
   const [currentRange, setCurrentRange] = React.useState(timeRange);
   const prefixCls = usePrefixCls('past-time-picker');
 
@@ -20,48 +29,43 @@ function PastTimePicker({ timeRange, onSelect, onCancel, experimental = false, s
     setCurrentRange(value);
     onSelect?.(value);
   };
-  const renderPanel = (currentMode: string | undefined) => {
+  const renderPicker = (currentMode: string | undefined) => {
     const valueProps = {
+      disabledDate,
       experimental,
-      value: currentMode === originMode ? currentRange : undefined,
+      timeRange: currentMode === originMode ? currentRange : undefined,
       onSelect: handleOnSelect,
       onCancel,
     };
-    if (currentMode === 'shortcut') {
-      const shortcuts =
-        typeof shortcutFilter === 'function'
-          ? shortcutOptions.map((partial) => partial.filter(shortcutFilter))
-          : shortcutOptions;
-
-      return <ShortcutPanel {...valueProps} options={shortcuts} />;
-    }
     switch (currentMode) {
-      case TimeCalculationMode.Since:
-        return <SinceRangePanel {...valueProps} />;
-      case TimeCalculationMode.Dynamic:
-        return <DynamicRangePanel {...valueProps} />;
-      case TimeCalculationMode.Absolute:
+      case 'quick':
+        return <QuickPicker {...valueProps} options={quickOptions} optionsFilter={quickOptionsFilter} />;
+      case TimeMode.Since:
+        return <SinceRangePicker {...valueProps} />;
+      case TimeMode.Relative:
+        return <RelativeRangePicker {...valueProps} />;
+      case TimeMode.Absolute:
       default:
-        return <AbsoluteRangePanel {...valueProps} />;
+        return <AbsoluteRangePicker {...valueProps} />;
     }
   };
 
   React.useEffect(() => {
-    setMode(parseTimeCalcMode(timeRange) ?? 'shortcut');
+    setMode(parseMode(timeRange) ?? 'quick');
   }, [timeRange]);
 
   return (
     <div className={prefixCls}>
       <div className={`${prefixCls}__time-mode`}>
         <SelectList
-          options={panelModeOptions}
+          options={filter(PICKER_OPTIONS, (o) => o.value === 'quick' || modes.includes(o.value))}
           value={mode}
           onSelect={(value) => {
             setMode(value);
           }}
         />
       </div>
-      <div className={`${prefixCls}__panel`}>{renderPanel(mode)}</div>
+      <div className={`${prefixCls}__panel`}>{renderPicker(mode)}</div>
     </div>
   );
 }
