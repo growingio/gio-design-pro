@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { FilterOutlined } from '@gio-design/icons';
 import { TableCard, TableCardSingle } from '../Panel.stories';
 
 describe('Render Panel with default args', () => {
@@ -13,7 +14,7 @@ describe('Render Panel with default args', () => {
   it('should render signle panel', () => {
     const onTabClick = jest.fn();
     const onChange = jest.fn();
-    const wrapper = render(<TableCardSingle onChange={onChange} onTabClick={onTabClick} />);
+    const wrapper = render(<TableCardSingle onChange={onChange} onTabClick={onTabClick} avatar={<FilterOutlined />} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

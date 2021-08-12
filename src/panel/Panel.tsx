@@ -67,13 +67,15 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
           { [prefix('__header--hidden')]: !showHeader }
         )}
       >
-        <div className={prefix('__header__avatar')}>
-          <div className={prefix('__header__avatar--icon')}>{avatar}</div>
-        </div>
+        {avatar && (
+          <div className={prefix('__header__avatar')}>
+            <div className={prefix('__header__avatar--icon')}>{avatar}</div>
+          </div>
+        )}
         <div className={prefix('__header__meta')}>
           <div className={classnames(prefix('__header__meta__title'))}>{title}</div>
           <div className={classnames(prefix('__header__meta__description'))}>
-            <Text lines={3}>{description}</Text>
+            {typeof description === 'string' ? <Text lines={3}>{description}</Text> : description}
           </div>
         </div>
         <div className={classnames(prefix('__header__actions'))}>{actions}</div>
