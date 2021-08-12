@@ -123,12 +123,13 @@ const TitleInfoCardStory: Story<PanelProps> = (args) => <Panel {...args} />;
 export const TableCard = MultiplePanel.bind({});
 TableCard.args = {
   title: '全部成员(233)',
-  description: '这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题',
+  description: '这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题'.repeat(10),
 };
 
 export const TableCardSingle = SinglePanel.bind({});
 TableCardSingle.args = {
   ...TableCard.args,
+  description: <span>{'这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题'.repeat(10)}</span>,
 };
 
 export const TitleInfoCard = TitleInfoCardStory.bind({});

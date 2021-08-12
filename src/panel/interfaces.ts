@@ -3,7 +3,12 @@ import { BaseProps } from '../utils/interfaces';
 
 export interface PanelProps extends PropsWithChildren<BaseProps> {
   title?: React.ReactNode;
-  description?: React.ReactNode;
+  /**
+   * 描述
+   * type string 默认最多显示3行
+   * type React.ReactNode 自定义
+   */
+  description?: React.ReactNode | string;
   descriptionClamp?: number;
   tabType?: 'line' | 'block';
   tabSize?: 'small' | 'middle' | 'large';
