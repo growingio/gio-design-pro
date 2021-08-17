@@ -3270,10 +3270,21 @@
     webpack-dev-middleware "^3.7.3"
     webpack-virtual-modules "^0.2.2"
 
-"@storybook/node-logger@6.3.6", "@storybook/node-logger@^6.3.6":
+"@storybook/node-logger@6.3.6":
   version "6.3.6"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.3.6.tgz#10356608593440a8e3acf2aababef40333a3401b"
   integrity sha512-XMDkMN7nVRojjiezrURlkI57+nz3OoH4UBV6qJZICKclxtdKAy0wwOlUSYEUq+axcJ4nvdfzPPoDfGoj37SW7A==
+  dependencies:
+    "@types/npmlog" "^4.1.2"
+    chalk "^4.1.0"
+    core-js "^3.8.2"
+    npmlog "^4.1.2"
+    pretty-hrtime "^1.0.3"
+
+"@storybook/node-logger@^6.3.6":
+  version "6.3.7"
+  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.3.7.tgz#492469ea4749de8d984af144976961589a1ac382"
+  integrity sha512-YXHCblruRe6HcNefDOpuXJoaybHnnSryIVP9Z+gDv6OgLAMkyxccTIaQL9dbc/eI4ywgzAz4kD8t1RfVwXNVXw==
   dependencies:
     "@types/npmlog" "^4.1.2"
     chalk "^4.1.0"
@@ -6535,12 +6546,7 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.0.4, core-js@^3.6.5:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.9.1.tgz#cec8de593db8eb2a85ffb0dbdeb312cb6e5460ae"
-  integrity sha512-gSjRvzkxQc1zjM/5paAmL4idJBFzuJoo+jDjF1tStYFMV2ERfD02HhahhCGXUyHxQRG4yFKVSdO6g62eoRMcDg==
-
-core-js@^3.8.2:
+core-js@^3.0.4, core-js@^3.6.5, core-js@^3.8.2:
   version "3.12.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.12.1.tgz#6b5af4ff55616c08a44d386f1f510917ff204112"
   integrity sha512-Ne9DKPHTObRuB09Dru5AjwKjY4cJHVGu+y5f7coGn1E9Grkc3p2iBwE9AI/nJzsE29mQF7oq+mhYYRqOMFN1Bw==
