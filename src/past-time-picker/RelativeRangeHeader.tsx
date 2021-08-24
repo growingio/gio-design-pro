@@ -6,12 +6,12 @@ import { differenceInDays, startOfDay, startOfToday } from 'date-fns';
 import { subDays } from 'date-fns/esm';
 import { RelativeRangeHeaderProps } from './interfaces';
 
-const convertDateToDays = (date: Date | undefined, defaultValue: number | undefined) =>
+const convertDateToDays = (date: Date | undefined, defaultValue: number) =>
   date ? differenceInDays(startOfToday(), startOfDay(date)) : defaultValue;
 
 function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: RelativeRangeHeaderProps) {
-  const [startDays, setStartDays] = React.useState<number | undefined>(convertDateToDays(dateRange[0], undefined));
-  const [endDays, setEndDays] = React.useState<number | undefined>(convertDateToDays(dateRange[1], 1));
+  const [startDays, setStartDays] = React.useState<number>(convertDateToDays(dateRange[0], 2));
+  const [endDays, setEndDays] = React.useState<number>(convertDateToDays(dateRange[1], 1));
   const [endDaysHidden, setEndDaysHidden] = React.useState(endDays === 1);
 
   const basePrefixCls = usePrefixCls('range-panel__header');
@@ -22,18 +22,19 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
   };
 
   const renderDuration = () => {
-    const duration = startDays && endDays ? startDays - endDays : undefined;
+    const duration = startDays - endDays;
     return (
       <>
         <span className={`${basePrefixCls}__text`}>过去</span>
         <span className={`${basePrefixCls}__input-number`} data-testid="duration">
           <Input.InputNumber
-            min={endDays}
-            max={10000}
-            // @ts-ignore
+            min={1}
+            max={9999}
             value={duration}
             onChange={(value) => {
-              setRange((value as number) + (endDays as number), endDays as number);
+              if (value && value >= 1 && value <= 9999) {
+                setRange((value as number) + (endDays as number), endDays as number);
+              }
             }}
             size="small"
           />
@@ -44,9 +45,6 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
           type="secondary"
           icon={<PlusOutlined />}
           onClick={() => {
-            if (!startDays) {
-              setEndDays(undefined);
-            }
             setEndDaysHidden(false);
             onModeChange(false);
           }}
@@ -63,11 +61,12 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
       <span className={`${basePrefixCls}__input-number`} data-testid="end-days">
         <Input.InputNumber
           min={0}
-          max={startDays}
-          // @ts-ignore
+          max={startDays - 1}
           value={endDays}
           onChange={(value) => {
-            setRange(startDays as number, value as number);
+            if (value && value < startDays) {
+              setRange(startDays as number, value as number);
+            }
           }}
           size="small"
         />
@@ -75,12 +74,13 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
       <span className={`${basePrefixCls}__text`}>至</span>
       <span className={`${basePrefixCls}__input-number`} data-testid="start-days">
         <Input.InputNumber
-          min={endDays}
+          min={endDays + 1}
           max={10000}
-          // @ts-ignore
           value={startDays}
           onChange={(value) => {
-            setRange(value as number, endDays as number);
+            if (value && value > endDays) {
+              setRange(value as number, endDays as number);
+            }
           }}
           size="small"
         />
@@ -91,7 +91,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
 
   React.useEffect(() => {
     const currentEndDays = convertDateToDays(dateRange[1], 1);
-    setStartDays(convertDateToDays(dateRange[0], undefined));
+    setStartDays(convertDateToDays(dateRange[0], 2));
     setEndDays(currentEndDays);
   }, [dateRange]);
 

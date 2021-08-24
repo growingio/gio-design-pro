@@ -12,6 +12,7 @@ export interface PastTimeSelectorProps
       | 'size'
       | 'triggerClassName'
       | 'triggerStyle'
+      | 'getContainer'
     >,
     Pick<
       PastTimePickerProps,

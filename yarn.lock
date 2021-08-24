@@ -2103,13 +2103,12 @@
   dependencies:
     yargs "^16.2.0"
 
-"@gio-design/components@21.8.4":
-  version "21.8.4"
-  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.8.4.tgz#e22d0af5988370cf325c8490fab5b29dae591801"
-  integrity sha512-/icKuxbu0YMeDQV20gh+yS9A9afCIEB7UnY6ttMCYHE51yvQmHTgSEUgYO718mldrq4AJTCLBGgTfiX6Otjv0Q==
+"@gio-design/components@21.8.6":
+  version "21.8.6"
+  resolved "https://registry.yarnpkg.com/@gio-design/components/-/components-21.8.6.tgz#c2cd210e922b57a523f359ce2ef28dca86a25d68"
+  integrity sha512-vV/3wVilTIKim7DAUmxBwuDNT8eSJLKykiMj+T1OEuqBB7G8Dzmicwv6uX1dljhpBALKHc/FnCL5M3XFN5AhOQ==
   dependencies:
     "@gio-design/table" "7.14.0"
-    "@gio-design/utils" "21.8.1"
     classnames "^2.2.6"
     date-fns "^2.21.3"
     lodash "^4.17.14"
@@ -2125,7 +2124,7 @@
     rc-notification "^4.5.4"
     rc-picker "^2.5.10"
     rc-tooltip "^5.0.1"
-    rc-tree "3.9.5"
+    rc-tree "5.0.2"
     rc-tree-select "4.1.2"
     rc-trigger "^4.3.0"
     rc-upload "4.3.1"
@@ -2163,7 +2162,7 @@
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
   integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
 
-"@gio-design/utils@21.8.1", "@gio-design/utils@^21.8.1":
+"@gio-design/utils@^21.8.1":
   version "21.8.1"
   resolved "https://registry.npmjs.org/@gio-design/utils/-/utils-21.8.1.tgz#eb4c66b47ee2e6fe54617459f47e974e4a79ab33"
   integrity sha512-2iWuJtrflcAdDbSOZUqFCAUaXcN9DXZTU5G2goMRxB8EXNSgPsuHIZwHKbChVhYEjOy48f6jaEVAU7HPyePz/w==
@@ -13856,16 +13855,16 @@ rc-tree-select@4.1.2:
     rc-tree "^3.8.0"
     rc-util "^5.0.5"
 
-rc-tree@3.9.5:
-  version "3.9.5"
-  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-3.9.5.tgz#07bab1baf11414ec910578759e69f9373e93f424"
-  integrity sha512-ZGVl1o83hZoz971pzY9Y7yZM+f9qcia1Gym+QNyc3zMGQVshbr6CX2WZ8xUK18tTkdRSqbTXmZFnvYf1lfqT8A==
+rc-tree@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-5.0.2.tgz#d420e4f0c07f70eb571a46b2103b2e18a2436b6a"
+  integrity sha512-K2EIBWtefYSiq8tq5Wf97IaemjR7xGPhfvE6jTlKt+wVZrqwRnxln/Ps6g53r+eu2k+wf5+nQ4KkbvqPDekE1A==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"
-    rc-motion "^1.0.0"
+    rc-motion "^2.0.1"
     rc-util "^5.0.0"
-    rc-virtual-list "^3.0.1"
+    rc-virtual-list "^3.2.0"
 
 rc-tree@^3.8.0:
   version "3.11.0"

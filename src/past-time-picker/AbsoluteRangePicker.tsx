@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTime, isValid, isBefore, startOfToday, subMonths, endOfDay, startOfDay } from 'date-fns';
+import { getTime, isValid, isAfter, startOfToday, subMonths, endOfDay, startOfDay } from 'date-fns';
 import DateRangePicker from '@gio-design/components/es/date-range-picker';
 import { formatDates } from '@gio-design/components/es/date-range-selector/utils';
 import { usePrefixCls } from '@gio-design/utils';
@@ -17,7 +17,7 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onCancel }: Ra
     const text = [dateStrings[0] ?? placeholder[0], dateStrings[1] ?? placeholder[1]];
     return <span className={`${prefixCls}__text`}>{`从 ${text[0]} 至 ${text[1]}`}</span>;
   };
-  const handleDisabledDate = (current: Date) => disabledDate?.(current) || !isBefore(current, startOfToday());
+  const handleDisabledDate = (current: Date) => disabledDate?.(current) || isAfter(current, startOfToday());
   const handleOnOK = () => {
     // @ts-ignore
     onSelect(`abs:${getTime(startOfDay(dates[0]))},${getTime(endOfDay(dates[1]))}`);
