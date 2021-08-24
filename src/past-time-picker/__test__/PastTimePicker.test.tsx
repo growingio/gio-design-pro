@@ -43,7 +43,7 @@ describe('PastTimePicker', () => {
     fireEvent.click(screen.getByText(/确 定/));
   });
 
-  it('renders dynamic mode', () => {
+  it('renders relative mode', () => {
     const { rerender } = render(defaultComponent());
     fireEvent.click(screen.getByText('过去动态时段'));
     fireEvent.click(screen.getByTitle('2021-05-01'));
@@ -51,6 +51,9 @@ describe('PastTimePicker', () => {
     expect(handleOnSelect).toHaveBeenCalledWith('day:19,1');
 
     fireEvent.change(screen.getByTestId('duration').firstElementChild.firstElementChild, { target: { value: '10' } });
+    fireEvent.change(screen.getByTestId('duration').firstElementChild.firstElementChild, {
+      target: { value: '10001' },
+    });
     fireEvent.click(screen.getByText(/确 定/));
     expect(handleOnSelect).toHaveBeenCalledWith('day:11,1');
 
@@ -60,8 +63,12 @@ describe('PastTimePicker', () => {
     fireEvent.click(screen.getByText(/确 定/));
     expect(handleOnSelect).toHaveBeenCalledWith('day:31,1');
 
-    fireEvent.change(screen.getByTestId('start-days').firstElementChild.firstElementChild, { target: { value: '20' } });
-    fireEvent.change(screen.getByTestId('end-days').firstElementChild.firstElementChild, { target: { value: '2' } });
+    const startDaysElement = screen.getByTestId('start-days').firstElementChild.firstElementChild;
+    const endDaysElement = screen.getByTestId('end-days').firstElementChild.firstElementChild;
+    fireEvent.change(startDaysElement, { target: { value: '20' } });
+    fireEvent.change(endDaysElement, { target: { value: '2' } });
+    fireEvent.change(startDaysElement, { target: { value: '1' } });
+    fireEvent.change(endDaysElement, { target: { value: '21' } });
     fireEvent.click(screen.getByText(/确 定/));
     expect(handleOnSelect).toHaveBeenCalledWith('day:20,2');
 
@@ -120,7 +127,7 @@ describe('PastTimePicker', () => {
 
     fireEvent.click(screen.getByText('过去动态时段'));
     fireEvent.click(screen.getByTitle(clickedDateString));
-    expect(screen.getByTestId('duration').firstElementChild.firstElementChild.getAttribute('value')).toEqual('');
+    expect(screen.getByTestId('duration').firstElementChild.firstElementChild.getAttribute('value')).toEqual('1');
 
     fireEvent.click(screen.getByText('过去固定时段'));
     fireEvent.click(screen.getByTitle(clickedDateString));

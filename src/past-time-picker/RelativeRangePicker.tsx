@@ -1,5 +1,5 @@
 import React from 'react';
-import { differenceInDays, startOfToday, isBefore, startOfDay, isValid, isYesterday, startOfYesterday } from 'date-fns';
+import { differenceInDays, startOfToday, startOfDay, isValid, isYesterday, startOfYesterday, isAfter } from 'date-fns';
 import RelativeRangeBody from './RelativeRangeBody';
 import RelativeRangeHeader from './RelativeRangeHeader';
 import InnerRangePanel from './InnerRangePanel';
@@ -7,14 +7,13 @@ import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 
 function RelativeRangePciker({ disabledDate, timeRange, onSelect, onCancel }: RangePickerProps) {
-  const defaultDates = parseStartAndEndDate(timeRange);
-  const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(defaultDates);
-  const [endDateHidden, setEndDateHidden] = React.useState<boolean>(
-    defaultDates[1] ? isYesterday(defaultDates[1]) : true
-  );
+  const defaultDates = parseStartAndEndDate(timeRange ?? 'day:2,1');
+  // @ts-ignore
+  const [dates, setDates] = React.useState<[Date, Date]>(defaultDates);
+  const [endDateHidden, setEndDateHidden] = React.useState<boolean>(isYesterday(dates[1]));
 
   const handleDisabledDate = (current: Date) =>
-    disabledDate?.(current) || !isBefore(startOfDay(current), endDateHidden ? startOfYesterday() : startOfToday());
+    disabledDate?.(current) || isAfter(startOfDay(current), endDateHidden ? startOfYesterday() : startOfToday());
   const handleOnOK = () => {
     // @ts-ignore
     onSelect(`day:${differenceInDays(startOfToday(), dates[0])},${differenceInDays(startOfToday(), dates[1])}`);

@@ -46,6 +46,12 @@ Experiment.args = {
   experimental: true,
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+  value: 'day:2,1',
+};
+
 export const Modes = Template.bind({});
 Modes.args = {
   modes: ['since', 'relative'],

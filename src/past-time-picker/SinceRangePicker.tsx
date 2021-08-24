@@ -4,10 +4,10 @@ import {
   getTime,
   startOfToday,
   startOfYesterday,
-  isBefore,
   differenceInDays,
   startOfDay,
   isValid,
+  isAfter,
 } from 'date-fns';
 import { usePrefixCls } from '@gio-design/utils';
 import { TabNav } from '@gio-design/components';
@@ -44,7 +44,7 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
     );
   };
   const handleDisabledDate = (current: Date) =>
-    disabledDate?.(current) || !isBefore(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday());
+    disabledDate?.(current) || isAfter(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday());
 
   const handleOnOK = () => {
     // @ts-ignore
