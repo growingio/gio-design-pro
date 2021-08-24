@@ -1626,14 +1626,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
-  version "7.14.0"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
-  integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.14.8":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.14.8", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.14.8"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
   integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
@@ -2199,7 +2192,7 @@
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
   integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
 
-"@gio-design/utils@21.8.1", "@gio-design/utils@^21.8.1":
+"@gio-design/utils@21.8.1":
   version "21.8.1"
   resolved "https://registry.npmjs.org/@gio-design/utils/-/utils-21.8.1.tgz#eb4c66b47ee2e6fe54617459f47e974e4a79ab33"
   integrity sha512-2iWuJtrflcAdDbSOZUqFCAUaXcN9DXZTU5G2goMRxB8EXNSgPsuHIZwHKbChVhYEjOy48f6jaEVAU7HPyePz/w==
@@ -2208,6 +2201,15 @@
     lodash "^4.17.21"
     pinyin "^2.9.1"
     react-intl "^5.15.8"
+
+"@gio-design/utils@^21.8.1":
+  version "21.8.5"
+  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.8.5.tgz#9c23aa2981600d4fc4d4f3ef4dd85876c6c8b7ff"
+  integrity sha512-JV4Es9wm9C86o5H6c55xMKMIVvU/34qpViq5oiQwwkq8Mi7n6MScQ8kn1fyeaei+Z23kYpfKR0o9BP6erv6BXg==
+  dependencies:
+    "@babel/runtime" "^7.14.8"
+    lodash "^4.17.21"
+    pinyin "^2.9.1"
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
