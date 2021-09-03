@@ -351,7 +351,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
               );
               acc.push(...cur);
               return acc;
-            }, []) || [],
+            }, []),
           (o) => o.groupId
         );
       } else {
