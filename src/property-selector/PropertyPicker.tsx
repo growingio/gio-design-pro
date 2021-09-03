@@ -104,7 +104,18 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (originDataSource && originDataSource.length && !('value' in originDataSource[0])) {
         propertiItemList = originDataSource.map((v) => {
           const item = dimensionToPropertyItem(v as Dimension);
-          item.itemIcon = () => <IconRender group={item?.groupId} />;
+          item.itemIcon = () => {
+            // 针对多物品模型，物品属性不再作为事件下面的属性，而是作为事件属性下面绑定的属性
+            if (item.associatedId) {
+              return (
+                <span>
+                  <span style={{ width: '22px', display: 'inline-block' }} />
+                  <IconRender group={item?.groupId} />
+                </span>
+              );
+            }
+            return <IconRender group={item?.groupId} />;
+          };
           return item;
         });
       } else {
@@ -322,7 +333,31 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     );
     const groupDataNodes = keys(groupDatasource).map((key, index) => {
       const groupData = groupDatasource[key];
-      const subGroupDic = groupBy(groupData, (o) => o.groupId);
+
+      let subGroupDic;
+      if (key === 'event' && 'associatedId' in groupData[0]) {
+        subGroupDic = groupBy(
+          groupData
+            .filter((ele) => !ele.associatedId)
+            .map((ele) => [ele])
+            ?.reduce((acc, cur) => {
+              cur.push(
+                ...groupData
+                  .filter((e) => e.associatedId === cur[0].id)
+                  .map((e) => {
+                    e.groupId = key;
+                    return e;
+                  })
+              );
+              acc.push(...cur);
+              return acc;
+            }, []) || [],
+          (o) => o.groupId
+        );
+      } else {
+        subGroupDic = groupBy(groupData, (o) => o.groupId);
+      }
+
       const { typeName } = groupData[0];
       // 此处的处理是 如果2级分组只有一组 提升为一级分组；如果没有这个需求删除该if分支 ；
       if (keys(subGroupDic).length === 1) {
