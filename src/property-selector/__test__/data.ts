@@ -218,6 +218,16 @@ export const insightDimensions = [
     groupName: '物品属性',
     valueType: 'string',
     description: '',
+    associatedId: 'var_engageType',
+  },
+  {
+    associatedId: '',
+    groupId: 'event',
+    groupName: '事件变量',
+    id: 'var_engageType',
+    name: '产品交互性参与类型',
+    type: 'event',
+    valueType: 'string',
   },
   {
     groupId: 'normal',
