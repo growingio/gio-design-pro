@@ -18,31 +18,31 @@ export default {
   title: 'Business Components/Panel',
   argTypes: {
     title: {
-      defaultValue: '',
+      table: { defaultValue: '' },
       description: '标题',
     },
     description: {
-      defaultValue: '',
+      table: { defaultValue: '' },
       description: '描述',
     },
     tabType: {
-      defaultValue: 'line',
+      table: { defaultValue: 'line' },
       description: 'TabNav的类型',
     },
     tabSize: {
-      defaultValue: 'middle',
+      table: { defaultValue: 'middle' },
       description: 'TabNav的大小',
     },
     activeKey: {
-      defaultValue: undefined,
+      table: { defaultValue: undefined },
       description: '当前激活的tabPanel的key',
     },
     defaultActiveKey: {
-      defaultValue: undefined,
+      table: { defaultValue: undefined },
       description: '默认激活的tabPanel的key, 如设置activeKey 此值无效',
     },
     footer: {
-      defaultValue: undefined,
+      table: { defaultValue: undefined },
       description: '注脚部分',
     },
   },
