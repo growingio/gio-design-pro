@@ -11,12 +11,12 @@ export default {
   title: 'Business Components/Panel/BatchActions',
   argTypes: {
     count: {
-      defaultValue: 0,
       description: '已选择数量',
+      table: { defaultValue: 0 },
     },
     onClose: {
-      defaultValue: () => {},
       description: '点击取消的回调',
+      table: { defaultValue: () => {} },
     },
   },
 } as Meta<BatchActionProps>;

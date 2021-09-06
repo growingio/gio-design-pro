@@ -23,7 +23,6 @@
   ],
   "scripts": {
     "build": "gio-rewire lib compile",
-    "build-sotrybook": "build-storybook -s public",
     "preversion": "git fetch --tags",
     "postversion": "yarn gen-version && yarn gen-changelog",
     "gen-version": "conventional-changelog -p angular > VERSION.md",
@@ -31,6 +30,7 @@
     "get-version": "gio-design version -p ./package.json",
     "eslint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "storybook": "start-storybook -p 6006 -s public",
+    "storybook:build": "build-storybook -s public",
     "stylelint": "stylelint 'src/**/*.less' --syntax less",
     "test": "TZ=Asia/Shanghai jest"
   },
