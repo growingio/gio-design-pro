@@ -30,7 +30,7 @@ const Template: Story<PropertyPickerProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  dataSource,
+  dataSource: insightDimensions,
   disabledValues: ['b'],
   // placeholder: '请选择...',
   onChange: (v: any) => {
