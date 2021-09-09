@@ -1,102 +1,8 @@
 name: Continuous Delivery
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 jobs:
-  install:
-    name: Install dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.4.0
-        with:
-          node-version: 14
-      - name: Cache Node.js modules
-        id: cache-node-modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Install
-        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
-        run: yarn install
-  lint:
-    name: Lint codes
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.4.0
-        with:
-          node-version: 14
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: StyleLint
-        run: yarn stylelint
-      - name: ESLint
-        run: yarn eslint
-  unit_test:
-    name: Unit test
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.4.0
-        with:
-          node-version: 14
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Test
-        run: yarn test --coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2.0.3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          directory: coverage/
-  build:
-    name: Build package
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.4.0
-        with:
-          node-version: 14.x
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache package
-        id: cache-package
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            dist
-            es
-          key: package-${{ github.sha }}
-      - name: Build package
-        if: steps.cache-package.outputs.cache-hit != 'true'
-        run: yarn build
   publish-package:
     name: Publish package
-    needs: build
-    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -111,20 +17,15 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Restore package from cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            dist
-            es
-          key: package-${{ github.sha }}
+      - name: Build
+        run: yarn build
       - name: Publish package
         run: yarn publish --non-interactive --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Get package version
         id: get-package-version
-        run: echo "::set-output name=version::$(yarn -s get-version)"
+        run: echo "::set-output name=version::$(node script/version.js)"
       - name: Publish GitHub release
         uses: actions/create-release@v1
         env:
