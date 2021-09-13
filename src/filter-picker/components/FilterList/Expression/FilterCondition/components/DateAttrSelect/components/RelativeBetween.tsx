@@ -29,7 +29,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
     if (nowOrFuture === '-1') {
       t = `relativeTime:-${v1},-${v2}`;
     } else {
-      t = `relativeTime:${v1}, ${v2}`;
+      t = `relativeTime:${v1},${v2}`;
     }
     onChange(t);
   };
