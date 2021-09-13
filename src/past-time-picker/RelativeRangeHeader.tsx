@@ -2,8 +2,7 @@ import React from 'react';
 import { Input, Button } from '@gio-design/components';
 import { usePrefixCls } from '@gio-design/utils';
 import { PlusOutlined } from '@gio-design/icons';
-import { differenceInDays, startOfDay, startOfToday } from 'date-fns';
-import { subDays } from 'date-fns/esm';
+import { differenceInDays, startOfDay, startOfToday, subDays } from 'date-fns';
 import { RelativeRangeHeaderProps } from './interfaces';
 
 const convertDateToDays = (date: Date | undefined, defaultValue: number) =>
