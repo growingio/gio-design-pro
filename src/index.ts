@@ -20,3 +20,4 @@ export { TreeCard, TreeCardProps } from './tree-card';
 export { default as Panel } from './panel';
 export { default as PastTimePicker, PastTimePickerProps } from './past-time-picker';
 export { default as PastTimeSelector, PastTimeSelectorProps } from './past-time-selector';
+export { default as InfoCard, InfoCardMeta, InfoCardProps, InfoCardMetaProps } from './info-card';
