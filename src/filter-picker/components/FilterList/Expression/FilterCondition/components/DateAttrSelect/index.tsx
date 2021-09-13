@@ -50,10 +50,11 @@ function DateAttrSelect(props: DateAttrSelectProps) {
     // console.log(val, 'val')
     // console.log(val.split(":"), val.split(":")[1].split(','), '=================')
     if (attr.includes('relative') && attr !== 'relativeTime') {
+      const valsList = val.split(':')[1].split(',');
       if (attr.includes('Current')) {
-        return !(val.includes('0') || val.split(':')[1].split(',').length === 1);
+        return !(valsList.includes('0') || valsList.length === 1);
       }
-      return val.includes('0');
+      return valsList.includes('0');
     }
     return !val.includes('abs');
   };
