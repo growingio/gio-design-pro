@@ -1,9 +1,13 @@
+@import '../../stylesheets//index.less';
+@prefix: ~'@{component-prefix}';
+
 .operation-menu {
   padding: 16px 8px;
-  ul.gio-menu {
+  ul.@{prefix}-menu {
     text-align: left;
-    li.gio-menu-item {
-      padding: 0 20px;
+    li.@{prefix}-menu-item {
+      padding: 0 var(--operation-menu-list-indent, 12px);
+      border-radius: 4px;
     }
   }
 }

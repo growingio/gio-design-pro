@@ -18,13 +18,19 @@ const OperateMenu = (props: OperationMenuProps) => {
     placement = 'bottomRight',
     buttonType = 'text',
     iconClassName,
+    verticalIndent = 12,
   } = props;
 
   return (
     <div onClick={(e: any) => e.stopPropagation()}>
       <Dropdown
         overlay={
-          <OperationMenuList width={width} options={options} onClick={(option: any) => props.onClick?.(option)} />
+          <OperationMenuList
+            width={width}
+            options={options}
+            onClick={(option: any) => props.onClick?.(option)}
+            verticalIndent={verticalIndent}
+          />
         }
         placement={placement}
         trigger={trigger}

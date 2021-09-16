@@ -17,4 +17,5 @@ Default.args = {
   options,
   // eslint-disable-next-line no-console
   onClick: (a: any) => console.log(a),
+  verticalIndent: 12,
 };

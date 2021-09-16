@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Menu, { MenuItem } from '@gio-design/components/es/components/menu';
 import { Tooltip } from '@gio-design/components';
 import { OperationMenuListOption, OperationMenuListProps } from './interfaces';
 
 const OperationMenuList = (props: OperationMenuListProps) => {
-  const { options, width = 'auto' } = props;
+  const { options, width = 'auto', verticalIndent = 12 } = props;
+
+  useEffect(() => {
+    document.body.style.setProperty('--operation-menu-list-indent', `${verticalIndent}px`);
+    return () => {
+      document.body.style.removeProperty('--operation-menu-list-indent');
+    };
+  }, [verticalIndent]);
 
   return (
     <div className="operation-menu" style={{ width }}>
-      <Menu mode="vertical" onClick={(e: any) => props.onClick?.(e)}>
+      <Menu mode="vertical" onClick={(e: any) => props.onClick?.(e)} verticalIndent={verticalIndent}>
         {options
           .filter((option: OperationMenuListOption) => !option.hidden)
           .map((option: OperationMenuListOption) => (

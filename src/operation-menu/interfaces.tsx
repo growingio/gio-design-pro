@@ -17,6 +17,10 @@ export interface OperationMenuListProps {
   options: OperationMenuListOption[];
   width?: number | 'auto';
   onClick?: (value: OperationMenuListOption) => void;
+  /**
+   * @default 12
+   */
+  verticalIndent?: number;
 }
 
 export interface OperationMenuProps {
@@ -31,4 +35,8 @@ export interface OperationMenuProps {
   width?: number | 'auto';
   onClick?: (value: OperationMenuListOption) => void;
   onVisibleChange?: (visible: boolean) => void;
+  /**
+   * @default 12
+   */
+  verticalIndent?: number;
 }
