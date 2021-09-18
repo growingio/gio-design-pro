@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
 import { Button } from '@gio-design/components';
 import PropertyPicker from '../../../../property-selector';
@@ -37,9 +37,9 @@ function Expression(props: ExpressionProps) {
   const [values, setValues] = useState<string[]>(filterItem?.values);
   const [exprKey, setExprKey] = useState<string>(filterItem?.key || '');
   const [exprName, setExprName] = useState<string>(filterItem?.name || '');
+  const [groupId, setGroupId] = useState<string>(filterItem?.groupId || '');
   const [op, setOp] = useState<StringValue | NumberValue | DateValue>(filterItem?.op);
   const [subFilterItem, setSubFilterItem] = useState<FilterValueType>(filterItem);
-
   const { fetchDetailData, operationsOption } = React.useContext(FilterPickerContext);
 
   const submit = (v: FilterValueType) => {
@@ -69,15 +69,22 @@ function Expression(props: ExpressionProps) {
     v && setExprKey(v.value);
     v && setValues([]);
     v && setOp('=');
+    v && setGroupId(v.groupId);
     const expr: FilterValueType = {
       key: v.value,
       name: v.label,
       valueType: v?.valueType || 'string',
       op: '=',
+      groupId: v.groupId,
       values: [],
     };
     onChange(expr, index);
   };
+
+  const propertyValue = useMemo(
+    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey, groupId } : undefined),
+    [exprKey, exprName, groupId]
+  );
 
   return (
     <div className="expression-box" id="expression-box">
@@ -86,7 +93,7 @@ function Expression(props: ExpressionProps) {
         <PropertyPicker
           data-testid="propertySelect"
           placeholder="选择属性"
-          value={exprKey ? { value: exprKey, label: exprName, id: exprKey } : undefined}
+          value={propertyValue}
           dataSource={propertyOptions.filter((option: any) => {
             const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];
             return option.id === exprKey || inavailableOptions.indexOf(option.id) === -1; // && !(/like/.test(operator) && option.id === 'cs1'）saas老逻辑，暂时不需要
