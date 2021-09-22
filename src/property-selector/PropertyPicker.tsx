@@ -106,7 +106,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
           const item = dimensionToPropertyItem(v as Dimension);
           item.itemIcon = () => {
             // 针对多物品模型，物品属性不再作为事件下面的属性，而是作为事件属性下面绑定的属性
-            if (item.associatedId) {
+            if (item.associatedKey) {
               return (
                 <span>
                   <span style={{ width: '22px', display: 'inline-block' }} />
@@ -335,15 +335,15 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const groupData = groupDatasource[key];
 
       let subGroupDic;
-      if (key === 'event' && 'associatedId' in groupData[0] && groupData.length > 1) {
+      if (key === 'event' && 'associatedKey' in groupData[0] && groupData.length > 1) {
         subGroupDic = groupBy(
           groupData
-            .filter((ele) => !ele.associatedId)
+            .filter((ele) => !ele.associatedKey)
             .map((ele) => [ele])
             ?.reduce((acc, cur) => {
               cur.push(
                 ...groupData
-                  .filter((e) => e.associatedId === cur[0].id)
+                  .filter((e) => e.associatedKey === cur[0].id)
                   .map((e) => {
                     e.groupId = key;
                     return e;
