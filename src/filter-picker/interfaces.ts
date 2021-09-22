@@ -25,6 +25,7 @@ export type FilterValueType = {
   key?: string;
   name?: string;
   valueType?: attributeValue;
+  groupId?: string;
 };
 
 export type FilterValue = {
