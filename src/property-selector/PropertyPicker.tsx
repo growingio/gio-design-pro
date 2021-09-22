@@ -335,7 +335,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       const groupData = groupDatasource[key];
 
       let subGroupDic;
-      if (key === 'event' && 'associatedId' in groupData[0]) {
+      if (key === 'event' && 'associatedId' in groupData[0] && groupData.length > 1) {
         subGroupDic = groupBy(
           groupData
             .filter((ele) => !ele.associatedId)
