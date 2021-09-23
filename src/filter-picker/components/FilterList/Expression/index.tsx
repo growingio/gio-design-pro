@@ -92,6 +92,7 @@ function Expression(props: ExpressionProps) {
         <div className="expression-icon">{index + 1}</div>
         <PropertyPicker
           data-testid="propertySelect"
+          className="express-propertySelect"
           placeholder="选择属性"
           value={propertyValue}
           dataSource={propertyOptions.filter((option: any) => {
