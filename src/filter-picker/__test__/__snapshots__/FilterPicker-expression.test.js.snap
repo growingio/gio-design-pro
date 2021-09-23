@@ -30,7 +30,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Node {
               "attribs": Object {
-                "class": "gio-selector gio-selector--middle gio-selector--borderless gio-property-selector",
+                "class": "gio-selector gio-selector--middle gio-selector--borderless gio-property-selector express-propertySelect",
                 "style": "cursor:pointer",
               },
               "children": Array [
@@ -532,7 +532,7 @@ initialize {
           },
           Node {
             "attribs": Object {
-              "class": "gio-selector gio-selector--middle gio-selector--borderless gio-property-selector",
+              "class": "gio-selector gio-selector--middle gio-selector--borderless gio-property-selector express-propertySelect",
               "style": "cursor:pointer",
             },
             "children": Array [
@@ -1535,7 +1535,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Node {
                 "attribs": Object {
-                  "class": "gio-selector gio-selector--middle gio-selector--borderless gio-property-selector",
+                  "class": "gio-selector gio-selector--middle gio-selector--borderless gio-property-selector express-propertySelect",
                   "style": "cursor:pointer",
                 },
                 "children": Array [
@@ -2037,7 +2037,7 @@ initialize {
             },
             Node {
               "attribs": Object {
-                "class": "gio-selector gio-selector--middle gio-selector--borderless gio-property-selector",
+                "class": "gio-selector gio-selector--middle gio-selector--borderless gio-property-selector express-propertySelect",
                 "style": "cursor:pointer",
               },
               "children": Array [
