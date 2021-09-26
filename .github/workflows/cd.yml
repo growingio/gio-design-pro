@@ -1,7 +1,12 @@
 name: Continuous Delivery
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - master
+      - next
 jobs:
   publish-package:
+    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
     name: Publish package
     runs-on: ubuntu-latest
     steps:
@@ -12,11 +17,15 @@ jobs:
         with:
           node-version: 14
           registry-url: 'https://registry.npmjs.org'
-      - name: Restore Node.js modules
+      - name: Cache Node.js modules
+        id: cache-node-modules
         uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn install
       - name: Build
         run: yarn build
       - name: Publish package
@@ -25,7 +34,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Get package version
         id: get-package-version
-        run: echo "::set-output name=version::$(node script/version.js)"
+        run: echo "::set-output name=version::$(yarn -s gen-version)"
       - name: Publish GitHub release
         uses: actions/create-release@v1
         env:
