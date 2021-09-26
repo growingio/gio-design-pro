@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
@@ -320,4 +321,24 @@ CustomGroup.args = {
     return '其他';
   },
   getTypeIcon: (type: string) => <MyTypeIcon type={type} size="14px" />,
+};
+
+export const CustomPreviewRender = Template.bind({});
+CustomPreviewRender.args = {
+  dataSource: events,
+  previewCustomRender: (data: any) => {
+    const { name, type } = data;
+    console.log('I am preview render');
+    return (
+      <div>
+        <h1>自定义渲染</h1>
+        <div>{name}</div>
+        <div>{type}</div>
+        <div>
+          <Button onClick={() => alert('编辑')}>编辑</Button>
+        </div>
+      </div>
+    );
+  },
+  // onClick: undefined,
 };

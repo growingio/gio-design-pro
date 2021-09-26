@@ -12,7 +12,6 @@ import './style';
 
 // todo: implement ComplexMetric component
 // const Complex = Custom;
-
 const Preview: React.FC<EventPickerPreviewProps> = (props) => {
   const {
     dataSource,
@@ -28,14 +27,23 @@ const Preview: React.FC<EventPickerPreviewProps> = (props) => {
   }, [dataSource]);
   const prefixCls = usePrefixCls('event-previw');
   const cls = classnames(prefixCls, 'custom-render', 'event-preview-card');
-  const previewProps = { eventData, chart: onShowEventChart, previewCustomRender, className: 'event-preview-card' };
-  const children = () => {
-    if (previewCustomRender && isFunction(previewCustomRender)) {
-      return (
+  const previewProps = React.useMemo(
+    () => ({ eventData, chart: onShowEventChart, previewCustomRender, className: 'event-preview-card' }),
+    [eventData, onShowEventChart, previewCustomRender]
+  );
+  const customRender = React.useMemo(
+    () =>
+      previewCustomRender &&
+      isFunction(previewCustomRender) && (
         <Card className={cls} clickable={false}>
           {previewCustomRender(eventData)}
         </Card>
-      );
+      ),
+    [eventData, cls]
+  );
+  const children = React.useMemo(() => {
+    if (customRender) {
+      return customRender;
     }
     switch (type) {
       case 'prepared':
@@ -49,8 +57,7 @@ const Preview: React.FC<EventPickerPreviewProps> = (props) => {
       default:
         return <></>;
     }
-  };
-
+  }, [previewProps]);
   return (
     <div
       role="document"
@@ -60,7 +67,7 @@ const Preview: React.FC<EventPickerPreviewProps> = (props) => {
       onClick={(e) => e.stopPropagation()}
     >
       <Loading size="small" title={false} loading={loading}>
-        {children()}
+        {children}
       </Loading>
     </div>
   );
