@@ -50,6 +50,7 @@ const EventPicker = (props: EventPickerProps) => {
     onShowEventChart,
     fetchDetailData,
     showPreview = true,
+    placeholder = '搜索事件或指标名称',
     ...rest
   } = props;
   const [keyword, setKeyword] = useState(defaultKeyword);
@@ -223,7 +224,7 @@ const EventPicker = (props: EventPickerProps) => {
       // renderDetail={renderDetail}
       loading={loading}
       searchBar={{
-        placeholder: '搜索事件或指标名称',
+        placeholder,
         onSearch: handleSearch,
       }}
       // footer={footer}

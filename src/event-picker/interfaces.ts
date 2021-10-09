@@ -143,6 +143,10 @@ export interface EventPickerProps
    * 分组排序方法，默认预制事件排在前面
    */
   groupSort?: (a: string, b: string) => number;
+  /**
+   * 自定义 search-bar 的 placeholder
+   */
+  placeholder?: string;
 }
 
 export interface EventPickerPreviewProps extends BaseProps, ListItemPreviewEventProps {

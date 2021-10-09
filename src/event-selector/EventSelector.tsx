@@ -25,6 +25,7 @@ const EventSelector = ({
   getContainer,
   overlayClassName,
   showValueIcon = false,
+  pickerPlaceholder,
   ...pickerRestProps
 }: EventSelectorProps) => {
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
@@ -76,6 +77,7 @@ const EventSelector = ({
       onChange={handleValueChange}
       onSelect={handleSelect}
       onCancel={handleCancel}
+      placeholder={pickerPlaceholder}
     />
   );
   const getIcon =
