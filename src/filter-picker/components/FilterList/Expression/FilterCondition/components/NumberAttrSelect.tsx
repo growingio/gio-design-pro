@@ -17,7 +17,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
   useEffect(() => {
     const num = values?.[0] && values?.[0] !== ' ' ? values?.[0] : '0';
     setValue(parseFloat(values?.[0]) || 0);
-    setValue1(parseFloat(values?.[0]) || 0);
+    setValue1(parseFloat(values?.[0]) || '0');
     setValue2(Number.isNaN(parseFloat(values?.[1])) ? num : parseFloat(values?.[1]));
     if (attrSelect === 'between' || attrSelect === 'not between') {
       attrChange([num, values?.[1] || num]);
