@@ -34,7 +34,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Get package version
         id: get-package-version
-        run: echo "::set-output name=version::$(yarn -s gen-version)"
+        run: echo "::set-output name=version::$(yarn -s get-version)"
       - name: Publish GitHub release
         uses: actions/create-release@v1
         env:
