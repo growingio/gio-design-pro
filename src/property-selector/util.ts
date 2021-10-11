@@ -81,23 +81,24 @@ const PreparedNormalDimensionIdMap = (id: string) => {
 };
 
 const regroup = (data: PropertyItem): PropertyItem => {
-  const { isSystem, groupId, type, typeName } = data
-  let newType = type, newTypeName = typeName
+  const { isSystem, groupId, type, typeName } = data;
+  let newType = type;
+  let newTypeName = typeName;
   if (type === 'avar') {
-    newType = 'event'
-    newTypeName = PropertyTypes[newType]
+    newType = 'event';
+    newTypeName = PropertyTypes[newType];
   }
 
-  let groupName = isSystem ? `预置${typeName}` : `自定义${typeName}`
-  if (groupId === 'tag' && type === 'tag') groupName = '用户标签'
+  let groupName = isSystem ? `预置${typeName}` : `自定义${typeName}`;
+  if (groupId === 'tag' && type === 'tag') groupName = '用户标签';
 
   return {
     ...data,
     groupName,
     type: newType,
     typeName: newTypeName,
-  } as PropertyItem
-}
+  } as PropertyItem;
+};
 
 // eslint-disable-next-line import/prefer-default-export
 export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
@@ -129,7 +130,7 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
   result.subType = associatedKey ? 'itm' : result.type;
   result.subGroupId = associatedKey ? 'item' : result.groupId;
 
-  if (has(item, 'isSystem')) return regroup(result)
+  if (has(item, 'isSystem')) return regroup(result);
   return result;
 };
 

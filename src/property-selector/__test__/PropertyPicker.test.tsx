@@ -3,9 +3,8 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import PropertyPicker, { ExpandableGroupOrSubGroup } from '../PropertyPicker';
-import { insightDimensions } from './data';
-import { dimensionToPropertyItem, getShortPinyin } from '../util';
-import IconRender from '../PropertyValueIconRender';
+import insightDimensions from './data';
+import { dimensionToPropertyItem } from '../util';
 import { Dimension } from '../types';
 import { ListItemProps } from '../../list/interfaces';
 import { PropertyItem } from '../interfaces';
@@ -55,37 +54,31 @@ describe('PropertyPicker', () => {
 
   it('can select a property', async () => {
     const handleSelect = jest.fn();
-    const tobeClickedNode = dimensionToPropertyItem(insightDimensions[0] as Dimension);
-    tobeClickedNode.disabled = false;
-    tobeClickedNode.itemIcon = () => <IconRender group={tobeClickedNode.groupId} />;
-    tobeClickedNode.pinyinName = getShortPinyin(tobeClickedNode.label ?? '');
     const shouldUpdateRecentlyUsed = true;
     render(
       <PropertyPicker {...defaultProps} shouldUpdateRecentlyUsed={shouldUpdateRecentlyUsed} onSelect={handleSelect} />
     );
 
-    fireEvent.click(screen.getByText(tobeClickedNode.label || ''));
+    fireEvent.click(screen.getByText('创建分群方式'));
     expect(handleSelect).toHaveBeenCalledTimes(1);
-    expect(screen.queryAllByText(tobeClickedNode.name)).toHaveLength(1);
+    expect(screen.queryAllByText('创建分群方式')).toHaveLength(1);
   });
   it('can hover a property and show the detail of property', async () => {
     jest.useFakeTimers();
 
     render(<PropertyPicker {...defaultProps} detailVisibleDelay={0} />);
-    fireEvent.click(screen.getByText('全部'));
-    const item = screen.queryAllByText(insightDimensions[0].name)[0];
-
+    const item = screen.getByText('创建分群方式');
     await act(async () => {
       fireEvent.mouseEnter(item);
       // jest.runAllTimers();
       jest.runOnlyPendingTimers();
     });
 
-    expect(screen.queryByText(insightDimensions[0].id)).toBeTruthy();
+    expect(screen.queryByText('var_create_segment_method')).toBeTruthy();
 
-    // screen.debug(screen.queryByText(insightDimensions[0].id));
+    // screen.debug(screen.queryByText('var_create_segment_method'));
     fireEvent.mouseLeave(item);
-    expect(screen.queryByText(insightDimensions[0].id)).toBeNull();
+    expect(screen.queryByText('var_create_segment_method')).toBeNull();
     jest.clearAllTimers();
   });
 
@@ -119,7 +112,7 @@ describe('PropertyPicker', () => {
     };
     const picker = <PropertyPicker {...defaultProps} onSelect={handleSelect} shouldUpdateRecentlyUsed />;
     const { unmount } = render(picker);
-    fireEvent.click(screen.getByText('展开全部', { exact: false }));
+    fireEvent.click(screen.getAllByText('展开全部', { exact: false })[0]);
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < 12; i++) {
       fireEvent.click(screen.getByText(props.dataSource[i].name));
