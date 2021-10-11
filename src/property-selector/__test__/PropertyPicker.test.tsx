@@ -32,7 +32,6 @@ describe('PropertyPicker', () => {
     expect(screen.queryByPlaceholderText('搜索属性名称')).toBeTruthy();
     expect(screen.queryByText('全部')).toBeTruthy();
     expect(screen.queryAllByText('事件属性')).not.toBe([]);
-    expect(screen.queryAllByText('访问属性')).not.toBe([]);
     expect(screen.queryAllByText('用户属性')).not.toBe([]);
     expect([]).toBeTruthy();
   });
@@ -41,7 +40,6 @@ describe('PropertyPicker', () => {
     expect(screen.queryByPlaceholderText('搜索属性名称')).toBeTruthy();
     expect(screen.queryByText('全部')).toBeTruthy();
     expect(screen.queryAllByText('事件属性')).not.toBe([]);
-    expect(screen.queryAllByText('访问属性')).not.toBe([]);
     expect(screen.queryAllByText('用户属性')).not.toBe([]);
     expect([]).toBeTruthy();
   });
@@ -49,9 +47,8 @@ describe('PropertyPicker', () => {
     render(defaultPicker);
     const allPropertyCount = screen.queryAllByRole('option').length;
     fireEvent.click(screen.queryAllByText('用户属性')[0]);
-    expect(screen.queryByText('物品属性')).toBeNull();
-    expect(screen.queryByText('页面')).toBeNull();
-    expect(screen.queryByText('地域信息')).toBeNull();
+    expect(screen.queryByText('预置用户属性')).not.toBeNull();
+    expect(screen.queryByText('自定义用户属性')).not.toBeNull();
     const userPropertyCount = screen.queryAllByRole('option').length;
     expect(allPropertyCount).toBeGreaterThanOrEqual(userPropertyCount);
   });

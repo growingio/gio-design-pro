@@ -8,4 +8,5 @@ export type Dimension = {
   groupName?: string;
   valueType?: string;
   associatedKey?: string;
+  isSystem?: boolean;
 };
