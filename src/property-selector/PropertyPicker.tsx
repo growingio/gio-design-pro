@@ -366,7 +366,15 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
           existIsSystem ? 'isSystem' : 'groupId'
         );
       } else {
-        subGroupDic = groupBy(groupData, existIsSystem ? 'isSystem' : 'groupId');
+        subGroupDic = groupBy(groupData, (item) => {
+          if (existIsSystem) {
+            if (item.groupId === 'tag') {
+              return 'tag';
+            }
+            return item.isSystem;
+          }
+          return item.groupId;
+        });
       }
 
       const { typeName } = groupData[0];

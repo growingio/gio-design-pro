@@ -90,7 +90,9 @@ const regroup = (data: PropertyItem): PropertyItem => {
   }
 
   let groupName = isSystem ? `预置${typeName}` : `自定义${typeName}`;
-  if (groupId === 'tag' && type === 'tag') groupName = '用户标签';
+  if (groupId === 'tag') {
+    groupName = '用户标签';
+  }
 
   return {
     ...data,
@@ -130,7 +132,9 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
   result.subType = associatedKey ? 'itm' : result.type;
   result.subGroupId = associatedKey ? 'item' : result.groupId;
 
-  if (has(item, 'isSystem')) return regroup(result);
+  if (has(item, 'isSystem')) {
+    return regroup(result);
+  }
   return result;
 };
 
