@@ -42,4 +42,13 @@ describe('PropertySelector', () => {
     render(<PropertySelector {...defaultProps} placeholder="请选择" />);
     expect(screen.queryByText('请选择')).toBeTruthy();
   });
+  it('render Popover', () => {
+    act(() => {
+      render(<PropertySelector dataSource={insightDimensions as Dimension[]} value={insightDimensions[0]} />);
+    });
+    act(() => {
+      fireEvent.mouseOver(screen.getByText(insightDimensions[0].name));
+    });
+    expect(document.getElementsByClassName('gio-card')).toBeTruthy();
+  });
 });
