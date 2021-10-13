@@ -28,6 +28,7 @@ Default.args = {
 export const ButtonMode = Template.bind({});
 ButtonMode.args = {
   mode: 'button',
+  type: 'secondary',
   dropdownRender,
   valueRender: () => <span>Value</span>,
   icon: <CalendarOutlined />,

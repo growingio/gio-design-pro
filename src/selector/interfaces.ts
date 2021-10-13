@@ -1,6 +1,6 @@
 import React from 'react';
 import { SizeType } from '@gio-design/utils';
-import { DropdownProps } from '@gio-design/components';
+import { ButtonProps, DropdownProps } from '@gio-design/components';
 import { BaseProps } from '../utils/interfaces';
 
 export interface SelectorProps extends BaseProps {
@@ -52,6 +52,10 @@ export interface SelectorProps extends BaseProps {
    * 选择器的图标
    */
   icon?: React.ReactNode;
+  /**
+   *
+   */
+  type?: ButtonProps['type'];
   /**
    * 关闭销毁
    */
