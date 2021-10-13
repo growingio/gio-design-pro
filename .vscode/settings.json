@@ -36,9 +36,6 @@
     "styled-css",
     "sugarss",
     "svelte"
-  ],
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  ]
   //stylelint   -----settings end-----
 }
