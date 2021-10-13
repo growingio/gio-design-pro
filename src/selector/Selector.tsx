@@ -24,6 +24,7 @@ function Selector({
   size: customizeSize,
   mode = 'input',
   icon,
+  type = 'secondary',
   destroyTooltipOnHide,
 }: SelectorProps) {
   const prefixCls = usePrefixCls('selector');
@@ -53,7 +54,7 @@ function Selector({
   function renderChild() {
     if (mode === 'button') {
       return (
-        <Button type="secondary" icon={icon} size={size} disabled={disabled}>
+        <Button type={type} icon={icon} size={size} disabled={disabled}>
           {item || placeholder}
         </Button>
       );
