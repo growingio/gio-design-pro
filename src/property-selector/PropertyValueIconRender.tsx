@@ -45,6 +45,8 @@ const IconRender = (props: { group?: string }) => {
       return <DevicePropertyOutlined />;
     case 'origin':
       return <UserOriginOutlined />;
+    case 'normal':
+      return <PagePropertyOutlined />;
     default:
       return <></>;
   }
