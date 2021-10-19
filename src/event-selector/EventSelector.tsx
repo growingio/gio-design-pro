@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
-import { isArray } from 'lodash';
+import { isArray, isEqual } from 'lodash';
 import { Tooltip, usePrefixCls } from '@gio-design/components';
 import classNames from 'classnames';
 import { EventSelectorProps } from './interfaces';
@@ -34,6 +34,13 @@ const EventSelector = ({
     return withSelectKey(arr);
   };
   const [value, setValue] = useState<EventData[]>(formatValue(initialValue));
+  const previousValue = useRef(initialValue);
+  useEffect(() => {
+    if (!isEqual(previousValue.current, initialValue) && initialValue) {
+      setValue(formatValue(initialValue));
+      previousValue.current = initialValue;
+    }
+  }, [initialValue]);
   const [afterVisible, setVisible] = useState(true);
   useEffect(() => {
     setTimeout(() => setVisible(dropdownVisibleInner || false), 0);
