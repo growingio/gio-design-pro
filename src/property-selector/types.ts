@@ -7,5 +7,5 @@ export type Dimension = {
   groupId: string;
   groupName?: string;
   valueType?: string;
-  associatedId?: string;
+  associatedKey?: string;
 };

@@ -101,7 +101,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     // 如果是Dimension类型 需要做一个数据转换
     let propertiItemList: PropertyItem[] = [];
     if (originDataSource && originDataSource.length) {
-      if (originDataSource && originDataSource.length && !('value' in originDataSource[0])) {
+      if (!('value' in originDataSource[0])) {
         propertiItemList = originDataSource.map((v) => {
           const item = dimensionToPropertyItem(v as Dimension);
           item.itemIcon = () => {
@@ -121,7 +121,18 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       } else {
         propertiItemList = originDataSource.map((v) => {
           const item = v as PropertyItem;
-          item.itemIcon = () => <IconRender group={item?.groupId} />;
+          item.itemIcon = () => {
+            // 针对多物品模型，物品属性不再作为事件下面的属性，而是作为事件属性下面绑定的属性
+            if (item.associatedKey) {
+              return (
+                <span>
+                  <span style={{ width: '22px', display: 'inline-block' }} />
+                  <IconRender group={item?.groupId} />
+                </span>
+              );
+            }
+            return <IconRender group={item?.groupId} />;
+          };
           return item;
         });
       }
@@ -184,6 +195,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (r) {
         recent.push({
           ...r,
+          itemIcon: () => <IconRender group={r?.groupId} />,
           _groupKey: 'recently',
           // type: `recently¥${r.type}`,
           // typeName: '最近使用',

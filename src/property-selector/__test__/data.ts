@@ -218,7 +218,7 @@ export const insightDimensions = [
     groupName: '物品属性',
     valueType: 'string',
     description: '',
-    associatedId: 'var_engageType',
+    associatedKey: 'var_engageType',
   },
   {
     associatedId: '',
