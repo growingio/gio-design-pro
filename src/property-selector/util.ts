@@ -82,7 +82,7 @@ const PreparedNormalDimensionIdMap = (id: string) => {
 // eslint-disable-next-line import/prefer-default-export
 export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
   const result: PropertyItem = { label: item.name, value: item.id, ...item };
-  const { id, groupId, type: _type, associatedId } = item;
+  const { id, groupId, type: _type, associatedKey } = item;
 
   if (groupId === 'normal' && _type === 'global') {
     const [newGoupId, newGroupName] = PreparedNormalDimensionIdMap(id);
@@ -92,7 +92,7 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
 
   // 多物品模型，物品属性不再作为事件绑定属性，而是作为事件属性的属性来展示，作为事件属性的子集
   // 所以，当存在parentId的时候，物品属性，和事件属性同组
-  if (groupId === 'item' && _type === 'itm' && associatedId) {
+  if (groupId === 'item' && _type === 'itm' && associatedKey) {
     result.groupId = 'event';
     result.groupName = '事件变量';
   }
