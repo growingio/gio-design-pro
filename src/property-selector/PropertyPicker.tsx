@@ -110,7 +110,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
               return (
                 <span>
                   <span style={{ width: '22px', display: 'inline-block' }} />
-                  <IconRender group={item?.groupId} />
+                  <IconRender group="item" />
                 </span>
               );
             }
@@ -127,7 +127,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
               return (
                 <span>
                   <span style={{ width: '22px', display: 'inline-block' }} />
-                  <IconRender group={item?.groupId} />
+                  <IconRender group="item" />
                 </span>
               );
             }
