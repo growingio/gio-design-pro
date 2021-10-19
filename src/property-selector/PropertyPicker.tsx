@@ -195,7 +195,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (r) {
         recent.push({
           ...r,
-          itemIcon: () => <IconRender group={r?.groupId} />,
+          itemIcon: () => <IconRender group={r.associatedKey ? 'item' : r?.groupId} />,
           _groupKey: 'recently',
           // type: `recently¥${r.type}`,
           // typeName: '最近使用',
