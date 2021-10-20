@@ -83,7 +83,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
           >
             <span className="inner-input-wrap" ref={inputValueRef}>
               <span className="icon">
-                <IconRender group={currentValue?.groupId} />
+                <IconRender group={currentValue?.subGroupId} />
               </span>
               <span>{inputText}</span>
             </span>
