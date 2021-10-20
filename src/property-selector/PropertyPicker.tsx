@@ -252,9 +252,10 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   );
 
   function labelRender(item: PropertyItem) {
+    const isShowIndent = Boolean(item.associatedKey && item._groupKey !== 'recently');
     return (
       <>
-        <span className={classNames('item-icon', { indent: Boolean(item.associatedKey) })}>{item.itemIcon?.()}</span>
+        <span className={classNames('item-icon', { indent: isShowIndent })}>{item.itemIcon?.()}</span>
         <span>{item.label}</span>
       </>
     );
