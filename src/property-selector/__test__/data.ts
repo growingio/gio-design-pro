@@ -1083,4 +1083,4 @@ const insightDimensions: ReadonlyArray<any> = [
   },
 ];
 
-export default insightDimensions
+export default insightDimensions;
