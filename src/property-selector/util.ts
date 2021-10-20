@@ -3,7 +3,7 @@
 import { PropertyItem, PropertyTypes } from './interfaces';
 import { Dimension } from './types';
 
-type MapedType = 'usr' | 'event' | 'avar';
+type MapedType = 'usr' | 'event' | 'avar' | 'itm';
 type TypeMapping = (input: Dimension) => PropertyItem;
 
 type Mapper = {
@@ -39,7 +39,7 @@ export const DimensionGroupTypeMapper: Mapper = {
   page: 'event',
   app: 'event',
   event: 'event',
-  item: 'event',
+  item: 'itm',
   people: 'event',
   visitor: 'event',
   element: 'event', // element 为前端自定义的分类 (无埋点事件属性)
@@ -103,6 +103,11 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
   result.typeName = PropertyTypes[result.type];
   const tOrder = ['event', 'avar', 'usr'].indexOf(result.type);
   result.typeOrder = tOrder > -1 ? tOrder : 99999;
+  // 这里添加subType 是为了兼容物品属性在属性选择器中的展示，因为物品属性的groupId和type都修改为event
+  // 所以原来的通过type来判断属性类型，无法区分事件属性和物品属性，所以通过添加subType字段，来区分事件属性和物品属性
+  // 不可以修改type，因为需要type把事件属性和物品属性归为同一组
+  result.subType = associatedKey ? 'itm' : result.type;
+  result.subGroupId = associatedKey ? 'item' : result.groupId;
   return result;
 };
 

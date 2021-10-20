@@ -69,20 +69,20 @@ function Expression(props: ExpressionProps) {
     v && setExprKey(v.value);
     v && setValues([]);
     v && setOp('=');
-    v && setGroupId(v.groupId);
+    v && setGroupId(v.subGroupId);
     const expr: FilterValueType = {
       key: v.value,
       name: v.label,
       valueType: v?.valueType || 'string',
       op: '=',
-      groupId: v.groupId,
+      groupId: v.subGroupId,
       values: [],
     };
     onChange(expr, index);
   };
 
   const propertyValue = useMemo(
-    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey, groupId } : undefined),
+    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey, groupId, subGroupId: groupId } : undefined),
     [exprKey, exprName, groupId]
   );
 
