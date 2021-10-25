@@ -23,6 +23,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
     dataSource,
     onSelect,
     onChange,
+    getContainer,
     ...pickerRestProps
   } = props;
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
@@ -104,6 +105,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
         dropdownRender={dropdownRender}
         onDropdownVisibleChange={handleDropDownVisibleChange}
         valueRender={inputRender}
+        getContainer={getContainer}
       />
     </>
   );
