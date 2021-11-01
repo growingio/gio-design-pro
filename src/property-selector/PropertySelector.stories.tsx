@@ -5,12 +5,12 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import _ from 'lodash';
 import PropertySelector from './PropertySelector';
 import { PropertySelectorProps } from './interfaces';
-import { insightDimensions } from './__test__/data';
-// import './style/index.less';
+import insightDimensions from './__test__/data';
 import { dimensionToPropertyItem } from './util';
 import { Dimension } from './types';
-// const AllVariablesTable = _.flatten(_.values(allVariables));
+
 const dataSource = insightDimensions.map((v: any) => dimensionToPropertyItem(v as Dimension));
+
 export default {
   title: 'Business Components/PropertySelector',
   component: PropertySelector,

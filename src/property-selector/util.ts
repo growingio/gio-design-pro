@@ -1,5 +1,6 @@
 // import { transform } from 'lodash';
 
+import { has } from 'lodash';
 import { PropertyItem, PropertyTypes } from './interfaces';
 import { Dimension } from './types';
 
@@ -79,6 +80,28 @@ const PreparedNormalDimensionIdMap = (id: string) => {
   return ['device', '设备'];
 };
 
+const regroup = (data: PropertyItem): PropertyItem => {
+  const { isSystem, groupId, type, typeName } = data;
+  let newType = type;
+  let newTypeName = typeName;
+  if (type === 'avar') {
+    newType = 'event';
+    newTypeName = PropertyTypes[newType];
+  }
+
+  let groupName = isSystem ? `预置${typeName}` : `自定义${typeName}`;
+  if (groupId === 'tag') {
+    groupName = '用户标签';
+  }
+
+  return {
+    ...data,
+    groupName,
+    type: newType,
+    typeName: newTypeName,
+  } as PropertyItem;
+};
+
 // eslint-disable-next-line import/prefer-default-export
 export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
   const result: PropertyItem = { label: item.name, value: item.id, ...item };
@@ -108,6 +131,10 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
   // 不可以修改type，因为需要type把事件属性和物品属性归为同一组
   result.subType = associatedKey ? 'itm' : result.type;
   result.subGroupId = associatedKey ? 'item' : result.groupId;
+
+  if (has(item, 'isSystem')) {
+    return regroup(result);
+  }
   return result;
 };
 

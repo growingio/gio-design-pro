@@ -1,7 +1,19 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
-import { toPairs, uniq, cloneDeep, groupBy, keys, orderBy, Dictionary, isEqualWith, isEmpty, replace } from 'lodash';
+import {
+  toPairs,
+  uniq,
+  cloneDeep,
+  groupBy,
+  keys,
+  orderBy,
+  Dictionary,
+  isEqualWith,
+  isEmpty,
+  replace,
+  has,
+} from 'lodash';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
 
@@ -104,35 +116,13 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (!('value' in originDataSource[0])) {
         propertiItemList = originDataSource.map((v) => {
           const item = dimensionToPropertyItem(v as Dimension);
-          item.itemIcon = () => {
-            // 针对多物品模型，物品属性不再作为事件下面的属性，而是作为事件属性下面绑定的属性
-            if (item.associatedKey) {
-              return (
-                <span>
-                  <span style={{ width: '22px', display: 'inline-block' }} />
-                  <IconRender group="item" />
-                </span>
-              );
-            }
-            return <IconRender group={item?.groupId} />;
-          };
+          item.itemIcon = () => <IconRender group={item.associatedKey ? 'item' : item.groupId} />;
           return item;
         });
       } else {
         propertiItemList = originDataSource.map((v) => {
           const item = v as PropertyItem;
-          item.itemIcon = () => {
-            // 针对多物品模型，物品属性不再作为事件下面的属性，而是作为事件属性下面绑定的属性
-            if (item.associatedKey) {
-              return (
-                <span>
-                  <span style={{ width: '22px', display: 'inline-block' }} />
-                  <IconRender group="item" />
-                </span>
-              );
-            }
-            return <IconRender group={item?.groupId} />;
-          };
+          item.itemIcon = () => <IconRender group={item.associatedKey ? 'item' : item.groupId} />;
           return item;
         });
       }
@@ -262,9 +252,10 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   );
 
   function labelRender(item: PropertyItem) {
+    const isShowIndent = Boolean(item.associatedKey && item._groupKey !== 'recently');
     return (
       <>
-        <span className="item-icon">{item.itemIcon?.()}</span>
+        <span className={classNames('item-icon', { indent: isShowIndent })}>{item.itemIcon?.()}</span>
         <span>{item.label}</span>
       </>
     );
@@ -345,6 +336,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     );
     const groupDataNodes = keys(groupDatasource).map((key, index) => {
       const groupData = groupDatasource[key];
+      const existIsSystem = has(groupData, '[0].isSystem');
 
       let subGroupDic;
       if (key === 'event' && 'associatedKey' in groupData[0] && groupData.length > 1) {
@@ -355,7 +347,15 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
             ?.reduce((acc, cur) => {
               cur.push(
                 ...groupData
-                  .filter((e) => e.associatedKey === cur[0].id)
+                  .filter((e) => {
+                    if (e.associatedKey === cur[0].id) {
+                      if (existIsSystem) {
+                        e.isSystem = cur[0].isSystem;
+                      }
+                      return true;
+                    }
+                    return false;
+                  })
                   .map((e) => {
                     e.groupId = key;
                     return e;
@@ -364,10 +364,18 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
               acc.push(...cur);
               return acc;
             }, []),
-          (o) => o.groupId
+          existIsSystem ? 'isSystem' : 'groupId'
         );
       } else {
-        subGroupDic = groupBy(groupData, (o) => o.groupId);
+        subGroupDic = groupBy(groupData, (item) => {
+          if (existIsSystem) {
+            if (item.groupId === 'tag') {
+              return 'tag';
+            }
+            return item.isSystem;
+          }
+          return item.groupId;
+        });
       }
 
       const { typeName } = groupData[0];

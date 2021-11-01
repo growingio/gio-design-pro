@@ -28,11 +28,12 @@ type FetchData<T extends {}> = (node: PropertyValue) => T | Promise<T>;
  */
 export interface PropertyValue extends Iterable {
   id: string;
-  name?:string;
+  name?: string;
   label?: string;
   value?: string;
   valueType?: string;
   groupId?: string;
+  isSystem?: boolean;
 }
 
 /**
@@ -129,7 +130,7 @@ export interface PropertyItem extends PropertyValue {
 
 export interface PropertySelectorProps
   extends Omit<PropertyPickerProps, 'className' | 'style' | 'shouldUpdateRecentlyUsed'>,
-    Omit<SelectorProps, 'dropdownRender' | 'valueRender'> {}
+  Omit<SelectorProps, 'dropdownRender' | 'valueRender'> { }
 export interface PropertyCardProps {
   // nodeData: NodeData;
   // fetchData?: (nodeData: NodeData) => Promise<PropertyInfo> | PropertyInfo;

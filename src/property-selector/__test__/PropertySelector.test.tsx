@@ -2,8 +2,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import PropertySelector from '../PropertySelector';
-import { insightDimensions } from './data';
-import { dimensionToPropertyItem } from '../util';
+import insightDimensions from './data';
 import { Dimension } from '../types';
 import localStorageMock from './localStorageMock';
 
@@ -23,11 +22,10 @@ describe('PropertySelector', () => {
 
   it('can be selected', () => {
     const handleSelect = jest.fn();
-    const tobeClickedNode = dimensionToPropertyItem(insightDimensions[0] as Dimension);
     render(<PropertySelector {...defaultProps} onSelect={handleSelect} />);
     fireEvent.click(screen.getByText('选择属性'));
     act(() => {
-      fireEvent.click(screen.getByText(tobeClickedNode.name));
+      fireEvent.click(screen.getByText('创建分群方式'));
     });
 
     expect(handleSelect).toHaveBeenCalledTimes(1);
@@ -43,5 +41,14 @@ describe('PropertySelector', () => {
   it('render with  props of placeholder', () => {
     render(<PropertySelector {...defaultProps} placeholder="请选择" />);
     expect(screen.queryByText('请选择')).toBeTruthy();
+  });
+  it('render Popover', () => {
+    act(() => {
+      render(<PropertySelector dataSource={insightDimensions as Dimension[]} value={insightDimensions[0]} />);
+    });
+    act(() => {
+      fireEvent.mouseOver(screen.getByText(insightDimensions[0].name));
+    });
+    expect(document.getElementsByClassName('gio-card')).toBeTruthy();
   });
 });
