@@ -1,9 +1,9 @@
-## [21.9.8](https://github.com/growingio/gio-design-pro/compare/v21.9.7...v21.9.8) (2021-10-20)
+## [21.11.1](https://github.com/growingio/gio-design-pro/compare/v21.9.8...v21.11.1) (2021-11-01)
 
 
-### Bug Fixes
+### Features
 
-* **property-selector:** 修复因为维度值使用和事件属性相同groupId导致icon错误 ([#450](https://github.com/growingio/gio-design-pro/issues/450)) ([1300ccb](https://github.com/growingio/gio-design-pro/commit/1300ccb043d4a0cc689191eab141ee51fd4d73f3))
+* **property-selector:** 去掉“访问属性” tab 页，分组只分“预置事件属性/用户属性""自定义事件属性/用户属性" ([#438](https://github.com/growingio/gio-design-pro/issues/438)) ([7899a1c](https://github.com/growingio/gio-design-pro/commit/7899a1cf8dfbc4977387af777a2c3b8484721298))
 
 
 
