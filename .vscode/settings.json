@@ -36,6 +36,9 @@
     "styled-css",
     "sugarss",
     "svelte"
-  ]
+  ],
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
   //stylelint   -----settings end-----
 }
