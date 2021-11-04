@@ -1046,6 +1046,16 @@ const insightDimensions: ReadonlyArray<any> = [
     valueType: 'string',
   },
   {
+    id: 'vvar_virtual_1',
+    associatedKey: null,
+    description: null,
+    groupId: 'virtual',
+    groupName: 'Virtual Variable',
+    name: '虚拟属性1',
+    type: 'vvar',
+    valueType: 'string',
+  },
+  {
     associatedKey: null,
     description: '示例：竖直、横向\n用户访问时使用的设备方向',
     groupId: 'device',
