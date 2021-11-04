@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef } from 'react';
 import { Tooltip } from '@gio-design/components';
 // import moment from 'moment';
 
@@ -52,6 +52,7 @@ function FilterCondition(props: FilterConditionProps) {
     size = 'middle',
   } = props;
   const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
   const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
   const visibleChange = (v: boolean) => {
     setVisible(v);
@@ -99,15 +100,18 @@ function FilterCondition(props: FilterConditionProps) {
   );
 
   return exprKey ? (
-    <Selector
-      valueRender={valueRender}
-      dropdownVisible={visible}
-      dropdownRender={dropdownRender}
-      onDropdownVisibleChange={visibleChange}
-      disabled={disabled}
-      borderless={borderless}
-      size={size}
-    />
+    <div ref={ref}>
+      <Selector
+        valueRender={valueRender}
+        dropdownVisible={visible}
+        dropdownRender={dropdownRender}
+        onDropdownVisibleChange={visibleChange}
+        disabled={disabled}
+        borderless={borderless}
+        size={size}
+        getContainer={() => ref.current}
+      />
+    </div>
   ) : null;
 }
 export default FilterCondition;

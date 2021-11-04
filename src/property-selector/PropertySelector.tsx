@@ -27,6 +27,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   } = props;
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
   const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(value);
+  const ref = useRef(null);
   useEffect(() => {
     setCurrentValue(value);
   }, [value?.id]);
@@ -93,7 +94,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
     );
   };
   return (
-    <>
+    <div ref={ref}>
       <Selector
         size={size}
         className={selectorCls}
@@ -104,8 +105,9 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
         dropdownRender={dropdownRender}
         onDropdownVisibleChange={handleDropDownVisibleChange}
         valueRender={inputRender}
+        getContainer={() => ref.current}
       />
-    </>
+    </div>
   );
 };
 export default PropertySelector;
