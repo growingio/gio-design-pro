@@ -2,7 +2,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserPicker from '../UserPicker';
-import { preparedSegments } from '../constant';
+import { preparedSegmentsCN } from '../constant';
 import { Resource } from '../../utils/interfaces';
 import { segments, currentUserId } from './data';
 
@@ -61,18 +61,18 @@ describe('UserPicker', () => {
   it('can select a segment', () => {
     const handleSelect = jest.fn();
     render(<UserPicker {...defaultProps} onSelect={handleSelect} />);
-    fireEvent.click(screen.getByText(preparedSegments[0].name));
+    fireEvent.click(screen.getByText(preparedSegmentsCN[0].name));
     expect(handleSelect).toHaveBeenCalledTimes(1);
-    expect(handleSelect).toHaveBeenCalledWith(preparedSegments[0].id, preparedSegments[0]);
+    expect(handleSelect).toHaveBeenCalledWith(preparedSegmentsCN[0].id, preparedSegmentsCN[0]);
     expect(screen.queryByText('最近使用')).toBeTruthy();
-    expect(screen.queryAllByText(preparedSegments[0].name)).toHaveLength(2);
+    expect(screen.queryAllByText(preparedSegmentsCN[0].name)).toHaveLength(2);
 
     fireEvent.click(screen.getByText('全部'));
     for (let i = 0; i < 5; i += 1) {
       fireEvent.click(screen.getByText(segments[i].name));
     }
     fireEvent.click(screen.getByText('我的'));
-    expect(screen.queryAllByText(preparedSegments[0].name)).toHaveLength(1);
+    expect(screen.queryAllByText(preparedSegmentsCN[0].name)).toHaveLength(1);
   });
 
   it('can hover a segment and show the detail of segment', () => {

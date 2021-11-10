@@ -2,11 +2,13 @@ import { Tooltip, Checkbox } from '@gio-design/components';
 import { makeSearchParttern } from '@gio-design/components/es/components/cascader/helper';
 import React, { ChangeEvent, useState, useEffect } from 'react';
 
+import { useLocale } from '@gio-design/utils';
 import { EventData, ListItemPreviewEventProps, EventPickerProps } from './interfaces';
 import Preview from './preview';
 import { useDebounceFn, useMountedState } from '../hooks';
 import List from '../list';
 import { ListItemProps } from '../list/interfaces';
+import defaultLocale from '../locales/zh-CN';
 
 export interface Props extends ListItemPreviewEventProps, Omit<ListItemProps, 'children'> {
   dataSource: EventData;
@@ -65,6 +67,8 @@ export const CustomItem: React.FC<Props> = (props) => {
     getTypeIcon,
     ...rest
   } = props;
+  const locale = useLocale('EventPicker');
+  const { notAvaliable } = { ...defaultLocale, ...locale } as any;
   const isMounted = useMountedState();
   const [checked, setChecked] = useState(dataSource.selectKey === value);
   useEffect(() => {
@@ -121,7 +125,7 @@ export const CustomItem: React.FC<Props> = (props) => {
       <>
         <Tooltip
           placement="top"
-          overlay={<div style={{ maxWidth: '360px' }}>{dataSource.disabledTips ?? '暂不可用'}</div>}
+          overlay={<div style={{ maxWidth: '360px' }}>{dataSource.disabledTips ?? { notAvaliable }}</div>}
           disabled={!disabled || !dataSource.disabledTips}
         >
           <div className="item-content" role="listitem">

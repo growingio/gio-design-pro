@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { Popover, usePrefixCls } from '@gio-design/components';
 import classNames from 'classnames';
+import { useLocale } from '@gio-design/utils';
 import PropertyPicker from './PropertyPicker';
 import { PropertyValue, PropertySelectorProps } from './interfaces';
 import Selector from '../selector';
@@ -9,13 +10,16 @@ import './style';
 import IconRender from './PropertyValueIconRender';
 import PropertyCard from './PropertyCard';
 import { promisify } from './util';
+import defaultLocale from './locales/zh-CN';
 
 const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
+  const locale = useLocale('PropertyPicker');
+  const { placeholderText } = { ...defaultLocale, ...locale } as any;
   const {
     borderless = true,
     size,
     disabled,
-    placeholder = '选择属性',
+    placeholder = placeholderText,
     dropdownVisible,
     onDropdownVisibleChange,
     className,

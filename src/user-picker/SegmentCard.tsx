@@ -4,15 +4,21 @@ import classnames from 'classnames';
 import { Card, Tag } from '@gio-design/components';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import { CalendarOutlined } from '@gio-design/icons';
+import { useLocale } from '@gio-design/utils';
 import { SegmentCardProps } from './interfaces';
+import defaultLocale from './locales/zh-CN';
 
 function SegmentCard({ className, style, name, detector, chart, creator, updatedAt }: SegmentCardProps) {
   const prefixCls = usePrefixCls('segment-card');
+  const locale = useLocale('UserPicker');
+  const { updatedTime, segmentNumber, segmentRatio, creatorText } = { ...defaultLocale, ...locale } as any;
   const cls = classnames(prefixCls, className);
   const footer = updatedAt && (
     <div className={`${prefixCls}__footer`}>
       <CalendarOutlined className={`${prefixCls}__footer__icon`} size="14px" />
-      <span>更新时间：{format('yyyy/MM/dd', new Date(updatedAt))}</span>
+      <span>
+        {`${updatedTime}`}：{format('yyyy/MM/dd', new Date(updatedAt))}
+      </span>
     </div>
   );
   return (
@@ -21,11 +27,11 @@ function SegmentCard({ className, style, name, detector, chart, creator, updated
       {detector && (
         <>
           <Card.Meta>
-            <span>分群人数：</span>
+            <span>{`${segmentNumber}:`}</span>
             <Tag>{detector.totalUsers}</Tag>
           </Card.Meta>
           <Card.Meta>
-            <span>分群占比：</span>
+            <span>{`${segmentRatio}:`}</span>
             <Tag>{`${(detector.usersRatio * 100).toFixed(2)}%`}</Tag>
           </Card.Meta>
         </>
@@ -37,7 +43,8 @@ function SegmentCard({ className, style, name, detector, chart, creator, updated
       )}
       {creator && (
         <Card.Meta>
-          创建人：<Tag>{creator}</Tag>
+          {`${creatorText}:`}
+          <Tag>{creator}</Tag>
         </Card.Meta>
       )}
     </Card>
