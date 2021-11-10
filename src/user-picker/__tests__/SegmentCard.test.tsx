@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import SegmentCard from '../SegmentCard';
-import { preparedSegments } from '../constant';
+import { preparedSegmentsCN } from '../constant';
 import { segment } from './data';
 
 const defaultChart = <div style={{ height: '100%', textAlign: 'center' }}>This is a Trend Chart.</div>;
 
 describe('SegmentCard', () => {
   it('can render the prepared segment', () => {
-    render(<SegmentCard {...preparedSegments[0]} chart={defaultChart} />);
-    expect(screen.queryByText(preparedSegments[0].name)).toBeTruthy();
+    render(<SegmentCard {...preparedSegmentsCN[0]} chart={defaultChart} />);
+    expect(screen.queryByText(preparedSegmentsCN[0].name)).toBeTruthy();
     expect(screen.queryByText(/Chart/)).toBeTruthy();
   });
 

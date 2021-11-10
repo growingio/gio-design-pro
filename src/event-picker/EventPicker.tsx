@@ -55,11 +55,6 @@ const EventPicker = (props: EventPickerProps) => {
   } = props;
   const [keyword, setKeyword] = useState(defaultKeyword);
 
-  // const [detailVisible, setDetailVisible] = useState(false);
-  // const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {
-  //   setDetailVisible(visible);
-  // }, detailVisibleDelay);
-
   /**
    * tabNav
    */
@@ -88,29 +83,6 @@ const EventPicker = (props: EventPickerProps) => {
    * @param input 带匹配的项
    * @param key 匹配的关键字
    */
-  // const keywordFilter = (input: string[], key: string[]) => {
-  //   if (!input || !key || input.length !== key.length) return true;
-  //   let match = false;
-  //   match = includes(input.join(''), key.join(''));
-  //   if (!match) {
-  //     const shortKeys = key.map((k) => k[0]).join('');
-  //     const shortInput = input.map((i) => i[0]).join('');
-  //     match = includes(shortInput, shortKeys);
-  //   }
-  //   return match;
-  // };
-
-  // const scopedKeywordSearch = (data = [] as EventData[]) => {
-  //   // const labelKey = 'name';
-  //   const scope = activedTab;
-  //   const keys = injectPinyinWith([{ keyword }], 'keyword');
-  //   const pinyinKey = keys[0].keywordPinyin as string[];
-  //   if (scope === 'all') {
-  //     return data.filter((d) => keywordFilter(d.namePinyin as string[], pinyinKey));
-  //   }
-
-  //   return data.filter((d) => d.type === scope && keywordFilter(d.namePinyin as string[], pinyinKey));
-  // };
 
   const keywordFilter = (input: string = '', key: string = '') => {
     if (!input || !key) return true;

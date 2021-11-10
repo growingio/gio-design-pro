@@ -129,7 +129,7 @@ export interface EventPickerProps
   /**
    * 获取事件分组的名称；getGroupName，getGroupKey，getTypeIcon 组合用于自定义分组
    */
-  getGroupName?: (groupKey: string) => string;
+  getGroupName?: (groupKey: string, locale?: string) => string;
   /**
    * 获取事件分组的key；
    * @default (nodeData:EventData)=>nodeData.type

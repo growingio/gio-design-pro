@@ -4,11 +4,13 @@ import SelectList from '@gio-design/components/es/list-picker';
 import { filter } from 'lodash';
 import QuickPicker from './QuickPicker';
 import { PastTimePickerProps, TimeMode } from './interfaces';
-import { quickOptions, PICKER_OPTIONS } from './constant';
 import { parseTimeMode } from './utils';
 import AbsoluteRangePicker from './AbsoluteRangePicker';
 import SinceRangePicker from './SinceRangePicker';
 import RelativeRangePicker from './RelativeRangePicker';
+import useQuickMapping from './useQuickMapping';
+import usePickerOptions from './usePickerOptions';
+import useQuickOptions from './useQuickOptions';
 
 function PastTimePicker({
   disabledDate,
@@ -19,7 +21,10 @@ function PastTimePicker({
   experimental = false,
   quickOptionsFilter,
 }: PastTimePickerProps) {
-  const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
+  const QUICK_MAPPING = useQuickMapping();
+  const PICKER_OPTIONS = usePickerOptions();
+  const quickOptions = useQuickOptions();
+  const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange, QUICK_MAPPING);
   const originMode = parseMode(timeRange) ?? 'quick';
   const [mode, setMode] = React.useState<string | undefined>(originMode);
   const [currentRange, setCurrentRange] = React.useState(timeRange);

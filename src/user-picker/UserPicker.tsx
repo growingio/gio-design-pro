@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { filter, keyBy, includes, uniq, debounce } from 'lodash';
 import { Button } from '@gio-design/components';
 import { PlusCircleFilled } from '@gio-design/icons';
+import { useLocale, DesignContext } from '@gio-design/utils';
 import BasePicker from '../base-picker';
 import SegmentCard from './SegmentCard';
 import { useLocalStorage } from '../hooks';
 import { UserPickerProps } from './interfaces';
 import { resourceToItem } from '../utils';
-import { preparedSegments } from './constant';
+import { preparedSegmentsCN, preparedSegmentsEn } from './constant';
 import { Resource } from '../utils/interfaces';
+import defaultLocale from './locales/zh-CN';
 
 function UserPicker({
   itemOnHoverDelay = 750,
@@ -21,6 +23,14 @@ function UserPicker({
   updatingRecentDelay = 0,
   onShowSegmentChart,
 }: UserPickerProps) {
+  const locale = useLocale('UserPicker');
+  const { locale: contextLocale } = useContext(DesignContext) || { locale: { code: 'zh-CN' } };
+  const { code } = contextLocale || { code: 'zh-CN' };
+  const preparedSegments = code === 'en-US' ? preparedSegmentsEn : preparedSegmentsCN;
+  const { preparedText, otherText, rencentText, myText, allText, placeholderText, createSegment } = {
+    ...defaultLocale,
+    ...locale,
+  } as any;
   const mappedSegements = React.useMemo<{ [key: string]: Resource }>(
     () => keyBy([...preparedSegments, ...segments], 'id'),
     [preparedSegments, segments]
@@ -75,18 +85,18 @@ function UserPicker({
     if (scope === 'my') {
       const preparedGroup = {
         key: 'prepared',
-        title: '预定义',
+        title: preparedText,
         items: preparedSegments.map(mapResource),
       };
       const otherGroup = {
         key: 'other',
-        title: '其他',
+        title: otherText,
         items: filter(segments, (s) => s.creatorId === userId && filterSegment(s)).map(mapResource),
       };
       if (recentSegments.length > 0) {
         const recentGroup = {
           key: 'recent',
-          title: '最近使用',
+          title: rencentText,
           items: recentSegments.filter((id) => !!mappedSegements[id]).map((id) => mapResource(mappedSegements[id])),
         };
         return [recentGroup, preparedGroup, otherGroup];
@@ -97,18 +107,18 @@ function UserPicker({
   }, [preparedSegments, segments, recentSegments, scope, query, disabledValues]);
 
   const items = React.useRef([
-    { key: 'my', children: '我的' },
-    { key: 'all', children: '全部' },
+    { key: 'my', children: myText },
+    { key: 'all', children: allText },
   ]);
   const footer = (
     <Button type="text" icon={<PlusCircleFilled />} size="small" onClick={onCreateSegment}>
-      新建分群
+      {createSegment}
     </Button>
   );
   return (
     <BasePicker
       searchBar={{
-        placeholder: '搜索分群名',
+        placeholder: placeholderText,
         onSearch: setQuery,
       }}
       tabNav={{

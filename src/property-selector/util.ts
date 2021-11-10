@@ -103,7 +103,7 @@ const regroup = (data: PropertyItem): PropertyItem => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
+export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = 'zh-CN') => {
   const result: PropertyItem = { label: item.name, value: item.id, ...item };
   const { id, groupId, type: _type, associatedKey } = item;
 
@@ -117,6 +117,9 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension) => {
   // 所以，当存在parentId的时候，物品属性，和事件属性同组
   if (groupId === 'item' && _type === 'itm' && associatedKey) {
     result.groupId = 'event';
+    if (locale === 'en-US') {
+      result.groupName = 'event variable';
+    }
     result.groupName = '事件变量';
   }
   const gOrder = PropertyGroupOrder.indexOf(result.groupId as string);
