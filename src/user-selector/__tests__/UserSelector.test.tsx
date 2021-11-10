@@ -2,7 +2,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserSelector from '../UserSelector';
-import { preparedSegments } from '../../user-picker/constant';
+import { preparedSegmentsCN } from '../../user-picker/constant';
 import { Resource } from '../../utils/interfaces';
 import { segments, currentUserId } from '../../user-picker/__tests__/data';
 
@@ -23,11 +23,11 @@ describe('UserSelector', () => {
     render(<UserSelector {...defaultProps} onSelect={handleSelect} />);
     fireEvent.click(screen.getByText('选择分群'));
     act(() => {
-      fireEvent.click(screen.getByText(preparedSegments[0].name));
+      fireEvent.click(screen.getByText(preparedSegmentsCN[0].name));
     });
 
     expect(handleSelect).toHaveBeenCalledTimes(1);
-    expect(handleSelect).toHaveBeenCalledWith(preparedSegments[0].id, preparedSegments[0]);
+    expect(handleSelect).toHaveBeenCalledWith(preparedSegmentsCN[0].id, preparedSegmentsCN[0]);
   });
 
   it('can not be clicked in disabled state', () => {

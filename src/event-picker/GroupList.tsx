@@ -9,7 +9,7 @@ import List from '../list';
 import Group from './Group';
 import { GroupItemsProps } from './GroupListItemProps';
 import CustomItem from './CustomItem';
-import defaultLocale from '../locales/zh-CN';
+import defaultLocale from './locales/zh-CN';
 // 类型与名称映射
 // export const nameMap: { [key: string]: string } = {
 //   history: '最近使用',
@@ -61,7 +61,7 @@ const GroupList = (props: Props) => {
 
   const { locale: { code = 'zh-CN' } = { code: 'zh-CN' } } = useContext(DesignContext);
   const locale = useLocale('EventPicker');
-  const { notKnown, rencentUse } = { ...defaultLocale, ...locale } as any;
+  const { notKnown, rencentUse, clearAllText } = { ...defaultLocale, ...locale } as any;
 
   const getGroupNameInner = (nodes: EventData[], type: string) => {
     const name = getGroupName?.(type, code) || notKnown;
@@ -137,7 +137,7 @@ const GroupList = (props: Props) => {
                   component="span"
                   onClick={() => handleClearAll()}
                 >
-                  清空全部已选
+                  {clearAllText}
                 </Link>
               </div>
             }

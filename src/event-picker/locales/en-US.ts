@@ -3,4 +3,5 @@ export default {
   expand: 'expand all',
   notKnown: 'unknown',
   rencentUse: 'recently used',
+  clearAllText: 'clear all',
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocale } from '@gio-design/utils';
 import List from '../list';
-import defaultLocale from '../locales/zh-CN';
+import defaultLocale from './locales/zh-CN';
 import ExpandItem from '../list/ExpandItem';
 
 const DEFAULT_SHOW_ITEMS_COUNT = 10;
