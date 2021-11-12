@@ -82,7 +82,7 @@ const EventSelector = ({
   );
   const getIcon =
     pickerRestProps.getTypeIcon || ((type: string) => <TypeIcon style={{ marginRight: '8px' }} type={type} />);
-  const typeIcon = showValueIcon ? getIcon(value[0]?.type ?? '') : null;
+  const typeIcon = showValueIcon ? getIcon(value[0]?.type ?? '', value[0]) : null;
   const inputRender = () =>
     inputValueText && (
       <Tooltip disabled={!textOverflow} title={<div className={`${clsPrifx}-input-tooltip`}>{inputValueText}</div>}>
