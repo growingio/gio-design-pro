@@ -112,7 +112,7 @@ export const CustomItem: React.FC<Props> = (props) => {
     setChecked(e.target.checked);
     // onCheckboxChange?.(dataSource, e.target.checked);
   };
-  const typeIcon = getTypeIcon?.(type ?? '');
+  const typeIcon = getTypeIcon?.(type ?? '', dataSource);
   return (
     <List.Item
       style={{ scrollSnapAlign: 'start' }}

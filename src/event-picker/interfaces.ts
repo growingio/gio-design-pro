@@ -138,7 +138,7 @@ export interface EventPickerProps
   /**
    * 获取事件分组的Icon；
    */
-  getTypeIcon?: (type: string) => React.ReactElement;
+  getTypeIcon?: (type: string, value: EventData) => React.ReactElement;
   /**
    * 分组排序方法，默认预制事件排在前面
    */
