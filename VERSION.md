@@ -1,9 +1,9 @@
-# [21.12.0](https://github.com/growingio/gio-design-pro/compare/v21.11.1...v21.12.0) (2021-11-10)
+## [21.12.1](https://github.com/growingio/gio-design-pro/compare/v21.12.0...v21.12.1) (2021-11-16)
 
 
 ### Features
 
-* **intel:** past-time-picker, property-picker, event-picker, user-pi… ([#458](https://github.com/growingio/gio-design-pro/issues/458)) ([5f64e98](https://github.com/growingio/gio-design-pro/commit/5f64e9861ec28a6c15bb616ef1af42fc38a38979))
+* **EventPicker:** getTypeIcon change ([#460](https://github.com/growingio/gio-design-pro/issues/460)) ([882f9e2](https://github.com/growingio/gio-design-pro/commit/882f9e2fcf620930bb174a45c5c4430852f8b66a))
 
 
 

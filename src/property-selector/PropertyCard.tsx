@@ -17,7 +17,6 @@ import defaultLocale from './locales/zh-CN';
 
 function PropertyCard(props: PropertyCardProps) {
   const locale = useLocale('PropertyPicker');
-  console.log(locale, defaultLocale);
   const { stringText, intText, doubleText, dateText, booleanText, listText } = { ...defaultLocale, ...locale } as any;
 
   const ValueTypeMap: { [key: string]: [string, React.ReactElement] } = {
