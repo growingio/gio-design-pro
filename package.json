@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/pro",
-  "version": "21.11.1",
+  "version": "21.12.1",
   "description": "GrowingIO business components and utils",
   "main": "index.js",
   "repository": "git@github.com:growingio/gio-design-pro.git",
@@ -56,7 +56,7 @@
     "@gio-design/components": "21.8.6",
     "@gio-design/icons": "^21.6.1",
     "@gio-design/tokens": "^21.4.2",
-    "@gio-design/utils": "^21.8.1",
+    "@gio-design/utils": "22.0.2",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-controls": "^6.3.6",
     "@storybook/addon-docs": "^6.3.6",

@@ -1330,7 +1330,7 @@ exports[`PropertyCard will render special valueType  1`] = `
                         </svg>
                       </span>
                     </span>
-                    布尔类型
+                    boolean
                   </div>
                 </div>
               </div>

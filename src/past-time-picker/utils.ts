@@ -2,9 +2,9 @@ import has from 'lodash/has';
 import get from 'lodash/get';
 import { format, startOfToday, sub } from 'date-fns';
 import { TimeMode } from './interfaces';
-import { DATE_FORMAT, QUICK_MAPPING } from './constant';
+import { DATE_FORMAT } from './constant';
 
-export const parseTimeMode = (timeRange: string | undefined) => {
+export const parseTimeMode = (timeRange: string | undefined, QUICK_MAPPING: any) => {
   if (!timeRange) {
     return undefined;
   }
@@ -64,7 +64,13 @@ export const parseFixedMode = (timeRange: string | undefined) => {
   return false;
 };
 
-export const humanizeTimeRange = (timeRange: string, defaultString: string = '时间范围') => {
+export const humanizeTimeRange = (
+  timeRange: string,
+  defaultString: string = '时间范围',
+  QUICK_MAPPING: any,
+  locale: any
+) => {
+  const { FromText, toTodayText, toYesterdayText, lastText, dayText, ToText } = locale;
   if (!timeRange || timeRange.split(':').length !== 2) {
     return defaultString;
   }
@@ -76,20 +82,20 @@ export const humanizeTimeRange = (timeRange: string, defaultString: string = '�
   if (items[0] === 'since') {
     const start = format(times[0], DATE_FORMAT);
     if (times.length === 1) {
-      return `自 ${start} 至今日`;
+      return `${FromText} ${start} ${toTodayText}`;
     }
-    return `自 ${start} 至昨日`;
+    return `${FromText} ${start} ${toYesterdayText}`;
   }
   if (items[0] === 'abs') {
     const start = format(times[0], DATE_FORMAT);
     const end = format(times[1], DATE_FORMAT);
-    return `从 ${start} 至 ${end}`;
+    return `${FromText} ${start} ${ToText} ${end}`;
   }
   if (items[0] === 'day') {
     if (times[1] === 1) {
-      return `过去 ${times[0] - times[1]} 天`;
+      return `${lastText} ${times[0] - times[1]} ${dayText}`;
     }
-    return `过去 ${times[1]}-${times[0]} 天`;
+    return `${lastText} ${times[1]}-${times[0]} ${dayText}`;
   }
   return defaultString;
 };

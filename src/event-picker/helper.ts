@@ -27,7 +27,7 @@ export const getEventType = (data: EventData): string => {
       return 'unknow';
   }
 };
-export const getGroupName = (groupKey: string): string => {
+export const getGroupName = (groupKey: string, locale = 'zh-CN'): string => {
   const nameMap: { [key: string]: string } = {
     custom: '埋点事件',
     virtual: '虚拟事件',
@@ -37,6 +37,18 @@ export const getGroupName = (groupKey: string): string => {
     complex: '自定义计算指标',
     merged: '合成事件',
   };
+  const EnglishMap: { [key: string]: string } = {
+    custom: 'Custom Events',
+    virtual: 'Virtual Events',
+    simple: 'Simple Events',
+    preparedComplex: 'Prepared Metrics',
+    prepared: 'Prepared Events',
+    complex: 'Custom Metrics',
+    merged: 'Merged Events',
+  };
+  if (locale === 'en-US') {
+    return EnglishMap[groupKey] || 'uknown';
+  }
   return nameMap[groupKey] || '未知类型';
 };
 export const getGroupKey = (data: EventData): string => data.type || 'unkwon';

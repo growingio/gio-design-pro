@@ -1,13 +1,15 @@
 /* eslint-disable react/no-array-index-key */
 import { isFunction, keys } from 'lodash';
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useContext } from 'react';
 import { Link } from '@gio-design/components';
 import classNames from 'classnames';
+import { useLocale, DesignContext } from '@gio-design/utils';
 import { EventData, EventPickerProps } from './interfaces';
 import List from '../list';
 import Group from './Group';
 import { GroupItemsProps } from './GroupListItemProps';
 import CustomItem from './CustomItem';
+import defaultLocale from './locales/zh-CN';
 // 类型与名称映射
 // export const nameMap: { [key: string]: string } = {
 //   history: '最近使用',
@@ -57,8 +59,12 @@ const GroupList = (props: Props) => {
     ...rest
   } = props;
 
+  const { locale: { code = 'zh-CN' } = { code: 'zh-CN' } } = useContext(DesignContext);
+  const locale = useLocale('EventPicker');
+  const { notKnown, rencentUse, clearAllText } = { ...defaultLocale, ...locale } as any;
+
   const getGroupNameInner = (nodes: EventData[], type: string) => {
-    const name = getGroupName?.(type) || '未知类型';
+    const name = getGroupName?.(type, code) || notKnown;
     return `${name}(${nodes.length})`;
   };
   const handleCheckboxChange = (node: EventData, checked: boolean) => {
@@ -105,7 +111,7 @@ const GroupList = (props: Props) => {
     () =>
       history?.length > 0 && (
         <React.Fragment key="historyNodes">
-          <Group groupKey="history" key="exp-group-history" title="最近使用">
+          <Group groupKey="history" key="exp-group-history" title={rencentUse}>
             {listItems(history, [], 'history')}
           </Group>
           <List.Divider key="divider-group-history" />
@@ -131,7 +137,7 @@ const GroupList = (props: Props) => {
                   component="span"
                   onClick={() => handleClearAll()}
                 >
-                  清空全部已选
+                  {clearAllText}
                 </Link>
               </div>
             }

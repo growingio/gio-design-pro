@@ -1,4 +1,4 @@
-export const preparedSegments = [
+export const preparedSegmentsCN = [
   {
     id: 'uv',
     name: '全部用户',
@@ -9,6 +9,18 @@ export const preparedSegments = [
   },
 ];
 
+export const preparedSegmentsEn = [
+  {
+    id: 'uv',
+    name: 'All Users',
+  },
+  {
+    id: 'nuv',
+    name: 'New Users',
+  },
+];
+
 export default {
-  preparedSegments,
+  preparedSegmentsCN,
+  preparedSegmentsEn,
 };

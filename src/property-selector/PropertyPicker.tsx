@@ -17,6 +17,7 @@ import {
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
 
+import { useLocale } from '@gio-design/utils';
 import { dimensionToPropertyItem, getShortPinyin, promisify } from './util';
 import { useDebounce, useDebounceFn, useLocalStorage } from '../hooks';
 import BasePicker from '../base-picker';
@@ -29,6 +30,7 @@ import PropertyCard from './PropertyCard';
 import './style';
 import { Dimension } from './types';
 import IconRender from './PropertyValueIconRender';
+import defaultLocale from './locales/zh-CN';
 
 export const ExpandableGroupOrSubGroup = (props: {
   title?: string;
@@ -78,6 +80,8 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     shouldUpdateRecentlyUsed = true,
     ...rest
   } = props;
+  const locale = useLocale('PropertyPicker');
+  const { allText, searchPlaceholder } = { ...defaultLocale, ...locale } as any;
   const [scope, setScope] = useState('all');
   const [keyword, setKeyword] = useState<string | undefined>('');
   const [recentlyUsedInMemo, setRecentlyUsedInMemo] = useState<{
@@ -108,7 +112,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     setDetailVisible(visible);
   }, detailVisibleDelay);
   const [dataList, setDataList] = useState<PropertyItem[]>([]);
-  const navRef = useRef([{ key: 'all', children: '全部' }]);
+  const navRef = useRef([{ key: 'all', children: allText }]);
   useEffect(() => {
     // 如果是Dimension类型 需要做一个数据转换
     let propertiItemList: PropertyItem[] = [];
@@ -144,7 +148,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     const types = uniq(propertiItemList.map((p) => p.type));
     const tabs = Tabs.filter((t) => types.indexOf(t.key) > -1);
     // setTabNavItems(tabs);
-    navRef.current = [{ key: 'all', children: '全部' }].concat(tabs);
+    navRef.current = [{ key: 'all', children: allText }].concat(tabs);
   }, [originDataSource]);
   /**
    * 搜索关键字的方法，支持拼音匹配
@@ -422,7 +426,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         renderDetail={renderDetail}
         loading={loading}
         searchBar={{
-          placeholder: searchBar?.placeholder || '搜索属性名称',
+          placeholder: searchBar?.placeholder || searchPlaceholder,
           onSearch: handleSearch,
         }}
         tabNav={{

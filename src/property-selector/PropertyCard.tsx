@@ -10,19 +10,24 @@ import {
   DateTypeOutlined,
   BooleanTypeOutlined,
 } from '@gio-design/icons';
+import { useLocale } from '@gio-design/utils';
 import { PropertyTypes, PropertyCardProps } from './interfaces';
 import useAsync from '../hooks/useAsync';
-
-const ValueTypeMap: { [key: string]: [string, React.ReactElement] } = {
-  string: ['字符串类型', <StringTypeOutlined size="14px" />],
-  int: ['数值类型', <NumberTypeOutlined size="14px" />],
-  double: ['数值类型', <NumberTypeOutlined size="14px" />],
-  date: ['日期类型', <DateTypeOutlined size="14px" />],
-  boolean: ['布尔类型', <BooleanTypeOutlined size="14px" />],
-  list: ['列表类型', <ListTypeOutlined size="14px" />],
-};
+import defaultLocale from './locales/zh-CN';
 
 function PropertyCard(props: PropertyCardProps) {
+  const locale = useLocale('PropertyPicker');
+  const { stringText, intText, doubleText, dateText, booleanText, listText } = { ...defaultLocale, ...locale } as any;
+
+  const ValueTypeMap: { [key: string]: [string, React.ReactElement] } = {
+    string: [stringText, <StringTypeOutlined size="14px" />],
+    int: [intText, <NumberTypeOutlined size="14px" />],
+    double: [doubleText, <NumberTypeOutlined size="14px" />],
+    date: [dateText, <DateTypeOutlined size="14px" />],
+    boolean: [booleanText, <BooleanTypeOutlined size="14px" />],
+    list: [listText, <ListTypeOutlined size="14px" />],
+  };
+
   const { fetchData, nodeData } = props;
   const { loading, value: data } = useAsync(async () => {
     const res = await fetchData?.(nodeData);

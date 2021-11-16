@@ -1,9 +1,10 @@
 import React from 'react';
 import { Input, Button } from '@gio-design/components';
-import { usePrefixCls } from '@gio-design/utils';
+import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { PlusOutlined } from '@gio-design/icons';
 import { differenceInDays, startOfDay, startOfToday, subDays } from 'date-fns';
 import { RelativeRangeHeaderProps } from './interfaces';
+import defaultLocale from './locales/zh-CN';
 
 const convertDateToDays = (date: Date | undefined, defaultValue: number) =>
   date ? differenceInDays(startOfToday(), startOfDay(date)) : defaultValue;
@@ -12,6 +13,13 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
   const [startDays, setStartDays] = React.useState<number>(convertDateToDays(dateRange[0], 2));
   const [endDays, setEndDays] = React.useState<number>(convertDateToDays(dateRange[1], 1));
   const [endDaysHidden, setEndDaysHidden] = React.useState(endDays === 1);
+
+  const locale = useLocale('PastTimePicker');
+
+  const { lastText, dayText, endDayText, toText }: { [key: string]: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
 
   const basePrefixCls = usePrefixCls('range-panel__header');
   const setRange = (start: number, end: number) => {
@@ -24,7 +32,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
     const duration = startDays - endDays;
     return (
       <>
-        <span className={`${basePrefixCls}__text`}>过去</span>
+        <span className={`${basePrefixCls}__text`}>{lastText}</span>
         <span className={`${basePrefixCls}__input-number`} data-testid="duration">
           <Input.InputNumber
             min={1}
@@ -38,7 +46,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
             size="small"
           />
         </span>
-        <span className={`${basePrefixCls}__text`}>天</span>
+        <span className={`${basePrefixCls}__text`}>{dayText}</span>
         <Button
           className={`${basePrefixCls}__button`}
           type="secondary"
@@ -49,14 +57,14 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
           }}
           size="small"
         >
-          结束日期
+          {endDayText}
         </Button>
       </>
     );
   };
   const renderRange = () => (
     <>
-      <span className={`${basePrefixCls}__text`}>过去</span>
+      <span className={`${basePrefixCls}__text`}>{toText}</span>
       <span className={`${basePrefixCls}__input-number`} data-testid="end-days">
         <Input.InputNumber
           min={0}
@@ -70,7 +78,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
           size="small"
         />
       </span>
-      <span className={`${basePrefixCls}__text`}>至</span>
+      <span className={`${basePrefixCls}__text`}>{toText}</span>
       <span className={`${basePrefixCls}__input-number`} data-testid="start-days">
         <Input.InputNumber
           min={endDays + 1}
@@ -84,7 +92,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
           size="small"
         />
       </span>
-      <span className={`${basePrefixCls}__text`}>天</span>
+      <span className={`${basePrefixCls}__text`}>{dayText}</span>
     </>
   );
 
