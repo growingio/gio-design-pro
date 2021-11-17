@@ -3,6 +3,8 @@ import { Input, Loading } from '@gio-design/components';
 import List from '@gio-design/components/es/components/list-pro';
 import { attributeValue } from '../../interfaces';
 import InOrNotIn from './InOrNotIn';
+import en from '../../../../../../locals/en-US.json';
+import cn from '../../../../../../locals/zh-CN.json';
 
 interface StringAttrSelectProps {
   // 维度类型
@@ -97,7 +99,12 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     default:
       return (
         <div style={{ width: '100%', height: '100%' }}>
-          <Input placeholder="请输入…" size="middle" value={inputValue} onChange={changInputValue} />
+          <Input
+            placeholder={window.localStorage.getItem('locale') === 'en-US' ? en.pleaseEnter : cn.pleaseEnter}
+            size="middle"
+            value={inputValue}
+            onChange={changInputValue}
+          />
           {loadingStatue ? (
             <div
               style={{

@@ -4,6 +4,9 @@ import FilterList from '../FilterList';
 
 import { FilterValueType } from '../../interfaces';
 
+import en from '../../locals/en-US.json';
+import cn from '../../locals/zh-CN.json';
+
 import './index.less';
 
 interface FilterOverflyProps {
@@ -29,7 +32,9 @@ function FilterOverlay(props: FilterOverflyProps) {
   } = props;
   return (
     <div className="filter-condition_box">
-      <div className="filter-condition_title">选择过滤条件</div>
+      <div className="filter-condition_title">
+        {window.localStorage.getItem('locale') === 'en-US' ? en.selectFilter : cn.selectFilter}
+      </div>
       <FilterList
         list={filterList}
         dimensionValueRequest={dimensionValueRequest}

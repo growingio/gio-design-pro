@@ -23,6 +23,16 @@ function RelativeCurrent(props: RelativeCurrentProps) {
       label: '未来',
     },
   ];
+  const enSelectOptions = [
+    {
+      value: '-1',
+      label: 'past',
+    },
+    {
+      value: '1',
+      label: 'future',
+    },
+  ];
   const beforeSelectOptions = [
     {
       value: '-1',
@@ -33,6 +43,16 @@ function RelativeCurrent(props: RelativeCurrentProps) {
       label: '之前',
     },
   ];
+  const enBeforeSelectOptions = [
+    {
+      value: '-1',
+      label: 'widthin',
+    },
+    {
+      value: '1',
+      label: 'before',
+    },
+  ];
   const afterSelectOptions = [
     {
       value: '-1',
@@ -41,6 +61,16 @@ function RelativeCurrent(props: RelativeCurrentProps) {
     {
       value: '1',
       label: '之后',
+    },
+  ];
+  const enAfterSelectOptions = [
+    {
+      value: '-1',
+      label: 'within',
+    },
+    {
+      value: '1',
+      label: 'after',
     },
   ];
   // 解析初始值
@@ -105,7 +135,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
       <Select
         value={nowOrFuturevalue}
-        options={SelectOptions}
+        options={window.localStorage.getItem('locale') === 'en-US' ? enSelectOptions : SelectOptions}
         onChange={selectChange}
         style={{ marginRight: '4px', width: '90px' }}
       />
@@ -115,7 +145,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
         <Select
           key="beforeSelect"
           value={inOrOutValue}
-          options={beforeSelectOptions}
+          options={window.localStorage.getItem('locale') === 'en-US' ? enBeforeSelectOptions : beforeSelectOptions}
           onChange={selectAfterChange}
           style={{ marginLeft: '4px', width: '85px' }}
         />
@@ -123,7 +153,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
         <Select
           key="afterSelect"
           value={inOrOutValue}
-          options={afterSelectOptions}
+          options={window.localStorage.getItem('locale') === 'en-US' ? enAfterSelectOptions : afterSelectOptions}
           onChange={selectAfterChange}
           style={{ marginLeft: '4px', width: '85px' }}
         />

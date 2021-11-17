@@ -7,6 +7,9 @@ import { FilterValueType } from '../../interfaces';
 import { defaultFilterItem } from '../../filterMap';
 import Footer from '../Footer';
 
+import en from '../../locals/en-US.json';
+import cn from '../../locals/zh-CN.json';
+
 interface FilterListProps {
   list: FilterValueType[];
   dimensionValueRequest?: (data: any) => Promise<any>;
@@ -89,7 +92,7 @@ function FilterList(props: FilterListProps) {
         disabled={filterList.length >= 5 || filterList.some((ele: FilterValueType) => !ele.values.length)}
         onClick={addFilter}
       >
-        添加过滤条件
+        {window.localStorage.getItem('locale') === 'en-US' ? en.addFilter : cn.addFilter}
       </Button>
       <Footer
         onCancel={cancel}
