@@ -1,6 +1,6 @@
 {
-  "submit": "submit",
-  "cancel": "cancel",
+  "submit": "Confirm",
+  "cancel": "Cancel",
   "selectFilter": "Select Filter",
   "addFilter": "Add Filter",
   "includeToday": "Include Today",
