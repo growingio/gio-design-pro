@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from '@gio-design/components/es';
 import './index.less';
-import en from '../../locals/en-US.json';
-import cn from '../../locals/zh-CN.json';
+import en from '../../locals/en-US';
+import cn from '../../locals/zh-CN';
 
 interface FilterFooterProps {
   onSubmit: () => void;
