@@ -19,11 +19,12 @@ export function renderExpandableItems(expanded: boolean, currentItems: ListItemP
   }
   if (currentItems.length > DEFAULT_SHOW_ITEMS_COUNT) {
     const showItems = currentItems.slice(0, DEFAULT_SHOW_ITEMS_COUNT);
+    const expandText = localStorage.getItem('locale') === 'en-US' ? 'Expand All' : '展开全部';
     return showItems
       .map(renderItem)
       .concat(
         <ExpandItem
-          title={`展开全部 (${currentItems.length - showItems.length})`}
+          title={`${expandText} (${currentItems.length - showItems.length})`}
           key={`expand-item-${currentItems[0].key}-${showItems.length + 1}`}
           onClick={onExpand}
         />
