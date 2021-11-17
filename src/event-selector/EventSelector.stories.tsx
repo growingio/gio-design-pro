@@ -32,18 +32,9 @@ const Template: Story<EventSelectorProps> = (args) => {
       setSelect(isArray(newVal) ? newVal : [newVal]);
     }
   }
-
-  const onButtonClick = () => setSelect([events[Math.floor(Math.random() * 5)]]);
-
   return (
     <div style={{ maxWidth: '288px' }}>
       <EventSelector {...args} onChange={handleChange} value={select} onClick={(i) => console.log('item clicked', i)} />
-      <br />
-      <br />
-      <br />
-      <button onClick={onButtonClick} type="button">
-        点击变化event
-      </button>
     </div>
   );
 };
