@@ -1,9 +1,9 @@
-## [21.12.6](https://github.com/growingio/gio-design-pro/compare/v21.12.5...v21.12.6) (2021-11-17)
+## [21.12.7](https://github.com/growingio/gio-design-pro/compare/v21.12.6...v21.12.7) (2021-11-17)
 
 
 ### Bug Fixes
 
-* **user-selector:** 预置用户没有翻译的问题 ([#476](https://github.com/growingio/gio-design-pro/issues/476)) ([e0d0597](https://github.com/growingio/gio-design-pro/commit/e0d05970a5c56b0145696862ba87a9b3c5138a5d))
+* **intl:** fix 英文无法切换回中文的问题 ([#478](https://github.com/growingio/gio-design-pro/issues/478)) ([ff4073f](https://github.com/growingio/gio-design-pro/commit/ff4073f19413922f80e1e4127a3126c43e394086))
 
 
 
