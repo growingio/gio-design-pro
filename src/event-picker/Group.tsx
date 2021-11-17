@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useLocale } from '@gio-design/utils';
+import type { Locale } from '@gio-design/utils';
 import List from '../list';
 import defaultLocale from './locales/zh-CN';
 import ExpandItem from '../list/ExpandItem';
+import localeEn from './locales/en-US';
 
 const DEFAULT_SHOW_ITEMS_COUNT = 10;
 export function renderExpandableItems(
@@ -11,8 +13,11 @@ export function renderExpandableItems(
   onExpand: () => void,
   groupKey: string
 ) {
+  const language = localStorage.getItem('locale');
   const locale = useLocale('EventPicker');
-  const { expand } = { ...defaultLocale, ...locale } as any;
+  const mergedLocale = locale || language.indexOf('en') > -1 ? localeEn : ({} as Locale);
+
+  const { expand } = { ...defaultLocale, ...mergedLocale } as any;
 
   if (expanded) {
     return children;

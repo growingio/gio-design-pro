@@ -8,4 +8,5 @@ export default {
   allText: '全部',
   searchPlaceholder: '搜索属性名称',
   placeholderText: '选择属性',
+  recentlyUsedGroupName: '最近使用',
 };

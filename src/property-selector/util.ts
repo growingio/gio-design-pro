@@ -5,7 +5,7 @@ import { PropertyItem, PropertyTypes } from './interfaces';
 import { Dimension } from './types';
 
 type MapedType = 'usr' | 'event' | 'avar' | 'itm';
-type TypeMapping = (input: Dimension) => PropertyItem;
+type TypeMapping = (input: Dimension, locale?: string) => PropertyItem;
 
 type Mapper = {
   [key: string]: MapedType;
@@ -75,12 +75,14 @@ const PreparedNormalDimensionIdMap = (id: string) => {
     element: ['v', 'idx'], // ，元素内容，元素位置
     device: ['b', 'cv'], // 应用平台和app版本归属到-设备分类
   };
-  if (groupMap.page.includes(id)) return ['page', '页面'];
-  if (groupMap.element.includes(id)) return ['element', '无埋点事件属性'];
-  return ['device', '设备'];
+  const locale = localStorage.getItem('locale') || 'zh-CN';
+  if (groupMap.page.includes(id)) return ['page', locale === 'en-US' ? 'Pages' : '页面'];
+  if (groupMap.element.includes(id))
+    return ['element', locale === 'en-US' ? 'AutoTrack Event Variables' : '无埋点事件属性'];
+  return ['device', locale === 'en-US' ? 'Devices' : '设备'];
 };
 
-const regroup = (data: PropertyItem): PropertyItem => {
+const regroup = (data: PropertyItem, locale = 'zh-CN'): PropertyItem => {
   const { isSystem, groupId, type, typeName } = data;
   let newType = type;
   let newTypeName = typeName;
@@ -88,10 +90,15 @@ const regroup = (data: PropertyItem): PropertyItem => {
     newType = 'event';
     newTypeName = PropertyTypes[newType];
   }
-
-  let groupName = isSystem ? `预置${typeName}` : `自定义${typeName}`;
+  const preset = locale === 'en-US' ? 'Preset ' : '预置';
+  const custom = locale === 'en-US' ? 'Custom ' : '自定义';
+  let groupName = isSystem ? `${preset}${typeName}` : `${custom}${typeName}`;
   if (groupId === 'tag') {
-    groupName = '用户标签';
+    if (locale === 'en-US') {
+      groupName = 'Tags';
+    } else {
+      groupName = '用户标签';
+    }
   }
 
   return {
@@ -106,7 +113,6 @@ const regroup = (data: PropertyItem): PropertyItem => {
 export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = 'zh-CN') => {
   const result: PropertyItem = { label: item.name, value: item.id, ...item };
   const { id, groupId, type: _type, associatedKey } = item;
-
   if (groupId === 'normal' && _type === 'global') {
     const [newGoupId, newGroupName] = PreparedNormalDimensionIdMap(id);
     result.groupId = newGoupId;
@@ -124,15 +130,21 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = '
   if (groupId === 'item' && _type === 'itm' && associatedKey) {
     result.groupId = 'event';
     if (locale === 'en-US') {
-      result.groupName = 'event variable';
+      result.groupName = 'Event Variables';
+    } else {
+      result.groupName = '事件变量';
     }
-    result.groupName = '事件变量';
   }
 
   // 虚拟属性需要添加到事件属性中，但是有自己的type和groupId，所以和维度表（多物品模型）做相同处理
   if (groupId === 'virtual' && _type === 'vvar') {
     result.groupId = 'event';
-    result.groupName = '虚拟属性';
+    // result.groupName = '虚拟属性';
+    if (locale === 'en-US') {
+      result.groupName = 'Virtual Variables';
+    } else {
+      result.groupName = '虚拟属性';
+    }
   }
 
   const gOrder = PropertyGroupOrder.indexOf(result.groupId as string);
@@ -144,7 +156,7 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = '
   result.typeOrder = tOrder > -1 ? tOrder : 99999;
 
   if (has(item, 'isSystem')) {
-    return regroup(result);
+    return regroup(result, locale);
   }
   return result;
 };

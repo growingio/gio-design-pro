@@ -328,6 +328,7 @@ CustomPreviewRender.args = {
   dataSource: events,
   previewCustomRender: (data: any) => {
     const { name, type } = data;
+    // eslint-disable-next-line no-console
     console.log('I am preview render');
     return (
       <div>

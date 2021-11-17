@@ -1,10 +1,9 @@
 import { EventData } from './interfaces';
 
 export { withPrefix } from '@gio-design/components/es/components/cascader/helper';
-
 export const defaultTabs = [
-  { label: '事件', value: 'event' },
-  { label: '计算指标', value: 'measurement' },
+  { label: localStorage.getItem('locale') === 'en-US' ? 'Events' : '事件', value: 'event' },
+  { label: localStorage.getItem('locale') === 'en-US' ? 'Metrics' : '计算指标', value: 'measurement' },
 ];
 
 // 数据类型映射
@@ -28,6 +27,7 @@ export const getEventType = (data: EventData): string => {
   }
 };
 export const getGroupName = (groupKey: string, locale = 'zh-CN'): string => {
+  const _locale = localStorage.getItem('locale') || locale;
   const nameMap: { [key: string]: string } = {
     custom: '埋点事件',
     virtual: '虚拟事件',
@@ -46,7 +46,7 @@ export const getGroupName = (groupKey: string, locale = 'zh-CN'): string => {
     complex: 'Custom Metrics',
     merged: 'Merged Events',
   };
-  if (locale === 'en-US') {
+  if (_locale === 'en-US') {
     return EnglishMap[groupKey] || 'uknown';
   }
   return nameMap[groupKey] || '未知类型';

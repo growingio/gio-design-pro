@@ -2,6 +2,9 @@ import { Button } from '@gio-design/components';
 import React, { useRef } from 'react';
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import classNames from 'classnames';
+import { Locale, useLocale } from '@gio-design/utils';
+import defaultLocale from './locales/zh-CN';
+import localeEn from './locales/en-US';
 
 interface ListPanelProps {
   // dataSource: EventData[];
@@ -18,6 +21,11 @@ const _ListPanel: React.ForwardRefRenderFunction<unknown, React.PropsWithChildre
   const cls = `${clsPrefix}-list-panel`;
   const wrapElemRef = useRef<HTMLDivElement | null>(null);
   React.useImperativeHandle(ref, () => wrapElemRef?.current);
+  const language = localStorage.getItem('locale');
+  const locale = useLocale('EventPicker');
+  const mergedLocale = locale || language.indexOf('en') > -1 ? localeEn : ({} as Locale);
+
+  const { cancelText, okText } = { ...defaultLocale, ...mergedLocale } as any;
   return (
     <>
       <div className={cls} ref={wrapElemRef}>
@@ -34,10 +42,10 @@ const _ListPanel: React.ForwardRefRenderFunction<unknown, React.PropsWithChildre
                     onOK?.();
                   }}
                 >
-                  确定
+                  {okText}
                 </Button>
                 <Button type="secondary" onClick={() => onCancel?.()}>
-                  取消
+                  {cancelText}
                 </Button>
               </div>
             )}

@@ -16,7 +16,7 @@ import {
 } from 'lodash';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
-
+import type { Locale } from '@gio-design/utils';
 import { useLocale } from '@gio-design/utils';
 import { dimensionToPropertyItem, getShortPinyin, promisify } from './util';
 import { useDebounce, useDebounceFn, useLocalStorage } from '../hooks';
@@ -31,6 +31,7 @@ import './style';
 import { Dimension } from './types';
 import IconRender from './PropertyValueIconRender';
 import defaultLocale from './locales/zh-CN';
+import localeEn from './locales/en-US';
 
 export const ExpandableGroupOrSubGroup = (props: {
   title?: string;
@@ -80,8 +81,11 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     shouldUpdateRecentlyUsed = true,
     ...rest
   } = props;
-  const locale = useLocale('PropertyPicker');
-  const { allText, searchPlaceholder } = { ...defaultLocale, ...locale } as any;
+  const _locale = useLocale('PropertyPicker');
+  const language = localStorage.getItem('locale');
+  const locale = _locale || language === 'en-US' ? localeEn : ({} as Locale);
+  const messages = { ...defaultLocale, ...locale } as any;
+  const { allText, searchPlaceholder, recentlyUsedGroupName } = messages;
   const [scope, setScope] = useState('all');
   const [keyword, setKeyword] = useState<string | undefined>('');
   const [recentlyUsedInMemo, setRecentlyUsedInMemo] = useState<{
@@ -119,7 +123,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     if (originDataSource && originDataSource.length) {
       if (!('value' in originDataSource[0])) {
         propertiItemList = originDataSource.map((v) => {
-          const item = dimensionToPropertyItem(v as Dimension);
+          const item = dimensionToPropertyItem(v as Dimension, language);
           item.itemIcon = () => <IconRender group={item.associatedKey ? 'item' : item.groupId} />;
           return item;
         });
@@ -331,7 +335,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         <ExpandableGroupOrSubGroup
           groupKey="recently"
           key="exp-group-recently"
-          title="最近使用"
+          title={recentlyUsedGroupName}
           type="group"
           items={getListItems(recentlyPropertyItems, 'recently')}
         />
