@@ -1,21 +1,11 @@
-## [21.12.4](https://github.com/growingio/gio-design-pro/compare/v21.12.3...v21.12.4) (2021-11-17)
+## [21.12.5](https://github.com/growingio/gio-design-pro/compare/v21.12.4...v21.12.5) (2021-11-17)
 
 
 ### Bug Fixes
 
-* **filter-picker:** 修复过滤选择器 确认 英文文案comfirm ([#469](https://github.com/growingio/gio-design-pro/issues/469)) ([9286738](https://github.com/growingio/gio-design-pro/commit/92867387cfe12c0c67125262f6cede80d3eab77a))
-* **property-picker:** translate ([#470](https://github.com/growingio/gio-design-pro/issues/470)) ([dad23e8](https://github.com/growingio/gio-design-pro/commit/dad23e89bea0cbff9131888f5b72b55b709a34cf))
-
-
-### Features
-
-* **event-picker:** 修复事件选择器国际化设置 ([#467](https://github.com/growingio/gio-design-pro/issues/467)) ([208da42](https://github.com/growingio/gio-design-pro/commit/208da420cb550def9f30dacfaac3a25d73aab53b)), closes [#462](https://github.com/growingio/gio-design-pro/issues/462) [#468](https://github.com/growingio/gio-design-pro/issues/468)
-* **filter-picker:** 修复过滤选择器国际化设置 ([#466](https://github.com/growingio/gio-design-pro/issues/466)) ([a4bc860](https://github.com/growingio/gio-design-pro/commit/a4bc86026a2beeaf01355dd13caa429f823500b6))
-
-
-### Reverts
-
-* Revert "feat(EventSelector):修改受控组件 (#462)" (#468) ([6edc7df](https://github.com/growingio/gio-design-pro/commit/6edc7df2131c8aaf444948cffb33ee5137b2b03f)), closes [#462](https://github.com/growingio/gio-design-pro/issues/462) [#468](https://github.com/growingio/gio-design-pro/issues/468)
+* **filter-picker:** 修复babel设置错误,导致打包失败 ([#472](https://github.com/growingio/gio-design-pro/issues/472)) ([d8e76d2](https://github.com/growingio/gio-design-pro/commit/d8e76d269efa7a31e8df1d9720bea1ca4fbd5f5d))
+* **filter-picker:** 修复filter-picker引入报错的问题 ([#473](https://github.com/growingio/gio-design-pro/issues/473)) ([351e2da](https://github.com/growingio/gio-design-pro/commit/351e2da253070974d499f7cc8d55de1b30ba151b)), closes [#462](https://github.com/growingio/gio-design-pro/issues/462)
+* **user-picker:** 英文切换中文错误 ([#474](https://github.com/growingio/gio-design-pro/issues/474)) ([a8cb44b](https://github.com/growingio/gio-design-pro/commit/a8cb44baf3c790ba9fca38f0a3df2943c29ad993))
 
 
 
