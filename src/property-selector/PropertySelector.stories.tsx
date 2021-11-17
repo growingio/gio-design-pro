@@ -9,9 +9,8 @@ import insightDimensions from './__test__/data';
 import { dimensionToPropertyItem } from './util';
 import { Dimension } from './types';
 
-const dataSource = insightDimensions.map(
-  (v: any) => dimensionToPropertyItem(v as Dimension),
-  localStorage.getItem('locale') === 'en-US' ?? undefined
+const dataSource = insightDimensions.map((v: any) =>
+  dimensionToPropertyItem(v as Dimension, localStorage.getItem('locale'))
 );
 
 export default {
