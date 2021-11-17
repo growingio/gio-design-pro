@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { isArray } from 'lodash';
 import { Tooltip, usePrefixCls } from '@gio-design/components';
 import classNames from 'classnames';
@@ -9,11 +9,6 @@ import { withSelectKey } from '../event-picker/helper';
 import { EventPicker } from '../event-picker';
 import TypeIcon from '../event-picker/TypeIcon';
 import './style';
-
-const formatValue = (source: EventData[] | EventData) => {
-  const arr = isArray(source) ? source : [source];
-  return withSelectKey(arr);
-};
 
 const EventSelector = ({
   borderless = false,
@@ -34,18 +29,25 @@ const EventSelector = ({
   ...pickerRestProps
 }: EventSelectorProps) => {
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
-
+  const formatValue = (source: EventData[] | EventData) => {
+    const arr = isArray(source) ? source : [source];
+    return withSelectKey(arr);
+  };
   const [value, setValue] = useState<EventData[]>(formatValue(initialValue));
   const [afterVisible, setVisible] = useState(true);
-  const inputValueRef = useRef<HTMLSpanElement | null>(null);
-
   useEffect(() => {
     setTimeout(() => setVisible(dropdownVisibleInner || false), 0);
   }, [dropdownVisibleInner]);
-
+  const inputValueText = useMemo(() => (value || []).map((v) => v.name).join(','), [value]);
+  const [textOverflow, setTextOverflow] = useState(false);
+  const inputValueRef = useRef<HTMLSpanElement | null>(null);
   useEffect(() => {
-    setValue(formatValue(initialValue));
-  }, [initialValue]);
+    if (!inputValueRef?.current || !inputValueText) return;
+    const scrollWidth = inputValueRef?.current?.scrollWidth || 0;
+    const clientWidth = inputValueRef?.current?.clientWidth || 0;
+    const isOverflow = scrollWidth > clientWidth;
+    setTextOverflow(isOverflow);
+  }, [inputValueRef, inputValueText]);
 
   const clsPrifx = usePrefixCls('event-selector');
   const selectorCls = classNames(clsPrifx, className);
@@ -81,26 +83,15 @@ const EventSelector = ({
   const getIcon =
     pickerRestProps.getTypeIcon || ((type: string) => <TypeIcon style={{ marginRight: '8px' }} type={type} />);
   const typeIcon = showValueIcon ? getIcon(value[0]?.type ?? '', value[0]) : null;
-  const inputRender = () => {
-    const inputValueText = (value || []).map((v) => v.name).join(',');
-    let isOverflow = false;
-    if (inputValueRef?.current && inputValueText) {
-      const scrollWidth = inputValueRef?.current?.scrollWidth || 0;
-      const clientWidth = inputValueRef?.current?.clientWidth || 0;
-      isOverflow = scrollWidth > clientWidth;
-    }
-
-    return (
-      inputValueText && (
-        <Tooltip disabled={!isOverflow} title={<div className={`${clsPrifx}-input-tooltip`}>{inputValueText}</div>}>
-          <span className="inner-input-wrap" ref={inputValueRef}>
-            {!pickerRestProps.multiple && typeIcon}
-            <span>{inputValueText}</span>
-          </span>
-        </Tooltip>
-      )
+  const inputRender = () =>
+    inputValueText && (
+      <Tooltip disabled={!textOverflow} title={<div className={`${clsPrifx}-input-tooltip`}>{inputValueText}</div>}>
+        <span className="inner-input-wrap" ref={inputValueRef}>
+          {!pickerRestProps.multiple && typeIcon}
+          <span>{inputValueText}</span>
+        </span>
+      </Tooltip>
     );
-  };
   return (
     <>
       <Selector
