@@ -82,7 +82,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     ...rest
   } = props;
   const _locale = useLocale('PropertyPicker');
-  const language = localStorage.getItem('locale');
+  const language = localStorage.getItem('locale') || 'zh-CN';
   const locale = _locale || language === 'en-US' ? localeEn : ({} as Locale);
   const messages = { ...defaultLocale, ...locale } as any;
   const { allText, searchPlaceholder, recentlyUsedGroupName } = messages;
