@@ -1,6 +1,9 @@
 import moment from 'moment';
 import { attributeValue } from '../interfaces';
 
+import en from '../../../../../locals/en-US.json';
+import cn from '../../../../../locals/zh-CN.json';
+
 interface operationMapType {
   string: { [key: string]: string };
   int: { [key: string]: string };
@@ -54,19 +57,65 @@ const operationMap: operationMapType = {
   },
 };
 
+const enOperationMap: operationMapType = {
+  string: {
+    '=': 'equal',
+    '!=': 'not equal',
+    in: 'in',
+    'not in': 'not in',
+    like: 'include',
+    'not like': 'not include',
+    hasValue: 'hasValue',
+    noValue: 'noValue',
+  },
+  STRING: {
+    '=': 'equal',
+    '!=': 'not equal',
+    in: 'in',
+    'not in': 'not in,and,',
+    like: 'include',
+    'not like': 'not include',
+  },
+  int: {
+    '=': 'equal',
+    '!=': 'not equal',
+    '>': 'greater than',
+    '>=': 'greater than or equal to',
+    '<': 'less than',
+    '<=': 'less than or equal to',
+    between: 'between,and,',
+    'not between': 'not between,and,',
+    noValue: 'noValue',
+    hasValue: 'hasValue',
+  },
+  date: {
+    '=': 'equal',
+    '!=': 'not equal',
+    '>': 'after,days',
+    '>=': 'after,days(including that day)',
+    '<': 'before,days',
+    '<=': 'before,days(including that day)',
+    between: 'between,and,',
+    'not between': 'not between,and,',
+    relativeCurrent: 'relativeCurrent',
+    relativeBetween: 'relativeBetween',
+    hasValue: 'hasValue',
+  },
+};
+
 const parseStringValuesToText = (opMap: { [key: string]: string }, operation: string, value: string[]) => {
   switch (operation) {
     // 判断当op ： ”=“ 时，是否为无值状态，如果无值，返回’有值’
     case '=': {
       if (value[0] === ' ') {
-        return '无值';
+        return window.localStorage.getItem('locale') === 'en-US' ? 'noValue' : '无值';
       }
       return opMap[operation] + value[0];
     }
     // 判断当op ： ”！=“ 时，是否为有值状态，如果有值，返回’无值‘
     case '!=': {
       if (value[0] === ' ') {
-        return '有值';
+        return window.localStorage.getItem('locale') === 'en-US' ? 'hasValue' : '有值';
       }
       return opMap[operation] + value[0];
     }
@@ -86,14 +135,14 @@ const parseIntValuesToText = (opMap: { [key: string]: string }, operation: strin
     // 判断当op ： ”！=“ 时，是否为有值状态，如果有值，返回’有值‘
     case '!=': {
       if (value[0] === ' ') {
-        return '有值';
+        return window.localStorage.getItem('locale') === 'en-US' ? 'hasValue' : '有值';
       }
       return opMap[operation] + value[0];
     }
     // 判断当op ： ”=“ 时，是否为无值状态，如果无值，返回’无值‘
     case '=': {
       if (value[0] === ' ') {
-        return '无值';
+        return window.localStorage.getItem('locale') === 'en-US' ? 'noValue' : '无值';
       }
       return opMap[operation] + value[0];
     }
@@ -112,39 +161,55 @@ const parseDateValuesRelativeToText = (relativeTime: number[]) => {
   if (relativeTime.length === 1) {
     const day = relativeTime[0];
     if (day < 0) {
-      return `过去${Math.abs(day)}天前`;
+      return window.localStorage.getItem('locale') === 'en-US'
+        ? `past ${Math.abs(day)} days before`
+        : `过去${Math.abs(day)}天前`;
     }
-    return `未来${Math.abs(day)}天后`;
+    return window.localStorage.getItem('locale') === 'en-US'
+      ? `future ${Math.abs(day)} days after`
+      : `未来${Math.abs(day)}天后`;
   }
   if (relativeTime.includes(0)) {
     if (relativeTime[0]) {
       if (relativeTime[0] < 0) {
-        return `过去${Math.abs(relativeTime[0])}天内`;
+        return window.localStorage.getItem('locale') === 'en-US'
+          ? `past ${Math.abs(relativeTime[0])} days within`
+          : `过去${Math.abs(relativeTime[0])}天内`;
       }
-      return `未来${Math.abs(relativeTime[0])}天内`;
+      return window.localStorage.getItem('locale') === 'en-US'
+        ? `future ${Math.abs(relativeTime[0])} days within`
+        : `未来${Math.abs(relativeTime[0])}天内`;
     }
     if (relativeTime[1] < 0) {
-      return `过去${Math.abs(relativeTime[1])}天内`;
+      return window.localStorage.getItem('locale') === 'en-US'
+        ? `past ${Math.abs(relativeTime[1])} days within`
+        : `过去${Math.abs(relativeTime[1])}天内`;
     }
-    return `未来${Math.abs(relativeTime[1])}天内`;
+    return window.localStorage.getItem('locale') === 'en-US'
+      ? `future ${Math.abs(relativeTime[1])} days within`
+      : `未来${Math.abs(relativeTime[1])}天内`;
   }
   if (relativeTime[0] < 0) {
-    return `过去${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])}天内`;
+    return window.localStorage.getItem('locale') === 'en-US'
+      ? `past ${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])} days within`
+      : `过去${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])}天内`;
   }
-  return `未来${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])}天内`;
+  return window.localStorage.getItem('locale') === 'en-US'
+    ? `future ${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])} days within`
+    : `未来${Math.abs(relativeTime[0])}-${Math.abs(relativeTime[1])}天内`;
 };
 
 const parseDateValuesToText = (opMap: { [key: string]: string }, operation: string, value: string[]) => {
   switch (operation) {
     case '!=': {
       if (value[0] === ' ') {
-        return '有值';
+        return window.localStorage.getItem('locale') === 'en-US' ? 'hasValue' : '有值';
       }
       return opMap[operation] + moment(parseInt(value[0], 10)).format('YYYY-MM-DD');
     }
     case '=': {
       if (value[0] === ' ') {
-        return '无值';
+        return window.localStorage.getItem('locale') === 'en-US' ? 'noValue' : '无值';
       }
       return opMap[operation] + moment(parseInt(value[0], 10)).format('YYYY-MM-DD');
     }
@@ -187,7 +252,8 @@ const parseDateValuesToText = (opMap: { [key: string]: string }, operation: stri
 
 // 对NumberAttrSelect，StringAttrSelect，DateAttrSelect返回的values值进行转换,生成属性选择框的属性规则展示文本
 export default function parseValuesToText(type: attributeValue, operation: string, value: string[]): string {
-  const opMap = operationMap[type];
+  const map = window.localStorage.getItem('locale') === 'en-US' ? enOperationMap : operationMap;
+  const opMap = map[type];
   if (value.length && !!value?.[0]) {
     if (type === 'string' || type === 'STRING') {
       // 字符串类型
@@ -200,5 +266,5 @@ export default function parseValuesToText(type: attributeValue, operation: strin
       return parseDateValuesToText(opMap, operation, value);
     }
   }
-  return '选择过滤条件';
+  return window.localStorage.getItem('locale') === 'en-US' ? en.selectFilter : cn.selectFilter;
 }

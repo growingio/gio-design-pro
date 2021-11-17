@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from '@gio-design/components/es';
 import './index.less';
+import en from '../../locals/en-US.json';
+import cn from '../../locals/zh-CN.json';
 
 interface FilterFooterProps {
   onSubmit: () => void;
@@ -13,11 +15,11 @@ function FilterFooter(props: FilterFooterProps) {
   return (
     <div className="filter-contidion-footer">
       <Button type="secondary" onClick={onCancel} size="small">
-        取消
+        {window.localStorage.getItem('locale') === 'en-US' ? en.cancel : cn.cancel}
       </Button>
       <div style={{ width: '12px' }} />
       <Button type="primary" onClick={onSubmit} size="small" disabled={comfirmStatus}>
-        确认
+        {window.localStorage.getItem('locale') === 'en-US' ? en.submit : cn.submit}
       </Button>
     </div>
   );
