@@ -5,7 +5,8 @@ export default {
   dateText: 'date',
   booleanText: 'boolean',
   listText: 'list',
-  allText: 'all',
+  allText: 'All',
   searchPlaceholder: 'search variable name',
   placeholderText: 'select variable',
+  recentlyUsedGroupName: 'Recently Used',
 };

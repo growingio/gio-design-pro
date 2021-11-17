@@ -88,10 +88,10 @@ export interface PropertyPickerProps
  * 属性的类型 event|avar|usr
  */
 export const PropertyTypes: { [key: string]: string } = {
-  event: '事件属性',
-  avar: '访问属性',
-  usr: '用户属性',
-  itm: '维度表'
+  event: localStorage.getItem('locale') === 'en-US' ? 'Event Variables' : '事件属性',
+  avar: localStorage.getItem('locale') === 'en-US' ? 'Visit variables' : '访问属性',
+  usr: localStorage.getItem('locale') === 'en-US' ? 'User Variables' : '用户属性',
+  itm: localStorage.getItem('locale') === 'en-US' ? 'Items' : '维度表'
 };
 
 // export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boolean';

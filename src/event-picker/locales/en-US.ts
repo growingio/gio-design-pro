@@ -4,4 +4,7 @@ export default {
   notKnown: 'unknown',
   rencentUse: 'recently used',
   clearAllText: 'clear all',
+  allText: 'All',
+  cancelText: 'Cancel',
+  okText: 'Confirm',
 };

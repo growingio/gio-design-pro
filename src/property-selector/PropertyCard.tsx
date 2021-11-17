@@ -3,6 +3,7 @@
 import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import React from 'react';
 import { Card, Tag, Loading } from '@gio-design/components';
+import type { Locale } from '@gio-design/utils';
 import {
   NumberTypeOutlined,
   ListTypeOutlined,
@@ -14,10 +15,15 @@ import { useLocale } from '@gio-design/utils';
 import { PropertyTypes, PropertyCardProps } from './interfaces';
 import useAsync from '../hooks/useAsync';
 import defaultLocale from './locales/zh-CN';
+import localeEn from './locales/en-US';
 
 function PropertyCard(props: PropertyCardProps) {
-  const locale = useLocale('PropertyPicker');
-  const { stringText, intText, doubleText, dateText, booleanText, listText } = { ...defaultLocale, ...locale } as any;
+  const language = localStorage.getItem('locale') || 'zh-CN';
+  const _locale = useLocale('PropertyPicker');
+
+  const locale = _locale || language === 'en-US' ? localeEn : ({} as Locale);
+  const messages = { ...defaultLocale, ...locale } as any;
+  const { stringText, intText, doubleText, dateText, booleanText, listText } = messages;
 
   const ValueTypeMap: { [key: string]: [string, React.ReactElement] } = {
     string: [stringText, <StringTypeOutlined size="14px" />],

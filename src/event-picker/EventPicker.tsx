@@ -3,7 +3,8 @@ import usePrefixCls from '@gio-design/components/es/utils/hooks/use-prefix-cls';
 import * as pinyin from 'pinyin-match';
 import classNames from 'classnames';
 import { isArray, isEqualWith, isUndefined, orderBy, uniqBy, xorWith } from 'lodash';
-import { injectPinyinWith } from '@gio-design/utils';
+import { injectPinyinWith, useLocale } from '@gio-design/utils';
+import type { Locale } from '@gio-design/utils';
 import { EventData, EventPickerProps, Tab } from './interfaces';
 import BasePicker from '../base-picker';
 import TypeIcon from './TypeIcon';
@@ -16,6 +17,8 @@ import {
 } from './helper';
 import PickerContent from './PickerContent';
 import './style';
+import defaultLocale from './locales/zh-CN';
+import localeEn from './locales/en-US';
 
 export const DefaultKeyMapping = { label: 'name', value: 'id' };
 
@@ -54,13 +57,15 @@ const EventPicker = (props: EventPickerProps) => {
     ...rest
   } = props;
   const [keyword, setKeyword] = useState(defaultKeyword);
+  const language = localStorage.getItem('locale');
+  const locale = useLocale('EventPicker');
+  const mergedLocale = locale || language === 'en-US' ? localeEn : ({} as Locale);
 
+  const { allText } = { ...defaultLocale, ...mergedLocale } as any;
   /**
    * tabNav
    */
-  const mergedTabs: Tab[] = showTabAll
-    ? [{ value: 'all', label: localStorage.getItem('locale') === 'en-US' ? 'All' : '全部' }].concat(tabs)
-    : tabs;
+  const mergedTabs: Tab[] = showTabAll ? [{ value: 'all', label: allText }].concat(tabs) : tabs;
   const firstTab = mergedTabs[0]?.value.toString();
   const [activedTab, setActivedTab] = useState(firstTab);
 
