@@ -21,7 +21,7 @@ function PropertyCard(props: PropertyCardProps) {
   const language = localStorage.getItem('locale') || 'zh-CN';
   const _locale = useLocale('PropertyPicker');
 
-  const locale = _locale || language === 'en-US' ? localeEn : ({} as Locale);
+  const locale = _locale || (language === 'en-US' ? localeEn : ({} as Locale));
   const messages = { ...defaultLocale, ...locale } as any;
   const { stringText, intText, doubleText, dateText, booleanText, listText } = messages;
 

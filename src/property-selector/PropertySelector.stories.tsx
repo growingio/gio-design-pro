@@ -11,7 +11,7 @@ import { Dimension } from './types';
 
 const dataSource = insightDimensions.map(
   (v: any) => dimensionToPropertyItem(v as Dimension),
-  localStorage.getItem('locale') === 'en-US' ?? undefined
+  localStorage.getItem('locale')
 );
 
 export default {
