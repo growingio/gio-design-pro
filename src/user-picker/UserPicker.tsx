@@ -3,6 +3,7 @@ import { filter, keyBy, includes, uniq, debounce } from 'lodash';
 import { Button } from '@gio-design/components';
 import { PlusCircleFilled } from '@gio-design/icons';
 import { useLocale, DesignContext } from '@gio-design/utils';
+import type { Locale } from '@gio-design/utils';
 import BasePicker from '../base-picker';
 import SegmentCard from './SegmentCard';
 import { useLocalStorage } from '../hooks';
@@ -11,6 +12,7 @@ import { resourceToItem } from '../utils';
 import { preparedSegmentsCN, preparedSegmentsEn } from './constant';
 import { Resource } from '../utils/interfaces';
 import defaultLocale from './locales/zh-CN';
+import localeEn from './locales/en-US';
 
 function UserPicker({
   itemOnHoverDelay = 750,
@@ -23,8 +25,10 @@ function UserPicker({
   updatingRecentDelay = 0,
   onShowSegmentChart,
 }: UserPickerProps) {
-  const locale = useLocale('UserPicker');
-  const { locale: contextLocale } = useContext(DesignContext) || { locale: { code: 'zh-CN' } };
+  const _locale = useLocale('UserPicker');
+  const language = localStorage.getItem('locale') || 'zh-CN';
+  const locale = _locale || language === 'en-US' ? localeEn : ({} as Locale);
+  const { locale: contextLocale } = useContext(DesignContext) || { locale: { code: language } };
   const { code } = contextLocale || { code: 'zh-CN' };
   const preparedSegments = code === 'en-US' ? preparedSegmentsEn : preparedSegmentsCN;
   const { preparedText, otherText, rencentText, myText, allText, placeholderText, createSegment } = {
