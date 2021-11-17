@@ -59,7 +59,7 @@ const EventPicker = (props: EventPickerProps) => {
   const [keyword, setKeyword] = useState(defaultKeyword);
   const language = localStorage.getItem('locale');
   const locale = useLocale('EventPicker');
-  const mergedLocale = locale || language === 'en-US' ? localeEn : ({} as Locale);
+  const mergedLocale = locale || (language === 'en-US' ? localeEn : ({} as Locale));
 
   const { allText } = { ...defaultLocale, ...mergedLocale } as any;
   /**
