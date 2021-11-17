@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { filter, keyBy, includes, uniq, debounce } from 'lodash';
 import { Button } from '@gio-design/components';
 import { PlusCircleFilled } from '@gio-design/icons';
-import { useLocale, DesignContext } from '@gio-design/utils';
+import { useLocale } from '@gio-design/utils';
 import type { Locale } from '@gio-design/utils';
 import BasePicker from '../base-picker';
 import SegmentCard from './SegmentCard';
