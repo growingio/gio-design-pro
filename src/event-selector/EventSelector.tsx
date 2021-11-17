@@ -14,7 +14,7 @@ const EventSelector = ({
   borderless = false,
   size,
   disabled,
-  placeholder = '请选择',
+  placeholder = localStorage.getItem('locale') === 'en-US' ? 'Select' : '请选择',
   dropdownVisible,
   onDropdownVisibleChange,
   className,

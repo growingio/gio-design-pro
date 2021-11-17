@@ -34,10 +34,10 @@ const _ListPanel: React.ForwardRefRenderFunction<unknown, React.PropsWithChildre
                     onOK?.();
                   }}
                 >
-                  确定
+                  {localStorage.getItem('locale') === 'en-US' ? 'Confirm' : '确定'}
                 </Button>
                 <Button type="secondary" onClick={() => onCancel?.()}>
-                  取消
+                  {localStorage.getItem('locale') === 'en-US' ? 'Cancel' : '取消'}
                 </Button>
               </div>
             )}
