@@ -7,6 +7,13 @@ export const titleMap: titleGroup = {
   date: '日期类型',
 };
 
+export const enTitleMap: titleGroup = {
+  string: 'String',
+  STRING: 'String',
+  int: 'Int',
+  date: 'Date',
+};
+
 export const defaultFilterItem: FilterValueType = {
   op: '=',
   values: [],
@@ -168,6 +175,159 @@ export const selectOptionMap: selectOption = {
     },
   ],
 };
+export const enSelectOptionMap: selectOption = {
+  string: [
+    {
+      value: '=',
+      label: 'equal',
+    },
+    {
+      value: '!=',
+      label: 'not equal to',
+    },
+    {
+      value: 'in',
+      label: 'bewteen',
+    },
+    {
+      value: 'not in',
+      label: 'not between',
+    },
+    {
+      value: 'like',
+      label: 'include',
+    },
+    {
+      value: 'not like',
+      label: 'not include',
+    },
+    {
+      value: 'hasValue',
+      label: 'hasValue',
+    },
+    {
+      value: 'noValue',
+      label: 'noValue',
+    },
+  ],
+  // Tag类型
+  STRING: [
+    {
+      value: '=',
+      label: 'equal',
+    },
+    {
+      value: '!=',
+      label: 'not equal to',
+    },
+    {
+      value: 'in',
+      label: 'between',
+    },
+    {
+      value: 'not in',
+      label: 'not between',
+    },
+    {
+      value: 'like',
+      label: 'include',
+    },
+    {
+      value: 'not like',
+      label: 'not include',
+    },
+  ],
+  int: [
+    {
+      value: '=',
+      label: 'equal',
+    },
+    {
+      value: '!=',
+      label: 'not equal to',
+    },
+    {
+      value: '>',
+      label: 'greater than',
+    },
+    {
+      value: '>=',
+      label: 'greater than or equal to',
+    },
+    {
+      value: '<',
+      label: 'less than',
+    },
+    {
+      value: '<=',
+      label: 'less than or equal to',
+    },
+    {
+      value: 'between',
+      label: 'between',
+    },
+    {
+      value: 'not between',
+      label: 'not between',
+    },
+    {
+      value: 'hasValue',
+      label: 'hasValue',
+    },
+    {
+      value: 'noValue',
+      label: 'noValue',
+    },
+  ],
+  date: [
+    {
+      value: '=',
+      label: 'equal',
+    },
+    {
+      value: '!=',
+      label: 'not equal to',
+    },
+    {
+      value: '<',
+      label: 'before a certain day',
+    },
+    {
+      value: '>',
+      label: 'after a certain day',
+    },
+    {
+      value: 'between',
+      label: 'between',
+    },
+    {
+      value: 'not between',
+      label: 'not between',
+    },
+    // {
+    //   value: 'e',
+    //   label: '不在...与...之间',
+    // },
+    {
+      value: 'relativeCurrent',
+      label: 'relativeCurrent',
+      // values: ["relativeTime:-1,0"]
+    },
+    {
+      value: 'relativeBetween',
+      label: 'relativeBetween',
+      // values: ["relativeTime:-1,-1"]
+    },
+    {
+      value: 'hasValue',
+      label: 'hasValue',
+    },
+    {
+      value: 'noValue',
+      label: 'noValue',
+    },
+  ],
+};
 
 export const selectValueMap = {
   string: {},
@@ -191,6 +351,28 @@ export const selectValueMap = {
   },
 };
 
+export const enSelectValueMap = {
+  string: {},
+  int: {
+    '=': 'equal',
+    '!=': 'not equal to',
+    '>': 'greater than',
+    '>=': 'greater than or equal to',
+    '<': 'less than',
+    '<=': 'less than or equal to',
+    hasValue: 'hasValue',
+  },
+  date: {
+    '=': 'equal',
+    '!=': 'not equal to',
+    '>': 'after a certain day',
+    '>=': 'after a certain day (including that day)',
+    '<': 'before a certain day',
+    '<=': 'before a certain date (including that day)',
+    hasValue: '有值',
+  },
+};
+
 export const AttributeMap = {
   string: 'string',
   int: 'int',
@@ -198,4 +380,4 @@ export const AttributeMap = {
   STRING: 'STRING',
 };
 
-export default { titleMap, selectOptionMap, selectValueMap, defaultFilterItem };
+export default { titleMap, enTitleMap, selectOptionMap, enSelectOptionMap, selectValueMap, defaultFilterItem };

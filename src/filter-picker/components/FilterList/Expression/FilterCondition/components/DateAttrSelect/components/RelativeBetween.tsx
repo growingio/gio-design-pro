@@ -61,6 +61,16 @@ function RelativeBetween(props: RelativeBetweenProps) {
       label: '未来',
     },
   ];
+  const enSelectOptions = [
+    {
+      value: '-1',
+      label: 'past',
+    },
+    {
+      value: '1',
+      label: 'future',
+    },
+  ];
 
   const selectChange = (v: string) => {
     setValue(v);
@@ -76,9 +86,12 @@ function RelativeBetween(props: RelativeBetweenProps) {
   return (
     <>
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+        {window.localStorage.getItem('locale') === 'en-US' && (
+          <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>at</div>
+        )}
         <Select
           value={nowOrFuturevalue}
-          options={selectOptions}
+          options={window.localStorage.getItem('locale') === 'en-US' ? enSelectOptions : selectOptions}
           onChange={selectChange}
           style={{ marginRight: '4px', width: '90px' }}
         />
@@ -88,7 +101,9 @@ function RelativeBetween(props: RelativeBetweenProps) {
           style={{ width: '150px', margin: '0 4px' }}
           min={1}
         />
-        <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天至</div>
+        <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>
+          {window.localStorage.getItem('locale') === 'en-US' ? 'Day to ' : '天至'}
+        </div>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
         <Input.InputNumber
@@ -97,7 +112,9 @@ function RelativeBetween(props: RelativeBetweenProps) {
           style={{ width: '150px', margin: '0 4px 0 0' }}
           min={1}
         />
-        <div style={{ whiteSpace: 'nowrap', margin: '16px 4px' }}>天之内</div>
+        <div style={{ whiteSpace: 'nowrap', margin: '16px 4px' }}>
+          {window.localStorage.getItem('locale') === 'en-US' ? 'Day within' : '天之内'}
+        </div>
       </div>
     </>
   );

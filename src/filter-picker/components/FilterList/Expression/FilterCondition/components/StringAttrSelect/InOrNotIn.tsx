@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Input, Loading } from '@gio-design/components';
 import List from '@gio-design/components/es/components/list-pro';
 import { attributeValue } from '../../interfaces';
+import en from '../../../../../../locals/en-US.json';
+import cn from '../../../../../../locals/zh-CN.json';
 
 interface StringAttrSelectProps {
   valueType: attributeValue;
@@ -122,7 +124,12 @@ function StringAttrSelect(props: StringAttrSelectProps) {
 
   return (
     <div style={{ height: '330px' }}>
-      <Input placeholder="请输入…" size="middle" value={inputValue} onChange={changInputValue} />
+      <Input
+        placeholder={window.localStorage.getItem('locale') === 'en-US' ? en.pleaseEnter : cn.pleaseEnter}
+        size="middle"
+        value={inputValue}
+        onChange={changInputValue}
+      />
       {loadingStatue ? (
         <div
           style={{

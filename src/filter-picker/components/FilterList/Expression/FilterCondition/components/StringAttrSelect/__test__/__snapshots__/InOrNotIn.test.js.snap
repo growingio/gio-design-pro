@@ -15,7 +15,7 @@ initialize {
           Node {
             "attribs": Object {
               "class": "gio-input__content",
-              "placeholder": "请输入…",
+              "placeholder": "请输入",
               "type": "text",
               "value": "",
             },
@@ -11213,7 +11213,7 @@ initialize {
             Node {
               "attribs": Object {
                 "class": "gio-input__content",
-                "placeholder": "请输入…",
+                "placeholder": "请输入",
                 "type": "text",
                 "value": "",
               },
@@ -11306,7 +11306,7 @@ initialize {
           Node {
             "attribs": Object {
               "class": "gio-input__content",
-              "placeholder": "请输入…",
+              "placeholder": "请输入",
               "type": "text",
               "value": "t,",
             },
@@ -22504,7 +22504,7 @@ initialize {
             Node {
               "attribs": Object {
                 "class": "gio-input__content",
-                "placeholder": "请输入…",
+                "placeholder": "请输入",
                 "type": "text",
                 "value": "t,",
               },

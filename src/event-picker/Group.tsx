@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import { useLocale } from '@gio-design/utils';
-import type { Locale } from '@gio-design/utils';
 import List from '../list';
-import defaultLocale from './locales/zh-CN';
 import ExpandItem from '../list/ExpandItem';
-import localeEn from './locales/en-US';
 
 const DEFAULT_SHOW_ITEMS_COUNT = 10;
 export function renderExpandableItems(
@@ -13,12 +9,6 @@ export function renderExpandableItems(
   onExpand: () => void,
   groupKey: string
 ) {
-  const language = localStorage.getItem('locale');
-  const locale = useLocale('EventPicker');
-  const mergedLocale = locale || language.indexOf('en') > -1 ? localeEn : ({} as Locale);
-
-  const { expand } = { ...defaultLocale, ...mergedLocale } as any;
-
   if (expanded) {
     return children;
   }
@@ -26,7 +16,9 @@ export function renderExpandableItems(
     const showItems = children.slice(0, DEFAULT_SHOW_ITEMS_COUNT);
     return showItems.concat(
       <ExpandItem
-        title={`${expand} (${children.length - showItems.length})`}
+        title={`${localStorage.getItem('locale') === 'en-US' ? 'expand all' : '展开全部'} (${
+          children.length - showItems.length
+        })`}
         key={`expand-item-${groupKey}-${showItems.length + 1}`}
         onClick={onExpand}
       />

@@ -53,7 +53,7 @@ const EventPicker = (props: EventPickerProps) => {
     onShowEventChart,
     fetchDetailData,
     showPreview = true,
-    placeholder = '搜索事件或指标名称',
+    placeholder = localStorage.getItem('locale') === 'en-US' ? 'Search event or metric name' : '搜索事件或指标名称',
     ...rest
   } = props;
   const [keyword, setKeyword] = useState(defaultKeyword);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Select, Checkbox } from '@gio-design/components';
-import { titleMap, selectOptionMap, AttributeMap } from '../../../../filterMap';
+import { titleMap, enTitleMap, selectOptionMap, enSelectOptionMap, AttributeMap } from '../../../../filterMap';
 import NumberAttrSelect from './components/NumberAttrSelect';
 import DateAttrSelect from './components/DateAttrSelect';
 import StringAttrSelect from './components/StringAttrSelect/index';
@@ -8,6 +8,9 @@ import Footer from '../../../Footer';
 import './attrSelect.less';
 import { attributeValue, StringValue, NumberValue, DateValue, FilterValueType } from './interfaces';
 import { operationsOptionType } from '../../../../interfaces';
+
+import en from '../../../../locals/en-US.json';
+import cn from '../../../../locals/zh-CN.json';
 
 interface FilterAttrOverlayProps {
   valueType: attributeValue;
@@ -140,29 +143,31 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     }
   };
 
+  const optionMap = window.localStorage.getItem('locale') === 'en-US' ? enSelectOptionMap : selectOptionMap;
+
   return (
     <div className="filter-attr_select-box">
       <div>
-        <div className="filter-attr_select-title">{titleMap[valueType] || '字符串类型'}</div>
+        <div className="filter-attr_select-title">
+          {window.localStorage.getItem('locale') === 'en-US' ? enTitleMap[valueType] : titleMap[valueType] || 'String'}
+        </div>
         <Select
           options={
             operationsOption
-              ? selectOptionMap?.[valueType]?.filter((opItem: any) =>
-                  operationsOption?.[valueType].includes(opItem.value)
-                )
-              : selectOptionMap?.[valueType]
+              ? optionMap?.[valueType]?.filter((opItem: any) => operationsOption?.[valueType].includes(opItem.value))
+              : optionMap?.[valueType]
           }
           value={operationValue}
           size="middle"
           style={{ width: '100%', marginTop: '16px' }}
-          placeholder="请选择"
+          placeholder={window.localStorage.getItem('locale') === 'en-US' ? en.select : cn.select}
           onChange={selectChange}
         />
         <div className="filter-attr_dividingLine" />
         {getAttrSelect(valueType, operationValue)}
         {valueType === AttributeMap.date && (operationValue === '>' || operationValue === '<') && (
           <Checkbox checked={checked} onChange={handleChange} style={{ marginTop: '16px' }}>
-            包含当日
+            {window.localStorage.getItem('locale') === 'en-US' ? en.includeToday : cn.includeToday}
           </Checkbox>
         )}
       </div>

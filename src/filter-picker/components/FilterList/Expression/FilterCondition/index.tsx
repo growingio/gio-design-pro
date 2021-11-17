@@ -78,7 +78,11 @@ function FilterCondition(props: FilterConditionProps) {
 
   const valueRender = () => (
     <span className="filter-condition_select">
-      <Tooltip title={conditionText} disabled={conditionText === '选择过滤条件'} placement="topLeft">
+      <Tooltip
+        title={conditionText}
+        disabled={conditionText === '选择过滤条件' || conditionText === 'Select Filter'}
+        placement="topLeft"
+      >
         <span className="filter-condition_select-text">{conditionText}</span>
       </Tooltip>
     </span>

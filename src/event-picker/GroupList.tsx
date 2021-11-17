@@ -3,15 +3,12 @@ import { isFunction, keys } from 'lodash';
 import React, { useCallback, useMemo, useContext } from 'react';
 import { Link } from '@gio-design/components';
 import classNames from 'classnames';
-import { useLocale, DesignContext } from '@gio-design/utils';
-import type { Locale } from '@gio-design/utils';
+import { DesignContext } from '@gio-design/utils';
 import { EventData, EventPickerProps } from './interfaces';
 import List from '../list';
 import Group from './Group';
 import { GroupItemsProps } from './GroupListItemProps';
 import CustomItem from './CustomItem';
-import defaultLocale from './locales/zh-CN';
-import localeEn from './locales/en-US';
 // 类型与名称映射
 // export const nameMap: { [key: string]: string } = {
 //   history: '最近使用',
@@ -63,16 +60,11 @@ const GroupList = (props: Props) => {
 
   const { locale: { code = 'zh-CN' } = { code: 'zh-CN' } } = useContext(DesignContext);
 
-  const language = localStorage.getItem('locale');
-  const locale = useLocale('EventPicker');
-  const mergedLocale = locale || language === 'en-US' ? localeEn : ({} as Locale);
-
-  const { notKnown, rencentUse, clearAllText } = { ...defaultLocale, ...mergedLocale } as any;
-
   const getGroupNameInner = (nodes: EventData[], type: string) => {
-    const name = getGroupName?.(type, code) || notKnown;
+    const name = getGroupName?.(type, code) || localStorage.getItem('locale') === 'en-US' ? 'Unknown' : '未知类型';
     return `${name}(${nodes.length})`;
   };
+
   const handleCheckboxChange = (node: EventData, checked: boolean) => {
     rest.onCheckboxChange?.(node, checked);
   };
@@ -117,7 +109,11 @@ const GroupList = (props: Props) => {
     () =>
       history?.length > 0 && (
         <React.Fragment key="historyNodes">
-          <Group groupKey="history" key="exp-group-history" title={rencentUse}>
+          <Group
+            groupKey="history"
+            key="exp-group-history"
+            title={localStorage.getItem('locale') === 'en-US' ? 'recently used' : '最近使用'}
+          >
             {listItems(history, [], 'history')}
           </Group>
           <List.Divider key="divider-group-history" />
@@ -143,7 +139,7 @@ const GroupList = (props: Props) => {
                   component="span"
                   onClick={() => handleClearAll()}
                 >
-                  {clearAllText}
+                  {localStorage.getItem('locale') === 'en-US' ? 'clear all' : '清空全部已选'}
                 </Link>
               </div>
             }
