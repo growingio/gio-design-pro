@@ -28,7 +28,7 @@ function UserPicker({
   const _locale = useLocale('UserPicker');
   const language = localStorage.getItem('locale') || 'zh-CN';
   const locale = _locale || language === 'en-US' ? localeEn : ({} as Locale);
-  const { locale: contextLocale } = useContext(DesignContext) || { locale: { code: language } };
+  const { locale: contextLocale } = { locale: { code: language } };
   const { code } = contextLocale || { code: 'zh-CN' };
   const preparedSegments = code === 'en-US' ? preparedSegmentsEn : preparedSegmentsCN;
   const { preparedText, otherText, rencentText, myText, allText, placeholderText, createSegment } = {
