@@ -1,9 +1,9 @@
-## [21.12.1](https://github.com/growingio/gio-design-pro/compare/v21.12.0...v21.12.1) (2021-11-16)
+## [21.12.2](https://github.com/growingio/gio-design-pro/compare/v21.12.1...v21.12.2) (2021-11-16)
 
 
-### Features
+### Bug Fixes
 
-* **EventPicker:** getTypeIcon change ([#460](https://github.com/growingio/gio-design-pro/issues/460)) ([882f9e2](https://github.com/growingio/gio-design-pro/commit/882f9e2fcf620930bb174a45c5c4430852f8b66a))
+* **property-selector:** 属性选择器,添加虚拟属性' ([#456](https://github.com/growingio/gio-design-pro/issues/456)) ([09054a1](https://github.com/growingio/gio-design-pro/commit/09054a196ff12aceb7159daf015592b66091b891))
 
 
 
