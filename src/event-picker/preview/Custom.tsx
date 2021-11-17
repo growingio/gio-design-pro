@@ -29,13 +29,15 @@ const Custom: React.FC<PreviewProps> = (props) => {
       {!isEmpty(attributes) && (
         <>
           <Card.Meta>
-            <div className="event-preview-head">事件属性</div>
+            <div className="event-preview-head">
+              {localStorage.getItem('locale') === 'en-US' ? 'Event Properties' : '事件属性'}
+            </div>
             <div className="event-preview-attributes">
               <table className="event-preview-attributes-table">
                 <tbody>
                   <tr>
-                    <th>名称</th>
-                    <th>类型</th>
+                    <th>{localStorage.getItem('locale') === 'en-US' ? 'Name' : '名称'}</th>
+                    <th>{localStorage.getItem('locale') === 'en-US' ? 'Type' : '类型'}</th>
                   </tr>
                   {attributes.map((attr: Attributes, index: Number) => (
                     <tr key={`${attr.name}_${index}`}>
@@ -51,13 +53,15 @@ const Custom: React.FC<PreviewProps> = (props) => {
       )}
       {!isEmpty(itemModels) && (
         <Card.Meta>
-          <div className="event-preview-head">物品属性</div>
+          <div className="event-preview-head">
+            {localStorage.getItem('locale') === 'en-US' ? 'Item Properties' : '物品属性'}
+          </div>
           <div className="event-preview-attributes item-models">
             <table className="event-preview-attributes-table">
               <tbody>
                 <tr>
-                  <th>名称</th>
-                  <th>类型</th>
+                  <th>{localStorage.getItem('locale') === 'en-US' ? 'Name' : '名称'}</th>
+                  <th>{localStorage.getItem('locale') === 'en-US' ? 'Type' : '类型'}</th>
                 </tr>
                 {itemModels.map((attr: Attributes, index: Number) => (
                   <tr key={`${attr.name}_${index}`}>

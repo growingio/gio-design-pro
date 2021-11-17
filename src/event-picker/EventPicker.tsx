@@ -50,7 +50,7 @@ const EventPicker = (props: EventPickerProps) => {
     onShowEventChart,
     fetchDetailData,
     showPreview = true,
-    placeholder = '搜索事件或指标名称',
+    placeholder = localStorage.getItem('locale') === 'en-US' ? 'Search event or metric name' : '搜索事件或指标名称',
     ...rest
   } = props;
   const [keyword, setKeyword] = useState(defaultKeyword);
@@ -58,7 +58,9 @@ const EventPicker = (props: EventPickerProps) => {
   /**
    * tabNav
    */
-  const mergedTabs: Tab[] = showTabAll ? [{ value: 'all', label: '全部' }].concat(tabs) : tabs;
+  const mergedTabs: Tab[] = showTabAll
+    ? [{ value: 'all', label: localStorage.getItem('locale') === 'en-US' ? 'All' : '全部' }].concat(tabs)
+    : tabs;
   const firstTab = mergedTabs[0]?.value.toString();
   const [activedTab, setActivedTab] = useState(firstTab);
 
