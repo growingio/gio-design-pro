@@ -93,7 +93,7 @@ function Expression(props: ExpressionProps) {
         <PropertyPicker
           data-testid="propertySelect"
           className="express-propertySelect"
-          placeholder="选择属性"
+          placeholder={window.localStorage.getItem('locale') === 'en-US' ? 'Select Property' : '选择属性'}
           value={propertyValue}
           dataSource={propertyOptions.filter((option: any) => {
             const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];

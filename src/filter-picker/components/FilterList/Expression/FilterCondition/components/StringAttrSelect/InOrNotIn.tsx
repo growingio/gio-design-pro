@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Input, Loading } from '@gio-design/components';
 import List from '@gio-design/components/es/components/list-pro';
 import { attributeValue } from '../../interfaces';
-import en from '../../../../../../locals/en-US.json';
-import cn from '../../../../../../locals/zh-CN.json';
+import en from '../../../../../../locals/en-US';
+import cn from '../../../../../../locals/zh-CN';
 
 interface StringAttrSelectProps {
   valueType: attributeValue;

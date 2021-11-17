@@ -1,8 +1,8 @@
 import moment from 'moment';
 import { attributeValue } from '../interfaces';
 
-import en from '../../../../../locals/en-US.json';
-import cn from '../../../../../locals/zh-CN.json';
+import en from '../../../../../locals/en-US';
+import cn from '../../../../../locals/zh-CN';
 
 interface operationMapType {
   string: { [key: string]: string };

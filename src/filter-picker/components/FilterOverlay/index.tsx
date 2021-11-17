@@ -4,8 +4,8 @@ import FilterList from '../FilterList';
 
 import { FilterValueType } from '../../interfaces';
 
-import en from '../../locals/en-US.json';
-import cn from '../../locals/zh-CN.json';
+import en from '../../locals/en-US';
+import cn from '../../locals/zh-CN';
 
 import './index.less';
 
