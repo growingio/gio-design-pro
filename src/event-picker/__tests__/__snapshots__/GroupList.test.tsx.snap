@@ -5,17 +5,17 @@ NodeList [
   <div
     class="gio-list__item-group__title"
   >
-    Unknown(1)
+    埋点事件(1)
   </div>,
   <div
     class="gio-list__item-group__title"
   >
-    Unknown(1)
+    无埋点事件(1)
   </div>,
   <div
     class="gio-list__item-group__title"
   >
-    Unknown(1)
+    预置事件(1)
   </div>,
 ]
 `;

@@ -61,7 +61,7 @@ const GroupList = (props: Props) => {
   const { locale: { code = 'zh-CN' } = { code: 'zh-CN' } } = useContext(DesignContext);
 
   const getGroupNameInner = (nodes: EventData[], type: string) => {
-    const name = getGroupName?.(type, code) || localStorage.getItem('locale') === 'en-US' ? 'Unknown' : '未知类型';
+    const name = getGroupName?.(type, code);
     return `${name}(${nodes.length})`;
   };
 
