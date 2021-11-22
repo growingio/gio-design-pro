@@ -1,6 +1,7 @@
 import React from 'react';
 import { FileOutlined } from '@gio-design/icons';
 import Dotdotdot from 'react-dotdotdot';
+import Text from '@gio-design/components/es/typograhy/Text';
 import { usePrefixCls } from '@gio-design/components';
 import classNames from 'classnames';
 import { TitleInfoCardProps } from './interfaces';
@@ -35,7 +36,7 @@ const TitleInfoCard = (props: TitleInfoCardProps) => {
           <h5 className={`${!description && 'only-title'}`}>{title}</h5>
           {description && (
             <Dotdotdot className={`${prefixCls}-content-word-break`} clamp={clamp}>
-              {description}
+              <Text>{description}</Text>
             </Dotdotdot>
           )}
         </div>
