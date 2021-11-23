@@ -33,10 +33,12 @@ const TitleInfoCard = (props: TitleInfoCardProps) => {
         )}
         <div className={`${prefixCls}-title-text`} style={{ width: centerWidth }}>
           <h5 className={`${!description && 'only-title'}`}>{title}</h5>
-          {description && (
+          {!React.isValidElement(description) ? (
             <Dotdotdot className={`${prefixCls}-content-word-break`} clamp={clamp}>
               {description}
             </Dotdotdot>
+          ) : (
+            description
           )}
         </div>
         {operationContent && (
