@@ -7,14 +7,15 @@ describe('Render Panel with default args', () => {
   it('should render multiple panel', () => {
     const onTabClick = jest.fn();
     const onChange = jest.fn();
-    render(<TableCard onChange={onChange} onTabClick={onTabClick} footer={<div>test</div>} />);
+    const wrapper = render(<TableCard onChange={onChange} onTabClick={onTabClick} footer={<div>test</div>} />);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should render signle panel', () => {
     const onTabClick = jest.fn();
     const onChange = jest.fn();
-    render(<TableCardSingle onChange={onChange} onTabClick={onTabClick} avatar={<FilterOutlined />} />);
-    expect(document.getElementsByClassName('gio-panel__footer'));
+    const wrapper = render(<TableCardSingle onChange={onChange} onTabClick={onTabClick} avatar={<FilterOutlined />} />);
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
