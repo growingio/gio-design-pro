@@ -50,7 +50,7 @@ function PropertyCard(props: PropertyCardProps) {
             <span className={`${propCardPrefixCls}-title`}>{data?.name}</span>
             {data?.type && (
               <Tag size="small" status="draft">
-                {PropertyTypes[data?.subType ?? ''] || ''}
+                {data?.isItem ? PropertyTypes.itm : PropertyTypes[data?.type]}
               </Tag>
             )}
             <div className={`${propCardPrefixCls}-key`}>{data?.key ?? data?.id}</div>

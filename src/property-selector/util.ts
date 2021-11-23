@@ -119,15 +119,10 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = '
     result.groupName = newGroupName;
   }
 
-  // 这里添加subType 是为了兼容物品属性在属性选择器中的展示，因为物品属性的groupId和type都修改为event
-  // 所以原来的通过type来判断属性类型，无法区分事件属性和物品属性，所以通过添加subType字段，来区分事件属性和物品属性
-  // 不可以修改type，因为需要type把事件属性和物品属性归为同一组
-  result.subType = result.type;
-  result.subGroupId = result.groupId;
-
   // 多物品模型，物品属性不再作为事件绑定属性，而是作为事件属性的属性来展示，作为事件属性的子集
   // 所以，当存在parentId的时候，物品属性，和事件属性同组
   if (groupId === 'item' && _type === 'itm' && associatedKey) {
+    result.isItem = true;
     result.groupId = 'event';
     if (locale === 'en-US') {
       result.groupName = 'Event Variables';
@@ -139,7 +134,6 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = '
   // 虚拟属性需要添加到事件属性中，但是有自己的type和groupId，所以和维度表（多物品模型）做相同处理
   if (groupId === 'virtual' && _type === 'vvar') {
     result.groupId = 'event';
-    // result.groupName = '虚拟属性';
     if (locale === 'en-US') {
       result.groupName = 'Virtual Variables';
     } else {
