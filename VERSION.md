@@ -1,9 +1,10 @@
-## [21.12.7](https://github.com/growingio/gio-design-pro/compare/v21.12.6...v21.12.7) (2021-11-17)
+## [21.12.8](https://github.com/growingio/gio-design-pro/compare/v21.12.7...v21.12.8) (2021-11-23)
 
 
 ### Bug Fixes
 
-* **intl:** fix 英文无法切换回中文的问题 ([#478](https://github.com/growingio/gio-design-pro/issues/478)) ([ff4073f](https://github.com/growingio/gio-design-pro/commit/ff4073f19413922f80e1e4127a3126c43e394086))
+* **property-selector:** 修复属性选择器信息展示错误的问题 ([#480](https://github.com/growingio/gio-design-pro/issues/480)) ([5899b0d](https://github.com/growingio/gio-design-pro/commit/5899b0db433cf9ebafd53750753a3b5d3c58bd07))
+* **TitleInfoCard:** 支持 hover 提示 ([#481](https://github.com/growingio/gio-design-pro/issues/481)) ([760161f](https://github.com/growingio/gio-design-pro/commit/760161fab9f883749f68cae12543e4733bc39bcb))
 
 
 
