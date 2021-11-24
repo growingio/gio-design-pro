@@ -146,9 +146,7 @@ exports[`PropertyCard can render the string valueType 1`] = `
                 >
                   <span
                     class="gio-tag-label"
-                  >
-                    用户属性
-                  </span>
+                  />
                 </span>
                 <div
                   class="gio-property-picker-card-key"

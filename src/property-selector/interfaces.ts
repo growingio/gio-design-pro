@@ -14,10 +14,7 @@ export interface PropertyInfo {
   type?: string;
   description?: string;
   valueType?: string;
-  /**
-   * 是否是物品属性
-   */
-  isItem?: boolean;
+  subType?: string;
 }
 interface Iterable {
   [key: string]: any;
@@ -94,7 +91,7 @@ export const PropertyTypes: { [key: string]: string } = {
   event: localStorage.getItem('locale') === 'en-US' ? 'Event Variables' : '事件属性',
   avar: localStorage.getItem('locale') === 'en-US' ? 'Visit variables' : '访问属性',
   usr: localStorage.getItem('locale') === 'en-US' ? 'User Variables' : '用户属性',
-  itm: localStorage.getItem('locale') === 'en-US' ? 'Items' : '维度表',
+  itm: localStorage.getItem('locale') === 'en-US' ? 'Items' : '维度表'
 };
 
 // export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boolean';
@@ -133,7 +130,7 @@ export interface PropertyItem extends PropertyValue {
 
 export interface PropertySelectorProps
   extends Omit<PropertyPickerProps, 'className' | 'style' | 'shouldUpdateRecentlyUsed'>,
-    Omit<SelectorProps, 'dropdownRender' | 'valueRender'> {}
+  Omit<SelectorProps, 'dropdownRender' | 'valueRender'> { }
 export interface PropertyCardProps {
   // nodeData: NodeData;
   // fetchData?: (nodeData: NodeData) => Promise<PropertyInfo> | PropertyInfo;

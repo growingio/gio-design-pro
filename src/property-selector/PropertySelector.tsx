@@ -72,7 +72,9 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   );
   const fetchDetail = pickerRestProps.fetchDetailData ?? (async (data) => data);
   const inputRender = () => {
-    const content = () => currentValue && <PropertyCard nodeData={currentValue} fetchData={promisify(fetchDetail)} />;
+    const content = () =>
+      // if (!currentValue) return '';
+      currentValue && <PropertyCard nodeData={currentValue} fetchData={promisify(fetchDetail)} />;
     return (
       currentValue && (
         <>
@@ -85,7 +87,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
           >
             <span className="inner-input-wrap" ref={inputValueRef}>
               <span className="icon">
-                <IconRender group={currentValue?.isItem ? 'item' : currentValue?.groupId} />
+                <IconRender group={currentValue?.subGroupId} />
               </span>
               <span>{inputText}</span>
             </span>
