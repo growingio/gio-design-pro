@@ -95,13 +95,11 @@ function Expression(props: ExpressionProps) {
           className="express-propertySelect"
           placeholder={window.localStorage.getItem('locale') === 'en-US' ? 'Select Property' : '选择属性'}
           value={propertyValue}
-          dataSource={propertyOptions.filter((option: any) => {
-            const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];
-            return option.id === exprKey || inavailableOptions.indexOf(option.id) === -1; // && !(/like/.test(operator) && option.id === 'cs1'）saas老逻辑，暂时不需要
-          })}
+          dataSource={propertyOptions}
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}
           fetchDetailData={fetchDetailData}
+          disabledValues={exprs.map((expr: any) => expr.key)}
         />
 
         <FilterCondition
