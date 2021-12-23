@@ -5,6 +5,7 @@ export const titleMap: titleGroup = {
   STRING: '字符串类型',
   int: '数值类型',
   date: '日期类型',
+  list: '列表类型',
 };
 
 export const enTitleMap: titleGroup = {
@@ -12,6 +13,7 @@ export const enTitleMap: titleGroup = {
   STRING: 'String',
   int: 'Int',
   date: 'Date',
+  list: 'List',
 };
 
 export const defaultFilterItem: FilterValueType = {
@@ -174,6 +176,24 @@ export const selectOptionMap: selectOption = {
       label: '无值',
     },
   ],
+  list: [
+    {
+      value: 'hasAll',
+      label: '全包含',
+    },
+    {
+      value: 'not hasAll',
+      label: '不全包含',
+    },
+    {
+      value: 'empty',
+      label: '为空',
+    },
+    {
+      value: 'not empty',
+      label: '不为空',
+    },
+  ],
 };
 export const enSelectOptionMap: selectOption = {
   string: [
@@ -327,6 +347,24 @@ export const enSelectOptionMap: selectOption = {
       label: 'noValue',
     },
   ],
+  list: [
+    {
+      value: 'hasAll',
+      label: 'in',
+    },
+    {
+      value: 'not hasAll',
+      label: 'not in',
+    },
+    {
+      value: 'not empty',
+      label: 'not empty',
+    },
+    {
+      value: 'empty',
+      label: 'empty',
+    },
+  ],
 };
 
 export const selectValueMap = {
@@ -378,6 +416,7 @@ export const AttributeMap = {
   int: 'int',
   date: 'date',
   STRING: 'STRING',
+  list: 'list',
 };
 
 export default { titleMap, enTitleMap, selectOptionMap, enSelectOptionMap, selectValueMap, defaultFilterItem };

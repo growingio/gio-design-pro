@@ -111,6 +111,30 @@ Default.args = {
       __typename: 'Dimension',
     },
     {
+      associatedKey: null,
+      description: '',
+      groupId: 'event',
+      groupName: '事件变量',
+      id: 'var_list_1',
+      isSystem: false,
+      key: 'var_list_1',
+      name: '列表型属性1_update',
+      type: 'var',
+      valueType: 'list',
+    },
+    {
+      associatedKey: null,
+      description: '',
+      groupId: 'event',
+      groupName: '事件变量',
+      id: 'var_list_2',
+      isSystem: false,
+      key: 'var_list_2',
+      name: '列表型属性2',
+      type: 'var',
+      valueType: 'list',
+    },
+    {
       id: 'usr_test_1126_2',
       name: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试',
       groupId: 'user',
@@ -437,6 +461,7 @@ Default.args = {
       __typename: 'Measurement265f',
     },
   ],
+  onConfirm: (v: any) => console.log(v),
   dimensionValueRequest: () =>
     new Promise((resolve) => {
       resolve(dimissionValue);
