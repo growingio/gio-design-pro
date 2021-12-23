@@ -15,6 +15,7 @@ const defaultOperationsOption: operationsOptionType = {
   int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
   date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
   STRING: ['=', '!=', 'in', 'not in', 'like', 'not like'],
+  list: ['hasAll', 'not hasAll', 'empty', 'not empty'],
 };
 
 const FilterPicker = (props: FilterPickerProps) => {

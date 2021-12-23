@@ -12,10 +12,12 @@ export type DateValue =
   | 'relativeCurrent'
   | 'relativeBetween';
 
-export type attributeValue = 'string' | 'int' | 'date' | 'STRING';
+export type ListValue = 'hasAll' | 'not hasAll' | 'empty' | 'not empty';
+
+export type attributeValue = 'string' | 'int' | 'date' | 'STRING' | 'list';
 
 export type FilterValueType = {
-  op: StringValue | NumberValue | DateValue;
+  op: StringValue | NumberValue | DateValue | ListValue;
   values: string[] | number[];
   key?: string;
   name?: string;
