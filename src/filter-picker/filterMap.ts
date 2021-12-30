@@ -183,7 +183,7 @@ export const selectOptionMap: selectOption = {
     },
     {
       value: 'not hasAll',
-      label: '不全包含',
+      label: '不包含',
     },
     {
       value: 'empty',
