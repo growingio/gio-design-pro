@@ -70,11 +70,12 @@ function Expression(props: ExpressionProps) {
     v && setValues([]);
     v && setOp('=');
     v && setGroupId(v.subGroupId);
+    const type = v?.valueType ? v?.valueType.toLowerCase() : 'string';
     const expr: FilterValueType = {
       key: v.value,
       name: v.label,
-      valueType: v?.valueType || 'string',
-      op: v?.valueType === 'list' ? 'hasAll' : '=',
+      valueType: type,
+      op: type === 'list' ? 'hasAll' : '=',
       groupId: v.subGroupId,
       values: [],
     };
