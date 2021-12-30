@@ -51,7 +51,7 @@ function FilterCondition(props: FilterConditionProps) {
     borderless = true,
     size = 'middle',
   } = props;
-  console.log(op, 'op');
+
   const [visible, setVisible] = useState(false);
   const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
   const visibleChange = (v: boolean) => {
