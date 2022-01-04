@@ -182,7 +182,7 @@ export const selectOptionMap: selectOption = {
       label: '全包含',
     },
     {
-      value: 'not hasAll',
+      value: 'not hasAny',
       label: '不包含',
     },
     {
@@ -353,7 +353,7 @@ export const enSelectOptionMap: selectOption = {
       label: 'in',
     },
     {
-      value: 'not hasAll',
+      value: 'not hasAny',
       label: 'not in',
     },
     {

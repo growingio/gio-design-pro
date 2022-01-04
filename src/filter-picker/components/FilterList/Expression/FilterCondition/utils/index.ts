@@ -58,7 +58,7 @@ const operationMap: operationMapType = {
   },
   list: {
     hasAll: '全包含',
-    'not hasAll': '不包含',
+    'not hasAny': '不包含',
     empty: '为空',
     'not empty': '不为空',
   },
@@ -110,7 +110,7 @@ const enOperationMap: operationMapType = {
   },
   list: {
     hasAll: 'hasAll',
-    'not hasAll': 'not hasAll',
+    'not hasAny': 'not hasAny',
     empty: 'empty',
     'not empty': 'not empty',
   },
@@ -146,7 +146,7 @@ const parseStringValuesToText = (opMap: { [key: string]: string }, operation: st
 const parseListValuesToText = (opMap: { [key: string]: string }, operation: string, value: string[]) => {
   switch (operation) {
     case 'hasAll':
-    case 'not hasAll': {
+    case 'not hasAny': {
       const textList = opMap[operation].split(',');
       console.log(value, 'textList');
       return textList[0] + value.join(',');

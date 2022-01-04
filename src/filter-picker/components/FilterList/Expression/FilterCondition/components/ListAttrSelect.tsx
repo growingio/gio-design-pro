@@ -124,7 +124,7 @@ function ListAttrSelect(props: ListAttrSelectProps) {
 
   switch (attrSelect) {
     case 'hasAll':
-    case 'not hasAll':
+    case 'not hasAny':
       return (
         <div style={{ height: '330px' }}>
           <Input

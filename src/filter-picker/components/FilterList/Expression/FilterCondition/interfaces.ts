@@ -12,7 +12,7 @@ export type DateValue =
   | 'relativeCurrent'
   | 'relativeBetween';
 
-export type ListValue = 'hasAll' | 'not hasAll' | 'empty' | 'not empty';
+export type ListValue = 'hasAll' | 'not hasAny' | 'empty' | 'not empty';
 
 export type attributeValue = 'string' | 'int' | 'date' | 'STRING' | 'list';
 
