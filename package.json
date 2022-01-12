@@ -103,7 +103,7 @@
     "less": "^4.1.1",
     "less-loader": "^7.0.2",
     "lint-staged": "^11.0.1",
-    "prettier": "2.4.1",
+    "prettier": "2.5.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-test-renderer": "^16.14.0",
