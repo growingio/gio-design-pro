@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, keyBy, includes, uniq, debounce, pick } from 'lodash';
+import { filter, keyBy, includes, uniq, debounce } from 'lodash';
 import { Button } from '@gio-design/components';
 import { PlusCircleFilled } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
