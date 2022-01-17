@@ -90,7 +90,7 @@ function UserPicker({
       const preparedGroup = {
         key: 'prepared',
         title: preparedText,
-        items: preparedSegments.map(mapResource),
+        items: filter(preparedSegments, (s) => filterSegment(s)).map(mapResource),
       };
       const otherGroup = {
         key: 'other',
@@ -101,7 +101,9 @@ function UserPicker({
         const recentGroup = {
           key: 'recent',
           title: rencentText,
-          items: recentSegments.filter((id) => !!mappedSegements[id]).map((id) => mapResource(mappedSegements[id])),
+          items: recentSegments
+            .filter((id) => !!mappedSegements[id] && filterSegment(mappedSegements[id]))
+            .map((id) => mapResource(mappedSegements[id])),
         };
         return [recentGroup, preparedGroup, otherGroup];
       }
