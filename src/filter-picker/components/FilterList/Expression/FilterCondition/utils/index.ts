@@ -9,6 +9,7 @@ interface operationMapType {
   int: { [key: string]: string };
   date: { [key: string]: string };
   STRING: { [key: string]: string };
+  list: { [key: string]: string };
 }
 
 const operationMap: operationMapType = {
@@ -54,6 +55,12 @@ const operationMap: operationMapType = {
     relativeCurrent: '相对现在',
     relativeBetween: '相对区间',
     hasValue: '有值',
+  },
+  list: {
+    hasAll: '全包含',
+    'not hasAny': '不包含',
+    empty: '为空',
+    'not empty': '不为空',
   },
 };
 
@@ -101,6 +108,12 @@ const enOperationMap: operationMapType = {
     relativeBetween: 'relativeBetween',
     hasValue: 'hasValue',
   },
+  list: {
+    hasAll: 'hasAll',
+    'not hasAny': 'not hasAny',
+    empty: 'empty',
+    'not empty': 'not empty',
+  },
 };
 
 const parseStringValuesToText = (opMap: { [key: string]: string }, operation: string, value: string[]) => {
@@ -124,6 +137,18 @@ const parseStringValuesToText = (opMap: { [key: string]: string }, operation: st
     case 'not in': {
       const textList = opMap[operation].split(',');
       return textList[0] + value.join(',') + textList[1];
+    }
+    default:
+      return opMap[operation] + value[0];
+  }
+};
+
+const parseListValuesToText = (opMap: { [key: string]: string }, operation: string, value: string[]) => {
+  switch (operation) {
+    case 'hasAll':
+    case 'not hasAny': {
+      const textList = opMap[operation].split(',');
+      return textList[0] + value.join(',');
     }
     default:
       return opMap[operation] + value[0];
@@ -264,6 +289,9 @@ export default function parseValuesToText(type: attributeValue, operation: strin
     }
     if (type === 'date') {
       return parseDateValuesToText(opMap, operation, value);
+    }
+    if (type === 'list') {
+      return parseListValuesToText(opMap, operation, value);
     }
   }
   return window.localStorage.getItem('locale') === 'en-US' ? en.selectFilter : cn.selectFilter;

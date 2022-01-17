@@ -4,10 +4,11 @@ import { titleMap, enTitleMap, selectOptionMap, enSelectOptionMap, AttributeMap 
 import NumberAttrSelect from './components/NumberAttrSelect';
 import DateAttrSelect from './components/DateAttrSelect';
 import StringAttrSelect from './components/StringAttrSelect/index';
+import ListAttrSelect from './components/ListAttrSelect';
 import Footer from '../../../Footer';
 import './attrSelect.less';
-import { attributeValue, StringValue, NumberValue, DateValue, FilterValueType } from './interfaces';
-import { operationsOptionType } from '../../../../interfaces';
+import { attributeValue, StringValue, NumberValue, DateValue, ListValue, FilterValueType } from './interfaces';
+import { operationsOptionType, selectItem } from '../../../../interfaces';
 
 import en from '../../../../locals/en-US';
 import cn from '../../../../locals/zh-CN';
@@ -16,7 +17,7 @@ interface FilterAttrOverlayProps {
   valueType: attributeValue;
   onSubmit: (v: FilterValueType) => void;
   onCancel: () => void;
-  op: StringValue | NumberValue | DateValue;
+  op: StringValue | NumberValue | DateValue | ListValue;
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
@@ -27,7 +28,8 @@ interface FilterAttrOverlayProps {
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey, operationsOption, numType } =
     props;
-  const [operationValue, setOperationValue] = useState<StringValue | NumberValue | DateValue>(op);
+
+  const [operationValue, setOperationValue] = useState<StringValue | NumberValue | DateValue | ListValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
 
@@ -48,16 +50,10 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
         }
       }
     }
-    if (values?.[0] === ' ') {
+    if (values?.[0] === ' ' && valueType !== 'list') {
       setOperationValue(op === '!=' ? 'hasValue' : 'noValue');
     }
   }, [op, valueType]);
-
-  // useEffect(() => {
-  //   console.log(values, 'values-1');
-  //   // setOperationValue(op);
-  //   // setAttrValue(values);
-  // }, [values, valueType, op]);
 
   const handleChange = (e: any) => {
     setChecked(e.target.checked);
@@ -79,9 +75,9 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   // 相对现在(relativeCurrent) => (relativeTime)
   // 相对区间(relativeBetween) => (relativeTime)
   const parseValue = (
-    v: StringValue | NumberValue | DateValue,
+    v: StringValue | NumberValue | DateValue | ListValue,
     check: boolean
-  ): StringValue | NumberValue | DateValue => {
+  ): StringValue | NumberValue | DateValue | ListValue => {
     const includesMap: { [key: string]: DateValue } = {
       '>': '>=',
       '<': '<=',
@@ -104,7 +100,13 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   const submit = () => {
     const filterValue: FilterValueType = {
       op: parseValue(operationValue, checked),
-      values: operationValue !== 'hasValue' && operationValue !== 'noValue' ? attrValue : [' '],
+      values:
+        operationValue !== 'hasValue' &&
+        operationValue !== 'noValue' &&
+        operationValue !== 'empty' &&
+        operationValue !== 'not empty'
+          ? attrValue
+          : [' '],
     };
     onSubmit(filterValue);
   };
@@ -136,6 +138,17 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             exprKey={exprKey}
           />
         );
+      case AttributeMap.list:
+        return (
+          <ListAttrSelect
+            valueType={attr}
+            attrSelect={selectValue}
+            attrChange={setAttrValue}
+            curryDimensionValueRequest={curryDimensionValueRequest}
+            values={attrValue.filter((item) => item !== ' ')}
+            exprKey={exprKey}
+          />
+        );
       default:
         return (
           <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} type={numType} />
@@ -149,12 +162,15 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     <div className="filter-attr_select-box">
       <div>
         <div className="filter-attr_select-title">
-          {window.localStorage.getItem('locale') === 'en-US' ? enTitleMap[valueType] : titleMap[valueType] || 'String'}
+          {window.localStorage.getItem('locale') === 'en-US' ? enTitleMap[valueType] : titleMap[valueType] || valueType}
         </div>
         <Select
           options={
             operationsOption
-              ? optionMap?.[valueType]?.filter((opItem: any) => operationsOption?.[valueType].includes(opItem.value))
+              ? optionMap?.[valueType]?.filter((opItem: selectItem) =>
+                  // @ts-ignore
+                  operationsOption?.[valueType].includes(opItem.value)
+                )
               : optionMap?.[valueType]
           }
           value={operationValue}
@@ -175,7 +191,13 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
         onSubmit={submit}
         onCancel={cancel}
         // 当values为空，同时不时无值，有值状态下，确认按钮disable
-        comfirmStatus={operationValue !== 'hasValue' && operationValue !== 'noValue' && !attrValue.length}
+        comfirmStatus={
+          operationValue !== 'empty' &&
+          operationValue !== 'not empty' &&
+          operationValue !== 'hasValue' &&
+          operationValue !== 'noValue' &&
+          !attrValue.length
+        }
       />
     </div>
   );
