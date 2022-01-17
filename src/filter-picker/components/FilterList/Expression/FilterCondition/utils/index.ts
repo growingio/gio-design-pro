@@ -148,7 +148,6 @@ const parseListValuesToText = (opMap: { [key: string]: string }, operation: stri
     case 'hasAll':
     case 'not hasAny': {
       const textList = opMap[operation].split(',');
-      console.log(value, 'textList');
       return textList[0] + value.join(',');
     }
     default:

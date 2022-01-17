@@ -51,21 +51,9 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       }
     }
     if (values?.[0] === ' ' && valueType !== 'list') {
-      // if(valueType === 'list') {
-
-      //   setOperationValue(op === '!=' ? 'hasValue' : 'noValue');
-      // }else {
-
       setOperationValue(op === '!=' ? 'hasValue' : 'noValue');
-      // }
     }
   }, [op, valueType]);
-
-  // useEffect(() => {
-  //   console.log(values, 'values-1');
-  //   // setOperationValue(op);
-  //   // setAttrValue(values);
-  // }, [values, valueType, op]);
 
   const handleChange = (e: any) => {
     setChecked(e.target.checked);
