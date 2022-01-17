@@ -1,21 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Tooltip } from '@gio-design/components';
-// import moment from 'moment';
-
 import parseValuesToText from './utils';
-
 import FilterAttrOverlay from './FilterAttrOverlay';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue, ListValue } from './interfaces';
-
 import Selector from '../../../../../selector';
 import { operationsOptionType } from '../../../../interfaces';
-
-// const defaultOperationsOption: operationsOptionType = {
-//   string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
-//   int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
-//   date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
-//   STRING: ['=', '!=', 'in', 'not in', 'like', 'not like'],
-// };
 
 interface FilterConditionProps {
   valueType: attributeValue;
