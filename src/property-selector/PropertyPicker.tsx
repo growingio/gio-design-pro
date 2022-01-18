@@ -342,6 +342,20 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         <List.Divider key="divider-group-recently" />
       </React.Fragment>
     );
+
+    const groupFn = (item: PropertyItem, existIsSystem: boolean) => {
+      if (existIsSystem) {
+        if (item.groupId === 'tag') {
+          return 'tag';
+        }
+        if (item.groupId === 'virtual') {
+          return 'virtual';
+        }
+        return item.isSystem;
+      }
+      return item.groupId;
+    };
+
     const groupDataNodes = keys(groupDatasource).map((key, index) => {
       const groupData = groupDatasource[key];
       const existIsSystem = has(groupData, '[0].isSystem');
@@ -364,26 +378,18 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
                     }
                     return false;
                   })
-                  .map((e) => {
-                    e.groupId = key;
-                    return e;
+                  .map((item) => {
+                    const { groupId, groupName } = [...cur].shift() || {};
+                    return { ...item, groupId, groupName };
                   })
               );
               acc.push(...cur);
               return acc;
             }, []),
-          existIsSystem ? 'isSystem' : 'groupId'
+          (item) => groupFn(item, existIsSystem)
         );
       } else {
-        subGroupDic = groupBy(groupData, (item) => {
-          if (existIsSystem) {
-            if (item.groupId === 'tag') {
-              return 'tag';
-            }
-            return item.isSystem;
-          }
-          return item.groupId;
-        });
+        subGroupDic = groupBy(groupData, (item) => groupFn(item, existIsSystem));
       }
 
       const { typeName } = groupData[0];

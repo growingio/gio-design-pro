@@ -1746,12 +1746,12 @@
     react-virtualized "^9.22.2"
     shallowequal "^1.1.0"
 
-"@gio-design/icons@^21.6.1":
-  version "21.6.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.6.1.tgz#87fd80d6254b5ab0e5e468a8223d7d2c4420341e"
-  integrity sha512-u+eUuzq9P0ExzNjq2XslyGOuP0XuR8ZHkJGH5XIEFN+5YFXu1Qu7mHrKti82bUjiGZkWzK/t3d6v/sy5PrBFOw==
+"@gio-design/icons@^21.11.1":
+  version "21.11.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.11.1.tgz#c96e34d341dfd72f6755ef6f0452d00ec58e28a7"
+  integrity sha512-SVQk3xhBJc+YfWZC51l8eAVQQz9Axe9JGnuL+sZr4LO73soSxvzO5Dllh1xXhmsQJqhVKebeHXsKo/+TPgnR5w==
   dependencies:
-    "@types/classnames" "^2.2.11"
+    "@babel/runtime" "^7.14.8"
     classnames "^2.2.6"
 
 "@gio-design/table@7.14.0":
@@ -3168,7 +3168,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/classnames@^2.2.11", "@types/classnames@^2.2.8":
+"@types/classnames@^2.2.8":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.3.1.tgz#3c2467aa0f1a93f1f021e3b9bcf938bd5dfdc0dd"
   integrity sha512-zeOWb0JGBoVmlQoznvqXbE0tEC/HONsnoUNH19Hc96NFsTAwTXbTqb8FMYkru1F/iqp7a18Ws3nWJvtA1sHD1A==
@@ -8501,7 +8501,6 @@ get-value@^3.0.1:
 
 "gio-rewire@https://github.com/growingio/gio-rewire.git":
   version "1.0.5"
-  uid "724db0263bf6869621f2c8c474f828cea4484442"
   resolved "https://github.com/growingio/gio-rewire.git#724db0263bf6869621f2c8c474f828cea4484442"
   dependencies:
     "@babel/core" "^7.4.5"
