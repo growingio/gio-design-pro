@@ -50,6 +50,7 @@ export const DimensionGroupTypeMapper: Mapper = {
   geo: 'avar',
   device: 'avar',
   origin: 'avar',
+  virtual: 'event',
 };
 
 export const PropertyGroupOrder = [
@@ -133,7 +134,6 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = '
 
   // 虚拟属性需要添加到事件属性中，但是有自己的type和groupId，所以和维度表（多物品模型）做相同处理
   if (groupId === 'virtual' && _type === 'vvar') {
-    result.groupId = 'event';
     if (locale === 'en-US') {
       result.groupName = 'Virtual Variables';
     } else {
@@ -149,7 +149,7 @@ export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = '
   const tOrder = ['event', 'avar', 'usr'].indexOf(result.type);
   result.typeOrder = tOrder > -1 ? tOrder : 99999;
 
-  if (has(item, 'isSystem')) {
+  if (has(item, 'isSystem') && groupId !== 'virtual') {
     return regroup(result, locale);
   }
   return result;

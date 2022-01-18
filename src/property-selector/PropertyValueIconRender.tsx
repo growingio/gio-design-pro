@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   DevicePropertyOutlined,
-  // AttributionPropertyOutlined,
+  VirtualPropertyOutlined,
   ElementPropertyOutlined,
   EventPropertyOutlined,
   GeoPropertyOutlined,
@@ -45,6 +45,8 @@ const IconRender = (props: { group?: string }) => {
       return <DevicePropertyOutlined />;
     case 'origin':
       return <UserOriginOutlined />;
+    case 'virtual':
+      return <VirtualPropertyOutlined />;
     default:
       return <></>;
   }
