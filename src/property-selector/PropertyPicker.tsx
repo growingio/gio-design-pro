@@ -162,43 +162,36 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   const keywordFilter = (input: string = '', key: string = '') => {
     if (!input || !key) return true;
     return !!pinyinMatch?.match(input, key);
-    // const parttern: RegExp = makeSearchParttern(key, true);
-    // if (!parttern) return true;
-    // return !!input.match(parttern) || !!pinyinMatch?.match(input, key);
   };
-  const _filterFunc = (data = [] as PropertyItem[]) => {
-    const labelKey = 'label';
 
-    if (scope === 'all') {
-      return data.filter((d) => keywordFilter(d[labelKey] as string, keyword));
-    }
-
-    return data.filter((d) => d.type === scope && keywordFilter(d[labelKey] as string, keyword));
-  };
   /**
    * 属性列表数据源
    */
   const dataSource = useMemo(() => {
-    const filterdData = _filterFunc(dataList);
+    const filteredData = dataList.filter((item) => {
+      const { label, type, groupId, valueType } = item;
+      if (groupId === 'virtual' && valueType !== 'string') {
+        return false;
+      }
+      if (scope === 'all') {
+        return keywordFilter(label, keyword);
+      }
+      return type === scope && keywordFilter(label, keyword);
+    });
 
     // 按照分组排序
-    // const sortedData = filterdData; // sortBy(filterdData, ['groupOrder', 'name']);
-    const sortedData = orderBy(filterdData, ['typeOrder', 'groupOrder', 'pinyinName']);
+    const sortedData = orderBy(filteredData, ['typeOrder', 'groupOrder', 'pinyinName']);
 
     // mixin 最近使用
     const rids: string[] = recentlyUsedInMemo ? recentlyUsedInMemo[scope] : [];
     const recent: PropertyItem[] = [];
     rids?.forEach((v: string) => {
-      const r = filterdData.find((d) => d.value === v);
+      const r = filteredData.find((d) => d.value === v);
       if (r) {
         recent.push({
           ...r,
           itemIcon: () => <IconRender group={r.associatedKey ? 'item' : r?.groupId} />,
           _groupKey: 'recently',
-          // type: `recently¥${r.type}`,
-          // typeName: '最近使用',
-          // groupId: `recently¥${r.groupId}`,
-          // groupName: '最近使用',
         });
       }
     });
